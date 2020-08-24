@@ -1,0 +1,39 @@
+<!ELEMENT a - - (%text)* -(a)>
+<!ELEMENT base - O empty>
+<!ELEMENT blockquote - - %body.content>
+<!ELEMENT body O O  %body.content>
+<!ELEMENT br    - O empty    -- forced line break -->
+<!ELEMENT caption - - (%text;)* -- table or figure caption -->
+<!ELEMENT center - - %body.content>
+<!ELEMENT dd - O  %flow;>
+<!ELEMENT div - - %body.content>
+<!ELEMENT dl    - -  (dt|dd)+>
+<!ELEMENT dt - O  (%text)*>
+<!ELEMENT form - - %body.content -(form)>
+<!ELEMENT h1  - -  (%text;)*>
+<!ELEMENT h2  - -  (%text;)*>
+<!ELEMENT h3  - -  (%text;)*>
+<!ELEMENT h4  - -  (%text;)*>
+<!ELEMENT h5  - -  (%text;)*>
+<!ELEMENT h6  - -  (%text;)*>
+<!ELEMENT head O O  (%head.content) +(%head.misc)>
+<!ELEMENT hr    - O empty>
+<!ELEMENT html O O  (%html.content)>
+<!ELEMENT img    - O empty --  embedded image -->
+<!ELEMENT input - O empty>
+<!ELEMENT li - O %flow -- list item -->
+<!ELEMENT meta - O empty -- generic metainformation -->
+<!ELEMENT ol - -  (li)+>
+<!ELEMENT option - O (#pcdata)*>
+<!ELEMENT p     - O (%text)*>
+<!ELEMENT pre - - (%text)* -(%pre.exclusion)>
+<!ELEMENT script - - cdata -- placeholder for script statements -->
+<!ELEMENT select - - (option+)>
+<!ELEMENT style  - - cdata -- placeholder for style info -->
+<!ELEMENT table - - (caption?, tr+)>
+<!ELEMENT td - O %body.content>
+<!ELEMENT textarea - - (#pcdata)*>
+<!ELEMENT th - O %body.content>
+<!ELEMENT title - -  (#pcdata)* -(%head.misc)
+<!ELEMENT tr - O (th|td)*>
+<!ELEMENT ul - -  (li)+>
