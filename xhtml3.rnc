@@ -3,9 +3,7 @@ start = html
 
 # Content models
 block.content =
-p | pre | dl |
-div.element |
-blockquote | form.content | hr | table | ul | ol 
+p | pre | dl | \div | blockquote | form.content | hr | table | ul | ol 
 body.content = heading.content | textual.content | block.content
 flow.content = textual.content | block.content
 font.content = tt | i | b | u | strike | big | small | sub | sup
@@ -30,7 +28,7 @@ cite = element cite { textual.content* }
 code = element code { textual.content* }
 dd = element dd { flow.content* }
 dfn = element dfn { textual.content* }
-div.element = element div { body.content* }
+\div = element div { body.content* }
 dl = element dl { (dt | dd) }+
 dt = element dt { textual.content* }
 em = element em { textual.content* }
