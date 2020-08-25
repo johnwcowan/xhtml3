@@ -465,33 +465,3 @@ Here is an example:
 <!ELEMENT HTML O O  (%html.content)>
 <!ATTLIST HTML
         %version.attr; >
-
-   __________________________________________________________________
-
-   [6]Previous                                         [7]Home    [8]Next
-   Cascading Style Sheet Properties Quick Reference [9]Book Index
-   Character Entities
-   __________________________________________________________________
-
-   [10][USEMAP:smnavbar.gif]
-
-References
-
-   1. file:///Users/johncowan/html3/index.html
-   2. file:///Users/johncowan/html3/appc_01.html
-   3. file:///Users/johncowan/html3/appe_01.html
-   4. http://www.w3.org/
-   5. http://www.ics.uci.edu/pub/ietf/html/rfc1942.txt
-   6. file:///Users/johncowan/html3/appc_01.html
-   7. file:///Users/johncowan/html3/index.html
-   8. file:///Users/johncowan/html3/appe_01.html
-   9. file:///Users/johncowan/html3/index/idx_0.html
-  10. LYNXIMGMAP:file://localhost/Users/johncowan/html3/appd_01.html#map
-
-[USEMAP]
-file://localhost/Users/johncowan/html3/appd_01.html#map
-   1. file://localhost/Users/johncowan/html/index.html
-   2. file://localhost/Users/johncowan/cgi/index.html
-   3. file://localhost/Users/johncowan/jscript/index.html
-   4. file://localhost/Users/johncowan/perl/index.html
-   5. file://localhost/Users/johncowan/webnut/index.html

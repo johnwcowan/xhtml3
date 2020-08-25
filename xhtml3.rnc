@@ -1,10 +1,21 @@
-# XHTML3 compact RELAX NG schema (no attributes)
-
+# XHTML3 RELAX NG compact notation (no attributes)
 start = html
 
-# XHTML3 content models
+# Content models
+block = p | pre | dl | div | center | blockquote | form | isindex | hr | table | ul | ol 
+body.content = (heading | textual | block)*
+flow = (textual | block)*
+font = tt | i | b | u | strike | big | small | sub | sup
+form = input | select | textarea
+head.content = title, meta?, base?, script*, style*
+heading = h1 | h2 | h3 | h4 | h5 | h6
+html.content = head, body
+list = ul | ol | dir | menu
+phrase = em | strong | dfn | code | samp | kbd | var | cite
+special = a | img | br
+textual = text | font | phrase | special | form
 
-# element definitions
+# Element declarations
 a = element a { textual }*
 b = element b { textual }*
 base = element base { empty }
@@ -19,7 +30,7 @@ code = element code { textual }*
 dd = element dd { flow }
 dfn = element dfn { textual }*
 div = element div { body.content }
-dl = element dl { dt|dd }+
+dl = element dl { dt | dd }+
 dt = element dt { textual }*
 em = element em { textual }*
 form = element form { body.content }
@@ -29,7 +40,7 @@ h3 = element h3 { textual }*
 h4 = element h4 { textual }*
 h5 = element h5 { textual }*
 h6 = element h6 { textual }*
-head = element head {head.content } +(head.misc)
+head = element head { head.content }
 hr = element hr { empty }
 html = element html { html.content }
 i = element i { textual }*
@@ -41,22 +52,22 @@ meta = element meta { empty }
 ol = element ol { li }+
 option = element option { text }*
 p = element p { textual }*
-pre = element pre {textual}*
+pre = element pre { textual }* 
 samp = element samp { textual }*
-script = element script { text }
+script = element script { element }
 select = element select { option+ }
 small = element small { textual }*
 strike = element strike { textual }*
 strong = element strong { textual }*
-style = element style { text }
+style = element style { element }
 sub = element sub { textual }*
 sup = element sup { textual }*
-table = element table {caption?, tr+ }
+table = element table { caption?, tr+ }
 td = element td { body.content }
-textualarea = element textualarea { text }*
+textarea = element textarea { text }*
 th = element th { body.content }
-title = element title { text }* 
-tr = element tr { th|td }*
+title { text }* = element title (text)* 
+tr = element tr { th | td }*
 tt = element tt { textual }*
 u = element u { textual }*
 ul = element ul { li }+
