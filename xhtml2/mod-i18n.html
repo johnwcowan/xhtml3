@@ -1,0 +1,111 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN"
+	"http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html lang="en" xml:lang="en" xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<title>XHTML&#8482; 2.0 - XHTML I18N Attribute Module</title> 
+<link rel="start" type="text/html" href="Overview.html" />
+<link rel="contents" type="text/html" href="Overview.html#toc" />
+<link rel="prev" type="text/html" href="mod-hyperAttributes.html" />
+<link rel="next" type="text/html" href="mod-access.html" />
+<link rel="stylesheet" type="text/css" href="xhtml.css" />
+<link rel="stylesheet" type="text/css" href="http://www.w3.org/StyleSheets/TR/W3C-ED.css" />
+</head>
+<body>
+<div class="navbar">
+[<a accesskey="P" href="mod-hyperAttributes.html">previous</a>]
+[<a accesskey="N" href="mod-access.html">next</a>]
+[<a accesskey="T" href="Overview.html#toc">table of contents</a>]
+[<a accesskey="E" href="elements.html">elements</a>]
+[<a accesskey="A" href="attributes.html">attributes</a>]
+<hr />
+</div>
+<h1 >
+<a id="s_i18nmodule" >14.</a> XHTML I18N Attribute Module
+</h1>
+<div class='subtoc'><p><strong>Contents</strong></p><ul class='toc'><li class='tocline'>
+14.1.
+<a href="#col_I18N" class="tocxref">I18N Attribute Collection</a>
+</li></ul>
+</div>
+<p>This section is <em>normative</em>.</p>
+<p>This module defines the 
+    <a class="csref" href="mod-i18n.html#col_I18N">I18N</a> attribute
+collection.</p>
+<h2 >
+<a id="col_I18N" >14.1.</a> I18N Attribute Collection
+</h2>
+<!-- INCLUDING ATTRIBUTE modules/attributes/xml_lang.mhtml -->
+<dl class='attrDef'><dt><a class="adef" id="adef_i18n_xml:lang"><span class="adef">xml:lang</span></a>
+ = <span class="datatype"><a href="abstraction.html#dt_LanguageCode">LanguageCode</a></span>
+</dt>
+<dd>This attribute indicates the language of an element's
+attribute values and text content, and of all elements it contains, unless overridden. It is defined normatively in
+[<a class="nref" href="references.html#ref_XML">XML</a>] <a href="http://www.w3.org/TR/REC-xml#sec-lang-tag">section 2.12</a>.
+The default value of this attribute is unspecified.
+<p>An element inherits language code information according to the
+following order of precedence (highest to lowest):</p>
+<ol>
+<li>The 
+<a class="aref" href="mod-i18n.html#adef_i18n_xml:lang">@xml:lang</a> attribute set for the element
+itself.</li>
+<li>The closest parent element that has the 
+<a class="aref" href="mod-i18n.html#adef_i18n_xml:lang">@xml:lang</a>
+attribute set (i.e., the 
+<a class="aref" href="mod-i18n.html#adef_i18n_xml:lang">@xml:lang</a> attribute is
+inherited).</li>
+</ol>
+<p> 
+In this example, the default text-processing language of the document is French
+("fr"). Within the first paragraph a single word is declared to be in English ("en"), after which
+the primary language returns to French.
+The following paragraph is declared to be in English
+and includes an embedded French word.</p>
+<div class="example">
+    <p>Example</p>
+<pre>
+&lt;html xmlns="http://www.w3.org/2002/06/xhtml2" xml:lang="fr" ...&gt;
+&lt;head&gt;
+   &lt;title&gt;Un document multilingue&lt;/title&gt;
+&lt;/head&gt;
+&lt;body&gt;
+&lt;p&gt;En janvier, toutes les boutiques de Londres
+affichent des panneaux &lt;span xml:lang="en"&gt;SALE&lt;/span&gt;,
+mais en fait ces magasins sont bien propres!&lt;/p&gt;
+&lt;p xml:lang="en"&gt;Everwhere I went in France
+the bakeries had signs up saying &lt;em xml:lang="fr"&gt;PAIN&lt;/em&gt;,
+but despite that the bakers seemed quite happy.
+&lt;/p&gt;
+&lt;/body&gt;
+&lt;/html&gt;
+</pre>
+</div>
+</dd></dl>
+<!-- END OF ATTRIBUTE FILE modules/attributes/xml_lang.mhtml -->
+<!-- INCLUDING ATTRIBUTE modules/attributes/its_translate.mhtml -->
+<dl class='attrDef'><dt><a class="adef" id="adef_i18n_its:translate"><span class="adef">its:translate</span></a>
+ = ( "yes" | "no"<abbr title="default">*</abbr> )</dt>
+<dd>This attribute is incorporated from the [<a class="nref" href="references.html#ref_ITS">ITS</a>]
+specification and can be used to indicate whether the contents
+of an element should be translated.  Note that this element is
+in the <em>its</em> namespace. ITS rules are incorporated into
+XHTML family documents via the 
+<a class="eref" href="mod-meta.html#edef_meta_link">link</a> element
+with a 
+<a class="aref" href="mod-metaAttributes.html#adef_metaAttributes_rel">@rel</a> attribute value
+of <code>itsRules</code>.
+</dd></dl>
+<!-- END OF ATTRIBUTE FILE modules/attributes/its_translate.mhtml -->
+<p>Implementations: <a href="relax_module_defs.html#a_rmodule_I18N_Attributes">RELAX NG</a>,
+<a href="schema_module_defs.html#a_smodule_I18N_Attribute_Module">XML Schema</a>
+</p>
+<hr />
+<div class="navbar">
+[<a href="mod-hyperAttributes.html">previous</a>]
+[<a href="mod-access.html">next</a>]
+[<a href="Overview.html#toc">table of contents</a>]
+[<a href="elements.html">elements</a>]
+[<a href="attributes.html">attributes</a>]
+</div>
+</body>
+</html>

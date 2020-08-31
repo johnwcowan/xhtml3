@@ -1,0 +1,180 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN"
+	"http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html lang="en" xml:lang="en" xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<title>XHTML&#8482; 2.0 - XHTML Attribute Collections</title> 
+<link rel="start" type="text/html" href="Overview.html" />
+<link rel="contents" type="text/html" href="Overview.html#toc" />
+<link rel="prev" type="text/html" href="abstraction.html" />
+<link rel="next" type="text/html" href="mod-document.html" />
+<link rel="stylesheet" type="text/css" href="xhtml.css" />
+<link rel="stylesheet" type="text/css" href="http://www.w3.org/StyleSheets/TR/W3C-ED.css" />
+</head>
+<body>
+<div class="navbar">
+[<a accesskey="P" href="abstraction.html">previous</a>]
+[<a accesskey="N" href="mod-document.html">next</a>]
+[<a accesskey="T" href="Overview.html#toc">table of contents</a>]
+[<a accesskey="E" href="elements.html">elements</a>]
+[<a accesskey="A" href="attributes.html">attributes</a>]
+<hr />
+</div>
+<h1 >
+<a id="s_attribute-collectionsmodule" >6.</a> XHTML Attribute Collections
+</h1>
+<p>This section is <em>normative</em>.</p>
+<p>Many of the modules in this document define the required
+attributes for their elements.
+The elements in those modules also reference zero or more
+attribute collections.  Attribute collections are defined in their own
+modules, but the meta collection "Common" is defined in this
+section. The table below summarizes the attribute collections
+available.</p>
+<p>Note that while these Collections are referenced throughout
+this document, these expressions should in no way be considered normative or
+mandatory. They are an editorial convenience. When
+used in this document, it is the expansion of the
+term that is normative, not the term itself.</p>
+<p>For the avoidance of doubt, if an attribute collection is referenced 
+by an element's definition, and an attribute in that collection is also explicitly 
+referenced by that element's definition, this does NOT cause a conflict.  It is up to 
+the schema implementation to update the content models 
+accordingly.
+</p>
+<table class="moduledef" border="1" summary="Attribute Collections">
+<thead>
+<tr><th>Collection</th><th>Module</th><th>Description</th></tr>
+</thead>
+<tbody>
+<tr>
+<td>
+    <a class="csref" href="mod-core.html#col_Core">Core</a></td>
+<td><a href="mod-core.html#s_coremodule">Core Attributes Module</a></td>
+<td>Basic attributes used to identify and classify elements and their
+content.</td>
+</tr>
+<tr>
+<td>
+    <a class="csref" href="mod-i18n.html#col_I18N">I18N</a></td>
+<td><a href="mod-i18n.html#s_i18nmodule">Internationalization Attribute Module</a></td>
+<td>Attribute to identify the language of an element and its
+contents.
+</td>
+</tr>
+<tr>
+<td>
+    <a class="csref" href="mod-bidi.html#col_Bi-directional">Bi-directional</a></td>
+<td><a href="mod-bidi.html#s_bidimodule">Bi-directional Text Collection</a></td>
+<td>Attributes used to manage bi-directional text.</td>
+</tr>
+<tr>
+<td>
+    <a class="csref" href="mod-edit.html#col_Edit">Edit</a></td>
+<td><a href="mod-edit.html#s_editmodule">Edit Attributes Module</a></td>
+<td>Attributes used to annotate when and how an element's content was
+edited.</td>
+</tr>
+<tr>
+<td>
+    <a class="csref" href="mod-embedding.html#col_Embedding">Embedding</a></td>
+<td><a href="mod-embedding.html#s_embeddingmodule">Embedding Attributes Module</a></td>
+<td>Attributes used to embed content from other resources within the
+current element.</td>
+</tr>
+<tr>
+<td>
+    <a class="csref" href="mod-xml-events.html#col_Events">Events</a></td>
+<td><a href="mod-xml-events.html#s_xml-eventsmodule">XML Events Module</a></td>
+<td>Attributes that allow associating of events and event processing
+with an element and its contents.</td>
+</tr>
+<tr>
+<td>
+    <a class="csref" href="mod-xforms.html#col_Forms">Forms</a></td>
+<td><a href="mod-xforms.html#s_xformsmodule">XForms Module</a></td>
+<td>Attributes that designate provide a mechanism of repeating table
+    rows within a form.</td>
+</tr>
+<tr>
+<td>
+    <a class="csref" href="mod-hyperAttributes.html#col_Hypertext">Hypertext</a></td>
+<td><a href="mod-hyperAttributes.html#s_hyperAttributesmodule">Hyptertext Attributes Module</a></td>
+<td>Attributes that designate characteristics of links within and
+among documents.</td>
+</tr>
+<tr>
+<td>
+    <a class="csref" href="mod-i18n.html#col_I18N">I18N</a></td>
+<td><a href="mod-i18n.html#s_i18nmodule">I18N Attribute Module</a></td>
+<td>Attributes for defining the language of the contents of an element.
+</td>
+</tr>
+<tr>
+<td>
+    <a class="csref" href="mod-csImgMap.html#col_Map">Map</a></td>
+<td><a href="mod-csImgMap.html#s_csImgMapmodule">Image Map Attributes Module</a></td>
+<td>Attributes for defining and referencing client-side image
+maps.</td>
+</tr>
+<tr>
+<td>
+    <a class="csref" href="mod-mediaAttribute.html#col_Media">Media</a></td>
+<td><a href="mod-mediaAttribute.html#s_mediaAttributemodule">Media Attribute Module</a></td>
+<td>Attribute for performing element selection based upon media type as defined in <span class="datatype"><a href="abstraction.html#dt_MediaDesc">MediaDesc</a></span></td>
+</tr>
+<tr>
+<td>
+    <a class="csref" href="mod-metaAttributes.html#col_Metainformation">Metainformation</a></td>
+<td><a href="mod-metaAttributes.html#s_metaAttributesmodule">Metainformation Attributes</a></td>
+<td>Attributes that allow associating of elements with metainformation about those elements</td>
+</tr>
+<tr>
+<td>
+    <a class="csref" href="mod-roleAttribute.html#col_Role">Role</a></td>
+<td><a href="mod-roleAttribute.html#s_roleAttributemodule">Role Attribute Module</a></td>
+<td>Attribute for the specification of the "role" of an
+    element.</td>
+</tr>
+<tr>
+<td>
+    <a class="csref" href="mod-styleAttribute.html#col_Style">Style</a></td>
+<td><a href="mod-styleAttribute.html#s_styleAttributemodule">Style Attribute Module</a></td>
+<td>Attribute for associating style information with an element and
+its contents.</td>
+</tr>
+<tr>
+<td><a class="csref" id="col_Common">Common</a></td>
+<td>Attribute Collections Module</td>
+<td>A meta-collection of all the other collections, including
+    the 
+    <a class="csref" href="mod-core.html#col_Core">Core</a>, 
+    <a class="csref" href="mod-bidi.html#col_Bi-directional">Bi-directional</a>, 
+    <a class="csref" href="mod-xml-events.html#col_Events">Events</a>, 
+    <a class="csref" href="mod-edit.html#col_Edit">Edit</a>, 
+    <a class="csref" href="mod-embedding.html#col_Embedding">Embedding</a>, 
+    <a class="csref" href="mod-xforms.html#col_Forms">Forms</a>,  
+    <a class="csref" href="mod-hyperAttributes.html#col_Hypertext">Hypertext</a>,
+    <a class="csref" href="mod-i18n.html#col_I18N">I18N</a>, 
+    <a class="csref" href="mod-csImgMap.html#col_Map">Map</a>, 
+    <a class="csref" href="mod-mediaAttribute.html#col_Media">Media</a>, 
+    <a class="csref" href="mod-metaAttributes.html#col_Metainformation">Metainformation</a>, 
+    <a class="csref" href="mod-roleAttribute.html#col_Role">Role</a>, and
+    <a class="csref" href="mod-styleAttribute.html#col_Style">Style</a> attribute collections.
+</td>
+</tr>
+</tbody>
+</table>
+<p>Implementations: <a href="relax_module_defs.html#a_rmodule_Attribute_Collections">RELAX NG</a>,
+<a href="xhtml20_schema.html#a_xhtml2s_attribs">XML Schema</a>
+</p>
+<hr />
+<div class="navbar">
+[<a href="abstraction.html">previous</a>]
+[<a href="mod-document.html">next</a>]
+[<a href="Overview.html#toc">table of contents</a>]
+[<a href="elements.html">elements</a>]
+[<a href="attributes.html">attributes</a>]
+</div>
+</body>
+</html>

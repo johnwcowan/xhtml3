@@ -1,0 +1,210 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN"
+	"http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html lang="en" xml:lang="en" xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<title>XHTML&#8482; 2.0 - XHTML Core Attributes Module</title> 
+<link rel="start" type="text/html" href="Overview.html" />
+<link rel="contents" type="text/html" href="Overview.html#toc" />
+<link rel="prev" type="text/html" href="mod-list.html" />
+<link rel="next" type="text/html" href="mod-hyperAttributes.html" />
+<link rel="stylesheet" type="text/css" href="xhtml.css" />
+<link rel="stylesheet" type="text/css" href="http://www.w3.org/StyleSheets/TR/W3C-ED.css" />
+</head>
+<body>
+<div class="navbar">
+[<a accesskey="P" href="mod-list.html">previous</a>]
+[<a accesskey="N" href="mod-hyperAttributes.html">next</a>]
+[<a accesskey="T" href="Overview.html#toc">table of contents</a>]
+[<a accesskey="E" href="elements.html">elements</a>]
+[<a accesskey="A" href="attributes.html">attributes</a>]
+<hr />
+</div>
+<h1 >
+<a id="s_coremodule" >12.</a> XHTML Core Attributes Module
+</h1>
+<div class='subtoc'><p><strong>Contents</strong></p><ul class='toc'><li class='tocline'>
+12.1.
+<a href="#sec_12.1." class="tocxref">Core Attribute Collection</a>
+</li></ul>
+</div>
+<p>This section is <em>normative</em>.</p>
+<p>This module defines the 
+    <a class="csref" href="mod-core.html#col_Core">Core</a> attribute
+collection.</p>
+<table id="col_Core" class="moduledef" border="1" summary="Core Attribute Collection">
+<thead>
+<tr>
+	<th>Attribute</th>
+	<th>Notes</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+    <td>
+<a class="aref" href="mod-core.html#adef_core_class">@class</a> (<span class="datatype"><a href="abstraction.html#dt_NMTOKENS">NMTOKENS</a></span>)</td>
+    <td>&nbsp;</td>
+</tr>
+<tr>
+    <td>
+<a class="aref" href="mod-core.html#adef_core_id">@id</a> (<span class="datatype"><a href="abstraction.html#dt_ID">ID</a></span>)</td>
+    <td>&nbsp;</td>
+</tr>
+<tr>
+    <td>
+<a class="aref" href="mod-core.html#adef_core_xml:id">@xml:id</a> (<span class="datatype"><a href="abstraction.html#dt_ID">ID</a></span>)</td>
+    <td>&nbsp;</td>
+</tr>
+<tr>
+    <td>
+<a class="aref" href="mod-core.html#adef_core_layout">@layout</a> (<samp>irrelevant<abbr title="default">*</abbr>|relevant</samp>)</td>
+    <td>&nbsp;</td>
+</tr>
+<tr>
+    <td>
+<a class="aref" href="mod-core.html#adef_core_title">@title</a> (<span class="datatype"><a href="abstraction.html#dt_Text">Text</a></span>)</td>
+    <td>&nbsp;</td>
+</tr>
+</tbody>
+</table>
+<h2 >
+<a id="sec_12.1." >12.1.</a> Core Attribute Collection
+</h2>
+<!-- INCLUDING ATTRIBUTE modules/attributes/class.mhtml -->
+<dl class='attrDef'><dt><a class="adef" id="adef_core_class"><span class="adef">class</span></a>
+ = <span class="datatype"><a href="abstraction.html#dt_NMTOKENS">NMTOKENS</a></span></dt>
+<dd>This attribute assigns one or more class names to an element; the element may be said to belong to these classes. A class name may be shared by several element instances. 
+<p>The 
+<a class="aref" href="mod-core.html#adef_core_class">@class</a> attribute can be used for different purposes in XHTML, for instance as a <a href="mod-styleSheet.html#s_styleSheetmodule">style sheet</a> selector (when an author wishes to assign style information to a set of elements), and for general purpose processing by user agents.</p>
+<p>For instance in the following example, the 
+<a class="eref" href="mod-structural.html#edef_structural_p">p</a> element is used in conjunction with the 
+<a class="aref" href="mod-core.html#adef_core_class">@class</a> attribute to identify a particular type of paragraph.</p>
+<div class="example">
+    <p>Example</p>
+<pre>
+&lt;p class="note"&gt;
+These programs are only available if you have purchased
+the advanced professional suite.
+&lt;/p&gt;
+</pre>
+</div>
+<p>Style sheet rules can then be used to render the paragraph appropriately, for instance by putting a border around it, giving it a different background color, or where necessary by not displaying it at all.</p>
+<p>It is good style to use names that represent the purpose of the element rather than the visual presentation to be used. For instance don't use <code>class="red"</code>, but rather <code>class="urgent"</code>, or similar.</p></dd></dl>
+<!-- END OF ATTRIBUTE FILE modules/attributes/class.mhtml -->
+<!-- INCLUDING ATTRIBUTE modules/attributes/id.mhtml -->
+<dl class='attrDef'><dt><a class="adef" id="adef_core_id"><span class="adef">id</span></a>
+ = <span class="datatype"><a href="abstraction.html#dt_ID">ID</a></span>
+</dt>
+<dd>
+The 
+<a class="aref" href="mod-core.html#adef_core_id">@id</a> attribute assigns an 
+<a class="xdef"
+   id="s_coremodule_xref_0">identifier</a>
+ to an element.
+ <span class="must"  >The value of this attribute must be unique
+ within a document.</span>
+ <span class="mustnot"  >This attribute MUST NOT be specified on an element 
+ in conjunction with the 
+<a class="aref" href="mod-core.html#adef_core_xml:id">@xml:id</a>
+ attribute.
+</span>
+<p>The 
+<a class="aref" href="mod-core.html#adef_core_id">@id</a> attribute has several 
+<a class="xdef"
+   id="s_coremodule_xref_1">roles</a>
+ in XHTML:</p>
+<ul>
+<li>As a <a href="mod-styleSheet.html#s_styleSheetmodule">style sheet</a> selector.</li>
+<li>As a target 
+<a class="eref" href="mod-hypertext.html#edef_hypertext_a">anchor</a> for hypertext
+links.</li>
+<li>As the name of a declared 
+<a class="eref" href="mod-object.html#edef_object_object">object</a>
+element.</li>
+<li>For general purpose processing by user agents (e.g. for
+identifying fields when extracting data from XHTML pages into a
+database, translating XHTML documents into other formats, etc.).</li>
+</ul>
+<p>
+As an example, the following headings are distinguished
+by their 
+<a class="aref" href="mod-core.html#adef_core_id">@id</a> values:</p>
+<div class="example">
+    <p>Example</p>
+<pre>
+&lt;h id="introduction"&gt;Introduction&lt;/h&gt;
+&lt;p&gt;...&lt;/p&gt;
+&lt;h id="events"&gt;The Events Module&lt;/h&gt;
+&lt;p&gt;...&lt;/p&gt;
+</pre>
+</div>
+</dd></dl>
+<!-- END OF ATTRIBUTE FILE modules/attributes/id.mhtml -->
+<!-- INCLUDING ATTRIBUTE modules/attributes/xml_id.mhtml -->
+<dl class='attrDef'><dt><a class="adef" id="adef_core_xml:id"><span class="adef">xml:id</span></a>
+ = <span class="datatype"><a href="abstraction.html#dt_ID">ID</a></span>
+</dt>
+<dd>
+The 
+<a class="aref" href="mod-core.html#adef_core_xml:id">@xml:id</a> attribute assigns an 
+<a class="xdef"
+   id="s_coremodule_xref_2">identifier</a>
+ to an element. <span class="must"  >The value of this attribute must be unique
+ within a document.</span>
+ <span class="mustnot"  >This attribute MUST NOT be specified on an element 
+ in conjunction with the 
+<a class="aref" href="mod-core.html#adef_core_id">@id</a>
+ attribute.
+</span>
+</dd></dl>
+<!-- END OF ATTRIBUTE FILE modules/attributes/xml_id.mhtml -->
+<!-- INCLUDING ATTRIBUTE modules/attributes/layout.mhtml -->
+<dl class='attrDef'><dt><a class="adef" id="adef_core_layout"><span class="adef">layout</span></a>
+ = <samp>irrelevant<abbr title="default">*</abbr>|relevant</samp> </dt>
+<dd>This attribute allows authors to indicate whether the whitespace
+within an element is relevant to the meaning of the content or not; for instance, visual user agents could display the whitespace.
+The default is that it is <em>irrelevant</em>.  Some elements, notably
+<a class="eref" href="mod-structural.html#edef_structural_pre">pre</a> override this default.
+See <a href="conformance.html#conf_whitespace">whitespace handling</a>
+in the section on
+<a href="conformance.html#s_conform_user_agent">XHTML Family User
+    Agent Conformance</a> for more information.
+<div class="example">
+    <p>Example</p>
+<pre>
+&lt;p class="poem" layout="relevant"&gt;
+(with wee ears and see?
+tail frisks)
+              (gonE)
+&lt;/p&gt;
+</pre>
+</div>
+</dd></dl>
+<!-- END OF ATTRIBUTE FILE modules/attributes/layout.mhtml -->
+<!-- INCLUDING ATTRIBUTE modules/attributes/title.mhtml -->
+<dl class='attrDef'><dt><a class="adef" id="adef_core_title"><span class="adef">title</span></a>
+ = <span class="datatype"><a href="abstraction.html#dt_Text">Text</a></span>
+</dt>
+<dd>This attribute defines meta-information about the element on which it is set.
+<div class="example">
+    <p>Example</p>
+<pre>
+&lt;a href="Jakob.html" title="Author biography"&gt;Jakob Nielsen&lt;/a&gt;'s 
+Alertbox for January 11, 1998
+</pre>
+</div>
+</dd></dl>
+<!-- END OF ATTRIBUTE FILE modules/attributes/title.mhtml -->
+<p>Implementation: <a href="relax_module_defs.html#a_rmodule_Core_Attributes">RELAX NG</a>,
+<a href="schema_module_defs.html#a_smodule_Core_Attributes_Module">XML Schema</a>
+</p>
+<hr />
+<div class="navbar">
+[<a href="mod-list.html">previous</a>]
+[<a href="mod-hyperAttributes.html">next</a>]
+[<a href="Overview.html#toc">table of contents</a>]
+[<a href="elements.html">elements</a>]
+[<a href="attributes.html">attributes</a>]
+</div>
+</body>
+</html>

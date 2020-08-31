@@ -1,0 +1,339 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN"
+	"http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html lang="en" xml:lang="en" xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<title>XHTML&#8482; 2.0 - XHTML Hypertext Attributes Module</title> 
+<link rel="start" type="text/html" href="Overview.html" />
+<link rel="contents" type="text/html" href="Overview.html#toc" />
+<link rel="prev" type="text/html" href="mod-core.html" />
+<link rel="next" type="text/html" href="mod-i18n.html" />
+<link rel="stylesheet" type="text/css" href="xhtml.css" />
+<link rel="stylesheet" type="text/css" href="http://www.w3.org/StyleSheets/TR/W3C-ED.css" />
+</head>
+<body>
+<div class="navbar">
+[<a accesskey="P" href="mod-core.html">previous</a>]
+[<a accesskey="N" href="mod-i18n.html">next</a>]
+[<a accesskey="T" href="Overview.html#toc">table of contents</a>]
+[<a accesskey="E" href="elements.html">elements</a>]
+[<a accesskey="A" href="attributes.html">attributes</a>]
+<hr />
+</div>
+<h1 >
+<a id="s_hyperAttributesmodule" >13.</a> XHTML Hypertext Attributes Module
+</h1>
+<div class='subtoc'><p><strong>Contents</strong></p><ul class='toc'><li class='tocline'>
+13.1.
+<a href="#col_Hypertext" class="tocxref">Hypertext Attribute Collection</a>
+</li></ul>
+</div>
+<p>This section is <em>normative</em>.</p>
+<p>The Hypertext Attributes Module
+defines the 
+    <a class="csref" href="mod-hyperAttributes.html#col_Hypertext">Hypertext</a> attribute collection. This collection allows an element to be the start point of a hypertext link to a remote resource.</p>
+<h2 >
+<a id="col_Hypertext" >13.1.</a> Hypertext Attribute Collection
+</h2>
+<!-- INCLUDING ATTRIBUTE modules/attributes/cite.mhtml -->
+<dl class='attrDef'><dt><a class="adef" id="adef_hyperAttributes_cite"><span class="adef">cite</span></a>
+ = <span class="datatype"><a href="abstraction.html#dt_URI">URI</a></span></dt>
+<dd>The value of this attribute is a <span class="datatype"><a href="abstraction.html#dt_URI">URI</a></span> that designates a source
+document or message. This attribute is intended to give further
+information about the element's contents (e.g., the source from which
+a quotation was borrowed, or the reason text was inserted or deleted).
+<span class="must"  >User Agents MUST provide a means for the user to actuate the link.</span>
+<div class="example">
+    <p>Example</p>
+<pre>
+cite="comments.html"
+</pre>
+</div>
+</dd></dl>
+<!-- END OF ATTRIBUTE FILE modules/attributes/cite.mhtml -->
+<!-- INCLUDING ATTRIBUTE modules/attributes/href.mhtml -->
+<dl class='attrDef'><dt><a class="adef" id="adef_hyperAttributes_href"><span class="adef">href</span></a>
+ = <span class="datatype"><a href="abstraction.html#dt_URI">URI</a></span></dt>
+<dd><span class="must"  >This attribute specifies a URI that is actuated when the
+element is activated.</span>
+<p>Actuation occurs as the default action of a [<a class="nref" href="references.html#ref_DOM">DOM</a>]
+DOMActivate event for the element on which the attribute occurs (for instance as the result of the user clicking on the associated element).
+<span class="must"  >If elements contained within an element using an
+<a class="aref" href="mod-hyperAttributes.html#adef_hyperAttributes_href">@href</a> also use an 
+<a class="aref" href="mod-hyperAttributes.html#adef_hyperAttributes_href">@href</a> attribute, the User
+Agent must provide a mechanism for actuating any of these "nested"
+URIs.</span></p>
+<div class="example">
+    <p>Example</p>
+<pre>
+&lt;abbr href="http://www.w3.org/" title="World Wide Web"&gt;WWW&lt;/abbr&gt;
+&lt;li href="contents.xhtml"&gt;contents&lt;/li&gt;
+&lt;a href="http://www.cwi.nl/~steven/amsterdam.html"&gt;Amsterdam&lt;/a&gt;
+&lt;quote href="hamlet.xhtml#p2435"&gt;To be or not to be&lt;/quote&gt;
+&lt;var href="#index_ninc"&gt;ninc&lt;/var&gt;
+</pre>
+</div>
+<!--
+<p>In terms of [<a class="nref" href="references.html#ref_HLINK">HLINK</a>], the 
+<a class="aref" href="mod-hyperAttributes.html#adef_hyperAttributes_href">@href</a> attribute is
+specified as:</p>
+<pre>&lt;hlink namespace="http://www.w3.org/1999/xhtml"
+       locator="href"
+       effectValue="replace"
+	   replacement="target"
+	   role="rel"
+	   mediaType="hreftype"
+       actuateValue="onRequest"/&gt;</pre>
+   -->
+</dd></dl>
+<!-- END OF ATTRIBUTE FILE modules/attributes/href.mhtml -->
+<!-- INCLUDING ATTRIBUTE modules/attributes/hreflang.mhtml -->
+<dl class='attrDef'><dt><a class="adef" id="adef_hyperAttributes_hreflang"><span class="adef">hreflang</span></a>
+ = <span class="datatype"><a href="abstraction.html#dt_LanguageCodes">LanguageCodes</a></span>
+</dt>
+<dd><p>This attribute specifies the primary language of the resource designated by 
+<a class="aref" href="mod-hyperAttributes.html#adef_hyperAttributes_href">@href</a>. 
+At its most general, it is a comma-separated list of language ranges with optional accept parameters, as defined in section 14.4 of
+[<a class="nref" href="references.html#ref_RFC2616">RFC2616</a>] as the field value of the Accept-Language request header.</p>
+<p>In its simplest case, this is just a language code, such as "nl", but it may also contain variant specifications such as "en-gb".</p>
+<p><span class="must"  >The user agent must use this list as the field value of the <code>accept-language</code> request header
+when requesting the resource using HTTP.</span></p>
+<p><span class="must"  >If this attribute is not present, the user agent must use its default value of the accept-language request header.</span></p>
+<div class="example">
+    <p>Example</p>
+<pre>
+&lt;p href="http://www.w3.org/2003/06/semantictour-pressrelease" 
+   hreflang="fr"&gt;
+   The press release in French
+&lt;/p&gt;
+</pre>
+</div>
+</dd></dl>
+<!-- END OF ATTRIBUTE FILE modules/attributes/hreflang.mhtml -->
+<!-- INCLUDING ATTRIBUTE modules/attributes/hrefmedia.mhtml -->
+<dl class='attrDef'><dt><a class="adef" id="adef_hyperAttributes_hrefmedia"><span class="adef">hrefmedia</span></a>
+ = <span class="datatype"><a href="abstraction.html#dt_MediaDesc">MediaDesc</a></span> </dt>
+<dd>This attribute indicates the type(s) of media to which to make
+available the content referenced by the associated 
+<a class="aref" href="mod-hyperAttributes.html#adef_hyperAttributes_href">@href</a> URI.
+<div class="example">
+    <p>Example</p>
+<pre>
+&lt;p href="http://www.example.com/forPrinters.html" 
+   hrefmedia="print"&gt;
+   A printable version of this page.
+&lt;/p&gt;
+</pre>
+</div>
+</dd></dl>
+<!-- END OF ATTRIBUTE FILE modules/attributes/hrefmedia.mhtml -->
+<!-- INCLUDING ATTRIBUTE modules/attributes/hreftype.mhtml -->
+<dl class='attrDef'><dt><a class="adef" id="adef_hyperAttributes_hreftype"><span class="adef">hreftype</span></a>
+ = <span class="datatype"><a href="abstraction.html#dt_ContentTypes">ContentTypes</a></span> </dt>
+<dd>This attribute specifies the allowable content types of the relevant 
+<a class="aref" href="mod-hyperAttributes.html#adef_hyperAttributes_href">@href</a>
+URI. See <span class="datatype"><a href="abstraction.html#dt_ContentTypes">ContentTypes</a></span> for details of how it is used.
+<div class="example">
+    <p>Example</p>
+<pre>
+&lt;p href="http://www.w3.org" 
+   hreftype="text/html,application/xhtml+xml"&gt;
+   The W3C Home Page
+&lt;/p&gt;
+</pre>
+</div>
+</dd></dl>
+<!-- END OF ATTRIBUTE FILE modules/attributes/hreftype.mhtml -->
+<!-- INCLUDING ATTRIBUTE modules/attributes/nextfocus.mhtml -->
+<dl class='attrDef'><dt><a class="adef" id="adef_hyperAttributes_nextfocus"><span class="adef">nextfocus</span></a>
+ = <span class="datatype"><a href="abstraction.html#dt_IDREF">IDREF</a></span></dt>
+<dd>This attribute specifies an IDREF of an element in the current document that will receive focus when the user requests that the user agent navigate to the next element that can receive focus.
+<p>The sequence of <a class="termref" href="terms.html#focusable">focusable</a> elements is called
+the document's navigation order.  
+<a class="xdef"
+   id="s_hyperAttributesmodule_xref_0">The navigation order</a>
+ defines the order in
+which elements will receive focus when navigated by the user.
+The navigation order may include elements nested within other
+elements.</p>
+<p>When a document is first loaded, a user agent must do the
+following:</p>
+<ol>
+  <li>If a document is loaded using a URI that includes a reference to
+  a fragment identifier (such as <code>book.html#chapter5</code>)
+  <ol>
+  <li>
+  <span class="must"  >If the fragment reference identifies an element in the document,
+  the user agent must ensure that navigation starts at the beginning of that element.</span></li>
+  <li><span class="must"  >If the referenced element is focusable, that element receives
+  focus.</span></li>
+  <li><span class="must"  >If the fragment reference does not resolve in the document, the
+  user agent must ensure navigation starts at the beginning of the
+  document.</span></li>
+  </ol>
+  </li>
+  <li>If there is no reference to a fragment identifier when the document is loaded:
+  <ol>
+      <li><span class="must"  >If the root element of the document has a 
+<a class="aref" href="mod-hyperAttributes.html#adef_hyperAttributes_nextfocus">@nextfocus</a>
+  attribute, and the element referred to by the attribute is focusable, the element must receive
+  focus.</span> <span class="must"  >The user agent must ensure the beginning of the element 
+  is visible on the display.</span></li>
+  <li><span class="must"  >If the root element has no 
+<a class="aref" href="mod-hyperAttributes.html#adef_hyperAttributes_nextfocus">@nextfocus</a> attribute, no element receives initial focus.</span>
+  <span class="must"  >The user agent must ensure navigation starts at the beginning of the document.</span></li>
+  </ol>
+  </li>
+  <li><span class="should"  >
+If the user has moved away from the initial navigation point of
+  a document (e.g., through using page up and page down or by changing
+  focus), refreshing the document should result in the user's
+  navigation location being preserved.</span>
+  </li>
+</ol>
+<p><span class="must"  >In the event no element in the document has focus, when the user
+requests the next focusable element, that element
+must be the next focusable element forward from the current navigation
+point in document order.</span>  
+<span class="must"  >If there are no focusable elements
+before the end of the document, focus shifts to the first
+focusable element in document order.</span>
+<span class="must"  >If a document has no
+focusable elements, then no element receives focus.</span>
+</p>
+<p>Once a focusable element in the document has focus, upon requesting
+that focus change to the next focusable element, the user agent MUST
+follow these rules when determining where focus is next set:</p>
+<ol>
+	<li><span class="must"  >The next focus of an element <em>without</em> a 
+<a class="aref" href="mod-hyperAttributes.html#adef_hyperAttributes_nextfocus">@nextfocus</a>
+	attribute is the next <a class="termref" href="terms.html#focusable">focusable</a> element in document order.
+  If there are no remaining <a class="termref" href="terms.html#focusable">focusable</a> elements in document order,
+  the next focus must be on the first <a class="termref" href="terms.html#focusable">focusable</a> element in document order.</span></li>
+	<li><span class="must"  >The next focus of an element <em>with</em> a 
+<a class="aref" href="mod-hyperAttributes.html#adef_hyperAttributes_nextfocus">@nextfocus</a>
+	attribute is the element referenced by that attribute if it is
+	<a class="termref" href="terms.html#focusable">focusable</a>, otherwise the next focus of that element.</span></li>
+</ol>
+<p><span class="must"  >Regardless of the way in which an element receives focus, if the element is not
+currently visible on the user agent's display, the
+display must be updated so that the element is visible.</span></p>
+<p>The following example would allow the links to be navigated in column order (without the use of <code>nextfocus</code> they would be navigated in document, i.e. row, order):</p>
+<div class="example">
+    <p>Example</p>
+<pre>
+&lt;table&gt;
+&lt;tr&gt;&lt;td id="a" href="nw" nextfocus="b"&gt;NW&lt;/td&gt;
+    &lt;td id="c" href="ne" nextfocus="d"&gt;NE&lt;/td&gt;&lt;/tr&gt;
+&lt;tr&gt;&lt;td id="b" href="sw" nextfocus="c"&gt;SW&lt;/td&gt;
+    &lt;td id="d" href="se"&gt;SE&lt;/td&gt;&lt;/tr&gt;
+&lt;/table&gt;
+</pre>
+</div>
+<div class="note">
+<p><em><strong>Navigation keys.</strong> The actual key sequence that causes navigation or element activation depends on the configuration of the user agent (e.g., the "tab" key might be used for navigation and the "enter" key or "space" key used to activate a selected element).</em></p>
+</div>
+</dd></dl>
+<!-- END OF ATTRIBUTE FILE modules/attributes/nextfocus.mhtml -->
+<!-- INCLUDING ATTRIBUTE modules/attributes/prevfocus.mhtml -->
+<dl class='attrDef'><dt><a class="adef" id="adef_hyperAttributes_prevfocus"><span class="adef">prevfocus</span></a>
+ = <span class="datatype"><a href="abstraction.html#dt_IDREF">IDREF</a></span></dt>
+<dd>This attribute specifies an IDREF of an element in the current
+document that will receive focus when the user requests that user
+agent navigate to the previous element that can receive focus.
+<p>In the event no element in the document has focus, when the user
+requests the previous <a class="termref" href="terms.html#focusable">focusable</a> element, that element
+must be the next focusable element backward from the current navigation
+point in document order.  If there is no such focusable element
+back to the start of the document, focus shifts to the last
+focusable element in document order.  If a document has no
+focusable elements, the behavior is unspecified.
+</p>
+<p>Once a focusable element in the document has focus, upon requesting
+that focus change to the previous focusable element, the user agent must
+do the following:</p>
+<ol>
+  <li>If the focused element has a 
+<a class="aref" href="mod-hyperAttributes.html#adef_hyperAttributes_prevfocus">@prevfocus</a> attribute
+  that references a focusable element, 
+  focus is moved to that element.</li>
+  <li>Otherwise, focus shifts to the
+  previous focusable element in document order.</li>
+  <li>If there are no previous focusable elements in document order,
+  focus shifts to the last focusable element in document order.</li>
+</ol>
+<p><span class="must"  >Regardless of the way in which an element receives focus, for visual user agents, if the element is not currently visible on the user agent's display, the
+display must be updated so that the element is visible.</span></p>
+</dd></dl>
+<!-- END OF ATTRIBUTE FILE modules/attributes/prevfocus.mhtml -->
+<!-- INCLUDING ATTRIBUTE modules/attributes/target.mhtml -->
+<dl class='attrDef'><dt><a class="adef" id="adef_hyperAttributes_target"><span class="adef">target</span></a>
+ = <span class="datatype"><a href="abstraction.html#dt_HrefTarget">HrefTarget</a></span></dt>
+<dd>
+This attribute identifies an environment that will act
+as the destination for a resource identified by a hyperlink when it is activated.
+<p>This specification does not define how this attribute gets used, since that is defined by the environment that the hyperlink is actuated in. 
+See for instance XFrames [<a class="nref" href="references.html#ref_XFRAMES">XFRAMES</a>].  However, values of
+this attribute that begin with the character '<samp>_</samp>' are
+reserved.
+</p>
+<div class="example">
+    <p>Example</p>
+<pre>
+&lt;a href="home.html" target="main"&gt;Home&lt;/a&gt;
+</pre>
+</div>
+</dd></dl>
+<!-- END OF ATTRIBUTE FILE modules/attributes/target.mhtml -->
+<!-- INCLUDING ATTRIBUTE modules/attributes/xml_base.mhtml -->
+<dl class='attrDef'><dt><a class="adef" id="adef_hyperAttributes_xml:base"><span class="adef">xml:base</span></a>
+ = <span class="datatype"><a href="abstraction.html#dt_URI">URI</a></span>
+</dt>
+<dd>This attribute specifies the base URI from which to resolve
+relative URIs. It is normatively defined in [<a class="nref" href="references.html#ref_XMLBASE">XMLBASE</a>]. 
+<span class="must"  >Any
+relative URI used on an element that uses this attribute, or on an
+element contained within an element that uses this attribute, must be
+resolved relative to the base URI defined by this attribute.</span>
+<p>An element inherits URI base information according to the
+following order of precedence (highest to lowest):</p>
+<ol>
+<li>The 
+<a class="aref" href="mod-hyperAttributes.html#adef_hyperAttributes_xml:base">@xml:base</a> attribute set for the element
+itself.</li>
+<li>The closest parent element that has the 
+<a class="aref" href="mod-hyperAttributes.html#adef_hyperAttributes_xml:base">@xml:base</a>
+attribute set (i.e., the 
+<a class="aref" href="mod-hyperAttributes.html#adef_hyperAttributes_xml:base">@xml:base</a> attribute is
+inherited).</li>
+<li>The HTTP "Content-Location" header (which may be configured in a
+server).</li>
+<li>The location of the document itself.</li>
+</ol>
+<div class="example">
+    <p>Example</p>
+<pre>
+See:
+&lt;ul xml:base="http://www.w3.org"&gt;
+&lt;li href="/" src="Icons/w3c_home"&gt;The W3C home page&lt;/li&gt;
+&lt;li href="/TR"&gt;The W3C Technical Reports page&lt;/li&gt;
+&lt;li href="/Markup"&gt;The HTML home page&lt;/li&gt;
+&lt;li href="/Markup/Forms"&gt;The XForms home page&lt;/li&gt;
+&lt;/ul&gt;
+</pre>
+</div>
+</dd></dl>
+<!-- END OF ATTRIBUTE FILE modules/attributes/xml_base.mhtml -->
+<p>Implementations: <a href="relax_module_defs.html#a_rmodule_Hypertext_Attributes">RELAX NG</a>,
+<a href="schema_module_defs.html#a_smodule_Hypertext_Attributes_Module">XML Schema</a>
+</p>
+<hr />
+<div class="navbar">
+[<a href="mod-core.html">previous</a>]
+[<a href="mod-i18n.html">next</a>]
+[<a href="Overview.html#toc">table of contents</a>]
+[<a href="elements.html">elements</a>]
+[<a href="attributes.html">attributes</a>]
+</div>
+</body>
+</html>

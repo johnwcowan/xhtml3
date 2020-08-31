@@ -1,0 +1,198 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN"
+	"http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html lang="en" xml:lang="en" xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<title>XHTML&#8482; 2.0 - Conformance Definition</title> 
+<link rel="start" type="text/html" href="Overview.html" />
+<link rel="contents" type="text/html" href="Overview.html#toc" />
+<link rel="prev" type="text/html" href="terms.html" />
+<link rel="next" type="text/html" href="xhtml2-doctype.html" />
+<link rel="stylesheet" type="text/css" href="xhtml.css" />
+<link rel="stylesheet" type="text/css" href="http://www.w3.org/StyleSheets/TR/W3C-ED.css" />
+</head>
+<body>
+<div class="navbar">
+[<a accesskey="P" href="terms.html">previous</a>]
+[<a accesskey="N" href="xhtml2-doctype.html">next</a>]
+[<a accesskey="T" href="Overview.html#toc">table of contents</a>]
+[<a accesskey="E" href="elements.html">elements</a>]
+[<a accesskey="A" href="attributes.html">attributes</a>]
+<hr />
+</div>
+<h1 >
+<a id="s_conform" >3.</a> Conformance Definition
+</h1>
+<div class='subtoc'><p><strong>Contents</strong></p><ul class='toc'><li class='tocline'>
+3.1.
+<a href="#doccont" class="tocxref">Document Conformance</a>
+<ul class="toc"><li class='tocline'>3.1.1.
+<a href="#strict" class="tocxref">Conforming Documents</a>
+</li></ul></li><li class='tocline'>3.2.
+<a href="#s_conform_user_agent" class="tocxref">XHTML 2 User Agent Conformance</a>
+</li></ul>
+</div>
+<p>This section is <em>normative</em>.</p>
+<p>
+The keywords "MUST", "MUST NOT", "REQUIRED", "SHALL", "SHALL NOT", "SHOULD",
+"RECOMMENDED", "MAY", and "OPTIONAL" in this document are to be interpreted as
+described in [<a class="nref" href="references.html#ref_RFC2119">RFC2119</a>].
+</p>
+<h2 >
+<a id="doccont" >3.1.</a> Document Conformance
+</h2>
+<p>In this document, the use of the word 'schema' refers to any definition of the syntax of XHTML 2, regardless of the definition language used. </p>
+<h3 >
+<a id="strict" >3.1.1.</a> Conforming Documents
+</h3>
+<p>A conforming XHTML 2.0 document is a document that
+requires only the facilities described as mandatory in this
+specification. Such a document must meet all the following
+criteria:</p>
+<ol>
+<li>
+<p><span class="must"  >The document must conform to the constraints expressed in the 
+prose throughout this document, and also to the
+machine-checkable constraints expressed in the schema in
+<a href="xhtml20_relax.html#a_xhtml20_relaxng">Appendix&#160;B -
+    XHTML 2.0 RELAX NG Definition</a>.</span></p>
+</li>
+<li>
+<p><span class="must"  >The local part of the root element of the document must be
+<code>html</code>.</span></p>
+</li>
+<li>
+<p><span class="must"  >The start tag of the root element of the document must explicitly
+contain an <code>xmlns</code> declaration for the XHTML namespace
+[<a class="nref" href="references.html#ref_XMLNS">XMLNS</a>].
+The namespace URI for XHTML is defined to be 
+<code>http://www.w3.org/1999/xhtml</code>.</span></p>
+<p><span class="may"  >
+The start tag may also contain an 
+<a class="aref" href="mod-document.html#adef_document_xsi:schemaLocation">@xsi:schemaLocation</a> attribute that associates this namespace with the XML Schema at the
+URI <code>http://www.w3.org/MarkUp/SCHEMA/xhtml2.xsd</code>.</span></p>
+<div class="example">
+    <p>Sample root element</p>
+<pre>
+&lt;html xmlns="&lt;xmlns&gt;" xml:lang="en"
+      xmlns:xsi="&lt;xsilocation&gt;"
+      xsi:schemaLocation="&lt;xmlns&gt;
+                          &lt;xmlschemaloc&gt;"
+&gt;
+</pre>
+</div>
+</li>
+<li>
+<p><span class="may"  >
+There MAY be a DOCTYPE declaration in the document prior to
+the root element.</span>  <span class="must"  >If present, the public identifier included in
+the DOCTYPE declaration MUST reference the DTD found in
+<a href="dtd_module_defs.html#a_dtd_module_defs">Appendix&#160;F</a> using
+its Public Identifier.</span>
+<span class="may"  >
+The system identifier may be modified appropriately.</span></p>
+<pre>
+&lt;!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 2.0//EN"
+    "http://www.w3.org/MarkUp/DTD/xhtml2.dtd"&gt;
+</pre>
+</li>
+</ol>
+<div class="example">
+    <p>Example of an XHTML 2.0 document</p>
+<pre>
+&lt;?xml version="1.0" encoding="UTF-8"?&gt;
+&lt;html xmlns="&lt;xmlns /&gt;" xml:lang="en"&gt;
+  &lt;head&gt;
+    &lt;title&gt;Virtual Library&lt;/title&gt;
+  &lt;/head&gt;
+  &lt;body&gt;
+    &lt;p&gt;Moved to &lt;a href="http://example.org/"&gt;example.org&lt;/a&gt;.&lt;/p&gt;
+  &lt;/body&gt;
+&lt;/html&gt;
+</pre>
+</div>
+<p>Note that in this example, the XML declaration is included. An XML
+declaration like the one above is
+not required in all XML documents. <span class="should"  >
+XHTML document authors
+should use XML declarations in all their documents.</span>
+<span class="must"  >XHTML document authors must use an XML declaration
+when the character encoding of the document is other than the default UTF-8 or
+UTF-16 and
+no encoding is specified by a higher-level protocol.</span>
+</p>
+<h2 >
+<a id="s_conform_user_agent" >3.2.</a> XHTML 2 User Agent Conformance
+</h2>
+<p>A conforming user agent must meet all of the following
+criteria, as well as other requirements found throughout this
+specification:
+</p>
+<ol>
+    <li><p><span class="must"  >The user agent must parse and evaluate
+    an XHTML 2 document for well-formedness.</span> 
+    <span class="must"  >If the user agent claims
+to be a validating user agent, it must also validate documents
+against a referenced schema according to [<a class="nref" href="references.html#ref_XML">XML</a>].</span></p>
+</li>
+<li><p><span class="must"  >When the user agent claims to support 
+facilities defined within this specification or required by
+this specification through normative reference, it must do so in
+ways consistent with the facilities' definition.</span></p></li>
+<li><p><span class="must"  >A user agent 
+must only recognize attributes of type
+<code>ID</code> (e.g., the <code>id</code> or <code>xml:id</code> attribute on most XHTML 2 elements)
+as fragment identifiers.</span></p>
+</li>
+<li><p><span class="must"  >If a user agent encounters an element it does not recognize,
+it must continue to process the content of that element.</span>
+<span class="must"  >If this "unrecognized" element uses recognized attributes, 
+those attributes must be
+processed with their usual semantics.</span>
+</p>
+</li>
+<li><p><span class="must"  >If a user agent encounters an attribute it does not
+recognize, it must ignore the entire attribute specification
+(i.e., the attribute and its value).</span>
+</p>
+</li>
+<li>
+<p>
+<span class="must"  >If a user agent encounters an attribute value it doesn't
+recognize, it must use the default attribute value.</span></p>
+</li>
+<li>
+<p>
+<span class="should"  >
+When rendering content, user agents that encounter 
+characters or character entity references that are recognized but not
+renderable should display the document in such a way that it is
+obvious to the user that normal rendering has not taken
+place.</span>
+</p></li>
+<li>
+<p><span class="must"  ><a id="conf_whitespace">White space</a> must be handled according to
+the rules of [<a class="nref" href="references.html#ref_XML">XML</a>].</span> All XHTML 2 elements preserve whitespace.</p>
+<p><span class="must"  >The user agent must use the definition from CSS for processing white space
+characters [<a class="nref" href="references.html#ref_CSS3-TEXT">CSS3-TEXT</a>].</span></p></li>
+<li><p><span class="should"  >
+In the absence of a style-sheet, including user agents
+that do not process style sheets, the default visual presentation should be as if
+the user agent used the CSS style sheet specified in Appendix
+H.</span></p>
+</li>
+</ol>
+<p><em>Note that this specification does not generally specify the behavior
+of conforming implementations when presented with non-conforming
+documents. This is either defined by an underlying specification (e.g.,
+[<a class="nref" href="references.html#ref_XML">XML</a>]) or left to the implementor.</em></p>
+<hr />
+<div class="navbar">
+[<a href="terms.html">previous</a>]
+[<a href="xhtml2-doctype.html">next</a>]
+[<a href="Overview.html#toc">table of contents</a>]
+[<a href="elements.html">elements</a>]
+[<a href="attributes.html">attributes</a>]
+</div>
+</body>
+</html>

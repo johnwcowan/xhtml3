@@ -1,0 +1,172 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN"
+	"http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html lang="en" xml:lang="en" xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<title>XHTML&#8482; 2.0 - XHTML Bi-directional Text Attribute Module</title> 
+<link rel="start" type="text/html" href="Overview.html" />
+<link rel="contents" type="text/html" href="Overview.html#toc" />
+<link rel="prev" type="text/html" href="mod-access.html" />
+<link rel="next" type="text/html" href="mod-caption.html" />
+<link rel="stylesheet" type="text/css" href="xhtml.css" />
+<link rel="stylesheet" type="text/css" href="http://www.w3.org/StyleSheets/TR/W3C-ED.css" />
+</head>
+<body>
+<div class="navbar">
+[<a accesskey="P" href="mod-access.html">previous</a>]
+[<a accesskey="N" href="mod-caption.html">next</a>]
+[<a accesskey="T" href="Overview.html#toc">table of contents</a>]
+[<a accesskey="E" href="elements.html">elements</a>]
+[<a accesskey="A" href="attributes.html">attributes</a>]
+<hr />
+</div>
+<h1 >
+<a id="s_bidimodule" >16.</a> XHTML Bi-directional Text Attribute Module
+</h1>
+<div class='subtoc'><p><strong>Contents</strong></p><ul class='toc'><li class='tocline'>
+16.1.
+<a href="#col_Bi-directional" class="tocxref">Bi-directional Text Collection</a>
+<ul class="toc"><li class='tocline'>16.1.1.
+<a href="#sec_16.1.1." class="tocxref">Inheritance of text direction information</a>
+</li><li class='tocline'>16.1.2.
+<a href="#sec_16.1.2." class="tocxref">The effect of style sheets on bidirectionality</a>
+</li></ul>
+</li></ul>
+</div>
+<p>This section is <em>normative</em>.</p>
+<p>The Bi-directional Text module defines the 
+    <a class="csref" href="mod-bidi.html#col_Bi-directional">Bi-directional</a>
+attribute collection.</p>
+<h2 >
+<a id="col_Bi-directional" >16.1.</a> Bi-directional Text Collection
+</h2>
+<!-- INCLUDING ATTRIBUTE modules/attributes/dir.mhtml -->
+<dl class='attrDef'><dt><a class="adef" id="adef_bidi_dir"><span class="adef">dir</span></a>
+ = <samp>"ltr|rtl|lro|rlo"</samp> 
+</dt>
+<dd>This attribute allows the author to specify the direction of the element's text content. This direction affects the display of characters as defined in Unicode Standard Annex #9: The Bidirectional Algorithm [<a class="nref" href="references.html#ref_UAX9">UAX9</a>], and defines directional properties of text as defined by CSS2 [<a class="nref" href="references.html#ref_CSS2">CSS2</a>]. The default value of this attribute is <code>ltr</code>. Possible values are: 
+<ul>
+<li><samp>ltr</samp>: Left-to-right text. The effect of this attribute is defined by the CSS2 rule:
+<pre>
+*[dir="ltr"] { unicode-bidi: embed; direction: ltr}
+</pre>
+</li>
+<li><samp>rtl</samp>: Right-to-left text. The effect of this attribute is defined by the CSS2 rule:
+<pre>
+*[dir="rtl"] { unicode-bidi: embed; direction: rtl}
+</pre>
+</li>
+<li><samp>lro</samp>: Left-to-right override. The effect of this attribute is defined by the CSS2 rule:
+<pre>
+*[dir="lro"] { unicode-bidi: bidi-override; direction: ltr}
+</pre>
+</li>
+<li><samp>rlo</samp>: Right-to-left override. The effect of this attribute is defined by the CSS2 rule:
+<pre>
+*[dir="rlo"] { unicode-bidi: bidi-override; direction: rtl}
+</pre>
+</li>
+</ul>
+<div class="example">
+    <p>Example</p>
+<pre>
+&lt;p&gt;
+The Hebrew word for "Hebrew" is 
+&lt;span xml:lang="he"&gt;&amp;#x5e2;&amp;#x5d1;&amp;#x5e8;&amp;#x5d9;&amp;#x5ea;&lt;/span&gt;,
+but since Hebrew letters have intrinsic right-to-left directionality,
+I had to type the word starting from the letter "&amp;#x5e2;",
+i.e. &lt;span xml:lang="he" dir="lro"&gt;&amp;#x5e2;&amp;#x5d1;&amp;#x5e8;&amp;#x5d9;&amp;#x5ea;&lt;/span&gt;.
+&lt;/p&gt;
+</pre>
+</div>
+This might display as <img src="images/hebrew.png" alt="an image of the example" />.
+</dd></dl>
+<!-- END OF ATTRIBUTE FILE modules/attributes/dir.mhtml -->
+<h3 >
+<a id="sec_16.1.1." >16.1.1.</a> Inheritance of text direction information
+</h3>
+<p>The Unicode bidirectional algorithm requires a base text direction for text
+blocks. To specify the base direction of a block-level element, set the
+element's 
+<a class="aref" href="mod-bidi.html#adef_bidi_dir">@dir</a>
+attribute. The default value of the 
+<a class="aref" href="mod-bidi.html#adef_bidi_dir">@dir</a>
+attribute is <code>ltr</code> (left-to-right text).</p>
+<p>When the 
+<a class="aref" href="mod-bidi.html#adef_bidi_dir">@dir</a>
+attribute is set for a block-level element, it remains in effect
+for the duration of the element and any nested
+block-level elements. Setting
+the 
+<a class="aref" href="mod-bidi.html#adef_bidi_dir">@dir</a>
+attribute on a nested element overrides the inherited value.</p>
+<p>To set the base text direction for an entire document, set the
+<a class="aref" href="mod-bidi.html#adef_bidi_dir">@dir</a>
+attribute on the 
+<a class="eref" href="mod-document.html#edef_document_html">html</a> element.</p>
+<div class="example">
+    <p>Example</p>
+<pre>
+&lt;!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 2.0//EN"
+   "&lt;dtdloc&gt;"&gt;
+&lt;html xmlns="&lt;xmlns&gt;" dir="rtl"&gt;
+&lt;head&gt;
+&lt;title&gt;&lt;em&gt;...a right-to-left title...&lt;/em&gt;&lt;/title&gt;
+&lt;/head&gt;
+&lt;body&gt;
+&lt;em&gt;...right-to-left text...&lt;/em&gt;
+&lt;p dir="ltr"&gt;&lt;em&gt;...left-to-right text...&lt;/em&gt;&lt;/p&gt;
+&lt;p&gt;&lt;em&gt;...right-to-left text again...&lt;/em&gt;&lt;/p&gt;
+&lt;/body&gt;
+&lt;/html&gt;
+</pre>
+</div>
+<p>Inline-level elements, on the other hand, do not inherit the
+<a class="aref" href="mod-bidi.html#adef_bidi_dir">@dir</a>
+attribute. This means that an inline element without a
+<a class="aref" href="mod-bidi.html#adef_bidi_dir">@dir</a>
+attribute does <strong>not</strong> open an additional level of embedding with
+respect to the bidirectional algorithm.</p>
+<p>An element is considered to be block-level
+if its presentation, when expressed in
+[<a class="nref" href="references.html#ref_CSS2">CSS2</a>], is <code>display: block</code> and inline-level
+if its presentation, when expressed in
+[<a class="nref" href="references.html#ref_CSS2">CSS2</a>], is <code>display: inline</code>.</p>
+<h3 >
+<a id="sec_16.1.2." >16.1.2.</a> The effect of style sheets on bidirectionality
+</h3>
+<p>In general, using style sheets (such as [<a class="nref" href="references.html#ref_CSS2">CSS2</a>]
+to change an element's visual rendering from
+the equivalent of <code>display: block</code> to 
+<code>display: inline</code> or vice-versa is straightforward. However, because the
+bidirectional algorithm relies on the
+inline/block-level distinction, special care must be taken during the
+transformation.</p>
+<p>When an inline-level element that does not have a 
+<a class="aref" href="mod-bidi.html#adef_bidi_dir">@dir</a>
+attribute is transformed to
+a block-level element by a style sheet, it inherits the
+<a class="aref" href="mod-bidi.html#adef_bidi_dir">@dir</a>
+attribute from its closest parent block-level element to define the base direction of the block.</p>
+<p>When a block-level element that does not have a 
+<a class="aref" href="mod-bidi.html#adef_bidi_dir">@dir</a>
+attribute is transformed to
+an inline-level element by a style sheet, the resulting presentation
+should be equivalent, in terms of bidirectional formatting, to the formatting
+obtained by explicitly adding a 
+<a class="aref" href="mod-bidi.html#adef_bidi_dir">@dir</a> 
+attribute (assigned the inherited value) to
+the transformed element.</p>
+<p>Implementations: <a href="relax_module_defs.html#a_rmodule_Bi-directional_Text_Attribute">RELAX NG</a>,
+<a href="schema_module_defs.html#a_smodule_Bi-directional_Text_Module">XML Schema</a>
+</p>
+<hr />
+<div class="navbar">
+[<a href="mod-access.html">previous</a>]
+[<a href="mod-caption.html">next</a>]
+[<a href="Overview.html#toc">table of contents</a>]
+[<a href="elements.html">elements</a>]
+[<a href="attributes.html">attributes</a>]
+</div>
+</body>
+</html>

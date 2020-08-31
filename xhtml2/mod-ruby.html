@@ -1,0 +1,51 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN"
+	"http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html lang="en" xml:lang="en" xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<title>XHTML&#8482; 2.0 - Ruby Module</title> 
+<link rel="start" type="text/html" href="Overview.html" />
+<link rel="contents" type="text/html" href="Overview.html#toc" />
+<link rel="prev" type="text/html" href="mod-roleAttribute.html" />
+<link rel="next" type="text/html" href="mod-styleSheet.html" />
+<link rel="stylesheet" type="text/css" href="xhtml.css" />
+<link rel="stylesheet" type="text/css" href="http://www.w3.org/StyleSheets/TR/W3C-ED.css" />
+</head>
+<body>
+<div class="navbar">
+[<a accesskey="P" href="mod-roleAttribute.html">previous</a>]
+[<a accesskey="N" href="mod-styleSheet.html">next</a>]
+[<a accesskey="T" href="Overview.html#toc">table of contents</a>]
+[<a accesskey="E" href="elements.html">elements</a>]
+[<a accesskey="A" href="attributes.html">attributes</a>]
+<hr />
+</div>
+<h1 >
+<a id="s_rubymodule" >27.</a> Ruby Module
+</h1>
+<p>This section is <em>normative</em> for purposes of defining the
+integration of the Ruby Module into XHTML 2. The semantics of
+the Ruby Module itself are
+normatively defined in [<a class="nref" href="references.html#ref_RUBY">RUBY</a>].</p>
+<p>This module adds the <a class="edef" id="edef_ruby_ruby">ruby</a>
+ element to the 
+    <a class="csref" href="mod-text.html#cs_Text">Text</a> content set
+of the <a href="mod-text.html#s_textmodule">Text</a> Module.
+XHTML 2.0 supports the maximal content model for the <code>ruby</code> element,
+defined as follows:</p>
+<pre>((rb, (rt | (rp, rt, rp))) | (rbc, rtc, rtc?))</pre>
+<p>As defined in [<a class="nref" href="references.html#ref_RUBY">RUBY</a>], the <code>ruby</code> element is not
+allowed to nest.</p>
+<p>Implementations: <a href="relax_module_defs.html#a_rmodule_Ruby_Driver_for_Full_Ruby_Markup">RELAX NG</a>,
+<a href="schema_module_defs.html#a_smodule_Ruby_Module">XML Schema</a>,
+<a href="http://www.w3.org/TR/2001/REC-ruby-20010531/#module">DTD</a></p>
+<hr />
+<div class="navbar">
+[<a href="mod-roleAttribute.html">previous</a>]
+[<a href="mod-styleSheet.html">next</a>]
+[<a href="Overview.html#toc">table of contents</a>]
+[<a href="elements.html">elements</a>]
+[<a href="attributes.html">attributes</a>]
+</div>
+</body>
+</html>

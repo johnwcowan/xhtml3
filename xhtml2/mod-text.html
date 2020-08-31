@@ -1,0 +1,844 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN"
+	"http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html lang="en" xml:lang="en" xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<title>XHTML&#8482; 2.0 - XHTML Text Module</title> 
+<link rel="start" type="text/html" href="Overview.html" />
+<link rel="contents" type="text/html" href="Overview.html#toc" />
+<link rel="prev" type="text/html" href="mod-structural.html" />
+<link rel="next" type="text/html" href="mod-hypertext.html" />
+<link rel="stylesheet" type="text/css" href="xhtml.css" />
+<link rel="stylesheet" type="text/css" href="http://www.w3.org/StyleSheets/TR/W3C-ED.css" />
+</head>
+<body>
+<div class="navbar">
+[<a accesskey="P" href="mod-structural.html">previous</a>]
+[<a accesskey="N" href="mod-hypertext.html">next</a>]
+[<a accesskey="T" href="Overview.html#toc">table of contents</a>]
+[<a accesskey="E" href="elements.html">elements</a>]
+[<a accesskey="A" href="attributes.html">attributes</a>]
+<hr />
+</div>
+<h1 >
+<a id="s_textmodule" >9.</a> XHTML Text Module
+</h1>
+<div class='subtoc'><p><strong>Contents</strong></p><ul class='toc'><li class='tocline'>
+9.1.
+<a href="#sec_9.1." class="tocxref">The abbr element</a>
+</li><li class='tocline'>9.2.
+<a href="#sec_9.2." class="tocxref">The br element</a>
+</li><li class='tocline'>9.3.
+<a href="#sec_9.3." class="tocxref">The cite element</a>
+</li><li class='tocline'>9.4.
+<a href="#sec_9.4." class="tocxref">The code element</a>
+</li><li class='tocline'>9.5.
+<a href="#sec_9.5." class="tocxref">The dfn element</a>
+</li><li class='tocline'>9.6.
+<a href="#sec_9.6." class="tocxref">The em element</a>
+</li><li class='tocline'>9.7.
+<a href="#sec_9.7." class="tocxref">The kbd element</a>
+</li><li class='tocline'>9.8.
+<a href="#sec_9.8." class="tocxref">The l element</a>
+</li><li class='tocline'>9.9.
+<a href="#sec_9.9." class="tocxref">The q element</a>
+</li><li class='tocline'>9.10.
+<a href="#sec_9.10." class="tocxref">The samp element</a>
+</li><li class='tocline'>9.11.
+<a href="#sec_9.11." class="tocxref">The span element</a>
+</li><li class='tocline'>9.12.
+<a href="#sec_9.12." class="tocxref">The strong element</a>
+</li><li class='tocline'>9.13.
+<a href="#sec_9.13." class="tocxref">The sub element</a>
+</li><li class='tocline'>9.14.
+<a href="#sec_9.14." class="tocxref">The sup element</a>
+</li><li class='tocline'>9.15.
+<a href="#sec_9.15." class="tocxref">The var element</a>
+</li></ul>
+</div>
+<p>This section is <em>normative</em>.</p>
+<p>This module defines all of the basic text container elements, attributes,
+and their content models that are "inline level".  Note that while the
+concept of "inline level" can be construed as a presentation aspect, in
+this case it is intended to only have a semantic meaning.</p>
+<table class="moduledef" border="1" summary="Elements and Attributes in Text Module">
+<thead>
+	<tr><th>Element</th><th>Attributes</th><th>Content Model</th></tr>
+</thead>
+<tbody>
+<tr>
+  <td>abbr</td>
+  <td>
+    <a class="csref" href="mod-attribute-collections.html#col_Common">Common</a>, 
+<a class="aref" href="mod-text.html#adef_text_full">@full</a></td>
+  <td class="content">(
+    <a class="csref" href="mod-text.html#cs_Text">Text</a>)*</td>
+</tr>
+<tr>
+  <td>br</td>
+  <td>
+    <a class="csref" href="mod-attribute-collections.html#col_Common">Common</a></td>
+  <td class="content">EMPTY</td>
+</tr>
+<tr>
+  <td>cite</td>
+  <td>
+    <a class="csref" href="mod-attribute-collections.html#col_Common">Common</a></td>
+  <td class="content">(
+    <a class="csref" href="mod-text.html#cs_Text">Text</a>)*</td>
+</tr>
+<tr>
+  <td>code</td>
+  <td>
+    <a class="csref" href="mod-attribute-collections.html#col_Common">Common</a></td>
+  <td class="content">(
+    <a class="csref" href="mod-text.html#cs_Text">Text</a>)*</td>
+</tr>
+<tr>
+  <td>dfn</td>
+  <td>
+    <a class="csref" href="mod-attribute-collections.html#col_Common">Common</a></td>
+  <td class="content">(
+    <a class="csref" href="mod-text.html#cs_Text">Text</a>)*</td>
+</tr>
+<tr>
+  <td>em</td>
+  <td>
+    <a class="csref" href="mod-attribute-collections.html#col_Common">Common</a></td>
+  <td class="content">(
+    <a class="csref" href="mod-text.html#cs_Text">Text</a>)*</td>
+</tr>
+<tr>
+  <td>kbd</td>
+  <td>
+    <a class="csref" href="mod-attribute-collections.html#col_Common">Common</a></td>
+  <td class="content">(
+    <a class="csref" href="mod-text.html#cs_Text">Text</a>)*</td>
+</tr>
+<tr>
+  <td>l</td>
+  <td>
+    <a class="csref" href="mod-attribute-collections.html#col_Common">Common</a></td>
+  <td class="content">(
+    <a class="csref" href="mod-text.html#cs_Text">Text</a>)*</td>
+</tr>
+<tr>
+  <td>q</td>
+  <td>
+    <a class="csref" href="mod-attribute-collections.html#col_Common">Common</a></td>
+  <td class="content">(
+    <a class="csref" href="mod-text.html#cs_Text">Text</a>)*</td>
+</tr>
+<tr>
+  <td>samp</td>
+  <td>
+    <a class="csref" href="mod-attribute-collections.html#col_Common">Common</a></td>
+  <td class="content">(
+    <a class="csref" href="mod-text.html#cs_Text">Text</a>)*</td>
+</tr>
+<tr>
+  <td>span</td>
+  <td>
+    <a class="csref" href="mod-attribute-collections.html#col_Common">Common</a></td>
+  <td class="content">(
+    <a class="csref" href="mod-text.html#cs_Text">Text</a>)*</td>
+</tr>
+<tr>
+  <td>strong</td>
+  <td>
+    <a class="csref" href="mod-attribute-collections.html#col_Common">Common</a></td>
+  <td class="content">(
+    <a class="csref" href="mod-text.html#cs_Text">Text</a>)*</td>
+</tr>
+<tr><td>sub</td><td>
+    <a class="csref" href="mod-attribute-collections.html#col_Common">Common</a></td><td class="content">(
+    <a class="csref" href="mod-text.html#cs_Text">Text</a>)*</td></tr>
+<tr><td>sup</td><td>
+    <a class="csref" href="mod-attribute-collections.html#col_Common">Common</a></td><td class="content">(
+    <a class="csref" href="mod-text.html#cs_Text">Text</a>)*</td></tr>
+<tr>
+  <td>var</td>
+  <td>
+    <a class="csref" href="mod-attribute-collections.html#col_Common">Common</a></td>
+  <td class="content">(
+    <a class="csref" href="mod-text.html#cs_Text">Text</a>)*</td>
+</tr>
+</tbody>
+</table>
+<p>The content model for this module defines a content set:</p>
+<dl>
+<dt id="cs_Text">Text</dt>
+<dd><span class="content">PCDATA | 
+<a class="eref" href="mod-text.html#edef_text_abbr">abbr</a> | 
+<a class="eref" href="mod-text.html#edef_text_br">br</a> | 
+<a class="eref" href="mod-text.html#edef_text_cite">cite</a> | 
+<a class="eref" href="mod-text.html#edef_text_code">code</a> | 
+<a class="eref" href="mod-legacy-edit.html#edef_legacy-edit_del">del</a> |
+<a class="eref" href="mod-text.html#edef_text_dfn">dfn</a> | 
+<a class="eref" href="mod-text.html#edef_text_em">em</a> | 
+<a class="eref" href="mod-legacy-edit.html#edef_legacy-edit_ins">ins</a> |
+<a class="eref" href="mod-text.html#edef_text_kbd">kbd</a> | 
+<a class="eref" href="mod-object.html#edef_object_object">object</a> |
+<a class="eref" href="mod-text.html#edef_text_q">q</a> | 
+<a class="eref" href="mod-ruby.html#edef_ruby_ruby">ruby</a> |
+<a class="eref" href="mod-text.html#edef_text_samp">samp</a> | 
+<a class="eref" href="mod-text.html#edef_text_span">span</a> | 
+<a class="eref" href="mod-text.html#edef_text_strong">strong</a> 
+    | 
+<a class="eref" href="mod-document.html#edef_document_title">title</a>
+    | 
+<a class="eref" href="mod-text.html#edef_text_var">var</a>
+    		| <a class="csref" href="mod-xforms.html#cs_XForms_Form_Controls">XForms_Form_Controls</a>
+</span></dd>
+</dl>
+<p>Implementations: <a href="relax_module_defs.html#a_rmodule_Text">RELAX NG</a>,
+<a href="schema_module_defs.html#a_smodule_Text_Module">XML Schema</a>
+</p>
+<!-- INCLUDING ELEMENT modules/text/abbr.mhtml -->
+<h2 >
+<a id="sec_9.1." >9.1.</a> The <a class="edef" id="edef_text_abbr">abbr</a>
+ element
+</h2>
+<p>The 
+<a class="eref" href="mod-text.html#edef_text_abbr">abbr</a> element indicates that a text fragment is an
+abbreviation (e.g., W3C, XML, Inc., Ltd., Mass., etc.); this includes acronyms.</p>
+<div class="adef-list">
+<p><em>Attributes</em></p>
+<!-- INCLUDING ATTRIBUTE modules/attributes/Common.mhtml -->
+<dl class='attrDef'><dt>The 
+    <a class="csref" href="mod-attribute-collections.html#col_Common">Common</a> collection</dt>
+<dd>A collection of other attribute collections, including:
+    <a class="csref" href="mod-bidi.html#col_Bi-directional">Bi-directional</a>, 
+    <a class="csref" href="mod-core.html#col_Core">Core</a>, 
+    <a class="csref" href="mod-edit.html#col_Edit">Edit</a>, 
+    <a class="csref" href="mod-embedding.html#col_Embedding">Embedding</a>, 
+    <a class="csref" href="mod-xml-events.html#col_Events">Events</a>, 
+    <a class="csref" href="mod-xforms.html#col_Forms">Forms</a>, 
+    <a class="csref" href="mod-hyperAttributes.html#col_Hypertext">Hypertext</a>,
+    <a class="csref" href="mod-i18n.html#col_I18N">I18N</a>, 
+    <a class="csref" href="mod-csImgMap.html#col_Map">Map</a>, 
+    <a class="csref" href="mod-metaAttributes.html#col_Metainformation">Metainformation</a>,
+and 
+    <a class="csref" href="mod-roleAttribute.html#col_Role">Role</a>
+</dd></dl>
+<!-- END OF ATTRIBUTE FILE modules/attributes/Common.mhtml -->
+<!-- INCLUDING ATTRIBUTE modules/attributes/full.mhtml -->
+<dl class='attrDef'><dt><a class="adef" id="adef_text_full"><span class="adef">full</span></a>
+ = <span class="datatype"><a href="abstraction.html#dt_IDREF">IDREF</a></span></dt>
+<dd>This attribute locates an element that defines the full expansion of an abbreviation. <span class="must"  >The referenced element must be in the same document as the abbreviation.</span>
+</dd></dl>
+<!-- END OF ATTRIBUTE FILE modules/attributes/full.mhtml -->
+</div>
+<p>The content of the 
+<a class="eref" href="mod-text.html#edef_text_abbr">abbr</a>
+element specifies the abbreviated
+expression itself, as it would normally appear in running text.  The
+<a class="aref" href="mod-core.html#adef_core_title">@title</a> or 
+<a class="aref" href="mod-text.html#adef_text_full">@full</a> attributes may be used to provide the full or expanded form of the expression.  Such an attribute should be
+repeated each time the abbreviation is used in the document.</p>
+<div class="example">
+    <p>Examples</p>
+<pre>
+&lt;abbr title="Limited"&gt;Ltd.&lt;/abbr&gt;
+&lt;abbr title="Abbreviation"&gt;abbr.&lt;/abbr&gt;
+&lt;p&gt;The &lt;dfn id="w3c"&gt;World Wide Web Consortium&lt;/dfn&gt; (&lt;abbr full="#w3c"&gt;W3C&lt;/abbr&gt;)
+   develops interoperable technologies (specifications, guidelines, software, and tools)
+   to lead the Web to its full potential. &lt;abbr full="#w3c"&gt;W3C&lt;/abbr&gt; is a forum for
+   information, commerce, communication, and collective understanding.&lt;/p&gt;
+</pre>
+</div>
+<!-- END OF ELEMENT FILE modules/text/abbr.mhtml -->
+<!-- INCLUDING ELEMENT modules/text/br.mhtml -->
+<h2 >
+<a id="sec_9.2." >9.2.</a> The <a class="edef" id="edef_text_br">br</a>
+ element
+</h2>
+<p><em>This element is deprecated.</em></p>
+<p>The 
+<a class="eref" href="mod-text.html#edef_text_br">br</a> element indicates that the current output line
+should be ended at this point, and a new line begun. This element is
+deprecated in favor of the 
+<a class="eref" href="mod-text.html#edef_text_l">l</a> element.</p>
+<div class="adef-list">
+<p><em>Attributes</em></p>
+<!-- INCLUDING ATTRIBUTE modules/attributes/Common.mhtml -->
+<dl class='attrRef'><dt>The 
+    <a class="csref" href="mod-attribute-collections.html#col_Common">Common</a> collection</dt>
+<dd>A collection of other attribute collections, including:
+    <a class="csref" href="mod-bidi.html#col_Bi-directional">Bi-directional</a>, 
+    <a class="csref" href="mod-core.html#col_Core">Core</a>, 
+    <a class="csref" href="mod-edit.html#col_Edit">Edit</a>, 
+    <a class="csref" href="mod-embedding.html#col_Embedding">Embedding</a>, 
+    <a class="csref" href="mod-xml-events.html#col_Events">Events</a>, 
+    <a class="csref" href="mod-xforms.html#col_Forms">Forms</a>, 
+    <a class="csref" href="mod-hyperAttributes.html#col_Hypertext">Hypertext</a>,
+    <a class="csref" href="mod-i18n.html#col_I18N">I18N</a>, 
+    <a class="csref" href="mod-csImgMap.html#col_Map">Map</a>, 
+    <a class="csref" href="mod-metaAttributes.html#col_Metainformation">Metainformation</a>,
+and 
+    <a class="csref" href="mod-roleAttribute.html#col_Role">Role</a>
+</dd></dl>
+<!-- END OF ATTRIBUTE FILE modules/attributes/Common.mhtml -->
+</div>
+<div class="example">
+Example:
+<pre class="example">
+&lt;p class="poem" xml:lang="fr"&gt;
+Un petit d'un petit&lt;br/&gt;
+S'etonne aux Halles.&lt;br/&gt;
+Un petit d'un petit,&lt;br/&gt;
+Ah! Degres te fallent.
+&lt;/p&gt;
+</pre>
+</div>
+<!-- END OF ELEMENT FILE modules/text/br.mhtml -->
+<!-- INCLUDING ELEMENT modules/text/cite.mhtml -->
+<h2 >
+<a id="sec_9.3." >9.3.</a> The <a class="edef" id="edef_text_cite">cite</a>
+ element
+</h2>
+<p>The 
+<a class="eref" href="mod-text.html#edef_text_cite">cite</a> element contains a citation or a reference to other
+sources.</p>
+<div class="adef-list">
+<p><em>Attributes</em></p>
+<!-- INCLUDING ATTRIBUTE modules/attributes/Common.mhtml -->
+<dl class='attrRef'><dt>The 
+    <a class="csref" href="mod-attribute-collections.html#col_Common">Common</a> collection</dt>
+<dd>A collection of other attribute collections, including:
+    <a class="csref" href="mod-bidi.html#col_Bi-directional">Bi-directional</a>, 
+    <a class="csref" href="mod-core.html#col_Core">Core</a>, 
+    <a class="csref" href="mod-edit.html#col_Edit">Edit</a>, 
+    <a class="csref" href="mod-embedding.html#col_Embedding">Embedding</a>, 
+    <a class="csref" href="mod-xml-events.html#col_Events">Events</a>, 
+    <a class="csref" href="mod-xforms.html#col_Forms">Forms</a>, 
+    <a class="csref" href="mod-hyperAttributes.html#col_Hypertext">Hypertext</a>,
+    <a class="csref" href="mod-i18n.html#col_I18N">I18N</a>, 
+    <a class="csref" href="mod-csImgMap.html#col_Map">Map</a>, 
+    <a class="csref" href="mod-metaAttributes.html#col_Metainformation">Metainformation</a>,
+and 
+    <a class="csref" href="mod-roleAttribute.html#col_Role">Role</a>
+</dd></dl>
+<!-- END OF ATTRIBUTE FILE modules/attributes/Common.mhtml -->
+</div>
+<p>In the following example, the 
+<a class="eref" href="mod-text.html#edef_text_cite">cite</a> element is used to
+reference the book from which the quotation is taken:</p>
+<div class="example">
+    <p>cite as book reference</p>
+<pre>
+As Gandalf the White said in 
+&lt;cite cite="http://www.example.com/books/the_two_towers"&gt;The Two Towers&lt;/cite&gt;,
+&lt;quote xml:lang="en"&gt;"The hospitality of 
+your hall is somewhat lessened of late, Theoden King."&lt;/quote&gt;
+</pre>
+</div>
+<div class="example">
+    <p>cite to reference another specification</p>
+<pre>
+More information can be found in 
+&lt;cite cite="http://www.w3.org/TR/REC-xml"&gt;[XML]&lt;/cite&gt;.
+</pre>
+</div>
+<!-- END OF ELEMENT FILE modules/text/cite.mhtml -->
+<!-- INCLUDING ELEMENT modules/text/code.mhtml -->
+<h2 >
+<a id="sec_9.4." >9.4.</a> The <a class="edef" id="edef_text_code">code</a>
+ element
+</h2>
+<p>The 
+<a class="eref" href="mod-text.html#edef_text_code">code</a> element contains a fragment of computer code.</p>
+<div class="adef-list">
+<p><em>Attributes</em></p>
+<!-- INCLUDING ATTRIBUTE modules/attributes/Common.mhtml -->
+<dl class='attrRef'><dt>The 
+    <a class="csref" href="mod-attribute-collections.html#col_Common">Common</a> collection</dt>
+<dd>A collection of other attribute collections, including:
+    <a class="csref" href="mod-bidi.html#col_Bi-directional">Bi-directional</a>, 
+    <a class="csref" href="mod-core.html#col_Core">Core</a>, 
+    <a class="csref" href="mod-edit.html#col_Edit">Edit</a>, 
+    <a class="csref" href="mod-embedding.html#col_Embedding">Embedding</a>, 
+    <a class="csref" href="mod-xml-events.html#col_Events">Events</a>, 
+    <a class="csref" href="mod-xforms.html#col_Forms">Forms</a>, 
+    <a class="csref" href="mod-hyperAttributes.html#col_Hypertext">Hypertext</a>,
+    <a class="csref" href="mod-i18n.html#col_I18N">I18N</a>, 
+    <a class="csref" href="mod-csImgMap.html#col_Map">Map</a>, 
+    <a class="csref" href="mod-metaAttributes.html#col_Metainformation">Metainformation</a>,
+and 
+    <a class="csref" href="mod-roleAttribute.html#col_Role">Role</a>
+</dd></dl>
+<!-- END OF ATTRIBUTE FILE modules/attributes/Common.mhtml -->
+</div>
+<div class="example">
+    <p>Example</p>
+<pre>
+The Pascal statement &lt;code&gt;i := 1;&lt;/code&gt; assigns the
+literal value one to the variable &lt;var&gt;i&lt;/var&gt;.
+</pre>
+</div>
+<!-- END OF ELEMENT FILE modules/text/code.mhtml -->
+<!-- INCLUDING ELEMENT modules/text/dfn.mhtml -->
+<h2 >
+<a id="sec_9.5." >9.5.</a> The <a class="edef" id="edef_text_dfn">dfn</a>
+ element
+</h2>
+<p>The 
+<a class="eref" href="mod-text.html#edef_text_dfn">dfn</a> element contains the defining instance of the enclosed
+term.</p>
+<div class="adef-list">
+<p><em>Attributes</em></p>
+<!-- INCLUDING ATTRIBUTE modules/attributes/Common.mhtml -->
+<dl class='attrRef'><dt>The 
+    <a class="csref" href="mod-attribute-collections.html#col_Common">Common</a> collection</dt>
+<dd>A collection of other attribute collections, including:
+    <a class="csref" href="mod-bidi.html#col_Bi-directional">Bi-directional</a>, 
+    <a class="csref" href="mod-core.html#col_Core">Core</a>, 
+    <a class="csref" href="mod-edit.html#col_Edit">Edit</a>, 
+    <a class="csref" href="mod-embedding.html#col_Embedding">Embedding</a>, 
+    <a class="csref" href="mod-xml-events.html#col_Events">Events</a>, 
+    <a class="csref" href="mod-xforms.html#col_Forms">Forms</a>, 
+    <a class="csref" href="mod-hyperAttributes.html#col_Hypertext">Hypertext</a>,
+    <a class="csref" href="mod-i18n.html#col_I18N">I18N</a>, 
+    <a class="csref" href="mod-csImgMap.html#col_Map">Map</a>, 
+    <a class="csref" href="mod-metaAttributes.html#col_Metainformation">Metainformation</a>,
+and 
+    <a class="csref" href="mod-roleAttribute.html#col_Role">Role</a>
+</dd></dl>
+<!-- END OF ATTRIBUTE FILE modules/attributes/Common.mhtml -->
+</div>
+<div class="example">
+    <p>Example</p>
+<pre>
+&lt;p role="definition"&gt;
+    An &lt;dfn id="def-acronym"&gt;acronym&lt;/dfn&gt; is a word
+    formed from the initial letters or groups of letters of words in a 
+    set phrase or series of words.
+&lt;/p&gt;
+</pre>
+</div>
+<!-- END OF ELEMENT FILE modules/text/dfn.mhtml -->
+<!-- INCLUDING ELEMENT modules/text/em.mhtml -->
+<h2 >
+<a id="sec_9.6." >9.6.</a> The <a class="edef" id="edef_text_em">em</a>
+ element
+</h2>
+<p>The 
+<a class="eref" href="mod-text.html#edef_text_em">em</a> element indicates emphasis for its contents.</p>
+<p>Note that if 
+<a class="eref" href="mod-text.html#edef_text_em">em</a> elements are nested, this indicates
+a higher level of emphasis.</p>
+<div class="adef-list">
+<p><em>Attributes</em></p>
+<!-- INCLUDING ATTRIBUTE modules/attributes/Common.mhtml -->
+<dl class='attrRef'><dt>The 
+    <a class="csref" href="mod-attribute-collections.html#col_Common">Common</a> collection</dt>
+<dd>A collection of other attribute collections, including:
+    <a class="csref" href="mod-bidi.html#col_Bi-directional">Bi-directional</a>, 
+    <a class="csref" href="mod-core.html#col_Core">Core</a>, 
+    <a class="csref" href="mod-edit.html#col_Edit">Edit</a>, 
+    <a class="csref" href="mod-embedding.html#col_Embedding">Embedding</a>, 
+    <a class="csref" href="mod-xml-events.html#col_Events">Events</a>, 
+    <a class="csref" href="mod-xforms.html#col_Forms">Forms</a>, 
+    <a class="csref" href="mod-hyperAttributes.html#col_Hypertext">Hypertext</a>,
+    <a class="csref" href="mod-i18n.html#col_I18N">I18N</a>, 
+    <a class="csref" href="mod-csImgMap.html#col_Map">Map</a>, 
+    <a class="csref" href="mod-metaAttributes.html#col_Metainformation">Metainformation</a>,
+and 
+    <a class="csref" href="mod-roleAttribute.html#col_Role">Role</a>
+</dd></dl>
+<!-- END OF ATTRIBUTE FILE modules/attributes/Common.mhtml -->
+</div>
+<div class="example">
+    <p>Example</p>
+<pre>
+Do &lt;em&gt;not&lt;/em&gt; phone before 9 a.m.
+</pre>
+</div>
+<!-- END OF ELEMENT FILE modules/text/em.mhtml -->
+<!-- INCLUDING ELEMENT modules/text/kbd.mhtml -->
+<h2 >
+<a id="sec_9.7." >9.7.</a> The <a class="edef" id="edef_text_kbd">kbd</a>
+ element
+</h2>
+<p>The 
+<a class="eref" href="mod-text.html#edef_text_kbd">kbd</a> element indicates input to be entered by the user.</p>
+<div class="adef-list">
+<p><em>Attributes</em></p>
+<!-- INCLUDING ATTRIBUTE modules/attributes/Common.mhtml -->
+<dl class='attrRef'><dt>The 
+    <a class="csref" href="mod-attribute-collections.html#col_Common">Common</a> collection</dt>
+<dd>A collection of other attribute collections, including:
+    <a class="csref" href="mod-bidi.html#col_Bi-directional">Bi-directional</a>, 
+    <a class="csref" href="mod-core.html#col_Core">Core</a>, 
+    <a class="csref" href="mod-edit.html#col_Edit">Edit</a>, 
+    <a class="csref" href="mod-embedding.html#col_Embedding">Embedding</a>, 
+    <a class="csref" href="mod-xml-events.html#col_Events">Events</a>, 
+    <a class="csref" href="mod-xforms.html#col_Forms">Forms</a>, 
+    <a class="csref" href="mod-hyperAttributes.html#col_Hypertext">Hypertext</a>,
+    <a class="csref" href="mod-i18n.html#col_I18N">I18N</a>, 
+    <a class="csref" href="mod-csImgMap.html#col_Map">Map</a>, 
+    <a class="csref" href="mod-metaAttributes.html#col_Metainformation">Metainformation</a>,
+and 
+    <a class="csref" href="mod-roleAttribute.html#col_Role">Role</a>
+</dd></dl>
+<!-- END OF ATTRIBUTE FILE modules/attributes/Common.mhtml -->
+</div>
+<div class="example">
+    <p>Example</p>
+<pre>
+To exit, type &lt;kbd&gt;QUIT&lt;/kbd&gt;.
+</pre>
+</div>
+<!-- END OF ELEMENT FILE modules/text/kbd.mhtml -->
+<!-- INCLUDING ELEMENT modules/text/l.mhtml -->
+<h2 >
+<a id="sec_9.8." >9.8.</a> The <a class="edef" id="edef_text_l">l</a>
+ element
+</h2>
+<p>The 
+<a class="eref" href="mod-text.html#edef_text_l">l</a> element represents a semantic line of text (e.g., a line
+of
+verse or a line of computer code).</p>
+<div class="adef-list">
+<p><em>Attributes</em></p>
+<!-- INCLUDING ATTRIBUTE modules/attributes/Common.mhtml -->
+<dl class='attrRef'><dt>The 
+    <a class="csref" href="mod-attribute-collections.html#col_Common">Common</a> collection</dt>
+<dd>A collection of other attribute collections, including:
+    <a class="csref" href="mod-bidi.html#col_Bi-directional">Bi-directional</a>, 
+    <a class="csref" href="mod-core.html#col_Core">Core</a>, 
+    <a class="csref" href="mod-edit.html#col_Edit">Edit</a>, 
+    <a class="csref" href="mod-embedding.html#col_Embedding">Embedding</a>, 
+    <a class="csref" href="mod-xml-events.html#col_Events">Events</a>, 
+    <a class="csref" href="mod-xforms.html#col_Forms">Forms</a>, 
+    <a class="csref" href="mod-hyperAttributes.html#col_Hypertext">Hypertext</a>,
+    <a class="csref" href="mod-i18n.html#col_I18N">I18N</a>, 
+    <a class="csref" href="mod-csImgMap.html#col_Map">Map</a>, 
+    <a class="csref" href="mod-metaAttributes.html#col_Metainformation">Metainformation</a>,
+and 
+    <a class="csref" href="mod-roleAttribute.html#col_Role">Role</a>
+</dd></dl>
+<!-- END OF ATTRIBUTE FILE modules/attributes/Common.mhtml -->
+</div>
+<p><em>By retaining structure in text that has to be broken over lines, you retain essential information about its makeup. This gives you greater freedom with styling the content. For instance, line numbers can be generated automatically from the style sheet if needed.
+</em>
+</p>
+<div class="example">
+    <p>Sample program listing</p>
+<pre>
+&lt;blockcode class="program"&gt;
+&lt;l&gt;program p(input, output);&lt;/l&gt;
+&lt;l&gt;begin&lt;/l&gt;
+&lt;l&gt;	writeln("Hello world");&lt;/l&gt;
+&lt;l&gt;end.&lt;/l&gt;
+&lt;/blockcode&gt;
+</pre>
+</div>
+<div class="example">
+    <p>CSS Style sheet to number each line</p>
+<pre>
+.program { counter-reset: linenumber }
+l:before {
+	position: relative;
+	left: -1em;
+	counter-increment: linenumber;
+	content: counter(linenumber);
+}
+</pre>
+</div>
+<!-- END OF ELEMENT FILE modules/text/l.mhtml -->
+<!-- INCLUDING ELEMENT modules/text/q.mhtml -->
+<h2 >
+<a id="sec_9.9." >9.9.</a> The <a class="edef" id="edef_text_q">q</a>
+ element
+</h2>
+<p>This element designates an inline text fragment of 
+<a class="xref"
+   id="s_textmodule_xref_0">quoted text.</a>
+</p>
+<div class="adef-list">
+<p><em>Attributes</em></p>
+<!-- INCLUDING ATTRIBUTE modules/attributes/Common.mhtml -->
+<dl class='attrRef'><dt>The 
+    <a class="csref" href="mod-attribute-collections.html#col_Common">Common</a> collection</dt>
+<dd>A collection of other attribute collections, including:
+    <a class="csref" href="mod-bidi.html#col_Bi-directional">Bi-directional</a>, 
+    <a class="csref" href="mod-core.html#col_Core">Core</a>, 
+    <a class="csref" href="mod-edit.html#col_Edit">Edit</a>, 
+    <a class="csref" href="mod-embedding.html#col_Embedding">Embedding</a>, 
+    <a class="csref" href="mod-xml-events.html#col_Events">Events</a>, 
+    <a class="csref" href="mod-xforms.html#col_Forms">Forms</a>, 
+    <a class="csref" href="mod-hyperAttributes.html#col_Hypertext">Hypertext</a>,
+    <a class="csref" href="mod-i18n.html#col_I18N">I18N</a>, 
+    <a class="csref" href="mod-csImgMap.html#col_Map">Map</a>, 
+    <a class="csref" href="mod-metaAttributes.html#col_Metainformation">Metainformation</a>,
+and 
+    <a class="csref" href="mod-roleAttribute.html#col_Role">Role</a>
+</dd></dl>
+<!-- END OF ATTRIBUTE FILE modules/attributes/Common.mhtml -->
+</div>
+<p><span class="mustnot"  >Visual user agents must not by default add delimiting
+quotation marks
+</span>
+(as was the case for the <code>q</code> element in earlier versions of
+XHTML and HTML). 
+It is the responsibility of the document author to add any required quotation marks, either directly in the text, or via a style sheet.</p>
+<div class="example">
+    <p>Nested quotations using q</p>
+<pre>
+&lt;p&gt;John said, &lt;q&gt;"I saw Lucy at lunch, she told me
+&lt;q&gt;'Mary wants you
+to get some ice cream on your way home.'&lt;/q&gt; I think I will get
+some at Jen and Berry's, on Gloucester Road."&lt;/q&gt;&lt;/p&gt;
+</pre>
+</div>
+<div class="example">
+    <p>q with a cite attribute</p>
+<pre>
+Steven replied:
+&lt;q cite="http://lists.example.org/2002/01.html"&gt;We quite agree&lt;/q&gt;
+</pre>
+</div>
+<!-- END OF ELEMENT FILE modules/text/q.mhtml -->
+<!-- INCLUDING ELEMENT modules/text/samp.mhtml -->
+<h2 >
+<a id="sec_9.10." >9.10.</a> The <a class="edef" id="edef_text_samp">samp</a>
+ element
+</h2>
+<p>The 
+<a class="eref" href="mod-text.html#edef_text_samp">samp</a> element designates sample output from programs,
+scripts, etc.</p>
+<div class="adef-list">
+<p><em>Attributes</em></p>
+<!-- INCLUDING ATTRIBUTE modules/attributes/Common.mhtml -->
+<dl class='attrRef'><dt>The 
+    <a class="csref" href="mod-attribute-collections.html#col_Common">Common</a> collection</dt>
+<dd>A collection of other attribute collections, including:
+    <a class="csref" href="mod-bidi.html#col_Bi-directional">Bi-directional</a>, 
+    <a class="csref" href="mod-core.html#col_Core">Core</a>, 
+    <a class="csref" href="mod-edit.html#col_Edit">Edit</a>, 
+    <a class="csref" href="mod-embedding.html#col_Embedding">Embedding</a>, 
+    <a class="csref" href="mod-xml-events.html#col_Events">Events</a>, 
+    <a class="csref" href="mod-xforms.html#col_Forms">Forms</a>, 
+    <a class="csref" href="mod-hyperAttributes.html#col_Hypertext">Hypertext</a>,
+    <a class="csref" href="mod-i18n.html#col_I18N">I18N</a>, 
+    <a class="csref" href="mod-csImgMap.html#col_Map">Map</a>, 
+    <a class="csref" href="mod-metaAttributes.html#col_Metainformation">Metainformation</a>,
+and 
+    <a class="csref" href="mod-roleAttribute.html#col_Role">Role</a>
+</dd></dl>
+<!-- END OF ATTRIBUTE FILE modules/attributes/Common.mhtml -->
+</div>
+<div class="example">
+    <p>Example</p>
+<pre>
+On starting, you will see the prompt &lt;samp&gt;&#36; &lt;/samp&gt;.
+</pre>
+</div>
+<!-- END OF ELEMENT FILE modules/text/samp.mhtml -->
+<!-- INCLUDING ELEMENT modules/text/span.mhtml -->
+<h2 >
+<a id="sec_9.11." >9.11.</a> The <a class="edef" id="edef_text_span">span</a>
+ element
+</h2>
+<p>The 
+<a class="eref" href="mod-text.html#edef_text_span">span</a> element, in conjunction with the 
+<a class="aref" href="mod-core.html#adef_core_id">@id</a>, 
+<a class="aref" href="mod-core.html#adef_core_class">@class</a> and 
+<a class="aref" href="mod-roleAttribute.html#adef_roleAttribute_role">@role</a> attributes, offers a generic mechanism for
+adding structure to documents. This element imposes no presentational
+idioms on the content. Thus, authors may use this element in conjunction
+with 
+<a class="eref" href="mod-styleSheet.html#edef_styleSheet_style">style sheets</a>, the
+<a class="aref" href="mod-i18n.html#adef_i18n_xml:lang">@xml:lang</a> attribute, the 
+<a class="aref" href="mod-bidi.html#adef_bidi_dir">@dir</a>
+attribute etc., to tailor XHTML to their own needs and tastes.</p>
+<div class="adef-list">
+<p><em>Attributes</em></p>
+<!-- INCLUDING ATTRIBUTE modules/attributes/Common.mhtml -->
+<dl class='attrRef'><dt>The 
+    <a class="csref" href="mod-attribute-collections.html#col_Common">Common</a> collection</dt>
+<dd>A collection of other attribute collections, including:
+    <a class="csref" href="mod-bidi.html#col_Bi-directional">Bi-directional</a>, 
+    <a class="csref" href="mod-core.html#col_Core">Core</a>, 
+    <a class="csref" href="mod-edit.html#col_Edit">Edit</a>, 
+    <a class="csref" href="mod-embedding.html#col_Embedding">Embedding</a>, 
+    <a class="csref" href="mod-xml-events.html#col_Events">Events</a>, 
+    <a class="csref" href="mod-xforms.html#col_Forms">Forms</a>, 
+    <a class="csref" href="mod-hyperAttributes.html#col_Hypertext">Hypertext</a>,
+    <a class="csref" href="mod-i18n.html#col_I18N">I18N</a>, 
+    <a class="csref" href="mod-csImgMap.html#col_Map">Map</a>, 
+    <a class="csref" href="mod-metaAttributes.html#col_Metainformation">Metainformation</a>,
+and 
+    <a class="csref" href="mod-roleAttribute.html#col_Role">Role</a>
+</dd></dl>
+<!-- END OF ATTRIBUTE FILE modules/attributes/Common.mhtml -->
+</div>
+<div class="example">
+    <p>Example of span for cross references</p>
+<pre>
+&lt;p&gt;This operation is called
+the &lt;span class="xref"&gt;transpose&lt;/span&gt;
+or &lt;span class="xref"&gt;inverse&lt;/span&gt;.&lt;/p&gt;
+</pre>
+</div>
+<!-- END OF ELEMENT FILE modules/text/span.mhtml -->
+<!-- INCLUDING ELEMENT modules/text/strong.mhtml -->
+<h2 >
+<a id="sec_9.12." >9.12.</a> The <a class="edef" id="edef_text_strong">strong</a>
+ element
+</h2>
+<p>The 
+<a class="eref" href="mod-text.html#edef_text_strong">strong</a> element indicates higher importance for its contents than that of the surrounding
+content.</p>
+<div class="adef-list">
+<p><em>Attributes</em></p>
+<!-- INCLUDING ATTRIBUTE modules/attributes/Common.mhtml -->
+<dl class='attrRef'><dt>The 
+    <a class="csref" href="mod-attribute-collections.html#col_Common">Common</a> collection</dt>
+<dd>A collection of other attribute collections, including:
+    <a class="csref" href="mod-bidi.html#col_Bi-directional">Bi-directional</a>, 
+    <a class="csref" href="mod-core.html#col_Core">Core</a>, 
+    <a class="csref" href="mod-edit.html#col_Edit">Edit</a>, 
+    <a class="csref" href="mod-embedding.html#col_Embedding">Embedding</a>, 
+    <a class="csref" href="mod-xml-events.html#col_Events">Events</a>, 
+    <a class="csref" href="mod-xforms.html#col_Forms">Forms</a>, 
+    <a class="csref" href="mod-hyperAttributes.html#col_Hypertext">Hypertext</a>,
+    <a class="csref" href="mod-i18n.html#col_I18N">I18N</a>, 
+    <a class="csref" href="mod-csImgMap.html#col_Map">Map</a>, 
+    <a class="csref" href="mod-metaAttributes.html#col_Metainformation">Metainformation</a>,
+and 
+    <a class="csref" href="mod-roleAttribute.html#col_Role">Role</a>
+</dd></dl>
+<!-- END OF ATTRIBUTE FILE modules/attributes/Common.mhtml -->
+</div>
+<div class="example">
+    <p>Example</p>
+<pre>
+On &lt;strong&gt;Monday&lt;/strong&gt; please put the rubbish out,
+but &lt;em&gt;not&lt;/em&gt; before nightfall!
+</pre>
+</div>
+<!-- END OF ELEMENT FILE modules/text/strong.mhtml -->
+<!-- INCLUDING ELEMENT modules/text/sub.mhtml -->
+<h2 >
+<a id="sec_9.13." >9.13.</a> The <a class="edef" id="edef_text_sub">sub</a>
+ element
+</h2>
+<p>The 
+<a class="eref" href="mod-text.html#edef_text_sub">sub</a> element indicates that its contents should regarded as a subscript.</p>
+<div class="adef-list">
+<p><em>Attributes</em></p>
+<!-- INCLUDING ATTRIBUTE modules/attributes/Common.mhtml -->
+<dl class='attrRef'><dt>The 
+    <a class="csref" href="mod-attribute-collections.html#col_Common">Common</a> collection</dt>
+<dd>A collection of other attribute collections, including:
+    <a class="csref" href="mod-bidi.html#col_Bi-directional">Bi-directional</a>, 
+    <a class="csref" href="mod-core.html#col_Core">Core</a>, 
+    <a class="csref" href="mod-edit.html#col_Edit">Edit</a>, 
+    <a class="csref" href="mod-embedding.html#col_Embedding">Embedding</a>, 
+    <a class="csref" href="mod-xml-events.html#col_Events">Events</a>, 
+    <a class="csref" href="mod-xforms.html#col_Forms">Forms</a>, 
+    <a class="csref" href="mod-hyperAttributes.html#col_Hypertext">Hypertext</a>,
+    <a class="csref" href="mod-i18n.html#col_I18N">I18N</a>, 
+    <a class="csref" href="mod-csImgMap.html#col_Map">Map</a>, 
+    <a class="csref" href="mod-metaAttributes.html#col_Metainformation">Metainformation</a>,
+and 
+    <a class="csref" href="mod-roleAttribute.html#col_Role">Role</a>
+</dd></dl>
+<!-- END OF ATTRIBUTE FILE modules/attributes/Common.mhtml -->
+</div>
+<div class="example">
+    <p>Example</p>
+<pre>
+      H&lt;sub&gt;2&lt;/sub&gt;O
+</pre>
+</div>
+<!-- END OF ELEMENT FILE modules/text/sub.mhtml -->
+<!-- INCLUDING ELEMENT modules/text/sup.mhtml -->
+<h2 >
+<a id="sec_9.14." >9.14.</a> The <a class="edef" id="edef_text_sup">sup</a>
+ element
+</h2>
+<p>The 
+<a class="eref" href="mod-text.html#edef_text_sup">sup</a> element indicates that its contents should be
+regarded as a super-script.</p>
+<div class="adef-list">
+<p><em>Attributes</em></p>
+<!-- INCLUDING ATTRIBUTE modules/attributes/Common.mhtml -->
+<dl class='attrRef'><dt>The 
+    <a class="csref" href="mod-attribute-collections.html#col_Common">Common</a> collection</dt>
+<dd>A collection of other attribute collections, including:
+    <a class="csref" href="mod-bidi.html#col_Bi-directional">Bi-directional</a>, 
+    <a class="csref" href="mod-core.html#col_Core">Core</a>, 
+    <a class="csref" href="mod-edit.html#col_Edit">Edit</a>, 
+    <a class="csref" href="mod-embedding.html#col_Embedding">Embedding</a>, 
+    <a class="csref" href="mod-xml-events.html#col_Events">Events</a>, 
+    <a class="csref" href="mod-xforms.html#col_Forms">Forms</a>, 
+    <a class="csref" href="mod-hyperAttributes.html#col_Hypertext">Hypertext</a>,
+    <a class="csref" href="mod-i18n.html#col_I18N">I18N</a>, 
+    <a class="csref" href="mod-csImgMap.html#col_Map">Map</a>, 
+    <a class="csref" href="mod-metaAttributes.html#col_Metainformation">Metainformation</a>,
+and 
+    <a class="csref" href="mod-roleAttribute.html#col_Role">Role</a>
+</dd></dl>
+<!-- END OF ATTRIBUTE FILE modules/attributes/Common.mhtml -->
+</div>
+<p>Many scripts (e.g., French) require superscripts or subscripts for proper rendering. The 
+<a class="eref" href="mod-text.html#edef_text_sub">sub</a> and 
+<a class="eref" href="mod-text.html#edef_text_sup">sup</a> elements should be used to markup text in these cases.</p>
+<div class="example">
+    <p>Example</p>
+<pre>
+      E = mc&lt;sup&gt;2&lt;/sup&gt;
+      &lt;span xml:lang="fr"&gt;M&lt;sup&gt;lle&lt;/sup&gt; Dupont&lt;/span&gt;
+</pre>
+</div>
+<!-- END OF ELEMENT FILE modules/text/sup.mhtml -->
+<!-- INCLUDING ELEMENT modules/text/var.mhtml -->
+<h2 >
+<a id="sec_9.15." >9.15.</a> The <a class="edef" id="edef_text_var">var</a>
+ element
+</h2>
+<p>The 
+<a class="eref" href="mod-text.html#edef_text_var">var</a> element indicates an instance of a variable or
+program argument.</p>
+<div class="adef-list">
+<p><em>Attributes</em></p>
+<!-- INCLUDING ATTRIBUTE modules/attributes/Common.mhtml -->
+<dl class='attrRef'><dt>The 
+    <a class="csref" href="mod-attribute-collections.html#col_Common">Common</a> collection</dt>
+<dd>A collection of other attribute collections, including:
+    <a class="csref" href="mod-bidi.html#col_Bi-directional">Bi-directional</a>, 
+    <a class="csref" href="mod-core.html#col_Core">Core</a>, 
+    <a class="csref" href="mod-edit.html#col_Edit">Edit</a>, 
+    <a class="csref" href="mod-embedding.html#col_Embedding">Embedding</a>, 
+    <a class="csref" href="mod-xml-events.html#col_Events">Events</a>, 
+    <a class="csref" href="mod-xforms.html#col_Forms">Forms</a>, 
+    <a class="csref" href="mod-hyperAttributes.html#col_Hypertext">Hypertext</a>,
+    <a class="csref" href="mod-i18n.html#col_I18N">I18N</a>, 
+    <a class="csref" href="mod-csImgMap.html#col_Map">Map</a>, 
+    <a class="csref" href="mod-metaAttributes.html#col_Metainformation">Metainformation</a>,
+and 
+    <a class="csref" href="mod-roleAttribute.html#col_Role">Role</a>
+</dd></dl>
+<!-- END OF ATTRIBUTE FILE modules/attributes/Common.mhtml -->
+</div>
+<div class="example">
+    <p>Example</p>
+<pre>
+The parameter &lt;var&gt;ncols&lt;/var&gt; represents
+the number of colors to use.
+</pre>
+</div>
+<!-- END OF ELEMENT FILE modules/text/var.mhtml -->
+<hr />
+<div class="navbar">
+[<a href="mod-structural.html">previous</a>]
+[<a href="mod-hypertext.html">next</a>]
+[<a href="Overview.html#toc">table of contents</a>]
+[<a href="elements.html">elements</a>]
+[<a href="attributes.html">attributes</a>]
+</div>
+</body>
+</html>

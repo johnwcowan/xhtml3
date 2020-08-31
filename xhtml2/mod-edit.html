@@ -1,0 +1,83 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN"
+	"http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html lang="en" xml:lang="en" xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<title>XHTML&#8482; 2.0 - XHTML Edit Attributes Module</title> 
+<link rel="start" type="text/html" href="Overview.html" />
+<link rel="contents" type="text/html" href="Overview.html#toc" />
+<link rel="prev" type="text/html" href="mod-caption.html" />
+<link rel="next" type="text/html" href="mod-embedding.html" />
+<link rel="stylesheet" type="text/css" href="xhtml.css" />
+<link rel="stylesheet" type="text/css" href="http://www.w3.org/StyleSheets/TR/W3C-ED.css" />
+</head>
+<body>
+<div class="navbar">
+[<a accesskey="P" href="mod-caption.html">previous</a>]
+[<a accesskey="N" href="mod-embedding.html">next</a>]
+[<a accesskey="T" href="Overview.html#toc">table of contents</a>]
+[<a accesskey="E" href="elements.html">elements</a>]
+[<a accesskey="A" href="attributes.html">attributes</a>]
+<hr />
+</div>
+<h1 >
+<a id="s_editmodule" >18.</a> XHTML Edit Attributes Module
+</h1>
+<div class='subtoc'><p><strong>Contents</strong></p><ul class='toc'><li class='tocline'>
+18.1.
+<a href="#col_Edit" class="tocxref">Edit Collection</a>
+</li></ul>
+</div>
+<p>This section is <em>normative</em>.</p>
+<p>This module defines the 
+    <a class="csref" href="mod-edit.html#col_Edit">Edit</a> attribute
+collection.</p>
+<h2 >
+<a id="col_Edit" >18.1.</a> Edit Collection
+</h2>
+<!-- INCLUDING ATTRIBUTE modules/attributes/editAttr.mhtml -->
+<dl class='attrDef'><dt><a class="adef" id="adef_edit_edit"><span class="adef">edit</span></a>
+ = <samp>"inserted|deleted|changed|moved"</samp> 
+</dt>
+<dd>This attribute allows elements to carry information indicating how content has changed. Possible values: 
+<ul>
+<li><samp>inserted</samp>: the content has been inserted</li>
+<li><samp>deleted</samp>: the content has been deleted</li>
+<li><samp>changed</samp>: the content has changed considerably, therefore making it not worth being marked up with values of <code>inserted</code> and <code>deleted</code></li>
+<li><samp>moved</samp>: the content has been moved from some other part of the document.</li>
+</ul>
+<div class="example">
+    <p>Example</p>
+<pre>
+&lt;p&gt;I will do it
+next &lt;span edit="deleted"&gt;week&lt;/span&gt;&lt;span edit="inserted"&gt;month&lt;/span&gt;.&lt;/p&gt;
+</pre>
+</div>
+</dd></dl>
+<!-- END OF ATTRIBUTE FILE modules/attributes/editAttr.mhtml -->
+<!-- INCLUDING ATTRIBUTE modules/attributes/datetime.mhtml -->
+<dl class='attrDef'><dt><a class="adef" id="adef_edit_datetime"><span class="adef">datetime</span></a>
+ = <span class="datatype"><a href="abstraction.html#dt_Datetime">Datetime</a></span>
+</dt>
+<dd>The value of this attribute specifies the date and time when a change was made.
+<div class="example">
+    <p>Example</p>
+<pre>
+datetime="2003-01-13T13:15:30Z"
+</pre>
+</div>
+</dd></dl>
+<!-- END OF ATTRIBUTE FILE modules/attributes/datetime.mhtml -->
+<p>Implementations: <a href="relax_module_defs.html#a_rmodule_Edit_Attributes">RELAX NG</a>,
+<a href="schema_module_defs.html#a_smodule_Edit_Attributes_Module">XML Schema</a>
+</p>
+<hr />
+<div class="navbar">
+[<a href="mod-caption.html">previous</a>]
+[<a href="mod-embedding.html">next</a>]
+[<a href="Overview.html#toc">table of contents</a>]
+[<a href="elements.html">elements</a>]
+[<a href="attributes.html">attributes</a>]
+</div>
+</body>
+</html>

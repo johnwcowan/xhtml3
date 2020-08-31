@@ -1,0 +1,4744 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN"
+	"http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html lang="en" xml:lang="en" xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<title>XHTML&#8482; 2.0 - XHTML RELAX NG Module Implementations</title> 
+<link rel="start" type="text/html" href="Overview.html" />
+<link rel="contents" type="text/html" href="Overview.html#toc" />
+<link rel="prev" type="text/html" href="xhtml20_relax.html" />
+<link rel="next" type="text/html" href="xhtml20_schema.html" />
+<link rel="stylesheet" type="text/css" href="xhtml.css" />
+<link rel="stylesheet" type="text/css" href="http://www.w3.org/StyleSheets/TR/W3C-ED.css" />
+</head>
+<body>
+<div class="navbar">
+[<a accesskey="P" href="xhtml20_relax.html">previous</a>]
+[<a accesskey="N" href="xhtml20_schema.html">next</a>]
+[<a accesskey="T" href="Overview.html#toc">table of contents</a>]
+[<a accesskey="E" href="elements.html">elements</a>]
+[<a accesskey="A" href="attributes.html">attributes</a>]
+<hr />
+</div>
+<h1 >
+<a id="a_relaxng_module_defs" >C.</a> XHTML RELAX NG Module Implementations
+</h1>
+<div class='subtoc'><p><strong>Contents</strong></p><ul class='toc'><li class='tocline'>
+C.1.
+<a href="#a_relaxng_special" class="tocxref">XHTML Module Implementations</a>
+<ul class="toc"><li class='tocline'>C.1.1.
+<a href="#a_rmodule_Attribute_Collections" class="tocxref">Attribute Collections</a>
+</li><li class='tocline'>C.1.2.
+<a href="#a_rmodule_Document" class="tocxref">Document</a>
+</li><li class='tocline'>C.1.3.
+<a href="#a_rmodule_Structural" class="tocxref">Structural</a>
+</li><li class='tocline'>C.1.4.
+<a href="#a_rmodule_Text" class="tocxref">Text</a>
+</li><li class='tocline'>C.1.5.
+<a href="#a_rmodule_Hypertext" class="tocxref">Hypertext</a>
+</li><li class='tocline'>C.1.6.
+<a href="#a_rmodule_List" class="tocxref">List</a>
+</li><li class='tocline'>C.1.7.
+<a href="#a_rmodule_Core_Attributes" class="tocxref">Core Attributes</a>
+</li><li class='tocline'>C.1.8.
+<a href="#a_rmodule_Hypertext_Attributes" class="tocxref">Hypertext Attributes</a>
+</li><li class='tocline'>C.1.9.
+<a href="#a_rmodule_I18N_Attributes" class="tocxref">I18N Attributes</a>
+</li><li class='tocline'>C.1.10.
+<a href="#a_rmodule_Access" class="tocxref">Access</a>
+</li><li class='tocline'>C.1.11.
+<a href="#a_rmodule_Bi-directional_Text_Attribute" class="tocxref">Bi-directional Text Attribute</a>
+</li><li class='tocline'>C.1.12.
+<a href="#a_rmodule_Edit_Attributes" class="tocxref">Edit Attributes</a>
+</li><li class='tocline'>C.1.13.
+<a href="#a_rmodule_Embedding_Attributes" class="tocxref">Embedding Attributes</a>
+</li><li class='tocline'>C.1.14.
+<a href="#a_rmodule_Image" class="tocxref">Image</a>
+</li><li class='tocline'>C.1.15.
+<a href="#a_rmodule_Image_Map_Attributes" class="tocxref">Image Map Attributes</a>
+</li><li class='tocline'>C.1.16.
+<a href="#a_rmodule_Media_Attribute" class="tocxref">Media Attribute</a>
+</li><li class='tocline'>C.1.17.
+<a href="#a_rmodule_Metainformation_Attributes" class="tocxref">Metainformation Attributes</a>
+</li><li class='tocline'>C.1.18.
+<a href="#a_rmodule_Metainformation" class="tocxref">Metainformation</a>
+</li><li class='tocline'>C.1.19.
+<a href="#a_rmodule_Object" class="tocxref">Object</a>
+</li><li class='tocline'>C.1.20.
+<a href="#a_rmodule_Style_Attribute" class="tocxref">Style Attribute</a>
+</li><li class='tocline'>C.1.21.
+<a href="#a_rmodule_Style_Sheet" class="tocxref">Style Sheet</a>
+</li><li class='tocline'>C.1.22.
+<a href="#a_rmodule_Tables" class="tocxref">Tables</a>
+</li></ul></li><li class='tocline'>C.2.
+<a href="#a_relaxngsupport" class="tocxref">XHTML RELAX NG Support Modules</a>
+<ul class="toc"><li class='tocline'>C.2.1.
+<a href="#a_rmodule_Datatypes" class="tocxref">Datatypes</a>
+</li><li class='tocline'>C.2.2.
+<a href="#a_rmodule_Events" class="tocxref">Events</a>
+</li><li class='tocline'>C.2.3.
+<a href="#a_rmodule_Param" class="tocxref">Param</a>
+</li><li class='tocline'>C.2.4.
+<a href="#a_rmodule_Caption" class="tocxref">Caption</a>
+</li><li class='tocline'>C.2.5.
+<a href="#a_rmodule_Role_Attribute" class="tocxref">Role Attribute</a>
+</li></ul></li><li class='tocline'>C.3.
+<a href="#a_relaxnglegacy" class="tocxref">XHTML RELAX NG Legacy Modules</a>
+<ul class="toc"><li class='tocline'>C.3.1.
+<a href="#a_rmodule_Legacy_Edit" class="tocxref">Legacy Edit</a>
+</li><li class='tocline'>C.3.2.
+<a href="#a_rmodule_Legacy_Headings" class="tocxref">Legacy Headings</a>
+</li><li class='tocline'>C.3.3.
+<a href="#a_rmodule_Legacy_Line_Break" class="tocxref">Legacy Line Break</a>
+</li></ul></li><li class='tocline'>C.4.
+<a href="#a_relaxng_external" class="tocxref">RELAX NG External Modules</a>
+<ul class="toc"><li class='tocline'>C.4.1.
+<a href="#a_rmodule_Ruby" class="tocxref">Ruby</a>
+</li><li class='tocline'>C.4.2.
+<a href="#a_rmodule_Ruby_Driver_for_Full_Ruby_Markup" class="tocxref">Ruby Driver for Full Ruby Markup</a>
+</li><li class='tocline'>C.4.3.
+<a href="#a_rmodule_XML_Events" class="tocxref">XML Events</a>
+</li><li class='tocline'>C.4.4.
+<a href="#a_rmodule_XML_Handlers" class="tocxref">XML Handlers</a>
+</li><li class='tocline'>C.4.5.
+<a href="#a_rmodule_XML_Script" class="tocxref">XML Script</a>
+</li><li class='tocline'>C.4.6.
+<a href="#a_rmodule_XML_Schema_instance" class="tocxref">XML Schema instance</a>
+</li><li class='tocline'>C.4.7.
+<a href="#a_rmodule_XForms_1.1" class="tocxref">XForms 1.1</a>
+</li><li class='tocline'>C.4.8.
+<a href="#a_rmodule_XForms_Repeat_Attribute_Collection" class="tocxref">XForms Repeat Attribute Collection</a>
+</li></ul>
+</li></ul>
+</div>
+<p>This appendix is <em>normative</em>.</p>
+<p>This appendix contains implementations of the modules defined in this
+specification. These module implementations can be used in other XHTML Family
+Document Types.</p>
+<h2 >
+<a id="a_relaxng_special" >C.1.</a> XHTML Module Implementations
+</h2>
+<p>This section contains the formal definition of each of the XHTML Abstract Modules as a RELAX NG module.</p>
+<h3 >
+<a id="a_rmodule_Attribute_Collections" >C.1.1.</a> Attribute Collections
+</h3>
+<!-- INCLUDING SCHEMA RELAXNG/xhtml-attribs-2.rng -->
+<pre class="dtd">
+&lt;?xml version="1.0" encoding="UTF-8"?&gt;
+&lt;grammar xmlns="http://relaxng.org/ns/structure/1.0"
+         xmlns:x="http://www.w3.org/1999/xhtml"&gt;
+  &lt;x:h1&gt;Attribute Collections Module&lt;/x:h1&gt;
+  &lt;div&gt;
+    &lt;x:h2&gt;Core Attributes Module&lt;/x:h2&gt;
+    &lt;include href="xhtml-core-attrib-2.rng"/&gt;
+  &lt;/div&gt;
+  &lt;div&gt;
+    &lt;x:h2&gt;Internationalization Attribute Module&lt;/x:h2&gt;
+    &lt;include href="xhtml-i18n-attrib-2.rng"/&gt;
+  &lt;/div&gt;
+  &lt;div&gt;
+    &lt;x:h2&gt;Bi-directional Text Collection&lt;/x:h2&gt;
+    &lt;include href="xhtml-bidi-attrib-2.rng"/&gt;
+  &lt;/div&gt;
+  &lt;div&gt;
+    &lt;x:h2&gt;Edit Attributes Module&lt;/x:h2&gt;
+    &lt;include href="xhtml-edit-attrib-2.rng"/&gt;
+  &lt;/div&gt;
+  &lt;div&gt;
+    &lt;x:h2&gt;Embedding Attributes Module&lt;/x:h2&gt;
+    &lt;include href="xhtml-embed-attrib-2.rng"/&gt;
+  &lt;/div&gt;
+  &lt;div&gt;
+    &lt;x:h2&gt;XForms Repeat Attribute Collection&lt;/x:h2&gt;
+    &lt;include href="xforms-repeat-attrib.rng"/&gt;
+    &lt;define name="xhtml.Common.attrib" combine="interleave"&gt;
+      &lt;ref name="xforms.Repeat.attrib"/&gt;
+    &lt;/define&gt;
+  &lt;/div&gt;
+  &lt;div&gt;
+    &lt;x:h2&gt;Hypertext Attributes Module&lt;/x:h2&gt;
+    &lt;include href="xhtml-hypertext-attrib-2.rng"/&gt;
+  &lt;/div&gt;
+  &lt;div&gt;
+    &lt;x:h2&gt;Image Map Attributes Module&lt;/x:h2&gt;
+    &lt;include href="xhtml-imagemap-attrib-2.rng"/&gt;
+  &lt;/div&gt;
+  &lt;div&gt;
+    &lt;x:h2&gt;Media Attribute Module&lt;/x:h2&gt;
+    &lt;include href="xhtml-media-attrib-2.rng"/&gt;
+  &lt;/div&gt;
+  &lt;div&gt;
+    &lt;x:h2&gt;Metainformation Attributes Module&lt;/x:h2&gt;
+    &lt;include href="xhtml-meta-attrib-2.rng"/&gt;
+  &lt;/div&gt;
+  &lt;div&gt;
+    &lt;x:h2&gt;Role Attribute Module&lt;/x:h2&gt;
+    &lt;include href="xhtml-role-attrib-2.rng"/&gt;
+  &lt;/div&gt;
+  &lt;div&gt;
+    &lt;x:h2&gt;Style Attribute Module&lt;/x:h2&gt;
+    &lt;include href="xhtml-inlstyle-2.rng"/&gt;
+  &lt;/div&gt;
+  &lt;define name="xhtml.Common.extra.attrib"&gt;
+    &lt;empty/&gt;
+  &lt;/define&gt;
+  &lt;define name="xhtml.Common.attrib"&gt;
+    &lt;ref name="xhtml.Common.extra.attrib"/&gt;
+  &lt;/define&gt;
+&lt;/grammar&gt;
+</pre>
+<!-- END OF FILE RELAXNG/xhtml-attribs-2.rng.mhtml -->
+<h3 >
+<a id="a_rmodule_Document" >C.1.2.</a> Document
+</h3>
+<!-- INCLUDING SCHEMA RELAXNG/xhtml-document-2.rng -->
+<pre class="dtd">
+&lt;?xml version="1.0" encoding="UTF-8"?&gt;
+&lt;grammar xmlns="http://relaxng.org/ns/structure/1.0"
+         xmlns:x="http://www.w3.org/1999/xhtml"&gt;
+  &lt;x:h1&gt;Document Module&lt;/x:h1&gt;
+  &lt;start&gt;
+    &lt;ref name="xhtml.html"/&gt;
+  &lt;/start&gt;
+  &lt;div&gt;
+    &lt;x:h2&gt;The html element&lt;/x:h2&gt;
+    &lt;define name="xhtml.html"&gt;
+      &lt;element name="html"&gt;
+        &lt;ref name="xhtml.html.attlist"/&gt;
+        &lt;ref name="xhtml.head"/&gt;
+        &lt;ref name="xhtml.body"/&gt;
+      &lt;/element&gt;
+    &lt;/define&gt;
+    &lt;define name="xhtml.html.attlist"&gt;
+      &lt;ref name="xhtml.Common.attrib"/&gt;
+      &lt;optional&gt;
+        &lt;ref name="xhtml.version.attrib"/&gt;
+      &lt;/optional&gt;
+    &lt;/define&gt;
+    &lt;define name="xhtml.version.attrib"&gt;      
+        &lt;attribute name="version"&gt;
+          &lt;ref name="CDATA.datatype"/&gt;
+        &lt;/attribute&gt;     
+    &lt;/define&gt;
+  &lt;/div&gt;
+  &lt;div&gt;
+    &lt;x:h2&gt;The head element&lt;/x:h2&gt;
+    &lt;define name="xhtml.head"&gt;
+      &lt;element name="head"&gt;
+        &lt;ref name="xhtml.head.attlist"/&gt;
+        &lt;ref name="xhtml.head.content"/&gt;
+      &lt;/element&gt;
+    &lt;/define&gt;
+    &lt;define name="xhtml.head.attlist"&gt;
+      &lt;ref name="xhtml.Common.attrib"/&gt;
+    &lt;/define&gt;
+    &lt;define name="xhtml.head.content"&gt;
+      &lt;ref name="xhtml.title"/&gt;
+      &lt;zeroOrMore&gt;
+        &lt;choice&gt;
+          &lt;ref name="xhtml.head.misc"/&gt;
+        &lt;/choice&gt;
+      &lt;/zeroOrMore&gt;
+    &lt;/define&gt;
+    &lt;define name="xhtml.head.misc"&gt;
+      &lt;notAllowed/&gt;
+    &lt;/define&gt;
+  &lt;/div&gt;
+  &lt;div&gt;
+    &lt;x:h2&gt;The title element&lt;/x:h2&gt;
+    &lt;define name="xhtml.title"&gt;
+      &lt;element name="title"&gt;
+        &lt;ref name="xhtml.title.attlist"/&gt;
+        &lt;ref name="xhtml.title.content"/&gt;        
+      &lt;/element&gt;
+    &lt;/define&gt;
+    &lt;define name="xhtml.title.attlist"&gt;
+      &lt;ref name="xhtml.Common.attrib"/&gt;
+    &lt;/define&gt;
+    &lt;define name="xhtml.title.content"&gt;    
+      &lt;ref name="xhtml.Text.model"/&gt;
+    &lt;/define&gt; 
+    &lt;define name="xhtml.Text.class" combine="choice"&gt;
+      &lt;ref name="xhtml.title"/&gt;
+    &lt;/define&gt;
+  &lt;/div&gt;
+  &lt;div&gt;
+    &lt;x:h2&gt;The body element&lt;/x:h2&gt;
+    &lt;define name="xhtml.body"&gt;
+      &lt;element name="body"&gt;
+        &lt;ref name="xhtml.body.attlist"/&gt;
+        &lt;ref name="xhtml.body.content"/&gt;        
+      &lt;/element&gt;
+    &lt;/define&gt;
+    &lt;define name="xhtml.body.attlist"&gt;
+      &lt;ref name="xhtml.Common.attrib"/&gt;
+    &lt;/define&gt;
+    &lt;define name="xhtml.body.content"&gt;    
+      &lt;ref name="xhtml.Structural.model"/&gt;
+    &lt;/define&gt;
+  &lt;/div&gt;
+&lt;/grammar&gt;
+</pre>
+<!-- END OF FILE RELAXNG/xhtml-document-2.rng.mhtml -->
+<h3 >
+<a id="a_rmodule_Structural" >C.1.3.</a> Structural
+</h3>
+<!-- INCLUDING SCHEMA RELAXNG/xhtml-structural-2.rng -->
+<pre class="dtd">
+&lt;?xml version="1.0" encoding="UTF-8"?&gt;
+&lt;grammar xmlns="http://relaxng.org/ns/structure/1.0"
+         xmlns:x="http://www.w3.org/1999/xhtml"&gt;
+  &lt;x:h1&gt;Structural Module&lt;/x:h1&gt;
+  &lt;div&gt;
+    &lt;x:h2&gt;The address element&lt;/x:h2&gt;
+    &lt;define name="xhtml.address"&gt;
+      &lt;element name="address"&gt;
+        &lt;ref name="xhtml.address.attlist"/&gt;
+        &lt;ref name="xhtml.address.content"/&gt;
+      &lt;/element&gt;
+    &lt;/define&gt;
+    &lt;define name="xhtml.address.attlist"&gt;
+      &lt;ref name="xhtml.Structural.attrib"/&gt;
+    &lt;/define&gt;
+    &lt;define name="xhtml.address.content"&gt;
+      &lt;ref name="xhtml.Text.model"/&gt;
+    &lt;/define&gt;      
+  &lt;/div&gt;
+  &lt;div&gt;
+    &lt;x:h2&gt;The blockcode element&lt;/x:h2&gt;
+    &lt;define name="xhtml.blockcode"&gt;
+      &lt;element name="blockcode"&gt;
+        &lt;ref name="xhtml.blockcode.attlist"/&gt;
+        &lt;ref name="xhtml.blockcode.content"/&gt;
+      &lt;/element&gt;
+    &lt;/define&gt;
+    &lt;define name="xhtml.blockcode.attlist"&gt;
+      &lt;ref name="xhtml.Structural.attrib"/&gt;
+    &lt;/define&gt;
+    &lt;define name="xhtml.blockcode.content"&gt;
+      &lt;zeroOrMore&gt;
+        &lt;choice&gt;
+          &lt;text/&gt;
+          &lt;ref name="xhtml.Text.class"/&gt;
+          &lt;ref name="xhtml.Heading.class"/&gt;
+          &lt;ref name="xhtml.Structural.class"/&gt;
+          &lt;ref name="xhtml.List.class"/&gt;
+          &lt;ref name="xhtml.Misc.class"/&gt;
+        &lt;/choice&gt;
+      &lt;/zeroOrMore&gt;
+    &lt;/define&gt;
+  &lt;/div&gt;
+  &lt;div&gt;
+    &lt;x:h2&gt;The blockquote element&lt;/x:h2&gt;
+    &lt;define name="xhtml.blockquote"&gt;
+      &lt;element name="blockquote"&gt;
+        &lt;ref name="xhtml.blockquote.attlist"/&gt;
+        &lt;ref name="xhtml.blockquote.content"/&gt;
+      &lt;/element&gt;
+    &lt;/define&gt;
+    &lt;define name="xhtml.blockquote.attlist"&gt;
+      &lt;ref name="xhtml.Structural.attrib"/&gt;
+    &lt;/define&gt;
+    &lt;define name="xhtml.blockquote.content"&gt;
+      &lt;zeroOrMore&gt;
+        &lt;choice&gt;
+          &lt;text/&gt;
+          &lt;ref name="xhtml.Text.class"/&gt;
+          &lt;ref name="xhtml.Heading.class"/&gt;
+          &lt;ref name="xhtml.Structural.class"/&gt;
+          &lt;ref name="xhtml.List.class"/&gt;
+          &lt;ref name="xhtml.Misc.class"/&gt;
+        &lt;/choice&gt;
+      &lt;/zeroOrMore&gt;
+    &lt;/define&gt;
+  &lt;/div&gt;
+  &lt;div&gt;
+    &lt;x:h2&gt;The div element&lt;/x:h2&gt;
+    &lt;define name="xhtml.div"&gt;
+      &lt;element name="div"&gt;
+        &lt;ref name="xhtml.div.attlist"/&gt;
+        &lt;ref name="xhtml.div.content"/&gt;
+      &lt;/element&gt;
+    &lt;/define&gt;
+    &lt;define name="xhtml.div.attlist"&gt;
+      &lt;ref name="xhtml.Structural.attrib"/&gt;
+    &lt;/define&gt;
+    &lt;define name="xhtml.div.content"&gt;
+      &lt;ref name="xhtml.Flow.model"/&gt;
+    &lt;/define&gt;  
+  &lt;/div&gt;
+  &lt;div&gt;
+    &lt;x:h2&gt;The heading element&lt;/x:h2&gt;
+    &lt;define name="xhtml.h"&gt;
+      &lt;element name="h"&gt;
+        &lt;ref name="xhtml.h.attlist"/&gt;
+        &lt;ref name="xhtml.h.content"/&gt;
+      &lt;/element&gt;
+    &lt;/define&gt;
+    &lt;define name="xhtml.h.attlist"&gt;
+      &lt;ref name="xhtml.Structural.attrib"/&gt;
+    &lt;/define&gt;
+    &lt;define name="xhtml.h.content"&gt;
+      &lt;ref name="xhtml.Text.model"/&gt;
+    &lt;/define&gt;
+  &lt;/div&gt;
+  &lt;div&gt;
+    &lt;x:h2&gt;The p element&lt;/x:h2&gt;
+    &lt;define name="xhtml.p"&gt;
+      &lt;element name="p"&gt;
+        &lt;ref name="xhtml.p.attlist"/&gt;
+        &lt;ref name="xhtml.p.content"/&gt;
+      &lt;/element&gt;
+    &lt;/define&gt;
+    &lt;define name="xhtml.p.attlist"&gt;
+      &lt;ref name="xhtml.Structural.attrib"/&gt;
+    &lt;/define&gt;
+    &lt;define name="xhtml.p.content"&gt;
+      &lt;zeroOrMore&gt;
+        &lt;choice&gt;
+          &lt;text/&gt;
+          &lt;ref name="xhtml.Text.class"/&gt;
+          &lt;ref name="xhtml.List.class"/&gt;
+          &lt;ref name="xhtml.blockcode"/&gt;
+          &lt;ref name="xhtml.blockquote"/&gt;
+          &lt;ref name="xhtml.pre"/&gt;
+          &lt;ref name="xhtml.table"/&gt;
+          &lt;ref name="xhtml.Misc.class"/&gt;
+        &lt;/choice&gt;
+      &lt;/zeroOrMore&gt;
+    &lt;/define&gt;
+  &lt;/div&gt;
+  &lt;div&gt;
+    &lt;x:h2&gt;The pre element&lt;/x:h2&gt;
+    &lt;define name="xhtml.pre"&gt;
+      &lt;element name="pre"&gt;
+        &lt;ref name="xhtml.pre.attlist"/&gt;
+        &lt;ref name="xhtml.pre.content"/&gt;
+      &lt;/element&gt;
+    &lt;/define&gt;
+    &lt;define name="xhtml.pre.attlist"&gt;
+      &lt;ref name="xhtml.Structural.attrib"/&gt;
+    &lt;/define&gt;
+    &lt;define name="xhtml.pre.content"&gt;    
+      &lt;ref name="xhtml.Text.model"/&gt;
+    &lt;/define&gt;  
+  &lt;/div&gt;
+  &lt;div&gt;
+    &lt;x:h2&gt;The section element&lt;/x:h2&gt;
+    &lt;define name="xhtml.section"&gt;
+      &lt;element name="section"&gt;
+        &lt;ref name="xhtml.section.attlist"/&gt;
+        &lt;ref name="xhtml.section.content"/&gt;
+      &lt;/element&gt;
+    &lt;/define&gt;
+    &lt;define name="xhtml.section.attlist"&gt;
+      &lt;ref name="xhtml.Structural.attrib"/&gt;
+    &lt;/define&gt;
+    &lt;define name="xhtml.section.content"&gt;
+      &lt;ref name="xhtml.Flow.model"/&gt;
+    &lt;/define&gt;    
+    &lt;!-- This pattern is not referenced by the default
+      XHTML2 content model, but provided for the convenience 
+      of language designers --&gt;      
+    &lt;define name="xhtml.section.strict.model"&gt;  	
+      &lt;zeroOrMore&gt;
+        &lt;choice&gt;
+          &lt;ref name="xhtml.section.strict.prehead.extra"/&gt;
+        &lt;/choice&gt;
+      &lt;/zeroOrMore&gt;	    
+      &lt;ref name="xhtml.Heading.class" /&gt;
+	  &lt;zeroOrMore&gt;
+        &lt;choice&gt;
+          &lt;ref name="xhtml.Structural.class"/&gt;
+        &lt;/choice&gt;	
+      &lt;/zeroOrMore&gt;
+    &lt;/define&gt;
+    &lt;define name="xhtml.section.strict.prehead.extra"&gt;
+      &lt;empty/&gt;
+    &lt;/define&gt;
+  &lt;/div&gt;
+  &lt;div&gt;
+    &lt;x:h2&gt;The separator element&lt;/x:h2&gt;
+    &lt;define name="xhtml.separator"&gt;
+      &lt;element name="separator"&gt;
+        &lt;ref name="xhtml.separator.attlist"/&gt;
+        &lt;empty/&gt;        
+      &lt;/element&gt;
+    &lt;/define&gt;
+    &lt;define name="xhtml.separator.attlist"&gt;
+      &lt;ref name="xhtml.Structural.attrib"/&gt;
+    &lt;/define&gt;
+  &lt;/div&gt;
+  &lt;div&gt;
+    &lt;x:h2&gt;Content Model&lt;/x:h2&gt;
+    &lt;define name="xhtml.Heading.class"&gt;
+      &lt;choice&gt;
+        &lt;ref name="xhtml.h"/&gt;
+      &lt;/choice&gt;
+    &lt;/define&gt;
+    &lt;define name="xhtml.Structural.nosection.class"&gt;
+      &lt;choice&gt;
+        &lt;ref name="xhtml.address"/&gt;
+        &lt;ref name="xhtml.blockcode"/&gt;
+        &lt;ref name="xhtml.blockquote"/&gt;
+        &lt;ref name="xhtml.div"/&gt;
+        &lt;ref name="xhtml.p"/&gt;
+        &lt;ref name="xhtml.pre"/&gt;
+        &lt;ref name="xhtml.separator"/&gt;
+      &lt;/choice&gt;
+    &lt;/define&gt;
+    &lt;define name="xhtml.Structural.class"&gt;
+      &lt;choice&gt;
+    	&lt;ref name="xhtml.Structural.nosection.class" /&gt;
+        &lt;ref name="xhtml.section"/&gt;        
+      &lt;/choice&gt;
+    &lt;/define&gt;
+    &lt;define name="xhtml.Structural.mix"&gt;
+      &lt;zeroOrMore&gt;
+        &lt;choice&gt;
+          &lt;ref name="xhtml.Heading.class"/&gt;
+          &lt;ref name="xhtml.Structural.class"/&gt;
+          &lt;ref name="xhtml.List.class"/&gt;
+          &lt;ref name="xhtml.Misc.class"/&gt;
+        &lt;/choice&gt;
+      &lt;/zeroOrMore&gt;
+    &lt;/define&gt;
+    &lt;define name="xhtml.Structural.model"&gt;
+      &lt;oneOrMore&gt;
+        &lt;ref name="xhtml.Structural.mix"/&gt;
+      &lt;/oneOrMore&gt;
+    &lt;/define&gt;
+    &lt;define name="xhtml.Flow.model"&gt;
+      &lt;zeroOrMore&gt;
+        &lt;choice&gt;
+          &lt;text/&gt;
+          &lt;ref name="xhtml.Heading.class"/&gt;
+          &lt;ref name="xhtml.Structural.class"/&gt;
+          &lt;ref name="xhtml.List.class"/&gt;
+          &lt;ref name="xhtml.Text.class"/&gt;
+          &lt;ref name="xhtml.Misc.class"/&gt;
+        &lt;/choice&gt;
+      &lt;/zeroOrMore&gt;
+    &lt;/define&gt;
+    &lt;define name="xhtml.Structural.attrib" combine="interleave"&gt;
+      &lt;ref name="xhtml.Common.attrib" /&gt;
+    &lt;/define&gt;
+  &lt;/div&gt;
+&lt;/grammar&gt;
+</pre>
+<!-- END OF FILE RELAXNG/xhtml-structural-2.rng.mhtml -->
+<h3 >
+<a id="a_rmodule_Text" >C.1.4.</a> Text
+</h3>
+<!-- INCLUDING SCHEMA RELAXNG/xhtml-text-2.rng -->
+<pre class="dtd">
+&lt;?xml version="1.0" encoding="UTF-8"?&gt;
+&lt;grammar xmlns="http://relaxng.org/ns/structure/1.0"
+         xmlns:x="http://www.w3.org/1999/xhtml"&gt;
+  &lt;x:h1&gt;Text Module&lt;/x:h1&gt;
+  &lt;div&gt;
+    &lt;x:h2&gt;The abbr element&lt;/x:h2&gt;
+    &lt;define name="xhtml.abbr"&gt;
+      &lt;element name="abbr"&gt;
+        &lt;ref name="xhtml.abbr.attlist"/&gt;
+        &lt;ref name="xhtml.abbr.content"/&gt;
+      &lt;/element&gt;
+    &lt;/define&gt;
+    &lt;define name="xhtml.abbr.attlist"&gt;
+      &lt;ref name="xhtml.Text.attrib"/&gt;
+      &lt;optional&gt;
+        &lt;attribute name="full"&gt;
+          &lt;ref name="URI.datatype"/&gt;
+        &lt;/attribute&gt;
+      &lt;/optional&gt;
+    &lt;/define&gt;
+    &lt;define name="xhtml.abbr.content"&gt;    
+      &lt;ref name="xhtml.Text.model"/&gt;
+    &lt;/define&gt;  
+  &lt;/div&gt;
+  &lt;div&gt;
+    &lt;x:h2&gt;The cite element&lt;/x:h2&gt;
+    &lt;define name="xhtml.cite"&gt;
+      &lt;element name="cite"&gt;
+        &lt;ref name="xhtml.cite.attlist"/&gt;
+        &lt;ref name="xhtml.cite.content"/&gt;
+      &lt;/element&gt;
+    &lt;/define&gt;
+    &lt;define name="xhtml.cite.attlist"&gt;
+      &lt;ref name="xhtml.Text.attrib"/&gt;
+    &lt;/define&gt;
+    &lt;define name="xhtml.cite.content"&gt;
+        &lt;ref name="xhtml.Text.model"/&gt;    
+    &lt;/define&gt;
+  &lt;/div&gt;
+  &lt;div&gt;
+    &lt;x:h2&gt;The code element&lt;/x:h2&gt;
+    &lt;define name="xhtml.code"&gt;
+      &lt;element name="code"&gt;
+        &lt;ref name="xhtml.code.attlist"/&gt;
+        &lt;ref name="xhtml.code.content"/&gt;        
+      &lt;/element&gt;
+    &lt;/define&gt;
+    &lt;define name="xhtml.code.attlist"&gt;
+      &lt;ref name="xhtml.Text.attrib"/&gt;
+    &lt;/define&gt;
+    &lt;define name="xhtml.code.content"&gt;
+        &lt;ref name="xhtml.Text.model"/&gt;    
+    &lt;/define&gt;
+  &lt;/div&gt;
+  &lt;div&gt;
+    &lt;x:h2&gt;The dfn element&lt;/x:h2&gt;
+    &lt;define name="xhtml.dfn"&gt;
+      &lt;element name="dfn"&gt;
+        &lt;ref name="xhtml.dfn.attlist"/&gt;
+        &lt;ref name="xhtml.dfn.content"/&gt;        
+      &lt;/element&gt;
+    &lt;/define&gt;
+    &lt;define name="xhtml.dfn.attlist"&gt;
+      &lt;ref name="xhtml.Text.attrib"/&gt;
+    &lt;/define&gt;
+    &lt;define name="xhtml.dfn.content"&gt;    
+      &lt;ref name="xhtml.Text.model"/&gt;
+    &lt;/define&gt;  
+  &lt;/div&gt;
+  &lt;div&gt;
+    &lt;x:h2&gt;The em element&lt;/x:h2&gt;
+    &lt;define name="xhtml.em"&gt;
+      &lt;element name="em"&gt;
+        &lt;ref name="xhtml.em.attlist"/&gt;
+        &lt;ref name="xhtml.em.content"/&gt;        
+      &lt;/element&gt;
+    &lt;/define&gt;
+    &lt;define name="xhtml.em.attlist"&gt;
+      &lt;ref name="xhtml.Text.attrib"/&gt;
+    &lt;/define&gt;
+    &lt;define name="xhtml.em.content"&gt;
+      &lt;ref name="xhtml.Text.model"/&gt;    
+    &lt;/define&gt;
+  &lt;/div&gt;
+  &lt;div&gt;
+    &lt;x:h2&gt;The kbd element&lt;/x:h2&gt;
+    &lt;define name="xhtml.kbd"&gt;
+      &lt;element name="kbd"&gt;
+        &lt;ref name="xhtml.kbd.attlist"/&gt;
+        &lt;ref name="xhtml.kbd.content"/&gt;        
+      &lt;/element&gt;
+    &lt;/define&gt;
+    &lt;define name="xhtml.kbd.attlist"&gt;
+      &lt;ref name="xhtml.Text.attrib"/&gt;
+    &lt;/define&gt;
+    &lt;define name="xhtml.kbd.content"&gt;
+      &lt;ref name="xhtml.Text.model"/&gt;
+    &lt;/define&gt;
+  &lt;/div&gt;
+  &lt;div&gt;
+    &lt;x:h2&gt;The l element&lt;/x:h2&gt;
+    &lt;define name="xhtml.l"&gt;
+      &lt;element name="l"&gt;
+        &lt;ref name="xhtml.l.attlist"/&gt;
+        &lt;ref name="xhtml.l.content"/&gt;        
+      &lt;/element&gt;
+    &lt;/define&gt;
+    &lt;define name="xhtml.l.attlist"&gt;
+      &lt;ref name="xhtml.Text.attrib"/&gt;
+    &lt;/define&gt;
+    &lt;define name="xhtml.l.content"&gt;
+      &lt;ref name="xhtml.Text.model"/&gt;
+    &lt;/define&gt;
+  &lt;/div&gt;
+  &lt;div&gt;
+    &lt;x:h2&gt;The quote element&lt;/x:h2&gt;
+    &lt;define name="xhtml.quote"&gt;
+      &lt;element name="q"&gt;
+        &lt;ref name="xhtml.quote.attlist"/&gt;
+        &lt;ref name="xhtml.quote.content"/&gt;        
+      &lt;/element&gt;
+    &lt;/define&gt;
+    &lt;define name="xhtml.quote.attlist"&gt;
+      &lt;ref name="xhtml.Text.attrib"/&gt;
+    &lt;/define&gt;
+    &lt;define name="xhtml.quote.content"&gt;    
+      &lt;ref name="xhtml.Text.model"/&gt;
+    &lt;/define&gt;  
+  &lt;/div&gt;
+  &lt;div&gt;
+    &lt;x:h2&gt;The samp element&lt;/x:h2&gt;
+    &lt;define name="xhtml.samp"&gt;
+      &lt;element name="samp"&gt;
+        &lt;ref name="xhtml.samp.attlist"/&gt;
+        &lt;ref name="xhtml.samp.content"/&gt;        
+      &lt;/element&gt;
+    &lt;/define&gt;
+    &lt;define name="xhtml.samp.attlist"&gt;
+      &lt;ref name="xhtml.Text.attrib"/&gt;
+    &lt;/define&gt;
+    &lt;define name="xhtml.samp.content"&gt;    
+      &lt;ref name="xhtml.Text.model"/&gt;
+    &lt;/define&gt;  
+  &lt;/div&gt;
+  &lt;div&gt;
+    &lt;x:h2&gt;The span element&lt;/x:h2&gt;
+    &lt;define name="xhtml.span"&gt;
+      &lt;element name="span"&gt;
+        &lt;ref name="xhtml.span.attlist"/&gt;
+        &lt;ref name="xhtml.span.content"/&gt;        
+      &lt;/element&gt;
+    &lt;/define&gt;
+    &lt;define name="xhtml.span.attlist"&gt;
+      &lt;ref name="xhtml.Text.attrib"/&gt;
+    &lt;/define&gt;
+    &lt;define name="xhtml.span.content"&gt;    
+      &lt;ref name="xhtml.Text.model"/&gt;
+    &lt;/define&gt;  
+  &lt;/div&gt;
+  &lt;div&gt;
+    &lt;x:h2&gt;The strong element&lt;/x:h2&gt;
+    &lt;define name="xhtml.strong"&gt;
+      &lt;element name="strong"&gt;
+        &lt;ref name="xhtml.strong.attlist"/&gt;
+        &lt;ref name="xhtml.strong.content"/&gt;        
+      &lt;/element&gt;
+    &lt;/define&gt;
+    &lt;define name="xhtml.strong.attlist"&gt;
+      &lt;ref name="xhtml.Text.attrib"/&gt;
+    &lt;/define&gt;
+    &lt;define name="xhtml.strong.content"&gt;    
+      &lt;ref name="xhtml.Text.model"/&gt;
+    &lt;/define&gt;  
+  &lt;/div&gt;
+  &lt;div&gt;
+    &lt;x:h2&gt;The sub element&lt;/x:h2&gt;
+    &lt;define name="xhtml.sub"&gt;
+      &lt;element name="sub"&gt;
+        &lt;ref name="xhtml.sub.attlist"/&gt;
+        &lt;ref name="xhtml.sub.content"/&gt;
+      &lt;/element&gt;
+    &lt;/define&gt;
+    &lt;define name="xhtml.sub.attlist"&gt;
+      &lt;ref name="xhtml.Text.attrib"/&gt;
+    &lt;/define&gt;
+    &lt;define name="xhtml.sub.content"&gt;
+      &lt;ref name="xhtml.Text.model"/&gt;
+    &lt;/define&gt;  
+  &lt;/div&gt;
+  &lt;div&gt;
+    &lt;x:h2&gt;The sup element&lt;/x:h2&gt;
+    &lt;define name="xhtml.sup"&gt;
+      &lt;element name="sup"&gt;
+        &lt;ref name="xhtml.sup.attlist"/&gt;
+        &lt;ref name="xhtml.sup.content"/&gt;        
+      &lt;/element&gt;
+    &lt;/define&gt;
+    &lt;define name="xhtml.sup.attlist"&gt;
+      &lt;ref name="xhtml.Text.attrib"/&gt;
+    &lt;/define&gt;
+    &lt;define name="xhtml.sup.content"&gt;
+      &lt;ref name="xhtml.Text.model"/&gt;
+    &lt;/define&gt;  
+  &lt;/div&gt;
+  &lt;div&gt;
+    &lt;x:h2&gt;The var element&lt;/x:h2&gt;
+    &lt;define name="xhtml.var"&gt;
+      &lt;element name="var"&gt;
+        &lt;ref name="xhtml.var.attlist"/&gt;
+        &lt;ref name="xhtml.var.content"/&gt;        
+      &lt;/element&gt;
+    &lt;/define&gt;
+    &lt;define name="xhtml.var.attlist"&gt;
+      &lt;ref name="xhtml.Text.attrib"/&gt;
+    &lt;/define&gt;
+    &lt;define name="xhtml.var.content"&gt;
+      &lt;ref name="xhtml.Text.model"/&gt;
+    &lt;/define&gt;  
+  &lt;/div&gt;
+  &lt;div&gt;
+    &lt;x:p&gt;these can occur at Structural or Text level&lt;/x:p&gt;
+    &lt;define name="xhtml.Misc.class"&gt;
+      &lt;empty/&gt;
+    &lt;/define&gt;
+  &lt;/div&gt;
+  &lt;div&gt;
+    &lt;x:h2&gt;Content Model&lt;/x:h2&gt;
+    &lt;define name="xhtml.Text.class"&gt;
+      &lt;choice&gt;
+        &lt;ref name="xhtml.abbr"/&gt;
+        &lt;ref name="xhtml.cite"/&gt;
+        &lt;ref name="xhtml.code"/&gt;
+        &lt;ref name="xhtml.dfn"/&gt;
+        &lt;ref name="xhtml.em"/&gt;
+        &lt;ref name="xhtml.kbd"/&gt;
+        &lt;ref name="xhtml.l"/&gt;
+        &lt;ref name="xhtml.quote"/&gt;
+        &lt;ref name="xhtml.samp"/&gt;
+        &lt;ref name="xhtml.span"/&gt;
+        &lt;ref name="xhtml.strong"/&gt;
+        &lt;ref name="xhtml.sub"/&gt;
+        &lt;ref name="xhtml.sup"/&gt;
+        &lt;ref name="xhtml.var"/&gt;
+      &lt;/choice&gt;
+    &lt;/define&gt;
+    &lt;define name="xhtml.Text.model"&gt;
+      &lt;zeroOrMore&gt;
+        &lt;choice&gt;
+          &lt;text/&gt;
+          &lt;ref name="xhtml.Text.class"/&gt;
+          &lt;ref name="xhtml.Misc.class"/&gt;
+        &lt;/choice&gt;
+      &lt;/zeroOrMore&gt;
+    &lt;/define&gt;
+    &lt;define name="xhtml.Text.attrib" combine="interleave"&gt;
+      &lt;ref name="xhtml.Common.attrib"/&gt;
+    &lt;/define&gt;
+  &lt;/div&gt;
+&lt;/grammar&gt;
+</pre>
+<!-- END OF FILE RELAXNG/xhtml-text-2.rng.mhtml -->
+<h3 >
+<a id="a_rmodule_Hypertext" >C.1.5.</a> Hypertext
+</h3>
+<!-- INCLUDING SCHEMA RELAXNG/xhtml-hypertext-2.rng -->
+<pre class="dtd">
+&lt;?xml version="1.0" encoding="UTF-8"?&gt;
+&lt;grammar xmlns="http://relaxng.org/ns/structure/1.0"
+         xmlns:x="http://www.w3.org/1999/xhtml"&gt;
+  &lt;x:h1&gt;Hypertext Module&lt;/x:h1&gt;
+  &lt;div&gt;
+    &lt;x:h2&gt;The a element&lt;/x:h2&gt;
+    &lt;define name="xhtml.a"&gt;
+      &lt;element name="a"&gt;
+        &lt;ref name="xhtml.a.attlist"/&gt;
+        &lt;ref name="xhtml.a.content"/&gt;        
+      &lt;/element&gt;
+    &lt;/define&gt;
+    &lt;define name="xhtml.a.attlist"&gt;
+      &lt;ref name="xhtml.Common.attrib"/&gt;
+    &lt;/define&gt;
+    &lt;define name="xhtml.a.content"&gt;
+      &lt;ref name="xhtml.Text.model"/&gt;
+    &lt;/define&gt;
+  &lt;/div&gt;
+  &lt;define name="xhtml.Text.class" combine="choice"&gt;
+    &lt;ref name="xhtml.a"/&gt;
+  &lt;/define&gt;
+&lt;/grammar&gt;
+</pre>
+<!-- END OF FILE RELAXNG/xhtml-hypertext-2.rng.mhtml -->
+<h3 >
+<a id="a_rmodule_List" >C.1.6.</a> List
+</h3>
+<!-- INCLUDING SCHEMA RELAXNG/xhtml-list-2.rng -->
+<pre class="dtd">
+&lt;?xml version="1.0" encoding="UTF-8"?&gt;
+&lt;grammar xmlns="http://relaxng.org/ns/structure/1.0"
+         xmlns:x="http://www.w3.org/1999/xhtml"&gt;
+  &lt;x:h1&gt;List Module&lt;/x:h1&gt;
+  &lt;div&gt;
+    &lt;x:h2&gt;The dl element&lt;/x:h2&gt;
+    &lt;define name="xhtml.dl"&gt;
+      &lt;element name="dl"&gt;
+        &lt;ref name="xhtml.dl.attlist"/&gt;
+        &lt;ref name="xhtml.dl.content"/&gt;
+      &lt;/element&gt;
+    &lt;/define&gt;
+    &lt;define name="xhtml.dl.attlist"&gt;
+      &lt;ref name="xhtml.Common.attrib"/&gt;
+    &lt;/define&gt;
+    &lt;define name="xhtml.dl.content"&gt;    
+      &lt;optional&gt;
+        &lt;ref name="xhtml.title"/&gt;
+      &lt;/optional&gt;
+      &lt;optional&gt;
+        &lt;ref name="xhtml.caption"/&gt;
+      &lt;/optional&gt;
+      &lt;choice&gt;
+        &lt;oneOrMore&gt;
+          &lt;choice&gt;
+            &lt;ref name="xhtml.dt"/&gt;
+            &lt;ref name="xhtml.dd"/&gt;
+          &lt;/choice&gt;
+        &lt;/oneOrMore&gt;
+        &lt;oneOrMore&gt;
+          &lt;ref name="xhtml.di"/&gt;
+        &lt;/oneOrMore&gt;
+      &lt;/choice&gt;
+    &lt;/define&gt;   
+    &lt;!-- This pattern is not referenced by the default
+    XHTML2 content model, but provided for the convenience 
+    of language designers --&gt;
+    &lt;define name="xhtml.dl.content.di.required"&gt;    
+      &lt;optional&gt;
+        &lt;ref name="xhtml.caption"/&gt;
+      &lt;/optional&gt;      
+      &lt;oneOrMore&gt;
+        &lt;ref name="xhtml.di"/&gt;
+      &lt;/oneOrMore&gt;      
+    &lt;/define&gt;
+  &lt;/div&gt;
+  &lt;div&gt;
+    &lt;x:h2&gt;The di element&lt;/x:h2&gt;
+    &lt;define name="xhtml.di"&gt;
+      &lt;element name="di"&gt;
+        &lt;ref name="xhtml.di.attlist"/&gt;
+        &lt;ref name="xhtml.di.content"/&gt;
+      &lt;/element&gt;
+    &lt;/define&gt;
+    &lt;define name="xhtml.di.attlist"&gt;
+      &lt;ref name="xhtml.Common.attrib"/&gt;
+    &lt;/define&gt;
+    &lt;define name="xhtml.di.content"&gt;    
+      &lt;oneOrMore&gt;
+        &lt;ref name="xhtml.dt"/&gt;
+      &lt;/oneOrMore&gt;
+      &lt;zeroOrMore&gt;
+        &lt;ref name="xhtml.dd"/&gt;
+      &lt;/zeroOrMore&gt;
+    &lt;/define&gt;        
+  &lt;/div&gt;
+  &lt;div&gt;
+    &lt;x:h2&gt;The dt element&lt;/x:h2&gt;
+    &lt;define name="xhtml.dt"&gt;
+      &lt;element name="dt"&gt;
+        &lt;ref name="xhtml.dt.attlist"/&gt;
+        &lt;ref name="xhtml.dt.content"/&gt;
+      &lt;/element&gt;
+    &lt;/define&gt;
+    &lt;define name="xhtml.dt.attlist"&gt;
+      &lt;ref name="xhtml.Common.attrib"/&gt;
+    &lt;/define&gt;
+    &lt;define name="xhtml.dt.content"&gt;
+      &lt;ref name="xhtml.Text.model"/&gt;
+    &lt;/define&gt;    
+  &lt;/div&gt;
+  &lt;div&gt;
+    &lt;x:h2&gt;The dd element&lt;/x:h2&gt;
+    &lt;define name="xhtml.dd"&gt;
+      &lt;element name="dd"&gt;
+        &lt;ref name="xhtml.dd.attlist"/&gt;
+        &lt;ref name="xhtml.dd.content"/&gt;
+      &lt;/element&gt;
+    &lt;/define&gt;
+    &lt;define name="xhtml.dd.attlist"&gt;
+      &lt;ref name="xhtml.Common.attrib"/&gt;
+    &lt;/define&gt;
+    &lt;define name="xhtml.dd.content"&gt;    
+      &lt;ref name="xhtml.Flow.model"/&gt;
+    &lt;/define&gt;  
+  &lt;/div&gt;
+  &lt;div&gt;
+    &lt;x:h2&gt;The ol element&lt;/x:h2&gt;
+    &lt;define name="xhtml.ol"&gt;
+      &lt;element name="ol"&gt;
+        &lt;ref name="xhtml.ol.attlist"/&gt;
+        &lt;ref name="xhtml.ol.content"/&gt;
+      &lt;/element&gt;
+    &lt;/define&gt;
+    &lt;define name="xhtml.ol.attlist"&gt;
+      &lt;ref name="xhtml.Common.attrib"/&gt;
+    &lt;/define&gt;
+    &lt;define name="xhtml.ol.content"&gt;    
+      &lt;optional&gt;
+        &lt;ref name="xhtml.title"/&gt;
+      &lt;/optional&gt;    
+      &lt;optional&gt;
+        &lt;ref name="xhtml.caption"/&gt;
+      &lt;/optional&gt;
+      &lt;oneOrMore&gt;
+        &lt;ref name="xhtml.li-in-ol"/&gt;
+      &lt;/oneOrMore&gt;
+    &lt;/define&gt;  
+  &lt;/div&gt;
+  &lt;div&gt;
+    &lt;x:h2&gt;The ul element&lt;/x:h2&gt;
+    &lt;define name="xhtml.ul"&gt;
+      &lt;element name="ul"&gt;
+        &lt;ref name="xhtml.ul.attlist"/&gt;
+        &lt;ref name="xhtml.ul.content"/&gt;
+      &lt;/element&gt;
+    &lt;/define&gt;
+    &lt;define name="xhtml.ul.attlist"&gt;
+      &lt;ref name="xhtml.Common.attrib"/&gt;
+    &lt;/define&gt;
+    &lt;define name="xhtml.ul.content"&gt;
+      &lt;optional&gt;
+        &lt;ref name="xhtml.title"/&gt;
+      &lt;/optional&gt;        
+      &lt;optional&gt;
+        &lt;ref name="xhtml.caption"/&gt;
+      &lt;/optional&gt;
+      &lt;oneOrMore&gt;
+        &lt;ref name="xhtml.li"/&gt;
+      &lt;/oneOrMore&gt;    
+    &lt;/define&gt;
+  &lt;/div&gt;
+  &lt;div&gt;
+    &lt;x:h2&gt;The li element&lt;/x:h2&gt;
+    &lt;define name="xhtml.li"&gt;
+      &lt;element name="li"&gt;
+        &lt;ref name="xhtml.li.attlist"/&gt;
+        &lt;ref name="xhtml.li.content"/&gt;
+      &lt;/element&gt;
+    &lt;/define&gt;  
+    &lt;define name="xhtml.li.attlist"&gt;
+      &lt;ref name="xhtml.Common.attrib"/&gt;
+    &lt;/define&gt;
+    &lt;define name="xhtml.li.content"&gt;
+        &lt;ref name="xhtml.Flow.model"/&gt;    
+    &lt;/define&gt;
+    &lt;define name="xhtml.li-in-ol"&gt;
+      &lt;element name="li"&gt;
+        &lt;ref name="xhtml.li-in-ol.attlist"/&gt;
+        &lt;ref name="xhtml.li.content"/&gt;
+      &lt;/element&gt;
+    &lt;/define&gt;  
+    &lt;define name="xhtml.li-in-ol.attlist"&gt;
+      &lt;ref name="xhtml.li.attlist"/&gt;
+      &lt;ref name="xhtml.li-in-ol.value.attrib"/&gt;
+    &lt;/define&gt;
+    &lt;define name="xhtml.li-in-ol.value.attrib"&gt;
+      &lt;optional&gt;
+        &lt;attribute name="value"&gt;
+          &lt;ref name="Number.datatype"/&gt;
+        &lt;/attribute&gt;
+      &lt;/optional&gt;
+    &lt;/define&gt;
+  &lt;/div&gt;
+  &lt;div&gt;
+    &lt;x:h2&gt;List Content Set&lt;/x:h2&gt;
+    &lt;define name="xhtml.List.class"&gt;
+      &lt;choice&gt;
+        &lt;ref name="xhtml.dl"/&gt;
+        &lt;ref name="xhtml.ol"/&gt;
+        &lt;ref name="xhtml.ul"/&gt;
+      &lt;/choice&gt;
+    &lt;/define&gt;
+  &lt;/div&gt;
+&lt;/grammar&gt;
+</pre>
+<!-- END OF FILE RELAXNG/xhtml-list-2.rng.mhtml -->
+<h3 >
+<a id="a_rmodule_Core_Attributes" >C.1.7.</a> Core Attributes
+</h3>
+<!-- INCLUDING SCHEMA RELAXNG/xhtml-core-attrib-2.rng -->
+<pre class="dtd">
+&lt;?xml version="1.0" encoding="UTF-8"?&gt;
+&lt;grammar xmlns="http://relaxng.org/ns/structure/1.0"         
+         xmlns:x="http://www.w3.org/1999/xhtml"&gt;
+  &lt;x:h1&gt;Core Attributes Module&lt;/x:h1&gt;
+  &lt;div&gt;
+    &lt;x:h2&gt;Core Attribute Collection&lt;/x:h2&gt;
+    &lt;define name="xhtml.class.attrib"&gt;
+      &lt;attribute name="class"&gt;
+        &lt;ref name="NMTOKENS.datatype"/&gt;
+      &lt;/attribute&gt;
+    &lt;/define&gt;
+    &lt;define name="xhtml.id.attrib"&gt;
+      &lt;choice&gt;
+        &lt;ref name="id.attrib"/&gt;
+        &lt;ref name="xmlid.attrib"/&gt;         
+      &lt;/choice&gt;          
+    &lt;/define&gt;
+    &lt;define name="xhtml.layout.attrib"&gt;      
+      &lt;!-- a:defaultValue="irrelevant" --&gt;
+      &lt;attribute name="layout"&gt;
+        &lt;choice&gt;
+          &lt;value&gt;irrelevant&lt;/value&gt;  
+          &lt;value&gt;relevant&lt;/value&gt;  
+        &lt;/choice&gt;
+      &lt;/attribute&gt;      
+    &lt;/define&gt;
+    &lt;define name="xhtml.title.attrib"&gt;
+       &lt;attribute name="title"&gt;
+        &lt;ref name="Text.datatype"/&gt;
+       &lt;/attribute&gt;
+    &lt;/define&gt;
+    &lt;define name="xhtml.Core.attrib"&gt;
+      &lt;optional&gt;
+        &lt;ref name="xhtml.id.attrib"/&gt;
+      &lt;/optional&gt;
+      &lt;optional&gt;
+        &lt;ref name="xhtml.class.attrib"/&gt;
+      &lt;/optional&gt;
+      &lt;optional&gt;
+        &lt;ref name="xhtml.layout.attrib"/&gt;
+      &lt;/optional&gt;
+      &lt;optional&gt;
+        &lt;ref name="xhtml.title.attrib"/&gt;
+      &lt;/optional&gt;
+    &lt;/define&gt;
+  &lt;/div&gt;
+  &lt;define name="xhtml.Common.attrib" combine="interleave"&gt;
+    &lt;ref name="xhtml.Core.attrib"/&gt;
+  &lt;/define&gt;
+  &lt;define name="id.attrib"&gt;
+    &lt;attribute name="id"&gt;
+      &lt;ref name="ID.datatype"/&gt;
+    &lt;/attribute&gt;       
+  &lt;/define&gt;
+  &lt;define name="xmlid.attrib"&gt;
+    &lt;attribute name="xml:id"&gt;
+      &lt;ref name="ID.datatype"/&gt;
+    &lt;/attribute&gt;    
+  &lt;/define&gt;
+&lt;/grammar&gt;
+</pre>
+<!-- END OF FILE RELAXNG/xhtml-core-attrib-2.rng.mhtml -->
+<h3 >
+<a id="a_rmodule_Hypertext_Attributes" >C.1.8.</a> Hypertext Attributes
+</h3>
+<!-- INCLUDING SCHEMA RELAXNG/xhtml-hypertext-attrib-2.rng -->
+<pre class="dtd">
+&lt;?xml version="1.0" encoding="UTF-8"?&gt;
+&lt;grammar xmlns="http://relaxng.org/ns/structure/1.0"
+         xmlns:x="http://www.w3.org/1999/xhtml"&gt;
+  &lt;x:h1&gt;Hypertext Attributes Module&lt;/x:h1&gt;
+  &lt;div&gt;
+    &lt;x:h2&gt;Hypertext Attributes Collection&lt;/x:h2&gt;
+    &lt;define name="xhtml.cite.attrib"&gt;      
+      &lt;attribute name="cite"&gt;
+        &lt;ref name="URI.datatype"/&gt;
+      &lt;/attribute&gt;      
+    &lt;/define&gt;
+    &lt;define name="xhtml.href.attrib"&gt;      
+      &lt;attribute name="href"&gt;
+        &lt;ref name="URI.datatype"/&gt;
+      &lt;/attribute&gt;
+    &lt;/define&gt;
+    &lt;define name="xhtml.hreflang.attrib"&gt;      
+      &lt;attribute name="hreflang"&gt;
+        &lt;ref name="LanguageCodes.datatype"/&gt;
+      &lt;/attribute&gt;
+    &lt;/define&gt;
+    &lt;define name="xhtml.hrefmedia.attrib"&gt;
+      &lt;attribute name="hrefmedia"&gt;
+        &lt;ref name="MediaDesc.datatype"/&gt;
+      &lt;/attribute&gt;
+    &lt;/define&gt;
+    &lt;define name="xhtml.hreftype.attrib"&gt;      
+      &lt;attribute name="hreftype"&gt;
+        &lt;ref name="ContentTypes.datatype"/&gt;
+      &lt;/attribute&gt;      
+    &lt;/define&gt;
+    &lt;define name="xhtml.nextfocus.attrib"&gt;      
+      &lt;attribute name="nextfocus"&gt;
+        &lt;ref name="IDREF.datatype"/&gt;
+      &lt;/attribute&gt;      
+    &lt;/define&gt;
+    &lt;define name="xhtml.prevfocus.attrib"&gt;
+      &lt;attribute name="prevfocus"&gt;
+        &lt;ref name="IDREF.datatype"/&gt;
+      &lt;/attribute&gt;
+    &lt;/define&gt;
+    &lt;define name="xhtml.target.attrib"&gt;      
+      &lt;attribute name="target"&gt;
+        &lt;ref name="HrefTarget.datatype"/&gt;
+      &lt;/attribute&gt;
+    &lt;/define&gt;
+    &lt;define name="xml.base.attrib"&gt;      
+      &lt;attribute name="xml:base"&gt;
+        &lt;ref name="URI.datatype"/&gt;
+      &lt;/attribute&gt;
+    &lt;/define&gt;
+    &lt;define name="xhtml.Hypertext.attrib"&gt;
+      &lt;optional&gt;
+        &lt;ref name="xhtml.cite.attrib"/&gt;
+      &lt;/optional&gt;
+      &lt;optional&gt;
+        &lt;ref name="xhtml.href.attrib"/&gt;
+      &lt;/optional&gt;
+      &lt;optional&gt;
+        &lt;ref name="xhtml.hreflang.attrib"/&gt;
+      &lt;/optional&gt;
+      &lt;optional&gt;
+        &lt;ref name="xhtml.hrefmedia.attrib"/&gt;
+      &lt;/optional&gt;
+      &lt;optional&gt;
+        &lt;ref name="xhtml.hreftype.attrib"/&gt;
+      &lt;/optional&gt;
+      &lt;optional&gt;
+        &lt;ref name="xhtml.nextfocus.attrib"/&gt;
+      &lt;/optional&gt;
+      &lt;optional&gt;
+        &lt;ref name="xhtml.prevfocus.attrib"/&gt;
+      &lt;/optional&gt;
+      &lt;optional&gt;
+        &lt;ref name="xhtml.target.attrib"/&gt;
+      &lt;/optional&gt;
+      &lt;optional&gt;
+        &lt;ref name="xml.base.attrib"/&gt;
+      &lt;/optional&gt;
+    &lt;/define&gt;
+  &lt;/div&gt;
+  &lt;define name="xhtml.Common.attrib" combine="interleave"&gt;
+    &lt;ref name="xhtml.Hypertext.attrib"/&gt;
+  &lt;/define&gt;
+&lt;/grammar&gt;
+</pre>
+<!-- END OF FILE RELAXNG/xhtml-hypertext-attrib-2.rng.mhtml -->
+<h3 >
+<a id="a_rmodule_I18N_Attributes" >C.1.9.</a> I18N Attributes
+</h3>
+<!-- INCLUDING SCHEMA RELAXNG/xhtml-i18n-attrib-2.rng -->
+<pre class="dtd">
+&lt;?xml version="1.0" encoding="UTF-8"?&gt;
+&lt;grammar xmlns="http://relaxng.org/ns/structure/1.0"
+         xmlns:x="http://www.w3.org/1999/xhtml"&gt;
+  &lt;x:h1&gt;I18N Attribute Module&lt;/x:h1&gt;
+  &lt;div&gt;
+    &lt;x:h2&gt;I18N Attribute Collection&lt;/x:h2&gt;
+    &lt;define name="xml.lang.attrib"&gt;
+      &lt;attribute name="xml:lang"&gt;
+        &lt;ref name="LanguageCode.datatype"/&gt;
+      &lt;/attribute&gt;
+    &lt;/define&gt;
+    &lt;define name="xhtml.I18n.attrib"&gt;
+      &lt;optional&gt;
+        &lt;ref name="xml.lang.attrib"/&gt;
+      &lt;/optional&gt;  
+    &lt;/define&gt;
+  &lt;/div&gt;
+  &lt;define name="xhtml.Common.attrib" combine="interleave"&gt;
+    &lt;ref name="xhtml.I18n.attrib"/&gt;
+  &lt;/define&gt;
+&lt;/grammar&gt;
+</pre>
+<!-- END OF FILE RELAXNG/xhtml-i18n-attrib-2.rng.mhtml -->
+<h3 >
+<a id="a_rmodule_Access" >C.1.10.</a> Access
+</h3>
+<!-- INCLUDING SCHEMA RELAXNG/xhtml-access-2.rng -->
+<pre class="dtd">
+&lt;?xml version="1.0" encoding="UTF-8"?&gt;
+&lt;grammar xmlns="http://relaxng.org/ns/structure/1.0"
+         xmlns:x="http://www.w3.org/1999/xhtml"&gt;
+  &lt;x:h1&gt;Access Module&lt;/x:h1&gt;
+  &lt;div&gt;
+    &lt;x:h2&gt;The access element&lt;/x:h2&gt;
+    &lt;define name="xhtml.access"&gt;
+      &lt;element name="access"&gt;
+        &lt;empty /&gt;
+        &lt;ref name="xhtmlAccess.attlist"/&gt;
+      &lt;/element&gt;
+    &lt;/define&gt;
+    &lt;define name="xhtmlAccess.attlist"&gt;
+      &lt;ref name="xhtml.Common.attrib"/&gt;
+      &lt;ref name="xhtmlAccess.activate.attrib"/&gt;
+      &lt;ref name="xhtmlAccess.key.attrib"/&gt;
+      &lt;ref name="xhtmlAccess.order.attrib"/&gt;
+      &lt;ref name="xhtmlAccess.targetid.attrib"/&gt;
+      &lt;ref name="xhtmlAccess.targetrole.attrib"/&gt;
+    &lt;/define&gt;
+    &lt;define name="xhtmlAccess.activate.attrib"&gt;
+      &lt;optional&gt;
+        &lt;!-- a:defaultValue="false" --&gt;
+        &lt;attribute name="activate"&gt;
+          &lt;choice&gt;
+            &lt;value&gt;true&lt;/value&gt;
+            &lt;value&gt;false&lt;/value&gt;
+          &lt;/choice&gt;
+        &lt;/attribute&gt;
+      &lt;/optional&gt;
+    &lt;/define&gt;  
+    &lt;define name="xhtmlAccess.key.attrib"&gt;    
+      &lt;optional&gt;
+        &lt;attribute name="key"&gt;
+          &lt;ref name="Characters.datatype"/&gt;
+        &lt;/attribute&gt;
+      &lt;/optional&gt;
+    &lt;/define&gt;      
+    &lt;define name="xhtmlAccess.order.attrib"&gt;    
+      &lt;optional&gt;
+        &lt;!-- a:defaultValue="document" --&gt;
+        &lt;attribute name="order"&gt;
+          &lt;choice&gt;
+            &lt;value&gt;document&lt;/value&gt;
+            &lt;value&gt;list&lt;/value&gt;
+          &lt;/choice&gt;
+        &lt;/attribute&gt;
+      &lt;/optional&gt;    
+    &lt;/define&gt;
+    &lt;define name="xhtmlAccess.targetid.attrib"&gt;    
+      &lt;optional&gt;
+        &lt;attribute name="targetid"&gt;
+          &lt;ref name="IDREF.datatype"/&gt;
+        &lt;/attribute&gt;
+      &lt;/optional&gt;    
+    &lt;/define&gt;     
+    &lt;define name="xhtmlAccess.targetrole.attrib"&gt;    
+      &lt;optional&gt;
+        &lt;attribute name="targetrole"&gt;
+          &lt;ref name="CURIEs.datatype"/&gt;
+        &lt;/attribute&gt;
+      &lt;/optional&gt;
+    &lt;/define&gt;      
+  &lt;/div&gt;
+  &lt;define name="xhtml.head.misc" combine="choice"&gt;
+    &lt;ref name="xhtml.access"/&gt;
+  &lt;/define&gt;
+&lt;/grammar&gt;
+</pre>
+<!-- END OF FILE RELAXNG/xhtml-access-2.rng.mhtml -->
+<h3 >
+<a id="a_rmodule_Bi-directional_Text_Attribute" >C.1.11.</a> Bi-directional Text Attribute
+</h3>
+<!-- INCLUDING SCHEMA RELAXNG/xhtml-bidi-attrib-2.rng -->
+<pre class="dtd">
+&lt;?xml version="1.0" encoding="UTF-8"?&gt;
+&lt;grammar xmlns="http://relaxng.org/ns/structure/1.0"         
+         xmlns:x="http://www.w3.org/1999/xhtml"&gt;
+  &lt;x:h1&gt;Bi-directional Text Attribute Module&lt;/x:h1&gt;
+  &lt;div&gt;
+    &lt;x:h2&gt;Bi-directional Text Collection&lt;/x:h2&gt;
+    &lt;define name="xhtml.dir.attrib"&gt;
+      &lt;optional&gt;
+        &lt;!-- a:defaultValue="ltr" --&gt;
+        &lt;attribute name="dir"&gt;
+          &lt;choice&gt;
+            &lt;value&gt;ltr&lt;/value&gt;
+            &lt;value&gt;rtl&lt;/value&gt;
+            &lt;value&gt;lro&lt;/value&gt;
+            &lt;value&gt;rlo&lt;/value&gt;
+          &lt;/choice&gt;
+        &lt;/attribute&gt;
+      &lt;/optional&gt;
+    &lt;/define&gt;
+    &lt;define name="xhtml.Bidi.attrib"&gt;
+      &lt;ref name="xhtml.dir.attrib"/&gt;
+    &lt;/define&gt;
+  &lt;/div&gt;
+  &lt;define name="xhtml.Common.attrib" combine="interleave"&gt;
+    &lt;ref name="xhtml.Bidi.attrib"/&gt;
+  &lt;/define&gt;
+&lt;/grammar&gt;
+</pre>
+<!-- END OF FILE RELAXNG/xhtml-bidi-attrib-2.rng.mhtml -->
+<h3 >
+<a id="a_rmodule_Edit_Attributes" >C.1.12.</a> Edit Attributes
+</h3>
+<!-- INCLUDING SCHEMA RELAXNG/xhtml-edit-attrib-2.rng -->
+<pre class="dtd">
+&lt;?xml version="1.0" encoding="UTF-8"?&gt;
+&lt;grammar xmlns="http://relaxng.org/ns/structure/1.0"
+         xmlns:x="http://www.w3.org/1999/xhtml"&gt;
+  &lt;x:h1&gt;Edit Attribute Module&lt;/x:h1&gt;
+  &lt;div&gt;
+    &lt;x:h2&gt;Edit Collection&lt;/x:h2&gt;
+    &lt;define name="xhtml.edit.attrib"&gt;
+        &lt;attribute name="edit"&gt;
+          &lt;choice&gt;
+            &lt;value&gt;inserted&lt;/value&gt;
+            &lt;value&gt;deleted&lt;/value&gt;
+            &lt;value&gt;changed&lt;/value&gt;
+            &lt;value&gt;moved&lt;/value&gt;
+          &lt;/choice&gt;
+        &lt;/attribute&gt;
+    &lt;/define&gt;
+    &lt;define name="xhtml.datetime.attrib"&gt;      
+        &lt;attribute name="datetime"&gt;
+          &lt;ref name="Datetime.datatype"/&gt;
+        &lt;/attribute&gt;
+    &lt;/define&gt;
+    &lt;define name="xhtml.Edit.attrib"&gt;
+      &lt;optional&gt;
+        &lt;ref name="xhtml.edit.attrib"/&gt;
+      &lt;/optional&gt;
+      &lt;optional&gt;  
+        &lt;ref name="xhtml.datetime.attrib"/&gt;
+      &lt;/optional&gt;  
+    &lt;/define&gt;
+  &lt;/div&gt;
+  &lt;define name="xhtml.Common.attrib" combine="interleave"&gt;
+    &lt;ref name="xhtml.Edit.attrib"/&gt;
+  &lt;/define&gt;
+&lt;/grammar&gt;
+</pre>
+<!-- END OF FILE RELAXNG/xhtml-edit-attrib-2.rng.mhtml -->
+<h3 >
+<a id="a_rmodule_Embedding_Attributes" >C.1.13.</a> Embedding Attributes
+</h3>
+<!-- INCLUDING SCHEMA RELAXNG/xhtml-embed-attrib-2.rng -->
+<pre class="dtd">
+&lt;?xml version="1.0" encoding="UTF-8"?&gt;
+&lt;grammar xmlns="http://relaxng.org/ns/structure/1.0"
+         xmlns:x="http://www.w3.org/1999/xhtml"&gt;
+  &lt;x:h1&gt;Embedding Attributes Module&lt;/x:h1&gt;
+  &lt;div&gt;
+    &lt;x:h2&gt;Embedding Attributes Collection&lt;/x:h2&gt;
+    &lt;define name="xhtml.src.attrib"&gt;      
+      &lt;attribute name="src"&gt;
+        &lt;ref name="URI.datatype"/&gt;
+      &lt;/attribute&gt;      
+    &lt;/define&gt;
+    &lt;define name="xhtml.encoding.attrib"&gt;      
+      &lt;attribute name="encoding"&gt;
+        &lt;ref name="Encodings.datatype"/&gt;
+      &lt;/attribute&gt;
+    &lt;/define&gt;
+    &lt;define name="xhtml.srctype.attrib"&gt;      
+      &lt;attribute name="srctype"&gt;
+        &lt;ref name="ContentTypes.datatype"/&gt;
+      &lt;/attribute&gt;      
+    &lt;/define&gt;
+    &lt;define name="xhtml.Embedding.attrib"&gt;
+      &lt;optional&gt;
+        &lt;ref name="xhtml.src.attrib"/&gt;
+      &lt;/optional&gt;
+      &lt;optional&gt;  
+        &lt;ref name="xhtml.encoding.attrib"/&gt;
+      &lt;/optional&gt;
+      &lt;optional&gt;  
+        &lt;ref name="xhtml.srctype.attrib"/&gt;
+      &lt;/optional&gt;  
+    &lt;/define&gt;
+  &lt;/div&gt;
+  &lt;define name="xhtml.Common.attrib" combine="interleave"&gt;
+    &lt;ref name="xhtml.Embedding.attrib"/&gt;
+  &lt;/define&gt;
+&lt;/grammar&gt;
+</pre>
+<!-- END OF FILE RELAXNG/xhtml-embed-attrib-2.rng.mhtml -->
+<h3 >
+<a id="a_rmodule_Image" >C.1.14.</a> Image
+</h3>
+<!-- INCLUDING SCHEMA RELAXNG/xhtml-image-2.rng -->
+<pre class="dtd">
+&lt;?xml version="1.0" encoding="UTF-8"?&gt;
+&lt;grammar xmlns="http://relaxng.org/ns/structure/1.0"
+         xmlns:x="http://www.w3.org/1999/xhtml"&gt;
+  &lt;x:h1&gt;Image Module&lt;/x:h1&gt;
+  &lt;div&gt;
+    &lt;x:h2&gt;The img element&lt;/x:h2&gt;
+    &lt;define name="xhtml.img"&gt;
+      &lt;element name="img"&gt;
+        &lt;ref name="xhtml.img.attlist"/&gt;
+        &lt;ref name="xhtml.img.content"/&gt;        
+      &lt;/element&gt;
+    &lt;/define&gt;
+    &lt;define name="xhtml.img.attlist"&gt;
+      &lt;ref name="xhtml.Common.attrib"/&gt;
+    &lt;/define&gt;
+    &lt;define name="xhtml.img.content"&gt;
+      &lt;ref name="xhtml.Text.model"/&gt;    
+    &lt;/define&gt;
+  &lt;/div&gt;
+  &lt;define name="xhtml.Text.class" combine="choice"&gt;
+    &lt;ref name="xhtml.img"/&gt;
+  &lt;/define&gt;
+&lt;/grammar&gt;
+</pre>
+<!-- END OF FILE RELAXNG/xhtml-image-2.rng.mhtml -->
+<h3 >
+<a id="a_rmodule_Image_Map_Attributes" >C.1.15.</a> Image Map Attributes
+</h3>
+<!-- INCLUDING SCHEMA RELAXNG/xhtml-imagemap-attrib-2.rng -->
+<pre class="dtd">
+&lt;?xml version="1.0" encoding="UTF-8"?&gt;
+&lt;grammar xmlns="http://relaxng.org/ns/structure/1.0"
+         xmlns:x="http://www.w3.org/1999/xhtml"&gt;
+  &lt;x:h1&gt;Image Map Attributes Module&lt;/x:h1&gt;
+  &lt;div&gt;
+    &lt;x:h2&gt;Image Map Attributes Collection&lt;/x:h2&gt;
+    &lt;define name="xhtml.usemap.attrib"&gt;
+      &lt;optional&gt;
+        &lt;attribute name="usemap"&gt;
+          &lt;ref name="URI.datatype"/&gt;
+        &lt;/attribute&gt;
+      &lt;/optional&gt;
+    &lt;/define&gt;
+    &lt;define name="xhtml.ismap.attrib"&gt;
+      &lt;optional&gt;
+        &lt;attribute name="ismap"&gt;
+          &lt;value&gt;ismap&lt;/value&gt;
+        &lt;/attribute&gt;
+      &lt;/optional&gt;
+    &lt;/define&gt;
+    &lt;define name="xhtml.shape.attrib"&gt;
+      &lt;optional&gt;
+        &lt;attribute name="shape"&gt;
+          &lt;ref name="Shape.datatype"/&gt;
+        &lt;/attribute&gt;
+      &lt;/optional&gt;
+    &lt;/define&gt;
+    &lt;define name="xhtml.coords.attrib"&gt;
+      &lt;optional&gt;
+        &lt;attribute name="coords"&gt;
+          &lt;ref name="Coordinates.datatype"/&gt;
+        &lt;/attribute&gt;
+      &lt;/optional&gt;
+    &lt;/define&gt;
+    &lt;define name="xhtml.Map.attrib"&gt;
+      &lt;ref name="xhtml.usemap.attrib"/&gt;
+      &lt;ref name="xhtml.ismap.attrib"/&gt;
+      &lt;ref name="xhtml.shape.attrib"/&gt;
+      &lt;ref name="xhtml.coords.attrib"/&gt;
+    &lt;/define&gt;
+  &lt;/div&gt;
+  &lt;define name="xhtml.Common.attrib" combine="interleave"&gt;
+    &lt;ref name="xhtml.Map.attrib"/&gt;
+  &lt;/define&gt;
+&lt;/grammar&gt;
+</pre>
+<!-- END OF FILE RELAXNG/xhtml-imagemap-attrib-2.rng.mhtml -->
+<h3 >
+<a id="a_rmodule_Media_Attribute" >C.1.16.</a> Media Attribute
+</h3>
+<!-- INCLUDING SCHEMA RELAXNG/xhtml-media-attrib-2.rng -->
+<pre class="dtd">
+&lt;?xml version="1.0" encoding="UTF-8"?&gt;
+&lt;grammar xmlns="http://relaxng.org/ns/structure/1.0"         
+         xmlns:x="http://www.w3.org/1999/xhtml"&gt;
+  &lt;x:h1&gt;Media Attribute Module&lt;/x:h1&gt;
+  &lt;define name="xhtml.media.attrib"&gt;
+    &lt;optional&gt;
+      &lt;!-- a:defaultValue="all" --&gt;
+      &lt;attribute name="media"&gt;
+        &lt;ref name="MediaDesc.datatype"/&gt;
+      &lt;/attribute&gt;
+    &lt;/optional&gt;
+  &lt;/define&gt;
+  &lt;define name="xhtml.Common.attrib" combine="interleave"&gt;
+    &lt;ref name="xhtml.media.attrib"/&gt;
+  &lt;/define&gt;
+&lt;/grammar&gt;
+</pre>
+<!-- END OF FILE RELAXNG/xhtml-media-attrib-2.rng.mhtml -->
+<h3 >
+<a id="a_rmodule_Metainformation_Attributes" >C.1.17.</a> Metainformation Attributes
+</h3>
+<!-- INCLUDING SCHEMA RELAXNG/xhtml-meta-attrib-2.rng -->
+<pre class="dtd">
+&lt;?xml version="1.0" encoding="UTF-8"?&gt;
+&lt;grammar xmlns="http://relaxng.org/ns/structure/1.0"
+         xmlns:x="http://www.w3.org/1999/xhtml"&gt;
+&lt;x:h1&gt;Metainformation Attributes Module&lt;/x:h1&gt;
+  &lt;div&gt;
+    &lt;x:h2&gt;Metadata Attribute Collection&lt;/x:h2&gt;
+    &lt;define name="rdfa.about.attrib"&gt;
+      &lt;optional&gt;
+        &lt;attribute name="about"&gt;
+          &lt;ref name="URIorSafeCURIE.datatype"/&gt;
+        &lt;/attribute&gt;
+      &lt;/optional&gt;
+    &lt;/define&gt;
+    &lt;define name="rdfa.content.attrib"&gt;
+      &lt;optional&gt;
+        &lt;attribute name="content"&gt;
+          &lt;ref name="CDATA.datatype"/&gt;
+        &lt;/attribute&gt;
+      &lt;/optional&gt;
+    &lt;/define&gt;
+    &lt;define name="rdfa.datatype.attrib"&gt;
+      &lt;optional&gt;
+        &lt;attribute name="datatype"&gt;
+          &lt;ref name="CURIE.datatype"/&gt;
+        &lt;/attribute&gt;
+      &lt;/optional&gt;
+    &lt;/define&gt;
+    &lt;define name="rdfa.typeof.attrib"&gt;
+      &lt;optional&gt;
+        &lt;attribute name="typeof"&gt;
+          &lt;ref name="CURIEs.datatype"/&gt;
+        &lt;/attribute&gt;
+      &lt;/optional&gt;
+    &lt;/define&gt;    
+    &lt;define name="rdfa.property.attrib"&gt;
+      &lt;optional&gt;
+        &lt;!-- a:defaultValue="reference" --&gt;
+        &lt;attribute name="property"&gt;
+          &lt;ref name="CURIEs.datatype"/&gt;
+        &lt;/attribute&gt;
+      &lt;/optional&gt;
+    &lt;/define&gt;
+    &lt;define name="rdfa.rel.attrib"&gt;
+      &lt;optional&gt;
+        &lt;attribute name="rel"&gt;
+          &lt;ref name="CURIEs.datatype"/&gt;
+        &lt;/attribute&gt;
+      &lt;/optional&gt;
+    &lt;/define&gt;
+    &lt;define name="rdfa.resource.attrib"&gt;
+      &lt;optional&gt;
+        &lt;attribute name="resource"&gt;
+          &lt;ref name="URIorSafeCURIE.datatype"/&gt;
+        &lt;/attribute&gt;
+      &lt;/optional&gt;
+    &lt;/define&gt;    
+    &lt;define name="rdfa.rev.attrib"&gt;
+      &lt;optional&gt;
+        &lt;attribute name="rev"&gt;
+          &lt;ref name="CURIEs.datatype"/&gt;
+        &lt;/attribute&gt;
+      &lt;/optional&gt;
+    &lt;/define&gt;
+    &lt;define name="rdfa.Metadata.attrib"&gt;
+      &lt;ref name="rdfa.about.attrib"/&gt;
+      &lt;ref name="rdfa.content.attrib"/&gt;
+      &lt;ref name="rdfa.datatype.attrib"/&gt;
+      &lt;ref name="rdfa.typeof.attrib"/&gt;
+      &lt;ref name="rdfa.property.attrib"/&gt;
+      &lt;ref name="rdfa.rel.attrib"/&gt;
+      &lt;ref name="rdfa.resource.attrib"/&gt;
+      &lt;ref name="rdfa.rev.attrib"/&gt;
+    &lt;/define&gt;
+  &lt;/div&gt;
+  &lt;define name="xhtml.Common.attrib" combine="interleave"&gt;
+    &lt;ref name="rdfa.Metadata.attrib"/&gt;
+  &lt;/define&gt;
+&lt;/grammar&gt;
+</pre>
+<!-- END OF FILE RELAXNG/xhtml-meta-attrib-2.rng.mhtml -->
+<h3 >
+<a id="a_rmodule_Metainformation" >C.1.18.</a> Metainformation
+</h3>
+<!-- INCLUDING SCHEMA RELAXNG/xhtml-meta-2.rng -->
+<pre class="dtd">
+&lt;?xml version="1.0" encoding="UTF-8"?&gt;
+&lt;grammar xmlns="http://relaxng.org/ns/structure/1.0"
+         xmlns:x="http://www.w3.org/1999/xhtml"&gt;
+  &lt;x:h1&gt;Metainformation Module&lt;/x:h1&gt;
+  &lt;div&gt;
+    &lt;x:h2&gt;The link element&lt;/x:h2&gt;
+    &lt;define name="xhtml.link"&gt;
+      &lt;element name="link"&gt;
+        &lt;ref name="xhtml.link.attlist"/&gt;
+        &lt;ref name="xhtml.link.content"/&gt;
+      &lt;/element&gt;
+    &lt;/define&gt;
+    &lt;define name="xhtml.link.attlist"&gt;
+      &lt;ref name="xhtml.Common.attrib"/&gt;
+    &lt;/define&gt;
+    &lt;define name="xhtml.link.content"&gt;
+      &lt;zeroOrMore&gt;
+        &lt;choice&gt;
+          &lt;ref name="xhtml.link"/&gt;
+          &lt;ref name="xhtml.meta"/&gt;
+        &lt;/choice&gt;
+      &lt;/zeroOrMore&gt;
+    &lt;/define&gt;
+  &lt;/div&gt;
+  &lt;define name="xhtml.head.misc" combine="choice"&gt;
+    &lt;ref name="xhtml.link"/&gt;
+  &lt;/define&gt;
+  &lt;define name="xhtml.Misc.class" combine="choice"&gt;
+    &lt;ref name="xhtml.link"/&gt;
+  &lt;/define&gt;
+  &lt;div&gt;
+    &lt;x:h2&gt;The meta element&lt;/x:h2&gt;
+    &lt;define name="xhtml.meta"&gt;
+      &lt;element name="meta"&gt;
+        &lt;ref name="xhtml.meta.attlist"/&gt;
+        &lt;ref name="xhtml.meta.content"/&gt;
+      &lt;/element&gt;
+    &lt;/define&gt;
+    &lt;define name="xhtml.meta.attlist"&gt;
+      &lt;ref name="xhtml.Common.attrib"/&gt;
+    &lt;/define&gt;
+    &lt;define name="xhtml.meta.content"&gt;
+        &lt;ref name="xhtml.Text.model"/&gt;    
+    &lt;/define&gt;
+  &lt;/div&gt;
+  &lt;define name="xhtml.head.misc" combine="choice"&gt;
+    &lt;ref name="xhtml.meta"/&gt;
+  &lt;/define&gt;
+  &lt;define name="xhtml.Misc.class" combine="choice"&gt;
+    &lt;ref name="xhtml.meta"/&gt;
+  &lt;/define&gt;
+&lt;/grammar&gt;
+</pre>
+<!-- END OF FILE RELAXNG/xhtml-meta-2.rng.mhtml -->
+<h3 >
+<a id="a_rmodule_Object" >C.1.19.</a> Object
+</h3>
+<!-- INCLUDING SCHEMA RELAXNG/xhtml-object-2.rng -->
+<pre class="dtd">
+&lt;?xml version="1.0" encoding="UTF-8"?&gt;
+&lt;grammar xmlns="http://relaxng.org/ns/structure/1.0"
+         xmlns:x="http://www.w3.org/1999/xhtml"&gt;
+  &lt;x:h1&gt;Object Module&lt;/x:h1&gt;
+  &lt;x:p&gt;Note. Also include the Caption Module when this module is used.&lt;/x:p&gt;
+  &lt;div&gt;
+    &lt;x:h2&gt;The object element&lt;/x:h2&gt;
+    &lt;define name="xhtml.object"&gt;
+      &lt;element name="object"&gt;
+        &lt;ref name="xhtml.object.attlist"/&gt;
+        &lt;ref name="xhtml.object.content"/&gt;        
+      &lt;/element&gt;
+    &lt;/define&gt;
+    &lt;define name="xhtml.object.attlist"&gt;
+      &lt;ref name="xhtml.Common.attrib"/&gt;
+      &lt;optional&gt;
+        &lt;attribute name="archive"&gt;
+          &lt;ref name="URIs.datatype"/&gt;
+        &lt;/attribute&gt;
+      &lt;/optional&gt;
+      &lt;optional&gt;
+        &lt;attribute name="content-length"&gt;
+          &lt;ref name="Number.datatype"/&gt;
+        &lt;/attribute&gt;
+      &lt;/optional&gt;
+      &lt;optional&gt;
+        &lt;attribute name="declare"&gt;
+          &lt;value&gt;declare&lt;/value&gt;
+        &lt;/attribute&gt;
+      &lt;/optional&gt;
+    &lt;/define&gt;
+    &lt;define name="xhtml.object.content"&gt;        
+      &lt;optional&gt;
+        &lt;ref name="xhtml.caption"/&gt;
+      &lt;/optional&gt;
+      &lt;optional&gt;
+        &lt;ref name="xhtml.standby"/&gt;
+      &lt;/optional&gt;
+      &lt;zeroOrMore&gt;
+        &lt;ref name="xhtml.param"/&gt;
+      &lt;/zeroOrMore&gt;
+      &lt;ref name="xhtml.Flow.model"/&gt;
+    &lt;/define&gt;
+  &lt;/div&gt;
+  &lt;div&gt;
+    &lt;x:h2&gt;The standby element&lt;/x:h2&gt;
+    &lt;define name="xhtml.standby"&gt;
+      &lt;element name="standby"&gt;
+        &lt;ref name="xhtml.standby.attlist"/&gt;
+        &lt;ref name="xhtml.standby.model"/&gt;
+      &lt;/element&gt;
+    &lt;/define&gt;
+    &lt;define name="xhtml.standby.attlist"&gt;
+      &lt;ref name="xhtml.Common.attrib"/&gt;
+    &lt;/define&gt;
+    &lt;define name="xhtml.standby.model"&gt;
+        &lt;ref name="xhtml.Text.model"/&gt;    
+    &lt;/define&gt;
+  &lt;/div&gt;
+  &lt;define name="xhtml.Text.class" combine="choice"&gt;
+    &lt;ref name="xhtml.object"/&gt;
+  &lt;/define&gt;
+&lt;/grammar&gt;
+</pre>
+<!-- END OF FILE RELAXNG/xhtml-object-2.rng.mhtml -->
+<h3 >
+<a id="a_rmodule_Style_Attribute" >C.1.20.</a> Style Attribute
+</h3>
+<!-- INCLUDING SCHEMA RELAXNG/xhtml-inlstyle-2.rng -->
+<pre class="dtd">
+&lt;?xml version="1.0" encoding="UTF-8"?&gt;
+&lt;grammar xmlns="http://relaxng.org/ns/structure/1.0"
+         xmlns:x="http://www.w3.org/1999/xhtml"&gt;
+  &lt;x:h1&gt;Style Attribute Module&lt;/x:h1&gt;
+  &lt;define name="xhtml.style.attrib"&gt;
+    &lt;optional&gt;
+      &lt;attribute name="style"/&gt;
+    &lt;/optional&gt;
+  &lt;/define&gt;
+  &lt;define name="xhtml.Common.attrib" combine="interleave"&gt;
+    &lt;ref name="xhtml.style.attrib"/&gt;
+  &lt;/define&gt;
+&lt;/grammar&gt;
+</pre>
+<!-- END OF FILE RELAXNG/xhtml-inlstyle-2.rng.mhtml -->
+<h3 >
+<a id="a_rmodule_Style_Sheet" >C.1.21.</a> Style Sheet
+</h3>
+<!-- INCLUDING SCHEMA RELAXNG/xhtml-style-2.rng -->
+<pre class="dtd">
+&lt;?xml version="1.0" encoding="UTF-8"?&gt;
+&lt;grammar xmlns="http://relaxng.org/ns/structure/1.0"
+         xmlns:x="http://www.w3.org/1999/xhtml"&gt;
+  &lt;x:h1&gt;Style Module&lt;/x:h1&gt;
+  &lt;div&gt;
+    &lt;x:h2&gt;The style element&lt;/x:h2&gt;
+    &lt;define name="xhtml.style"&gt;
+      &lt;element name="style"&gt;
+        &lt;ref name="xhtml.style.attlist"/&gt;
+        &lt;ref name="xhtml.style.content"/&gt;        
+      &lt;/element&gt;
+    &lt;/define&gt;
+    &lt;define name="xhtml.style.attlist"&gt;
+      &lt;ref name="xhtml.Common.attrib"/&gt;
+      &lt;optional&gt;
+        &lt;attribute name="disabled"&gt;
+          &lt;value&gt;disabled&lt;/value&gt;
+        &lt;/attribute&gt;     
+      &lt;/optional&gt;
+    &lt;/define&gt;
+    &lt;define name="xhtml.style.content"&gt;
+      &lt;text/&gt;    
+    &lt;/define&gt;
+  &lt;/div&gt;
+  &lt;define name="xhtml.head.misc" combine="choice"&gt;
+    &lt;ref name="xhtml.style"/&gt;
+  &lt;/define&gt;
+&lt;/grammar&gt;
+</pre>
+<!-- END OF FILE RELAXNG/xhtml-style-2.rng.mhtml -->
+<h3 >
+<a id="a_rmodule_Tables" >C.1.22.</a> Tables
+</h3>
+<!-- INCLUDING SCHEMA RELAXNG/xhtml-table-2.rng -->
+<pre class="dtd">
+&lt;?xml version="1.0" encoding="UTF-8"?&gt;
+&lt;grammar xmlns="http://relaxng.org/ns/structure/1.0"         
+         xmlns:x="http://www.w3.org/1999/xhtml"&gt;
+  &lt;x:h1&gt;Tables Module&lt;/x:h1&gt;
+  &lt;x:p&gt;Note. Also include the Caption Module when this module is used.&lt;/x:p&gt;
+  &lt;div&gt;
+    &lt;x:h2&gt;The table element&lt;/x:h2&gt;
+    &lt;define name="xhtml.table"&gt;
+      &lt;element name="table"&gt;
+        &lt;ref name="xhtml.table.attlist"/&gt;
+        &lt;ref name="xhtml.table.content"/&gt;
+      &lt;/element&gt;
+    &lt;/define&gt;
+    &lt;define name="xhtml.table.attlist"&gt;
+      &lt;ref name="xhtml.Common.attrib"/&gt;
+    &lt;/define&gt;
+    &lt;define name="xhtml.table.content"&gt;
+        &lt;optional&gt;
+          &lt;ref name="xhtml.title"/&gt;
+        &lt;/optional&gt;        
+        &lt;optional&gt;
+          &lt;ref name="xhtml.caption"/&gt;
+        &lt;/optional&gt;
+        &lt;optional&gt;
+          &lt;ref name="xhtml.summary"/&gt;
+        &lt;/optional&gt;
+        &lt;choice&gt;
+          &lt;zeroOrMore&gt;
+            &lt;ref name="xhtml.col"/&gt;
+          &lt;/zeroOrMore&gt;
+          &lt;zeroOrMore&gt;
+            &lt;ref name="xhtml.colgroup"/&gt;
+          &lt;/zeroOrMore&gt;
+        &lt;/choice&gt;
+        &lt;choice&gt;
+          &lt;group&gt;
+            &lt;optional&gt;
+              &lt;ref name="xhtml.thead"/&gt;
+            &lt;/optional&gt;
+            &lt;optional&gt;
+              &lt;ref name="xhtml.tfoot"/&gt;
+            &lt;/optional&gt;
+            &lt;oneOrMore&gt;
+              &lt;ref name="xhtml.tbody"/&gt;
+            &lt;/oneOrMore&gt;
+          &lt;/group&gt;
+          &lt;oneOrMore&gt;
+            &lt;ref name="xhtml.tr"/&gt;
+          &lt;/oneOrMore&gt;
+        &lt;/choice&gt;
+    &lt;/define&gt;
+  &lt;/div&gt;
+  &lt;div&gt;
+    &lt;x:h2&gt;The summary element&lt;/x:h2&gt;
+    &lt;define name="xhtml.summary"&gt;
+      &lt;element name="summary"&gt;
+        &lt;ref name="xhtml.summary.attlist"/&gt;
+        &lt;ref name="xhtml.summary.content"/&gt;        
+      &lt;/element&gt;
+    &lt;/define&gt;
+    &lt;define name="xhtml.summary.attlist"&gt;
+      &lt;ref name="xhtml.Common.attrib"/&gt;
+    &lt;/define&gt;
+    &lt;define name="xhtml.summary.content"&gt;    
+      &lt;ref name="xhtml.Flow.model"/&gt;
+    &lt;/define&gt;  
+  &lt;/div&gt;
+  &lt;div&gt;
+    &lt;x:h2&gt;The col element&lt;/x:h2&gt;
+    &lt;define name="xhtml.col"&gt;
+      &lt;element name="col"&gt;
+        &lt;ref name="xhtml.col.attlist"/&gt;
+      &lt;/element&gt;
+    &lt;/define&gt;
+    &lt;define name="xhtml.col.attlist"&gt;
+      &lt;ref name="xhtml.Common.attrib"/&gt;
+      &lt;ref name="xhtml.span.attrib"/&gt;
+    &lt;/define&gt;
+  &lt;/div&gt;
+  &lt;div&gt;
+    &lt;x:h2&gt;The colgroup element&lt;/x:h2&gt;
+    &lt;define name="xhtml.colgroup"&gt;
+      &lt;element name="colgroup"&gt;
+        &lt;ref name="xhtml.colgroup.attlist"/&gt;
+        &lt;ref name="xhtml.colgroup.content"/&gt;
+      &lt;/element&gt;
+    &lt;/define&gt;
+    &lt;define name="xhtml.colgroup.attlist"&gt;
+      &lt;ref name="xhtml.Common.attrib"/&gt;
+      &lt;ref name="xhtml.span.attrib"/&gt;
+    &lt;/define&gt;
+    &lt;define name="xhtml.colgroup.content"&gt;
+      &lt;zeroOrMore&gt;
+        &lt;ref name="xhtml.col"/&gt;
+      &lt;/zeroOrMore&gt;
+    &lt;/define&gt;
+  &lt;/div&gt;
+  &lt;div&gt;
+    &lt;x:h2&gt;The thead element&lt;/x:h2&gt;
+    &lt;define name="xhtml.thead"&gt;
+      &lt;element name="thead"&gt;
+        &lt;ref name="xhtml.thead.attlist"/&gt;
+        &lt;ref name="xhtml.thead.content"/&gt;
+      &lt;/element&gt;
+    &lt;/define&gt;
+    &lt;define name="xhtml.thead.attlist"&gt;
+      &lt;ref name="xhtml.Common.attrib"/&gt;
+    &lt;/define&gt;
+    &lt;define name="xhtml.thead.content"&gt;
+      &lt;oneOrMore&gt;
+        &lt;ref name="xhtml.tr"/&gt;
+      &lt;/oneOrMore&gt;
+    &lt;/define&gt;
+  &lt;/div&gt;
+  &lt;div&gt;
+    &lt;x:h2&gt;The tfoot element&lt;/x:h2&gt;
+    &lt;define name="xhtml.tfoot"&gt;
+      &lt;element name="tfoot"&gt;
+        &lt;ref name="xhtml.tfoot.attlist"/&gt;
+        &lt;ref name="xhtml.tfoot.content"/&gt;      
+      &lt;/element&gt;
+    &lt;/define&gt;
+    &lt;define name="xhtml.tfoot.attlist"&gt;
+      &lt;ref name="xhtml.Common.attrib"/&gt;
+    &lt;/define&gt;
+    &lt;define name="xhtml.tfoot.content"&gt;
+      &lt;oneOrMore&gt;
+        &lt;ref name="xhtml.tr"/&gt;
+      &lt;/oneOrMore&gt;
+    &lt;/define&gt;    
+  &lt;/div&gt;
+  &lt;div&gt;
+    &lt;x:h2&gt;The tbody element&lt;/x:h2&gt;
+    &lt;define name="xhtml.tbody"&gt;
+      &lt;element name="tbody"&gt;
+        &lt;ref name="xhtml.tbody.attlist"/&gt;
+        &lt;ref name="xhtml.tbody.content"/&gt;
+     &lt;/element&gt;
+    &lt;/define&gt;
+    &lt;define name="xhtml.tbody.attlist"&gt;
+      &lt;ref name="xhtml.Common.attrib"/&gt;
+    &lt;/define&gt;
+    &lt;define name="xhtml.tbody.content"&gt;
+      &lt;oneOrMore&gt;
+        &lt;ref name="xhtml.tr"/&gt;
+      &lt;/oneOrMore&gt;
+    &lt;/define&gt;    
+  &lt;/div&gt;
+  &lt;div&gt;
+    &lt;x:h2&gt;The tr element&lt;/x:h2&gt;
+    &lt;define name="xhtml.tr"&gt;
+      &lt;element name="tr"&gt;
+        &lt;ref name="xhtml.tr.attlist"/&gt;
+        &lt;ref name="xhtml.tr.content"/&gt;        
+      &lt;/element&gt;
+    &lt;/define&gt;
+    &lt;define name="xhtml.tr.attlist"&gt;
+      &lt;ref name="xhtml.Common.attrib"/&gt;
+    &lt;/define&gt;
+	&lt;define name="xhtml.tr.content"&gt;
+      &lt;oneOrMore&gt;
+        &lt;choice&gt;
+          &lt;ref name="xhtml.th"/&gt;
+          &lt;ref name="xhtml.td"/&gt;
+        &lt;/choice&gt;
+      &lt;/oneOrMore&gt;	
+	&lt;/define&gt;
+  &lt;/div&gt;
+  &lt;div&gt;
+    &lt;x:h2&gt;The th element&lt;/x:h2&gt;
+    &lt;define name="xhtml.th"&gt;
+      &lt;element name="th"&gt;
+        &lt;ref name="xhtml.th.attlist"/&gt;
+        &lt;ref name="xhtml.th.content"/&gt;        
+      &lt;/element&gt;
+    &lt;/define&gt;
+    &lt;define name="xhtml.th.attlist"&gt;
+      &lt;ref name="xhtml.Cell.attrib"/&gt;
+    &lt;/define&gt;
+    &lt;define name="xhtml.th.content"&gt;
+      &lt;ref name="xhtml.Flow.model"/&gt;
+    &lt;/define&gt;	  
+  &lt;/div&gt;
+  &lt;div&gt;
+    &lt;x:h2&gt;The td element&lt;/x:h2&gt;
+    &lt;define name="xhtml.td"&gt;
+      &lt;element name="td"&gt;
+        &lt;ref name="xhtml.td.attlist"/&gt;
+        &lt;ref name="xhtml.td.content"/&gt;        
+      &lt;/element&gt;
+    &lt;/define&gt;
+    &lt;define name="xhtml.td.attlist"&gt;
+      &lt;ref name="xhtml.Cell.attrib"/&gt;
+    &lt;/define&gt;
+    &lt;define name="xhtml.td.content"&gt;
+        &lt;ref name="xhtml.Flow.model"/&gt;    
+    &lt;/define&gt;
+  &lt;/div&gt;
+  &lt;div&gt;
+    &lt;x:h2&gt;Attribute definitions&lt;/x:h2&gt;
+    &lt;define name="xhtml.span.attrib"&gt;
+      &lt;optional&gt;
+        &lt;!-- a:defaultValue="1" --&gt;
+        &lt;attribute name="span"&gt;
+          &lt;ref name="spanNumber.datatype"/&gt;
+        &lt;/attribute&gt;
+      &lt;/optional&gt;
+    &lt;/define&gt;
+    &lt;define name="xhtml.Cell.attrib"&gt;
+      &lt;ref name="xhtml.Common.attrib"/&gt;
+      &lt;optional&gt;
+        &lt;attribute name="abbr"&gt;
+          &lt;ref name="Text.datatype"/&gt;
+        &lt;/attribute&gt;
+      &lt;/optional&gt;
+      &lt;optional&gt;
+        &lt;attribute name="axis"/&gt;
+      &lt;/optional&gt;
+      &lt;optional&gt;
+        &lt;!-- a:defaultValue="1" --&gt;
+        &lt;attribute name="colspan"&gt;
+          &lt;ref name="Number.datatype"/&gt;
+        &lt;/attribute&gt;
+      &lt;/optional&gt;
+      &lt;optional&gt;
+        &lt;attribute name="headers"&gt;
+          &lt;ref name="IDREFS.datatype"/&gt;
+        &lt;/attribute&gt;
+      &lt;/optional&gt;
+      &lt;optional&gt;
+        &lt;!-- a:defaultValue="1" --&gt;
+        &lt;attribute name="rowspan"&gt;
+          &lt;ref name="Number.datatype"/&gt;
+        &lt;/attribute&gt;
+      &lt;/optional&gt;
+      &lt;ref name="xhtml.scope.attrib"/&gt;
+    &lt;/define&gt;
+    &lt;define name="xhtml.scope.attrib"&gt;
+      &lt;optional&gt;
+        &lt;attribute name="scope"&gt;
+          &lt;choice&gt;
+            &lt;value&gt;row&lt;/value&gt;
+            &lt;value&gt;col&lt;/value&gt;
+            &lt;value&gt;rowgroup&lt;/value&gt;
+            &lt;value&gt;colgroup&lt;/value&gt;
+          &lt;/choice&gt;
+        &lt;/attribute&gt;
+      &lt;/optional&gt;
+    &lt;/define&gt;
+  &lt;/div&gt;
+  &lt;define name="xhtml.Structural.class" combine="choice"&gt;
+    &lt;ref name="xhtml.table"/&gt;
+  &lt;/define&gt;
+&lt;/grammar&gt;
+</pre>
+<!-- END OF FILE RELAXNG/xhtml-table-2.rng.mhtml -->
+<h2 >
+<a id="a_relaxngsupport" >C.2.</a> XHTML RELAX NG Support Modules
+</h2>
+<p>The modules in this section are elements and attributes of
+the XHTML RELAX NG implementation that, while hidden from casual users,
+are important to understand when creating derivative markup languages
+using the Modularization architecture.</p>
+<h3 >
+<a id="a_rmodule_Datatypes" >C.2.1.</a> Datatypes
+</h3>
+<!-- INCLUDING SCHEMA RELAXNG/xhtml-datatypes-2.rng -->
+<pre class="dtd">
+&lt;?xml version="1.0" encoding="UTF-8"?&gt;
+&lt;grammar xmlns="http://relaxng.org/ns/structure/1.0"
+         xmlns:x="http://www.w3.org/1999/xhtml"
+         datatypeLibrary="http://www.w3.org/2001/XMLSchema-datatypes"&gt;
+  &lt;x:h1&gt;Datatypes Module&lt;/x:h1&gt;
+  &lt;div&gt;
+    &lt;x:h2&gt;Datatypes defined in XML 1.0&lt;/x:h2&gt;
+    &lt;define name="CDATA.datatype"&gt;
+      &lt;text/&gt;
+    &lt;/define&gt;
+    &lt;define name="ID.datatype"&gt;
+      &lt;data type="ID"/&gt;
+    &lt;/define&gt;
+    &lt;define name="IDREF.datatype"&gt;
+      &lt;data type="IDREF"/&gt;
+    &lt;/define&gt;
+    &lt;define name="IDREFS.datatype"&gt;
+      &lt;data type="IDREFS"/&gt;
+    &lt;/define&gt;
+    &lt;define name="NAME.datatype"&gt;
+      &lt;data type="Name"/&gt;
+    &lt;/define&gt;
+    &lt;define name="NMTOKEN.datatype"&gt;
+      &lt;data type="NMTOKEN"/&gt;
+    &lt;/define&gt;
+    &lt;define name="NMTOKENS.datatype"&gt;
+      &lt;data type="NMTOKENS"/&gt;
+    &lt;/define&gt;
+  &lt;/div&gt;
+  &lt;div&gt;
+    &lt;x:h2&gt;CURIE Datatypes&lt;/x:h2&gt;
+    &lt;define name="CURIE.datatype"&gt;
+      &lt;x:p&gt;A single curie&lt;/x:p&gt;
+      &lt;data type="string"&gt;
+        &lt;param name="pattern"&gt;(([\i-[:]][\c-[:]]*)?:)?.+&lt;/param&gt;
+        &lt;param name="minLength"&gt;1&lt;/param&gt;
+      &lt;/data&gt;
+    &lt;/define&gt;
+    &lt;define name="CURIEs.datatype"&gt;
+      &lt;x:p&gt;A whitespace separated list of CURIEs&lt;/x:p&gt;
+      &lt;list&gt;
+        &lt;oneOrMore&gt;
+          &lt;ref name="CURIE.datatype"/&gt;
+        &lt;/oneOrMore&gt;
+      &lt;/list&gt;	
+    &lt;/define&gt;
+    &lt;define name="SafeCURIE.datatype"&gt;
+      &lt;x:p&gt;A single safe_curie&lt;/x:p&gt;
+      &lt;data type="string"&gt;
+        &lt;param name="pattern"&gt;\[(([\i-[:]][\c-[:]]*)?:)?.+\]&lt;/param&gt;
+        &lt;param name="minLength"&gt;3&lt;/param&gt;
+      &lt;/data&gt;
+    &lt;/define&gt;
+    &lt;define name="SafeCURIEs.datatype"&gt;
+      &lt;x:p&gt;A whitespace separated list of SafeCURIEs&lt;/x:p&gt;
+      &lt;list&gt;
+        &lt;oneOrMore&gt;
+          &lt;ref name="SafeCURIE.datatype"/&gt;
+        &lt;/oneOrMore&gt;
+      &lt;/list&gt;	    
+    &lt;/define&gt;
+    &lt;define name="URIorSafeCURIE.datatype"&gt;
+      &lt;x:p&gt;A URI or a SafeCURIE (since you need a SafeCURIE 
+        to disambiguate between a common URI and a CURIE)&lt;/x:p&gt;
+      &lt;choice&gt;
+        &lt;ref name="URI.datatype"/&gt;
+        &lt;ref name="CURIE.datatype"/&gt;
+      &lt;/choice&gt;
+    &lt;/define&gt;
+    &lt;define name="URIorSafeCURIEs.datatype"&gt;
+      &lt;x:p&gt;A whitespace separated list of URIorSafeCURIEs&lt;/x:p&gt;
+      &lt;list&gt;
+        &lt;oneOrMore&gt;
+          &lt;ref name="URIorSafeCURIE.datatype"/&gt;
+        &lt;/oneOrMore&gt;
+      &lt;/list&gt;    
+    &lt;/define&gt;    
+  &lt;/div&gt;
+  &lt;div&gt;
+    &lt;x:h2&gt;Additional Datatypes&lt;/x:h2&gt;
+    &lt;define name="Character.datatype"&gt;
+      &lt;x:p&gt;A single character, as per section 2.2 of [XML].&lt;/x:p&gt;
+      &lt;data type="string"&gt;
+        &lt;param name="length"&gt;1&lt;/param&gt;
+      &lt;/data&gt;
+    &lt;/define&gt;
+    &lt;define name="Characters.datatype"&gt;
+      &lt;data type="string"/&gt;
+    &lt;/define&gt;
+    &lt;define name="Charset.datatype"&gt;
+      &lt;x:p&gt;A character encoding, as per [RFC2045]&lt;/x:p&gt;
+      &lt;text/&gt;
+    &lt;/define&gt;
+    &lt;define name="Encodings.datatype"&gt;
+      &lt;x:p&gt;A comma-separated list of 'charset's with optional q parameters,
+        as defined in section 14.2 of [RFC2616] as the field value of
+        the Accept-Charset request header.&lt;/x:p&gt;
+      &lt;text/&gt;
+    &lt;/define&gt;
+    &lt;define name="ContentType.datatype"&gt;
+      &lt;x:p&gt;Media type, as per [RFC2045]&lt;/x:p&gt;
+      &lt;text/&gt;
+    &lt;/define&gt;
+    &lt;define name="ContentTypes.datatype"&gt;
+      &lt;x:p&gt;A list of media ranges with optional accept parameters,
+        as defined in section 14.1 of [RFC2616] as the field value
+        of the accept request header.&lt;/x:p&gt;
+      &lt;text/&gt;
+    &lt;/define&gt;
+    &lt;define name="Coordinates.datatype"&gt;
+      &lt;x:p&gt;Comma separated list of Lengths used in defining areas.&lt;/x:p&gt;
+      &lt;data type="string"&gt;
+        &lt;param name="pattern"&gt;(\d+|\d+(\.\d+)?%)(,\s*(\d+|\d+(\.\d+)?%))*&lt;/param&gt;
+      &lt;/data&gt;
+    &lt;/define&gt;
+    &lt;define name="Datetime.datatype"&gt;
+      &lt;x:p&gt;Date and time information, as defined by the type dateTime
+        in [XMLSCHEMA].&lt;/x:p&gt;
+      &lt;data type="dateTime"/&gt;
+    &lt;/define&gt;
+    &lt;define name="HrefTarget.datatype"&gt;
+      &lt;x:p&gt;Name used as destination for results of certain actions.&lt;/x:p&gt;
+      &lt;ref name="NMTOKEN.datatype"/&gt;
+    &lt;/define&gt;
+    &lt;define name="LanguageCode.datatype"&gt;
+      &lt;x:p&gt;A language code, as per [RFC3066].&lt;/x:p&gt;
+      &lt;data type="language"/&gt;
+    &lt;/define&gt;
+    &lt;define name="LanguageCodes.datatype"&gt;
+      &lt;x:p&gt;A comma-separated list of language ranges.&lt;/x:p&gt;
+      &lt;text/&gt;
+    &lt;/define&gt;
+    &lt;define name="Length.datatype"&gt;
+      &lt;x:p&gt;The value may be either in pixels or a percentage of the available
+        horizontal or vertical space. Thus, the value "50%" means half of
+        the available space.&lt;/x:p&gt;
+      &lt;data type="string"&gt;
+        &lt;param name="pattern"&gt;(\d+|\d+(\.\d+)?%)&lt;/param&gt;
+      &lt;/data&gt;
+    &lt;/define&gt;
+    &lt;define name="LocationPath.datatype"&gt;
+      &lt;x:p&gt;A location path as defined in [XPATH].&lt;/x:p&gt;
+      &lt;text/&gt;
+    &lt;/define&gt;
+    &lt;define name="MediaDesc.datatype"&gt;
+      &lt;x:p&gt;A comma-separated list of media descriptors as described by [CSS].
+        The default is all.&lt;/x:p&gt;
+      &lt;data type="string"&gt;
+        &lt;param name="pattern"&gt;[^,]+(,\s*[^,]+)*&lt;/param&gt;
+      &lt;/data&gt;
+    &lt;/define&gt;
+    &lt;define name="Number.datatype"&gt;
+      &lt;x:p&gt;One or more digits (NUMBER).&lt;/x:p&gt;
+      &lt;data type="nonNegativeInteger"&gt;
+        &lt;param name="pattern"&gt;[0-9]+&lt;/param&gt;
+      &lt;/data&gt;
+    &lt;/define&gt;
+    &lt;define name="spanNumber.datatype"&gt;
+      &lt;x:p&gt;span: this attribute value must be an integer &gt; 0;
+        the default value is 1.&lt;/x:p&gt;
+      &lt;data type="positiveInteger"&gt;
+        &lt;param name="pattern"&gt;[0-9]+&lt;/param&gt;
+      &lt;/data&gt;
+    &lt;/define&gt;
+    &lt;define name="QName.datatype"&gt;
+      &lt;x:p&gt;An [XMLNS]-qualified name.&lt;/x:p&gt;
+      &lt;data type="QName"/&gt;
+    &lt;/define&gt;
+    &lt;define name="QNames.datatype"&gt;
+      &lt;x:p&gt;One or more white space separated QName values.&lt;/x:p&gt;
+      &lt;list&gt;
+        &lt;oneOrMore&gt;
+          &lt;data type="QName"/&gt;
+        &lt;/oneOrMore&gt;
+      &lt;/list&gt;
+    &lt;/define&gt;
+    &lt;define name="prefixedQName.datatype"&gt;
+      &lt;x:p&gt;An [XMLNS]-qualified name.&lt;/x:p&gt;
+      &lt;data type="QName"&gt;
+        &lt;param name="pattern"&gt;[\i-[:]][\c-[:]]*:[\i-[:]][\c-[:]]*&lt;/param&gt;
+      &lt;/data&gt;
+    &lt;/define&gt;
+    &lt;define name="Shape.datatype"&gt;
+      &lt;x:p&gt;The shape of a region.&lt;/x:p&gt;
+      &lt;choice&gt;
+        &lt;value&gt;default&lt;/value&gt;
+        &lt;value&gt;rect&lt;/value&gt;
+        &lt;value&gt;circle&lt;/value&gt;
+        &lt;value&gt;poly&lt;/value&gt;
+      &lt;/choice&gt;
+    &lt;/define&gt;
+    &lt;define name="Text.datatype"&gt;
+      &lt;x:p&gt;Arbitrary textual data, likely meant to be human-readable.&lt;/x:p&gt;
+      &lt;text/&gt;
+    &lt;/define&gt;
+    &lt;define name="URI.datatype"&gt;
+      &lt;x:p&gt;A Uniform Resource Identifier Reference, as defined by the type
+        anyURI in [XMLSCHEMA].&lt;/x:p&gt;
+      &lt;data type="anyURI"/&gt;
+    &lt;/define&gt;
+    &lt;define name="URIs.datatype"&gt;
+      &lt;x:p&gt;A space-separated list of URIs as defined above.&lt;/x:p&gt;
+      &lt;list&gt;
+        &lt;oneOrMore&gt;
+          &lt;ref name="URI.datatype"/&gt;
+        &lt;/oneOrMore&gt;
+      &lt;/list&gt;
+    &lt;/define&gt;
+    &lt;define name="Boolean.datatype"&gt;
+      &lt;choice&gt;
+	    &lt;value&gt;true&lt;/value&gt;
+	    &lt;value&gt;false&lt;/value&gt;
+	  &lt;/choice&gt;
+	&lt;/define&gt;
+  &lt;/div&gt;
+&lt;/grammar&gt;
+</pre>
+<!-- END OF FILE RELAXNG/xhtml-datatypes-2.rng.mhtml -->
+<h3 >
+<a id="a_rmodule_Events" >C.2.2.</a> Events
+</h3>
+<!-- INCLUDING SCHEMA RELAXNG/xhtml-events-2.rng -->
+<pre class="dtd">
+&lt;?xml version="1.0" encoding="UTF-8"?&gt;
+&lt;grammar xmlns="http://relaxng.org/ns/structure/1.0"
+         xmlns:ev="http://www.w3.org/2001/xml-events"
+         xmlns:a="http://relaxng.org/ns/compatibility/annotations/1.0"
+         xmlns:x="http://www.w3.org/1999/xhtml"&gt;
+  &lt;x:h1&gt;Events Attribute Collection Module&lt;/x:h1&gt;
+  &lt;x:p&gt;This module imports the XMLEvents 2 modules, and
+  contextualizes them for the XHTML2 document type.&lt;/x:p&gt;
+    &lt;x:h2&gt;XHTML Events&lt;/x:h2&gt;
+    &lt;div&gt;
+      &lt;include href="xml-events-2.rng" /&gt;
+      &lt;define name="xmlEvents.Common.attrib" combine="interleave"&gt;
+        &lt;ref name="CommonNoEvents.attrib"/&gt;
+      &lt;/define&gt;
+      &lt;define name="xhtml.head.misc" combine="choice"&gt;
+      	&lt;ref name="xmlEvents.listener"/&gt;
+      &lt;/define&gt;
+      &lt;define name="xhtml.Structural.class" combine="choice"&gt;
+        &lt;ref name="xmlEvents.listener"/&gt;
+      &lt;/define&gt;
+    &lt;/div&gt;
+    &lt;x:h2&gt;XML Handlers&lt;/x:h2&gt;
+    &lt;div&gt;
+      &lt;include href="xml-handlers-2.rng" /&gt;
+      &lt;define name="xmlHandlers.Common.attrib" combine="interleave"&gt; 
+        &lt;ref name="CommonNoEvents.attrib"/&gt; 
+      &lt;/define&gt;                
+      &lt;define name="xhtml.head.misc" combine="choice"&gt;
+        &lt;ref name="xmlHandlers.action"/&gt;
+      &lt;/define&gt;
+      &lt;define name="xhtml.Structural.class" combine="choice"&gt;
+        &lt;ref name="xmlHandlers.action"/&gt;
+      &lt;/define&gt;
+    &lt;/div&gt;
+    &lt;x:h2&gt;XML Scripting&lt;/x:h2&gt;
+    &lt;div&gt;
+      &lt;include href="xml-script-2.rng"&gt;
+        &lt;define name="xmlScripting.script.attlist"&gt;    
+          &lt;ref name="xmlScripting.implements.attrib"/&gt;
+          &lt;ref name="xmlScripting.charset.attrib"/&gt;
+          &lt;ref name="xhtml.Common.attrib"/&gt;
+        &lt;/define&gt; 
+      &lt;/include&gt;
+      &lt;define name="xmlHandlers.action.content" combine="choice"&gt;
+        &lt;ref name="xmlScripting.script"/&gt;
+      &lt;/define&gt;
+      &lt;define name="xhtml.head.misc" combine="choice"&gt;
+        &lt;ref name="xmlScripting.script"/&gt;
+      &lt;/define&gt;
+      &lt;define name="xhtml.Structural.class" combine="choice"&gt;
+        &lt;ref name="xmlScripting.script"/&gt;
+      &lt;/define&gt;
+      &lt;define name="xhtml.Text.class" combine="choice"&gt;
+        &lt;ref name="xmlScripting.script"/&gt;
+      &lt;/define&gt;
+    &lt;/div&gt;
+  &lt;x:h2&gt;Events Global Attributes Collection&lt;/x:h2&gt;
+  &lt;div&gt;
+    &lt;define name="Events.attrib"&gt;
+      &lt;optional&gt;
+        &lt;ref name="xmlEvents.event.attrib"/&gt;
+      &lt;/optional&gt;
+      &lt;optional&gt;
+        &lt;ref name="xmlEvents.observer.attrib"/&gt;
+      &lt;/optional&gt;    
+      &lt;optional&gt;
+        &lt;ref name="xmlEvents.eventTarget.attrib"/&gt;
+      &lt;/optional&gt;
+      &lt;optional&gt;
+        &lt;ref name="xmlEvents.function.attrib"/&gt;
+      &lt;/optional&gt;
+      &lt;optional&gt;
+        &lt;ref name="xmlEvents.handler.attrib"/&gt;
+      &lt;/optional&gt;    
+      &lt;optional&gt;
+        &lt;ref name="xmlEvents.phase.attrib"/&gt;
+      &lt;/optional&gt;    
+      &lt;optional&gt;
+        &lt;ref name="xmlEvents.propagate.attrib"/&gt;
+      &lt;/optional&gt;
+      &lt;optional&gt;
+        &lt;ref name="xmlEvents.defaultAction.attrib"/&gt;
+      &lt;/optional&gt;
+    &lt;/define&gt;
+  &lt;/div&gt;
+  &lt;define name="xhtml.Common.attrib" combine="interleave"&gt;
+    &lt;ref name="Events.attrib"/&gt;
+  &lt;/define&gt;
+  &lt;!-- A specialized class to avoid duplicate includes of events attributes.
+  This class should be an echo of Common.attrib, minus Events.attrib 
+  We break the pattern of modules contributing themselves to global
+  classes, since this is a local concern.
+   --&gt;
+  &lt;define name="CommonNoEvents.attrib"&gt;
+    &lt;ref name="xhtml.Common.extra.attrib"/&gt;    
+    &lt;ref name="xhtml.Core.attrib"/&gt;
+    &lt;ref name="xhtml.Edit.attrib"/&gt;
+    &lt;ref name="xhtml.Embedding.attrib"/&gt;
+    &lt;ref name="xhtml.Hypertext.attrib"/&gt;
+    &lt;ref name="xhtml.I18n.attrib"/&gt;
+    &lt;ref name="xhtml.role.attrib"/&gt;
+    &lt;ref name="rdfa.Metadata.attrib"/&gt;
+    &lt;ref name="xhtml.media.attrib"/&gt;
+    &lt;ref name="xhtml.style.attrib"/&gt;
+    &lt;ref name="xhtml.Map.attrib"/&gt;
+  &lt;/define&gt;
+&lt;/grammar&gt;
+</pre>
+<!-- END OF FILE RELAXNG/xhtml-events-2.rng.mhtml -->
+<h3 >
+<a id="a_rmodule_Param" >C.2.3.</a> Param
+</h3>
+<!-- INCLUDING SCHEMA RELAXNG/xhtml-param-2.rng -->
+<pre class="dtd">
+&lt;?xml version="1.0" encoding="UTF-8"?&gt;
+&lt;grammar xmlns="http://relaxng.org/ns/structure/1.0"         
+         xmlns:x="http://www.w3.org/1999/xhtml"&gt;
+  &lt;x:h1&gt;Param Module&lt;/x:h1&gt;
+  &lt;div&gt;
+    &lt;x:h2&gt;The param element&lt;/x:h2&gt;
+    &lt;define name="xhtml.param"&gt;
+      &lt;element name="param"&gt;
+        &lt;ref name="xhtml.param.attlist"/&gt;
+        &lt;empty/&gt;
+      &lt;/element&gt;
+    &lt;/define&gt;
+    &lt;define name="xhtml.param.attlist"&gt;
+      &lt;attribute name="name"/&gt;
+      &lt;optional&gt;
+        &lt;attribute name="value"/&gt;
+      &lt;/optional&gt;
+      &lt;optional&gt;
+        &lt;!-- a:defaultValue="data" --&gt;
+        &lt;attribute name="valuetype"&gt;
+          &lt;choice&gt;
+            &lt;value&gt;data&lt;/value&gt;
+            &lt;value&gt;ref&lt;/value&gt;
+            &lt;value&gt;object&lt;/value&gt;
+          &lt;/choice&gt;
+        &lt;/attribute&gt;
+      &lt;/optional&gt;
+      &lt;optional&gt;
+        &lt;attribute name="type"&gt;
+          &lt;ref name="ContentTypes.datatype"/&gt;
+        &lt;/attribute&gt;
+      &lt;/optional&gt;
+    &lt;/define&gt;
+  &lt;/div&gt;
+&lt;/grammar&gt;
+</pre>
+<!-- END OF FILE RELAXNG/xhtml-param-2.rng.mhtml -->
+<h3 >
+<a id="a_rmodule_Caption" >C.2.4.</a> Caption
+</h3>
+<!-- INCLUDING SCHEMA RELAXNG/xhtml-caption-2.rng -->
+<pre class="dtd">
+&lt;?xml version="1.0" encoding="UTF-8"?&gt;
+&lt;grammar xmlns="http://relaxng.org/ns/structure/1.0"         
+         xmlns:x="http://www.w3.org/1999/xhtml"&gt;
+  &lt;x:h1&gt;Caption Module&lt;/x:h1&gt;
+  &lt;div&gt;
+    &lt;x:h2&gt;The caption element&lt;/x:h2&gt;
+    &lt;define name="xhtml.caption"&gt;
+      &lt;element name="caption"&gt;
+        &lt;ref name="xhtml.caption.attlist"/&gt;
+        &lt;ref name="xhtml.caption.content"/&gt;        
+      &lt;/element&gt;
+    &lt;/define&gt;
+    &lt;define name="xhtml.caption.attlist"&gt;
+      &lt;ref name="xhtml.Common.attrib"/&gt;
+    &lt;/define&gt;
+    &lt;define name="xhtml.caption.content"&gt;
+      &lt;ref name="xhtml.Text.model"/&gt;
+    &lt;/define&gt;    
+    &lt;define name="xhtml.Text.class" combine="choice"&gt;
+      &lt;ref name="xhtml.caption"/&gt;
+    &lt;/define&gt;
+  &lt;/div&gt;
+&lt;/grammar&gt;
+</pre>
+<!-- END OF FILE RELAXNG/xhtml-caption-2.rng.mhtml -->
+<h3 >
+<a id="a_rmodule_Role_Attribute" >C.2.5.</a> Role Attribute
+</h3>
+<!-- INCLUDING SCHEMA RELAXNG/xhtml-role-attrib-2.rng -->
+<pre class="dtd">
+&lt;?xml version="1.0" encoding="UTF-8"?&gt;
+&lt;grammar xmlns="http://relaxng.org/ns/structure/1.0"
+         xmlns:x="http://www.w3.org/1999/xhtml"&gt;
+  &lt;x:h1&gt;Role Attribute Module&lt;/x:h1&gt;
+  &lt;define name="xhtml.role.attrib"&gt;
+    &lt;optional&gt;
+      &lt;attribute name="role"&gt;
+	    &lt;ref name="role.content"/&gt;        
+      &lt;/attribute&gt;
+    &lt;/optional&gt;
+  &lt;/define&gt;
+  &lt;define name="role.content" combine="choice"&gt;
+    &lt;ref name="CURIEs.datatype"/&gt;
+  &lt;/define&gt;
+  &lt;define name="xhtml.Common.attrib" combine="interleave"&gt;
+    &lt;ref name="xhtml.role.attrib"/&gt;
+  &lt;/define&gt;
+&lt;/grammar&gt;
+</pre>
+<!-- END OF FILE RELAXNG/xhtml-role-attrib-2.rng.mhtml -->
+<h2 >
+<a id="a_relaxnglegacy" >C.3.</a> XHTML RELAX NG Legacy Modules
+</h2>
+<h3 >
+<a id="a_rmodule_Legacy_Edit" >C.3.1.</a> Legacy Edit
+</h3>
+<!-- INCLUDING SCHEMA RELAXNG/xhtml-legacy-edit-2.rng -->
+<pre class="dtd">
+&lt;?xml version="1.0" encoding="UTF-8"?&gt;
+&lt;grammar xmlns="http://relaxng.org/ns/structure/1.0"
+         xmlns:x="http://www.w3.org/1999/xhtml"&gt;
+    &lt;x:h1&gt;Legacy Edit Module&lt;/x:h1&gt;
+    &lt;div&gt;
+      &lt;x:h2&gt;The ins element&lt;/x:h2&gt;     
+      &lt;define name="xhtml.ins"&gt;
+        &lt;element name="ins"&gt;
+          &lt;ref name="xhtml.ins.attlist"/&gt;
+          &lt;ref name="xhtml.ins.content"/&gt;
+        &lt;/element&gt;
+      &lt;/define&gt;
+      &lt;define name="xhtml.ins.attlist"&gt;
+        &lt;ref name="xhtml.Common.attrib"/&gt;
+      &lt;/define&gt;
+      &lt;define name="xhtml.ins.content"&gt;
+        &lt;ref name="xhtml.Text.model"/&gt;
+      &lt;/define&gt;
+    &lt;/div&gt;
+    &lt;div&gt;
+      &lt;x:h2&gt;The del element&lt;/x:h2&gt;     
+      &lt;define name="xhtml.del"&gt;
+        &lt;element name="del"&gt;
+          &lt;ref name="xhtml.del.attlist"/&gt;
+          &lt;ref name="xhtml.del.content"/&gt;
+        &lt;/element&gt;
+      &lt;/define&gt;
+      &lt;define name="xhtml.del.attlist"&gt;
+        &lt;ref name="xhtml.Common.attrib"/&gt;
+      &lt;/define&gt;
+      &lt;define name="xhtml.del.content"&gt;
+        &lt;ref name="xhtml.Text.model"/&gt;
+      &lt;/define&gt;
+    &lt;/div&gt;
+    &lt;define name="xhtml.Text.class" combine="choice"&gt;
+      &lt;ref name="xhtml.ins"/&gt;
+      &lt;ref name="xhtml.del"/&gt;
+    &lt;/define&gt;
+&lt;/grammar&gt;
+</pre>
+<!-- END OF FILE RELAXNG/xhtml-legacy-edit-2.rng.mhtml -->
+<h3 >
+<a id="a_rmodule_Legacy_Headings" >C.3.2.</a> Legacy Headings
+</h3>
+<!-- INCLUDING SCHEMA RELAXNG/xhtml-legacy-heading-2.rng -->
+<pre class="dtd">
+&lt;?xml version="1.0" encoding="UTF-8"?&gt;
+&lt;grammar xmlns="http://relaxng.org/ns/structure/1.0"
+         xmlns:x="http://www.w3.org/1999/xhtml"&gt;
+    &lt;x:h1&gt;Legacy Headings Module&lt;/x:h1&gt;
+    &lt;define name="xhtml.h1"&gt;
+      &lt;element name="h1"&gt;
+        &lt;ref name="xhtml.legacyh.attlist"/&gt;
+        &lt;ref name="xhtml.legacyh.content"/&gt;
+      &lt;/element&gt;
+    &lt;/define&gt;
+    &lt;define name="xhtml.h2"&gt;
+      &lt;element name="h2"&gt;
+        &lt;ref name="xhtml.legacyh.attlist"/&gt;
+        &lt;ref name="xhtml.legacyh.content"/&gt;
+      &lt;/element&gt;
+    &lt;/define&gt;
+    &lt;define name="xhtml.h3"&gt;
+      &lt;element name="h3"&gt;
+        &lt;ref name="xhtml.legacyh.attlist"/&gt;
+        &lt;ref name="xhtml.legacyh.content"/&gt;
+      &lt;/element&gt;
+    &lt;/define&gt;
+    &lt;define name="xhtml.h4"&gt;
+      &lt;element name="h4"&gt;
+        &lt;ref name="xhtml.legacyh.attlist"/&gt;
+        &lt;ref name="xhtml.legacyh.content"/&gt;
+      &lt;/element&gt;
+    &lt;/define&gt;
+    &lt;define name="xhtml.h5"&gt;
+      &lt;element name="h5"&gt;
+        &lt;ref name="xhtml.legacyh.attlist"/&gt;
+        &lt;ref name="xhtml.legacyh.content"/&gt;
+      &lt;/element&gt;
+    &lt;/define&gt;
+    &lt;define name="xhtml.h6"&gt;
+      &lt;element name="h6"&gt;
+        &lt;ref name="xhtml.legacyh.attlist"/&gt;
+        &lt;ref name="xhtml.legacyh.content"/&gt;
+      &lt;/element&gt;
+    &lt;/define&gt;
+    &lt;define name="xhtml.legacyh.attlist"&gt;
+      &lt;ref name="xhtml.Structural.attrib"/&gt;
+    &lt;/define&gt;
+    &lt;define name="xhtml.legacyh.content"&gt;
+      &lt;ref name="xhtml.Text.model"/&gt;
+    &lt;/define&gt;
+    &lt;define name="xhtml.Heading.class" combine="choice"&gt;
+      &lt;choice&gt;
+        &lt;ref name="xhtml.h1"/&gt;
+        &lt;ref name="xhtml.h2"/&gt;
+        &lt;ref name="xhtml.h3"/&gt;
+        &lt;ref name="xhtml.h4"/&gt;
+        &lt;ref name="xhtml.h5"/&gt;
+        &lt;ref name="xhtml.h6"/&gt;
+      &lt;/choice&gt;
+    &lt;/define&gt;
+&lt;/grammar&gt;
+</pre>
+<!-- END OF FILE RELAXNG/xhtml-legacy-heading-2.rng.mhtml -->
+<h3 >
+<a id="a_rmodule_Legacy_Line_Break" >C.3.3.</a> Legacy Line Break
+</h3>
+<!-- INCLUDING SCHEMA RELAXNG/xhtml-legacy-br-2.rng -->
+<pre class="dtd">
+&lt;?xml version="1.0" encoding="UTF-8"?&gt;
+&lt;grammar xmlns="http://relaxng.org/ns/structure/1.0"
+         xmlns:x="http://www.w3.org/1999/xhtml"&gt;
+    &lt;x:h1&gt;Legacy Line Break Module&lt;/x:h1&gt;
+    &lt;define name="xhtml.br"&gt;
+      &lt;element name="br"&gt;
+        &lt;ref name="xhtml.br.attlist"/&gt;
+        &lt;ref name="xhtml.br.content"/&gt;
+      &lt;/element&gt;
+    &lt;/define&gt;
+    &lt;define name="xhtml.br.attlist"&gt;
+      &lt;ref name="xhtml.Common.attrib"/&gt;
+    &lt;/define&gt;
+    &lt;define name="xhtml.br.content"&gt;
+      &lt;empty/&gt;
+    &lt;/define&gt;
+    &lt;define name="xhtml.Text.class" combine="choice"&gt;
+      &lt;ref name="xhtml.br"/&gt;
+    &lt;/define&gt;
+&lt;/grammar&gt;
+</pre>
+<!-- END OF FILE RELAXNG/xhtml-legacy-br-2.rng.mhtml -->
+<h2 >
+<a id="a_relaxng_external" >C.4.</a> RELAX NG External Modules
+</h2>
+<p>These modules are not defined by XHTML, but these definitions are
+included here for completeness.</p>
+<h3 >
+<a id="a_rmodule_Ruby" >C.4.1.</a> Ruby
+</h3>
+<!-- INCLUDING SCHEMA RELAXNG/ruby-1.rng -->
+<pre class="dtd">
+&lt;?xml version="1.0" encoding="UTF-8"?&gt;
+&lt;grammar xmlns="http://relaxng.org/ns/structure/1.0"
+         xmlns:a="http://relaxng.org/ns/compatibility/annotations/1.0"
+         xmlns:x="http://www.w3.org/1999/xhtml"
+         datatypeLibrary="http://www.w3.org/2001/XMLSchema-datatypes"&gt;
+  &lt;x:h1&gt;Ruby Module in RELAX NG&lt;/x:h1&gt;
+  &lt;x:pre&gt;
+    Ruby Elements
+      ruby, rbc, rtc, rb, rt, rp
+    This module defines grammars to support ruby annotation markup.
+    This module is based on the W3C Ruby Annotation Specification:
+      http://www.w3.org/TR/ruby
+    Copyright &amp;#xA9;2003 W3C&amp;#xAE; (MIT, ERCIM, Keio), All Rights Reserved.
+      Editor:   Masayasu Ishikawa &amp;lt;mimasa@w3.org&amp;gt;
+      Revision: &#36;Id: ruby-1.rng,v 1.9 2004/07/21 09:46:41 mimasa Exp &#36;
+    Permission to use, copy, modify and distribute this RELAX NG schema
+    for Ruby Annotation and its accompanying documentation for any purpose
+    and without fee is hereby granted in perpetuity, provided that the above
+    copyright notice and this paragraph appear in all copies. The copyright
+    holders make no representation about the suitability of this RELAX NG
+    schema for any purpose.
+    It is provided "as is" without expressed or implied warranty.
+    For details, please refer to the W3C software license at:
+      &lt;x:a href="http://www.w3.org/Consortium/Legal/copyright-software"
+      &gt;http://www.w3.org/Consortium/Legal/copyright-software&lt;/x:a&gt;
+  &lt;/x:pre&gt;
+  &lt;div&gt;
+    &lt;x:h2&gt;patterns for the content model of the ruby element&lt;/x:h2&gt;
+    &lt;define name="Ruby.content.simple"&gt;
+      &lt;x:p&gt;Content model of simple ruby&lt;/x:p&gt;
+      &lt;group&gt;
+        &lt;ref name="rb"/&gt;
+        &lt;choice&gt;
+          &lt;ref name="rt-simple"/&gt;
+          &lt;group&gt;
+            &lt;ref name="rp"/&gt;
+            &lt;ref name="rt-simple"/&gt;
+            &lt;ref name="rp"/&gt;
+          &lt;/group&gt;
+        &lt;/choice&gt;
+      &lt;/group&gt;
+    &lt;/define&gt;
+    &lt;define name="Ruby.content.complex"&gt;
+      &lt;x:p&gt;Content model of complex ruby&lt;/x:p&gt;
+      &lt;group&gt;
+        &lt;ref name="rbc"/&gt;
+        &lt;ref name="rtc"/&gt;
+        &lt;optional&gt;
+          &lt;ref name="rtc"/&gt;
+        &lt;/optional&gt;
+      &lt;/group&gt;
+    &lt;/define&gt;
+    &lt;define name="Ruby.content"&gt;
+      &lt;x:p&gt;Simple ruby is used by default&lt;/x:p&gt;
+      &lt;ref name="Ruby.content.simple"/&gt;
+    &lt;/define&gt;
+  &lt;/div&gt;
+  &lt;div&gt;
+    &lt;x:h2&gt;Ruby Elements&lt;/x:h2&gt;
+    &lt;x:h3&gt;ruby element&lt;/x:h3&gt;
+    &lt;define name="ruby"&gt;
+      &lt;element name="ruby"&gt;
+        &lt;ref name="Ruby.content"/&gt;
+        &lt;ref name="Ruby.common.attrib"/&gt;
+      &lt;/element&gt;
+    &lt;/define&gt;
+    &lt;x:h3&gt;rbc (ruby base component) element&lt;/x:h3&gt;
+    &lt;define name="rbc"&gt;
+      &lt;element name="rbc"&gt;
+        &lt;oneOrMore&gt;
+          &lt;ref name="rb"/&gt;
+        &lt;/oneOrMore&gt;
+        &lt;ref name="Ruby.common.attrib"/&gt;
+      &lt;/element&gt;
+    &lt;/define&gt;
+    &lt;x:h3&gt;rtc (ruby text component) element&lt;/x:h3&gt;
+    &lt;define name="rtc"&gt;
+      &lt;element name="rtc"&gt;
+        &lt;oneOrMore&gt;
+          &lt;ref name="rt-complex"/&gt;
+        &lt;/oneOrMore&gt;
+        &lt;ref name="Ruby.common.attrib"/&gt;
+      &lt;/element&gt;
+    &lt;/define&gt;
+    &lt;x:h3&gt;rb (ruby base) element&lt;/x:h3&gt;
+    &lt;define name="rb"&gt;
+      &lt;element name="rb"&gt;
+        &lt;ref name="NoRuby.content"/&gt;
+        &lt;ref name="Ruby.common.attrib"/&gt;
+      &lt;/element&gt;
+    &lt;/define&gt;
+    &lt;x:h3&gt;rt (ruby text) element&lt;/x:h3&gt;
+    &lt;define name="rt-simple"&gt;
+      &lt;x:p&gt;grammar for simple ruby&lt;/x:p&gt;
+      &lt;x:p&gt;rbspan attribute is not allowed in simple ruby&lt;/x:p&gt;
+      &lt;element name="rt"&gt;
+        &lt;ref name="NoRuby.content"/&gt;
+        &lt;ref name="Ruby.common.attrib"/&gt;
+      &lt;/element&gt;
+    &lt;/define&gt;
+    &lt;define name="rt-complex"&gt;
+      &lt;x:p&gt;grammar for complex ruby&lt;/x:p&gt;
+      &lt;element name="rt"&gt;
+        &lt;ref name="NoRuby.content"/&gt;
+        &lt;ref name="Ruby.common.attrib"/&gt;
+        &lt;optional&gt;
+          &lt;!-- mgylling: remove a:defaultValue="1" on rbspan as it competes with
+          the rt-simple pattern. See http://lists.dsdl.org/dsdl-discuss/2008-05/0003.html
+          Jing does not catch this, but MSV does.
+          --&gt;
+          &lt;attribute name="rbspan"&gt;
+            &lt;data type="positiveInteger"&gt;
+              &lt;param name="pattern"&gt;[1-9][0-9]*&lt;/param&gt;
+            &lt;/data&gt;
+          &lt;/attribute&gt;
+        &lt;/optional&gt;
+      &lt;/element&gt;
+    &lt;/define&gt;
+    &lt;x:h3&gt;rp (ruby parenthesis) element&lt;/x:h3&gt;
+    &lt;define name="rp"&gt;
+      &lt;element name="rp"&gt;
+        &lt;text/&gt;
+        &lt;ref name="Ruby.common.attrib"/&gt;
+      &lt;/element&gt;
+    &lt;/define&gt;
+  &lt;/div&gt;
+  &lt;div&gt;
+    &lt;x:h2&gt;Ruby Common Attributes&lt;/x:h2&gt;
+    &lt;x:p&gt;Ruby elements are intended to have common attributes of its
+      parent markup language. The pattern "xhtml.Common.attrib" MUST be
+      defined to integrate this module.&lt;/x:p&gt;
+    &lt;define name="Ruby.common.attrib"&gt;
+      &lt;ref name="xhtml.Common.attrib"/&gt;
+    &lt;/define&gt;
+  &lt;/div&gt;
+  &lt;div&gt;
+    &lt;x:p&gt;Content models of the rb and the rt elements are intended to
+      allow other inline-level elements of its parent markup language,
+      but it should not include ruby descendent elements. This RELAX NG
+      module itself doesn't check nesting of ruby elements.
+      The patterns "Inline.class" and "Inline.model" MUST be defined
+      to integrate this module.&lt;/x:p&gt;
+    &lt;define name="Inline.class" combine="choice"&gt;
+      &lt;ref name="ruby"/&gt;
+    &lt;/define&gt;
+    &lt;define name="NoRuby.content"&gt;
+      &lt;ref name="Inline.model"/&gt;
+    &lt;/define&gt;
+  &lt;/div&gt;
+&lt;/grammar&gt;
+</pre>
+<!-- END OF FILE RELAXNG/ruby-1.rng.mhtml -->
+<h3 >
+<a id="a_rmodule_Ruby_Driver_for_Full_Ruby_Markup" >C.4.2.</a> Ruby Driver for Full Ruby Markup
+</h3>
+<!-- INCLUDING SCHEMA RELAXNG/full-ruby-1.rng -->
+<pre class="dtd">
+&lt;?xml version="1.0" encoding="UTF-8"?&gt;
+&lt;grammar xmlns="http://relaxng.org/ns/structure/1.0"
+         xmlns:x="http://www.w3.org/1999/xhtml"&gt;
+  &lt;x:h1&gt;Ruby Module in RELAX NG for full ruby markup&lt;/x:h1&gt;
+  &lt;x:pre&gt;
+    Copyright &amp;#xA9;2003 W3C&amp;#xAE; (MIT, ERCIM, Keio), All Rights Reserved.
+      Editor:   Masayasu Ishikawa &amp;lt;mimasa@w3.org&amp;gt;
+      Revision: &#36;Id: full-ruby-1.rng,v 1.4 2003/04/30 06:50:03 mimasa Exp &#36;
+  &lt;/x:pre&gt;
+  &lt;include href="ruby-1.rng"/&gt;
+  &lt;define name="Ruby.content" combine="choice"&gt;
+    &lt;x:p&gt;Allow complex ruby markup in addition to simple ruby markup&lt;/x:p&gt;
+    &lt;ref name="Ruby.content.complex"/&gt;
+  &lt;/define&gt;
+&lt;/grammar&gt;
+</pre>
+<!-- END OF FILE RELAXNG/full-ruby-1.rng.mhtml -->
+<h3 >
+<a id="a_rmodule_XML_Events" >C.4.3.</a> XML Events
+</h3>
+<!-- INCLUDING SCHEMA RELAXNG/xml-events-2.rng -->
+<pre class="dtd">
+&lt;?xml version="1.0" encoding="UTF-8"?&gt;
+&lt;grammar xmlns="http://relaxng.org/ns/structure/1.0"         
+         xmlns:x="http://www.w3.org/1999/xhtml"
+         datatypeLibrary="http://www.w3.org/2001/XMLSchema-datatypes"&gt;
+  &lt;x:h1&gt;XML Events Module in RELAX NG&lt;/x:h1&gt;
+  &lt;x:pre&gt;
+    This is the RELAX NG Schema for the XML Events 2 XML Events module.
+    Copyright &amp;#xA9;2003-2009 W3C&amp;#xAE; (MIT, ERCIM, Keio), All Rights Reserved.
+    URI: http://www.w3.org/MarkUp/RELAXNG/xml-events-2.rng
+    Editors:   Masayasu Ishikawa &amp;lt;mimasa@w3.org&amp;gt;
+               Markus Gylling &amp;lt;markus.gylling@tpb.se&amp;gt;
+    Revision: &#36;Id: xml-events-2.rng,v 1.1.2.3 2009/02/25 12:09:46 mgylling Exp &#36;
+    Permission to use, copy, modify and distribute this RELAX NG schema
+    for XML Events and its accompanying documentation for any purpose and
+    without fee is hereby granted in perpetuity, provided that the above
+    copyright notice and this paragraph appear in all copies. The copyright
+    holders make no representation about the suitability of this RELAX NG
+    schema for any purpose.
+    It is provided "as is" without expressed or implied warranty.
+    For details, please refer to the W3C software license at:
+      &lt;x:a href="http://www.w3.org/Consortium/Legal/copyright-software"
+      &gt;http://www.w3.org/Consortium/Legal/copyright-software&lt;/x:a&gt;
+  &lt;/x:pre&gt;
+  &lt;define name="xmlEvents.listener"&gt;
+    &lt;element name="listener"&gt;
+      &lt;ref name="xmlEvents.listener.attlist"/&gt;
+    &lt;/element&gt;
+  &lt;/define&gt;
+  &lt;define name="xmlEvents.listener.attlist"&gt;
+	&lt;ref name="xmlEvents.event.attrib"/&gt;
+    &lt;optional&gt;
+      &lt;ref name="xmlEvents.observer.attrib"/&gt;
+    &lt;/optional&gt;    
+    &lt;optional&gt;
+      &lt;ref name="xmlEvents.eventTarget.attrib"/&gt;
+    &lt;/optional&gt;
+    &lt;optional&gt;
+	  &lt;ref name="xmlEvents.function.attrib"/&gt;
+	&lt;/optional&gt;
+    &lt;optional&gt;
+      &lt;ref name="xmlEvents.handler.attrib"/&gt;
+    &lt;/optional&gt;    
+    &lt;optional&gt;
+      &lt;ref name="xmlEvents.phase.attrib"/&gt;
+    &lt;/optional&gt;    
+    &lt;optional&gt;
+      &lt;ref name="xmlEvents.propagate.attrib"/&gt;
+    &lt;/optional&gt;
+    &lt;optional&gt;
+      &lt;ref name="xmlEvents.defaultAction.attrib"/&gt;
+    &lt;/optional&gt;
+    &lt;ref name="xmlEvents.Common.attrib"/&gt;    
+  &lt;/define&gt;
+  &lt;define name="xmlEvents.Common.attrib"&gt; 
+    &lt;!-- The host grammar must contribute an
+    attribute of type ID to this class --&gt;
+    &lt;empty/&gt;
+  &lt;/define&gt;  
+  &lt;define name="xmlEvents.event.attrib"&gt;
+    &lt;attribute name="event"&gt;
+      &lt;list&gt;
+        &lt;oneOrMore&gt;
+          &lt;data type="QName"/&gt;
+        &lt;/oneOrMore&gt;
+      &lt;/list&gt;
+    &lt;/attribute&gt;
+  &lt;/define&gt;
+  &lt;define name="xmlEvents.eventTarget.attrib"&gt;    
+    &lt;attribute name="eventTarget"&gt;
+      &lt;data type="IDREFS"/&gt;
+    &lt;/attribute&gt;    
+  &lt;/define&gt;
+  &lt;define name="xmlEvents.phase.attrib"&gt;
+    &lt;!-- a:defaultValue="default" --&gt;        
+    &lt;attribute name="phase"&gt;
+      &lt;choice&gt;
+        &lt;value&gt;bubble&lt;/value&gt;        
+        &lt;value&gt;capture&lt;/value&gt;
+        &lt;value&gt;target&lt;/value&gt;          
+        &lt;value&gt;default&lt;/value&gt;
+      &lt;/choice&gt;
+    &lt;/attribute&gt;        
+  &lt;/define&gt;  
+  &lt;define name="xmlEvents.handler.attrib"&gt;    
+    &lt;attribute name="handler"&gt;
+      &lt;data type="anyURI"/&gt;
+     &lt;/attribute&gt;    
+  &lt;/define&gt;
+  &lt;define name="xmlEvents.observer.attrib"&gt;    
+    &lt;attribute name="observer"&gt;
+      &lt;data type="IDREFS"/&gt;
+    &lt;/attribute&gt;    
+  &lt;/define&gt;
+  &lt;define name="xmlEvents.function.attrib"&gt;      
+      &lt;attribute name="function"&gt;
+        &lt;text/&gt;
+      &lt;/attribute&gt;
+  &lt;/define&gt;    
+  &lt;define name="xmlEvents.propagate.attrib"&gt;
+    &lt;!-- a:defaultValue="continue" --&gt;    
+    &lt;attribute name="propagate"&gt;
+      &lt;choice&gt;
+        &lt;value&gt;stop&lt;/value&gt;
+        &lt;value&gt;continue&lt;/value&gt;
+      &lt;/choice&gt;
+    &lt;/attribute&gt;    
+  &lt;/define&gt;  
+  &lt;define name="xmlEvents.defaultAction.attrib"&gt;
+    &lt;!-- a:defaultValue="perform" --&gt;
+    &lt;attribute name="defaultAction"&gt;
+      &lt;choice&gt;
+        &lt;value&gt;cancel&lt;/value&gt;
+        &lt;value&gt;perform&lt;/value&gt;
+      &lt;/choice&gt;
+    &lt;/attribute&gt;
+  &lt;/define&gt;
+&lt;/grammar&gt;
+</pre>
+<!-- END OF FILE RELAXNG/xml-events-2.rng.mhtml -->
+<h3 >
+<a id="a_rmodule_XML_Handlers" >C.4.4.</a> XML Handlers
+</h3>
+<!-- INCLUDING SCHEMA RELAXNG/xml-handlers-2.rng -->
+<pre class="dtd">
+&lt;?xml version="1.0" encoding="UTF-8"?&gt;
+&lt;grammar xmlns="http://relaxng.org/ns/structure/1.0"
+         xmlns:x="http://www.w3.org/1999/xhtml"
+         datatypeLibrary="http://www.w3.org/2001/XMLSchema-datatypes"&gt;
+  &lt;x:h1&gt;XML Handlers Module in RELAX NG&lt;/x:h1&gt;
+  &lt;x:pre&gt;
+    This is the RELAX NG Schema for the XML Events 2 XML Handlers module.
+    As per the XMLEvents 2 specification, this modules depends
+    on the XML Events Module (xml-events-2.rng).
+    Copyright &amp;#xA9;2009 W3C&amp;#xAE; (MIT, ERCIM, Keio), All Rights Reserved.
+    URI: http://www.w3.org/MarkUp/RELAXNG/xml-handlers-2.rng
+    Editor:   Markus Gylling &amp;lt;markus.gylling@tpb.se&amp;gt;
+    Revision: &#36;Id: xml-handlers-2.rng,v 1.1.2.3 2009/02/25 12:09:46 mgylling Exp &#36;
+    Permission to use, copy, modify and distribute this RELAX NG schema
+    for XML Handlers and its accompanying documentation for any purpose and
+    without fee is hereby granted in perpetuity, provided that the above
+    copyright notice and this paragraph appear in all copies. The copyright
+    holders make no representation about the suitability of this RELAX NG
+    schema for any purpose.
+    It is provided "as is" without expressed or implied warranty.
+    For details, please refer to the W3C software license at:
+      &lt;x:a href="http://www.w3.org/Consortium/Legal/copyright-software"
+      &gt;http://www.w3.org/Consortium/Legal/copyright-software&lt;/x:a&gt;
+  &lt;/x:pre&gt;
+  &lt;define name="xmlHandlers.action"&gt;
+  	&lt;element name="action"&gt;
+  		&lt;ref name="xmlHandlers.action.attlist"/&gt;
+  		&lt;ref name="xmlHandlers.action.content"/&gt;
+  	&lt;/element&gt;
+  &lt;/define&gt;
+  &lt;define name="xmlHandlers.action.attlist"&gt;
+    &lt;ref name="xmlEvents.event.attrib"/&gt;
+    &lt;optional&gt;
+      &lt;ref name="xmlEvents.eventTarget.attrib"/&gt;
+    &lt;/optional&gt;          
+    &lt;ref name="xmlHandlers.declare.attrib"/&gt;
+    &lt;ref name="xmlHandlers.if.attrib"/&gt;
+    &lt;ref name="xmlHandlers.while.attrib"/&gt;
+    &lt;ref name="xmlHandlers.Common.attrib"/&gt;        
+  &lt;/define&gt;
+  &lt;define name="xmlHandlers.action.content"&gt;
+  	&lt;choice&gt;
+  	  &lt;ref name="xmlHandlers.action"/&gt;
+  	  &lt;ref name="xmlHandlers.dispatchEvent"/&gt;
+  	  &lt;ref name="xmlHandlers.addEventListener"/&gt;
+  	  &lt;ref name="xmlHandlers.removeEventListener"/&gt;
+  	  &lt;ref name="xmlHandlers.stopPropagation"/&gt;
+  	  &lt;ref name="xmlHandlers.preventDefault"/&gt;  		  		  		  		
+  	&lt;/choice&gt;  
+  &lt;/define&gt;
+  &lt;define name="xmlHandlers.dispatchEvent"&gt;
+  	&lt;element name="dispatchEvent"&gt;
+      &lt;ref name="xmlHandlers.dispatchEvent.attlist"/&gt;  	
+  	  &lt;empty/&gt;
+  	&lt;/element&gt;
+  &lt;/define&gt;
+  &lt;define name="xmlHandlers.dispatchEvent.attlist"&gt;
+    &lt;ref name="xmlHandlers.Common.attrib"/&gt;    
+    &lt;ref name="xmlHandlers.eventType.attrib"/&gt;
+    &lt;ref name="xmlEvents.eventTarget.attrib"/&gt;
+    &lt;ref name="xmlHandlers.bubbles.attrib"/&gt;
+    &lt;ref name="xmlHandlers.cancelable.attrib"/&gt;     
+  &lt;/define&gt;
+  &lt;define name="xmlHandlers.addEventListener"&gt;
+   	&lt;element name="addEventListener"&gt;
+      &lt;ref name="xmlHandlers.addEventListener.attlist"/&gt;
+  	  &lt;empty/&gt;
+  	&lt;/element&gt; 
+  &lt;/define&gt;  
+  &lt;define name="xmlHandlers.addEventListener.attlist"&gt;
+  	&lt;ref name="xmlHandlers.removeEventListener.attlist"/&gt;
+  &lt;/define&gt;
+  &lt;define name="xmlHandlers.removeEventListener"&gt;
+   	&lt;element name="removeEventListener"&gt;
+      &lt;ref name="xmlHandlers.removeEventListener.attlist"/&gt;   	
+  	  &lt;empty/&gt;
+  	&lt;/element&gt;  
+  &lt;/define&gt;
+  &lt;define name="xmlHandlers.removeEventListener.attlist"&gt;
+    &lt;ref name="xmlHandlers.event.attrib"/&gt;
+    &lt;ref name="xmlEvents.handler.attrib"/&gt;
+    &lt;optional&gt;
+      &lt;ref name="xmlEvents.phase.attrib"/&gt;
+    &lt;/optional&gt;              
+    &lt;ref name="xmlHandlers.Common.attrib"/&gt;
+  &lt;/define&gt;  
+  &lt;define name="xmlHandlers.stopPropagation"&gt;
+   	&lt;element name="stopPropagation"&gt;
+   	  &lt;ref name="xmlHandlers.stopPropagation.attlist"/&gt;   
+  	  &lt;empty/&gt;
+  	&lt;/element&gt;      
+  &lt;/define&gt;   
+  &lt;define name="xmlHandlers.stopPropagation.attlist"&gt;
+    &lt;ref name="xmlHandlers.Common.attrib"/&gt;
+    &lt;ref name="xmlHandlers.event.attrib"/&gt;
+  &lt;/define&gt;  
+  &lt;define name="xmlHandlers.preventDefault"&gt;
+   	&lt;element name="preventDefault"&gt;
+      &lt;ref name="xmlHandlers.preventDefault.attlist"/&gt;
+  	  &lt;empty/&gt;
+  	&lt;/element&gt;        
+  &lt;/define&gt; 
+  &lt;define name="xmlHandlers.preventDefault.attlist"&gt;
+    &lt;ref name="xmlHandlers.Common.attrib"/&gt;
+    &lt;ref name="xmlHandlers.event.attrib"/&gt;
+  &lt;/define&gt;  
+  &lt;define name="xmlHandlers.Common.attrib"&gt;
+    &lt;!-- The host grammar must contribute an
+    attribute of type ID to this class --&gt;
+    &lt;empty/&gt; 
+  &lt;/define&gt;
+  &lt;define name="xmlHandlers.event.attrib"&gt;
+    &lt;attribute name="event"&gt;
+      &lt;data type="QName"/&gt;
+    &lt;/attribute&gt;
+  &lt;/define&gt;  
+  &lt;define name="xmlHandlers.declare.attrib"&gt;
+    &lt;optional&gt;
+      &lt;attribute name="declare"&gt;
+        &lt;value&gt;declare&lt;/value&gt;
+      &lt;/attribute&gt;
+    &lt;/optional&gt;  
+  &lt;/define&gt;	
+  &lt;define name="xmlHandlers.if.attrib"&gt;
+    &lt;optional&gt;
+      &lt;attribute name="if"&gt;
+      	&lt;data type="normalizedString"/&gt;
+      &lt;/attribute&gt;
+    &lt;/optional&gt;
+  &lt;/define&gt;    
+  &lt;define name="xmlHandlers.while.attrib"&gt;
+    &lt;optional&gt;
+      &lt;attribute name="while"&gt;
+      	&lt;data type="normalizedString"/&gt;
+      &lt;/attribute&gt;
+    &lt;/optional&gt;
+  &lt;/define&gt;    
+  &lt;define name="xmlHandlers.eventType.attrib"&gt;
+    &lt;attribute name="eventType"&gt;
+      	&lt;data type="QName"/&gt;
+    &lt;/attribute&gt;
+  &lt;/define&gt;  
+  &lt;define name="xmlHandlers.bubbles.attrib"&gt;
+    &lt;optional&gt;
+      &lt;attribute name="bubbles"&gt;
+      	&lt;value&gt;bubbles&lt;/value&gt;
+      &lt;/attribute&gt;
+    &lt;/optional&gt;  
+  &lt;/define&gt;  
+  &lt;define name="xmlHandlers.cancelable.attrib"&gt;
+    &lt;optional&gt;
+      &lt;attribute name="cancelable"&gt;
+      	&lt;value&gt;cancelable&lt;/value&gt;
+      &lt;/attribute&gt;
+    &lt;/optional&gt;
+  &lt;/define&gt;    
+&lt;/grammar&gt;  
+</pre>
+<!-- END OF FILE RELAXNG/xml-handlers-2.rng.mhtml -->
+<h3 >
+<a id="a_rmodule_XML_Script" >C.4.5.</a> XML Script
+</h3>
+<!-- INCLUDING SCHEMA RELAXNG/xml-script-2.rng -->
+<pre class="dtd">
+&lt;?xml version="1.0" encoding="UTF-8"?&gt;
+&lt;grammar xmlns="http://relaxng.org/ns/structure/1.0"
+         xmlns:x="http://www.w3.org/1999/xhtml"
+         datatypeLibrary="http://www.w3.org/2001/XMLSchema-datatypes"&gt;
+  &lt;x:h1&gt;XML Scripting Module in RELAX NG&lt;/x:h1&gt;
+  &lt;x:p&gt;This module depends on xhtml-datatypes-2.rng&lt;/x:p&gt;
+  &lt;x:pre&gt;
+    This is the RELAX NG Schema for the XML Events 2 Scripting module.
+    Copyright &amp;#xA9;2009 W3C&amp;#xAE; (MIT, ERCIM, Keio), All Rights Reserved.
+    URI: http://www.w3.org/MarkUp/RELAXNG/xml-script-2.rng
+    Editor:   Markus Gylling &amp;lt;markus.gylling@tpb.se&amp;gt;
+    Revision: &#36;Id: xml-script-2.rng,v 1.1.2.3 2009/02/25 12:09:46 mgylling Exp &#36;
+    Permission to use, copy, modify and distribute this RELAX NG schema
+    for XML Scripting and its accompanying documentation for any purpose and
+    without fee is hereby granted in perpetuity, provided that the above
+    copyright notice and this paragraph appear in all copies. The copyright
+    holders make no representation about the suitability of this RELAX NG
+    schema for any purpose.
+    It is provided "as is" without expressed or implied warranty.
+    For details, please refer to the W3C software license at:
+    &lt;x:a href="http://www.w3.org/Consortium/Legal/copyright-software"
+    &gt;http://www.w3.org/Consortium/Legal/copyright-software&lt;/x:a&gt;
+  &lt;/x:pre&gt;
+  &lt;define name="xmlScripting.script"&gt;
+    &lt;element name="script"&gt;
+      &lt;ref name="xmlScripting.script.attlist"/&gt;
+      &lt;ref name="xmlScripting.script.model"/&gt;    	
+    &lt;/element&gt;  
+  &lt;/define&gt;
+  &lt;define name="xmlScripting.script.attlist"&gt;
+    &lt;ref name="xmlScripting.encoding.attrib"/&gt;
+    &lt;ref name="xmlScripting.charset.attrib"/&gt;
+    &lt;ref name="xmlScripting.defer.attrib"/&gt;    
+    &lt;ref name="xmlScripting.implements.attrib"/&gt;
+    &lt;ref name="xmlScripting.src.attrib"/&gt;
+    &lt;ref name="xmlScripting.type.attrib"/&gt; 
+    &lt;ref name="xmlScripting.Common.attrib"/&gt;           
+  &lt;/define&gt;         
+  &lt;define name="xmlScripting.script.model"&gt;
+  	&lt;text/&gt;
+  &lt;/define&gt;
+  &lt;define name="xmlScripting.encoding.attrib"&gt;
+    &lt;optional&gt;
+      &lt;attribute name="encoding"&gt;      	
+        &lt;ref name="Encodings.datatype"/&gt;  	
+      &lt;/attribute&gt;
+    &lt;/optional&gt;
+  &lt;/define&gt;
+  &lt;define name="xmlScripting.charset.attrib"&gt;
+    &lt;optional&gt;
+      &lt;attribute name="charset"&gt;      	
+  	    &lt;ref name="Charset.datatype"/&gt;
+      &lt;/attribute&gt;
+    &lt;/optional&gt;
+  &lt;/define&gt;
+  &lt;define name="xmlScripting.defer.attrib"&gt;
+    &lt;optional&gt;
+      &lt;attribute name="defer"&gt;
+      	&lt;value&gt;defer&lt;/value&gt;
+      &lt;/attribute&gt;
+    &lt;/optional&gt;  	
+  &lt;/define&gt;
+  &lt;define name="xmlScripting.Common.attrib"&gt;
+    &lt;!-- The host grammar must contribute an
+    attribute of type ID to this class --&gt;
+    &lt;empty/&gt;
+  &lt;/define&gt;
+  &lt;define name="xmlScripting.implements.attrib"&gt;
+    &lt;optional&gt;
+      &lt;attribute name="implements"&gt;        
+        &lt;ref name="URIorSafeCURIEs.datatype"/&gt;          
+      &lt;/attribute&gt;
+    &lt;/optional&gt;  	
+  &lt;/define&gt;
+  &lt;define name="xmlScripting.src.attrib"&gt;
+    &lt;optional&gt;
+      &lt;attribute name="src"&gt;
+        &lt;ref name="URI.datatype"/&gt;      
+      &lt;/attribute&gt;
+    &lt;/optional&gt;  	
+  &lt;/define&gt;
+   &lt;define name="xmlScripting.type.attrib"&gt;
+    &lt;attribute name="type"&gt;
+      &lt;ref name="ContentType.datatype"/&gt;
+    &lt;/attribute&gt;      	
+  &lt;/define&gt;
+&lt;/grammar&gt;         
+</pre>
+<!-- END OF FILE RELAXNG/xml-script-2.rng.mhtml -->
+<h3 >
+<a id="a_rmodule_XML_Schema_instance" >C.4.6.</a> XML Schema instance
+</h3>
+<!-- INCLUDING SCHEMA RELAXNG/XMLSchema-instance.rng -->
+<pre class="dtd">
+&lt;?xml version="1.0" encoding="UTF-8"?&gt;
+&lt;grammar xmlns="http://relaxng.org/ns/structure/1.0"
+         ns="http://www.w3.org/2001/XMLSchema-instance"
+         xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+         datatypeLibrary="http://www.w3.org/2001/XMLSchema-datatypes"&gt;
+  &lt;define name="XSI.type"&gt;
+    &lt;attribute name="xsi:type"&gt;
+      &lt;data type="QName"/&gt;
+    &lt;/attribute&gt;
+  &lt;/define&gt;
+  &lt;define name="XSI.nil"&gt;
+    &lt;attribute name="xsi:nil"&gt;
+      &lt;data type="boolean"/&gt;
+    &lt;/attribute&gt;
+  &lt;/define&gt;
+  &lt;define name="XSI.schemaLocation"&gt;
+    &lt;attribute name="xsi:schemaLocation"&gt;
+      &lt;list&gt;
+        &lt;oneOrMore&gt;
+          &lt;data type="anyURI"/&gt;
+          &lt;data type="anyURI"/&gt;
+        &lt;/oneOrMore&gt;
+      &lt;/list&gt;
+    &lt;/attribute&gt;
+  &lt;/define&gt;
+  &lt;define name="XSI.noNamespaceSchemaLocation"&gt;
+    &lt;attribute name="xsi:noNamespaceSchemaLocation"&gt;
+      &lt;data type="anyURI"/&gt;
+    &lt;/attribute&gt;
+  &lt;/define&gt;
+&lt;/grammar&gt;
+</pre>
+<!-- END OF FILE RELAXNG/XMLSchema-instance.rng.mhtml -->
+<h3 >
+<a id="a_rmodule_XForms_1.1" >C.4.7.</a> XForms 1.1
+</h3>
+<!-- INCLUDING SCHEMA RELAXNG/xforms-nons-11.rng -->
+<pre class="dtd">
+&lt;?xml version="1.0" encoding="UTF-8"?&gt;
+&lt;!--
+   Copyright 2004-2005 Brain Attic, L.L.C.
+   Licensed under the Apache License, Version 2.0 (the "License");
+   you may not use this file except in compliance with the License.
+   You may obtain a copy of the License at
+       http://www.apache.org/licenses/LICENSE-2.0
+   Unless required by applicable law or agreed to in writing, software
+   distributed under the License is distributed on an "AS IS" BASIS,
+   WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+   See the License for the specific language governing permissions and
+   limitations under the License.
+--&gt;
+&lt;!--
+  Draft version of for XForms 1.1 by Leigh L. Klotz, Jr. &lt;Leigh.Klotz@Xerox.com&gt;
+  Changes from version of http://lists.w3.org/Archives/Public/public-forms/2008Jun/0023.html
+  + added mediatype to output
+  + added attribute context to Nodeset.Binding.attrib
+  + added attribute context { XPathExpression }? to Single.Node.Binding.attrib
+  Changes for integration with XHTML2 by Markus Gylling &lt;markus.gylling@gmail.com&gt;
+  + remove start element
+  + make chameleon (remove xforms ns)
+  + use prefixed define names
+  TODO submission doesnt have @target?
+--&gt;
+&lt;grammar 
+	xmlns:xsd="http://www.w3.org/2001/XMLSchema" 
+	xmlns="http://relaxng.org/ns/structure/1.0" 
+	datatypeLibrary="http://www.w3.org/2001/XMLSchema-datatypes"&gt;
+  &lt;define name="xforms.Common.attrib"&gt;
+    &lt;!-- host language to add common attributes here --&gt;
+    &lt;empty/&gt;
+  &lt;/define&gt;
+  &lt;define name="xforms.Events.attrib"&gt;
+    &lt;!-- host language to add XML Events attributes here --&gt;
+    &lt;empty/&gt;
+  &lt;/define&gt;
+  &lt;define name="xforms.Linking.attrib"&gt;
+    &lt;!-- host language to add src attribute here --&gt;
+    &lt;empty/&gt;
+  &lt;/define&gt;
+  &lt;define name="xforms.Single.Node.Binding.attrib"&gt;
+    &lt;choice&gt;
+      &lt;attribute name="bind"&gt;
+        &lt;data type="IDREF"/&gt;
+      &lt;/attribute&gt;
+      &lt;group&gt;
+        &lt;optional&gt;
+          &lt;attribute name="model"&gt;
+            &lt;data type="IDREF"/&gt;
+          &lt;/attribute&gt;
+        &lt;/optional&gt;
+        &lt;attribute name="ref"&gt;
+          &lt;ref name="XPathExpression"/&gt;
+        &lt;/attribute&gt;
+        &lt;optional&gt;
+          &lt;attribute name="context"&gt;
+            &lt;ref name="XPathExpression"/&gt;
+          &lt;/attribute&gt;
+        &lt;/optional&gt;
+      &lt;/group&gt;
+    &lt;/choice&gt;
+  &lt;/define&gt;
+  &lt;define name="xforms.Nodeset.Binding.attrib"&gt;
+    &lt;choice&gt;
+      &lt;attribute name="bind"&gt;
+        &lt;data type="IDREF"/&gt;
+      &lt;/attribute&gt;
+      &lt;group&gt;
+        &lt;optional&gt;
+          &lt;attribute name="model"&gt;
+            &lt;data type="IDREF"/&gt;
+          &lt;/attribute&gt;
+        &lt;/optional&gt;
+        &lt;attribute name="nodeset"&gt;
+          &lt;ref name="XPathExpression"/&gt;
+        &lt;/attribute&gt;
+        &lt;optional&gt;
+          &lt;attribute name="context"&gt;
+            &lt;ref name="XPathExpression"/&gt;
+          &lt;/attribute&gt;
+        &lt;/optional&gt;
+      &lt;/group&gt;
+    &lt;/choice&gt;
+  &lt;/define&gt;
+  &lt;!-- Placeholder for XML Schema RNG --&gt;
+  &lt;define name="xforms.schema"&gt;
+    &lt;element name="xsd:schema"&gt;
+      &lt;ref name="xforms.schema.attrib"/&gt;
+      &lt;ref name="xforms.schema.content"/&gt;
+    &lt;/element&gt;
+  &lt;/define&gt;
+  &lt;define name="xforms.schema.attrib"&gt;
+  	&lt;notAllowed/&gt;
+  &lt;/define&gt;
+  &lt;define name="xforms.schema.content"&gt;
+    &lt;notAllowed/&gt;
+  &lt;/define&gt;
+  &lt;define name="xforms.model"&gt;
+    &lt;element name="model"&gt;
+      &lt;ref name="xforms.model.attrib"/&gt;
+      &lt;ref name="xforms.model.content"/&gt;
+    &lt;/element&gt;
+  &lt;/define&gt;
+  &lt;define name="xforms.model.attrib" combine="interleave"&gt;
+    &lt;ref name="xforms.Common.attrib"/&gt;
+    &lt;ref name="xforms.actions.attrib"/&gt;
+    &lt;optional&gt;
+      &lt;attribute name="functions"&gt;
+        &lt;list&gt;
+          &lt;oneOrMore&gt;
+            &lt;data type="QName"/&gt;
+          &lt;/oneOrMore&gt;
+        &lt;/list&gt;
+      &lt;/attribute&gt;
+    &lt;/optional&gt;
+    &lt;optional&gt;
+      &lt;attribute name="schema"&gt;
+        &lt;list&gt;
+          &lt;oneOrMore&gt;
+            &lt;data type="anyURI"/&gt;
+          &lt;/oneOrMore&gt;
+        &lt;/list&gt;
+      &lt;/attribute&gt;
+    &lt;/optional&gt;
+    &lt;optional&gt;
+      &lt;attribute name="version"&gt;
+        &lt;list&gt;
+          &lt;data type="string"&gt;
+            &lt;param name="pattern"&gt;[1-9]\d*\.\d+&lt;/param&gt;
+          &lt;/data&gt;
+        &lt;/list&gt;
+      &lt;/attribute&gt;
+    &lt;/optional&gt;
+  &lt;/define&gt;
+  &lt;define name="xforms.model.content"&gt;
+    &lt;interleave&gt;
+      &lt;zeroOrMore&gt;
+        &lt;ref name="xforms.instance"/&gt;
+      &lt;/zeroOrMore&gt;
+      &lt;zeroOrMore&gt;
+        &lt;ref name="xforms.submission"/&gt;
+      &lt;/zeroOrMore&gt;
+      &lt;zeroOrMore&gt;
+        &lt;ref name="xforms.bind"/&gt;
+      &lt;/zeroOrMore&gt;
+      &lt;zeroOrMore&gt;
+        &lt;ref name="xforms.schema"/&gt;
+      &lt;/zeroOrMore&gt;
+      &lt;zeroOrMore&gt;
+        &lt;ref name="xforms.Actions"/&gt;
+      &lt;/zeroOrMore&gt;
+    &lt;/interleave&gt;
+  &lt;/define&gt;
+  &lt;define name="xforms.instance"&gt;
+    &lt;element name="instance"&gt;
+      &lt;ref name="xforms.instance.attrib"/&gt;
+      &lt;ref name="xforms.instance.content"/&gt;
+    &lt;/element&gt;
+  &lt;/define&gt;
+  &lt;define name="xforms.instance.attrib" combine="interleave"&gt;
+    &lt;ref name="xforms.Common.attrib"/&gt;
+    &lt;ref name="xforms.Linking.attrib"/&gt;
+    &lt;!--TODO collides with rdf/a resource attribute
+    &lt;optional&gt;
+      &lt;attribute name="resource"&gt;
+        &lt;data type="anyURI"/&gt;
+      &lt;/attribute&gt;
+    &lt;/optional&gt;
+    --&gt;
+  &lt;/define&gt;
+  &lt;define name="xforms.instance.content"&gt;
+    &lt;optional&gt;
+      &lt;ref name="anyElement"/&gt;
+    &lt;/optional&gt;
+  &lt;/define&gt;
+  &lt;!--
+    TODO: Split of Submission.attrib and Submission.Elements isn't right
+    because of OR in atttribute and element cases, so interleave is needed
+    to combine them, but we use sequence.
+  --&gt;
+  &lt;define name="xforms.submission"&gt;
+    &lt;element name="submission"&gt;
+      &lt;ref name="xforms.submission.model"/&gt;
+    &lt;/element&gt;
+  &lt;/define&gt;
+  &lt;define name="xforms.submission.model" combine="interleave"&gt;
+    &lt;ref name="xforms.Common.attrib"/&gt;
+    &lt;choice&gt;
+      &lt;attribute name="method"&gt;
+        &lt;choice&gt;
+          &lt;ref name="QNameButNotNCName"/&gt;
+          &lt;value&gt;post&lt;/value&gt;
+          &lt;value&gt;put&lt;/value&gt;
+          &lt;value&gt;get&lt;/value&gt;
+          &lt;value&gt;delete&lt;/value&gt;
+          &lt;value&gt;post&lt;/value&gt;
+          &lt;value&gt;form-data-post&lt;/value&gt;
+          &lt;value&gt;urlencoded-post&lt;/value&gt;
+        &lt;/choice&gt;
+      &lt;/attribute&gt;
+      &lt;element name="method"&gt;
+        &lt;ref name="xforms.ValueTemplate"/&gt;
+      &lt;/element&gt;
+    &lt;/choice&gt;
+    &lt;optional&gt;
+      &lt;choice&gt;
+        &lt;attribute name="bind"&gt;
+          &lt;data type="IDREF"/&gt;
+        &lt;/attribute&gt;
+        &lt;attribute name="ref"&gt;
+          &lt;ref name="XPathExpression"/&gt;
+        &lt;/attribute&gt;
+      &lt;/choice&gt;
+    &lt;/optional&gt;
+    &lt;choice&gt;
+      &lt;attribute name="action"&gt;
+        &lt;data type="anyURI"/&gt;
+      &lt;/attribute&gt;
+      &lt;!-- TODO collides with rdf/a resource attribute
+      &lt;attribute name="resource"&gt;
+        &lt;data type="anyURI"/&gt;
+      &lt;/attribute&gt;
+      --&gt;
+      &lt;element name="resource"&gt;
+        &lt;ref name="xforms.ValueTemplate"/&gt;
+      &lt;/element&gt;
+    &lt;/choice&gt;
+    &lt;optional&gt;
+      &lt;element name="header"&gt;
+        &lt;interleave&gt;
+          &lt;element name="name"&gt;
+            &lt;ref name="xforms.ValueTemplate"/&gt;
+          &lt;/element&gt;
+          &lt;element name="value"&gt;
+            &lt;ref name="xforms.ValueTemplate"/&gt;
+          &lt;/element&gt;
+        &lt;/interleave&gt;
+      &lt;/element&gt;
+    &lt;/optional&gt;
+    &lt;optional&gt;
+      &lt;attribute name="includenamespaceprefixes"&gt;
+        &lt;list&gt;
+          &lt;choice&gt;
+            &lt;data type="NCName"/&gt;
+            &lt;value&gt;#default&lt;/value&gt;
+          &lt;/choice&gt;
+        &lt;/list&gt;
+      &lt;/attribute&gt;
+    &lt;/optional&gt;
+    &lt;optional&gt;
+      &lt;attribute name="indent"&gt;
+        &lt;data type="boolean"/&gt;
+      &lt;/attribute&gt;
+    &lt;/optional&gt;
+    &lt;!-- TODO collides with xhtml common encoding attribute 
+    &lt;optional&gt;
+      &lt;attribute name="encoding"/&gt;
+    &lt;/optional&gt;
+    --&gt;
+    &lt;optional&gt;
+      &lt;attribute name="mediatype"/&gt;
+    &lt;/optional&gt;
+    &lt;optional&gt;
+      &lt;attribute name="mode"&gt;
+        &lt;choice&gt;
+          &lt;value&gt;asynchronous&lt;/value&gt;
+          &lt;value&gt;synchronous&lt;/value&gt;
+        &lt;/choice&gt;
+      &lt;/attribute&gt;
+    &lt;/optional&gt;
+    &lt;optional&gt;
+      &lt;attribute name="omit-xml-declaration"&gt;
+        &lt;data type="boolean"/&gt;
+      &lt;/attribute&gt;
+    &lt;/optional&gt;
+    &lt;optional&gt;
+      &lt;attribute name="standalone"&gt;
+        &lt;data type="boolean"/&gt;
+      &lt;/attribute&gt;
+    &lt;/optional&gt;
+    &lt;optional&gt;
+      &lt;attribute name="cdata-section-elements"&gt;
+        &lt;list&gt;
+          &lt;oneOrMore&gt;
+            &lt;data type="QName"/&gt;
+          &lt;/oneOrMore&gt;
+        &lt;/list&gt;
+      &lt;/attribute&gt;
+    &lt;/optional&gt;
+    &lt;optional&gt;
+      &lt;attribute name="replace"&gt;
+        &lt;choice&gt;
+          &lt;ref name="QNameButNotNCName"/&gt;
+          &lt;value&gt;all&lt;/value&gt;
+          &lt;value&gt;instance&lt;/value&gt;
+          &lt;value&gt;none&lt;/value&gt;
+        &lt;/choice&gt;
+      &lt;/attribute&gt;
+    &lt;/optional&gt;
+    &lt;optional&gt;
+      &lt;attribute name="instance"&gt;
+        &lt;data type="IDREF"/&gt;
+      &lt;/attribute&gt;
+    &lt;/optional&gt;
+    &lt;optional&gt;
+      &lt;attribute name="relevant"&gt;
+        &lt;data type="boolean"/&gt;
+      &lt;/attribute&gt;
+    &lt;/optional&gt;
+    &lt;optional&gt;
+      &lt;attribute name="separator"&gt;
+        &lt;choice&gt;
+          &lt;value&gt;;&lt;/value&gt;
+          &lt;value&gt;&amp;amp;&lt;/value&gt;
+        &lt;/choice&gt;
+      &lt;/attribute&gt;
+    &lt;/optional&gt;
+    &lt;optional&gt;
+      &lt;attribute name="serialization"&gt;
+        &lt;choice&gt;
+          &lt;value&gt;application/xml&lt;/value&gt;
+          &lt;value&gt;application/x-www-form-urlencoded&lt;/value&gt;
+          &lt;value&gt;multipart/related&lt;/value&gt;
+          &lt;value&gt;multipart/form-data&lt;/value&gt;
+          &lt;value&gt;none&lt;/value&gt;
+        &lt;/choice&gt;
+      &lt;/attribute&gt;
+    &lt;/optional&gt;
+    &lt;optional&gt;
+      &lt;attribute name="validate"&gt;
+        &lt;data type="boolean"/&gt;
+      &lt;/attribute&gt;
+    &lt;/optional&gt;
+    &lt;optional&gt;
+      &lt;attribute name="version"&gt;
+        &lt;data type="NMTOKEN"/&gt;
+      &lt;/attribute&gt;
+    &lt;/optional&gt;
+  &lt;/define&gt;
+  &lt;!--There should only be zero or one resource, zero or one method, and zero or more header
+  &lt;define name="xforms.submission.content"&gt;    
+    &lt;choice&gt;
+      &lt;ref name="xforms.resource"/&gt;
+      &lt;ref name="xforms.method"/&gt;
+    &lt;/choice&gt;
+    &lt;optional&gt;
+	  &lt;oneOrMore&gt;
+	   	&lt;ref name="xforms.header"/&gt;
+	  &lt;/oneOrMore&gt;
+    &lt;/optional&gt;
+     As is the case everywhere else, action handlers are last 
+    &lt;ref name="xforms.Actions"/&gt; 
+  &lt;/define&gt;
+  --&gt;
+  &lt;define name="xforms.bind"&gt;
+    &lt;element name="bind"&gt;
+      &lt;ref name="xforms.bind.attrib"/&gt;
+      &lt;ref name="xforms.bind.content"/&gt;
+    &lt;/element&gt;
+  &lt;/define&gt;
+  &lt;define name="xforms.bind.attrib" combine="interleave"&gt;
+    &lt;ref name="xforms.Common.attrib"/&gt;
+    &lt;optional&gt;
+      &lt;attribute name="nodeset"&gt;
+        &lt;ref name="XPathExpression"/&gt;
+      &lt;/attribute&gt;
+    &lt;/optional&gt;
+    &lt;optional&gt;
+      &lt;attribute name="type"&gt;
+        &lt;data type="QName"/&gt;
+      &lt;/attribute&gt;
+    &lt;/optional&gt;
+    &lt;optional&gt;
+      &lt;attribute name="readonly"&gt;
+        &lt;ref name="XPathExpression"/&gt;
+      &lt;/attribute&gt;
+    &lt;/optional&gt;
+    &lt;optional&gt;
+      &lt;attribute name="required"&gt;
+        &lt;ref name="XPathExpression"/&gt;
+      &lt;/attribute&gt;
+    &lt;/optional&gt;
+    &lt;optional&gt;
+      &lt;attribute name="relevant"&gt;
+        &lt;ref name="XPathExpression"/&gt;
+      &lt;/attribute&gt;
+    &lt;/optional&gt;
+    &lt;optional&gt;
+      &lt;attribute name="constraint"&gt;
+        &lt;ref name="XPathExpression"/&gt;
+      &lt;/attribute&gt;
+    &lt;/optional&gt;
+    &lt;optional&gt;
+      &lt;attribute name="calculate"&gt;
+        &lt;ref name="XPathExpression"/&gt;
+      &lt;/attribute&gt;
+    &lt;/optional&gt;
+    &lt;optional&gt;
+      &lt;attribute name="p3ptype"/&gt;
+    &lt;/optional&gt;
+  &lt;/define&gt;
+  &lt;define name="xforms.bind.content"&gt;
+    &lt;zeroOrMore&gt;
+      &lt;ref name="xforms.bind"/&gt;
+    &lt;/zeroOrMore&gt;
+  &lt;/define&gt;
+  &lt;!-- Form Controls --&gt;
+  &lt;define name="xforms.Core.Form.Controls"&gt;
+    &lt;choice&gt;
+      &lt;ref name="xforms.input"/&gt;
+      &lt;ref name="xforms.textarea"/&gt;
+      &lt;ref name="xforms.secret"/&gt;
+      &lt;ref name="xforms.output"/&gt;
+      &lt;ref name="xforms.upload"/&gt;
+      &lt;ref name="xforms.select1"/&gt;
+      &lt;ref name="xforms.select"/&gt;
+      &lt;ref name="xforms.range"/&gt;
+      &lt;ref name="xforms.submit"/&gt;
+      &lt;ref name="xforms.trigger"/&gt;
+    &lt;/choice&gt;
+  &lt;/define&gt;
+  &lt;define name="UI.xforms.Common.attrib" combine="interleave"&gt;
+    &lt;optional&gt;
+      &lt;!-- host language to add accesskey and navindex here --&gt;
+      &lt;attribute name="appearance"&gt;
+        &lt;choice&gt;
+          &lt;data type="QName"&gt;
+            &lt;param name="pattern"&gt;[^:]+:[^:]+&lt;/param&gt;
+          &lt;/data&gt;
+          &lt;value&gt;minimal&lt;/value&gt;
+          &lt;value&gt;compact&lt;/value&gt;
+          &lt;value&gt;full&lt;/value&gt;
+        &lt;/choice&gt;
+      &lt;/attribute&gt;
+    &lt;/optional&gt;
+  &lt;/define&gt;
+  &lt;define name="xforms.UI.Inline.class"&gt;
+    &lt;choice&gt;
+      &lt;ref name="xforms.output"/&gt;
+    &lt;/choice&gt;
+  &lt;/define&gt;
+  &lt;define name="xforms.UI.Inline.content"&gt;
+    &lt;interleave&gt;
+      &lt;text/&gt;
+      &lt;optional&gt;
+        &lt;ref name="xforms.UI.Inline.class"/&gt;
+      &lt;/optional&gt;
+    &lt;/interleave&gt;
+  &lt;/define&gt;
+  &lt;define name="xforms.UI.Common.content"&gt;
+    &lt;zeroOrMore&gt;
+      &lt;choice&gt;
+        &lt;ref name="xforms.help"/&gt;
+        &lt;ref name="xforms.hint"/&gt;
+        &lt;ref name="xforms.alert"/&gt;
+        &lt;ref name="xforms.Actions"/&gt;
+      &lt;/choice&gt;
+    &lt;/zeroOrMore&gt;
+  &lt;/define&gt;
+  &lt;define name="xforms.List.UI.Common.content"&gt;
+    &lt;oneOrMore&gt;
+      &lt;choice&gt;
+        &lt;ref name="xforms.item"/&gt;
+        &lt;ref name="xforms.itemset"/&gt;
+        &lt;ref name="xforms.choices"/&gt;
+      &lt;/choice&gt;
+    &lt;/oneOrMore&gt;
+  &lt;/define&gt;
+  &lt;define name="xforms.label.content"&gt;
+    &lt;ref name="xforms.UI.Inline.content"/&gt;
+  &lt;/define&gt;
+  &lt;define name="xforms.label"&gt;
+    &lt;element name="label"&gt;
+      &lt;interleave&gt;
+        &lt;ref name="xforms.Common.attrib"/&gt;
+        &lt;choice&gt;
+          &lt;ref name="xforms.Linking.attrib"/&gt;
+          &lt;ref name="xforms.Single.Node.Binding.attrib"/&gt;
+          &lt;ref name="xforms.label.content"/&gt;
+        &lt;/choice&gt;
+      &lt;/interleave&gt;
+    &lt;/element&gt;
+  &lt;/define&gt;
+  &lt;define name="xforms.help"&gt;
+    &lt;element name="help"&gt;
+      &lt;ref name="xforms.help.attrib"/&gt;
+      &lt;ref name="xforms.help.content"/&gt;
+    &lt;/element&gt;
+  &lt;/define&gt;
+  &lt;define name="xforms.help.attrib" combine="interleave"&gt;
+    &lt;ref name="xforms.Common.attrib"/&gt;
+    &lt;optional&gt;
+      &lt;ref name="xforms.Linking.attrib"/&gt;
+    &lt;/optional&gt;
+    &lt;optional&gt;
+      &lt;ref name="xforms.Single.Node.Binding.attrib"/&gt;
+    &lt;/optional&gt;
+  &lt;/define&gt;
+  &lt;define name="xforms.help.content"&gt;
+    &lt;ref name="xforms.UI.Inline.content"/&gt;
+  &lt;/define&gt;
+  &lt;define name="xforms.hint"&gt;
+    &lt;element name="hint"&gt;
+      &lt;ref name="xforms.hint.attrib"/&gt;
+      &lt;ref name="xforms.hint.content"/&gt;
+    &lt;/element&gt;
+  &lt;/define&gt;
+  &lt;define name="xforms.hint.attrib" combine="interleave"&gt;
+    &lt;ref name="xforms.Common.attrib"/&gt;
+    &lt;optional&gt;
+      &lt;ref name="xforms.Linking.attrib"/&gt;
+    &lt;/optional&gt;
+    &lt;optional&gt;
+      &lt;ref name="xforms.Single.Node.Binding.attrib"/&gt;
+    &lt;/optional&gt;
+  &lt;/define&gt;
+  &lt;define name="xforms.hint.content"&gt;
+    &lt;ref name="xforms.UI.Inline.content"/&gt;
+  &lt;/define&gt;
+  &lt;define name="xforms.alert"&gt;
+    &lt;element name="alert"&gt;
+      &lt;ref name="xforms.alert.attrib"/&gt;
+      &lt;ref name="xforms.alert.content"/&gt;
+    &lt;/element&gt;
+  &lt;/define&gt;
+  &lt;define name="xforms.alert.attrib" combine="interleave"&gt;
+    &lt;ref name="xforms.Common.attrib"/&gt;
+    &lt;optional&gt;
+      &lt;ref name="xforms.Linking.attrib"/&gt;
+    &lt;/optional&gt;
+    &lt;optional&gt;
+      &lt;ref name="xforms.Single.Node.Binding.attrib"/&gt;
+    &lt;/optional&gt;
+  &lt;/define&gt;
+  &lt;define name="xforms.alert.content"&gt;
+    &lt;ref name="xforms.UI.Inline.content"/&gt;
+  &lt;/define&gt;
+  &lt;define name="xforms.choices"&gt;
+    &lt;element name="choices"&gt;
+      &lt;ref name="xforms.choices.attrib"/&gt;
+      &lt;ref name="xforms.choices.content"/&gt;
+    &lt;/element&gt;
+  &lt;/define&gt;
+  &lt;define name="xforms.choices.attrib" combine="interleave"&gt;
+    &lt;ref name="xforms.Common.attrib"/&gt;
+  &lt;/define&gt;
+  &lt;define name="xforms.choices.content"&gt;
+    &lt;optional&gt;
+      &lt;ref name="xforms.label"/&gt;
+    &lt;/optional&gt;
+    &lt;oneOrMore&gt;
+      &lt;choice&gt;
+        &lt;ref name="xforms.choices"/&gt;
+        &lt;ref name="xforms.item"/&gt;
+        &lt;ref name="xforms.itemset"/&gt;
+      &lt;/choice&gt;
+    &lt;/oneOrMore&gt;
+  &lt;/define&gt;
+  &lt;define name="xforms.value"&gt;
+    &lt;element name="value"&gt;
+      &lt;ref name="xforms.value.attrib"/&gt;
+      &lt;ref name="xforms.value.content"/&gt;
+    &lt;/element&gt;
+  &lt;/define&gt;
+  &lt;define name="xforms.value.attrib" combine="interleave"&gt;
+    &lt;ref name="xforms.Common.attrib"/&gt;
+    &lt;optional&gt;
+      &lt;ref name="xforms.Single.Node.Binding.attrib"/&gt;
+    &lt;/optional&gt;
+  &lt;/define&gt;
+  &lt;define name="xforms.value.content"&gt;
+    &lt;text/&gt;
+  &lt;/define&gt;
+  &lt;define name="xforms.item"&gt;
+    &lt;element name="item"&gt;
+      &lt;ref name="xforms.item.attrib"/&gt;
+      &lt;ref name="xforms.item.content"/&gt;
+    &lt;/element&gt;
+  &lt;/define&gt;
+  &lt;define name="xforms.item.attrib" combine="interleave"&gt;
+    &lt;ref name="xforms.Common.attrib"/&gt;
+  &lt;/define&gt;
+  &lt;define name="xforms.item.content"&gt;
+    &lt;ref name="xforms.label"/&gt;
+    &lt;ref name="xforms.value"/&gt;
+    &lt;ref name="xforms.UI.Common.content"/&gt;
+  &lt;/define&gt;
+  &lt;define name="xforms.itemset"&gt;
+    &lt;element name="itemset"&gt;
+      &lt;ref name="xforms.itemset.attrib"/&gt;
+      &lt;ref name="xforms.itemset.content"/&gt;
+    &lt;/element&gt;
+  &lt;/define&gt;
+  &lt;define name="xforms.itemset.attrib" combine="interleave"&gt;
+    &lt;ref name="xforms.Common.attrib"/&gt;
+    &lt;ref name="xforms.Nodeset.Binding.attrib"/&gt;
+  &lt;/define&gt;
+  &lt;define name="xforms.itemset.content"&gt;
+    &lt;ref name="xforms.label"/&gt;
+    &lt;choice&gt;
+      &lt;ref name="xforms.value"/&gt;
+      &lt;ref name="xforms.copy"/&gt;
+    &lt;/choice&gt;
+    &lt;ref name="xforms.UI.Common.content"/&gt;
+  &lt;/define&gt;
+  &lt;define name="xforms.copy"&gt;
+    &lt;element name="copy"&gt;
+      &lt;ref name="xforms.copy.attrib"/&gt;
+      &lt;ref name="xforms.copy.content"/&gt;
+    &lt;/element&gt;
+  &lt;/define&gt;
+  &lt;define name="xforms.copy.attrib" combine="interleave"&gt;
+    &lt;ref name="xforms.Common.attrib"/&gt;
+    &lt;ref name="xforms.Single.Node.Binding.attrib"/&gt;
+  &lt;/define&gt;
+  &lt;define name="xforms.copy.content"&gt;
+    &lt;empty/&gt;
+  &lt;/define&gt;
+  &lt;define name="xforms.filename"&gt;
+    &lt;element name="filename"&gt;
+      &lt;ref name="xforms.filename.attrib"/&gt;
+      &lt;ref name="xforms.filename.content"/&gt;
+    &lt;/element&gt;
+  &lt;/define&gt;
+  &lt;define name="xforms.filename.attrib" combine="interleave"&gt;
+    &lt;ref name="xforms.Common.attrib"/&gt;
+    &lt;ref name="xforms.Single.Node.Binding.attrib"/&gt;
+  &lt;/define&gt;
+  &lt;define name="xforms.filename.content"&gt;
+    &lt;empty/&gt;
+  &lt;/define&gt;
+  &lt;define name="xforms.mediatype"&gt;
+    &lt;element name="mediatype"&gt;
+      &lt;ref name="xforms.mediatype.attrib"/&gt;
+      &lt;ref name="xforms.mediatype.content"/&gt;
+    &lt;/element&gt;
+  &lt;/define&gt;
+  &lt;define name="xforms.mediatype.attrib" combine="interleave"&gt;
+    &lt;ref name="xforms.Common.attrib"/&gt;
+    &lt;ref name="xforms.Single.Node.Binding.attrib"/&gt;
+  &lt;/define&gt;
+  &lt;define name="xforms.mediatype.content"&gt;
+    &lt;empty/&gt;
+  &lt;/define&gt;
+  &lt;define name="xforms.output"&gt;
+    &lt;element name="output"&gt;
+      &lt;ref name="xforms.output.attrib"/&gt;
+      &lt;ref name="xforms.output.content"/&gt;
+    &lt;/element&gt;
+  &lt;/define&gt;
+  &lt;define name="xforms.output.attrib" combine="interleave"&gt;
+    &lt;ref name="xforms.Common.attrib"/&gt;
+    &lt;ref name="UI.xforms.Common.attrib"/&gt;
+    &lt;optional&gt;
+      &lt;ref name="xforms.Single.Node.Binding.attrib"/&gt;
+    &lt;/optional&gt;
+    &lt;optional&gt;
+      &lt;attribute name="mediatype"/&gt;
+    &lt;/optional&gt;
+    &lt;optional&gt;
+      &lt;attribute name="value"&gt;
+        &lt;ref name="XPathExpression"/&gt;
+      &lt;/attribute&gt;
+    &lt;/optional&gt;
+  &lt;/define&gt;
+  &lt;define name="xforms.output.content"&gt;
+    &lt;optional&gt;
+      &lt;ref name="xforms.label"/&gt;
+    &lt;/optional&gt;
+  &lt;/define&gt;
+  &lt;define name="xforms.input"&gt;
+    &lt;element name="input"&gt;
+      &lt;ref name="xforms.input.attrib"/&gt;
+      &lt;ref name="xforms.input.content"/&gt;
+    &lt;/element&gt;
+  &lt;/define&gt;
+  &lt;define name="xforms.input.attrib" combine="interleave"&gt;
+    &lt;ref name="xforms.Common.attrib"/&gt;
+    &lt;ref name="xforms.Single.Node.Binding.attrib"/&gt;
+    &lt;optional&gt;
+      &lt;attribute name="inputmode"/&gt;
+    &lt;/optional&gt;
+    &lt;ref name="UI.xforms.Common.attrib"/&gt;
+    &lt;optional&gt;
+      &lt;attribute name="incremental"&gt;
+        &lt;data type="boolean"/&gt;
+      &lt;/attribute&gt;
+    &lt;/optional&gt;
+  &lt;/define&gt;
+  &lt;define name="xforms.input.content"&gt;
+    &lt;ref name="xforms.label"/&gt;
+    &lt;ref name="xforms.UI.Common.content"/&gt;
+  &lt;/define&gt;
+  &lt;define name="xforms.textarea"&gt;
+    &lt;element name="textarea"&gt;
+      &lt;ref name="xforms.textarea.attrib"/&gt;
+      &lt;ref name="xforms.textarea.content"/&gt;
+    &lt;/element&gt;
+  &lt;/define&gt;
+  &lt;define name="xforms.textarea.attrib" combine="interleave"&gt;
+    &lt;ref name="xforms.Common.attrib"/&gt;
+    &lt;ref name="xforms.Single.Node.Binding.attrib"/&gt;
+    &lt;optional&gt;
+      &lt;attribute name="inputmode"/&gt;
+    &lt;/optional&gt;
+    &lt;ref name="UI.xforms.Common.attrib"/&gt;
+    &lt;optional&gt;
+      &lt;attribute name="incremental"&gt;
+        &lt;data type="boolean"/&gt;
+      &lt;/attribute&gt;
+    &lt;/optional&gt;
+  &lt;/define&gt;
+  &lt;define name="xforms.textarea.content"&gt;
+    &lt;ref name="xforms.label"/&gt;
+    &lt;ref name="xforms.UI.Common.content"/&gt;
+  &lt;/define&gt;
+  &lt;define name="xforms.secret"&gt;
+    &lt;element name="secret"&gt;
+      &lt;ref name="xforms.secret.attrib"/&gt;
+      &lt;ref name="xforms.secret.content"/&gt;
+    &lt;/element&gt;
+  &lt;/define&gt;
+  &lt;define name="xforms.secret.attrib" combine="interleave"&gt;
+    &lt;ref name="xforms.Common.attrib"/&gt;
+    &lt;ref name="xforms.Single.Node.Binding.attrib"/&gt;
+    &lt;optional&gt;
+      &lt;attribute name="inputmode"/&gt;
+    &lt;/optional&gt;
+    &lt;ref name="UI.xforms.Common.attrib"/&gt;
+    &lt;optional&gt;
+      &lt;attribute name="incremental"&gt;
+        &lt;data type="boolean"/&gt;
+      &lt;/attribute&gt;
+    &lt;/optional&gt;
+  &lt;/define&gt;
+  &lt;define name="xforms.secret.content"&gt;
+    &lt;ref name="xforms.label"/&gt;
+    &lt;ref name="xforms.UI.Common.content"/&gt;
+  &lt;/define&gt;
+  &lt;define name="xforms.upload"&gt;
+    &lt;element name="upload"&gt;
+      &lt;ref name="xforms.upload.attrib"/&gt;
+      &lt;ref name="xforms.upload.content"/&gt;
+    &lt;/element&gt;
+  &lt;/define&gt;
+  &lt;define name="xforms.upload.attrib" combine="interleave"&gt;
+    &lt;ref name="xforms.Common.attrib"/&gt;
+    &lt;ref name="xforms.Single.Node.Binding.attrib"/&gt;
+    &lt;optional&gt;
+      &lt;attribute name="mediatype"/&gt;
+    &lt;/optional&gt;
+    &lt;ref name="UI.xforms.Common.attrib"/&gt;
+    &lt;optional&gt;
+      &lt;attribute name="incremental"&gt;
+        &lt;data type="boolean"/&gt;
+      &lt;/attribute&gt;
+    &lt;/optional&gt;
+  &lt;/define&gt;
+  &lt;define name="xforms.upload.content"&gt;
+    &lt;ref name="xforms.label"/&gt;
+    &lt;optional&gt;
+      &lt;ref name="xforms.filename"/&gt;
+    &lt;/optional&gt;
+    &lt;optional&gt;
+      &lt;ref name="xforms.mediatype"/&gt;
+    &lt;/optional&gt;
+    &lt;ref name="xforms.UI.Common.content"/&gt;
+  &lt;/define&gt;
+  &lt;define name="xforms.select1"&gt;
+    &lt;element name="select1"&gt;
+      &lt;ref name="xforms.select1.attrib"/&gt;
+      &lt;ref name="xforms.select1.content"/&gt;
+    &lt;/element&gt;
+  &lt;/define&gt;
+  &lt;define name="xforms.select1.attrib" combine="interleave"&gt;
+    &lt;ref name="xforms.Common.attrib"/&gt;
+    &lt;ref name="xforms.Single.Node.Binding.attrib"/&gt;
+    &lt;ref name="UI.xforms.Common.attrib"/&gt;
+    &lt;optional&gt;
+      &lt;attribute name="selection"&gt;
+        &lt;choice&gt;
+          &lt;value&gt;open&lt;/value&gt;
+          &lt;value&gt;closed&lt;/value&gt;
+        &lt;/choice&gt;
+      &lt;/attribute&gt;
+    &lt;/optional&gt;
+    &lt;optional&gt;
+      &lt;attribute name="incremental"&gt;
+        &lt;data type="boolean"/&gt;
+      &lt;/attribute&gt;
+    &lt;/optional&gt;  
+  &lt;/define&gt;
+  &lt;define name="xforms.select1.content"&gt;
+    &lt;ref name="xforms.label"/&gt;
+    &lt;ref name="xforms.UI.Common.content"/&gt;
+    &lt;ref name="xforms.List.UI.Common.content"/&gt;
+  &lt;/define&gt;
+  &lt;define name="xforms.select"&gt;
+    &lt;element name="select"&gt;
+      &lt;ref name="xforms.select.attrib"/&gt;
+      &lt;ref name="xforms.select.content"/&gt;
+    &lt;/element&gt;
+  &lt;/define&gt;
+  &lt;define name="xforms.select.attrib" combine="interleave"&gt;
+    &lt;ref name="xforms.Common.attrib"/&gt;
+    &lt;ref name="xforms.Single.Node.Binding.attrib"/&gt;
+    &lt;ref name="UI.xforms.Common.attrib"/&gt;
+    &lt;optional&gt;
+      &lt;attribute name="selection"&gt;
+        &lt;choice&gt;
+          &lt;value&gt;open&lt;/value&gt;
+          &lt;value&gt;closed&lt;/value&gt;
+        &lt;/choice&gt;
+      &lt;/attribute&gt;
+    &lt;/optional&gt;
+    &lt;optional&gt;
+      &lt;attribute name="incremental"&gt;
+        &lt;data type="boolean"/&gt;
+      &lt;/attribute&gt;
+    &lt;/optional&gt;
+  &lt;/define&gt;
+  &lt;define name="xforms.select.content"&gt;
+    &lt;ref name="xforms.label"/&gt;
+    &lt;ref name="xforms.UI.Common.content"/&gt;
+    &lt;ref name="xforms.List.UI.Common.content"/&gt;
+  &lt;/define&gt;
+  &lt;define name="xforms.range"&gt;
+    &lt;element name="range"&gt;
+      &lt;ref name="xforms.range.attrib"/&gt;
+      &lt;ref name="xforms.range.content"/&gt;
+    &lt;/element&gt;
+  &lt;/define&gt;
+  &lt;define name="xforms.range.attrib" combine="interleave"&gt;
+    &lt;ref name="xforms.Common.attrib"/&gt;
+    &lt;ref name="xforms.Single.Node.Binding.attrib"/&gt;
+    &lt;ref name="UI.xforms.Common.attrib"/&gt;
+    &lt;optional&gt;
+      &lt;attribute name="start"/&gt;
+    &lt;/optional&gt;
+    &lt;optional&gt;
+      &lt;attribute name="end"/&gt;
+    &lt;/optional&gt;
+    &lt;optional&gt;
+      &lt;attribute name="step"/&gt;
+    &lt;/optional&gt;
+    &lt;optional&gt;
+      &lt;attribute name="incremental"&gt;
+        &lt;data type="boolean"/&gt;
+      &lt;/attribute&gt;
+    &lt;/optional&gt;
+  &lt;/define&gt;
+  &lt;define name="xforms.range.content"&gt;
+    &lt;ref name="xforms.label"/&gt;
+    &lt;ref name="xforms.UI.Common.content"/&gt;
+  &lt;/define&gt;
+  &lt;define name="xforms.trigger"&gt;
+    &lt;element name="trigger"&gt;
+      &lt;ref name="xforms.trigger.attrib"/&gt;
+      &lt;ref name="xforms.trigger.content"/&gt;
+    &lt;/element&gt;
+  &lt;/define&gt;
+  &lt;define name="xforms.trigger.attrib" combine="interleave"&gt;
+    &lt;ref name="xforms.Common.attrib"/&gt;
+    &lt;optional&gt;
+      &lt;ref name="xforms.Single.Node.Binding.attrib"/&gt;
+    &lt;/optional&gt;
+    &lt;optional&gt;
+      &lt;ref name="UI.xforms.Common.attrib"/&gt;
+    &lt;/optional&gt;
+  &lt;/define&gt;
+  &lt;define name="xforms.trigger.content"&gt;
+    &lt;ref name="xforms.label"/&gt;
+    &lt;ref name="xforms.UI.Common.content"/&gt;
+  &lt;/define&gt;
+  &lt;define name="xforms.submit"&gt;
+    &lt;element name="submit"&gt;
+      &lt;ref name="xforms.submit.attrib"/&gt;
+      &lt;ref name="xforms.submit.content"/&gt;
+    &lt;/element&gt;
+  &lt;/define&gt;
+  &lt;define name="xforms.submit.attrib" combine="interleave"&gt;
+    &lt;ref name="xforms.Common.attrib"/&gt;
+    &lt;attribute name="submission"&gt;
+      &lt;data type="IDREF"/&gt;
+    &lt;/attribute&gt;
+    &lt;optional&gt;
+      &lt;ref name="xforms.Single.Node.Binding.attrib"/&gt;
+    &lt;/optional&gt;
+    &lt;optional&gt;
+      &lt;ref name="UI.xforms.Common.attrib"/&gt;
+    &lt;/optional&gt;
+  &lt;/define&gt;
+  &lt;define name="xforms.submit.content"&gt;
+    &lt;ref name="xforms.label"/&gt;
+    &lt;ref name="xforms.UI.Common.content"/&gt;
+  &lt;/define&gt;
+  &lt;!-- Actions --&gt;
+  &lt;define name="xforms.action"&gt;
+    &lt;element name="action"&gt;
+      &lt;ref name="xforms.action.attrib"/&gt;
+      &lt;ref name="xforms.action.content"/&gt;
+    &lt;/element&gt;
+  &lt;/define&gt;
+  &lt;define name="xforms.action.attrib" combine="interleave"&gt;
+    &lt;ref name="xforms.Common.attrib"/&gt;
+    &lt;ref name="xforms.actions.attrib"/&gt;
+  &lt;/define&gt;
+  &lt;define name="xforms.action.content"&gt;
+    &lt;ref name="xforms.Actions"/&gt;
+  &lt;/define&gt;
+  &lt;define name="xforms.dispatch"&gt;
+    &lt;element name="dispatch"&gt;
+      &lt;ref name="xforms.dispatch.attrib"/&gt;
+      &lt;ref name="xforms.dispatch.content"/&gt;
+    &lt;/element&gt;
+  &lt;/define&gt;
+  &lt;define name="xforms.dispatch.attrib" combine="interleave"&gt;
+    &lt;ref name="xforms.Common.attrib"/&gt;
+    &lt;choice&gt;
+      &lt;attribute name="name"&gt;
+        &lt;ref name="xforms.ActionName"/&gt;
+      &lt;/attribute&gt;
+      &lt;element name="name"&gt;
+        &lt;ref name="xforms.ValueTemplate"/&gt;
+      &lt;/element&gt;
+    &lt;/choice&gt;
+    &lt;choice&gt;
+      &lt;!-- TODO collides with xhtml2-hypertext (xhtml.Common.attrib)
+      &lt;attribute name="target"&gt;
+        &lt;data type="IDREF"/&gt;
+      &lt;/attribute&gt;
+      --&gt;
+      &lt;element name="target"&gt;
+        &lt;ref name="xforms.ValueTemplate"/&gt;
+      &lt;/element&gt;
+    &lt;/choice&gt;
+    &lt;choice&gt;
+      &lt;attribute name="delay"&gt;
+        &lt;data type="string"/&gt;
+      &lt;/attribute&gt;
+      &lt;element name="delay"&gt;
+        &lt;ref name="xforms.ValueTemplate"/&gt;
+      &lt;/element&gt;
+    &lt;/choice&gt;
+    &lt;optional&gt;
+      &lt;attribute name="bubbles"&gt;
+        &lt;data type="boolean"/&gt;
+      &lt;/attribute&gt;
+    &lt;/optional&gt;
+    &lt;optional&gt;
+      &lt;attribute name="cancelable"&gt;
+        &lt;data type="boolean"/&gt;
+      &lt;/attribute&gt;
+    &lt;/optional&gt;
+    &lt;ref name="xforms.actions.attrib"/&gt;
+  &lt;/define&gt;
+  &lt;define name="xforms.dispatch.content"&gt;
+    &lt;empty/&gt;
+  &lt;/define&gt;
+  &lt;define name="xforms.rebuild"&gt;
+    &lt;element name="rebuild"&gt;
+      &lt;ref name="xforms.rebuild.attrib"/&gt;
+      &lt;ref name="xforms.rebuild.content"/&gt;
+    &lt;/element&gt;
+  &lt;/define&gt;
+  &lt;define name="xforms.rebuild.attrib" combine="interleave"&gt;
+    &lt;ref name="xforms.Common.attrib"/&gt;
+    &lt;optional&gt;
+      &lt;attribute name="model"&gt;
+        &lt;data type="IDREF"/&gt;
+      &lt;/attribute&gt;
+    &lt;/optional&gt;
+    &lt;ref name="xforms.actions.attrib"/&gt;
+  &lt;/define&gt;
+  &lt;define name="xforms.rebuild.content"&gt;
+    &lt;empty/&gt;
+  &lt;/define&gt;
+  &lt;define name="xforms.revalidate"&gt;
+    &lt;element name="revalidate"&gt;
+      &lt;ref name="xforms.revalidate.attrib"/&gt;
+      &lt;ref name="xforms.revalidate.content"/&gt;
+    &lt;/element&gt;
+  &lt;/define&gt;
+  &lt;define name="xforms.revalidate.attrib" combine="interleave"&gt;
+    &lt;ref name="xforms.Common.attrib"/&gt;
+    &lt;optional&gt;
+      &lt;attribute name="model"&gt;
+        &lt;data type="IDREF"/&gt;
+      &lt;/attribute&gt;
+    &lt;/optional&gt;
+    &lt;ref name="xforms.actions.attrib"/&gt;
+  &lt;/define&gt;
+  &lt;define name="xforms.revalidate.content"&gt;
+    &lt;empty/&gt;
+  &lt;/define&gt;
+  &lt;define name="xforms.recalculate"&gt;
+    &lt;element name="recalculate"&gt;
+      &lt;ref name="xforms.recalculate.attrib"/&gt;
+      &lt;ref name="xforms.recalculate.content"/&gt;
+    &lt;/element&gt;
+  &lt;/define&gt;
+  &lt;define name="xforms.recalculate.attrib" combine="interleave"&gt;
+    &lt;ref name="xforms.Common.attrib"/&gt;
+    &lt;optional&gt;
+      &lt;attribute name="model"&gt;
+        &lt;data type="IDREF"/&gt;
+      &lt;/attribute&gt;
+    &lt;/optional&gt;
+    &lt;ref name="xforms.actions.attrib"/&gt;
+  &lt;/define&gt;
+  &lt;define name="xforms.recalculate.content"&gt;
+    &lt;empty/&gt;
+  &lt;/define&gt;
+  &lt;define name="xforms.refresh"&gt;
+    &lt;element name="refresh"&gt;
+      &lt;ref name="xforms.refresh.attrib"/&gt;
+      &lt;ref name="xforms.refresh.content"/&gt;
+    &lt;/element&gt;
+  &lt;/define&gt;
+  &lt;define name="xforms.refresh.attrib" combine="interleave"&gt;
+    &lt;ref name="xforms.Common.attrib"/&gt;
+    &lt;optional&gt;
+      &lt;attribute name="model"&gt;
+        &lt;data type="IDREF"/&gt;
+      &lt;/attribute&gt;
+    &lt;/optional&gt;
+    &lt;ref name="xforms.actions.attrib"/&gt;
+  &lt;/define&gt;
+  &lt;define name="xforms.refresh.content"&gt;
+    &lt;empty/&gt;
+  &lt;/define&gt;
+  &lt;define name="xforms.setfocus"&gt;
+    &lt;element name="setfocus"&gt;
+      &lt;ref name="xforms.setfocus.attrib"/&gt;
+      &lt;ref name="xforms.setfocus.content"/&gt;
+    &lt;/element&gt;
+  &lt;/define&gt;
+  &lt;define name="xforms.setfocus.attrib" combine="interleave"&gt;
+    &lt;ref name="xforms.Common.attrib"/&gt;
+    &lt;choice&gt;
+      &lt;attribute name="control"&gt;
+        &lt;data type="IDREF"/&gt;
+      &lt;/attribute&gt;
+      &lt;element name="control"&gt;
+        &lt;ref name="xforms.ValueTemplate"/&gt;
+      &lt;/element&gt;
+    &lt;/choice&gt;
+    &lt;ref name="xforms.actions.attrib"/&gt;
+  &lt;/define&gt;
+  &lt;define name="xforms.setfocus.content"&gt;
+    &lt;empty/&gt;
+  &lt;/define&gt;
+  &lt;define name="xforms.load"&gt;
+    &lt;element name="load"&gt;
+      &lt;ref name="xforms.load.attrib"/&gt;
+      &lt;ref name="xforms.load.content"/&gt;
+    &lt;/element&gt;
+  &lt;/define&gt;
+  &lt;define name="xforms.load.attrib" combine="interleave"&gt;
+    &lt;ref name="xforms.Common.attrib"/&gt;
+    &lt;choice&gt;
+      &lt;!-- TODO collides with rdf/a resource attribute
+      &lt;attribute name="resource"&gt;
+        &lt;data type="anyURI"/&gt;
+      &lt;/attribute&gt;
+      --&gt;
+      &lt;element name="resource"&gt;
+        &lt;ref name="xforms.ValueTemplate"/&gt;
+      &lt;/element&gt;
+    &lt;/choice&gt;
+    &lt;optional&gt;
+      &lt;attribute name="show"&gt;
+        &lt;choice&gt;
+          &lt;value&gt;new&lt;/value&gt;
+          &lt;value&gt;replace&lt;/value&gt;
+        &lt;/choice&gt;
+      &lt;/attribute&gt;
+    &lt;/optional&gt;
+    &lt;ref name="xforms.Single.Node.Binding.attrib"/&gt;
+    &lt;ref name="xforms.actions.attrib"/&gt;
+  &lt;/define&gt;
+  &lt;define name="xforms.load.content"&gt;
+    &lt;empty/&gt;
+  &lt;/define&gt;
+  &lt;define name="xforms.setvalue"&gt;
+    &lt;element name="setvalue"&gt;
+      &lt;ref name="xforms.setvalue.attrib"/&gt;
+      &lt;ref name="xforms.setvalue.content"/&gt;
+    &lt;/element&gt;
+  &lt;/define&gt;
+  &lt;define name="xforms.setvalue.attrib" combine="interleave"&gt;
+    &lt;ref name="xforms.Common.attrib"/&gt;
+    &lt;optional&gt;
+      &lt;ref name="xforms.Single.Node.Binding.attrib"/&gt;
+    &lt;/optional&gt;
+    &lt;optional&gt;
+      &lt;attribute name="value"&gt;
+        &lt;ref name="XPathExpression"/&gt;
+      &lt;/attribute&gt;
+    &lt;/optional&gt;
+    &lt;ref name="xforms.actions.attrib"/&gt;
+  &lt;/define&gt;
+  &lt;define name="xforms.setvalue.content"&gt;
+    &lt;text/&gt;
+  &lt;/define&gt;
+  &lt;define name="xforms.send"&gt;
+    &lt;element name="send"&gt;
+      &lt;ref name="xforms.send.attrib"/&gt;
+      &lt;ref name="xforms.send.content"/&gt;
+    &lt;/element&gt;
+  &lt;/define&gt;
+  &lt;define name="xforms.send.attrib" combine="interleave"&gt;
+    &lt;ref name="xforms.Common.attrib"/&gt;
+    &lt;attribute name="submission"&gt;
+      &lt;data type="IDREF"/&gt;
+    &lt;/attribute&gt;
+    &lt;ref name="xforms.actions.attrib"/&gt;
+  &lt;/define&gt;
+  &lt;define name="xforms.send.content"&gt;
+    &lt;empty/&gt;
+  &lt;/define&gt;
+  &lt;define name="xforms.reset"&gt;
+    &lt;element name="reset"&gt;
+      &lt;ref name="xforms.reset.attrib"/&gt;
+      &lt;ref name="xforms.reset.content"/&gt;
+    &lt;/element&gt;
+  &lt;/define&gt;
+  &lt;define name="xforms.reset.attrib" combine="interleave"&gt;
+    &lt;ref name="xforms.Common.attrib"/&gt;
+    &lt;optional&gt;
+      &lt;attribute name="model"&gt;
+        &lt;data type="IDREF"/&gt;
+      &lt;/attribute&gt;
+    &lt;/optional&gt;
+    &lt;ref name="xforms.actions.attrib"/&gt;
+  &lt;/define&gt;
+  &lt;define name="xforms.reset.content"&gt;
+    &lt;empty/&gt;
+  &lt;/define&gt;
+  &lt;define name="xforms.insert"&gt;
+    &lt;element name="insert"&gt;
+      &lt;ref name="xforms.insert.attrib"/&gt;
+      &lt;ref name="xforms.insert.content"/&gt;
+    &lt;/element&gt;
+  &lt;/define&gt;
+  &lt;define name="xforms.insert.attrib" combine="interleave"&gt;
+    &lt;ref name="xforms.Common.attrib"/&gt;
+    &lt;attribute name="at"&gt;
+      &lt;ref name="XPathExpression"/&gt;
+    &lt;/attribute&gt;
+    &lt;attribute name="position"&gt;
+      &lt;choice&gt;
+        &lt;value&gt;before&lt;/value&gt;
+        &lt;value&gt;after&lt;/value&gt;
+      &lt;/choice&gt;
+    &lt;/attribute&gt;
+    &lt;optional&gt;
+      &lt;ref name="xforms.Nodeset.Binding.attrib"/&gt;
+    &lt;/optional&gt;
+    &lt;ref name="xforms.actions.attrib"/&gt;
+  &lt;/define&gt;
+  &lt;define name="xforms.insert.content"&gt;
+    &lt;empty/&gt;
+  &lt;/define&gt;
+  &lt;define name="xforms.delete"&gt;
+    &lt;element name="delete"&gt;
+      &lt;ref name="xforms.delete.attrib"/&gt;
+      &lt;ref name="xforms.delete.content"/&gt;
+    &lt;/element&gt;
+  &lt;/define&gt;
+  &lt;define name="xforms.delete.attrib" combine="interleave"&gt;
+    &lt;ref name="xforms.Common.attrib"/&gt;
+    &lt;attribute name="at"&gt;
+      &lt;ref name="XPathExpression"/&gt;
+    &lt;/attribute&gt;
+    &lt;optional&gt;
+      &lt;ref name="xforms.Nodeset.Binding.attrib"/&gt;
+    &lt;/optional&gt;
+    &lt;ref name="xforms.actions.attrib"/&gt;
+  &lt;/define&gt;
+  &lt;define name="xforms.delete.content"&gt;
+    &lt;empty/&gt;
+  &lt;/define&gt;
+  &lt;define name="xforms.setindex"&gt;
+    &lt;element name="setindex"&gt;
+      &lt;ref name="xforms.setindex.attrib"/&gt;
+      &lt;ref name="xforms.setindex.content"/&gt;
+    &lt;/element&gt;
+  &lt;/define&gt;
+  &lt;define name="xforms.setindex.attrib" combine="interleave"&gt;
+    &lt;ref name="xforms.Common.attrib"/&gt;
+    &lt;attribute name="repeat"&gt;
+      &lt;data type="IDREF"/&gt;
+    &lt;/attribute&gt;
+    &lt;attribute name="index"&gt;
+      &lt;ref name="XPathExpression"/&gt;
+    &lt;/attribute&gt;
+    &lt;ref name="xforms.actions.attrib"/&gt;
+  &lt;/define&gt;
+  &lt;define name="xforms.setindex.content"&gt;
+    &lt;empty/&gt;
+  &lt;/define&gt;
+  &lt;define name="xforms.toggle"&gt;
+    &lt;element name="toggle"&gt;
+      &lt;ref name="xforms.toggle.attrib"/&gt;
+      &lt;ref name="xforms.toggle.content"/&gt;
+    &lt;/element&gt;
+  &lt;/define&gt;
+  &lt;define name="xforms.toggle.attrib" combine="interleave"&gt;
+    &lt;ref name="xforms.Common.attrib"/&gt;
+    &lt;choice&gt;
+      &lt;attribute name="case"&gt;
+        &lt;data type="IDREF"/&gt;
+      &lt;/attribute&gt;
+      &lt;element name="case"&gt;
+        &lt;ref name="xforms.ValueTemplate"/&gt;
+      &lt;/element&gt;
+    &lt;/choice&gt;
+    &lt;ref name="xforms.actions.attrib"/&gt;
+  &lt;/define&gt;
+  &lt;define name="xforms.toggle.content"&gt;
+    &lt;empty/&gt;
+  &lt;/define&gt;
+  &lt;define name="xforms.message"&gt;
+    &lt;element name="message"&gt;
+      &lt;ref name="xforms.message.attrib"/&gt;
+      &lt;ref name="xforms.message.content"/&gt;
+    &lt;/element&gt;
+  &lt;/define&gt;
+  &lt;define name="xforms.message.attrib" combine="interleave"&gt;
+    &lt;ref name="xforms.Common.attrib"/&gt;
+    &lt;attribute name="level"&gt;
+      &lt;choice&gt;
+        &lt;value&gt;ephemeral&lt;/value&gt;
+        &lt;value&gt;modeless&lt;/value&gt;
+        &lt;value&gt;modal&lt;/value&gt;
+      &lt;/choice&gt;
+    &lt;/attribute&gt;
+    &lt;optional&gt;
+      &lt;ref name="xforms.Linking.attrib"/&gt;
+    &lt;/optional&gt;
+    &lt;optional&gt;
+      &lt;ref name="xforms.Single.Node.Binding.attrib"/&gt;
+    &lt;/optional&gt;
+    &lt;ref name="xforms.actions.attrib"/&gt;
+  &lt;/define&gt;
+  &lt;define name="xforms.message.content"&gt;
+    &lt;ref name="xforms.UI.Inline.content"/&gt;
+  &lt;/define&gt;
+  &lt;define name="xforms.Actions"&gt;
+    &lt;zeroOrMore&gt;
+      &lt;choice&gt;
+        &lt;ref name="xforms.action"/&gt;
+        &lt;ref name="xforms.dispatch"/&gt;
+        &lt;ref name="xforms.rebuild"/&gt;
+        &lt;ref name="xforms.recalculate"/&gt;
+        &lt;ref name="xforms.refresh"/&gt;
+        &lt;ref name="xforms.setfocus"/&gt;
+        &lt;ref name="xforms.load"/&gt;
+        &lt;ref name="xforms.setvalue"/&gt;
+        &lt;ref name="xforms.send"/&gt;
+        &lt;ref name="xforms.reset"/&gt;
+        &lt;ref name="xforms.insert"/&gt;
+        &lt;ref name="xforms.delete"/&gt;
+        &lt;ref name="xforms.setindex"/&gt;
+        &lt;ref name="xforms.toggle"/&gt;
+        &lt;ref name="xforms.message"/&gt;
+      &lt;/choice&gt;
+    &lt;/zeroOrMore&gt;
+  &lt;/define&gt;
+  &lt;!-- TODO: Do the XML Events attributes go only on actions? --&gt;
+  &lt;define name="xforms.actions.attrib" combine="interleave"&gt;
+    &lt;ref name="xforms.Events.attrib"/&gt;
+    &lt;optional&gt;
+      &lt;attribute name="if"&gt;
+        &lt;ref name="xforms.ValueTemplate"/&gt;
+      &lt;/attribute&gt;
+    &lt;/optional&gt;
+    &lt;optional&gt;
+      &lt;attribute name="while"&gt;
+        &lt;ref name="xforms.ValueTemplate"/&gt;
+      &lt;/attribute&gt;
+    &lt;/optional&gt;
+  &lt;/define&gt;
+  &lt;!-- Container Form Controls --&gt;
+  &lt;define name="xforms.Container.Form.Controls"&gt;
+    &lt;choice&gt;
+      &lt;ref name="xforms.group"/&gt;
+      &lt;ref name="xforms.repeat"/&gt;
+      &lt;ref name="xforms.switch"/&gt;
+    &lt;/choice&gt;
+  &lt;/define&gt;
+  &lt;define name="xforms.repeat"&gt;
+    &lt;element name="repeat"&gt;
+      &lt;ref name="xforms.repeat.attrib"/&gt;
+      &lt;ref name="xforms.repeat.content"/&gt;
+    &lt;/element&gt;
+  &lt;/define&gt;
+  &lt;define name="xforms.repeat.attrib" combine="interleave"&gt;
+    &lt;ref name="xforms.Common.attrib"/&gt;
+    &lt;ref name="xforms.Nodeset.Binding.attrib"/&gt;
+    &lt;ref name="UI.xforms.Common.attrib"/&gt;
+    &lt;optional&gt;
+      &lt;attribute name="startindex"&gt;
+        &lt;data type="positiveInteger"/&gt;
+      &lt;/attribute&gt;
+    &lt;/optional&gt;
+    &lt;optional&gt;
+      &lt;attribute name="number"&gt;
+        &lt;data type="nonNegativeInteger"/&gt;
+      &lt;/attribute&gt;
+    &lt;/optional&gt;
+  &lt;/define&gt;
+  &lt;define name="xforms.repeat.content"&gt;
+    &lt;zeroOrMore&gt;
+      &lt;choice&gt;
+        &lt;ref name="xforms.Core.Form.Controls"/&gt;
+        &lt;ref name="xforms.Container.Form.Controls"/&gt;
+        &lt;ref name="xforms.UI.Inline.content"/&gt;
+      &lt;/choice&gt;
+    &lt;/zeroOrMore&gt;
+  &lt;/define&gt;
+  &lt;define name="xforms.group"&gt;
+    &lt;element name="group"&gt;
+      &lt;ref name="xforms.group.attrib"/&gt;
+      &lt;ref name="xforms.group.content"/&gt;
+    &lt;/element&gt;
+  &lt;/define&gt;
+  &lt;define name="xforms.group.attrib" combine="interleave"&gt;
+    &lt;ref name="xforms.Common.attrib"/&gt;
+    &lt;optional&gt;
+      &lt;ref name="xforms.Single.Node.Binding.attrib"/&gt;
+    &lt;/optional&gt;
+    &lt;ref name="UI.xforms.Common.attrib"/&gt;
+  &lt;/define&gt;
+  &lt;define name="xforms.group.content"&gt;
+    &lt;optional&gt;
+      &lt;ref name="xforms.label"/&gt;
+    &lt;/optional&gt;
+    &lt;zeroOrMore&gt;
+      &lt;choice&gt;
+        &lt;ref name="xforms.Core.Form.Controls"/&gt;
+        &lt;ref name="xforms.Container.Form.Controls"/&gt;
+        &lt;ref name="xforms.UI.Common.content"/&gt;
+        &lt;ref name="xforms.UI.Inline.content"/&gt;
+      &lt;/choice&gt;
+    &lt;/zeroOrMore&gt;
+  &lt;/define&gt;
+  &lt;define name="xforms.switch"&gt;
+    &lt;element name="switch"&gt;
+      &lt;ref name="xforms.switch.attrib"/&gt;
+      &lt;ref name="xforms.switch.content"/&gt;
+    &lt;/element&gt;
+  &lt;/define&gt;
+  &lt;define name="xforms.switch.attrib" combine="interleave"&gt;
+    &lt;ref name="xforms.Common.attrib"/&gt;
+    &lt;optional&gt;
+      &lt;ref name="xforms.Single.Node.Binding.attrib"/&gt;
+    &lt;/optional&gt;
+    &lt;ref name="UI.xforms.Common.attrib"/&gt;
+  &lt;/define&gt;
+  &lt;define name="xforms.switch.content"&gt;
+    &lt;oneOrMore&gt;
+      &lt;ref name="xforms.case"/&gt;
+    &lt;/oneOrMore&gt;
+  &lt;/define&gt;
+  &lt;define name="xforms.case"&gt;
+    &lt;element name="case"&gt;
+      &lt;ref name="xforms.case.attrib"/&gt;
+      &lt;ref name="xforms.case.content"/&gt;
+    &lt;/element&gt;
+  &lt;/define&gt;
+  &lt;define name="xforms.case.attrib" combine="interleave"&gt;
+    &lt;ref name="xforms.Common.attrib"/&gt;
+  &lt;/define&gt;
+  &lt;define name="xforms.case.content"&gt;
+    &lt;optional&gt;
+      &lt;ref name="xforms.label"/&gt;
+    &lt;/optional&gt;
+    &lt;zeroOrMore&gt;
+      &lt;choice&gt;
+        &lt;ref name="xforms.Core.Form.Controls"/&gt;
+        &lt;ref name="xforms.Container.Form.Controls"/&gt;
+        &lt;ref name="xforms.action"/&gt;
+        &lt;ref name="xforms.UI.Inline.content"/&gt;
+      &lt;/choice&gt;
+    &lt;/zeroOrMore&gt;
+  &lt;/define&gt;
+  &lt;!-- Simple Types --&gt;
+  &lt;define name="QNameButNotNCName"&gt;
+    &lt;data type="QName"&gt;
+      &lt;param name="pattern"&gt;[^:]+:[^:]+&lt;/param&gt;
+    &lt;/data&gt;
+  &lt;/define&gt;
+  &lt;define name="XPathExpression"&gt;
+    &lt;data type="string"/&gt;
+  &lt;/define&gt;
+  &lt;define name="xforms.ValueTemplate"&gt;
+    &lt;ref name="XPathExpression"/&gt;
+  &lt;/define&gt;
+  &lt;!-- Actions --&gt;
+  &lt;define name="xforms.ActionName"&gt;
+    &lt;choice&gt;
+      &lt;value&gt;xforms-model-construct&lt;/value&gt;
+      &lt;value&gt;xforms-model-construct-done&lt;/value&gt;
+      &lt;value&gt;xforms-ready&lt;/value&gt;
+      &lt;value&gt;xforms-model-destruct&lt;/value&gt;
+      &lt;value&gt;xforms-rebuild&lt;/value&gt;
+      &lt;value&gt;xforms-recalculate&lt;/value&gt;
+      &lt;value&gt;xforms-revalidate&lt;/value&gt;
+      &lt;value&gt;xforms-refresh&lt;/value&gt;
+      &lt;value&gt;xforms-reset&lt;/value&gt;
+      &lt;value&gt;xforms-previous&lt;/value&gt;
+      &lt;value&gt;xforms-next&lt;/value&gt;
+      &lt;value&gt;xforms-focus&lt;/value&gt;
+      &lt;value&gt;xforms-help&lt;/value&gt;
+      &lt;value&gt;xforms-hint&lt;/value&gt;
+      &lt;value&gt;xforms-submit&lt;/value&gt;
+      &lt;value&gt;xforms-submit-serialize&lt;/value&gt;
+      &lt;value&gt;xforms-insert&lt;/value&gt;
+      &lt;value&gt;xforms-delete&lt;/value&gt;
+      &lt;value&gt;xforms-value-changed&lt;/value&gt;
+      &lt;value&gt;xforms-valid&lt;/value&gt;
+      &lt;value&gt;xforms-invalid&lt;/value&gt;
+      &lt;value&gt;xforms-readonly&lt;/value&gt;
+      &lt;value&gt;xforms-readwrite&lt;/value&gt;
+      &lt;value&gt;xforms-required&lt;/value&gt;
+      &lt;value&gt;xforms-optional&lt;/value&gt;
+      &lt;value&gt;xforms-enabled&lt;/value&gt;
+      &lt;value&gt;xforms-disabled&lt;/value&gt;
+      &lt;value&gt;xforms-select&lt;/value&gt;
+      &lt;value&gt;xforms-deselect&lt;/value&gt;
+      &lt;value&gt;xforms-in-range&lt;/value&gt;
+      &lt;value&gt;xforms-out-of-range&lt;/value&gt;
+      &lt;value&gt;xforms-scroll-first&lt;/value&gt;
+      &lt;value&gt;xforms-scroll-last&lt;/value&gt;
+      &lt;value&gt;xforms-submit-done&lt;/value&gt;
+      &lt;value&gt;xforms-binding-exception&lt;/value&gt;
+      &lt;value&gt;xforms-compute-exception&lt;/value&gt;
+      &lt;value&gt;xforms-link-error&lt;/value&gt;
+      &lt;value&gt;xforms-link-exception&lt;/value&gt;
+      &lt;value&gt;xforms-output-error&lt;/value&gt;
+      &lt;value&gt;xforms-submit-error&lt;/value&gt;
+      &lt;value&gt;xforms-version-exception&lt;/value&gt;
+      &lt;data type="NMTOKEN"&gt;
+        &lt;except&gt;
+          &lt;data type="NMTOKEN"&gt;
+            &lt;param name="pattern"&gt;^xforms-.*&lt;/param&gt;
+          &lt;/data&gt;
+        &lt;/except&gt;
+      &lt;/data&gt;
+    &lt;/choice&gt;
+  &lt;/define&gt;
+  &lt;define name="anyElement"&gt;
+    &lt;element&gt;
+      &lt;anyName/&gt;
+      &lt;zeroOrMore&gt;
+        &lt;choice&gt;
+          &lt;attribute&gt;
+            &lt;anyName/&gt;
+          &lt;/attribute&gt;
+          &lt;text/&gt;
+          &lt;ref name="anyElement"/&gt;
+        &lt;/choice&gt;
+      &lt;/zeroOrMore&gt;
+    &lt;/element&gt;
+  &lt;/define&gt;
+&lt;/grammar&gt;
+</pre>
+<!-- END OF FILE RELAXNG/xforms-nons-11.rng.mhtml -->
+<h3 >
+<a id="a_rmodule_XForms_Repeat_Attribute_Collection" >C.4.8.</a> XForms Repeat Attribute Collection
+</h3>
+<!-- INCLUDING SCHEMA RELAXNG/xforms-repeat-attrib.rng -->
+<pre class="dtd">
+&lt;?xml version="1.0" encoding="UTF-8"?&gt;
+&lt;grammar xmlns="http://relaxng.org/ns/structure/1.0"
+         xmlns:a="http://relaxng.org/ns/compatibility/annotations/1.0"
+         xmlns:x="http://www.w3.org/1999/xhtml"&gt;
+  &lt;x:h1&gt;XForms Repeat Attribute Collection Module&lt;/x:h1&gt;
+  &lt;define name="xforms.Repeat.attrib"&gt;
+    &lt;optional&gt;
+      &lt;attribute name="repeat-model"&gt;
+        &lt;ref name="IDREF.datatype"/&gt;
+      &lt;/attribute&gt;
+    &lt;/optional&gt;    
+    &lt;optional&gt;
+      &lt;attribute name="repeat-bind"&gt;
+        &lt;ref name="IDREF.datatype"/&gt;
+      &lt;/attribute&gt;
+    &lt;/optional&gt;    
+    &lt;optional&gt;
+      &lt;attribute name="repeat-nodeset"&gt;
+        &lt;ref name="LocationPath.datatype"/&gt;
+      &lt;/attribute&gt;
+    &lt;/optional&gt;
+    &lt;optional&gt;
+      &lt;attribute name="repeat-startindex"&gt;
+        &lt;ref name="Number.datatype"/&gt;
+      &lt;/attribute&gt;
+    &lt;/optional&gt;
+    &lt;optional&gt;
+      &lt;attribute name="repeat-number"&gt;
+        &lt;ref name="Number.datatype"/&gt;
+      &lt;/attribute&gt;
+    &lt;/optional&gt;
+  &lt;/define&gt;
+&lt;/grammar&gt;
+</pre>
+<!-- END OF FILE RELAXNG/xforms-repeat-attrib.rng.mhtml -->
+<hr />
+<div class="navbar">
+[<a href="xhtml20_relax.html">previous</a>]
+[<a href="xhtml20_schema.html">next</a>]
+[<a href="Overview.html#toc">table of contents</a>]
+[<a href="elements.html">elements</a>]
+[<a href="attributes.html">attributes</a>]
+</div>
+</body>
+</html>

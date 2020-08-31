@@ -1,0 +1,667 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN"
+	"http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html lang="en" xml:lang="en" xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<title>XHTML&#8482; 2.0 - XHTML 2.0 Schema</title> 
+<link rel="start" type="text/html" href="Overview.html" />
+<link rel="contents" type="text/html" href="Overview.html#toc" />
+<link rel="prev" type="text/html" href="relax_module_defs.html" />
+<link rel="next" type="text/html" href="schema_module_defs.html" />
+<link rel="stylesheet" type="text/css" href="xhtml.css" />
+<link rel="stylesheet" type="text/css" href="http://www.w3.org/StyleSheets/TR/W3C-ED.css" />
+</head>
+<body>
+<div class="navbar">
+[<a accesskey="P" href="relax_module_defs.html">previous</a>]
+[<a accesskey="N" href="schema_module_defs.html">next</a>]
+[<a accesskey="T" href="Overview.html#toc">table of contents</a>]
+[<a accesskey="E" href="elements.html">elements</a>]
+[<a accesskey="A" href="attributes.html">attributes</a>]
+<hr />
+</div>
+<h1 >
+<a id="a_xhtml20_schema" >D.</a> XHTML 2.0 Schema
+</h1>
+<div class='subtoc'><p><strong>Contents</strong></p><ul class='toc'><li class='tocline'>
+D.1.
+<a href="#a_xhtml2s_driver" class="tocxref">XHTML 2 Schema Driver</a>
+</li><li class='tocline'>D.2.
+<a href="#a_xhtml2s_attribs" class="tocxref">XHTML 2 Attribute Collections</a>
+</li><li class='tocline'>D.3.
+<a href="#a_xhtml2s_model" class="tocxref">XHTML 2 Content Model</a>
+</li><li class='tocline'>D.4.
+<a href="#a_xhtml2s_modules" class="tocxref">XHTML 2 Modules</a>
+</li></ul>
+</div>
+<p>This appendix is <em>normative</em>.</p>
+<h2 >
+<a id="a_xhtml2s_driver" >D.1.</a> XHTML 2 Schema Driver
+</h2>
+<p>This section contains the driver for the XHTML 2 document type
+implementation as an XML Schema. Note that the structure
+and techniques in these driver files are as described in 
+Modularization of XHTML [<a class="nref" href="references.html#ref_XHTMLMOD">XHTMLMOD</a>].</p>
+<!-- INCLUDING SCHEMA xhtml2.xsd -->
+<pre class="dtd">
+&lt;?xml version="1.0" encoding="UTF-8"?&gt;
+&lt;xs:schema
+    xmlns:xs="http://www.w3.org/2001/XMLSchema"
+    targetNamespace="http://www.w3.org/1999/xhtml"
+    xmlns:xh11d="http://www.w3.org/1999/xhtml/datatypes/"
+    xmlns="http://www.w3.org/1999/xhtml"
+    elementFormDefault="qualified" &gt;
+    &lt;xs:annotation&gt;
+        &lt;xs:documentation&gt;
+      This is the XML Schema driver for XHTML 1.1.
+      Please use this namespace for XHTML elements:
+         "http://www.w3.org/1999/xhtml"
+      &#36;Id: xhtml2.xsd,v 1.1.2.1 2009/01/16 17:50:25 ahby Exp &#36;
+    &lt;/xs:documentation&gt;
+        &lt;xs:documentation source="xhtml-copyright-1.xsd"/&gt;
+    &lt;/xs:annotation&gt;
+    &lt;xs:annotation&gt;
+        &lt;xs:documentation&gt;
+      This is XHTML, a reformulation of HTML as a modular XML application
+      The Extensible HyperText Markup Language (XHTML)
+      Copyright &amp;#169;1998-2007 World Wide Web Consortium
+      (Massachusetts Institute of Technology, European Research Consortium
+       for Informatics and Mathematics, Keio University).
+      All Rights Reserved.
+      Permission to use, copy, modify and distribute the XHTML Schema
+      modules and their accompanying xs:documentation for any purpose
+      and without fee is hereby granted in perpetuity, provided that the above
+      copyright notice and this paragraph appear in all copies.
+      The copyright holders make no representation about the suitability of
+      these XML Schema modules for any purpose.
+      They are provided "as is" without expressed or implied warranty.
+    &lt;/xs:documentation&gt;
+    &lt;/xs:annotation&gt;
+    &lt;xs:annotation&gt;
+        &lt;xs:documentation&gt;
+      This is the Schema Driver file for XHTML2
+      Document Type
+     This schema
+        + imports external schemas (xml.xsd)
+        + refedines (and include)s schema modules for XHTML2 Document Type.
+        + includes Schema for Named content model for the
+          XHTML2 Document Type
+        XHTML2 Document Type includes the following Modules
+           XHTML Core modules (Required for XHTML Family Conformance)
+            +  text
+            +  hypertext
+            +  lists
+            +  structure
+           Other XHTML modules
+            +  Edit
+            +  Bdo
+            +  Presentational
+            +  Link
+            +  Meta
+            +  Base
+            +  Scripting
+            +  Style
+            +  Image
+            +  Applet
+            +  Object
+            +  Param (Applet/Object modules require Param Module)
+            +  Tables
+            +  Forms
+            +  Client side image maps
+            +  Server side image maps
+            +  Ruby
+    &lt;/xs:documentation&gt;
+    &lt;/xs:annotation&gt;
+    &lt;xs:import
+        namespace="http://www.w3.org/XML/1998/namespace"
+        schemaLocation="http://www.w3.org/2001/xml.xsd"&gt;
+        &lt;xs:annotation&gt;
+            &lt;xs:documentation&gt;
+         This import brings in the XML namespace attributes
+         The XML attributes are used by various modules.
+       &lt;/xs:documentation&gt;
+        &lt;/xs:annotation&gt;
+    &lt;/xs:import&gt;
+    &lt;xs:import
+        namespace="http://www.w3.org/1999/xhtml/datatypes/"
+        schemaLocation="xhtml-datatypes-2.xsd"/&gt;
+    &lt;xs:include
+        schemaLocation="xhtml2-modules-1.xsd"&gt;
+        &lt;xs:annotation&gt;
+            &lt;xs:documentation&gt;
+        Schema that includes all modules (and redefinitions)
+        for XHTML2 Document Type.                
+           &lt;/xs:documentation&gt;
+        &lt;/xs:annotation&gt;
+    &lt;/xs:include&gt;
+    &lt;xs:include
+        schemaLocation="xhtml2-model-1.xsd"&gt;
+        &lt;xs:annotation&gt;
+            &lt;xs:documentation&gt;
+        Document Model module for the XHTML2 Document Type.
+        This schema file defines all named models used by XHTML
+        Modularization Framework for XHTML2 Document Type
+      &lt;/xs:documentation&gt;
+        &lt;/xs:annotation&gt;
+    &lt;/xs:include&gt;
+&lt;/xs:schema&gt;
+</pre>
+<!-- END OF FILE xhtml2.xsd.mhtml -->
+<h2 >
+<a id="a_xhtml2s_attribs" >D.2.</a> XHTML 2 Attribute Collections
+</h2>
+<p>This section contains a driver that accumulates all of the attribute
+collections and defines the Common collection based upon them.</p>
+<!-- INCLUDING SCHEMA xhtml2-attribs-1.xsd -->
+<pre class="dtd">
+&lt;?xml version="1.0" encoding="UTF-8"?&gt;
+&lt;xs:schema
+ xmlns:xs="http://www.w3.org/2001/XMLSchema"
+ elementFormDefault="qualified"
+ xmlns:xh11d="http://www.w3.org/1999/xhtml/datatypes/"
+&gt;
+  &lt;xs:import namespace="http://www.w3.org/1999/xhtml/datatypes/" 
+             schemaLocation="xhtml-datatypes-2.xsd" /&gt;
+  &lt;xs:import namespace="http://www.w3.org/XML/1998/namespace"
+             schemaLocation="http://www.w3.org/2001/xml.xsd"&gt;
+    &lt;xs:annotation&gt;
+        &lt;xs:documentation&gt;
+        This import brings in the XML namespace attributes
+        The module itself does not provide the schemaLocation
+        and expects the driver schema to provide the
+        actual SchemaLocation.
+        &lt;/xs:documentation&gt;
+    &lt;/xs:annotation&gt;
+  &lt;/xs:import&gt;
+  &lt;xs:include schemaLocation="xhtml-core-2.xsd"/&gt;
+  &lt;xs:include schemaLocation="xhtml-bidi-2.xsd"/&gt;
+  &lt;xs:include schemaLocation="xml-events-attribs-2.xsd"/&gt;
+  &lt;xs:include schemaLocation="xhtml-edit-2.xsd"/&gt;
+  &lt;xs:include schemaLocation="xhtml-embedding-2.xsd"/&gt;
+  &lt;!-- forms common collection --&gt;
+  &lt;xs:include schemaLocation="xhtml-hyperAttributes-2.xsd"/&gt;
+  &lt;xs:include schemaLocation="xhtml-i18n-2.xsd"/&gt;
+  &lt;xs:include schemaLocation="xhtml-csismap-2.xsd"/&gt;
+  &lt;xs:include schemaLocation="xhtml-media-attrib-2.xsd"/&gt;
+  &lt;xs:include schemaLocation="xhtml-metaAttributes-2.xsd"/&gt;
+  &lt;xs:include schemaLocation="xhtml-role-attrib-2.xsd"/&gt;
+  &lt;xs:include schemaLocation="xhtml-style-attrib-2.xsd"/&gt;
+  &lt;xs:attributeGroup name="xhtml.Core.extra.attrib"/&gt;
+  &lt;xs:attributeGroup name="xhtml.Bidi.extra.attrib"/&gt;
+  &lt;xs:attributeGroup name="xmlEvents.extra.attrib"/&gt;
+  &lt;xs:attributeGroup name="xhtml.Edit.extra.attrib"/&gt;
+  &lt;xs:attributeGroup name="xhtml.Embedding.extra.attrib"/&gt;
+  &lt;xs:attributeGroup name="xhtml.Hypertext.extra.attrib"/&gt;
+  &lt;xs:attributeGroup name="xhtml.I18n.extra.attrib"/&gt;
+  &lt;xs:attributeGroup name="xhtml.Csismap.extra.attrib"/&gt;
+  &lt;xs:attributeGroup name="xhtml.Media.extra.attrib"/&gt;
+  &lt;xs:attributeGroup name="xhtml.MetaAttributes.extra.attrib"/&gt;
+  &lt;xs:attributeGroup name="xhtml.Role.extra.attrib"/&gt;
+  &lt;xs:attributeGroup name="xhtml.Style.extra.attrib"/&gt;
+  &lt;xs:attributeGroup name="xhtml.CommonNoEvents.attrib"&gt;
+      &lt;xs:attributeGroup ref="xhtml.Core.attrib"/&gt;
+      &lt;xs:attributeGroup ref="xhtml.Bidi.attrib"/&gt;
+      &lt;xs:attributeGroup ref="xhtml.Edit.attrib"/&gt;
+      &lt;xs:attributeGroup ref="xhtml.Embedding.attrib"/&gt;
+      &lt;xs:attributeGroup ref="xhtml.Hypertext.attrib"/&gt;
+      &lt;xs:attributeGroup ref="xhtml.I18n.attrib"/&gt;
+      &lt;xs:attributeGroup ref="xhtml.ImageMap.attrib"/&gt;
+      &lt;xs:attributeGroup ref="xhtml.Media.attrib"/&gt;
+      &lt;xs:attributeGroup ref="xhtml.MetaAttributes.attrib"/&gt;
+      &lt;xs:attributeGroup ref="xhtml.Role.attrib"/&gt;
+      &lt;xs:attributeGroup ref="xhtml.Style.attrib"/&gt;
+      &lt;xs:attributeGroup ref="xhtml.Common.extra"/&gt;
+  &lt;/xs:attributeGroup&gt;
+  &lt;xs:attributeGroup name="xhtml.Common.attrib"&gt;
+      &lt;xs:attributeGroup ref="xhtml.CommonNoEvents.attrib"/&gt;
+      &lt;xs:attributeGroup ref="xmlEvents.attrib"/&gt;
+  &lt;/xs:attributeGroup&gt;
+  &lt;xs:attributeGroup name="xhtml.Global.Core.extra.attrib"/&gt;
+  &lt;xs:attributeGroup name="xhtml.Global.Edit.extra.attrib"/&gt;
+  &lt;xs:attributeGroup name="xhtml.Global.Embedding.extra.attrib"/&gt;
+  &lt;xs:attributeGroup name="xhtml.Global.Hypertext.extra.attrib"/&gt;
+  &lt;xs:attributeGroup name="xhtml.Global.Media.extra.attrib"/&gt;
+&lt;/xs:schema&gt;
+</pre>
+<!-- END OF FILE xhtml2-attribs-1.xsd.mhtml -->
+<h2 >
+<a id="a_xhtml2s_model" >D.3.</a> XHTML 2 Content Model
+</h2>
+<p>This section instantiates the XHTML 2 Content Model using XML Schema, 
+including defining the various XHTML 2 Content Sets that are used by the modules.</p>
+<!-- INCLUDING SCHEMA xhtml2-model-1.xsd -->
+<pre class="dtd">
+&lt;?xml version="1.0" encoding="UTF-8"?&gt;
+&lt;xs:schema
+    xmlns:xs="http://www.w3.org/2001/XMLSchema"
+    xmlns:xh11d="http://www.w3.org/1999/xhtml/datatypes/"
+    elementFormDefault="qualified" &gt;
+    &lt;xs:import
+        namespace="http://www.w3.org/1999/xhtml/datatypes/"
+        schemaLocation="xhtml-datatypes-2.xsd"/&gt;
+    &lt;xs:annotation&gt;
+        &lt;xs:documentation&gt; 
+            This is the XML Schema module of common content models for XHTML11 
+            &#36;Id: xhtml2-model-1.xsd,v 1.1.2.2 2009/04/07 14:13:23 ahby Exp &#36; 
+        &lt;/xs:documentation&gt;
+        &lt;xs:documentation source="xhtml-copyright-1.xsd"/&gt;
+    &lt;/xs:annotation&gt;
+    &lt;xs:annotation&gt;
+        &lt;xs:documentation&gt; 
+            XHTML Document Model 
+            This module describes the groupings of elements/attributes 
+            that make up common content models for XHTML elements. 
+            XHTML has following basic content models: 
+               xhtml.Text.mix; character-level elements
+               xhtml.Structural.mix; block-like elements, e.g., paragraphs and lists
+               xhtml.Flow.mix; any block or inline elements 
+               xhtml.HeadOpts.mix; Head Elements 
+               xhtml.StructuralPre.mix; Special class for pre content model 
+            Any groups declared in this module may be used to create 
+            element content models, but the above are considered 'global' 
+            (insofar as that term applies here). XHTML has the
+            following Attribute Groups 
+               xhtml.Core.extra.attrib 
+               xhtml.I18n.extra.attrib
+               xhtml.Common.extra 
+            The above attribute Groups are considered Global 
+        &lt;/xs:documentation&gt;
+    &lt;/xs:annotation&gt;
+    &lt;xs:attributeGroup
+        name="xhtml.Common.extra"&gt;
+        &lt;xs:annotation&gt;
+            &lt;xs:documentation&gt; Extended Common Attributes &lt;/xs:documentation&gt;
+        &lt;/xs:annotation&gt;
+	&lt;/xs:attributeGroup&gt;
+    &lt;xs:attributeGroup
+        name="xhtml.Global.Common.extra"&gt;
+        &lt;xs:annotation&gt;
+            &lt;xs:documentation&gt; Extended Global Common Attributes &lt;/xs:documentation&gt;
+        &lt;/xs:annotation&gt;
+    &lt;/xs:attributeGroup&gt;
+    &lt;xs:group
+        name="xhtml.Head.extra"&gt;
+        &lt;xs:sequence/&gt;
+    &lt;/xs:group&gt;
+    &lt;xs:group
+        name="xhtml.head.content"&gt;
+        &lt;xs:sequence&gt;
+            &lt;xs:element
+                name="title"
+                minOccurs="1"
+                maxOccurs="1"
+                type="xhtml.title.type"/&gt;
+            &lt;xs:choice&gt;
+                &lt;xs:element
+                    name="access"
+                    type="xhtml.access.type"/&gt;
+                &lt;xs:element
+                    name="action"
+                    type="xmlHandlers.action.type"/&gt;
+                &lt;xs:element
+                    name="link"
+                    type="xhtml.link.type"/&gt;
+                &lt;xs:element
+                    name="listener"
+                    type="xmlEvents.listener.type"/&gt;
+                &lt;xs:element
+                    name="meta"
+                    type="xhtml.meta.type"/&gt;
+                &lt;xs:element
+                    name="style"
+                    type="xhtml.style.type"/&gt;
+                &lt;xs:group ref="xhtml.Head.extra"/&gt;
+            &lt;/xs:choice&gt;
+        &lt;/xs:sequence&gt;
+    &lt;/xs:group&gt;
+    &lt;!-- Text Elements --&gt;
+    &lt;xs:group
+        name="xhtml.Text.extra"&gt;
+        &lt;xs:sequence/&gt;
+    &lt;/xs:group&gt;
+    &lt;xs:group
+        name="xhtml.TextNoRuby.class"&gt;
+        &lt;xs:choice&gt;
+            &lt;xs:element
+                name="abbr"
+                type="xhtml.abbr.type"/&gt;
+            &lt;xs:element
+                name="caption"
+                type="xhtml.caption.type"/&gt;
+            &lt;xs:element
+                name="cite"
+                type="xhtml.cite.type"/&gt;
+            &lt;xs:element
+                name="code"
+                type="xhtml.code.type"/&gt;
+            &lt;xs:element
+                name="dfn"
+                type="xhtml.dfn.type"/&gt;
+            &lt;xs:element
+                name="em"
+                type="xhtml.em.type"/&gt;
+            &lt;xs:element
+                name="kbd"
+                type="xhtml.kbd.type"/&gt;
+            &lt;xs:element
+                name="l"
+                type="xhtml.l.type"/&gt;
+            &lt;xs:element
+                name="q"
+                type="xhtml.q.type"/&gt;
+            &lt;xs:element
+                name="samp"
+                type="xhtml.samp.type"/&gt;
+            &lt;xs:element
+                name="span"
+                type="xhtml.span.type"/&gt;
+            &lt;xs:element
+                name="strong"
+                type="xhtml.strong.type"/&gt;
+            &lt;xs:element
+                name="sub"
+                type="xhtml.sub.type"/&gt;
+            &lt;xs:element
+                name="sup"
+                type="xhtml.sup.type"/&gt;
+            &lt;xs:element
+                name="var"
+                type="xhtml.var.type"/&gt;
+            &lt;xs:element
+                name="img"
+                type="xhtml.img.type"/&gt;
+            &lt;xs:element
+                name="link"
+                type="xhtml.link.type"/&gt;
+            &lt;xs:element
+                name="meta"
+                type="xhtml.meta.type"/&gt;
+            &lt;xs:element
+                name="object"
+                type="xhtml.object.type"/&gt;
+        &lt;/xs:choice&gt;
+    &lt;/xs:group&gt;
+    &lt;xs:group name="xhtml.Text.class"&gt;
+        &lt;xs:choice&gt;
+            &lt;xs:element
+                name="ruby"
+                type="xhtml.ruby.type"/&gt;
+            &lt;xs:group
+                ref="xhtml.TextNoRuby.class"/&gt;
+        &lt;/xs:choice&gt;
+    &lt;/xs:group&gt;
+    &lt;xs:group name="xhtml.Text.mix"&gt;
+        &lt;xs:choice&gt;
+            &lt;xs:group ref="xhtml.Text.class"/&gt;
+            &lt;xs:group ref="xhtml.Text.extra"/&gt;
+        &lt;/xs:choice&gt;
+    &lt;/xs:group&gt;
+    &lt;xs:group
+        name="xhtml.Heading.class"&gt;
+        &lt;xs:choice&gt;
+            &lt;xs:element
+                name="h"
+                type="xhtml.h.type"/&gt;
+            &lt;xs:element
+                name="h1"
+                type="xhtml.h1.type"/&gt;
+            &lt;xs:element
+                name="h2"
+                type="xhtml.h2.type"/&gt;
+            &lt;xs:element
+                name="h3"
+                type="xhtml.h3.type"/&gt;
+            &lt;xs:element
+                name="h4"
+                type="xhtml.h4.type"/&gt;
+            &lt;xs:element
+                name="h5"
+                type="xhtml.h5.type"/&gt;
+            &lt;xs:element
+                name="h6"
+                type="xhtml.h6.type"/&gt;
+        &lt;/xs:choice&gt;
+    &lt;/xs:group&gt;
+    &lt;xs:group
+        name="xhtml.List.class"&gt;
+        &lt;xs:choice&gt;
+            &lt;xs:element
+                name="ul"
+                type="xhtml.ul.type"/&gt;
+            &lt;xs:element
+                name="ol"
+                type="xhtml.ol.type"/&gt;
+            &lt;xs:element
+                name="dl"
+                type="xhtml.dl.type"/&gt;
+        &lt;/xs:choice&gt;
+    &lt;/xs:group&gt;
+    &lt;xs:group
+        name="xhtml.List.extra"&gt;
+        &lt;xs:sequence/&gt;
+    &lt;/xs:group&gt;
+    &lt;xs:group name="xhtml.List.mix"&gt;
+        &lt;xs:choice&gt;
+            &lt;xs:group ref="xhtml.List.class"/&gt;
+            &lt;xs:group ref="xhtml.List.extra"/&gt;
+        &lt;/xs:choice&gt;
+    &lt;/xs:group&gt;
+    &lt;xs:group
+        name="xhtml.Table.class"&gt;
+        &lt;xs:choice&gt;
+            &lt;xs:element
+                name="table"
+                type="xhtml.table.type"/&gt;
+        &lt;/xs:choice&gt;
+    &lt;/xs:group&gt;
+    &lt;xs:group
+        name="xhtml.Structural.class"&gt;
+        &lt;xs:choice&gt;
+            &lt;xs:element
+                name="action"
+                type="xmlHandlers.action.type"/&gt;
+            &lt;xs:element
+                name="address"
+                type="xhtml.address.type"/&gt;
+            &lt;xs:element
+                name="blockcode"
+                type="xhtml.blockcode.type"/&gt;
+            &lt;xs:element
+                name="blockquote"
+                type="xhtml.blockquote.type"/&gt;
+            &lt;xs:element
+                name="div"
+                type="xhtml.div.type"/&gt;
+            &lt;xs:group ref="xhtml.List.class"/&gt;
+            &lt;xs:element
+                name="listener"
+                type="xmlEvents.listener.type"/&gt;
+            &lt;xs:element
+                name="p"
+                type="xhtml.p.type"/&gt;
+            &lt;xs:element
+                name="pre"
+                type="xhtml.pre.type"/&gt;
+            &lt;xs:element
+                name="script"
+                type="xmlScripting.script.type"/&gt;
+            &lt;xs:element
+                name="section"
+                type="xhtml.section.type"/&gt;
+            &lt;xs:element
+                name="separator"
+                type="xhtml.separator.type"/&gt;
+            &lt;xs:element
+                name="style"
+                type="xhtml.style.type"/&gt;
+            &lt;xs:element
+                name="table"
+                type="xhtml.table.type"/&gt;
+        &lt;/xs:choice&gt;
+    &lt;/xs:group&gt;
+    &lt;xs:group
+        name="xhtml.Structural.extra"&gt;
+        &lt;xs:sequence/&gt;
+    &lt;/xs:group&gt;
+    &lt;!--
+    Structural.mix includes all block elements plus %Misc.class;
+  --&gt;
+    &lt;xs:group name="xhtml.Structural.mix"&gt;
+        &lt;xs:choice&gt;
+            &lt;xs:group ref="xhtml.Structural.class"/&gt;
+            &lt;xs:group ref="xhtml.Structural.extra"/&gt;
+        &lt;/xs:choice&gt;
+    &lt;/xs:group&gt;
+    &lt;xs:group
+        name="xhtml.Flow.class"&gt;
+        &lt;xs:choice&gt;
+            &lt;xs:group
+                ref="xhtml.Heading.class"/&gt;
+            &lt;xs:group
+                ref="xhtml.Structural.class"/&gt;
+            &lt;xs:group
+                ref="xhtml.Text.class"/&gt;
+        &lt;/xs:choice&gt;
+    &lt;/xs:group&gt;
+    &lt;!--
+    All Content Elements
+    Flow.mix includes all text content, block and inline
+    Note that the "any" element included here allows us
+    to add data from any other namespace, a necessity
+    for compound document creation.
+    Note however that it is not possible to add
+    to any head level element without further
+    modification. To add RDF metadata to the head
+    of a document, modify the structure module.
+  --&gt;
+    &lt;xs:group name="xhtml.Flow.extra"&gt;
+        &lt;xs:sequence/&gt;
+    &lt;/xs:group&gt;
+    &lt;xs:group
+        name="xhtml.Flow.mix"&gt;
+        &lt;xs:choice&gt;
+            &lt;xs:group
+                ref="xhtml.Flow.class"/&gt;
+            &lt;xs:group
+                ref="xhtml.Flow.extra"/&gt;
+        &lt;/xs:choice&gt;
+    &lt;/xs:group&gt;
+    &lt;xs:element
+        name="html"
+        type="xhtml.html.type"/&gt;
+&lt;/xs:schema&gt;
+</pre>
+<!-- END OF FILE xhtml2-model-1.xsd.mhtml -->
+<h2 >
+<a id="a_xhtml2s_modules" >D.4.</a> XHTML 2 Modules
+</h2>
+<p>This section loads all of the modules that are used in XHTML 2.  The modules themselves are defined in the next Appendix.</p>
+<!-- INCLUDING SCHEMA xhtml2-modules-1.xsd -->
+<pre class="dtd">
+&lt;?xml version="1.0" encoding="UTF-8"?&gt;
+&lt;xs:schema xmlns:xs="http://www.w3.org/2001/XMLSchema" 
+           elementFormDefault="qualified" 
+           xmlns:xh11d="http://www.w3.org/1999/xhtml/datatypes/" &gt;
+    &lt;xs:import namespace="http://www.w3.org/1999/xhtml/datatypes/" 
+               schemaLocation="xhtml-datatypes-2.xsd" /&gt;
+    &lt;xs:import namespace="http://www.w3.org/XML/1998/namespace"
+      schemaLocation="http://www.w3.org/2001/xml.xsd" /&gt;
+    &lt;xs:annotation&gt;
+        &lt;xs:documentation&gt;
+      This schema includes all modules for XHTML1.1 Document Type.
+      &#36;Id: xhtml2-modules-1.xsd,v 1.1.2.5 2009/04/07 16:32:57 ahby Exp &#36;
+    &lt;/xs:documentation&gt;
+        &lt;xs:documentation source="xhtml-copyright-1.xsd"/&gt;
+    &lt;/xs:annotation&gt;
+    &lt;xs:annotation&gt;
+        &lt;xs:documentation&gt;
+     This schema includes all modules (and redefinitions)
+     for XHTML2 Document Type.
+     XHTML2 Document Type includes the following Modules
+       XHTML Core modules (Required for XHTML Family Conformance)
+            +  text
+            +  hypertext
+            +  lists
+            +  structure
+       Other XHTML modules
+            +  Edit
+            +  Bdo
+            +  Presentational
+            +  Link
+            +  Meta
+            +  Base
+            +  Scripting
+            +  Style
+            +  Image
+            +  Applet
+            +  Object
+            +  Param (Applet/Object modules require Param Module)
+            +  Tables
+            +  Target
+            +  Forms
+            +  Client side image maps
+            +  Server side image maps
+    &lt;/xs:documentation&gt;
+    &lt;/xs:annotation&gt;
+    &lt;xs:include schemaLocation="xhtml2-attribs-1.xsd"/&gt;
+    &lt;xs:include schemaLocation="xhtml-framework-2.xsd"/&gt;
+    &lt;xs:include schemaLocation="xhtml-structural-2.xsd"/&gt;
+    &lt;xs:include schemaLocation="xhtml-text-2.xsd"/&gt;
+    &lt;xs:include schemaLocation="xhtml-hypertext-2.xsd"/&gt;
+    &lt;xs:include schemaLocation="xhtml-list-2.xsd"/&gt;
+    &lt;xs:redefine schemaLocation="xhtml-document-2.xsd"&gt;
+        &lt;xs:attributeGroup name="xhtml.version.attrib"&gt;
+            &lt;xs:attribute name="version" type="xh11d:CDATA" fixed="xhtml2"/&gt;
+        &lt;/xs:attributeGroup&gt;
+    &lt;/xs:redefine&gt;
+    &lt;xs:include schemaLocation="xhtml-edit-2.xsd"/&gt;
+    &lt;xs:include schemaLocation="xhtml-i18n-2.xsd"/&gt;
+    &lt;xs:include schemaLocation="xhtml-meta-2.xsd"/&gt;
+    &lt;xs:include schemaLocation="xhtml-legacy-br-2.xsd"/&gt;
+    &lt;xs:include schemaLocation="xhtml-legacy-edit-2.xsd"/&gt;
+    &lt;xs:include schemaLocation="xhtml-legacy-heading-2.xsd"/&gt;
+    &lt;xs:redefine schemaLocation="xhtml-access-2.xsd"&gt;
+        &lt;xs:attributeGroup name="xhtmlAccess.Common.attrib"&gt;
+            &lt;xs:attributeGroup ref="xhtml.Common.attrib"/&gt;
+        &lt;/xs:attributeGroup&gt;
+    &lt;/xs:redefine&gt;
+    &lt;xs:redefine schemaLocation="xml-events-2.xsd"&gt;
+        &lt;xs:attributeGroup name="xmlEvents.Common.attrib"&gt;
+            &lt;xs:attributeGroup ref="xhtml.CommonNoEvents.attrib"/&gt;
+        &lt;/xs:attributeGroup&gt;
+    &lt;/xs:redefine&gt;
+    &lt;xs:redefine schemaLocation="xml-handlers-2.xsd"&gt;
+        &lt;xs:attributeGroup name="xmlHandlers.Common.attrib"&gt;
+            &lt;xs:attributeGroup ref="xhtml.Common.attrib"/&gt;
+        &lt;/xs:attributeGroup&gt;
+    &lt;/xs:redefine&gt;
+    &lt;xs:redefine schemaLocation="xml-script-2.xsd"&gt;
+        &lt;xs:attributeGroup name="xmlScripting.Common.attrib"/&gt;
+        &lt;xs:attributeGroup name="xmlScripting.script.attlist"&gt;
+            &lt;xs:attributeGroup ref="xhtml.Common.attrib"/&gt;
+            &lt;xs:attribute name="charset" type="xh11d:Charset"/&gt;
+            &lt;xs:attribute name="defer" type="xs:NMTOKEN" fixed="defer"/&gt;
+            &lt;xs:attribute name="implements" type="xh11d:URIorSafeCURIEs"/&gt;
+        &lt;/xs:attributeGroup&gt;
+    &lt;/xs:redefine&gt;
+    &lt;xs:include schemaLocation="xhtml-style-2.xsd"/&gt;
+    &lt;xs:include schemaLocation="xhtml-image-2.xsd"/&gt;
+    &lt;xs:include schemaLocation="xhtml-csismap-2.xsd"/&gt;
+    &lt;xs:include schemaLocation="xhtml-object-2.xsd"/&gt;
+    &lt;xs:include schemaLocation="xhtml-param-2.xsd"/&gt;
+    &lt;xs:include schemaLocation="xhtml-table-2.xsd"/&gt;
+    &lt;xs:include schemaLocation="xhtml-ruby-2.xsd"/&gt;
+    &lt;xs:include schemaLocation="xml-events-2.xsd"/&gt;
+&lt;/xs:schema&gt;
+</pre>
+<!-- END OF FILE xhtml2-modules-1.xsd.mhtml -->
+<hr />
+<div class="navbar">
+[<a href="relax_module_defs.html">previous</a>]
+[<a href="schema_module_defs.html">next</a>]
+[<a href="Overview.html#toc">table of contents</a>]
+[<a href="elements.html">elements</a>]
+[<a href="attributes.html">attributes</a>]
+</div>
+</body>
+</html>

@@ -1,0 +1,203 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN"
+	"http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html lang="en" xml:lang="en" xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<title>XHTML&#8482; 2.0 - XHTML 2.0 RELAX NG Definition</title> 
+<link rel="start" type="text/html" href="Overview.html" />
+<link rel="contents" type="text/html" href="Overview.html#toc" />
+<link rel="prev" type="text/html" href="xhtml2-changes.html" />
+<link rel="next" type="text/html" href="relax_module_defs.html" />
+<link rel="stylesheet" type="text/css" href="xhtml.css" />
+<link rel="stylesheet" type="text/css" href="http://www.w3.org/StyleSheets/TR/W3C-ED.css" />
+</head>
+<body>
+<div class="navbar">
+[<a accesskey="P" href="xhtml2-changes.html">previous</a>]
+[<a accesskey="N" href="relax_module_defs.html">next</a>]
+[<a accesskey="T" href="Overview.html#toc">table of contents</a>]
+[<a accesskey="E" href="elements.html">elements</a>]
+[<a accesskey="A" href="attributes.html">attributes</a>]
+<hr />
+</div>
+<h1 >
+<a id="a_xhtml20_relaxng" >B.</a> XHTML 2.0 RELAX NG Definition
+</h1>
+<div class='subtoc'><p><strong>Contents</strong></p><ul class='toc'><li class='tocline'>
+<ul class="toc"><li class='tocline'>B.0.1.
+<a href="#a_rmodule_RELAX_NG_XHTML_2.0_Driver" class="tocxref">RELAX NG XHTML 2.0 Driver</a>
+</li></ul>
+</li></ul>
+</div>
+<p>This appendix is <em>normative</em>.</p>
+<p>This appendix contains the implementation of the XHTML 2.0 RELAX NG
+driver file.</p>
+<h3 >
+<a id="a_rmodule_RELAX_NG_XHTML_2.0_Driver" >B.0.1.</a> RELAX NG XHTML 2.0 Driver
+</h3>
+<!-- INCLUDING SCHEMA RELAXNG/xhtml2.rng -->
+<pre class="dtd">
+&lt;?xml version="1.0" encoding="UTF-8"?&gt;
+&lt;grammar ns="http://www.w3.org/1999/xhtml"
+         xmlns="http://relaxng.org/ns/structure/1.0"
+         xmlns:x="http://www.w3.org/1999/xhtml"&gt;
+  &lt;x:h1&gt;RELAX NG schema for XHTML 2.0&lt;/x:h1&gt;
+  &lt;x:pre&gt;
+    Copyright ©2003-2009 W3C® (MIT, ERCIM, Keio), All Rights Reserved.
+      Editors:   Masayasu Ishikawa &amp;lt;mimasa@w3.org&amp;gt;
+                 Markus Gylling &amp;lt;markus.gylling@tpb.se&amp;gt;
+      Revision: &#36;Id: xhtml2.rng,v 1.42 2009/01/20 13:36:09 mgylling Exp &#36;
+    Permission to use, copy, modify and distribute this RELAX NG schema
+    for XHTML 2.0 and its accompanying documentation for any purpose and
+    without fee is hereby granted in perpetuity, provided that the above
+    copyright notice and this paragraph appear in all copies. The copyright
+    holders make no representation about the suitability of this RELAX NG
+    schema for any purpose.
+    It is provided "as is" without expressed or implied warranty.
+    For details, please refer to the W3C software license at:
+      &lt;x:a href="http://www.w3.org/Consortium/Legal/copyright-software"
+      &gt;http://www.w3.org/Consortium/Legal/copyright-software&lt;/x:a&gt;
+  &lt;/x:pre&gt;
+  &lt;div&gt;
+    &lt;x:h2&gt;XHTML 2.0 modules&lt;/x:h2&gt;
+    &lt;x:h3&gt;Attribute Collections Module&lt;/x:h3&gt;
+    &lt;include href="xhtml-attribs-2.rng"/&gt;
+    &lt;x:h3&gt;Document Module&lt;/x:h3&gt;
+    &lt;include href="xhtml-document-2.rng"/&gt;
+    &lt;x:h3&gt;Structural Module&lt;/x:h3&gt;
+    &lt;include href="xhtml-structural-2.rng"/&gt;
+    &lt;x:h3&gt;Text Module&lt;/x:h3&gt;
+    &lt;include href="xhtml-text-2.rng"/&gt;
+    &lt;x:h3&gt;Hypertext Module&lt;/x:h3&gt;
+    &lt;include href="xhtml-hypertext-2.rng"/&gt;
+    &lt;x:h3&gt;List Module&lt;/x:h3&gt;
+    &lt;include href="xhtml-list-2.rng"/&gt;
+    &lt;x:h3&gt;Image Module&lt;/x:h3&gt;
+    &lt;include href="xhtml-image-2.rng"/&gt;
+    &lt;x:h3&gt;Metainformation Module&lt;/x:h3&gt;
+    &lt;include href="xhtml-meta-2.rng"/&gt;
+    &lt;x:h3&gt;Object Module&lt;/x:h3&gt;
+    &lt;include href="xhtml-object-2.rng"/&gt;
+    &lt;x:h3&gt;Access Module&lt;/x:h3&gt;
+    &lt;include href="xhtml-access-2.rng"/&gt;
+    &lt;x:h3&gt;Style Sheet Module&lt;/x:h3&gt;
+    &lt;include href="xhtml-style-2.rng"/&gt;
+    &lt;x:h3&gt;Tables Module&lt;/x:h3&gt;
+    &lt;include href="xhtml-table-2.rng"/&gt;
+    &lt;x:h3&gt;Support Modules&lt;/x:h3&gt;
+    &lt;x:h4&gt;Datatypes Module&lt;/x:h4&gt;
+    &lt;include href="xhtml-datatypes-2.rng"/&gt;
+    &lt;x:h4&gt;Param Module&lt;/x:h4&gt;
+    &lt;include href="xhtml-param-2.rng"/&gt;
+    &lt;x:h4&gt;Caption Module&lt;/x:h4&gt;
+    &lt;include href="xhtml-caption-2.rng"/&gt;
+  &lt;/div&gt;
+  &lt;div&gt;
+    &lt;x:h2&gt;XHTML 2.0 Legacy modules&lt;/x:h2&gt;
+    &lt;x:h3&gt;Legacy Edit Module&lt;/x:h3&gt;
+    &lt;include href="xhtml-legacy-edit-2.rng"/&gt;
+    &lt;x:h3&gt;Legacy Line Break Module&lt;/x:h3&gt;
+    &lt;include href="xhtml-legacy-br-2.rng"/&gt;
+    &lt;x:h3&gt;Legacy Headings Module&lt;/x:h3&gt;
+    &lt;include href="xhtml-legacy-heading-2.rng"/&gt;
+  &lt;/div&gt;  
+  &lt;div&gt;
+    &lt;x:h2&gt;XML Events module&lt;/x:h2&gt;    
+	&lt;include href="xhtml-events-2.rng"/&gt;
+  &lt;/div&gt;
+  &lt;div&gt;
+    &lt;x:h2&gt;Ruby module&lt;/x:h2&gt;
+    &lt;include href="full-ruby-1.rng"&gt;
+      &lt;define name="Inline.class"&gt;
+        &lt;notAllowed/&gt;
+      &lt;/define&gt;
+      &lt;define name="NoRuby.content"&gt;
+        &lt;ref name="xhtml.Text.model"/&gt;
+      &lt;/define&gt;
+    &lt;/include&gt;
+    &lt;define name="Inline.model"&gt;
+      &lt;notAllowed/&gt;
+    &lt;/define&gt;
+    &lt;define name="xhtml.Text.class" combine="choice"&gt;
+      &lt;ref name="ruby"/&gt;
+    &lt;/define&gt;
+  &lt;/div&gt;
+  &lt;div&gt;
+    &lt;x:h2&gt;XForms module&lt;/x:h2&gt;
+    &lt;include href="xforms-nons-11.rng"&gt;
+      &lt;!-- override the xforms schemas any definition
+      to circumvent attribute datatype collision error --&gt;
+	  &lt;define name="xforms.instance.content"&gt;
+	    &lt;ref name="any"/&gt;  &lt;!-- TODO current excludes xhtml ns --&gt;
+	  &lt;/define&gt;    
+	  &lt;define name="xforms.schema.attrib"&gt;
+	    &lt;ref name="any"/&gt;  &lt;!-- TODO xsd ns only? --&gt;
+	  &lt;/define&gt;
+	  &lt;define name="xforms.schema.content"&gt;
+	    &lt;ref name="any"/&gt; &lt;!-- TODO xsd ns only? --&gt;
+	  &lt;/define&gt;
+    &lt;/include&gt;
+    &lt;define name="xforms.Common.attrib" combine="interleave"&gt;
+      &lt;!-- this contributes linking and events attributes as well,
+      so no need to redefine xforms.Events.attrib and xforms.Linking.attrib --&gt;
+      &lt;!-- we have attribute name collisions with resource, encoding and target 
+      An option is to contribute only core and i18n into xforms.Common.attrib --&gt;
+      &lt;ref name="xhtml.Common.attrib"/&gt;      
+    &lt;/define&gt;
+    &lt;define name="xhtml.head.misc" combine="choice"&gt;
+      &lt;ref name="xforms.model"/&gt;
+    &lt;/define&gt;
+    &lt;define name="xhtml.Misc.class" combine="choice"&gt;
+      &lt;ref name="xforms.Core.Form.Controls"/&gt;
+      &lt;ref name="xforms.Actions"/&gt;
+      &lt;ref name="xforms.group"/&gt;
+      &lt;ref name="xforms.switch"/&gt;
+      &lt;ref name="xforms.repeat"/&gt;
+    &lt;/define&gt;
+    &lt;define name="xforms.UI.Inline.class" combine="choice"&gt;
+      &lt;ref name="xhtml.Text.class"/&gt;
+      &lt;ref name="xhtml.Misc.class"/&gt;
+    &lt;/define&gt;
+    &lt;define name="any"&gt;
+      &lt;element&gt;
+        &lt;anyName&gt;
+          &lt;except&gt;
+            &lt;nsName ns="http://www.w3.org/1999/xhtml"/&gt;
+          &lt;/except&gt;
+        &lt;/anyName&gt;
+        &lt;zeroOrMore&gt;
+          &lt;attribute&gt;
+            &lt;anyName/&gt;
+          &lt;/attribute&gt;
+        &lt;/zeroOrMore&gt;
+        &lt;zeroOrMore&gt;
+          &lt;choice&gt;
+            &lt;ref name="any"/&gt;
+            &lt;text/&gt;
+          &lt;/choice&gt;
+        &lt;/zeroOrMore&gt;
+      &lt;/element&gt;
+    &lt;/define&gt;
+  &lt;/div&gt;
+  &lt;div&gt;
+    &lt;x:h2&gt;XML Schema instance module&lt;/x:h2&gt;
+    &lt;include href="XMLSchema-instance.rng"/&gt;
+    &lt;define name="xhtml.html.attlist" combine="interleave"&gt;
+      &lt;optional&gt;
+        &lt;ref name="XSI.schemaLocation"/&gt;
+      &lt;/optional&gt;
+    &lt;/define&gt;
+  &lt;/div&gt;
+&lt;/grammar&gt;
+</pre>
+<!-- END OF FILE RELAXNG/xhtml2.rng.mhtml -->
+<hr />
+<div class="navbar">
+[<a href="xhtml2-changes.html">previous</a>]
+[<a href="relax_module_defs.html">next</a>]
+[<a href="Overview.html#toc">table of contents</a>]
+[<a href="elements.html">elements</a>]
+[<a href="attributes.html">attributes</a>]
+</div>
+</body>
+</html>

@@ -1,0 +1,129 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN"
+	"http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html lang="en" xml:lang="en" xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<title>XHTML&#8482; 2.0 - XML Handlers Module</title> 
+<link rel="start" type="text/html" href="Overview.html" />
+<link rel="contents" type="text/html" href="Overview.html#toc" />
+<link rel="prev" type="text/html" href="mod-xml-events.html" />
+<link rel="next" type="text/html" href="mod-scripting.html" />
+<link rel="stylesheet" type="text/css" href="xhtml.css" />
+<link rel="stylesheet" type="text/css" href="http://www.w3.org/StyleSheets/TR/W3C-ED.css" />
+</head>
+<body>
+<div class="navbar">
+[<a accesskey="P" href="mod-xml-events.html">previous</a>]
+[<a accesskey="N" href="mod-scripting.html">next</a>]
+[<a accesskey="T" href="Overview.html#toc">table of contents</a>]
+[<a accesskey="E" href="elements.html">elements</a>]
+[<a accesskey="A" href="attributes.html">attributes</a>]
+<hr />
+</div>
+<h1 >
+<a id="s_handlermodule" >33.</a> XML Handlers Module
+</h1>
+<p>This section is <em>normative</em> for purposes of defining the
+integration of XML Handlers into XHTML 2. The semantics of
+XML Handlers itself is
+normatively defined in [<a class="nref" href="references.html#ref_XMLEVENTS">XMLEVENTS</a>].</p>
+<p>The XML Handlers Module defines elements that are used to contain information
+pertaining to event handler implementations, usually defined in a
+scripting language. This section defines the content model 
+of the XML Handlers module in XHTML 2.
+As permitted by [<a class="nref" href="references.html#ref_XMLEVENTS">XMLEVENTS</a>], these elements are 
+incorporated into the XHTML namespace.</p>
+<p>Elements and attributes included in this module are:</p>
+<table cellpadding="3" class="moduledef" border="1"
+summary="Element and Attributes for XML Handlers Module">
+  <thead>
+    <tr>
+      <th>Element</th>
+      <th>Attributes</th>
+      <th>Content Model</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td><a class="edef" id="edef_handler_action">action</a>
+</td>
+      <td>
+    <a class="csref" href="mod-attribute-collections.html#col_Common">Common</a>,<br />
+        event<abbr title="required">*</abbr> (<span class="datatype"><a href="abstraction.html#dt_QNames">QNames</a></span>),<br />
+          eventTarget (<span class="datatype"><a href="abstraction.html#dt_IDREFS">IDREFS</a></span>),<br />
+          declare ("declare"),<br />
+          if (<code>ConditionalExpression</code>),<br />
+          while (<code>ConditionalExpression</code>)
+      </td>
+      <td>( action | dispatchEvent | addEventListener | removeEventListener
+          | 
+<a class="eref" href="mod-scripting.html#edef_scripting_script">script</a> | stopPropagation | preventDefault )+</td>
+  </tr>
+  <tr>
+      <td><a class="edef" id="edef_handler_dispatchEvent">dispatchEvent</a>
+</td>
+      <td>
+    <a class="csref" href="mod-attribute-collections.html#col_Common">Common</a>,<br />
+        eventType<abbr title="required">*</abbr> (<span class="datatype"><a href="abstraction.html#dt_QName">QName</a></span>),<br />
+          targetid (<span class="datatype"><a href="abstraction.html#dt_IDREFS">IDREFS</a></span>),<br />
+          bubbles ("bubbles"),<br />
+          cancelable ("cancelable")
+      </td>
+      <td>EMPTY</td>
+  </tr>
+  <tr>
+      <td><a class="edef" id="edef_handler_addEventListener">addEventListener</a>
+</td>
+      <td>
+    <a class="csref" href="mod-attribute-collections.html#col_Common">Common</a>,<br />
+          event* (<span class="datatype"><a href="abstraction.html#dt_QName">QName</a></span>),<br />
+          handler* (<span class="datatype"><a href="abstraction.html#dt_IDREF">IDREF</a></span>),<br />
+          phase ("bubble" | "capture" | "default"* | "target")
+      </td>
+      <td>EMPTY</td>
+  </tr>
+  <tr>
+      <td><a class="edef" id="edef_handler_removeEventListener">removeEventListener</a>
+</td>
+      <td>
+    <a class="csref" href="mod-attribute-collections.html#col_Common">Common</a>,<br />
+          event* (<span class="datatype"><a href="abstraction.html#dt_QName">QName</a></span>),<br />
+          handler* (<span class="datatype"><a href="abstraction.html#dt_IDREF">IDREF</a></span>),<br />
+          phase ("bubble" | "capture" | "default"* | "target")
+      </td>
+      <td>EMPTY</td>
+  </tr>
+  <tr>
+      <td><a class="edef" id="edef_handler_stopPropagation">stopPropagation</a>
+</td>
+      <td>
+    <a class="csref" href="mod-attribute-collections.html#col_Common">Common</a>,<br />
+          event* (<span class="datatype"><a href="abstraction.html#dt_QName">QName</a></span>)
+      </td>
+      <td>EMPTY</td>
+  </tr>
+  <tr>
+      <td><a class="edef" id="edef_handler_preventDefault">preventDefault</a>
+</td>
+      <td>
+    <a class="csref" href="mod-attribute-collections.html#col_Common">Common</a>,<br />
+          event* (<span class="datatype"><a href="abstraction.html#dt_QName">QName</a></span>)
+      </td>
+      <td>EMPTY</td>
+  </tr>
+  </tbody>
+</table>
+	<p>Implementations: 
+<a href="relax_module_defs.html#a_rmodule_XML_Handlers">RelaxNG</a>,
+<a href="schema_module_defs.html#a_smodule_XML_Handlers_Module">XML Schema</a>
+	</p>
+<hr />
+<div class="navbar">
+[<a href="mod-xml-events.html">previous</a>]
+[<a href="mod-scripting.html">next</a>]
+[<a href="Overview.html#toc">table of contents</a>]
+[<a href="elements.html">elements</a>]
+[<a href="attributes.html">attributes</a>]
+</div>
+</body>
+</html>

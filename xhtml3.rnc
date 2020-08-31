@@ -16,14 +16,14 @@ special.content = a | img | br
 textual.content = text | phrase.content | special.content | form.content
 
 # Attribute content models
-title.atts = attribute title { text }?
+alt.atts = attribute alt { text }
+cell.atts = attribute rowspan { text }?, attribute colspan { text }?
+form.atts = attribute action { text }, attribute method { text }?, attribute enctype { text }?
 link.atts = attribute href { text }
+meta.atts = (attribute http-equiv { text }, attribute name { text }), attribute value { text }
 rdf.atts = link.atts, (attribute rel { text }, attribute rev { text })?
 src.atts = attribute src { text }
-alt.atts = attribute alt { text }
-form.atts = attribute action { text }, attribute method { text }?, attribute enctype { text }?
-cell.atts = attribute rowspan { text }?, attribute colspan { text }?
-meta.atts = (attribute http-equiv { text }, attribute name { text }), attribute value { text }
+title.atts = attribute title { text }?
 univ.atts = attribute id { text }?, attribute class { text }?, attribute lang { text }?, attribute dir { text }?
 
 # Element declarations

@@ -1,0 +1,1209 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN"
+	"http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html lang="en" xml:lang="en" xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<title>XHTML&#8482; 2.0 - XHTML Tables Module</title> 
+<link rel="start" type="text/html" href="Overview.html" />
+<link rel="contents" type="text/html" href="Overview.html#toc" />
+<link rel="prev" type="text/html" href="mod-styleAttribute.html" />
+<link rel="next" type="text/html" href="mod-xforms.html" />
+<link rel="stylesheet" type="text/css" href="xhtml.css" />
+<link rel="stylesheet" type="text/css" href="http://www.w3.org/StyleSheets/TR/W3C-ED.css" />
+</head>
+<body>
+<div class="navbar">
+[<a accesskey="P" href="mod-styleAttribute.html">previous</a>]
+[<a accesskey="N" href="mod-xforms.html">next</a>]
+[<a accesskey="T" href="Overview.html#toc">table of contents</a>]
+[<a accesskey="E" href="elements.html">elements</a>]
+[<a accesskey="A" href="attributes.html">attributes</a>]
+<hr />
+</div>
+<h1 >
+<a id="s_tablesmodule" >30.</a> XHTML Tables Module
+</h1>
+<div class='subtoc'><p><strong>Contents</strong></p><ul class='toc'><li class='tocline'>
+30.1.
+<a href="#sec_30.1." class="tocxref">The col and colgroup elements</a>
+<ul class="toc"><li class='tocline'>30.1.1.
+<a href="#column-calc" class="tocxref">Calculating the number of columns in a table</a>
+</li></ul></li><li class='tocline'>30.2.
+<a href="#sec_30.2." class="tocxref">The summary element</a>
+</li><li class='tocline'>30.3.
+<a href="#sec_30.3." class="tocxref">The table element</a>
+<ul class="toc"><li class='tocline'>30.3.1.
+<a href="#sec_30.3.1." class="tocxref">Visual Rendering</a>
+</li><li class='tocline'>30.3.2.
+<a href="#table-directionality" class="tocxref">Table directionality</a>
+</li><li class='tocline'>30.3.3.
+<a href="#non-visual-rendering" class="tocxref">Table rendering by non-visual user agents</a>
+</li></ul></li><li class='tocline'>30.4.
+<a href="#sec_30.4." class="tocxref">The tbody element</a>
+</li><li class='tocline'>30.5.
+<a href="#sec_30.5." class="tocxref">The td and th elements</a>
+<ul class="toc"><li class='tocline'>30.5.1.
+<a href="#sec_30.5.1." class="tocxref">Cells that span several rows or columns</a>
+</li></ul></li><li class='tocline'>30.6.
+<a href="#sec_30.6." class="tocxref">The thead and tfoot elements</a>
+</li><li class='tocline'>30.7.
+<a href="#sec_30.7." class="tocxref">The tr element</a>
+</li></ul>
+</div>
+<p>This section is <em>normative</em>.</p>
+<p>The Tables Module provides elements for marking up tabular information in a document.</p>
+<p>The module supports the following elements, attributes, and content model:</p>
+<table class="moduledef" border="1" summary="Elements and Attributes for Tables Module">
+<thead>
+<tr>
+  <th>Elements</th>
+  <th>Attributes</th>
+  <th>Content Model</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+  <td>table</td>
+  <td>
+    <a class="csref" href="mod-attribute-collections.html#col_Common">Common</a>
+  </td>
+  <td class="content">
+<a class="eref" href="mod-caption.html#edef_caption_caption">caption</a>?,
+<a class="eref" href="mod-document.html#edef_document_title">title</a>?, 
+<a class="eref" href="mod-tables.html#edef_tables_summary">summary</a>?, ( 
+<a class="eref" href="mod-tables.html#edef_tables_col">col</a>* | 
+<a class="eref" href="mod-tables.html#edef_tables_colgroup">colgroup</a>* ), (( 
+<a class="eref" href="mod-tables.html#edef_tables_thead">thead</a>?, 
+<a class="eref" href="mod-tables.html#edef_tables_tfoot">tfoot</a>?, 
+<a class="eref" href="mod-tables.html#edef_tables_tbody">tbody</a>+ ) | ( 
+<a class="eref" href="mod-tables.html#edef_tables_tr">tr</a>+ ))
+  </td>
+</tr>
+<tr>
+  <td>summary</td>
+  <td>
+    <a class="csref" href="mod-attribute-collections.html#col_Common">Common</a></td>
+  <td class="content">(
+    <a class="csref" href="mod-structural.html#cs_Flow">Flow</a>)*</td>
+</tr>
+<tr>
+  <td>col</td>
+  <td>
+    <a class="csref" href="mod-attribute-collections.html#col_Common">Common</a>,
+<a class="aref" href="mod-tables.html#adef_tables_span">@span</a> (<span class="datatype"><a href="abstraction.html#dt_Number">Number</a></span>)
+  </td>
+  <td class="content">EMPTY</td>
+</tr>
+<tr>
+  <td>colgroup</td>
+  <td>
+    <a class="csref" href="mod-attribute-collections.html#col_Common">Common</a>,
+<a class="aref" href="mod-tables.html#adef_tables_span">@span</a> (<span class="datatype"><a href="abstraction.html#dt_Number">Number</a></span>)
+  </td>
+  <td class="content">
+<a class="eref" href="mod-tables.html#edef_tables_col">col</a>*</td>
+</tr>
+<tr>
+  <td>thead</td>
+  <td>
+    <a class="csref" href="mod-attribute-collections.html#col_Common">Common</a>
+  </td>
+  <td class="content">
+<a class="eref" href="mod-tables.html#edef_tables_tr">tr</a>+</td>
+</tr>
+<tr>
+  <td>tfoot</td>
+  <td>
+    <a class="csref" href="mod-attribute-collections.html#col_Common">Common</a>
+  </td>
+  <td class="content">
+<a class="eref" href="mod-tables.html#edef_tables_tr">tr</a>+</td>
+</tr>
+<tr>
+  <td>tbody</td>
+  <td>
+    <a class="csref" href="mod-attribute-collections.html#col_Common">Common</a>
+  </td>
+  <td class="content">
+<a class="eref" href="mod-tables.html#edef_tables_tr">tr</a>+</td>
+</tr>
+<tr>
+  <td>tr</td>
+  <td>
+    <a class="csref" href="mod-attribute-collections.html#col_Common">Common</a>, 
+    <a class="csref" href="mod-xforms.html#col_Forms">Forms</a>
+  </td>
+  <td class="content">(
+<a class="eref" href="mod-tables.html#edef_tables_td">td</a> | 
+<a class="eref" href="mod-tables.html#edef_tables_th">th</a>)+</td>
+</tr>
+<tr>
+  <td>td</td>
+  <td>
+    <a class="csref" href="mod-attribute-collections.html#col_Common">Common</a>,
+<a class="aref" href="mod-tables.html#adef_tables_abbr">@abbr</a> (<span class="datatype"><a href="abstraction.html#dt_Text">Text</a></span>),
+<a class="aref" href="mod-tables.html#adef_tables_axis">@axis</a> (<span class="datatype"><a href="abstraction.html#dt_CDATA">CDATA</a></span>),
+<a class="aref" href="mod-tables.html#adef_tables_colspan">@colspan</a> (<span class="datatype"><a href="abstraction.html#dt_Number">Number</a></span>),
+<a class="aref" href="mod-tables.html#adef_tables_headers">@headers</a> (<span class="datatype"><a href="abstraction.html#dt_IDREFS">IDREFS</a></span>),
+<a class="aref" href="mod-tables.html#adef_tables_rowspan">@rowspan</a> (<span class="datatype"><a href="abstraction.html#dt_Number">Number</a></span>),
+<a class="aref" href="mod-tables.html#adef_tables_scope">@scope</a> ("row", "col", "rowgroup", "colgroup")
+  </td>
+  <td class="content">(
+    <a class="csref" href="mod-structural.html#cs_Flow">Flow</a>)*</td>
+</tr>
+<tr>
+  <td>th</td>
+  <td>
+    <a class="csref" href="mod-attribute-collections.html#col_Common">Common</a>,
+<a class="aref" href="mod-tables.html#adef_tables_abbr">@abbr</a> (<span class="datatype"><a href="abstraction.html#dt_Text">Text</a></span>),
+<a class="aref" href="mod-tables.html#adef_tables_axis">@axis</a> (<span class="datatype"><a href="abstraction.html#dt_CDATA">CDATA</a></span>),
+<a class="aref" href="mod-tables.html#adef_tables_colspan">@colspan</a> (<span class="datatype"><a href="abstraction.html#dt_Number">Number</a></span>),
+<a class="aref" href="mod-tables.html#adef_tables_headers">@headers</a> (<span class="datatype"><a href="abstraction.html#dt_IDREFS">IDREFS</a></span>),
+<a class="aref" href="mod-tables.html#adef_tables_rowspan">@rowspan</a> (<span class="datatype"><a href="abstraction.html#dt_Number">Number</a></span>),
+<a class="aref" href="mod-tables.html#adef_tables_scope">@scope</a> ("row", "col", "rowgroup", "colgroup")
+  </td>
+  <td class="content">(
+    <a class="csref" href="mod-structural.html#cs_Flow">Flow</a>)*</td>
+</tr>
+</tbody>
+</table>
+<p>Implementations: <a href="relax_module_defs.html#a_rmodule_Tables">RELAX NG</a>,
+<a href="schema_module_defs.html#a_smodule_Tables_Module">XML Schema</a>
+</p>
+<!-- INCLUDING ELEMENT modules/tables/colgroup.mhtml -->
+<h2 >
+<a id="sec_30.1." >30.1.</a> The <a class="edef" id="edef_tables_col">col</a>
+ and <a class="edef" id="edef_tables_colgroup">colgroup</a>
+ elements
+</h2>
+<div class="adef-list">
+<p><em>Attributes</em></p>
+<!-- INCLUDING ATTRIBUTE modules/attributes/Common.mhtml -->
+<dl class='attrDef'><dt>The 
+    <a class="csref" href="mod-attribute-collections.html#col_Common">Common</a> collection</dt>
+<dd>A collection of other attribute collections, including:
+    <a class="csref" href="mod-bidi.html#col_Bi-directional">Bi-directional</a>, 
+    <a class="csref" href="mod-core.html#col_Core">Core</a>, 
+    <a class="csref" href="mod-edit.html#col_Edit">Edit</a>, 
+    <a class="csref" href="mod-embedding.html#col_Embedding">Embedding</a>, 
+    <a class="csref" href="mod-xml-events.html#col_Events">Events</a>, 
+    <a class="csref" href="mod-xforms.html#col_Forms">Forms</a>, 
+    <a class="csref" href="mod-hyperAttributes.html#col_Hypertext">Hypertext</a>,
+    <a class="csref" href="mod-i18n.html#col_I18N">I18N</a>, 
+    <a class="csref" href="mod-csImgMap.html#col_Map">Map</a>, 
+    <a class="csref" href="mod-metaAttributes.html#col_Metainformation">Metainformation</a>,
+and 
+    <a class="csref" href="mod-roleAttribute.html#col_Role">Role</a>
+</dd></dl>
+<!-- END OF ATTRIBUTE FILE modules/attributes/Common.mhtml -->
+<!-- INCLUDING ATTRIBUTE modules/attributes/span.mhtml -->
+<dl class='attrDef'><dt><a class="adef" id="adef_tables_span"><span class="adef">span</span></a>
+ = <span class="datatype"><a href="abstraction.html#dt_Number">Number</a></span></dt>
+  <dd>This attribute must be an integer &gt; 0; the default value is 1. This specifies the number of columns in a 
+<a class="eref" href="mod-tables.html#edef_tables_colgroup">colgroup</a>, or specifies the number of columns "spanned" by the 
+<a class="eref" href="mod-tables.html#edef_tables_col">col</a> element.
+<p>Values mean the following: </p>
+    <ul>
+      <li>In the absence of a 
+<a class="aref" href="mod-tables.html#adef_tables_span">@span</a> attribute, each 
+<a class="eref" href="mod-tables.html#edef_tables_colgroup">colgroup</a> defines a column group containing one column.</li>
+      <li>If the 
+<a class="aref" href="mod-tables.html#adef_tables_span">@span</a> attribute is used with the 
+<a class="eref" href="mod-tables.html#edef_tables_colgroup">colgroup</a> element and the value is set to N &gt; 0, that defines a column group containing N columns.</li>
+      <li>If the 
+<a class="aref" href="mod-tables.html#adef_tables_span">@span</a> attribute is used with the 
+<a class="eref" href="mod-tables.html#edef_tables_col">col</a> element and the value is set to N &gt; 1, the current 
+<a class="eref" href="mod-tables.html#edef_tables_col">col</a> element shares its attributes with the next N-1 columns.</li>
+    </ul>
+    <p><span class="must"  >User agents must ignore this attribute if the 
+<a class="eref" href="mod-tables.html#edef_tables_colgroup">colgroup</a> element contains one or more 
+<a class="eref" href="mod-tables.html#edef_tables_col">col</a> elements. Instead, the value must be
+    computed by summing the span attributes of the enclosed 
+<a class="eref" href="mod-tables.html#edef_tables_col">col</a> elements.</span></p>
+</dd></dl>
+<!-- END OF ATTRIBUTE FILE modules/attributes/span.mhtml -->
+</div>
+<p>The 
+<a class="eref" href="mod-tables.html#edef_tables_colgroup">colgroup</a> element allows authors to create structural divisions within a table. Authors may highlight this structure through style sheets. For example, the author may wish to divide the columns into logical groups such as the student's permanent address, phone number and emergency contact information. And group the student's local address, phone and email address into another logical group.</p>
+<p>A 
+<a class="eref" href="mod-tables.html#edef_tables_table">table</a> may either contain a single implicit column group (no 
+<a class="eref" href="mod-tables.html#edef_tables_colgroup">colgroup</a> element delimits the columns) or any number of explicit column groups (each delimited by an instance of the 
+<a class="eref" href="mod-tables.html#edef_tables_colgroup">colgroup</a> element).</p>
+<p>The 
+<a class="eref" href="mod-tables.html#edef_tables_col">col</a> element allows authors to share attributes among several columns without implying any structural grouping. The "span" of the 
+<a class="eref" href="mod-tables.html#edef_tables_col">col</a> element is the number of columns that will share the element's attributes. For example, the author may wish to apply a specific style to the student's permanent data and apply a different style to the student's local data.</p>
+<p>The 
+<a class="eref" href="mod-tables.html#edef_tables_colgroup">colgroup</a> element creates an explicit column group. The number of columns in the column group may be specified in two, mutually exclusive ways:</p>
+<ol>
+  <li>The colgroup 
+<a class="aref" href="mod-tables.html#adef_tables_span">@span</a> attribute (default value 1) specifies the number of columns in the group.</li>
+  <li>Each embedded 
+<a class="eref" href="mod-tables.html#edef_tables_col">col</a> element in the 
+<a class="eref" href="mod-tables.html#edef_tables_colgroup">colgroup</a> represents one or more columns in the group.</li>
+</ol>
+<p>The advantage of using the 
+<a class="eref" href="mod-tables.html#edef_tables_colgroup">colgroup</a> element is that authors may logically group multiple columns. By grouping columns, the author can apply rules across the entire group. The author can also apply column width balancing across the group of columns. For example, if the author has a table with five columns and the author divides the table into two column groups, one with three columns and the other with two columns. The author could define the first column group to consume 300 pixels and the second column group to consume 100 pixels. Each column within the first column group would be 100 pixels wide and the remaining two columns would be 50 pixels wide. If the author added embedded 
+<a class="eref" href="mod-tables.html#edef_tables_col">col</a> elements, she could force one or more columns to be a specific width and the remaining columns within the group would be evenly divided within the remaining allotted width.</p>
+<p>For example, the following table defines a column group and embedded columns with differing widths.</p>
+<div class="example">
+    <p>Example</p>
+<pre>
+&lt;style type="text/css"&gt;
+#colgrp1 { width: 300px }
+#col1 { width: 100px }
+#col2 { width: 50px }
+&lt;/style&gt;
+...
+&lt;table&gt;
+  &lt;colgroup id="colgrp1"&gt;
+    &lt;col id="col1" span="3"/&gt;
+    &lt;col id="col2" span="2"/&gt;
+  &lt;/colgroup&gt;
+&lt;em&gt;...the rest of the table...&lt;/em&gt;
+&lt;/table&gt;
+</pre>
+</div>
+<p>In this example, the defined width for the 
+<a class="eref" href="mod-tables.html#edef_tables_colgroup">colgroup</a> constrains all of the columns to fit within that value regardless of the of the defined values within the 
+<a class="eref" href="mod-tables.html#edef_tables_col">col</a> elements. In this example, the width of the columns within the column group must be constrained to fit the defined width of the column group.</p>
+<p>When it is necessary to single out a column (e.g., for style information, to specify width information, etc.) within a group, authors must identify that column with a 
+<a class="eref" href="mod-tables.html#edef_tables_col">col</a> element.</p>
+<p>The 
+<a class="eref" href="mod-tables.html#edef_tables_col">col</a> element allows authors to group together attribute specifications for table columns. The 
+<a class="eref" href="mod-tables.html#edef_tables_col">col</a> does <strong>not</strong> group columns together structurally -- that is the role of the 
+<a class="eref" href="mod-tables.html#edef_tables_colgroup">colgroup</a> element. 
+<a class="eref" href="mod-tables.html#edef_tables_col">col</a> elements are empty and serve only as a support for attributes. They may appear inside or outside an explicit column group (i.e., 
+<a class="eref" href="mod-tables.html#edef_tables_colgroup">colgroup</a> element).</p>
+<h3 >
+<a id="column-calc" >30.1.1.</a> Calculating the number of columns in a table
+</h3>
+<p>There are two ways to determine the number of columns in a table (in order of precedence):</p>
+<ol>
+<li>If the 
+<a class="eref" href="mod-tables.html#edef_tables_table">table</a> element contains any 
+<a class="eref" href="mod-tables.html#edef_tables_colgroup">colgroup</a> or 
+<a class="eref" href="mod-tables.html#edef_tables_col">col</a> elements, user agents should calculate the number of columns by summing the following: 
+  <ul>
+    <li>For each 
+<a class="eref" href="mod-tables.html#edef_tables_col">col</a> element, take the value of its 
+<a class="aref" href="mod-tables.html#adef_tables_span">@span</a> attribute (default value 1).</li>
+    <li>For each 
+<a class="eref" href="mod-tables.html#edef_tables_colgroup">colgroup</a> element containing at least one 
+<a class="eref" href="mod-tables.html#edef_tables_col">col</a> element, ignore the 
+<a class="aref" href="mod-tables.html#adef_tables_span">@span</a> attribute for the 
+<a class="eref" href="mod-tables.html#edef_tables_colgroup">colgroup</a> element. For each 
+<a class="eref" href="mod-tables.html#edef_tables_col">col</a> element, perform the calculation of step 1.</li>
+    <li>For each empty 
+<a class="eref" href="mod-tables.html#edef_tables_colgroup">colgroup</a> element, take the value of its 
+<a class="aref" href="mod-tables.html#adef_tables_span">@span</a> attribute (default value 1).</li>
+  </ul>
+</li>
+<li>Otherwise, if the 
+<a class="eref" href="mod-tables.html#edef_tables_table">table</a> element contains no 
+<a class="eref" href="mod-tables.html#edef_tables_colgroup">colgroup</a> or 
+<a class="eref" href="mod-tables.html#edef_tables_col">col</a> elements, user agents should base the number of columns on what is required by the rows. The number of columns is equal to the number of columns required by the row with the most columns, including cells that span multiple columns. For any row that has fewer than this number of columns, the end of that row should be padded with empty cells. The "end" of a row depends on the <span class="index-inst" title="table::directionality of|direction::of table information"><a name="idx-table-2">directionality of a table</a></span>.</li>
+</ol>
+<p>It is an error if a table contains 
+<a class="eref" href="mod-tables.html#edef_tables_colgroup">colgroup</a> or 
+<a class="eref" href="mod-tables.html#edef_tables_col">col</a> elements and the two calculations do not result in the same number of columns.</p>
+<p>Once the user agent has calculated the number of columns in the table, it may group them into a 
+<a class="eref" href="mod-tables.html#edef_tables_colgroup">colgroup</a>.</p>
+<!-- END OF ELEMENT FILE modules/tables/colgroup.mhtml -->
+<!-- INCLUDING ELEMENT modules/tables/summary.mhtml -->
+<h2 >
+<a id="sec_30.2." >30.2.</a> The <a class="edef" id="edef_tables_summary">summary</a>
+ element
+</h2>
+<div class="adef-list">
+<p><em>Attributes</em></p>
+<!-- INCLUDING ATTRIBUTE modules/attributes/Common.mhtml -->
+<dl class='attrRef'><dt>The 
+    <a class="csref" href="mod-attribute-collections.html#col_Common">Common</a> collection</dt>
+<dd>A collection of other attribute collections, including:
+    <a class="csref" href="mod-bidi.html#col_Bi-directional">Bi-directional</a>, 
+    <a class="csref" href="mod-core.html#col_Core">Core</a>, 
+    <a class="csref" href="mod-edit.html#col_Edit">Edit</a>, 
+    <a class="csref" href="mod-embedding.html#col_Embedding">Embedding</a>, 
+    <a class="csref" href="mod-xml-events.html#col_Events">Events</a>, 
+    <a class="csref" href="mod-xforms.html#col_Forms">Forms</a>, 
+    <a class="csref" href="mod-hyperAttributes.html#col_Hypertext">Hypertext</a>,
+    <a class="csref" href="mod-i18n.html#col_I18N">I18N</a>, 
+    <a class="csref" href="mod-csImgMap.html#col_Map">Map</a>, 
+    <a class="csref" href="mod-metaAttributes.html#col_Metainformation">Metainformation</a>,
+and 
+    <a class="csref" href="mod-roleAttribute.html#col_Role">Role</a>
+</dd></dl>
+<!-- END OF ATTRIBUTE FILE modules/attributes/Common.mhtml -->
+</div>
+<p>This element provides a summary of the table's purpose and structure for user agents rendering to non-visual media such as speech and Braille.</p>
+<p><span class="must"  >User agents MUST provide access to the content of the 
+<a class="eref" href="mod-tables.html#edef_tables_summary">summary</a>
+element</span>. As an example, access could be provided through a menu option,
+a mouse-over function, or through a dialog.</p>
+<p>The following example demonstrates the difference between a table
+caption and a table summary.</p>
+<div class="example">
+    <p>Example</p>
+<pre>
+&lt;table&gt;
+  &lt;caption&gt;Student Class Roster&lt;/caption&gt;
+  &lt;summary&gt;The table defines the class roster.
+    The columns contain the following data:
+    students name, permanent address, permanent phone,
+    local address, local phone,
+    declared major, assigned academic advisor,
+    student standing&lt;/summary&gt;
+  &lt;em&gt;...the rest of the table...&lt;/em&gt;
+&lt;/table&gt;
+</pre>
+</div>
+<!-- END OF ELEMENT FILE modules/tables/summary.mhtml -->
+<!-- INCLUDING ELEMENT modules/tables/table.mhtml -->
+<h2 >
+<a id="sec_30.3." >30.3.</a> The <a class="edef" id="edef_tables_table">table</a>
+ element
+</h2>
+<div class="adef-list">
+<p><em>Attributes</em></p>
+<!-- INCLUDING ATTRIBUTE modules/attributes/Common.mhtml -->
+<dl class='attrRef'><dt>The 
+    <a class="csref" href="mod-attribute-collections.html#col_Common">Common</a> collection</dt>
+<dd>A collection of other attribute collections, including:
+    <a class="csref" href="mod-bidi.html#col_Bi-directional">Bi-directional</a>, 
+    <a class="csref" href="mod-core.html#col_Core">Core</a>, 
+    <a class="csref" href="mod-edit.html#col_Edit">Edit</a>, 
+    <a class="csref" href="mod-embedding.html#col_Embedding">Embedding</a>, 
+    <a class="csref" href="mod-xml-events.html#col_Events">Events</a>, 
+    <a class="csref" href="mod-xforms.html#col_Forms">Forms</a>, 
+    <a class="csref" href="mod-hyperAttributes.html#col_Hypertext">Hypertext</a>,
+    <a class="csref" href="mod-i18n.html#col_I18N">I18N</a>, 
+    <a class="csref" href="mod-csImgMap.html#col_Map">Map</a>, 
+    <a class="csref" href="mod-metaAttributes.html#col_Metainformation">Metainformation</a>,
+and 
+    <a class="csref" href="mod-roleAttribute.html#col_Role">Role</a>
+</dd></dl>
+<!-- END OF ATTRIBUTE FILE modules/attributes/Common.mhtml -->
+</div>
+<p>The 
+<a class="eref" href="mod-tables.html#edef_tables_table">table</a> element contains all other elements that specify the caption, column groups, columns, rows, and content for a table.</p>
+<h3 >
+<a id="sec_30.3.1." >30.3.1.</a> Visual Rendering
+</h3>
+<p><span class="must"  >All style associated with table rendering MUST use proper
+CSS2 properties.</span></p>
+<p><span class="must"  >Although CSS2 is not required, the equivalent effect MUST BE
+followed and integrated into the rendering model.</span></p>
+<p>The following informative list describes what operations visual user agents may carry out when rendering a table:</p>
+<ul>
+  <li>Provide access to the content of the 
+<a class="eref" href="mod-tables.html#edef_tables_summary">summary</a> element. As an example, access could be provided through a menu option, a mouse-over function, or through a dialog. Authors should provide a summary of a table's content and structure so that people using non-visual user agents may better understand it.</li>
+  <li>Render the caption, if one is defined. The caption may be rendered, for example, either on the top or the bottom of the table.</li>
+  <li>Render the table header, if one is specified. Render the table footer, if one is specified. User agents must know where to render the header and footer. For instance, if the output medium is paged, user agents may put the header at the top of each page and the footer at the bottom. Similarly, if the user agent provides a mechanism to scroll the rows, the header may appear at the top of the scrolled area and the footer at the bottom.</li>
+  <li>Calculate the <a href="#column-calc">number of columns</a> in the table. <span class="index-inst" title="table::number of rows|row::number of in table"><a name="idx-table">Note that the number of rows in a table</a></span> is equal to the number of 
+<a class="eref" href="mod-tables.html#edef_tables_tr">tr</a> elements contained by the 
+<a class="eref" href="mod-tables.html#edef_tables_table">table</a> element.</li>
+  <li>Group the columns according to any 
+<a class="eref" href="mod-tables.html#edef_tables_colgroup">column groups</a> specifications.</li>
+  <li>Render the cells, row by row and grouped in appropriate columns, between the header and footer. Visual user agents should format the table according to XHTML attributes and style sheet specification.</li>
+</ul>
+<h3 >
+<a id="table-directionality" >30.3.2.</a> Table directionality
+</h3>
+<p>The <span class="index-inst" title="table::directionality of|direction::of table information"><a name="idx-table-2_2">directionality of a table</a></span> is either the inherited directionality (the default is left-to-right) or that specified by the 
+<a class="aref" href="mod-bidi.html#adef_bidi_dir">@dir</a> attribute for the 
+<a class="eref" href="mod-tables.html#edef_tables_table">table</a> element.</p>
+<p>For a left-to-right table, column zero is on the left side and row zero is at the top. For a right-to-left table, column zero is on the right side and row zero is at the top.</p>
+<p><span class="must"  >When a user agent allots extra cells to a row, extra row
+cells are added to the right of the table for left-to-right tables and
+to the left side for right-to-left tables.</span></p>
+<p>Note that 
+<a class="eref" href="mod-tables.html#edef_tables_table">table</a> is the only element on which 
+<a class="aref" href="mod-bidi.html#adef_bidi_dir">@dir</a> reverses the visual order of the columns; a single table row (
+<a class="eref" href="mod-tables.html#edef_tables_tr">tr</a>) or a group of columns (
+<a class="eref" href="mod-tables.html#edef_tables_colgroup">colgroup</a>) cannot be independently reversed.</p>
+<p>When set for or inherited by the 
+<a class="eref" href="mod-tables.html#edef_tables_table">table</a> element, the 
+<a class="aref" href="mod-bidi.html#adef_bidi_dir">@dir</a> attribute also affects the direction of text within table cells (since the 
+<a class="aref" href="mod-bidi.html#adef_bidi_dir">@dir</a> attribute is inherited by block-level elements).</p>
+<p>To specify a right-to-left table, set the 
+<a class="aref" href="mod-bidi.html#adef_bidi_dir">@dir</a> attribute as follows:</p>
+<div class="example">
+    <p>Example</p>
+<pre>
+&lt;table dir="rtl"&gt;
+&lt;em&gt;...the rest of the table...&lt;/em&gt;
+&lt;/table&gt;
+</pre>
+</div>
+<p>The direction of text in individual cells can be changed by setting the 
+<a class="aref" href="mod-bidi.html#adef_bidi_dir">@dir</a> attribute in an element that defines the cell.</p>
+<h3 >
+<a id="non-visual-rendering" >30.3.3.</a> Table rendering by non-visual user agents
+</h3>
+<p>This section provides more detailed discussion on cell header data and how non-visual agents may utilize that information.</p>
+<h4 >
+<a id="header-data" >30.3.3.1.</a> Associating header information with data cells
+</h4>
+<p>Non-visual user agents such as speech synthesizers and Braille-based devices may use the following 
+<a class="eref" href="mod-tables.html#edef_tables_td">td</a> and 
+<a class="eref" href="mod-tables.html#edef_tables_th">th</a> element attributes to render table cells more intuitively:</p>
+<ul>
+  <li>For a given data cell, the 
+<a class="aref" href="mod-tables.html#adef_tables_headers">@headers</a> attribute lists which cells provide pertinent
+  header information. For this purpose, each header cell must be named
+  using the 
+<a class="aref" href="mod-core.html#adef_core_id">@id</a> attribute. Note that it's
+  not always possible to make a clean division of cells into headers
+  or data. You should use the 
+<a class="eref" href="mod-tables.html#edef_tables_td">td</a> element for such cells
+  together with the 
+<a class="aref" href="mod-core.html#adef_core_id">@id</a> or 
+<a class="aref" href="mod-tables.html#adef_tables_scope">@scope</a> attributes as appropriate.</li>
+  <li><span class="index-inst" title="header cell::scope of|scope::of table header cell"><a name="idx-header_cell-1">For a given header cell</a></span>, the 
+<a class="aref" href="mod-tables.html#adef_tables_scope">@scope</a> attribute tells the user agent the data cells for which this header provides information. Authors may choose to use this attribute instead of 
+<a class="aref" href="mod-tables.html#adef_tables_headers">@headers</a> according to which is more convenient; the two attributes fulfill the same function. The 
+<a class="aref" href="mod-tables.html#adef_tables_headers">@headers</a> attribute is generally needed when headers are placed in irregular positions with respect to the data they apply to.</li>
+  <li><span class="index-inst" title="header cell::abbreviation">The 
+<a class="aref" href="mod-tables.html#adef_tables_abbr">@abbr</a> attribute</span> specifies an abbreviated header for header cells so that user agents may render header information more rapidly.</li>
+</ul>
+<p>In the following example, we assign header information to cells by setting the 
+<a class="aref" href="mod-tables.html#adef_tables_headers">@headers</a> attribute. Each cell in the same column refers to the same header cell (via the 
+<a class="aref" href="mod-core.html#adef_core_id">@id</a> attribute).</p>
+<div class="example">
+    <p>Example</p>
+<pre>
+&lt;table&gt;
+&lt;caption&gt;Cups of coffee consumed by each senator&lt;/caption&gt;
+&lt;summary&gt;This table charts the number of cups
+          of coffee consumed by each senator, the type
+          of coffee (decaf or regular), and whether
+          taken with sugar.&lt;/summary&gt;
+&lt;tbody&gt;
+   &lt;tr&gt;
+      &lt;th id="t1"&gt;Name&lt;/th&gt;
+      &lt;th id="t2"&gt;Cups&lt;/th&gt;
+      &lt;th id="t3" abbr="Type"&gt;Type of Coffee&lt;/th&gt;
+      &lt;th id="t4"&gt;Sugar?&lt;/th&gt;
+   &lt;/tr&gt;
+   &lt;tr&gt;
+      &lt;td headers="t1"&gt;T. Sexton&lt;/td&gt;
+      &lt;td headers="t2"&gt;10&lt;/td&gt;
+      &lt;td headers="t3"&gt;Espresso&lt;/td&gt;
+      &lt;td headers="t4"&gt;No&lt;/td&gt;
+   &lt;/tr&gt;
+   &lt;tr&gt;
+      &lt;td headers="t1"&gt;J. Dinnen&lt;/td&gt;
+      &lt;td headers="t2"&gt;5&lt;/td&gt;
+      &lt;td headers="t3"&gt;Decaf&lt;/td&gt;
+      &lt;td headers="t4"&gt;Yes&lt;/td&gt;
+   &lt;/tr&gt;
+&lt;/tbody&gt;
+&lt;/table&gt;
+</pre>
+</div>
+<p>A speech synthesizer might render this table as follows:</p>
+<div class="example">
+    <p>Example</p>
+<pre>
+Caption: Cups of coffee consumed by each senator
+Summary: This table charts the number of cups
+         of coffee consumed by each senator, the type
+         of coffee (decaf or regular), and whether
+         taken with sugar.
+Name: T. Sexton,   Cups: 10,   Type: Espresso,   Sugar: No
+Name: J. Dinnen,   Cups: 5,    Type: Decaf,      Sugar: Yes
+</pre>
+</div>
+<p>Note how the header "Type of Coffee" is abbreviated to "Type" using the 
+<a class="aref" href="mod-tables.html#adef_tables_abbr">@abbr</a> attribute.</p>
+<p>Here is the same example substituting the 
+<a class="aref" href="mod-tables.html#adef_tables_scope">@scope</a> attribute for the 
+<a class="aref" href="mod-tables.html#adef_tables_headers">@headers</a> attribute. Note the value "col" for the 
+<a class="aref" href="mod-tables.html#adef_tables_scope">@scope</a> attribute, meaning "all cells in the current column":</p>
+<div class="example">
+    <p>Example</p>
+<pre>
+&lt;table&gt;
+&lt;caption&gt;Cups of coffee consumed by each senator&lt;/caption&gt;
+&lt;summary&gt;
+  This table charts the number of cups
+  of coffee consumed by each senator, the type
+  of coffee (decaf or regular), and whether
+  taken with sugar.
+&lt;/summary&gt;
+&lt;tbody&gt;
+   &lt;tr&gt;
+      &lt;th scope="col"&gt;Name&lt;/th&gt;
+      &lt;th scope="col"&gt;Cups&lt;/th&gt;
+      &lt;th scope="col" abbr="Type"&gt;Type of Coffee&lt;/th&gt;
+      &lt;th scope="col"&gt;Sugar?&lt;/th&gt;
+   &lt;/tr&gt;
+   &lt;tr&gt;
+      &lt;td&gt;T. Sexton&lt;/td&gt;
+      &lt;td&gt;10&lt;/td&gt;
+      &lt;td&gt;Espresso&lt;/td&gt;
+      &lt;td&gt;No&lt;/td&gt;
+   &lt;/tr&gt;
+   &lt;tr&gt;
+      &lt;td&gt;J. Dinnen&lt;/td&gt;
+      &lt;td&gt;5&lt;/td&gt;
+      &lt;td&gt;Decaf&lt;/td&gt;
+      &lt;td&gt;Yes&lt;/td&gt;
+   &lt;/tr&gt;
+&lt;/tbody&gt;
+&lt;/table&gt;
+</pre>
+</div>
+<p id="course-ex">Here's a somewhat more complex example illustrating other values for the 
+<a class="aref" href="mod-tables.html#adef_tables_scope">@scope</a> attribute:</p>
+<div class="example">
+    <p>Example</p>
+<pre>
+&lt;table&gt;
+&lt;summary&gt;
+  History courses offered in the community of
+  Bath arranged by course name, tutor, summary,
+  code, and fee
+&lt;/summary&gt;
+&lt;thead&gt;
+  &lt;tr&gt;
+    &lt;th colspan="5" scope="colgroup"&gt;Community Courses -- Bath Autumn 1997&lt;/th&gt;
+  &lt;/tr&gt;
+&lt;/thead&gt;
+&lt;tbody&gt;
+  &lt;tr&gt;
+    &lt;th scope="col" abbr="Name"&gt;Course Name&lt;/th&gt;
+    &lt;th scope="col" abbr="Tutor"&gt;Course Tutor&lt;/th&gt;
+    &lt;th scope="col"&gt;Summary&lt;/th&gt;
+    &lt;th scope="col"&gt;Code&lt;/th&gt;
+    &lt;th scope="col"&gt;Fee&lt;/th&gt;
+  &lt;/tr&gt;
+  &lt;tr&gt;
+    &lt;td scope="row"&gt;After the Civil War&lt;/td&gt;
+    &lt;td&gt;Dr. John Wroughton&lt;/td&gt;
+    &lt;td&gt;
+       The course will examine the turbulent years in England
+       after 1646. &lt;em&gt;6 weekly meetings starting Monday 13th
+       October.&lt;/em&gt;
+    &lt;/td&gt;
+    &lt;td&gt;H27&lt;/td&gt;
+    &lt;td&gt;&amp;amp;pound;32&lt;/td&gt;
+  &lt;/tr&gt;
+  &lt;tr&gt;
+    &lt;td scope="row"&gt;An Introduction to Anglo-Saxon England&lt;/td&gt;
+    &lt;td&gt;Mark Cottle&lt;/td&gt;
+    &lt;td&gt;
+       One day course introducing the early medieval
+       period reconstruction the Anglo-Saxons and
+       their society. &lt;em&gt;Saturday 18th October.&lt;/em&gt;
+    &lt;/td&gt;
+    &lt;td&gt;H28&lt;/td&gt;
+    &lt;td&gt;&amp;amp;pound;18&lt;/td&gt;
+  &lt;/tr&gt;
+  &lt;tr&gt;
+    &lt;td scope="row"&gt;The Glory that was Greece&lt;/td&gt;
+    &lt;td&gt;Valerie Lorenz&lt;/td&gt;
+    &lt;td&gt;
+     Birthplace of democracy, philosophy, heartland of theater, home of
+     argument. The Romans may have done it but the Greeks did it
+     first. &lt;em&gt;Saturday day school 25th October 1997&lt;/em&gt;
+    &lt;/td&gt;
+    &lt;td&gt;H30&lt;/td&gt;
+    &lt;td&gt;&amp;amp;pound;18&lt;/td&gt;
+  &lt;/tr&gt;
+&lt;/tbody&gt;
+&lt;/table&gt;
+</pre>
+</div>
+<p>A graphical user agent might render this as:</p>
+<p><img src="images/table2.gif" alt="A table with merged cells" /></p>
+<p>Note the use of the 
+<a class="aref" href="mod-tables.html#adef_tables_scope">@scope</a> attribute with the "row" value. Although the first cell in each row contains data, not header information, the 
+<a class="aref" href="mod-tables.html#adef_tables_scope">@scope</a> attribute makes the data cell behave like a row header cell. This allows speech synthesizers to provide the relevant course name upon request or to state it immediately before each cell's content.</p>
+<h4 >
+<a id="categorize-cells" >30.3.3.2.</a> Categorizing cells
+</h4>
+<p>Users browsing a table with a speech-based user agent may wish to hear an explanation of a cell's contents in addition to the contents themselves. One way the user might provide an explanation is by speaking associated header information before speaking the data cell's contents (see the section on <a href="#header-data">associating header information with data cells</a>).</p>
+<p>Users may also want information about more than one cell, in which case header information provided at the cell level (by 
+<a class="aref" href="mod-tables.html#adef_tables_headers">@headers</a>, 
+<a class="aref" href="mod-tables.html#adef_tables_scope">@scope</a>, and 
+<a class="aref" href="mod-tables.html#adef_tables_abbr">@abbr</a>) may not provide adequate context. Consider the following table, which classifies expenses for meals, hotels, and transport in two locations (San Jose and Seattle) over several days:</p>
+<div ><img src="images/table1.gif" alt="Image of a table listing travel expenses at two locations: San Jose and Seattle, by date, and category (meals, hotels, and transport), shown with subtitles" width="399" height="207" /></div>
+<p>Users might want to extract information from the table in the form of queries:</p>
+<ul>
+<li>"What did I spend for all my meals?"</li>
+<li>"What did I spend for meals on 25 August?"</li>
+<li>"What did I spend for all expenses in San Jose?"</li>
+</ul>
+<p>Each query involves a computation by the user agent that may involve zero or more cells. In order to determine, for example, the costs of meals on 25 August, the user agent must know which table cells refer to "Meals" (all of them) and which refer to "Dates" (specifically, 25 August), and find the intersection of the two sets.</p>
+<p>To accommodate this type of query, the table model allows authors to place cell headers and data into categories. For example, for the travel expense table, an author could group the header cells "San Jose" and "Seattle" into the category "Location", the headers "Meals", "Hotels", and "Transport" in the category "Expenses", and the four days into the category "Date". The previous three questions would then have the following meanings:</p>
+<ul>
+<li>"What did I spend for all my meals?" means "What are all the data cells in the "Expenses=Meals" category?</li>
+<li>"What did I spend for meals on 25 August?" means "What are all the data cells in the "Expenses=Meals" and "Date=Aug-25-1997" categories?</li>
+<li>"What did I spend for all expenses in San Jose?" means "What are all the data cells in the "Expenses=Meals, Hotels, Transport" and "Location=San Jose" categories?</li>
+</ul>
+<p>Authors categorize a header or data cell by setting the 
+<a class="aref" href="mod-tables.html#adef_tables_axis">@axis</a> attribute for the cell. For instance, in the travel expense table, the cell containing the information "San Jose" could be placed in the "Location" category as follows:</p>
+<div class="example">
+    <p>Example</p>
+<pre>
+  &lt;th id="a6" axis="location"&gt;San Jose&lt;/th&gt;
+</pre>
+</div>
+<p>Any cell containing information related to "San Jose" should refer to this header cell via either the 
+<a class="aref" href="mod-tables.html#adef_tables_headers">@headers</a> or the 
+<a class="aref" href="mod-tables.html#adef_tables_scope">@scope</a> attribute. Thus, meal expenses for 25-Aug-1997 should be marked up to refer to 
+<a class="aref" href="mod-core.html#adef_core_id">@id</a> attribute (whose value here is "a6") of the "San Jose" header cell:</p>
+<div class="example">
+    <p>Example</p>
+<pre>
+  &lt;td headers="a6"&gt;37.74&lt;/td&gt;
+</pre>
+</div>
+<p>Each 
+<a class="aref" href="mod-tables.html#adef_tables_headers">@headers</a> attribute provides a list of 
+<a class="aref" href="mod-core.html#adef_core_id">@id</a> references. Authors may thus categorize a given cell in any number of ways (or, along any number of "headers", hence the name).</p>
+<p>Below we mark up the travel expense table with category information:</p>
+<div class="example">
+    <p>Example</p>
+<pre>
+&lt;table&gt;
+&lt;caption&gt;Travel Expense Report&lt;/caption&gt;
+&lt;summary&gt;
+  This table summarizes travel expenses
+  incurred during August trips to
+  San Jose and Seattle
+&lt;/summary&gt;
+&lt;tbody&gt;
+   &lt;tr&gt;
+      &lt;th&gt;&lt;/th&gt;
+      &lt;th id="a2" axis="expenses"&gt;Meals&lt;/th&gt;
+      &lt;th id="a3" axis="expenses"&gt;Hotels&lt;/th&gt;
+      &lt;th id="a4" axis="expenses"&gt;Transport&lt;/th&gt;
+      &lt;td&gt;subtotals&lt;/td&gt;
+   &lt;/tr&gt;
+   &lt;tr&gt;
+      &lt;th id="a6" axis="location"&gt;San Jose&lt;/th&gt;
+      &lt;th&gt;&lt;/th&gt;
+      &lt;th&gt;&lt;/th&gt;
+      &lt;th&gt;&lt;/th&gt;
+      &lt;td&gt;&lt;/td&gt;
+   &lt;/tr&gt;
+   &lt;tr&gt;
+      &lt;td id="a7" axis="date"&gt;25-Aug-97&lt;/td&gt;
+      &lt;td headers="a6 a7 a2"&gt;37.74&lt;/td&gt;
+      &lt;td headers="a6 a7 a3"&gt;112.00&lt;/td&gt;
+      &lt;td headers="a6 a7 a4"&gt;45.00&lt;/td&gt;
+      &lt;td&gt;&lt;/td&gt;
+   &lt;/tr&gt;
+   &lt;tr&gt;
+      &lt;td id="a8" axis="date"&gt;26-Aug-97&lt;/td&gt;
+      &lt;td headers="a6 a8 a2"&gt;27.28&lt;/td&gt;
+      &lt;td headers="a6 a8 a3"&gt;112.00&lt;/td&gt;
+      &lt;td headers="a6 a8 a4"&gt;45.00&lt;/td&gt;
+      &lt;td&gt;&lt;/td&gt;
+   &lt;/tr&gt;
+   &lt;tr&gt;
+      &lt;td&gt;subtotals&lt;/td&gt;
+      &lt;td&gt;65.02&lt;/td&gt;
+      &lt;td&gt;224.00&lt;/td&gt;
+      &lt;td&gt;90.00&lt;/td&gt;
+      &lt;td&gt;379.02&lt;/td&gt;
+   &lt;/tr&gt;
+   &lt;tr&gt;
+      &lt;th id="a10" axis="location"&gt;Seattle&lt;/th&gt;
+      &lt;th&gt;&lt;/th&gt;
+      &lt;th&gt;&lt;/th&gt;
+      &lt;th&gt;&lt;/th&gt;
+      &lt;td&gt;&lt;/td&gt;
+   &lt;/tr&gt;
+   &lt;tr&gt;
+      &lt;td id="a11" axis="date"&gt;27-Aug-97&lt;/td&gt;
+      &lt;td headers="a10 a11 a2"&gt;96.25&lt;/td&gt;
+      &lt;td headers="a10 a11 a3"&gt;109.00&lt;/td&gt;
+      &lt;td headers="a10 a11 a4"&gt;36.00&lt;/td&gt;
+      &lt;td&gt;&lt;/td&gt;
+   &lt;/tr&gt;
+   &lt;tr&gt;
+      &lt;td id="a12" axis="date"&gt;28-Aug-97&lt;/td&gt;
+      &lt;td headers="a10 a12 a2"&gt;35.00&lt;/td&gt;
+      &lt;td headers="a10 a12 a3"&gt;109.00&lt;/td&gt;
+      &lt;td headers="a10 a12 a4"&gt;36.00&lt;/td&gt;
+      &lt;td&gt;&lt;/td&gt;
+   &lt;/tr&gt;
+   &lt;tr&gt;
+      &lt;td&gt;subtotals&lt;/td&gt;
+      &lt;td&gt;131.25&lt;/td&gt;
+      &lt;td&gt;218.00&lt;/td&gt;
+      &lt;td&gt;72.00&lt;/td&gt;
+      &lt;td&gt;421.25&lt;/td&gt;
+   &lt;/tr&gt;
+   &lt;tr&gt;
+      &lt;th&gt;Totals&lt;/th&gt;
+      &lt;td&gt;196.27&lt;/td&gt;
+      &lt;td&gt;442.00&lt;/td&gt;
+      &lt;td&gt;162.00&lt;/td&gt;
+      &lt;td&gt;800.27&lt;/td&gt;
+   &lt;/tr&gt;
+&lt;/tbody&gt;
+&lt;/table&gt;
+</pre>
+</div>
+<p>Note that marking up the table this way also allows user agents to avoid confusing the user with unwanted information. For instance, if a speech synthesizer were to speak all of the figures in the "Meals" column of this table in response to the query "What were all my meal expenses?", a user would not be able to distinguish a day's expenses from subtotals or totals. By carefully categorizing cell data, authors allow user agents to make important semantic distinctions when rendering.</p>
+<p>Of course, there is no limit to how authors may categorize information in a table. In the travel expense table, for example, we could add the additional categories "subtotals" and "totals".</p>
+<p>This specification does not require user agents to handle information provided by the 
+<a class="aref" href="mod-tables.html#adef_tables_axis">@axis</a> attribute, nor does it make any recommendations about how user agents may present 
+<a class="aref" href="mod-tables.html#adef_tables_axis">@axis</a> information to users or how users may query the user agent about this information.</p>
+<p><span class="index-inst" title="table::speaking cell data"><a name="idx-table-18">However, user agents, particularly speech synthesizers,</a></span> may want to factor out information common to several cells that are the result of a query. For instance, if the user asks "What did I spend for meals in San Jose?", the user agent would first determine the cells in question (25-Aug-1997: 37.74, 26-Aug-1997:27.28), then render this information. A user agent speaking this information might read it:</p>
+<div class="example">
+    <p>Example</p>
+<pre>
+   Location: San Jose. Date: 25-Aug-1997. Expenses, Meals: 37.74
+   Location: San Jose. Date: 26-Aug-1997. Expenses, Meals: 27.28
+</pre>
+</div>
+<p>or, more compactly:</p>
+<div class="example">
+    <p>Example</p>
+<pre>
+   San Jose, 25-Aug-1997, Meals: 37.74
+   San Jose, 26-Aug-1997, Meals: 27.28
+</pre>
+</div>
+<p>An even more economical rendering would factor the common information and reorder it:</p>
+<div class="example">
+    <p>Example</p>
+<pre>
+   San Jose, Meals, 25-Aug-1997: 37.74
+                    26-Aug-1997: 27.28
+</pre>
+</div>
+<p>User agents that support this type of rendering should allow authors a means to customize rendering (e.g., through style sheets).</p>
+<h4 >
+<a id="sec_30.3.3.3." >30.3.3.3.</a> Algorithm to find heading information
+</h4>
+<p>In the absence of header information from either the 
+<a class="aref" href="mod-tables.html#adef_tables_scope">@scope</a> or 
+<a class="aref" href="mod-tables.html#adef_tables_headers">@headers</a> attribute, user agents may construct header information according to the following algorithm. The goal of the algorithm is to find an ordered list of headers. (In the following description of the algorithm the <a href="#table-directionality">table directionality</a> is assumed to be left-to-right.)</p>
+<ul>
+<li>First, search left from the cell's position to find row header cells. Then search upwards to find column header cells. The search in a given direction stops when the edge of the table is reached or when a data cell is found after a header cell.</li>
+<li>Row headers are inserted into the list in the order they appear in the table. For left-to-right tables, headers are inserted from left to right.</li>
+<li>Column headers are inserted after row headers, in the order they appear in the table, from top to bottom.</li>
+<li>If a header cell has the 
+<a class="aref" href="mod-tables.html#adef_tables_headers">@headers</a> attribute set, then the headers referenced by this attribute are inserted into the list and the search stops for the current direction.</li>
+<li>
+<a class="eref" href="mod-tables.html#edef_tables_td">td</a> cells that set the 
+<a class="aref" href="mod-tables.html#adef_tables_axis">@axis</a> attribute are also treated as header cells.</li>
+</ul>
+<!-- END OF ELEMENT FILE modules/tables/table.mhtml -->
+<!-- INCLUDING ELEMENT modules/tables/tbody.mhtml -->
+<h2 >
+<a id="sec_30.4." >30.4.</a> The <a class="edef" id="edef_tables_tbody">tbody</a>
+ element
+</h2>
+<div class="aref-list">
+<p><em>Attributes</em></p>
+<!-- INCLUDING ATTRIBUTE modules/attributes/Common.mhtml -->
+<dl class='attrRef'><dt>The 
+    <a class="csref" href="mod-attribute-collections.html#col_Common">Common</a> collection</dt>
+<dd>A collection of other attribute collections, including:
+    <a class="csref" href="mod-bidi.html#col_Bi-directional">Bi-directional</a>, 
+    <a class="csref" href="mod-core.html#col_Core">Core</a>, 
+    <a class="csref" href="mod-edit.html#col_Edit">Edit</a>, 
+    <a class="csref" href="mod-embedding.html#col_Embedding">Embedding</a>, 
+    <a class="csref" href="mod-xml-events.html#col_Events">Events</a>, 
+    <a class="csref" href="mod-xforms.html#col_Forms">Forms</a>, 
+    <a class="csref" href="mod-hyperAttributes.html#col_Hypertext">Hypertext</a>,
+    <a class="csref" href="mod-i18n.html#col_I18N">I18N</a>, 
+    <a class="csref" href="mod-csImgMap.html#col_Map">Map</a>, 
+    <a class="csref" href="mod-metaAttributes.html#col_Metainformation">Metainformation</a>,
+and 
+    <a class="csref" href="mod-roleAttribute.html#col_Role">Role</a>
+</dd></dl>
+<!-- END OF ATTRIBUTE FILE modules/attributes/Common.mhtml -->
+</div>
+<p>The 
+<a class="eref" href="mod-tables.html#edef_tables_tbody">tbody</a> element contains rows of table data. In
+tables that also contain 
+<a class="eref" href="mod-tables.html#edef_tables_thead">thead</a> or 
+<a class="eref" href="mod-tables.html#edef_tables_tfoot">tfoot</a> elements, all of these sections must contain the same number of columns.</p>
+<!-- END OF ELEMENT FILE modules/tables/tbody.mhtml -->
+<!-- INCLUDING ELEMENT modules/tables/td.mhtml -->
+<h2 >
+<a id="sec_30.5." >30.5.</a> The <a class="edef" id="edef_tables_td">td</a>
+ and <a class="edef" id="edef_tables_th">th</a>
+ elements
+</h2>
+<div class="adef-list">
+<p><em>Attributes</em></p>
+<!-- INCLUDING ATTRIBUTE modules/attributes/Common.mhtml -->
+<dl class='attrRef'><dt>The 
+    <a class="csref" href="mod-attribute-collections.html#col_Common">Common</a> collection</dt>
+<dd>A collection of other attribute collections, including:
+    <a class="csref" href="mod-bidi.html#col_Bi-directional">Bi-directional</a>, 
+    <a class="csref" href="mod-core.html#col_Core">Core</a>, 
+    <a class="csref" href="mod-edit.html#col_Edit">Edit</a>, 
+    <a class="csref" href="mod-embedding.html#col_Embedding">Embedding</a>, 
+    <a class="csref" href="mod-xml-events.html#col_Events">Events</a>, 
+    <a class="csref" href="mod-xforms.html#col_Forms">Forms</a>, 
+    <a class="csref" href="mod-hyperAttributes.html#col_Hypertext">Hypertext</a>,
+    <a class="csref" href="mod-i18n.html#col_I18N">I18N</a>, 
+    <a class="csref" href="mod-csImgMap.html#col_Map">Map</a>, 
+    <a class="csref" href="mod-metaAttributes.html#col_Metainformation">Metainformation</a>,
+and 
+    <a class="csref" href="mod-roleAttribute.html#col_Role">Role</a>
+</dd></dl>
+<!-- END OF ATTRIBUTE FILE modules/attributes/Common.mhtml -->
+<!-- INCLUDING ATTRIBUTE modules/attributes/abbr.mhtml -->
+<dl class='attrDef'><dt><a class="adef" id="adef_tables_abbr"><span class="adef">abbr</span></a>
+ = <span class="datatype"><a href="abstraction.html#dt_Text">Text</a></span></dt>
+  <dd>This attribute should be used to provide an abbreviated form of the cell's content, and may be rendered by user agents when appropriate in place of the cell's content. Abbreviated names should be short since user agents may render them repeatedly. For instance, speech synthesizers may render the abbreviated headers relating to a particular cell before rendering that cell's content.
+</dd></dl>
+<!-- END OF ATTRIBUTE FILE modules/attributes/abbr.mhtml -->
+<!-- INCLUDING ATTRIBUTE modules/attributes/axis.mhtml -->
+<dl class='attrDef'><dt><a class="adef" id="adef_tables_axis"><span class="adef">axis</span></a>
+ = <span class="datatype"><a href="abstraction.html#dt_CDATA">CDATA</a></span></dt>
+<dd>This attribute may be used to place a cell into conceptual categories that can be considered to form axes in an n-dimensional space. User agents may give users access to these categories (e.g., the user may query the user agent for all cells that belong to certain categories, the user agent may present a table in the form of a table of contents, etc.). Please consult the section on <a href="#categorize-cells">categorizing cells</a> for more information. The value of this attribute is a comma-separated list of category names.
+</dd></dl>
+<!-- END OF ATTRIBUTE FILE modules/attributes/axis.mhtml -->
+<!-- INCLUDING ATTRIBUTE modules/attributes/colspan.mhtml -->
+<dl class='attrDef'><dt><a class="adef" id="adef_tables_colspan"><span class="adef">colspan</span></a>
+ = <span class="datatype"><a href="abstraction.html#dt_Number">Number</a></span></dt>
+  <dd>This attribute specifies the number of columns spanned by the current cell. The default value of this attribute is one ("1"). The value zero ("0") means that the cell spans all columns from the current column to the last column of the column group (
+<a class="eref" href="mod-tables.html#edef_tables_colgroup">colgroup</a>) in which the cell is defined.
+</dd></dl>
+<!-- END OF ATTRIBUTE FILE modules/attributes/colspan.mhtml -->
+<!-- INCLUDING ATTRIBUTE modules/attributes/headers.mhtml -->
+<dl class='attrDef'><dt><a class="adef" id="adef_tables_headers"><span class="adef">headers</span></a>
+ = <span class="datatype"><a href="abstraction.html#dt_IDREFS">IDREFS</a></span></dt>
+  <dd>This attribute specifies the list of header cells that provide
+  header information for the current data cell. The value of this
+  attribute is a space-separated list of cell names; those cells must
+  be named by setting their 
+<a class="aref" href="mod-core.html#adef_core_id">@id</a> attribute. Authors generally use the 
+<a class="aref" href="mod-tables.html#adef_tables_headers">@headers</a> attribute to help non-visual user agents render header information about data cells (e.g., header information is spoken prior to the cell data), but the attribute may also be used in conjunction with style sheets. See also the 
+<a class="aref" href="mod-tables.html#adef_tables_scope">@scope</a> attribute.
+</dd></dl>
+<!-- END OF ATTRIBUTE FILE modules/attributes/headers.mhtml -->
+<!-- INCLUDING ATTRIBUTE modules/attributes/rowspan.mhtml -->
+<dl class='attrDef'><dt><a class="adef" id="adef_tables_rowspan"><span class="adef">rowspan</span></a>
+ = <span class="datatype"><a href="abstraction.html#dt_Number">Number</a></span></dt>
+  <dd>This attribute specifies the number of rows spanned by the
+  current cell. The default value of this attribute is one ("1"). The
+  value zero ("0") means that the cell spans all rows from the current
+  row to the last row of the current table section (rowgroup) in which
+  the cell is defined. 
+<a class="eref" href="mod-tables.html#edef_tables_thead">thead</a>, 
+<a class="eref" href="mod-tables.html#edef_tables_tbody">tbody</a>, and 
+<a class="eref" href="mod-tables.html#edef_tables_tfoot">tfoot</a>
+  elements are rowgroups.
+</dd></dl>
+<!-- END OF ATTRIBUTE FILE modules/attributes/rowspan.mhtml -->
+<!-- INCLUDING ATTRIBUTE modules/attributes/scope.mhtml -->
+<dl class='attrDef'><dt><a class="adef" id="adef_tables_scope"><span class="adef">scope</span></a>
+ = <samp>row|col|rowgroup|colgroup</samp></dt>
+  <dd>This attribute specifies the set of data cells for which the current header cell provides header information. This attribute may be used in place of the 
+<a class="aref" href="mod-tables.html#adef_tables_headers">@headers</a> attribute, particularly for simple tables. When specified, this attribute must have one of the following values: 
+  <ul>
+    <li><strong>row:</strong> The current cell provides header information for the rest of the row that contains it (see also the section on <a href="#table-directionality">table directionality</a>).</li>
+    <li><strong>col:</strong> The current cell provides header information for the rest of the column that contains it.</li>
+    <li><strong>rowgroup:</strong> The header cell provides header information for the rest of the row group that contains it.</li>
+    <li><strong>colgroup:</strong> The header cell provides header information for the rest of the 
+<a class="eref" href="mod-tables.html#edef_tables_colgroup">column group</a> that contains it.</li>
+  </ul>
+</dd></dl>
+<!-- END OF ATTRIBUTE FILE modules/attributes/scope.mhtml -->
+</div>
+<p>Table cells may contain two types of information: <span class="index-inst" title="table::header cells|header cell::in table"><a name="idx-table-9">header information</a></span> and <span class="index-inst" title="table::data cells|data cell::in table"><a name="idx-table-10">data.</a></span> This distinction enables user agents to render header and data cells distinctly, even in the absence of style sheets. For example, visual user agents may present header cell text with a bold font. Speech synthesizers may render header information with a distinct voice inflection.</p>
+<p>The 
+<a class="eref" href="mod-tables.html#edef_tables_th">th</a> element defines a cell that contains header information. User agents have two pieces of header information available: the contents of the 
+<a class="eref" href="mod-tables.html#edef_tables_th">th</a> element and the value of the 
+<a class="aref" href="mod-tables.html#adef_tables_abbr">@abbr</a> attribute. User agents must render either the contents of the cell or the value of the 
+<a class="aref" href="mod-tables.html#adef_tables_abbr">@abbr</a> attribute. For visual media, the latter may be appropriate when there is insufficient space to render the full contents of the cell. For non-visual media 
+<a class="aref" href="mod-tables.html#adef_tables_abbr">@abbr</a> may be used as an abbreviation for table headers when these are rendered along with the contents of the cells to which they apply.</p>
+<p>The 
+<a class="aref" href="mod-tables.html#adef_tables_headers">@headers</a> and 
+<a class="aref" href="mod-tables.html#adef_tables_scope">@scope</a> attributes also allow authors to help non-visual user agents process header information. Please consult the section on <a href="#non-visual-rendering">labeling cells for non-visual user agents</a> for information and examples.</p>
+<p>The 
+<a class="eref" href="mod-tables.html#edef_tables_td">td</a> element defines a cell that contains data.</p>
+<p>Cells may be empty (i.e., contain no data).</p>
+<h3 >
+<a id="sec_30.5.1." >30.5.1.</a> Cells that span several rows or columns
+</h3>
+<p>Cells may span several rows or columns. The number of rows or columns spanned by a cell is set by the 
+<a class="aref" href="mod-tables.html#adef_tables_rowspan">@rowspan</a> and 
+<a class="aref" href="mod-tables.html#adef_tables_colspan">@colspan</a> attributes for the 
+<a class="eref" href="mod-tables.html#edef_tables_th">th</a> and 
+<a class="eref" href="mod-tables.html#edef_tables_td">td</a> elements.</p>
+<div class="example">
+<p>In this table definition, we specify that the cell in row four, column two should span a total of three columns, including the current column.</p>
+<pre class="example">
+&lt;table&gt;
+&lt;caption&gt;Cups of coffee consumed by each senator&lt;/caption&gt;
+&lt;tbody&gt;
+   &lt;tr&gt;
+      &lt;th&gt;Name&lt;/th&gt;
+      &lt;th&gt;Cups&lt;/th&gt;
+      &lt;th&gt;Type of Coffee&lt;/th&gt;
+      &lt;th&gt;Sugar?&lt;/th&gt;
+   &lt;/tr&gt;
+   &lt;tr&gt;
+      &lt;td&gt;T. Sexton&lt;/td&gt;
+      &lt;td&gt;10&lt;/td&gt;
+      &lt;td&gt;Espresso&lt;/td&gt;
+      &lt;td&gt;No&lt;/td&gt;
+   &lt;/tr&gt;
+   &lt;tr&gt;
+      &lt;td&gt;J. Dinnen&lt;/td&gt;
+      &lt;td&gt;5&lt;/td&gt;
+      &lt;td&gt;Decaf&lt;/td&gt;
+      &lt;td&gt;Yes&lt;/td&gt;
+   &lt;/tr&gt;
+   &lt;tr&gt;
+      &lt;td&gt;A. Soria&lt;/td&gt;
+      &lt;td colspan="3"&gt;&lt;em&gt;Not available&lt;/em&gt;&lt;/td&gt;
+   &lt;/tr&gt;
+&lt;/tbody&gt;
+&lt;/table&gt;
+</pre>
+<p>This table might be rendered on a tty device by a visual user agent as follows:</p>
+<pre class="example">
+Cups of coffee consumed by each senator
+ --------------------------------------
+ |   Name  |Cups|Type of Coffee|Sugar?|
+ --------------------------------------
+ |T. Sexton|10  |Espresso      |No    |
+ --------------------------------------
+ |J. Dinnen|5   |Decaf         |Yes   |
+ --------------------------------------
+ |A. Soria |Not available             |
+ --------------------------------------
+</pre>
+</div>
+<div class="example">
+<p>The next example illustrates (with the help of table borders) how cell definitions that span more than one row or column affect the definition of later cells. Consider the following table definition:</p>
+<pre class="example">
+&lt;table&gt;
+&lt;tbody&gt;
+   &lt;tr&gt;
+      &lt;td&gt;1&lt;/td&gt;
+      &lt;td rowspan="2"&gt;2&lt;/td&gt;
+      &lt;td&gt;3&lt;/td&gt;
+   &lt;/tr&gt;
+   &lt;tr&gt;
+      &lt;td&gt;4&lt;/td&gt;
+      &lt;td&gt;6&lt;/td&gt;
+   &lt;/tr&gt;
+   &lt;tr&gt;
+      &lt;td&gt;7&lt;/td&gt;
+      &lt;td&gt;8&lt;/td&gt;
+      &lt;td&gt;9&lt;/td&gt;
+      &lt;td&gt;&lt;/td&gt;
+   &lt;/tr&gt;
+&lt;/tbody&gt;
+&lt;/table&gt;
+</pre>
+<p>As cell "2" spans the first and second rows, the definition of the second row will take it into account. Thus, the second 
+<a class="eref" href="mod-tables.html#edef_tables_td">td</a> in row two actually defines the row's third cell. Visually, the table might be rendered to a tty device as:</p>
+<pre class="example">
+-------------
+| 1 | 2 | 3 |
+----|   |----
+| 4 |   | 6 |
+----|---|----
+| 7 | 8 | 9 |
+-------------
+</pre>
+<p>while a graphical user agent might render this as:</p>
+<p><img src="images/rowspan.gif" alt="Image of a table with rowspan=2" /></p>
+<p>Note that if the 
+<a class="eref" href="mod-tables.html#edef_tables_td">td</a> defining cell "6" had been omitted, an extra empty cell would have been added by the user agent to complete the row.</p>
+<p>Similarly, in the following table definition:</p>
+<pre class="example">
+&lt;table&gt;
+&lt;tbody&gt;
+   &lt;tr&gt;
+      &lt;td&gt;1&lt;/td&gt;
+      &lt;td&gt;2&lt;/td&gt;
+      &lt;td&gt;3&lt;/td&gt;
+   &lt;/tr&gt;
+   &lt;tr&gt;
+      &lt;td colspan="2"&gt;4&lt;/td&gt;
+      &lt;td&gt;6&lt;/td&gt;
+   &lt;/tr&gt;
+   &lt;tr&gt;
+      &lt;td&gt;7&lt;/td&gt;
+      &lt;td&gt;8&lt;/td&gt;
+      &lt;td&gt;9&lt;/td&gt;
+   &lt;/tr&gt;
+&lt;/tbody&gt;
+&lt;/table&gt;
+</pre>
+<p>cell "4" spans two columns, so the second 
+<a class="eref" href="mod-tables.html#edef_tables_td">td</a> in the row actually defines the third cell ("6"):</p>
+<pre class="example">
+-------------
+| 1 | 2 | 3 |
+--------|----
+| 4     | 6 |
+--------|----
+| 7 | 8 | 9 |
+-------------
+</pre>
+<p>A graphical user agent might render this as:</p>
+<p><img src="images/colspan.gif" alt="Image of a table with colspan=2" /></p>
+</div>
+<p>Defining overlapping cells is an error. User agents may vary in how they handle this error (e.g., rendering may vary).</p>
+<div class="illegal-example">
+<p>The following illegal example illustrates how one might create overlapping cells. In this table, cell "5" spans two rows and cell "7" spans two columns, so there is overlap in the cell between "7" and "9":</p>
+<pre class="example">
+&lt;table&gt;
+&lt;tbody&gt;
+   &lt;tr&gt;
+      &lt;td&gt;1&lt;/td&gt;
+      &lt;td&gt;2&lt;/td&gt;
+      &lt;td&gt;3&lt;/td&gt;
+   &lt;/tr&gt;
+   &lt;tr&gt;
+      &lt;td&gt;4&lt;/td&gt;
+      &lt;td rowspan="2"&gt;5&lt;/td&gt;
+      &lt;td&gt;6&lt;/td&gt;
+   &lt;/tr&gt;
+   &lt;tr&gt;
+      &lt;td colspan="2"&gt;7&lt;/td&gt;
+      &lt;td&gt;9&lt;/td&gt;
+   &lt;/tr&gt;
+&lt;/tbody&gt;
+&lt;/table&gt;
+</pre>
+</div>
+<!-- END OF ELEMENT FILE modules/tables/td.mhtml -->
+<!-- INCLUDING ELEMENT modules/tables/thead.mhtml -->
+<h2 >
+<a id="sec_30.6." >30.6.</a> The <a class="edef" id="edef_tables_thead">thead</a>
+ and <a class="edef" id="edef_tables_tfoot">tfoot</a>
+ elements
+</h2>
+<div class="aref-list">
+<p><em>Attributes</em></p>
+<!-- INCLUDING ATTRIBUTE modules/attributes/Common.mhtml -->
+<dl class='attrRef'><dt>The 
+    <a class="csref" href="mod-attribute-collections.html#col_Common">Common</a> collection</dt>
+<dd>A collection of other attribute collections, including:
+    <a class="csref" href="mod-bidi.html#col_Bi-directional">Bi-directional</a>, 
+    <a class="csref" href="mod-core.html#col_Core">Core</a>, 
+    <a class="csref" href="mod-edit.html#col_Edit">Edit</a>, 
+    <a class="csref" href="mod-embedding.html#col_Embedding">Embedding</a>, 
+    <a class="csref" href="mod-xml-events.html#col_Events">Events</a>, 
+    <a class="csref" href="mod-xforms.html#col_Forms">Forms</a>, 
+    <a class="csref" href="mod-hyperAttributes.html#col_Hypertext">Hypertext</a>,
+    <a class="csref" href="mod-i18n.html#col_I18N">I18N</a>, 
+    <a class="csref" href="mod-csImgMap.html#col_Map">Map</a>, 
+    <a class="csref" href="mod-metaAttributes.html#col_Metainformation">Metainformation</a>,
+and 
+    <a class="csref" href="mod-roleAttribute.html#col_Role">Role</a>
+</dd></dl>
+<!-- END OF ATTRIBUTE FILE modules/attributes/Common.mhtml -->
+</div>
+<p><span class="index-inst" title="row group|table::row group in"><a name="idx-row_group">Table rows may be grouped</a></span> into a table head, table foot, and one or more table body sections, using the 
+<a class="eref" href="mod-tables.html#edef_tables_thead">thead</a>, 
+<a class="eref" href="mod-tables.html#edef_tables_tfoot">tfoot</a> and 
+<a class="eref" href="mod-tables.html#edef_tables_tbody">tbody</a> elements, respectively. This division enables user agents to support scrolling of table bodies independently of the table head and foot. When long tables are printed, the table head and foot information may be repeated on each page that contains table data.</p>
+<p>The table head and table foot should contain information about the
+table's columns. 
+<span class="must"  >The table body must contain rows of table data.</span></p>
+<p>When present, each 
+<a class="eref" href="mod-tables.html#edef_tables_thead">thead</a>, 
+<a class="eref" href="mod-tables.html#edef_tables_tfoot">tfoot</a>, and
+<a class="eref" href="mod-tables.html#edef_tables_tbody">tbody</a> creates a <em>row group</em>. 
+<span class="must"  >Each row group must contain at least one row, defined by the
+<a class="eref" href="mod-tables.html#edef_tables_tr">tr</a> element.</span></p>
+<p>If the 
+<a class="eref" href="mod-tables.html#edef_tables_thead">thead</a>, 
+<a class="eref" href="mod-tables.html#edef_tables_tfoot">tfoot</a>, and 
+<a class="eref" href="mod-tables.html#edef_tables_tbody">tbody</a> elements are used, and a rowspan attribute is used within a group, the rowspan must remain within the group boundaries of which it is defined.</p>
+<p>This example illustrates the order and structure of the table head, foot, and bodies.</p>
+<div class="example">
+    <p>Example</p>
+<pre>
+&lt;table&gt;
+&lt;thead&gt;
+     &lt;tr&gt; &lt;em&gt;...header information...&lt;/em&gt;&lt;/tr&gt;
+&lt;/thead&gt;
+&lt;tfoot&gt;
+     &lt;tr&gt; &lt;em&gt;...footer information...&lt;/em&gt;&lt;/tr&gt;
+&lt;/tfoot&gt;
+&lt;tbody&gt;
+     &lt;tr&gt; &lt;em&gt;...first row of block one data...&lt;/em&gt;&lt;/tr&gt;
+     &lt;tr&gt; &lt;em&gt;...second row of block one data...&lt;/em&gt;&lt;/tr&gt;
+&lt;/tbody&gt;
+&lt;tbody&gt;
+     &lt;tr&gt; &lt;em&gt;...first row of block two data...&lt;/em&gt;&lt;/tr&gt;
+     &lt;tr&gt; &lt;em&gt;...second row of block two data...&lt;/em&gt;&lt;/tr&gt;
+     &lt;tr&gt; &lt;em&gt;...third row of block two data...&lt;/em&gt;&lt;/tr&gt;
+&lt;/tbody&gt;
+&lt;/table&gt;
+</pre>
+</div>
+<p>
+<a class="eref" href="mod-tables.html#edef_tables_tfoot">tfoot</a> must appear before 
+<a class="eref" href="mod-tables.html#edef_tables_tbody">tbody</a> within a 
+<a class="eref" href="mod-tables.html#edef_tables_table">table</a> definition so that user agents can render the foot before receiving all of the (potentially numerous) rows of data.</p>
+<!-- END OF ELEMENT FILE modules/tables/thead.mhtml -->
+<!-- INCLUDING ELEMENT modules/tables/tr.mhtml -->
+<h2 >
+<a id="sec_30.7." >30.7.</a> The <a class="edef" id="edef_tables_tr">tr</a>
+ element
+</h2>
+<div class="aref-list">
+<p><em>Attributes</em></p>
+<!-- INCLUDING ATTRIBUTE modules/attributes/Common.mhtml -->
+<dl class='attrRef'><dt>The 
+    <a class="csref" href="mod-attribute-collections.html#col_Common">Common</a> collection</dt>
+<dd>A collection of other attribute collections, including:
+    <a class="csref" href="mod-bidi.html#col_Bi-directional">Bi-directional</a>, 
+    <a class="csref" href="mod-core.html#col_Core">Core</a>, 
+    <a class="csref" href="mod-edit.html#col_Edit">Edit</a>, 
+    <a class="csref" href="mod-embedding.html#col_Embedding">Embedding</a>, 
+    <a class="csref" href="mod-xml-events.html#col_Events">Events</a>, 
+    <a class="csref" href="mod-xforms.html#col_Forms">Forms</a>, 
+    <a class="csref" href="mod-hyperAttributes.html#col_Hypertext">Hypertext</a>,
+    <a class="csref" href="mod-i18n.html#col_I18N">I18N</a>, 
+    <a class="csref" href="mod-csImgMap.html#col_Map">Map</a>, 
+    <a class="csref" href="mod-metaAttributes.html#col_Metainformation">Metainformation</a>,
+and 
+    <a class="csref" href="mod-roleAttribute.html#col_Role">Role</a>
+</dd></dl>
+<!-- END OF ATTRIBUTE FILE modules/attributes/Common.mhtml -->
+</div>
+<p>The 
+<a class="eref" href="mod-tables.html#edef_tables_tr">tr</a> elements acts as a container for a row of table cells.</p>
+<div class="example">
+<p>This sample table contains three rows, each begun by the 
+<a class="eref" href="mod-tables.html#edef_tables_tr">tr</a> element:</p>
+<pre class="example">
+&lt;table&gt;
+&lt;caption&gt;Cups of coffee consumed by each senator&lt;/caption&gt;
+&lt;summary&gt;This table charts the number of cups
+  of coffee consumed by each senator, the type 
+  of coffee (decaf or regular), and whether 
+  taken with sugar.&lt;/summary&gt;
+&lt;tbody&gt;
+   &lt;tr&gt; <em>...A header row...</em>&lt;/tr&gt;
+   &lt;tr&gt; <em>...First row of data...</em>&lt;/tr&gt;
+   &lt;tr&gt; <em>...Second row of data...</em>&lt;/tr&gt;
+&lt;/tbody&gt;
+&lt;/table&gt;
+</pre>
+</div>
+<!-- END OF ELEMENT FILE modules/tables/tr.mhtml -->
+<hr />
+<div class="navbar">
+[<a href="mod-styleAttribute.html">previous</a>]
+[<a href="mod-xforms.html">next</a>]
+[<a href="Overview.html#toc">table of contents</a>]
+[<a href="elements.html">elements</a>]
+[<a href="attributes.html">attributes</a>]
+</div>
+</body>
+</html>

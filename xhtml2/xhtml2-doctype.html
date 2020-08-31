@@ -1,0 +1,129 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN"
+	"http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html lang="en" xml:lang="en" xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<title>XHTML&#8482; 2.0 - The XHTML 2.0 Document Type</title> 
+<link rel="start" type="text/html" href="Overview.html" />
+<link rel="contents" type="text/html" href="Overview.html#toc" />
+<link rel="prev" type="text/html" href="conformance.html" />
+<link rel="next" type="text/html" href="abstraction.html" />
+<link rel="stylesheet" type="text/css" href="xhtml.css" />
+<link rel="stylesheet" type="text/css" href="http://www.w3.org/StyleSheets/TR/W3C-ED.css" />
+</head>
+<body>
+<div class="navbar">
+[<a accesskey="P" href="conformance.html">previous</a>]
+[<a accesskey="N" href="abstraction.html">next</a>]
+[<a accesskey="T" href="Overview.html#toc">table of contents</a>]
+[<a accesskey="E" href="elements.html">elements</a>]
+[<a accesskey="A" href="attributes.html">attributes</a>]
+<hr />
+</div>
+<h1 >
+<a id="s_doctype" >4.</a> The XHTML 2.0 Document Type
+</h1>
+<p>This section is <em>normative</em>.</p>
+<p>The XHTML 2.0 document type is a fully functional document type
+with rich semantics. It is a collection of XHTML-conforming
+modules (many of which are defined in this specification). 
+The Modules and the elements and/or attributes they define
+are listed here for information purposes, but the
+definitions 
+in their base documents should be considered authoritative. In the
+on-line version of this document, the module names in the list below
+link into the definitions of the modules within the relevant version of
+the authoritative specification.
+</p>
+<dl>
+  <dt><a href="mod-document.html#s_documentmodule">Document Module</a></dt>
+  <dd><code>body, head, html, title</code></dd>
+  <dt><a href="mod-structural.html#s_structuralmodule">Structural Module</a></dt>
+  <dd><code>address, blockcode, blockquote, div,
+  h, h1, h2, h3, h4, h5, h6, p, pre, section, separator</code></dd>
+  <dt><a href="mod-text.html#s_textmodule">Text Module</a></dt>
+  <dd><code>abbr, cite, code, dfn, em,
+  kbd, l, q, samp, span,
+  strong, sub, sup, var</code></dd>
+  <dt><a href="mod-hypertext.html#s_hypertextmodule">Hypertext Module</a></dt>
+  <dd><code>a</code></dd>
+  <dt><a href="mod-list.html#s_listmodule">List Module</a></dt>
+  <dd><code>dl, dt, dd, label, nl, ol, ul, li</code></dd>
+  <dt><a href="mod-core.html#s_coremodule">Core Attributes Module</a></dt>
+  <dd><code>class</code>, <code>id</code>, and <code>title</code>
+  attributes</dd>
+  <dt><a href="mod-hyperAttributes.html#s_hyperAttributesmodule">Hypertext Attributes Module</a></dt>
+  <dd><code>href</code>, <code>hreftype</code>, <code>cite</code>,
+  <code>target</code>, <code>rel</code>, <code>rev</code>,
+  <code>access</code>, <code>nextfocus</code>, <code>prevfocus</code>, and
+  <code>xml:base</code> attributes</dd>
+  <dt><a href="mod-i18n.html#s_i18nmodule">Internationalization Attribute Module</a></dt>
+  <dd><code>xml:lang</code> attribute</dd>
+  <dt><a href="mod-bidi.html#s_bidimodule">Bi-directional Text Module</a></dt>
+  <dd><code>dir</code> attribute</dd>
+  <dt><a href="mod-edit.html#s_editmodule">Edit Attributes Module</a></dt>
+  <dd><code>edit</code> and <code>datetime</code> attributes</dd>
+  <dt><a href="mod-embedding.html#s_embeddingmodule">Embedding Attributes Module</a></dt>
+  <dd><code>src</code> and <code>type</code> attributes</dd>
+  <dt><a href="mod-csImgMap.html#s_csImgMapmodule">Image Map Attributes Module</a></dt>
+  <dd><code>usemap, ismap, shape</code>, and <code>coords</code> attributes</dd>
+  <dt><a href="mod-mediaAttribute.html#s_mediaAttributemodule">Media Attribute Module</a></dt>
+  <dd><code>media</code> attribute</dd>
+  <dt><a href="mod-meta.html#s_metamodule">Metainformation Module</a></dt>
+  <dd><code>meta</code>, <code>link</code></dd>
+  <dt><a href="mod-object.html#s_objectmodule">Object Module</a></dt>
+  <dd><code>object, param, standby</code></dd>
+  <dt><a href="mod-styleAttribute.html#s_styleAttributemodule">Style Attribute Module</a></dt>
+  <dd><code>style</code> attribute</dd>
+  <dt><a href="mod-styleSheet.html#s_styleSheetmodule">Stylesheet Module</a></dt>
+  <dd><code>style</code> element</dd>
+  <dt><a href="mod-tables.html#s_tablesmodule">Tables Module</a></dt>
+  <dd><code>caption, col, colgroup, summary, table, tbody, td, tfoot, th, thead, tr</code></dd>
+</dl>
+<p>XHTML 2.0 also uses the following externally defined modules:</p>
+<dl>
+<dt>Ruby Annotation Module [<a class="nref" href="references.html#ref_RUBY">RUBY</a>]</dt>
+<dd><code>ruby, rbc, rtc, rb, rt, rp</code></dd>
+<dt>XForms 1.1 [<a class="nref" href="references.html#ref_XFORMS">XFORMS</a>]</dt>
+<dd>
+<code>alert, bind, case, choices, copy, delete, extension,
+  filename, group, help, hint, input, insert, instance, item, itemset,
+  label, load, mediatype, message, model, output, range, rebuild,
+  recalculate, refresh, repeat, reset, revalidate, secret, select, select1,
+  send, setfocus, setindex, setvalue, submission, submit, switch, textarea,
+  toggle, trigger, upload</code>, and <code>value</code> elements, and
+  <code>repeat-model, repeat-bind, repeat-nodeset,
+  repeat-startindex</code>, and <code>repeat-number</code> attributes
+</dd>
+<dt>XHTML Metainformation Attributes Module [<a class="nref" href="references.html#ref_RDFASYNTAX">RDFASYNTAX</a>]</dt>
+  <dd><code>about</code>, <code>content</code>, <code>datatype</code>, <code>typeof</code>, <code>property</code>, <code>rel</code>, <code>resource</code>, and <code>rev</code>
+  attributes</dd>
+<dt>XML Events Module [<a class="nref" href="references.html#ref_XMLEVENTS">XMLEVENTS</a>]</dt>
+<dd><code>listener</code> element, and
+<code>defaultAction, event, handler, objserver, phase,
+propagate</code>, and <code>target</code> attributes
+</dd>
+<dt>XML Handlers Module [<a class="nref" href="references.html#ref_XMLEVENTS">XMLEVENTS</a>]</dt>
+<dd><code>action</code>, <code>dispatchEvent</code>, <code>addEventListener</code>, <code>removeEventListener</code>, <code>stopPropagation</code>, <code>preventDefault</code> attributes</dd>
+<dt>XML Script Module [<a class="nref" href="references.html#ref_XMLEVENTS">XMLEVENTS</a>]</dt>
+<dd><code>script</code> element</dd>
+<dt>Internationalization Tag Set [<a class="nref" href="references.html#ref_ITS">ITS</a>]</dt>
+<dd><code>rules</code> element, <code>translate</code> attribute, etc.  @@@@need to determine how to best integrate this into the content model@@@@</dd>
+</dl>
+<p>An implementation of this document
+type as a RELAX NG grammar is defined in
+<a href="xhtml20_relax.html#a_xhtml20_relaxng">Appendix B</a>, as an
+XML Schema in
+<a href="xhtml20_schema.html#a_xhtml20_schema">Appendix D</a>, and as
+a DTD in 
+<a href="xhtml20_dtd.html#a_xhtml20_dtd">Appendix F</a>.</p>
+<hr />
+<div class="navbar">
+[<a href="conformance.html">previous</a>]
+[<a href="abstraction.html">next</a>]
+[<a href="Overview.html#toc">table of contents</a>]
+[<a href="elements.html">elements</a>]
+[<a href="attributes.html">attributes</a>]
+</div>
+</body>
+</html>

@@ -1,0 +1,186 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN"
+	"http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html lang="en" xml:lang="en" xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<title>XHTML&#8482; 2.0 - XHTML Legacy Edit Module</title> 
+<link rel="start" type="text/html" href="Overview.html" />
+<link rel="contents" type="text/html" href="Overview.html#toc" />
+<link rel="prev" type="text/html" href="mod-scripting.html" />
+<link rel="next" type="text/html" href="mod-legacy-headings.html" />
+<link rel="stylesheet" type="text/css" href="xhtml.css" />
+<link rel="stylesheet" type="text/css" href="http://www.w3.org/StyleSheets/TR/W3C-ED.css" />
+</head>
+<body>
+<div class="navbar">
+[<a accesskey="P" href="mod-scripting.html">previous</a>]
+[<a accesskey="N" href="mod-legacy-headings.html">next</a>]
+[<a accesskey="T" href="Overview.html#toc">table of contents</a>]
+[<a accesskey="E" href="elements.html">elements</a>]
+[<a accesskey="A" href="attributes.html">attributes</a>]
+<hr />
+</div>
+<h1 >
+<a id="s_legacy-editmodule" >35.</a> XHTML Legacy Edit Module
+</h1>
+<div class='subtoc'><p><strong>Contents</strong></p><ul class='toc'><li class='tocline'>
+35.1.
+<a href="#sec_35.1." class="tocxref">The del element</a>
+</li><li class='tocline'>35.2.
+<a href="#sec_35.2." class="tocxref">The ins element</a>
+</li></ul>
+</div>
+<p>This section is <em>normative</em>.</p>
+<p>This module defines the traditional HTML elements for marking up
+inserted and deleted content.</p>
+<table class="moduledef" border="1" summary="Elements and Attributes in Legacy Edit Module">
+<thead>
+	<tr><th>Element</th><th>Attributes</th><th>Content Model</th></tr>
+</thead>
+<tbody>
+    <tr>
+        <td>del</td><td>
+    <a class="csref" href="mod-attribute-collections.html#col_Common">Common</a></td>
+        <td class="content">(
+    <a class="csref" href="mod-text.html#cs_Text">Text</a>)*</td>
+    </tr>
+    <tr>
+        <td>ins</td><td>
+    <a class="csref" href="mod-attribute-collections.html#col_Common">Common</a></td>
+        <td class="content">(
+    <a class="csref" href="mod-text.html#cs_Text">Text</a>)*</td>
+    </tr>
+</tbody>
+</table>
+<p>Implementations: <a href="relax_module_defs.html#a_rmodule_Legacy_Edit">RELAX NG</a>,
+<a href="schema_module_defs.html#a_smodule_Legacy_Editing_Module">XML Schema</a>
+</p>
+<!-- INCLUDING ELEMENT modules/legacy-edit/del.mhtml -->
+<h2 >
+<a id="sec_35.1." >35.1.</a> The <a class="edef" id="edef_legacy-edit_del">del</a>
+ element
+</h2>
+<p>The 
+<a class="eref" href="mod-legacy-edit.html#edef_legacy-edit_del">del</a> element is used to indicate that a section of
+a document has been deleted with respect to a different version of the document
+(e.g., in draft legislation where lawmakers need to view the changes).</p>
+<div class="adef-list">
+<p><em>Attributes</em></p>
+<!-- INCLUDING ATTRIBUTE modules/attributes/Common.mhtml -->
+<dl class='attrDef'><dt>The 
+    <a class="csref" href="mod-attribute-collections.html#col_Common">Common</a> collection</dt>
+<dd>A collection of other attribute collections, including:
+    <a class="csref" href="mod-bidi.html#col_Bi-directional">Bi-directional</a>, 
+    <a class="csref" href="mod-core.html#col_Core">Core</a>, 
+    <a class="csref" href="mod-edit.html#col_Edit">Edit</a>, 
+    <a class="csref" href="mod-embedding.html#col_Embedding">Embedding</a>, 
+    <a class="csref" href="mod-xml-events.html#col_Events">Events</a>, 
+    <a class="csref" href="mod-xforms.html#col_Forms">Forms</a>, 
+    <a class="csref" href="mod-hyperAttributes.html#col_Hypertext">Hypertext</a>,
+    <a class="csref" href="mod-i18n.html#col_I18N">I18N</a>, 
+    <a class="csref" href="mod-csImgMap.html#col_Map">Map</a>, 
+    <a class="csref" href="mod-metaAttributes.html#col_Metainformation">Metainformation</a>,
+and 
+    <a class="csref" href="mod-roleAttribute.html#col_Role">Role</a>
+</dd></dl>
+<!-- END OF ATTRIBUTE FILE modules/attributes/Common.mhtml -->
+</div>
+<div class="example">
+<p>This example could be from a bill to change the legislation for how many deputies a County Sheriff can employ from 3 to 5.</p>
+<div class="example">
+    <p>Example</p>
+<pre>
+&lt;p&gt;
+  A Sheriff can employ &lt;del&gt;3&lt;/del&gt;&lt;ins&gt;5&lt;/ins&gt; deputies.
+&lt;/p&gt;
+</pre>
+</div>
+</div>
+<p><span class="should"  >
+User agents should render deleted text in ways that make the change obvious.</span>
+For instance, inserted text may appear in a special font, deleted text may not be shown at all or be shown as struck-through or with special markings, etc.</p>
+<div class="example">
+<p>Both of the following examples correspond to November 5, 2001, 8:15:30 am, US Eastern Standard Time.</p>
+<div class="example">
+    <p>Example</p>
+<pre>
+2001-11-05T13:15:30Z
+2001-11-05T08:15:30-05:00
+</pre>
+</div>
+<p>Used with 
+<a class="eref" href="mod-legacy-edit.html#edef_legacy-edit_ins">ins</a>, this gives:</p>
+<div class="example">
+    <p>Example</p>
+<pre>
+&lt;ins datetime="2001-11-05T08:15:30-05:00"
+        cite="http://www.example.org/mydoc/comments.html"&gt;
+Furthermore, the latest figures from the marketing department
+suggest that such practice is on the rise.
+&lt;/ins&gt;
+</pre>
+</div>
+<p>The document "http://www.example.org/mydoc/comments.html" would contain comments about why information was inserted into the document.</p>
+</div>
+<p>Authors may also make comments about deleted text by means of the 
+<a class="aref" href="mod-core.html#adef_core_title">@title</a>
+attribute for the 
+<a class="eref" href="mod-legacy-edit.html#edef_legacy-edit_del">del</a> element. User agents may present this information to the user (e.g., as a popup note). For example:</p>
+<div class="example">
+<div class="example">
+    <p>Example</p>
+<pre>
+&lt;del datetime="2001-11-05T08:15:30-05:00"
+        title="Changed as a result of Steve G's comments in meeting."&gt;
+Furthermore, the latest figures from the marketing department
+suggest that such practice is on the rise.
+&lt;/del&gt;
+</pre>
+</div>
+</div>
+<!-- END OF ELEMENT FILE modules/legacy-edit/del.mhtml -->
+<!-- INCLUDING ELEMENT modules/legacy-edit/ins.mhtml -->
+<h2 >
+<a id="sec_35.2." >35.2.</a> The <a class="edef" id="edef_legacy-edit_ins">ins</a>
+ element
+</h2>
+<p>The 
+<a class="eref" href="mod-legacy-edit.html#edef_legacy-edit_ins">ins</a> element is used to indicate that a section of
+a document has been inserted with respect to a different version of the document
+(e.g., in draft legislation where lawmakers need to view the changes).</p>
+<div class="adef-list">
+<p><em>Attributes</em></p>
+<!-- INCLUDING ATTRIBUTE modules/attributes/Common.mhtml -->
+<dl class='attrRef'><dt>The 
+    <a class="csref" href="mod-attribute-collections.html#col_Common">Common</a> collection</dt>
+<dd>A collection of other attribute collections, including:
+    <a class="csref" href="mod-bidi.html#col_Bi-directional">Bi-directional</a>, 
+    <a class="csref" href="mod-core.html#col_Core">Core</a>, 
+    <a class="csref" href="mod-edit.html#col_Edit">Edit</a>, 
+    <a class="csref" href="mod-embedding.html#col_Embedding">Embedding</a>, 
+    <a class="csref" href="mod-xml-events.html#col_Events">Events</a>, 
+    <a class="csref" href="mod-xforms.html#col_Forms">Forms</a>, 
+    <a class="csref" href="mod-hyperAttributes.html#col_Hypertext">Hypertext</a>,
+    <a class="csref" href="mod-i18n.html#col_I18N">I18N</a>, 
+    <a class="csref" href="mod-csImgMap.html#col_Map">Map</a>, 
+    <a class="csref" href="mod-metaAttributes.html#col_Metainformation">Metainformation</a>,
+and 
+    <a class="csref" href="mod-roleAttribute.html#col_Role">Role</a>
+</dd></dl>
+<!-- END OF ATTRIBUTE FILE modules/attributes/Common.mhtml -->
+</div>
+<p><span class="should"  >
+User agents should render inserted text in ways that make the change
+obvious.</span>
+For instance, inserted text may appear in a special font.</p>
+<!-- END OF ELEMENT FILE modules/legacy-edit/ins.mhtml -->
+<hr />
+<div class="navbar">
+[<a href="mod-scripting.html">previous</a>]
+[<a href="mod-legacy-headings.html">next</a>]
+[<a href="Overview.html#toc">table of contents</a>]
+[<a href="elements.html">elements</a>]
+[<a href="attributes.html">attributes</a>]
+</div>
+</body>
+</html>

@@ -1,0 +1,231 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN"
+	"http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html lang="en" xml:lang="en" xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<title>XHTML&#8482; 2.0 - XForms Module</title> 
+<link rel="start" type="text/html" href="Overview.html" />
+<link rel="contents" type="text/html" href="Overview.html#toc" />
+<link rel="prev" type="text/html" href="mod-tables.html" />
+<link rel="next" type="text/html" href="mod-xml-events.html" />
+<link rel="stylesheet" type="text/css" href="xhtml.css" />
+<link rel="stylesheet" type="text/css" href="http://www.w3.org/StyleSheets/TR/W3C-ED.css" />
+</head>
+<body>
+<div class="navbar">
+[<a accesskey="P" href="mod-tables.html">previous</a>]
+[<a accesskey="N" href="mod-xml-events.html">next</a>]
+[<a accesskey="T" href="Overview.html#toc">table of contents</a>]
+[<a accesskey="E" href="elements.html">elements</a>]
+[<a accesskey="A" href="attributes.html">attributes</a>]
+<hr />
+</div>
+<h1 >
+<a id="s_xformsmodule" >31.</a> XForms Module
+</h1>
+<div class='subtoc'><p><strong>Contents</strong></p><ul class='toc'><li class='tocline'>
+31.1.
+<a href="#XForms_Core" class="tocxref">Core XForms</a>
+</li><li class='tocline'>31.2.
+<a href="#XForms_Actions" class="tocxref">XForms Actions</a>
+</li><li class='tocline'>31.3.
+<a href="#XForms_Form_Controls" class="tocxref">Form Controls</a>
+</li><li class='tocline'>31.4.
+<a href="#XForms_Group" class="tocxref">Group</a>
+</li><li class='tocline'>31.5.
+<a href="#XForms_Switch" class="tocxref">Switch</a>
+</li><li class='tocline'>31.6.
+<a href="#XForms_Repeat" class="tocxref">Repeat</a>
+</li><li class='tocline'>31.7.
+<a href="#col_Forms" class="tocxref">XForms Repeat Attribute Collection</a>
+</li><li class='tocline'>31.8.
+<a href="#XForms_Other_Attrs" class="tocxref">Other Attribute Collections</a>
+</li></ul>
+</div>
+<p>This section is <em>normative</em> for purposes of defining the
+integration of XForms into XHTML 2.0. The semantics of
+XForms itself is
+normatively defined in [<a class="nref" href="references.html#ref_XFORMS">XFORMS</a>].</p>
+<p>The XForms Module provides a rich collection of forms features within
+the XHTML namespace.</p>
+<p>The content model for XForms defines several content sets:</p>
+<dl>
+  <dt id="cs_XForms_Core">XForms Core</dt>
+  <dd>
+    <a class="edef" id="edef_xforms_model">model</a>
+  </dd>
+  <dt id="cs_XForms_Form_Controls">XForms Form Controls</dt>
+  <dd>
+      <a class="edef" id="edef_xforms_input">input</a>
+ |
+      <a class="edef" id="edef_xforms_secret">secret</a>
+ |
+      <a class="edef" id="edef_xforms_textarea">textarea</a>
+ |
+      <a class="edef" id="edef_xforms_output">output</a>
+ |
+      <a class="edef" id="edef_xforms_upload">upload</a>
+ |
+      <a class="edef" id="edef_xforms_range">range</a>
+ |
+      <a class="edef" id="edef_xforms_trigger">trigger</a>
+ |
+      <a class="edef" id="edef_xforms_submit">submit</a>
+ |
+      <a class="edef" id="edef_xforms_select">select</a>
+ |
+      <a class="edef" id="edef_xforms_select1">select1</a>
+  </dd>
+  <dt id="cs_XForms_Actions">XForms Actions</dt>
+  <dd>
+      <a class="edef" id="edef_xforms_action">action</a>
+ |
+      <a class="edef" id="edef_xforms_dispatch">dispatch</a>
+ |
+      <a class="edef" id="edef_xforms_rebuild">rebuild</a>
+ |
+      <a class="edef" id="edef_xforms_recalculate">recalculate</a>
+ |
+      <a class="edef" id="edef_xforms_revalidate">revalidate</a>
+ |
+      <a class="edef" id="edef_xforms_refresh">refresh</a>
+ |
+      <a class="edef" id="edef_xforms_setfocus">setfocus</a>
+ |
+      <a class="edef" id="edef_xforms_load">load</a>
+ |
+      <a class="edef" id="edef_xforms_setvalue">setvalue</a>
+ |
+      <a class="edef" id="edef_xforms_send">send</a>
+ |
+      <a class="edef" id="edef_xforms_reset">reset</a>
+ |
+      <a class="edef" id="edef_xforms_message">message</a>
+ |
+      <a class="edef" id="edef_xforms_insert">insert</a>
+ |
+      <a class="edef" id="edef_xforms_delete">delete</a>
+ |
+      <a class="edef" id="edef_xforms_setindex">setindex</a>
+  </dd>
+  <dt id="cs_XForms_Group">XForms Group</dt>
+  <dd>
+      <a class="edef" id="edef_xforms_group">group</a>
+  </dd>
+  <dt id="cs_XForms_Switch">XForms Switch</dt>
+  <dd>
+      <a class="edef" id="edef_xforms_switch">switch</a>
+  </dd>
+  <dt id="cs_XForms_Repeat">XForms Repeat</dt>
+  <dd>
+      <a class="edef" id="edef_xforms_repeat">repeat</a>
+  </dd>
+</dl>
+<h2 >
+<a id="XForms_Core" >31.1.</a> Core XForms
+</h2>
+<p>The XForms Core content set is added to the content model of the 
+<a class="eref" href="mod-document.html#edef_document_head">head</a> element in the <a href="mod-document.html#s_documentmodule">Document</a>
+module, to the 
+    <a class="csref" href="mod-structural.html#cs_Structural">Structural</a> content set of the Structural Module., and to the 
+    <a class="csref" href="mod-text.html#cs_Text">Text</a> content set of the Text module.</p>
+<h2 >
+<a id="XForms_Actions" >31.2.</a> XForms Actions
+</h2>
+<p>The XForms Actions
+content set is added to the content model of the 
+<a class="eref" href="mod-document.html#edef_document_head">head</a> element in the <a href="mod-document.html#s_documentmodule">Document</a>
+module, to the 
+    <a class="csref" href="mod-structural.html#cs_Structural">Structural</a> content set, and to the
+    <a class="csref" href="mod-text.html#cs_Text">Text</a> content set.</p>
+<h2 >
+<a id="XForms_Form_Controls" >31.3.</a> Form Controls
+</h2>
+<p>The XForms Form Controls content set is added to the 
+    <a class="csref" href="mod-structural.html#cs_Structural">Structural</a> content set, and to the 
+    <a class="csref" href="mod-text.html#cs_Text">Text</a> content set.</p>
+<p>The 
+    <a class="csref" href="mod-text.html#cs_Text">Text</a> content set is added to the XForms UI Inline content set, allowing various XHTML elements inside form control labels.</p>
+<h2 >
+<a id="XForms_Group" >31.4.</a> Group
+</h2>
+<p>The XForms Group
+content set is added to the 
+    <a class="csref" href="mod-structural.html#cs_Structural">Structural</a> content set, and to the 
+    <a class="csref" href="mod-text.html#cs_Text">Text</a> content set.</p>
+<p>
+<a class="eref" href="mod-xforms.html#edef_xforms_group">group</a> elements can freely nest.</p>
+<p>The 
+    <a class="csref" href="mod-structural.html#cs_Structural">Structural</a> content set is added to the XForms Group content set.</p>
+<h2 >
+<a id="XForms_Switch" >31.5.</a> Switch
+</h2>
+<p>The XForms Switch
+content set is added to the 
+    <a class="csref" href="mod-structural.html#cs_Structural">Structural</a> content set, and to the 
+    <a class="csref" href="mod-text.html#cs_Text">Text</a> content set.</p>
+<p>Alternating 
+<a class="eref" href="mod-xforms.html#edef_xforms_switch">switch</a> and case elements can freely nest.</p>
+<p>The 
+    <a class="csref" href="mod-structural.html#cs_Structural">Structural</a> content set is added to the content model of case, after an optional label element.</p>
+<h2 >
+<a id="XForms_Repeat" >31.6.</a> Repeat
+</h2>
+<p>The XForms Repeat
+content set is added to the 
+    <a class="csref" href="mod-structural.html#cs_Structural">Structural</a> content set, and to the 
+    <a class="csref" href="mod-text.html#cs_Text">Text</a> content set.</p>
+<p>
+<a class="eref" href="mod-xforms.html#edef_xforms_repeat">repeat</a> elements can freely nest.</p>
+<p>The 
+    <a class="csref" href="mod-structural.html#cs_Structural">Structural</a> content set is added to the content model of case, after an optional label element.</p>
+<h2 >
+<a id="col_Forms" >31.7.</a> XForms Repeat Attribute Collection
+</h2>
+<p>This module also includes the XForms Repeat Attribute Collection via attributes from [<a class="nref" href="references.html#ref_XFORMS">XFORMS</a>]. The normative definition of those attributes and their semantics is included in that specification.</p>
+<table class="moduledef" border="1" summary="XForms Repeat Attribute Collection">
+<thead>
+<tr>
+	<th>Attributes</th>
+	<th>Notes</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+    <td><span id="A_xf_repeatModel">repeat-model</span> (<span class="datatype"><a href="abstraction.html#dt_IDREF">IDREF</a></span>)</td>
+	<td>&nbsp;</td>
+</tr>
+<tr>
+    <td><span id="A_xf_repeatBind">repeat-bind</span> (<span class="datatype"><a href="abstraction.html#dt_IDREF">IDREF</a></span>)</td>
+	<td>&nbsp;</td>
+</tr>
+<tr>
+    <td><span id="A_xf_repeatNodeset">repeat-nodeset</span> (<span class="datatype"><a href="abstraction.html#dt_LocationPath">LocationPath</a></span>)</td>
+    <td>&nbsp;</td>
+</tr>
+<tr>
+    <td><span id="A_xf_repeatStartindex">repeat-startindex</span> (<span class="datatype"><a href="abstraction.html#dt_Number">Number</a></span>)</td>
+	<td>&nbsp;</td>
+</tr>
+<tr>
+    <td><span id="A_xf_repeatNumber">repeat-numbef</span> (<span class="datatype"><a href="abstraction.html#dt_Number">Number</a></span>)</td>
+    <td>&nbsp;</td>
+</tr>
+</tbody>
+</table>
+<h2 >
+<a id="XForms_Other_Attrs" >31.8.</a> Other Attribute Collections
+</h2>
+<p>XHTML 2 adds the 
+    <a class="csref" href="mod-attribute-collections.html#col_Common">Common</a> attribute collection to the XForms Common Attribute Group.</p>
+<p>The XForms Attribute Groups for single-node binding and Nodeset binding are allowed only on the XForms elements they are defined for.</p>
+<hr />
+<div class="navbar">
+[<a href="mod-tables.html">previous</a>]
+[<a href="mod-xml-events.html">next</a>]
+[<a href="Overview.html#toc">table of contents</a>]
+[<a href="elements.html">elements</a>]
+[<a href="attributes.html">attributes</a>]
+</div>
+</body>
+</html>

@@ -1,0 +1,324 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN"
+	"http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html lang="en" xml:lang="en" xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<title>XHTML&#8482; 2.0 - XHTML List Module</title> 
+<link rel="start" type="text/html" href="Overview.html" />
+<link rel="contents" type="text/html" href="Overview.html#toc" />
+<link rel="prev" type="text/html" href="mod-hypertext.html" />
+<link rel="next" type="text/html" href="mod-core.html" />
+<link rel="stylesheet" type="text/css" href="xhtml.css" />
+<link rel="stylesheet" type="text/css" href="http://www.w3.org/StyleSheets/TR/W3C-ED.css" />
+</head>
+<body>
+<div class="navbar">
+[<a accesskey="P" href="mod-hypertext.html">previous</a>]
+[<a accesskey="N" href="mod-core.html">next</a>]
+[<a accesskey="T" href="Overview.html#toc">table of contents</a>]
+[<a accesskey="E" href="elements.html">elements</a>]
+[<a accesskey="A" href="attributes.html">attributes</a>]
+<hr />
+</div>
+<h1 >
+<a id="s_listmodule" >11.</a> XHTML List Module
+</h1>
+<div class='subtoc'><p><strong>Contents</strong></p><ul class='toc'><li class='tocline'>
+11.1.
+<a href="#sec_11.1." class="tocxref">Definition lists: the dl, 
+di,
+dt, and 
+dd elements</a>
+</li><li class='tocline'>11.2.
+<a href="#sec_11.2." class="tocxref">The ol  and 
+	ul elements</a>
+</li><li class='tocline'>11.3.
+<a href="#sec_11.3." class="tocxref">The li element</a>
+</li></ul>
+</div>
+<p>This section is <em>normative</em>.</p>
+<p>As its name suggests, the List Module provides list-oriented elements. Specifically, 
+  the List Module supports the following elements and attributes:</p>
+<table class="moduledef" border="1" summary="Elements and Attributes of the List
+Module">
+<thead>
+	<tr><th>Elements</th><th>Attributes</th><th>Content Model</th></tr>
+</thead>
+<tbody>
+    <tr><td>
+<a class="eref" href="mod-list.html#edef_list_dl">dl</a></td><td>
+    <a class="csref" href="mod-attribute-collections.html#col_Common">Common</a></td><td class="content">
+<a class="eref" href="mod-document.html#edef_document_title">title</a>?, 
+<a class="eref" href="mod-caption.html#edef_caption_caption">caption</a>?, 
+            ((
+<a class="eref" href="mod-list.html#edef_list_dt">dt</a> | 
+<a class="eref" href="mod-list.html#edef_list_dd">dd</a>)+ | 
+<a class="eref" href="mod-list.html#edef_list_di">di</a>+)</td></tr>
+<tr><td>
+<a class="eref" href="mod-list.html#edef_list_di">di</a></td><td>
+    <a class="csref" href="mod-attribute-collections.html#col_Common">Common</a></td><td class="content">(
+<a class="eref" href="mod-list.html#edef_list_dt">dt</a>+, 
+<a class="eref" href="mod-list.html#edef_list_dd">dd</a>*)</td></tr>
+<tr><td>
+<a class="eref" href="mod-list.html#edef_list_dt">dt</a></td><td>
+    <a class="csref" href="mod-attribute-collections.html#col_Common">Common</a></td><td class="content">(
+    <a class="csref" href="mod-text.html#cs_Text">Text</a>)*</td></tr>
+<tr><td>
+<a class="eref" href="mod-list.html#edef_list_dd">dd</a></td><td>
+    <a class="csref" href="mod-attribute-collections.html#col_Common">Common</a></td><td class="content">(
+    <a class="csref" href="mod-structural.html#cs_Flow">Flow</a>)*</td></tr>
+<tr><td>
+<a class="eref" href="mod-caption.html#edef_caption_caption">caption</a> , 
+<a class="eref" href="mod-document.html#edef_document_title">title</a>?,</td><td>
+    <a class="csref" href="mod-attribute-collections.html#col_Common">Common</a></td><td class="content">(
+    <a class="csref" href="mod-text.html#cs_Text">Text</a>)*</td></tr>
+<tr><td>
+<a class="eref" href="mod-list.html#edef_list_ul">ul</a></td><td>
+    <a class="csref" href="mod-attribute-collections.html#col_Common">Common</a></td><td class="content">
+<a class="eref" href="mod-document.html#edef_document_title">title</a>?,
+<a class="eref" href="mod-caption.html#edef_caption_caption">caption</a>?,  
+<a class="eref" href="mod-list.html#edef_list_li">li</a>+</td></tr>
+<tr><td>
+<a class="eref" href="mod-list.html#edef_list_li">li</a></td><td>
+    <a class="csref" href="mod-attribute-collections.html#col_Common">Common</a>, 
+<a class="aref" href="mod-list.html#adef_list_value">@value</a></td><td class="content">(
+    <a class="csref" href="mod-structural.html#cs_Flow">Flow</a>)*</td></tr>
+</tbody>
+</table>
+<p id="cs_List">This module also defines the content set 
+<span>List</span> with the 
+content model <span class="content">(dl | ol | ul)+</span> and adds
+this set to the 
+    <a class="csref" href="mod-structural.html#cs_Structural">Structural</a> content set of the <a href="mod-structural.html#s_structuralmodule">Structural</a> Module.</p>
+<p>Implementations: <a href="relax_module_defs.html#a_rmodule_List">RELAX NG</a>,
+<a href="schema_module_defs.html#a_smodule_List_Module">XML Schema</a>
+</p>
+<p>XHTML offers authors several mechanisms for specifying lists of information. Lists may contain: </p>
+<ul>
+<li>Unordered information.</li>
+<li>Ordered information.</li>
+<li>Definitions.</li>
+</ul>
+<p>The previous list, for example, is an unordered list, created with the 
+<a class="eref" href="mod-list.html#edef_list_ul">ul</a> element:</p>
+<div class="example">
+    <p>Example</p>
+<pre>
+&lt;ul&gt;
+&lt;li&gt;Unordered information. &lt;/li&gt;
+&lt;li&gt;Ordered information. &lt;/li&gt;
+&lt;li&gt;Definitions. &lt;/li&gt;
+&lt;/ul&gt;
+</pre>
+</div>
+<p>An ordered list, created using the 
+<a class="eref" href="mod-list.html#edef_list_ol">ol</a> element,
+contains information where order is important, as in a recipe:</p>
+<ol>
+<li>Mix dry ingredients thoroughly.</li>
+<li>Pour in wet ingredients.</li>
+<li>Mix for 10 minutes.</li>
+<li>Bake for one hour at 300 degrees.</li>
+</ol>
+<p>Definition lists, created using the 
+<a class="eref" href="mod-list.html#edef_list_dl">dl</a> element, generally consist of a series of term/definition pairs (although definition lists may have other applications). Thus, when advertising a product, one might use a definition list:</p>
+<dl>
+<dt><strong>Lower cost</strong></dt>
+<dd>The new version of this product costs significantly less than the previous one!</dd>
+<dt><strong>Easier to use</strong></dt>
+<dd>We've changed the product so that it's much easier to use!</dd>
+<dt><strong>Safe for kids</strong></dt>
+<dd>You can leave your kids alone in a room with this product and they won't get hurt (not a guarantee).</dd>
+</dl>
+<p>defined in XHTML as:</p>
+<div class="example">
+    <p>Example</p>
+<pre>
+&lt;dl&gt;
+&lt;dt&gt;Lower cost&lt;/dt&gt;
+&lt;dd&gt;The new version of this product costs significantly less than the
+previous one!&lt;/dd&gt;
+&lt;dt&gt;Easier to use&lt;/dt&gt;
+&lt;dd&gt;We've changed the product so that it's much easier to
+use!&lt;/dd&gt;
+&lt;dt&gt;Safe for kids&lt;/dt&gt;
+&lt;dd&gt;You can leave your kids alone in a room with this product and
+they won't get hurt (not a guarantee).&lt;/dd&gt;
+&lt;/dl&gt;
+</pre>
+</div>
+<!-- INCLUDING ELEMENT modules/list/dl.mhtml -->
+<h2 >
+<a id="sec_11.1." >11.1.</a> Definition lists: the <a class="edef" id="edef_list_dl">dl</a>
+, 
+<a class="edef" id="edef_list_di">di</a>
+,
+<a class="edef" id="edef_list_dt">dt</a>
+, and 
+<a class="edef" id="edef_list_dd">dd</a>
+ elements
+</h2>
+<div class="aref-list">
+<p><em>Attributes</em></p>
+<!-- INCLUDING ATTRIBUTE modules/attributes/Common.mhtml -->
+<dl class='attrDef'><dt>The 
+    <a class="csref" href="mod-attribute-collections.html#col_Common">Common</a> collection</dt>
+<dd>A collection of other attribute collections, including:
+    <a class="csref" href="mod-bidi.html#col_Bi-directional">Bi-directional</a>, 
+    <a class="csref" href="mod-core.html#col_Core">Core</a>, 
+    <a class="csref" href="mod-edit.html#col_Edit">Edit</a>, 
+    <a class="csref" href="mod-embedding.html#col_Embedding">Embedding</a>, 
+    <a class="csref" href="mod-xml-events.html#col_Events">Events</a>, 
+    <a class="csref" href="mod-xforms.html#col_Forms">Forms</a>, 
+    <a class="csref" href="mod-hyperAttributes.html#col_Hypertext">Hypertext</a>,
+    <a class="csref" href="mod-i18n.html#col_I18N">I18N</a>, 
+    <a class="csref" href="mod-csImgMap.html#col_Map">Map</a>, 
+    <a class="csref" href="mod-metaAttributes.html#col_Metainformation">Metainformation</a>,
+and 
+    <a class="csref" href="mod-roleAttribute.html#col_Role">Role</a>
+</dd></dl>
+<!-- END OF ATTRIBUTE FILE modules/attributes/Common.mhtml -->
+</div>
+<p>Definition lists vary only slightly from other types of lists in
+that list items consist of two parts: a term and a description. The
+term is given by the 
+<a class="eref" href="mod-list.html#edef_list_dt">dt</a> element.
+The description is given with a 
+<a class="eref" href="mod-list.html#edef_list_dd">dd</a> element.
+The term and its definition can be grouped within a
+<a class="eref" href="mod-list.html#edef_list_di">di</a> element to help clarify the relationship between a term
+and its definition(s).</p>
+<div class="example">
+    <p>Example</p>
+<pre>
+&lt;dl&gt;
+  &lt;di&gt;
+    &lt;dt&gt;Dweeb&lt;/dt&gt;
+    &lt;dd&gt;young excitable person who may mature
+      into a &lt;em&gt;Nerd&lt;/em&gt; or &lt;em&gt;Geek&lt;/em&gt;&lt;/dd&gt;
+  &lt;/di&gt;
+  &lt;di&gt;
+    &lt;dt&gt;Hacker&lt;/dt&gt;
+    &lt;dd&gt;a clever programmer&lt;/dd&gt;
+  &lt;/di&gt;
+  &lt;di&gt;
+    &lt;dt&gt;Nerd&lt;/dt&gt;
+    &lt;dd&gt;technically bright but socially inept person&lt;/dd&gt;
+  &lt;/di&gt;
+&lt;/dl&gt;
+</pre>
+</div>
+<p>Here is an example with multiple terms and descriptions:</p>
+<div class="example">
+    <p>Example</p>
+<pre>
+&lt;dl&gt;
+   &lt;dt&gt;Center&lt;/dt&gt;
+   &lt;dt&gt;Centre&lt;/dt&gt;
+   &lt;dd&gt; A point equidistant from all points
+              on the surface of a sphere.&lt;/dd&gt;
+   &lt;dd&gt; In some field sports, the player who
+              holds the middle position on the field, court,
+              or forward line.&lt;/dd&gt;
+&lt;/dl&gt;
+</pre>
+</div>
+<!-- END OF ELEMENT FILE modules/list/dl.mhtml -->
+<!-- INCLUDING ELEMENT modules/list/ol.mhtml -->
+<h2 >
+<a id="sec_11.2." >11.2.</a> The <a class="edef" id="edef_list_ol">ol</a>
+  and 
+	<a class="edef" id="edef_list_ul">ul</a>
+ elements
+</h2>
+<div class="adef-list">
+<p><em>Attributes</em></p>
+<!-- INCLUDING ATTRIBUTE modules/attributes/Common.mhtml -->
+<dl class='attrRef'><dt>The 
+    <a class="csref" href="mod-attribute-collections.html#col_Common">Common</a> collection</dt>
+<dd>A collection of other attribute collections, including:
+    <a class="csref" href="mod-bidi.html#col_Bi-directional">Bi-directional</a>, 
+    <a class="csref" href="mod-core.html#col_Core">Core</a>, 
+    <a class="csref" href="mod-edit.html#col_Edit">Edit</a>, 
+    <a class="csref" href="mod-embedding.html#col_Embedding">Embedding</a>, 
+    <a class="csref" href="mod-xml-events.html#col_Events">Events</a>, 
+    <a class="csref" href="mod-xforms.html#col_Forms">Forms</a>, 
+    <a class="csref" href="mod-hyperAttributes.html#col_Hypertext">Hypertext</a>,
+    <a class="csref" href="mod-i18n.html#col_I18N">I18N</a>, 
+    <a class="csref" href="mod-csImgMap.html#col_Map">Map</a>, 
+    <a class="csref" href="mod-metaAttributes.html#col_Metainformation">Metainformation</a>,
+and 
+    <a class="csref" href="mod-roleAttribute.html#col_Role">Role</a>
+</dd></dl>
+<!-- END OF ATTRIBUTE FILE modules/attributes/Common.mhtml -->
+</div>
+<p>Both types of lists are made up of sequences of list items defined by the 
+<a class="eref" href="mod-list.html#edef_list_li">li</a> element. The difference is that 
+<a class="eref" href="mod-list.html#edef_list_ol">ol</a> lists represent lists of items that are essentially ordered (such as the steps of a recipe), while 
+<a class="eref" href="mod-list.html#edef_list_ul">ul</a> lists represent lists of items that are essentially unordered (such as shopping lists). </p>
+<div class="example">
+    <p>Basic list structure</p>
+<pre>
+&lt;ol&gt;
+   &lt;li&gt;Spring&lt;/li&gt;
+   &lt;li&gt;Summer&lt;/li&gt;
+   &lt;li&gt;Autumn&lt;/li&gt;
+   &lt;li&gt;Winter&lt;/li&gt;
+&lt;/ol&gt;
+</pre>
+</div>
+<!-- END OF ELEMENT FILE modules/list/ol.mhtml -->
+<!-- INCLUDING ELEMENT modules/list/li.mhtml -->
+<h2 >
+<a id="sec_11.3." >11.3.</a> The <a class="edef" id="edef_list_li">li</a>
+ element
+</h2>
+<div class="adef-list">
+<p><em>Attributes</em></p>
+<!-- INCLUDING ATTRIBUTE modules/attributes/Common.mhtml -->
+<dl class='attrRef'><dt>The 
+    <a class="csref" href="mod-attribute-collections.html#col_Common">Common</a> collection</dt>
+<dd>A collection of other attribute collections, including:
+    <a class="csref" href="mod-bidi.html#col_Bi-directional">Bi-directional</a>, 
+    <a class="csref" href="mod-core.html#col_Core">Core</a>, 
+    <a class="csref" href="mod-edit.html#col_Edit">Edit</a>, 
+    <a class="csref" href="mod-embedding.html#col_Embedding">Embedding</a>, 
+    <a class="csref" href="mod-xml-events.html#col_Events">Events</a>, 
+    <a class="csref" href="mod-xforms.html#col_Forms">Forms</a>, 
+    <a class="csref" href="mod-hyperAttributes.html#col_Hypertext">Hypertext</a>,
+    <a class="csref" href="mod-i18n.html#col_I18N">I18N</a>, 
+    <a class="csref" href="mod-csImgMap.html#col_Map">Map</a>, 
+    <a class="csref" href="mod-metaAttributes.html#col_Metainformation">Metainformation</a>,
+and 
+    <a class="csref" href="mod-roleAttribute.html#col_Role">Role</a>
+</dd></dl>
+<!-- END OF ATTRIBUTE FILE modules/attributes/Common.mhtml -->
+<!-- INCLUDING ATTRIBUTE modules/attributes/value.mhtml -->
+<dl class='attrDef'><dt><a class="adef" id="adef_list_value"><span class="adef">value</span></a>
+ = <span class="datatype"><a href="abstraction.html#dt_NUMBER">NUMBER</a></span> </dt> 
+<dd>This attribute specifies the value to be used when determining the
+value of the enumerator on a list item within an 
+<a class="eref" href="mod-list.html#edef_list_ol">ol</a>.
+</dd></dl>
+<!-- END OF ATTRIBUTE FILE modules/attributes/value.mhtml -->
+</div>
+<p>The 
+<a class="eref" href="mod-list.html#edef_list_li">li</a> element defines a list item within an ordered,
+unordered, or navigation list.</p>
+<p>Within a list, each <code>li</code> element has an associated number, which is used for numbering list items in ordered lists:</p>
+<ul>
+<li>If the <code>li</code> element has a <code>value</code> attribute, the associated number is the value of that attribute;</li>
+<li>otherwise, if the <code>li</code> element is the first in the list, then the number has the value 1;</li>
+<li>otherwise the number is one higher than the number of the preceding <code>li</code> in the same list.</li>
+</ul>
+<!-- END OF ELEMENT FILE modules/list/li.mhtml -->
+<hr />
+<div class="navbar">
+[<a href="mod-hypertext.html">previous</a>]
+[<a href="mod-core.html">next</a>]
+[<a href="Overview.html#toc">table of contents</a>]
+[<a href="elements.html">elements</a>]
+[<a href="attributes.html">attributes</a>]
+</div>
+</body>
+</html>

@@ -1,0 +1,302 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN"
+	"http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html lang="en" xml:lang="en" xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<title>XHTML&#8482; 2.0 - XHTML Metainformation Module</title> 
+<link rel="start" type="text/html" href="Overview.html" />
+<link rel="contents" type="text/html" href="Overview.html#toc" />
+<link rel="prev" type="text/html" href="mod-mediaAttribute.html" />
+<link rel="next" type="text/html" href="mod-metaAttributes.html" />
+<link rel="stylesheet" type="text/css" href="xhtml.css" />
+<link rel="stylesheet" type="text/css" href="http://www.w3.org/StyleSheets/TR/W3C-ED.css" />
+</head>
+<body>
+<div class="navbar">
+[<a accesskey="P" href="mod-mediaAttribute.html">previous</a>]
+[<a accesskey="N" href="mod-metaAttributes.html">next</a>]
+[<a accesskey="T" href="Overview.html#toc">table of contents</a>]
+[<a accesskey="E" href="elements.html">elements</a>]
+[<a accesskey="A" href="attributes.html">attributes</a>]
+<hr />
+</div>
+<h1 >
+<a id="s_metamodule" >23.</a> XHTML Metainformation Module
+</h1>
+<div class='subtoc'><p><strong>Contents</strong></p><ul class='toc'><li class='tocline'>
+23.1.
+<a href="#sec_23.1." class="tocxref">The link element</a>
+<ul class="toc"><li class='tocline'>23.1.1.
+<a href="#sec_23.1.1." class="tocxref">Forward and reverse links</a>
+</li><li class='tocline'>23.1.2.
+<a href="#sec_23.1.2." class="tocxref">Links and search engines</a>
+</li></ul></li><li class='tocline'>23.2.
+<a href="#sec_23.2." class="tocxref">The meta element</a>
+<ul class="toc"><li class='tocline'>23.2.1.
+<a href="#sec_23.2.1." class="tocxref">meta and search engines</a>
+</li></ul>
+</li></ul>
+</div>
+<p>This section is <em>normative</em>.</p>
+<p>The Metainformation Module defines elements that allow the
+definition of relationships.  These may relate to:</p>
+<ul>
+<li>the document itself,</li>
+<li>items external to the document, or</li>
+<li>other items of metadata within the document.</li>
+</ul>
+<p>Note that this module is dependent upon the 
+<a href="mod-metaAttributes.html#s_metaAttributesmodule">Metainformation Attributes</a> module. 
+The interpretation of those attributes in conjunction with any
+elements, including the ones defined in this module, are spelled out
+in [<a class="nref" href="references.html#ref_RDFASYNTAX">RDFASYNTAX</a>].</p>
+<p>Elements and attributes in this module are:</p>
+<table class="moduledef" border="1" summary="Elements and Attributes for Metainformation
+Module">
+<thead>
+	<tr><th>Elements</th><th>Attributes</th><th>Content Model</th></tr>
+</thead>
+<tbody>
+<tr><td>link</td><td>
+    <a class="csref" href="mod-attribute-collections.html#col_Common">Common</a></td><td class="content">EMPTY</td></tr>
+<tr><td>meta</td><td>
+    <a class="csref" href="mod-attribute-collections.html#col_Common">Common</a></td><td class="content">
+<a class="eref" href="mod-meta.html#edef_meta_meta">meta</a>?</td></tr>
+</tbody>
+</table>
+<p>Implementations: <a href="relax_module_defs.html#a_rmodule_Metainformation">RELAX NG</a>,
+<a href="schema_module_defs.html#a_smodule_Metainformation_Module">XML Schema</a>
+</p>
+<!-- INCLUDING ELEMENT modules/meta/link.mhtml -->
+<h2 >
+<a id="sec_23.1." >23.1.</a> The <a class="edef" id="edef_meta_link">link</a>
+ element
+</h2>
+<div class="aref-list">
+<p><em>Attributes</em></p>
+<!-- INCLUDING ATTRIBUTE modules/attributes/Common.mhtml -->
+<dl class='attrDef'><dt>The 
+    <a class="csref" href="mod-attribute-collections.html#col_Common">Common</a> collection</dt>
+<dd>A collection of other attribute collections, including:
+    <a class="csref" href="mod-bidi.html#col_Bi-directional">Bi-directional</a>, 
+    <a class="csref" href="mod-core.html#col_Core">Core</a>, 
+    <a class="csref" href="mod-edit.html#col_Edit">Edit</a>, 
+    <a class="csref" href="mod-embedding.html#col_Embedding">Embedding</a>, 
+    <a class="csref" href="mod-xml-events.html#col_Events">Events</a>, 
+    <a class="csref" href="mod-xforms.html#col_Forms">Forms</a>, 
+    <a class="csref" href="mod-hyperAttributes.html#col_Hypertext">Hypertext</a>,
+    <a class="csref" href="mod-i18n.html#col_I18N">I18N</a>, 
+    <a class="csref" href="mod-csImgMap.html#col_Map">Map</a>, 
+    <a class="csref" href="mod-metaAttributes.html#col_Metainformation">Metainformation</a>,
+and 
+    <a class="csref" href="mod-roleAttribute.html#col_Role">Role</a>
+</dd></dl>
+<!-- END OF ATTRIBUTE FILE modules/attributes/Common.mhtml -->
+</div>
+<p>This element defines a link. 
+<a class="eref" href="mod-meta.html#edef_meta_link">Link</a> conveys
+relationship information that may be rendered by user agents in a variety
+of ways (e.g., a tool-bar with a drop-down menu of links). <span class="should"  >
+User
+agents should enable activation of links and the retrieval of link
+targets. Since 
+<a class="eref" href="mod-meta.html#edef_meta_link">link</a> elements may have no content, information from
+the 
+<a class="aref" href="mod-metaAttributes.html#adef_metaAttributes_rel">@rel</a> and 
+<a class="aref" href="mod-core.html#adef_core_title">@title</a> attributes should be used
+when labelling links.</span></p>
+<div class="example">
+<p>This example illustrates how several 
+<a class="eref" href="mod-meta.html#edef_meta_link">link</a> definitions may appear in the 
+<a class="eref" href="mod-document.html#edef_document_head">head</a> section of a document. The current document is "Chapter2.html". The 
+<a class="aref" href="mod-metaAttributes.html#adef_metaAttributes_rel">@rel</a> attribute specifies the relationship of the linked document with the current document. The values "Index", "Next", and "Prev" are explained in the section on the attribute 
+<a class="aref" href="mod-metaAttributes.html#adef_metaAttributes_rel">@rel</a>.</p>
+<pre class="example">
+&lt;head&gt;
+  &lt;title&gt;Chapter 2&lt;/title&gt;
+  &lt;link rel="index" href="../index.html"/&gt;
+  &lt;link rel="next"  href="Chapter3.html"/&gt;
+  &lt;link rel="prev"  href="Chapter1.html"/&gt;
+&lt;/head&gt;
+</pre>
+</div>
+<h3 >
+<a id="sec_23.1.1." >23.1.1.</a> Forward and reverse links
+</h3>
+<p>While the 
+<a class="aref" href="mod-metaAttributes.html#adef_metaAttributes_rel">@rel</a> attribute specifies a relationship <em>from</em> this document <em>to</em> another resource, the 
+<a class="aref" href="mod-metaAttributes.html#adef_metaAttributes_rev">@rev</a> attribute specifies the reverse relationship.</p>
+<p>Consider two documents A and B.</p>
+<pre>Document A:       &lt;link href="docB" rel="index"/&gt;</pre>
+<p>Has exactly the same meaning as:</p>
+<pre>Document B:       &lt;link href="docA" rev="index"/&gt;</pre>
+<p>namely that document B is the index for document A.</p>
+<p>Both the 
+<a class="aref" href="mod-metaAttributes.html#adef_metaAttributes_rel">@rel</a> and 
+<a class="aref" href="mod-metaAttributes.html#adef_metaAttributes_rev">@rev</a> attributes may be specified simultaneously.</p>
+<h3 >
+<a id="sec_23.1.2." >23.1.2.</a> Links and search engines
+</h3>
+<p>Authors may use the 
+<a class="eref" href="mod-meta.html#edef_meta_link">link</a> element to provide a variety of information to search engines, including:</p>
+<ul>
+<li>Links to alternate versions of a document, written in another human language.</li>
+<li>Links to alternate versions of a document, designed for different media, for instance a version especially suited for printing.</li>
+<li>Links to the starting page of a collection of documents.</li>
+</ul>
+<p>The examples below illustrate how language information, media types, and link types may be combined to improve document handling by search engines.</p>
+<div class="example">
+<p>The following example shows how to use the 
+<a class="aref" href="mod-hyperAttributes.html#adef_hyperAttributes_hreflang">@hreflang</a> attribute to indicate to a search engine where to find other language versions of a document. Note that for the sake of the example the 
+<a class="aref" href="mod-i18n.html#adef_i18n_xml:lang">@xml:lang</a> attribute has been used to indicate that the value of the 
+<a class="aref" href="mod-core.html#adef_core_title">@title</a> attribute for the 
+<a class="eref" href="mod-meta.html#edef_meta_link">link</a> element designating the French manual is in French.</p>
+<pre class="example">
+&lt;html ... xml:lang="en"&gt;
+&lt;head&gt; 
+&lt;title&gt;The manual in English&lt;/title&gt;
+&lt;link title="The manual in Dutch"
+      rel="alternate"
+      hreflang="nl" 
+      href="http://example.com/manual/dutch.html"/&gt;
+&lt;link title="La documentation en Fran&ccedil;ais"
+      rel="alternate"
+      hreflang="fr" xml:lang="fr"
+      href="http://example.com/manual/french.html"/&gt;
+&lt;/head&gt;
+</pre>
+</div>
+<div class="example">
+<p>In the following example, we tell search engines where to find the printed version of a manual.</p>
+<pre class="example">
+&lt;head&gt;
+&lt;title&gt;Reference manual&lt;/title&gt;
+&lt;link media="print" 
+      title="The manual in PostScript"
+      hreftype="application/postscript"
+      rel="alternate"
+      href="http://example.com/manual/postscript.ps"/&gt;
+&lt;/head&gt;
+</pre>
+</div>
+<div class="example">
+<p>In the following example, we tell search engines where to find the front page of a collection of documents.</p>
+<pre class="example">
+&lt;head&gt;
+&lt;title&gt;Reference manual -- Chapter 5&lt;/title&gt;
+&lt;link rel="start" title="The first chapter of the manual"
+      hreftype="application/xhtml+xml"
+      href="http://example.com/manual/start.html"/&gt;
+&lt;/head&gt;
+</pre>
+</div>
+<!-- END OF ELEMENT FILE modules/meta/link.mhtml -->
+<!-- INCLUDING ELEMENT modules/meta/meta.mhtml -->
+<h2 >
+<a id="sec_23.2." >23.2.</a> The <a class="edef" id="edef_meta_meta">meta</a>
+ element
+</h2>
+<div class="adef-list">
+<p><em>Attributes</em></p>
+<!-- INCLUDING ATTRIBUTE modules/attributes/Common.mhtml -->
+<dl class='attrRef'><dt>The 
+    <a class="csref" href="mod-attribute-collections.html#col_Common">Common</a> collection</dt>
+<dd>A collection of other attribute collections, including:
+    <a class="csref" href="mod-bidi.html#col_Bi-directional">Bi-directional</a>, 
+    <a class="csref" href="mod-core.html#col_Core">Core</a>, 
+    <a class="csref" href="mod-edit.html#col_Edit">Edit</a>, 
+    <a class="csref" href="mod-embedding.html#col_Embedding">Embedding</a>, 
+    <a class="csref" href="mod-xml-events.html#col_Events">Events</a>, 
+    <a class="csref" href="mod-xforms.html#col_Forms">Forms</a>, 
+    <a class="csref" href="mod-hyperAttributes.html#col_Hypertext">Hypertext</a>,
+    <a class="csref" href="mod-i18n.html#col_I18N">I18N</a>, 
+    <a class="csref" href="mod-csImgMap.html#col_Map">Map</a>, 
+    <a class="csref" href="mod-metaAttributes.html#col_Metainformation">Metainformation</a>,
+and 
+    <a class="csref" href="mod-roleAttribute.html#col_Role">Role</a>
+</dd></dl>
+<!-- END OF ATTRIBUTE FILE modules/attributes/Common.mhtml -->
+</div>
+<p>The 
+<a class="eref" href="mod-meta.html#edef_meta_meta">meta</a> element can be used to identify properties of
+a document (e.g., author, expiration date, a list of key words, etc.)
+and assign values to those properties. This specification defines a
+small normative set of properties, but users may extend this set as
+described for the 
+<a class="aref" href="mod-metaAttributes.html#adef_metaAttributes_property">@property</a> attribute.</p>
+<p>Each 
+<a class="eref" href="mod-meta.html#edef_meta_meta">meta</a> element specifies a property/value pair. The 
+<a class="aref" href="mod-metaAttributes.html#adef_metaAttributes_property">@property</a> attribute identifies the property and the content of the element or the value of the 
+<a class="aref" href="mod-metaAttributes.html#adef_metaAttributes_content">@content</a> attribute specifies the property's value.</p>
+<p>For example, the following declaration sets a value for the <code>Author</code> property:</p>
+<div class="example">
+    <p>Example</p>
+<pre>
+&lt;meta property="dc:creator"&gt;Steven Pemberton&lt;/meta&gt;
+</pre>
+</div>
+<div class="note">
+<p><em><strong>Note.</strong> The 
+<a class="eref" href="mod-meta.html#edef_meta_meta">meta</a> element is a generic mechanism for specifying metadata. However, some XHTML elements and attributes already handle certain pieces of metadata and may be used by authors instead of 
+<a class="eref" href="mod-meta.html#edef_meta_meta">meta</a> to specify those pieces: the 
+<a class="eref" href="mod-document.html#edef_document_title">title</a> element, the 
+<a class="eref" href="mod-structural.html#edef_structural_address">address</a> element, the 
+<a class="aref" href="mod-edit.html#adef_edit_edit">@edit</a> and related attributes, the 
+<a class="aref" href="mod-core.html#adef_core_title">@title</a> attribute, and the 
+<a class="aref" href="mod-hyperAttributes.html#adef_hyperAttributes_cite">@cite</a> attribute.</em></p>
+</div>
+<div class="note">
+<p><em><strong>Note.</strong> When a property specified by a 
+<a class="eref" href="mod-meta.html#edef_meta_meta">meta</a> element takes a value that is a <span class="datatype"><a href="abstraction.html#dt_URI">URI</a></span>, some authors <span class="index-inst" title="metadata::LINK vs meta"><a name="idx-meta_data-2">prefer</a></span> to specify the metadata via the 
+<a class="eref" href="mod-meta.html#edef_meta_link">link</a> element. Thus, the following metadata declaration:</em></p>
+</div>
+<div class="example">
+    <p>Example</p>
+<pre>
+&lt;meta property="dc:identifier"&gt;
+      http://www.rfc-editor.org/rfc/rfc3236.txt
+&lt;/meta&gt;
+</pre>
+</div>
+<p><em>might also be written:</em></p>
+<div class="example">
+    <p>Example</p>
+<pre>
+&lt;link rel="dc:identifier"
+      href="http://www.rfc-editor.org/rfc/rfc3236.txt" /&gt;
+</pre>
+</div>
+<h3 >
+<a id="sec_23.2.1." >23.2.1.</a> meta and search engines
+</h3>
+<p>A common use for 
+<a class="eref" href="mod-meta.html#edef_meta_meta">meta</a> is to specify keywords that a <span class="index-inst" title="search engine::helping"><a name="idx-search_engine">search engine</a></span> may use to improve the quality of search results. When several 
+<a class="eref" href="mod-meta.html#edef_meta_meta">meta</a> elements provide language-dependent information about a document, search engines may filter on the 
+<a class="aref" href="mod-i18n.html#adef_i18n_xml:lang">@xml:lang</a> attribute to display search results using the language preferences of the user. For example,</p>
+<div class="example">
+<p>Example</p>
+<pre class="example">
+&lt;!-- For speakers of US English --&gt;
+&lt;meta property="keywords" 
+      xml:lang="en-us"&gt;vacation, Greece, sunshine&lt;/meta&gt;
+&lt;!-- For speakers of British English --&gt;
+&lt;meta property="keywords" 
+      xml:lang="en"&gt;holiday, Greece, sunshine&lt;/meta&gt;
+&lt;!-- For speakers of French --&gt;
+&lt;meta property="keywords" 
+      xml:lang="fr"&gt;vacances, Gr&egrave;ce, soleil&lt;/meta&gt;
+</pre>
+</div>
+<p>The effectiveness of search engines can also be increased by using the 
+<a class="eref" href="mod-meta.html#edef_meta_link">link</a> element to specify links to translations of the document in other languages, links to versions of the document in other media (e.g., PDF), and, when the document is part of a collection, links to an appropriate starting point for browsing the collection.</p>
+<!-- END OF ELEMENT FILE modules/meta/meta.mhtml -->
+<hr />
+<div class="navbar">
+[<a href="mod-mediaAttribute.html">previous</a>]
+[<a href="mod-metaAttributes.html">next</a>]
+[<a href="Overview.html#toc">table of contents</a>]
+[<a href="elements.html">elements</a>]
+[<a href="attributes.html">attributes</a>]
+</div>
+</body>
+</html>

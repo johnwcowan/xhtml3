@@ -1,0 +1,112 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN"
+	"http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html lang="en" xml:lang="en" xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<title>XHTML&#8482; 2.0 - XHTML Caption Module</title> 
+<link rel="start" type="text/html" href="Overview.html" />
+<link rel="contents" type="text/html" href="Overview.html#toc" />
+<link rel="prev" type="text/html" href="mod-bidi.html" />
+<link rel="next" type="text/html" href="mod-edit.html" />
+<link rel="stylesheet" type="text/css" href="xhtml.css" />
+<link rel="stylesheet" type="text/css" href="http://www.w3.org/StyleSheets/TR/W3C-ED.css" />
+</head>
+<body>
+<div class="navbar">
+[<a accesskey="P" href="mod-bidi.html">previous</a>]
+[<a accesskey="N" href="mod-edit.html">next</a>]
+[<a accesskey="T" href="Overview.html#toc">table of contents</a>]
+[<a accesskey="E" href="elements.html">elements</a>]
+[<a accesskey="A" href="attributes.html">attributes</a>]
+<hr />
+</div>
+<h1 >
+<a id="s_captionmodule" >17.</a> XHTML Caption Module
+</h1>
+<div class='subtoc'><p><strong>Contents</strong></p><ul class='toc'><li class='tocline'>
+17.1.
+<a href="#sec_17.1." class="tocxref">The caption element</a>
+</li></ul>
+</div>
+<p>This section is <em>normative</em>.</p>
+<p>The Caption Module defines an element to be used when annotating a
+description for certain elements.
+The element and attributes defined by this module are:</p>
+<table class="moduledef" border="1" summary="Elements and Attributes for Caption Module">
+<thead>
+	<tr><th>Elements</th><th>Attributes</th><th>Content Model</th></tr>
+</thead>
+<tbody>
+<tr><td>
+<a class="eref" href="mod-caption.html#edef_caption_caption">caption</a></td>
+<td>
+    <a class="csref" href="mod-attribute-collections.html#col_Common">Common</a>
+</td>
+  <td class="content">(
+    <a class="csref" href="mod-text.html#cs_Text">Text</a>)*</td>
+</tr>
+</tbody>
+</table>
+<p>Implementations: <a href="relax_module_defs.html#a_rmodule_Caption">RELAX NG</a>,
+<a href="schema_module_defs.html#a_smodule_Caption_Module">XML Schema</a>
+</p>
+<!-- INCLUDING ELEMENT modules/caption/caption.mhtml -->
+<h2 >
+<a id="sec_17.1." >17.1.</a> The <a class="edef" id="edef_caption_caption">caption</a>
+ element
+</h2>
+<div class="aref-list">
+<p><em>Attributes</em></p>
+<!-- INCLUDING ATTRIBUTE modules/attributes/Common.mhtml -->
+<dl class='attrDef'><dt>The 
+    <a class="csref" href="mod-attribute-collections.html#col_Common">Common</a> collection</dt>
+<dd>A collection of other attribute collections, including:
+    <a class="csref" href="mod-bidi.html#col_Bi-directional">Bi-directional</a>, 
+    <a class="csref" href="mod-core.html#col_Core">Core</a>, 
+    <a class="csref" href="mod-edit.html#col_Edit">Edit</a>, 
+    <a class="csref" href="mod-embedding.html#col_Embedding">Embedding</a>, 
+    <a class="csref" href="mod-xml-events.html#col_Events">Events</a>, 
+    <a class="csref" href="mod-xforms.html#col_Forms">Forms</a>, 
+    <a class="csref" href="mod-hyperAttributes.html#col_Hypertext">Hypertext</a>,
+    <a class="csref" href="mod-i18n.html#col_I18N">I18N</a>, 
+    <a class="csref" href="mod-csImgMap.html#col_Map">Map</a>, 
+    <a class="csref" href="mod-metaAttributes.html#col_Metainformation">Metainformation</a>,
+and 
+    <a class="csref" href="mod-roleAttribute.html#col_Role">Role</a>
+</dd></dl>
+<!-- END OF ATTRIBUTE FILE modules/attributes/Common.mhtml -->
+</div>
+<p>When present, the 
+<a class="eref" href="mod-caption.html#edef_caption_caption">caption</a> element"s text should
+<a class="xdef"
+   id="s_captionmodule_xref_0">describe the nature of the table, list or
+object.</a>
+ The 
+<a class="eref" href="mod-caption.html#edef_caption_caption">caption</a> element is only permitted
+immediately after the 
+<a class="eref" href="mod-tables.html#edef_tables_table">table</a> start tag,
+the 
+<a class="eref" href="mod-list.html#edef_list_ol">ol</a>
+start tag or the 
+<a class="eref" href="mod-object.html#edef_object_object">object</a> start tag. A 
+<a class="eref" href="mod-tables.html#edef_tables_table">table</a>, 
+<a class="eref" href="mod-list.html#edef_list_ol">ol</a> or 
+<a class="eref" href="mod-object.html#edef_object_object">object</a> 
+element may only contain one 
+<a class="eref" href="mod-caption.html#edef_caption_caption">caption</a> element.</p>
+<p>For tables, visual user agents allow sighted people to quickly grasp
+the structure of the table from the headings as well as the caption.
+A consequence of this is that captions will often be inadequate as
+a summary of the purpose and structure of the table from the perspective
+of people relying on non-visual user agents.</p>
+<!-- END OF ELEMENT FILE modules/caption/caption.mhtml -->
+<hr />
+<div class="navbar">
+[<a href="mod-bidi.html">previous</a>]
+[<a href="mod-edit.html">next</a>]
+[<a href="Overview.html#toc">table of contents</a>]
+[<a href="elements.html">elements</a>]
+[<a href="attributes.html">attributes</a>]
+</div>
+</body>
+</html>

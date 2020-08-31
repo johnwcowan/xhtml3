@@ -1,0 +1,248 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN"
+	"http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html lang="en" xml:lang="en" xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<title>XHTML&#8482; 2.0 - Module Definition Conventions</title> 
+<link rel="start" type="text/html" href="Overview.html" />
+<link rel="contents" type="text/html" href="Overview.html#toc" />
+<link rel="prev" type="text/html" href="xhtml2-doctype.html" />
+<link rel="next" type="text/html" href="mod-attribute-collections.html" />
+<link rel="stylesheet" type="text/css" href="xhtml.css" />
+<link rel="stylesheet" type="text/css" href="http://www.w3.org/StyleSheets/TR/W3C-ED.css" />
+</head>
+<body>
+<div class="navbar">
+[<a accesskey="P" href="xhtml2-doctype.html">previous</a>]
+[<a accesskey="N" href="mod-attribute-collections.html">next</a>]
+[<a accesskey="T" href="Overview.html#toc">table of contents</a>]
+[<a accesskey="E" href="elements.html">elements</a>]
+[<a accesskey="A" href="attributes.html">attributes</a>]
+<hr />
+</div>
+<h1 >
+<a id="s_abstraction" >5.</a> Module Definition Conventions
+</h1>
+<div class='subtoc'><p><strong>Contents</strong></p><ul class='toc'><li class='tocline'>
+5.1.
+<a href="#sec_5.1." class="tocxref">Module Structure</a>
+</li><li class='tocline'>5.2.
+<a href="#abstraction_abstract_definition" class="tocxref">Abstract Module Definitions</a>
+</li><li class='tocline'>5.3.
+<a href="#sec_5.3." class="tocxref">Syntactic Conventions</a>
+</li><li class='tocline'>5.4.
+<a href="#s_common_types" class="tocxref">Content Models</a>
+</li><li class='tocline'>5.5.
+<a href="#s_common_attrtypes" class="tocxref">Attribute Types</a>
+</li></ul>
+</div>
+<p>This section is <em>normative</em>.</p>
+<p>This document defines a variety of XHTML modules and the semantics of those
+modules.  This section describes the conventions used in those module
+definitions.</p>
+<h2 >
+<a id="sec_5.1." >5.1.</a> Module Structure
+</h2>
+<p>Each module in this document is structured in the following way:
+</p>
+<ul>
+<li>An <a href="#abstraction_abstract_definition">abstract definition</a> of the module's
+elements, attributes, and content models, as appropriate.</li>
+<li>A sub-section for each element in the module; These sub-sections contain
+the following components:
+<ul>
+<li>A brief description of the element,</li>
+<li>A definition of each attribute or <a href="mod-attribute-collections.html#s_attribute-collectionsmodule">attribute collection</a> usable with the
+element, and </li>
+<li>A detailed description of the behavior of the element, if appropriate.</li>
+</ul>
+<p><em class="note">Note that attributes are fully defined only the first time they are used in
+each module.  After that, only a brief description of the attribute is
+provided, along with a link back to the primary definition.</em></p>
+</li>
+</ul>
+<h2 >
+<a id="abstraction_abstract_definition" >5.2.</a> Abstract Module Definitions
+</h2>
+<p>
+An abstract module is a definition of an XHTML module using prose text
+and some informal markup conventions. While such a definition is not
+generally useful in the machine processing of document types, it is
+critical in helping people understand what is contained in a module.
+This section defines the way in which XHTML abstract modules are
+defined. An XHTML-conforming module is <em>not required</em> to
+provide an abstract module definition. However, anyone developing an XHTML module
+is encouraged to provide an abstraction to ease in the use of that
+module.</p>
+<h2 >
+<a id="sec_5.3." >5.3.</a> Syntactic Conventions
+</h2>
+<p>The abstract modules are not defined in a formal grammar. However,
+the definitions do adhere to the following syntactic conventions.
+These conventions are similar to those of XML DTDs, and should be
+familiar to XML DTD authors. Each discrete syntactic element can be
+combined with others to make more complex expressions that conform to
+the algebra defined here.</p>
+<dl>
+<dt>element name</dt>
+<dd>When an element is included in a content model, its explicit name
+will be listed.</dd>
+<dt>content set</dt>
+<dd>Some modules define lists of explicit element names called
+<em>content sets</em>. When a content set is included
+in a content model, its name will be listed. Content sets names
+always begin with an uppercase letter.</dd>
+<dt><code>expr ?</code></dt>
+<dd>Zero or one instances of expr are permitted.</dd>
+<dt><code>expr +</code></dt>
+<dd>One or more instances of expr are required.</dd>
+<dt><code>expr *</code></dt>
+<dd>Zero or more instances of expr are permitted.</dd>
+<dt><code>a , b</code></dt>
+<dd>Expression <code>a</code> is required, followed by expression
+<code>b</code>.</dd>
+<dt><code>a | b</code></dt>
+<dd>Either expression a or expression b is required.</dd>
+<dt><code>a - b</code></dt>
+<dd>Expression a is permitted, omitting elements in expression b.</dd>
+<dt>parentheses</dt>
+<dd>When an expression is contained within parentheses, evaluation of any
+subexpressions within the parentheses take place before evaluation of
+expressions outside of the parentheses (starting at the deepest level
+of nesting first).</dd>
+<dt>extending pre-defined elements</dt>
+<dd>In some instances, a module adds attributes to an element. In these
+instances, the element name is followed by an ampersand (<code>&amp;</code>).
+</dd>
+<dt>defining required attributes</dt>
+<dd>When an element requires the definition of an attribute, that attribute
+name is followed by an asterisk (<code>*</code>).</dd>
+<dt>defining the type of attribute values</dt>
+<dd>When a module defines the type of an attribute value, it does so
+by listing the type in parentheses after the attribute name.</dd>
+<dt>defining the legal values of attributes</dt>
+<dd>When a module defines the legal values for an attribute, it does
+so by listing the explicit legal values (enclosed in quotation marks), separated by vertical bars
+(<code>|</code>), inside of parentheses following the attribute
+name. If the attribute has a default value, that value is followed by an
+asterisk (<code>*</code>). If the attribute has a fixed value, the attribute
+name is followed by an equals sign (<code>=</code>) and the fixed value
+enclosed in quotation marks.</dd>
+</dl>
+<h2 >
+<a id="s_common_types" >5.4.</a> Content Models
+</h2>
+<p>Abstract module definitions
+define minimal, atomic content models
+for each module. These minimal content models reference the elements in the
+module itself. They may also reference elements in other modules upon which
+the abstract module depends. Finally, the content model in many cases requires
+that text be permitted as content to one or more elements. In these cases, the
+symbol used for text is <span id="dt_PCDATA" class="content">PCDATA</span> (parsed characted data). This is a term,
+defined in the XML 1.0 Recommendation, that refers to processed character
+data. A content type can also be defined as <span class="content">EMPTY</span>,
+meaning the element has no content in its minimal content model.</p>
+<h2 >
+<a id="s_common_attrtypes" >5.5.</a> Attribute Types
+</h2>
+<p>In some instances, it is necessary to define the types of attribute values or the explicit
+set of permitted values for attributes.
+The following attribute types (defined in the XML 1.0 Recommendation)
+are used in the definitions of the abstract modules:</p>
+<table border="1" summary="Definitions of Attribute Types">
+<thead>
+<tr><th>Attribute Type</th><th>Definition</th></tr>
+</thead>
+<tbody>
+<tr><td id="dt_CDATA">CDATA</td><td>Character data</td></tr>
+<tr><td id="dt_ID">ID</td><td>A document-unique identifier</td></tr>
+<tr><td id="dt_IDREF">IDREF</td><td>A reference to a document-unique identifier</td></tr>
+<tr><td id="dt_IDREFS">IDREFS</td><td>A space-separated list of references to document-unique identifiers</td></tr>
+<tr><td id="dt_NMTOKEN">NMTOKEN</td><td>A name composed of only name tokens as defined in XML 1.0 [<a class="nref" href="references.html#ref_XML">XML</a>].</td></tr>
+<tr><td id="dt_NMTOKENS">NMTOKENS</td><td>One or more white space separated NMTOKEN values</td></tr>
+<tr><td id="dt_NUMBER">NUMBER</td><td>Sequence of one or more digits ([0-9])</td></tr>
+</tbody>
+</table>
+<p>In addition to these pre-defined data types, XHTML Modularization defines
+the following data types and their semantics (as appropriate):</p>
+<table border='1' summary='Custom data types'>
+<tr><th>Data type</th><th>Description</th></tr>
+<tr><td id="dt_Character">Character</td><td>A single character, as per
+section 2.2 of [<a class="nref" href="references.html#ref_XML">XML</a>].</td></tr>
+<tr><td id="dt_Characters">Characters</td><td>A white space separated
+list of <span class="datatype"><a href="abstraction.html#dt_Character">Character</a></span> values.</td></tr>
+<tr><td id="dt_Charset">Charset</td><td>A character encoding, as per
+<a href="references.html#ref_RFC2045">[RFC2045]</a>.</td></tr>
+<tr><td id="dt_Encodings">Encodings</td><td>A comma-separated list
+of 'charset's with optional q parameters, as defined in section
+14.2 of [<a class="nref" href="references.html#ref_RFC2616">RFC2616</a>] as the field value of the Accept-Charset
+request header.
+</td></tr>
+<tr><td id="dt_ContentType">ContentType</td><td>
+A media type, as per [<a class="nref" href="references.html#ref_RFC2045">RFC2045</a>].
+</td></tr>
+<tr><td id="dt_ContentTypes">ContentTypes</td><td>
+Attributes of this type identify the allowable content type(s) of an
+associated <span class="datatype"><a href="abstraction.html#dt_URI">URI</a></span> (usually a value of another attribute on the same element).
+At its most general, it is a comma-separated list of media ranges with optional accept parameters, as defined in section 14.1 of
+[<a class="nref" href="references.html#ref_RFC2616">RFC2616</a>] as the field value of the accept request header.
+<p>In its simplest case, this is just a media type, such as "image/png" or "application/xml", but it may also contain asterisks, such as "image/*" or "*/*", or lists of acceptable media types, such as "image/png, image/gif, image/jpeg".</p>
+<p><span class="must"  >The user agent must combine this list with its own list of acceptable media types by taking the
+intersection, and then use the resulting list as the field value of the <code>accept</code> request header when
+requesting the resource using HTTP.</span></p>
+<p>For instance, if the attribute specifies the value "image/png, image/gif, image/jpeg", but the user agent does not accept images of type "image/gif" then the resultant accept header would contain "image/png, image/jpeg".</p>
+<p><span class="must"  >A user agent must imitate similar behavior when using other
+methods than HTTP.</span> For instance, when accessing files in a local filestore, <code>&lt;p src="logo" srctype="image/png, image/jpeg"&gt;</code> might cause the user agent first to look for a file <code>logo.png</code>, and then for <code>logo.jpg</code>.</p>
+<p><span class="must"  >If a value for the content type is not given, "*/*" must be used for its
+value.</span></p>
+<p>For the current list of registered content types, please consult [<a class="nref" href="references.html#ref_MIMETYPES">MIMETYPES</a>].</p>
+</td></tr>
+<tr><td id="dt_Coordinates">Coordinates</td><td>Comma separated list of <a href="#dt_Length">Length</a>s used in defining areas.</td></tr>
+<tr><td id="dt_CURIE">CURIE</td><td>A Compact URI [<a class="nref" href="references.html#ref_CURIE">CURIE</a>].</td></tr>
+<tr><td id="dt_CURIEs">CURIEs</td><td>One or more white space separated <span class="datatype"><a href="abstraction.html#dt_CURIE">CURIE</a></span> values</td></tr>
+<tr><td id="dt_Datetime">Datetime</td><td>Date and time information, as
+defined by the type <code>dateTime</code> in [<a class="nref" href="references.html#ref_XMLSCHEMA">XMLSCHEMA</a>] except that the timezone part is required.</td></tr>
+<tr><td id="dt_HrefTarget">HrefTarget</td><td>Name used as destination
+for results of certain actions, with legal values as defined by
+<span class="datatype"><a href="abstraction.html#dt_NMTOKEN">NMTOKEN</a></span>.</td></tr>
+<tr><td id="dt_LanguageCode">LanguageCode</td><td>A language code.
+The values should conform to [<a class="nref" href="references.html#ref_RFC3066">RFC3066</a>] or its successors.</td></tr>
+<tr><td id="dt_LanguageCodes">LanguageCodes</td><td>A comma-separated list
+of language ranges with optional q parameters, as defined in section
+14.4 of [<a class="nref" href="references.html#ref_RFC2616">RFC2616</a>] as the field value of the Accept-Language
+request header. Individual language codes should conform to  [<a class="nref" href="references.html#ref_RFC3066">RFC3066</a>] or its successors.</td></tr>
+<tr><td id="dt_Length">Length</td><td>
+Either a number, representing a number of pixels, or a percentage, representing a percentage of the
+available horizontal or vertical space. Thus, the value "50%" means half of the available space.</td></tr>
+<tr><td id="dt_LocationPath">LocationPath</td>
+<td>A location path as defined in [<a class="nref" href="references.html#ref_XPATH">XPATH</a>].</td></tr>
+<tr><td id="dt_MediaDesc">MediaDesc</td><td>
+<p>A comma-separated list of media descriptors as described by [<a class="nref" href="references.html#ref_CSS2">CSS2</a>]. The default is <code>all</code>.</p>
+</td></tr>
+<tr><td id="dt_Number">Number</td><td>One or more digits</td></tr>
+<tr><td id="dt_QName">QName</td><td>An [<a class="nref" href="references.html#ref_XMLNS">XMLNS</a>]-qualified name. See
+<a class="xsdref" href="http://www.w3.org/TR/xmlschema-2/#QName">QName</a> for a formal definition.</td></tr>
+<tr><td id="dt_QNames">QNames</td><td>One or more white space
+separated <span class="datatype"><a href="abstraction.html#dt_QName">QName</a></span> values</td></tr>
+<tr><td id="dt_Text">Text</td><td>A character string.</td></tr>
+<tr><td id="dt_URI">URI</td><td>An Internationalized Resource Identifier Reference, as defined by [<a class="nref" href="references.html#ref_IRI">IRI</a>].</td></tr>
+<tr><td id="dt_URIorSafeCURIE">URIorSafeCURIE</td><td>A URI (as
+defined above) or Safe Compact URI [<a class="nref" href="references.html#ref_CURIE">CURIE</a>].</td></tr>
+<tr><td id="dt_URIorSafeCURIEs">URIorSafeCURIEs</td><td>One or more
+white space separated <span class="datatype"><a href="abstraction.html#dt_URIorSafeCURIE">URIorSafeCURIE</a></span> values.</td></tr>
+<tr><td id="dt_URIs">URIs</td><td>A space-separated list of URIs as defined above.</td></tr>
+</table>
+<p>Implementation: <a
+href="relax_module_defs.html#a_rmodule_Datatypes">RELAX NG</a>,
+<a href="schema_module_defs.html#a_smodule_Datatypes_Module">XML Schema</a>
+</p>
+<hr />
+<div class="navbar">
+[<a href="xhtml2-doctype.html">previous</a>]
+[<a href="mod-attribute-collections.html">next</a>]
+[<a href="Overview.html#toc">table of contents</a>]
+[<a href="elements.html">elements</a>]
+[<a href="attributes.html">attributes</a>]
+</div>
+</body>
+</html>

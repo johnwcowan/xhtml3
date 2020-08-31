@@ -1,0 +1,88 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN"
+	"http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html lang="en" xml:lang="en" xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<title>XHTML&#8482; 2.0 - XHTML Style Attribute Module</title> 
+<link rel="start" type="text/html" href="Overview.html" />
+<link rel="contents" type="text/html" href="Overview.html#toc" />
+<link rel="prev" type="text/html" href="mod-styleSheet.html" />
+<link rel="next" type="text/html" href="mod-tables.html" />
+<link rel="stylesheet" type="text/css" href="xhtml.css" />
+<link rel="stylesheet" type="text/css" href="http://www.w3.org/StyleSheets/TR/W3C-ED.css" />
+</head>
+<body>
+<div class="navbar">
+[<a accesskey="P" href="mod-styleSheet.html">previous</a>]
+[<a accesskey="N" href="mod-tables.html">next</a>]
+[<a accesskey="T" href="Overview.html#toc">table of contents</a>]
+[<a accesskey="E" href="elements.html">elements</a>]
+[<a accesskey="A" href="attributes.html">attributes</a>]
+<hr />
+</div>
+<h1 >
+<a id="s_styleAttributemodule" >29.</a> XHTML Style Attribute Module
+</h1>
+<div class='subtoc'><p><strong>Contents</strong></p><ul class='toc'><li class='tocline'>
+29.1.
+<a href="#col_Style" class="tocxref">Style Attribute Collection</a>
+</li></ul>
+</div>
+<p>This section is <em>normative</em>.</p>
+<p>The Style Attribute Module defines the <code>style</code>
+attribute. 
+</p>
+<div class="note">
+<p>Note: use of the 
+<a class="aref" href="mod-styleAttribute.html#adef_styleAttribute_style">@style</a> attribute is strongly discouraged in favor of the 
+<a class="eref" href="mod-styleSheet.html#edef_styleSheet_style">style</a>
+element and external style sheets. In addition, content developers are
+advised to avoid use of the
+<a class="aref" href="mod-styleAttribute.html#adef_styleAttribute_style">@style</a> attribute on content intended for use on small 
+devices, since those devices may not support the use of in-line
+styles.</p>
+</div>
+<h2 >
+<a id="col_Style" >29.1.</a> Style Attribute Collection
+</h2>
+<!-- INCLUDING ATTRIBUTE modules/attributes/style.mhtml -->
+<dl class='attrDef'><dt><a class="adef" id="adef_styleAttribute_style"><span class="adef">style</span></a>
+ = <span class="datatype"><a href="abstraction.html#dt_CDATA">CDATA</a></span> </dt>
+<dd>This attribute specifies style information for the current element.
+<p>
+<a class="xdef"
+   id="s_styleAttributemodule_xref_0">The</a>
+ syntax of the
+value of the 
+<a class="aref" href="mod-styleAttribute.html#adef_styleAttribute_style">@style</a> attribute is determined
+by the default style sheet language.</p>
+<p>This CSS example sets color and font size information for the text in a
+specific paragraph.</p>
+<div class="example">
+    <p>Example</p>
+<pre>
+&lt;p style="font-size: 12pt; color: fuchsia"&gt;
+   Aren't style sheets wonderful?&lt;/p&gt;
+</pre>
+</div>
+<p>In CSS, property declarations have the form "name : value" and are
+separated by a semi-colon.</p>
+<p>To specify style information for more than one element, authors
+should use the 
+<a class="eref" href="mod-styleSheet.html#edef_styleSheet_style">style</a> element.  For optimal
+flexibility, authors should define styles in external style sheets.</p>
+</dd></dl>
+<!-- END OF ATTRIBUTE FILE modules/attributes/style.mhtml -->
+<p>Implementations: <a href="relax_module_defs.html#a_rmodule_Style_Attribute">RELAX NG</a>,
+<a href="schema_module_defs.html#a_smodule_Style_Attribute_Module">XML Schema</a>
+</p>
+<hr />
+<div class="navbar">
+[<a href="mod-styleSheet.html">previous</a>]
+[<a href="mod-tables.html">next</a>]
+[<a href="Overview.html#toc">table of contents</a>]
+[<a href="elements.html">elements</a>]
+[<a href="attributes.html">attributes</a>]
+</div>
+</body>
+</html>

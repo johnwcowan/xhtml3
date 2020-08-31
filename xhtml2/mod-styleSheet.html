@@ -1,0 +1,198 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN"
+	"http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html lang="en" xml:lang="en" xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<title>XHTML&#8482; 2.0 - XHTML Style Sheet Module</title> 
+<link rel="start" type="text/html" href="Overview.html" />
+<link rel="contents" type="text/html" href="Overview.html#toc" />
+<link rel="prev" type="text/html" href="mod-ruby.html" />
+<link rel="next" type="text/html" href="mod-styleAttribute.html" />
+<link rel="stylesheet" type="text/css" href="xhtml.css" />
+<link rel="stylesheet" type="text/css" href="http://www.w3.org/StyleSheets/TR/W3C-ED.css" />
+</head>
+<body>
+<div class="navbar">
+[<a accesskey="P" href="mod-ruby.html">previous</a>]
+[<a accesskey="N" href="mod-styleAttribute.html">next</a>]
+[<a accesskey="T" href="Overview.html#toc">table of contents</a>]
+[<a accesskey="E" href="elements.html">elements</a>]
+[<a accesskey="A" href="attributes.html">attributes</a>]
+<hr />
+</div>
+<h1 >
+<a id="s_styleSheetmodule" >28.</a> XHTML Style Sheet Module
+</h1>
+<div class='subtoc'><p><strong>Contents</strong></p><ul class='toc'><li class='tocline'>
+28.1.
+<a href="#sec_28.1." class="tocxref">The style element</a>
+<ul class="toc"><li class='tocline'>28.1.1.
+<a href="#styleSheet_external" class="tocxref">External style sheets</a>
+</li><li class='tocline'>28.1.2.
+<a href="#sec_28.1.2." class="tocxref">Preferred and alternate style sheets</a>
+</li><li class='tocline'>28.1.3.
+<a href="#sec_28.1.3." class="tocxref">Specifying external style sheets</a>
+</li></ul>
+</li></ul>
+</div>
+<p>This section is <em>normative</em>.</p>
+<p>The Style Sheet Module defines an element to be used when declaring internal
+style sheets.
+The element and attributes defined by this module are:</p>
+<table class="moduledef" border="1" summary="Elements and Attributes for Style Sheet
+Module">
+<thead>
+	<tr><th>Elements</th><th>Attributes</th><th>Content Model</th></tr>
+</thead>
+<tbody>
+<tr><td>
+<a class="eref" href="mod-styleSheet.html#edef_styleSheet_style">style</a></td>
+<td>
+    <a class="csref" href="mod-attribute-collections.html#col_Common">Common</a>, 
+<a class="aref" href="mod-styleSheet.html#adef_styleSheet_disabled">@disabled</a> ("disabled"),
+<a class="aref" href="mod-styleSheet.html#adef_styleSheet_media">@media</a> (<span class="datatype"><a href="abstraction.html#dt_MediaDesc">MediaDesc</a></span>)
+</td>
+<td class="content">PCDATA</td></tr>
+</tbody>
+</table>
+<p>Implementations: <a href="relax_module_defs.html#a_rmodule_Style_Sheet">RELAX NG</a>,
+<a href="schema_module_defs.html#a_smodule_Style_Sheet_Module">XML Schema</a>
+</p>
+<!-- INCLUDING ELEMENT modules/styleSheet/style.mhtml -->
+<h2 >
+<a id="sec_28.1." >28.1.</a> The <a class="edef" id="edef_styleSheet_style">style</a>
+ element
+</h2>
+<div class="adef-list">
+<p><em>Attributes</em></p>
+<!-- INCLUDING ATTRIBUTE modules/attributes/Common.mhtml -->
+<dl class='attrDef'><dt>The 
+    <a class="csref" href="mod-attribute-collections.html#col_Common">Common</a> collection</dt>
+<dd>A collection of other attribute collections, including:
+    <a class="csref" href="mod-bidi.html#col_Bi-directional">Bi-directional</a>, 
+    <a class="csref" href="mod-core.html#col_Core">Core</a>, 
+    <a class="csref" href="mod-edit.html#col_Edit">Edit</a>, 
+    <a class="csref" href="mod-embedding.html#col_Embedding">Embedding</a>, 
+    <a class="csref" href="mod-xml-events.html#col_Events">Events</a>, 
+    <a class="csref" href="mod-xforms.html#col_Forms">Forms</a>, 
+    <a class="csref" href="mod-hyperAttributes.html#col_Hypertext">Hypertext</a>,
+    <a class="csref" href="mod-i18n.html#col_I18N">I18N</a>, 
+    <a class="csref" href="mod-csImgMap.html#col_Map">Map</a>, 
+    <a class="csref" href="mod-metaAttributes.html#col_Metainformation">Metainformation</a>,
+and 
+    <a class="csref" href="mod-roleAttribute.html#col_Role">Role</a>
+</dd></dl>
+<!-- END OF ATTRIBUTE FILE modules/attributes/Common.mhtml -->
+<!-- INCLUDING ATTRIBUTE modules/attributes/disabled.mhtml -->
+<dl class='attrDef'><dt><a class="adef" id="adef_styleSheet_disabled"><span class="adef">disabled</span></a>
+ = <samp>"disabled"</samp></dt>
+<dd>When present, this boolean attribute makes the current element
+inactive (e.g., a "disabled" style element would have its styles removed from the active style collection).
+</dd></dl>
+<!-- END OF ATTRIBUTE FILE modules/attributes/disabled.mhtml -->
+<!-- INCLUDING ATTRIBUTE modules/attributes/media.mhtml -->
+<dl class='attrDef'><dt><a class="adef" id="adef_styleSheet_media"><span class="adef">media</span></a>
+ = <span class="datatype"><a href="abstraction.html#dt_MediaDesc">MediaDesc</a></span>
+</dt>
+<dd>The value of this attribute is a comma-separated list of media 
+descriptors for which this <code>access</code> element is intended.
+When the value of this attribute matches the current processing media,
+the associated <code>access</code> element is 
+considered <em>active</em> and processed normally; otherwise it is 
+<em>inactive</em> and ignored.  
+The default value for this attribute is <code>all</code>.
+<div class="example">
+    <p>Example</p>
+<pre>
+&lt;style src="style.css" type="text/css" media="screen" /&gt;
+&lt;span src="photo.jpg" media="screen"&gt;Me at work&lt;/span&gt;
+&lt;span src="photo-hires.jpg" media="print"&gt;Me at work&lt;/span&gt;
+</pre>
+</div>
+</dd></dl>
+<!-- END OF ATTRIBUTE FILE modules/attributes/media.mhtml -->
+</div>
+<p>The 
+<a class="eref" href="mod-styleSheet.html#edef_styleSheet_style">style</a> element allows an author to put style sheet rules in the 
+<a class="xref"
+   id="s_styleSheetmodule_xref_0">head</a>
+ of the document. XHTML permits any number of 
+<a class="eref" href="mod-styleSheet.html#edef_styleSheet_style">style</a> elements in the 
+<a class="eref" href="mod-document.html#edef_document_head">head</a> section of a document.</p>
+<p>The syntax of style data depends on the style sheet language.</p>
+<p>Rules for style rule precedences and inheritance depend on the style sheet language.</p>
+<div class="example">
+    <p>Example</p>
+<pre>
+&lt;style type="text/css"&gt;
+  h1 {border-width: thin; border-style: solid; text-align: center}
+&lt;/style&gt;
+</pre>
+</div>
+<h3 >
+<a id="styleSheet_external" >28.1.1.</a> External style sheets
+</h3>
+<p>Authors may separate style sheets from XHTML documents. This offers several benefits:</p>
+<ul>
+<li>Authors and web site managers may share style sheets across a number of documents (and sites).</li>
+<li>Authors may change the style sheet without requiring modifications to the document.</li>
+<li>User agents may load style sheets selectively (based on media descriptors).</li>
+</ul>
+<h3 >
+<a id="sec_28.1.2." >28.1.2.</a> Preferred and alternate style sheets
+</h3>
+<p>XHTML allows authors to associate any number of external style sheets with a document. The style sheet language defines how multiple external style sheets interact (for example, the CSS "cascade" rules).</p>
+<p>
+<a class="xdef"
+   id="s_styleSheetmodule_xref_1">Authors may specify a number of mutually exclusive style sheets called <dfn>alternate</dfn> style sheets.</a>
+ Users may select their favorite among these depending on their preferences. For instance, an author may specify one style sheet designed for small screens and another for users with weak vision (e.g., large fonts). User agents should allow users to select from alternate
+style sheets.</p>
+<p>
+<a class="xdef"
+   id="s_styleSheetmodule_xref_2">The author may specify that one of the alternates is a <dfn>preferred</dfn> style sheet.</a>
+ User agents should apply the author's preferred style sheet unless the user has selected a different alternate.</p>
+<p>Authors may group several alternate style sheets (including the author's preferred style sheets) under a single <dfn>style name</dfn>. When a user selects a named style, the user agent must apply all style sheets with that name. User agents must not apply alternate style sheets with a different style name. The section on specifying external style sheets explains how to name a group of style sheets.</p>
+<p>
+<a class="xdef"
+   id="s_styleSheetmodule_xref_3">Authors may also specify <dfn>persistent</dfn> style sheets that user agents must apply in addition to any alternate style sheet.</a>
+</p>
+<p>User agents must respect <span class="datatype"><a href="abstraction.html#dt_MediaDesc">media descriptors</a></span> when applying any style sheet.</p>
+<p>User agents should also allow users to disable the author's style sheets entirely, in which case the user agent must not apply any persistent or alternate style sheets.</p>
+<h3 >
+<a id="sec_28.1.3." >28.1.3.</a> Specifying external style sheets
+</h3>
+<p>Authors specify external style sheets using the <code>xml-stylesheet</code> processing instruction [<a class="nref" href="references.html#ref_XMLSTYLE">XMLSTYLE</a>], or, for CSS, by using the <code>@import</code> facility within a 
+<a class="eref" href="mod-styleSheet.html#edef_styleSheet_style">style</a> element.</p>
+<p>User agents should provide a means for users to view and pick from the list of alternate styles, if specified.</p>
+<p>In this example, we first specify a persistent style sheet located in the file <tt>mystyle.css</tt>:</p>
+<div class="example">
+    <p>Example</p>
+<pre>
+&lt;?xml-stylesheet href="mystyle.css" type="text/css"?&gt;
+</pre>
+</div>
+<p>Setting the <code>title</code> pseudo-attribute makes this the author's preferred style sheet:</p>
+<div class="example">
+    <p>Example</p>
+<pre>
+ &lt;?xml-stylesheet href="mystyle.css" title="compact" type="text/css"?&gt;
+</pre>
+</div>
+<p>Adding the <code>alternate</code> pseudo-attribute makes it an alternate style sheet:</p>
+<div class="example">
+    <p>Example</p>
+<pre>
+&lt;?xml-stylesheet href="mystyle.css" title="Medium" alternate="yes" type="text/css"?&gt;
+</pre>
+</div>
+<!-- END OF ELEMENT FILE modules/styleSheet/style.mhtml -->
+<hr />
+<div class="navbar">
+[<a href="mod-ruby.html">previous</a>]
+[<a href="mod-styleAttribute.html">next</a>]
+[<a href="Overview.html#toc">table of contents</a>]
+[<a href="elements.html">elements</a>]
+[<a href="attributes.html">attributes</a>]
+</div>
+</body>
+</html>

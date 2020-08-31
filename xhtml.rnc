@@ -1,0 +1,307 @@
+# XHTML 1.0 Subset Schema
+# Author: Sean B. Palmer, inamidst.com
+# Check: rnv -c proj/quality/xhtml.rnc
+# A provisional means of validating XHTML files
+# easily using a RELAX NG validator such as rnv.
+
+default namespace html = "http://www.w3.org/1999/xhtml"
+
+# Common Attributes
+
+Core.attrs = 
+   attribute id { xsd:ID }?,
+   attribute class { text }?,
+   attribute style { text }?, 
+   attribute title { text }?
+
+I18n.attrs = 
+   attribute xml:lang { text }?,
+   attribute dir { "ltr" | "rtl" }?
+
+Main.attrs = 
+   Core.attrs, I18n.attrs, 
+   attribute onclick { text }?
+
+# Content Models
+
+BlockMinusForm = 
+   (address | blockquote | del | div.elem | dl | h1 | h2 | 
+    h3 | hr | ins | ol | p | pre | script | table | ul)*
+Block = (BlockMinusForm | form)*
+
+InlineMinusMedia = 
+   (a | abbr | br | cite | code | del | em | input | ins | 
+    label | script | span | strong | sub | sup | textarea | text)*
+Inline = (InlineMinusMedia | img | object)*
+
+Flow = (Block | Inline)*
+
+# Elements
+
+start = html
+
+html = element html { 
+   I18n.attrs, 
+   head, body
+}
+
+head = element head { 
+   I18n.attrs, 
+   attribute profile { text }?, 
+   title, base?, (script* & style* & meta* & link*)
+}
+
+title = element title { 
+   I18n.attrs, 
+   text
+}
+
+base = element base { 
+   attribute href { text }, 
+   empty
+}
+
+meta = element meta { 
+   I18n.attrs, 
+   attribute content { text }?, 
+   attribute name { text }?, 
+   empty
+}
+
+link = element link { 
+   Main.attrs, 
+   attribute href { text }?, 
+   attribute rel { text }?, 
+   attribute type { text }?, 
+   empty
+}
+
+style = element style { 
+   I18n.attrs, 
+   attribute type { text }, 
+   attribute title { text }?, 
+   text
+}
+
+script = element script { 
+   attribute type { text }, 
+   attribute src { text }?, 
+   text
+}
+
+body = element body { 
+   Main.attrs, 
+   attribute onload { text }?, 
+   Block
+}
+
+div.elem = element div { 
+   Main.attrs, 
+   Flow
+}
+
+p = element p { 
+   Main.attrs, 
+   Inline
+}
+
+h1 = element h1 { 
+   Main.attrs, 
+   Inline
+}
+
+h2 = element h2 { 
+   Main.attrs, 
+   Inline
+}
+
+h3 = element h3 { 
+   Main.attrs, 
+   Inline
+}
+
+ul = element ul { 
+   Main.attrs, 
+   li+
+}
+
+ol = element ol {
+   Main.attrs, 
+   li+
+}
+
+li = element li {
+   Main.attrs, 
+   Flow
+}
+
+dl = element dl { 
+   Main.attrs, 
+   (dt, dd+)+
+}
+
+dt = element dt { 
+   Main.attrs, 
+   Inline
+}
+
+dd = element dd { 
+   Main.attrs, 
+   Flow
+}
+
+address = element address { 
+   Main.attrs, 
+   Inline
+}
+
+hr = element hr { 
+   Main.attrs, 
+   empty
+}
+
+pre = element pre { 
+   Main.attrs, 
+   InlineMinusMedia
+}
+
+blockquote = element blockquote { 
+   Main.attrs, 
+   attribute cite { text }?, 
+   Block
+}
+
+ins = element ins { 
+   Main.attrs, 
+   attribute cite { text }?, 
+   Flow
+}
+
+del = element del { 
+   Main.attrs, 
+   attribute cite { text }?, 
+   Flow
+}
+
+a = element a { 
+   Main.attrs, 
+   attribute href { text }?, 
+   attribute rel { text }?, 
+   (text & img* & span*)
+}
+
+span = element span { 
+   Main.attrs, 
+   Inline
+}
+
+br = element br { 
+   Core.attrs, 
+   empty
+}
+
+em = element em { 
+   Main.attrs, 
+   Inline
+}
+
+strong = element strong { 
+   Main.attrs, 
+   Inline
+}
+
+code = element code { 
+   Main.attrs, 
+   Inline
+}
+
+cite = element cite { 
+   Main.attrs, 
+   Inline
+}
+
+abbr = element abbr { 
+   Main.attrs, 
+   Inline
+}
+
+sub = element sub { 
+   Main.attrs, 
+   Inline
+}
+
+sup = element sup { 
+   Main.attrs, 
+   Inline
+}
+
+object = element object { 
+   Main.attrs, 
+   attribute data { text }?, 
+   attribute type { text }?, 
+   Flow
+}
+
+img = element img { 
+   Main.attrs, 
+   attribute alt { text }, 
+   attribute src { text }, 
+   attribute height { text }?, 
+   attribute width { text }?, 
+   empty
+}
+
+form = element form { 
+   Main.attrs, 
+   attribute action { text }, 
+   attribute method { text }?, 
+   BlockMinusForm
+}
+
+label = element label { 
+   Main.attrs
+}
+
+input = element input { 
+   Main.attrs, 
+   attribute type { "text" | "submit" | "hidden" }, 
+   attribute name { text }?, 
+   attribute size { text }?, 
+   attribute value { text }?, 
+   empty
+}
+
+textarea = element textarea { 
+   Main.attrs, 
+   attribute cols { text }, 
+   attribute rows { text }, 
+   attribute name { text }?, 
+   text
+}
+
+table = element table { 
+   Main.attrs, 
+   caption?, tr+
+}
+
+caption = element caption { 
+   Main.attrs, 
+   Inline
+}
+
+tr = element tr { 
+   Main.attrs, 
+   (th | td)+
+}
+
+th = element th { 
+   Main.attrs, 
+   Flow
+}
+
+td = element td { 
+   Main.attrs, 
+   Flow
+}
+
+# [EOF]

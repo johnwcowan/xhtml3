@@ -1,0 +1,106 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN"
+	"http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html lang="en" xml:lang="en" xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<title>XHTML&#8482; 2.0 - XHTML Image Module</title> 
+<link rel="start" type="text/html" href="Overview.html" />
+<link rel="contents" type="text/html" href="Overview.html#toc" />
+<link rel="prev" type="text/html" href="mod-embedding.html" />
+<link rel="next" type="text/html" href="mod-csImgMap.html" />
+<link rel="stylesheet" type="text/css" href="xhtml.css" />
+<link rel="stylesheet" type="text/css" href="http://www.w3.org/StyleSheets/TR/W3C-ED.css" />
+</head>
+<body>
+<div class="navbar">
+[<a accesskey="P" href="mod-embedding.html">previous</a>]
+[<a accesskey="N" href="mod-csImgMap.html">next</a>]
+[<a accesskey="T" href="Overview.html#toc">table of contents</a>]
+[<a accesskey="E" href="elements.html">elements</a>]
+[<a accesskey="A" href="attributes.html">attributes</a>]
+<hr />
+</div>
+<h1 >
+<a id="s_imagemodule" >20.</a> XHTML Image Module
+</h1>
+<div class='subtoc'><p><strong>Contents</strong></p><ul class='toc'><li class='tocline'>
+20.1.
+<a href="#sec_20.1." class="tocxref">The img element</a>
+</li></ul>
+</div>
+<p>This section is <em>normative</em>.</p>
+<p>The Image Module provides basic image embedding, and may be
+  used in some implementations independently of client side image maps.
+  The Image Module supports the following element and attributes:</p>
+<table class="moduledef" border="1" summary="Elements and Attributes for Image
+Module">
+<thead>
+	<tr><th>Elements</th><th>Attributes</th><th>Content Model</th></tr>
+</thead>
+<tbody>
+<tr>
+  <td>img</td><td>
+    <a class="csref" href="mod-attribute-collections.html#col_Common">Common</a></td>
+  <td class="content">(
+<a class="eref" href="mod-caption.html#edef_caption_caption">caption</a> | 
+    <a class="csref" href="mod-text.html#cs_Text">Text</a>)*</td>
+</tr>
+</tbody>
+</table>
+<p>Implementations: <a href="relax_module_defs.html#a_rmodule_Image">RELAX NG</a>,
+<a href="schema_module_defs.html#a_smodule_Image_Module">XML Schema</a>
+</p>
+<!-- INCLUDING ELEMENT modules/image/img.mhtml -->
+<h2 >
+<a id="sec_20.1." >20.1.</a> The <a class="edef" id="edef_image_img">img</a>
+ element
+</h2>
+<div class="adef-list">
+<p><em>Attributes</em></p>
+<!-- INCLUDING ATTRIBUTE modules/attributes/Common.mhtml -->
+<dl class='attrDef'><dt>The 
+    <a class="csref" href="mod-attribute-collections.html#col_Common">Common</a> collection</dt>
+<dd>A collection of other attribute collections, including:
+    <a class="csref" href="mod-bidi.html#col_Bi-directional">Bi-directional</a>, 
+    <a class="csref" href="mod-core.html#col_Core">Core</a>, 
+    <a class="csref" href="mod-edit.html#col_Edit">Edit</a>, 
+    <a class="csref" href="mod-embedding.html#col_Embedding">Embedding</a>, 
+    <a class="csref" href="mod-xml-events.html#col_Events">Events</a>, 
+    <a class="csref" href="mod-xforms.html#col_Forms">Forms</a>, 
+    <a class="csref" href="mod-hyperAttributes.html#col_Hypertext">Hypertext</a>,
+    <a class="csref" href="mod-i18n.html#col_I18N">I18N</a>, 
+    <a class="csref" href="mod-csImgMap.html#col_Map">Map</a>, 
+    <a class="csref" href="mod-metaAttributes.html#col_Metainformation">Metainformation</a>,
+and 
+    <a class="csref" href="mod-roleAttribute.html#col_Role">Role</a>
+</dd></dl>
+<!-- END OF ATTRIBUTE FILE modules/attributes/Common.mhtml -->
+</div>
+<p>The 
+<a class="eref" href="mod-image.html#edef_image_img">img</a> element is a holder for embedding attributes
+such as 
+<a class="aref" href="mod-embedding.html#adef_embedding_src">@src</a>.  Since these attributes may be
+applied to any element, the 
+<a class="eref" href="mod-image.html#edef_image_img">img</a> element is not strictly
+necessary, but is included to ease the transition to XHTML2.  Like the
+<a class="eref" href="mod-object.html#edef_object_object">object</a> element, this element's content
+is only presented if the referenced resource is unavailable.</p>
+<p>In the following example, the W3C logo would be presented if it
+were available.  If it were unavailable, then the enclosed text would be presented.</p>
+<div class="example">
+    <p>Example</p>
+<pre>
+&lt;img alt="W3C Logo" src="W3C.png"&gt;W3C&lt;/img&gt;
+</pre>
+</div>
+<!-- END OF ELEMENT FILE modules/image/img.mhtml -->
+<hr />
+<div class="navbar">
+[<a href="mod-embedding.html">previous</a>]
+[<a href="mod-csImgMap.html">next</a>]
+[<a href="Overview.html#toc">table of contents</a>]
+[<a href="elements.html">elements</a>]
+[<a href="attributes.html">attributes</a>]
+</div>
+</body>
+</html>

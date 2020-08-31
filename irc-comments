@@ -1,0 +1,87 @@
+•dpk: but maybe an easy way of doing it hasn’t percolated to the top of my brain yet
+sbp: in the decades since HTML 3 we've learned a lot about what we want from a generalised hypertext markup language that is situated in the web. as I mentioned in my original XHTML 3 notes, MediaWiki markup and templates are a really good source of inspiration on the sort of thing that's required
+sbp: we can just take a look at the HEAD section in HTML 3.2 for example
+sbp: —
+sbp: TITLE defines the document title, and is always needed.
+sbp: ISINDEX for simple keyword searches, see PROMPT attribute.
+sbp: BASE defines base URL for resolving relative URLs.
+sbp: SCRIPT reserved for future use with scripting languages.
+sbp: STYLE reserved for future use with style sheets.
+sbp: META used to supply meta info as name/value pairs.
+sbp: LINK used to define relationships with other documents. 
+sbp: —
+sbp: we can say so much about just these elements
+dpk: but MediaWiki only works because it’s a massive mess underneath
+sbp: TITLE, for example, has always had a questionable relationship to H1. but also, people tend to use patterns like Site | Section | Page title. perhaps that should be standardised
+dpk: like, templates that output parts of code for other templates
+sbp: ISINDEX is the source of the primary recurring Swhack joke about HTML reforms
+sbp: dpk: sure, I'm not saying just copy MediaWiki templates wholesale into a new format. but as a source of inspiration it's great, because it shows some idioms that are in actual use, and people actually thought about what kind of things they'd need and felt empowered to put their imagination into practice thanks to Lua
+dpk: maybe i should check out some of the Scheme-based document formats out there
+dpk: like Scribble and Pollen and so on
+dpk: i think the pandoc guy made one as well
+sbp: BASE points towards a whole slew of machinery that could be implemented for taking care of URIs, manipulating them and so forth. for example, imagine you want to abbreviate URIs by templates. you might have https://example.org/001/blah/blah/blah/blah/blah/, and want to increment the 001 keeping the rest intact. it's probably a bad idea to put this in the language, but it's stuff to consider
+dpk: https://github.com/jgm/HeX
+ase:!
+sbp: SCRIPT is the source of almost all evil on the web
+ase target=_blank:, but even so
+sbp: heh
+dpk: i wonder if there’s a guideline for when to use target=_blank
+sbp: we could say so much about STYLE. for example, in HTML+ there was https://www.w3.org/MarkUp/HTMLPlus/htmlplus_45.html for formatting maths expressions. it later became MathML I suppose. but despite MathML there are also a dozen ways to format mathematical markup for the web. sounds like a job for xkcd 927
+dpk: i’ve always just done it by feel
+sbp: META, see the thing that Murray Altheim (and I) wrote for using META in the body, and basically all of the RDFa and Microdata stuff I commented on recently, NEPTNS and all that
+sbp: and LINK similarly
+dpk: like in this case the outside links were almost all citations for claims i made within the document, and i assume people will want to check the citation then come back to reading
+dpk: so i made _blank the default
+sbp: on STYLE, clearly if documents are to be laid out, you need some sort of layout language. something like Cassowary, or a lispish layout language, would be better than the CSS behemoth, if you could keep it as simple as STEPS
+sbp: these days we'd especially want to take into account different device modalities
+dpk: .g when to use target=_blank
+saxo: https://css-tricks.com/use-target_blank/
+sbp: sbp's simple guideline for when to use target="_blank":
+sbp: never
+sbp: those who use it risk incurring the threat of being darned to a relatively pleasant outer circle of heck
+9:38 AM •dpk set the topic: Swhack: darned to a relatively pleasant outer circle of heck
+dpk: yeah, this page suggests my reasoning for wanting target=_blank wasn’t very good (amounts to ‘A Bad Reason: “Internal” links and “External” links are different.’)
+sbp: for years there have been discussions of H1 to H6, and just using H with nesting instead, to prevent problems like H2 H1 at the start of a document. this is something that kinda matches type level programming in Idris (and all the other dependent languages), where you have structures that can only encode valid states
+dpk: hgroup was made to fix that problem, but nobody uses it
+sbp: you can go on and on like this through all of HTML, and you'd end up with something radically different. you have to set out what you want to achieve, and then be very careful not to deviate from it into the alluring alleys
+dpk: so Steve Faulkner (who is almost as annoying as Domenic Denicola, but is redeemed by the fact that his decisions make absolutely no difference to anybody) removed it from the W3C’s pirated version of HTML5
+sbp: what I want to achieve is an ancient style document format which is reimagined for a computational wonderland as envisaged by Ted Nelson. but, specifically, being very careful to make it secure and all the other good stuff
+sbp: specifically it would have to be constrained to NOT be "appable"
+sbp: but this sets up a significant tension between "documentation format" and "computational wonderland"
+sbp: which I believe is resolved by studying use cases like MediaWiki templates
+dpk: well, the only thing stopping you from building an app in MediaWiki templates is that there’s no way to receive and handle user input
+sbp: again, they'd only be used for inspiration
+dpk: and that’s more to do with the server technology than the text format
+sbp: XHTML 3 would not contain its own Lua engine
+sbp: you'd look at individual instances of the most popular templates
+dpk: right, but you want to undo HTTP, not HTML, if non-appability is a goal
+sbp: and assess them for suitability
+sbp: why's that?
+dpk: you want HTTP with GET only, perhaps
+orm: is certainly an edge case
+sbp: but I think you'd just have to be careful about user interaction
+sbp: just clicking a link is already a significant form of user interaction, so even GET is dangerous and "appy" in a sense
+dpk: were there ever any dynamic Gopher apps?
+sbp: everything is appy in the sense that it's going to be a browsing app, implementing bits of computation
+sbp: but you want to constrain its power
+sbp: unsure
+dpk: regular languages only
+dpk: CFGs if you ask nicely
+dpk: and it all goes over HTMAL GRABS
+sbp: the idea was to use MicroXML, which is CF
+sbp: the alternative is to make things as appy as people want, but do proper resource limiting
+dpk: i meant pages can only be DFAs but i forgot the programmy word for that and used the languagey word
+sbp: but then you'll just get rubbish, and anyway, I'm interested in some sort of "computational document"
+sbp: you mark things up, you embed bits and bobs, it's a pretty good model really
+sbp: what's what I want to unadulterate, with XHTML 3
+sbp: *that's what
+sbp: it'd be interesting to look at what phrasing elements you'd want
+ime: and such
+ime: is fairly obviously leverageable
+sbp: but it's easy to go mad and just add a ton of stuff that isn't leverageable
+sbp: even HTML 3.2 had a bunch of it
+sbp: DFN, VAR, KBD... what?
+sbp: I mean, okay, it's semantic, it's nice, but it's never actually used computationally
+sbp: you have to be able to exploit what you mark up
+sbp: otherwise there's no point marking it up
+sbp: meanwhile, elsewhere on the internet...

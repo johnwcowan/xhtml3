@@ -1,0 +1,2694 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN"
+	"http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html lang="en" xml:lang="en" xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<title>XHTML&#8482; 2.0 - XHTML Schema Module Implementations</title> 
+<link rel="start" type="text/html" href="Overview.html" />
+<link rel="contents" type="text/html" href="Overview.html#toc" />
+<link rel="prev" type="text/html" href="xhtml20_schema.html" />
+<link rel="next" type="text/html" href="xhtml20_dtd.html" />
+<link rel="stylesheet" type="text/css" href="xhtml.css" />
+<link rel="stylesheet" type="text/css" href="http://www.w3.org/StyleSheets/TR/W3C-ED.css" />
+</head>
+<body>
+<div class="navbar">
+[<a accesskey="P" href="xhtml20_schema.html">previous</a>]
+[<a accesskey="N" href="xhtml20_dtd.html">next</a>]
+[<a accesskey="T" href="Overview.html#toc">table of contents</a>]
+[<a accesskey="E" href="elements.html">elements</a>]
+[<a accesskey="A" href="attributes.html">attributes</a>]
+<hr />
+</div>
+<h1 >
+<a id="a_schema_module_defs" >E.</a> XHTML Schema Module Implementations
+</h1>
+<div class='subtoc'><p><strong>Contents</strong></p><ul class='toc'><li class='tocline'>
+E.1.
+<a href="#sec_E.1." class="tocxref">Required Modules</a>
+<ul class="toc"><li class='tocline'>E.1.1.
+<a href="#a_smodule_Datatypes_Module" class="tocxref">Datatypes Module</a>
+</li><li class='tocline'>E.1.2.
+<a href="#a_smodule_Document_Module" class="tocxref">Document Module</a>
+</li><li class='tocline'>E.1.3.
+<a href="#a_smodule_Structural_Module" class="tocxref">Structural Module</a>
+</li><li class='tocline'>E.1.4.
+<a href="#a_smodule_Text_Module" class="tocxref">Text Module</a>
+</li><li class='tocline'>E.1.5.
+<a href="#a_smodule_Hypertext_Module" class="tocxref">Hypertext Module</a>
+</li><li class='tocline'>E.1.6.
+<a href="#a_smodule_List_Module" class="tocxref">List Module</a>
+</li><li class='tocline'>E.1.7.
+<a href="#a_smodule_Core_Attributes_Module" class="tocxref">Core Attributes Module</a>
+</li><li class='tocline'>E.1.8.
+<a href="#a_smodule_Hypertext_Attributes_Module" class="tocxref">Hypertext Attributes Module</a>
+</li><li class='tocline'>E.1.9.
+<a href="#a_smodule_I18N_Attribute_Module" class="tocxref">I18N Attribute Module</a>
+</li></ul></li><li class='tocline'>E.2.
+<a href="#sec_E.2." class="tocxref">Optional Modules</a>
+<ul class="toc"><li class='tocline'>E.2.1.
+<a href="#a_smodule_Bi-directional_Text_Module" class="tocxref">Bi-directional Text Module</a>
+</li><li class='tocline'>E.2.2.
+<a href="#a_smodule_Caption_Module" class="tocxref">Caption Module</a>
+</li><li class='tocline'>E.2.3.
+<a href="#a_smodule_Edit_Attributes_Module" class="tocxref">Edit Attributes Module</a>
+</li><li class='tocline'>E.2.4.
+<a href="#a_smodule_Embedding_Attributes_Module" class="tocxref">Embedding Attributes Module</a>
+</li><li class='tocline'>E.2.5.
+<a href="#a_smodule_Image_Module" class="tocxref">Image Module</a>
+</li><li class='tocline'>E.2.6.
+<a href="#a_smodule_Image_Map_Attributes_Module" class="tocxref">Image Map Attributes Module</a>
+</li><li class='tocline'>E.2.7.
+<a href="#a_smodule_Media_Attribute_Module" class="tocxref">Media Attribute Module</a>
+</li><li class='tocline'>E.2.8.
+<a href="#a_smodule_Metainformation_Module" class="tocxref">Metainformation Module</a>
+</li><li class='tocline'>E.2.9.
+<a href="#a_smodule_Metainformation_Attributes_Module" class="tocxref">Metainformation Attributes Module</a>
+</li><li class='tocline'>E.2.10.
+<a href="#a_smodule_Object_Module" class="tocxref">Object Module</a>
+</li><li class='tocline'>E.2.11.
+<a href="#a_smodule_Style_Sheet_Module" class="tocxref">Style Sheet Module</a>
+</li><li class='tocline'>E.2.12.
+<a href="#a_smodule_Style_Attribute_Module" class="tocxref">Style Attribute Module</a>
+</li><li class='tocline'>E.2.13.
+<a href="#a_smodule_Tables_Module" class="tocxref">Tables Module</a>
+</li></ul></li><li class='tocline'>E.3.
+<a href="#sec_E.3." class="tocxref">Legacy Module</a>
+<ul class="toc"><li class='tocline'>E.3.1.
+<a href="#a_smodule_Legacy_Line_Break_Module" class="tocxref">Legacy Line Break Module</a>
+</li><li class='tocline'>E.3.2.
+<a href="#a_smodule_Legacy_Editing_Module" class="tocxref">Legacy Editing Module</a>
+</li><li class='tocline'>E.3.3.
+<a href="#a_smodule_Legacy_Headings_Module" class="tocxref">Legacy Headings Module</a>
+</li></ul></li><li class='tocline'>E.4.
+<a href="#sec_E.4." class="tocxref">Modules from Other Specifications</a>
+<ul class="toc"><li class='tocline'>E.4.1.
+<a href="#a_smodule_Access_Module" class="tocxref">Access Module</a>
+</li><li class='tocline'>E.4.2.
+<a href="#a_smodule_Role_Attribute_Module" class="tocxref">Role Attribute Module</a>
+</li><li class='tocline'>E.4.3.
+<a href="#a_smodule_Ruby_Module" class="tocxref">Ruby Module</a>
+</li><li class='tocline'>E.4.4.
+<a href="#a_smodule_XForms_Modules" class="tocxref">XForms Modules</a>
+</li><li class='tocline'>E.4.5.
+<a href="#a_smodule_XML_Events_Module" class="tocxref">XML Events Module</a>
+</li><li class='tocline'>E.4.6.
+<a href="#a_smodule_XML_Handlers_Module" class="tocxref">XML Handlers Module</a>
+</li><li class='tocline'>E.4.7.
+<a href="#a_smodule_XML_Scripting_Module" class="tocxref">XML Scripting Module</a>
+</li></ul>
+</li></ul>
+</div>
+<p>This appendix is <em>normative</em>.</p>
+<p>This appendix contains implementations of the modules defined in this
+specification via XML Schema [<a class="nref" href="references.html#ref_XMLSCHEMA">XMLSCHEMA</a>].
+</p>
+<h2 >
+<a id="sec_E.1." >E.1.</a> Required Modules
+</h2>
+<h3 >
+<a id="a_smodule_Datatypes_Module" >E.1.1.</a> Datatypes Module
+</h3>
+<!-- INCLUDING SCHEMA xhtml-datatypes-2.xsd -->
+<pre class="dtd">
+&lt;?xml version="1.0" encoding="UTF-8"?&gt;
+&lt;xs:schema
+ xmlns:xs="http://www.w3.org/2001/XMLSchema"
+ xmlns="http://www.w3.org/1999/xhtml/datatypes/"
+ xmlns:xh11d="http://www.w3.org/1999/xhtml/datatypes/"
+ targetNamespace="http://www.w3.org/1999/xhtml/datatypes/"
+ elementFormDefault="qualified"
+&gt;
+    &lt;xs:annotation&gt;
+        &lt;xs:documentation&gt;
+          XHTML Datatypes
+          This is the XML Schema datatypes module for XHTML
+          Defines containers for the XHTML datatypes, many of
+          these imported from other specifications and standards.
+          &#36;Id: xhtml-datatypes-2.xsd,v 1.1.2.1 2009/01/16 17:50:25 ahby Exp &#36;
+        &lt;/xs:documentation&gt;
+        &lt;xs:documentation source="xhtml-copyright-1.xsd"/&gt;
+        &lt;xs:documentation source="http://www.w3.org/TR/2001/REC-xhtml-modularization-20010410/abstraction.html#s_common_attrtypes"/&gt;
+    &lt;/xs:annotation&gt;
+    &lt;!-- nn for pixels or nn% for percentage length --&gt;
+    &lt;xs:simpleType name="Length"&gt;
+        &lt;xs:union memberTypes="xs:nonNegativeInteger"&gt;
+            &lt;xs:simpleType&gt;
+                &lt;xs:restriction base="xs:token"&gt;
+                    &lt;xs:pattern value="\d+[%]|\d*\.\d+[%]"/&gt;
+                &lt;/xs:restriction&gt;
+            &lt;/xs:simpleType&gt;
+        &lt;/xs:union&gt;
+    &lt;/xs:simpleType&gt;
+    &lt;!-- space-separated list of link types --&gt;
+    &lt;xs:simpleType name="LinkTypes"&gt;
+        &lt;xs:list itemType="xs:NMTOKEN"/&gt;
+    &lt;/xs:simpleType&gt;
+    &lt;!-- single or comma-separated list of media descriptors --&gt;
+    &lt;xs:simpleType name="MediaDesc"&gt;
+        &lt;xs:restriction base="xs:string"/&gt;
+    &lt;/xs:simpleType&gt;
+    &lt;!-- pixel, percentage, or relative --&gt;
+    &lt;xs:simpleType name="MultiLength"&gt;
+        &lt;xs:union memberTypes="xh11d:Length"&gt;
+            &lt;xs:simpleType&gt;
+                &lt;xs:restriction base="xs:token"&gt;
+                    &lt;xs:pattern value="\d*\*"/&gt;
+                &lt;/xs:restriction&gt;
+            &lt;/xs:simpleType&gt;
+        &lt;/xs:union&gt;
+    &lt;/xs:simpleType&gt;
+    &lt;!-- one or more digits (NUMBER) --&gt;
+    &lt;xs:simpleType name="Number"&gt;
+        &lt;xs:restriction base="xs:nonNegativeInteger"/&gt;
+    &lt;/xs:simpleType&gt;
+    &lt;!-- integer representing length in pixels --&gt;
+    &lt;xs:simpleType name="Pixels"&gt;
+        &lt;xs:restriction base="xs:nonNegativeInteger"/&gt;
+    &lt;/xs:simpleType&gt;
+    &lt;!-- script expression --&gt;
+    &lt;xs:simpleType name="Script"&gt;
+        &lt;xs:restriction base="xs:string"/&gt;
+    &lt;/xs:simpleType&gt;
+    &lt;!-- sixteen color names or RGB color expression--&gt;
+    &lt;xs:simpleType name="Color"&gt;
+        &lt;xs:union memberTypes="xs:NMTOKEN"&gt;
+            &lt;xs:simpleType&gt;
+                &lt;xs:restriction base="xs:token"&gt;
+                    &lt;xs:pattern value="#[0-9a-fA-F]{3}([0-9a-fA-F]{3})?"/&gt;
+                &lt;/xs:restriction&gt;
+            &lt;/xs:simpleType&gt;
+        &lt;/xs:union&gt;
+    &lt;/xs:simpleType&gt;
+    &lt;!-- textual content --&gt;
+    &lt;xs:simpleType name="Text"&gt;
+        &lt;xs:restriction base="xs:string"/&gt;
+    &lt;/xs:simpleType&gt;
+    &lt;!-- Imported Datatypes  --&gt;
+    &lt;!-- a single character, as per section 2.2 of [XML] --&gt;
+    &lt;xs:simpleType name="Character"&gt;
+        &lt;xs:restriction base="xs:string"&gt;
+            &lt;xs:length value="1" fixed="true"/&gt;
+        &lt;/xs:restriction&gt;
+    &lt;/xs:simpleType&gt;
+    &lt;!-- a character encoding, as per [RFC2045] --&gt;
+    &lt;xs:simpleType name="Charset"&gt;
+        &lt;xs:restriction base="xs:string"/&gt;
+    &lt;/xs:simpleType&gt;
+    &lt;!-- a space separated list of character encodings, as per [RFC2045] --&gt;
+    &lt;xs:simpleType name="Charsets"&gt;
+        &lt;xs:list itemType="Charset"/&gt;
+    &lt;/xs:simpleType&gt;
+    &lt;!-- media type, as per [RFC2045] --&gt;
+    &lt;xs:simpleType name="ContentType"&gt;
+        &lt;xs:restriction base="xs:string"/&gt;
+    &lt;/xs:simpleType&gt;
+    &lt;!-- comma-separated list of media types, as per [RFC2045] --&gt;
+    &lt;xs:simpleType name="ContentTypes"&gt;
+        &lt;xs:restriction base="xs:string"/&gt;
+    &lt;/xs:simpleType&gt;
+    &lt;!-- date and time information. ISO date format --&gt;
+    &lt;xs:simpleType name="Datetime"&gt;
+        &lt;xs:restriction base="xs:dateTime"/&gt;
+    &lt;/xs:simpleType&gt;
+    &lt;!-- formal public identifier, as per [ISO8879] --&gt;
+    &lt;xs:simpleType name="FPI"&gt;
+        &lt;xs:restriction base="xs:normalizedString"/&gt;
+    &lt;/xs:simpleType&gt;
+    &lt;!-- a window name as used in the target attribute --&gt;
+    &lt;xs:simpleType name="FrameTarget"&gt;
+      &lt;xs:union&gt;
+        &lt;xs:simpleType&gt;
+          &lt;xs:restriction base="xs:NMTOKEN"&gt;
+            &lt;xs:enumeration value="_blank"/&gt;
+            &lt;xs:enumeration value="_self"/&gt;
+            &lt;xs:enumeration value="_parent"/&gt;
+            &lt;xs:enumeration value="_top"/&gt;
+          &lt;/xs:restriction&gt;
+        &lt;/xs:simpleType&gt;
+        &lt;xs:simpleType&gt;
+          &lt;xs:restriction base="xs:string"&gt;
+            &lt;xs:pattern value="[a-zA-Z].*"/&gt;
+          &lt;/xs:restriction&gt;
+        &lt;/xs:simpleType&gt;
+      &lt;/xs:union&gt;
+    &lt;/xs:simpleType&gt;
+    &lt;!-- a language code, as per [RFC3066] --&gt;
+    &lt;xs:simpleType name="LanguageCode"&gt;
+        &lt;xs:restriction base="xs:language"/&gt;
+    &lt;/xs:simpleType&gt;
+    &lt;!-- a comma separated list of language ranges --&gt;
+    &lt;xs:simpleType name="LanguageCodes"&gt;
+        &lt;xs:restriction base="xs:string"/&gt;
+    &lt;/xs:simpleType&gt;
+    &lt;!-- a Uniform Resource Identifier, see [URI] --&gt;
+    &lt;xs:simpleType name="URI"&gt;
+        &lt;xs:restriction base="xs:anyURI"/&gt;
+    &lt;/xs:simpleType&gt;
+    &lt;!-- a space-separated list of Uniform Resource Identifiers, see [URI] --&gt;
+    &lt;xs:simpleType name="URIs"&gt;
+        &lt;xs:list itemType="xs:anyURI"/&gt;
+    &lt;/xs:simpleType&gt;
+    &lt;!-- comma-separated list of MultiLength --&gt;
+    &lt;xs:simpleType name="MultiLengths"&gt;
+        &lt;xs:restriction base="xs:string"/&gt;
+    &lt;/xs:simpleType&gt;
+    &lt;!-- character Data --&gt;
+    &lt;xs:simpleType name="CDATA"&gt;
+        &lt;xs:restriction base="xs:string"/&gt;
+    &lt;/xs:simpleType&gt;
+    &lt;!-- CURIE placeholder datatypes --&gt;
+    &lt;xs:simpleType name="CURIE"&gt;
+        &lt;xs:restriction base="xs:string"&gt;
+            &lt;xs:pattern value="(([\i-[:]][\c-[:]]*)?:)?.+" /&gt;
+            &lt;xs:minLength value="1"/&gt;
+        &lt;/xs:restriction&gt;
+    &lt;/xs:simpleType&gt; 
+    &lt;xs:simpleType name="CURIEs"&gt;
+        &lt;xs:list itemType="xh11d:CURIE"/&gt;
+    &lt;/xs:simpleType&gt;
+    &lt;xs:simpleType name="SafeCURIE"&gt;
+    &lt;xs:restriction base="xs:string"&gt;
+        &lt;xs:pattern value="\[(([\i-[:]][\c-[:]]*)?:)?.+\]" /&gt;
+        &lt;xs:minLength value="3"/&gt;
+    &lt;/xs:restriction&gt;
+    &lt;/xs:simpleType&gt;
+    &lt;xs:simpleType name="SafeCURIEs"&gt;
+        &lt;xs:list itemType="xh11d:SafeCURIE"/&gt;
+    &lt;/xs:simpleType&gt;
+    &lt;xs:simpleType name="URIorSafeCURIE"&gt;
+        &lt;xs:union memberTypes="xs:anyURI xh11d:SafeCURIE" /&gt;
+    &lt;/xs:simpleType&gt;
+    &lt;xs:simpleType name="URIorSafeCURIEs"&gt;
+        &lt;xs:list itemType="xh11d:URIorSafeCURIE"/&gt;
+    &lt;/xs:simpleType&gt;
+    &lt;xs:simpleType name="Encodings"&gt;
+        &lt;xs:restriction base="xs:string"/&gt;
+    &lt;/xs:simpleType&gt;
+    &lt;xs:simpleType name="HrefTarget"&gt;
+        &lt;xs:restriction base="xs:NMTOKEN"/&gt;
+    &lt;/xs:simpleType&gt;
+    &lt;xs:simpleType name="LocationPath"&gt;
+        &lt;xs:restriction base="xs:string"/&gt;
+    &lt;/xs:simpleType&gt;
+    &lt;xs:simpleType name="QName"&gt;
+        &lt;xs:restriction base="xs:string"/&gt;
+    &lt;/xs:simpleType&gt;
+    &lt;xs:simpleType name="QNames"&gt;
+        &lt;xs:list itemType="xh11d:QName"/&gt;
+    &lt;/xs:simpleType&gt;
+&lt;/xs:schema&gt;
+</pre>
+<!-- END OF FILE xhtml-datatypes-2.xsd.mhtml -->
+<h3 >
+<a id="a_smodule_Document_Module" >E.1.2.</a> Document Module
+</h3>
+<!-- INCLUDING SCHEMA xhtml-document-2.xsd -->
+<pre class="dtd">
+&lt;?xml version="1.0" encoding="UTF-8"?&gt;
+&lt;xs:schema
+    xmlns:xs="http://www.w3.org/2001/XMLSchema"
+    elementFormDefault="qualified"
+    xmlns:xh11d="http://www.w3.org/1999/xhtml/datatypes/"&gt;
+    &lt;xs:import
+        namespace="http://www.w3.org/1999/xhtml/datatypes/"
+        schemaLocation="xhtml-datatypes-2.xsd"/&gt;
+    &lt;xs:annotation&gt;
+        &lt;xs:documentation&gt;
+        This is the XML Schema Document Module for XHTML
+          * title, head, body, html
+        The Document Module defines the major structural elements and 
+        their attributes.
+        &#36;Id: xhtml-document-2.xsd,v 1.1.2.1 2009/01/18 20:55:12 ahby Exp &#36;     
+      &lt;/xs:documentation&gt;
+        &lt;xs:documentation source="xhtml-copyright-1.xsd"/&gt;
+        &lt;xs:documentation source="http://www.w3.org/TR/xhtml2#s_documentmodule"/&gt;
+    &lt;/xs:annotation&gt;
+    &lt;xs:import namespace="http://www.w3.org/XML/1998/namespace"
+        schemaLocation="http://www.w3.org/2001/xml.xsd"&gt;
+        &lt;xs:annotation&gt;
+            &lt;xs:documentation&gt;
+                This import brings in the XML namespace attributes
+                The module itself does not provide the schemaLocation
+                and expects the driver schema to provide the
+                actual SchemaLocation.
+            &lt;/xs:documentation&gt;
+        &lt;/xs:annotation&gt;
+    &lt;/xs:import&gt;
+    &lt;xs:attributeGroup
+        name="xhtml.title.attlist"&gt;
+        &lt;xs:attributeGroup
+            ref="xhtml.Common.attrib"/&gt;
+    &lt;/xs:attributeGroup&gt;
+    &lt;xs:group
+        name="xhtml.title.content"&gt;
+        &lt;xs:sequence/&gt;
+    &lt;/xs:group&gt;
+    &lt;xs:complexType
+        name="xhtml.title.type"
+        mixed="true"&gt;
+        &lt;xs:group
+            ref="xhtml.title.content"/&gt;
+        &lt;xs:attributeGroup
+            ref="xhtml.title.attlist"/&gt;
+    &lt;/xs:complexType&gt;
+    &lt;xs:attributeGroup
+        name="xhtml.profile.attrib"&gt;
+        &lt;xs:attribute
+            name="profile"
+            type="xh11d:URIs"/&gt;
+    &lt;/xs:attributeGroup&gt;
+    &lt;xs:attributeGroup
+        name="xhtml.head.attlist"&gt;
+        &lt;xs:attributeGroup
+            ref="xhtml.profile.attrib"/&gt;
+        &lt;xs:attributeGroup
+            ref="xhtml.Common.attrib"/&gt;
+    &lt;/xs:attributeGroup&gt;
+    &lt;xs:complexType
+        name="xhtml.head.type"&gt;
+        &lt;xs:group
+            ref="xhtml.head.content"/&gt;
+        &lt;xs:attributeGroup
+            ref="xhtml.head.attlist"/&gt;
+    &lt;/xs:complexType&gt;
+    &lt;xs:attributeGroup
+        name="xhtml.body.attlist"&gt;
+        &lt;xs:attributeGroup
+            ref="xhtml.Common.attrib"/&gt;
+    &lt;/xs:attributeGroup&gt;
+    &lt;xs:group
+        name="xhtml.body.content"&gt;
+        &lt;xs:sequence&gt;
+            &lt;xs:group
+                ref="xhtml.Structural.mix"
+                minOccurs="0"
+                maxOccurs="unbounded"/&gt;
+        &lt;/xs:sequence&gt;
+    &lt;/xs:group&gt;
+    &lt;xs:complexType
+        name="xhtml.body.type"&gt;
+        &lt;xs:group
+            ref="xhtml.body.content"/&gt;
+        &lt;xs:attributeGroup
+            ref="xhtml.body.attlist"/&gt;
+    &lt;/xs:complexType&gt;
+    &lt;xs:attributeGroup
+        name="xhtml.version.attrib"&gt;
+        &lt;xs:attribute
+            name="version"
+            type="xh11d:CDATA"/&gt;
+    &lt;/xs:attributeGroup&gt;
+    &lt;xs:attributeGroup
+        name="xhtml.html.attlist"&gt;
+        &lt;xs:attributeGroup
+            ref="xhtml.version.attrib"/&gt;
+        &lt;xs:attributeGroup
+            ref="xhtml.Common.attrib"/&gt;
+    &lt;/xs:attributeGroup&gt;
+    &lt;xs:group
+        name="xhtml.html.content"&gt;
+        &lt;xs:sequence&gt;
+            &lt;xs:element
+                name="head"
+                type="xhtml.head.type"/&gt;
+            &lt;xs:element
+                name="body"
+                type="xhtml.body.type"/&gt;
+        &lt;/xs:sequence&gt;
+    &lt;/xs:group&gt;
+    &lt;xs:complexType
+        name="xhtml.html.type"&gt;
+        &lt;xs:group
+            ref="xhtml.html.content"/&gt;
+        &lt;xs:attributeGroup
+            ref="xhtml.html.attlist"/&gt;
+    &lt;/xs:complexType&gt;
+&lt;/xs:schema&gt;
+</pre>
+<!-- END OF FILE xhtml-document-2.xsd.mhtml -->
+<h3 >
+<a id="a_smodule_Structural_Module" >E.1.3.</a> Structural Module
+</h3>
+<!-- INCLUDING SCHEMA xhtml-structural-2.xsd -->
+<pre class="dtd">
+&lt;?xml version="1.0" encoding="UTF-8"?&gt;
+&lt;xs:schema
+ xmlns:xs="http://www.w3.org/2001/XMLSchema"
+ elementFormDefault="qualified"
+ xmlns:xh11d="http://www.w3.org/1999/xhtml/datatypes/"
+&gt;
+    &lt;xs:import namespace="http://www.w3.org/1999/xhtml/datatypes/" 
+               schemaLocation="xhtml-datatypes-2.xsd" /&gt;
+    &lt;xs:annotation&gt;
+        &lt;xs:documentation&gt;
+          This is the XML Schema Structural module for XHTML
+          &#36;Id: xhtml-structural-2.xsd,v 1.1.2.3 2009/04/07 16:32:57 ahby Exp &#36;
+       &lt;/xs:documentation&gt;
+        &lt;xs:documentation source="xhtml-copyright-1.xsd"/&gt;
+    &lt;/xs:annotation&gt;
+    &lt;xs:annotation&gt;
+        &lt;xs:documentation&gt;
+           Structural
+           This module declares the elements and their attributes used to
+           support content structural markup.
+           * address, blockcode, blockquote, div, h,
+             p, pre, section, separator
+      &lt;/xs:documentation&gt;
+      &lt;xs:documentation source="http://www.w3.org/TR/xhtml2#s_structuralmodule"/&gt;
+    &lt;/xs:annotation&gt;
+  &lt;xs:import namespace="http://www.w3.org/XML/1998/namespace"
+             schemaLocation="http://www.w3.org/2001/xml.xsd"&gt;
+        &lt;xs:annotation&gt;
+            &lt;xs:documentation&gt;
+          This import brings in the XML namespace attributes 
+          The module itself does not provide the schemaLocation
+          and expects the driver schema to provide the 
+          actual SchemaLocation.
+        &lt;/xs:documentation&gt;
+        &lt;/xs:annotation&gt;
+    &lt;/xs:import&gt;
+    &lt;!-- address --&gt;
+    &lt;xs:attributeGroup name="xhtml.address.attlist"&gt;
+        &lt;xs:attributeGroup ref="xhtml.Common.attrib"/&gt;
+    &lt;/xs:attributeGroup&gt;
+    &lt;xs:group name="xhtml.address.content"&gt;
+        &lt;xs:sequence&gt;
+            &lt;xs:group ref="xhtml.Text.mix" minOccurs="0" maxOccurs="unbounded"/&gt;
+        &lt;/xs:sequence&gt;
+    &lt;/xs:group&gt;
+    &lt;xs:complexType name="xhtml.address.type" mixed="true"&gt;
+        &lt;xs:group ref="xhtml.address.content"/&gt;
+        &lt;xs:attributeGroup ref="xhtml.address.attlist"/&gt;
+    &lt;/xs:complexType&gt;
+    &lt;!-- blockquote --&gt;
+    &lt;xs:attributeGroup name="xhtml.blockquote.attlist"&gt;
+        &lt;xs:attributeGroup ref="xhtml.Common.attrib"/&gt;
+    &lt;/xs:attributeGroup&gt;
+    &lt;xs:group name="xhtml.blockquote.content"&gt;
+        &lt;xs:choice&gt;
+            &lt;xs:group ref="xhtml.Flow.mix" minOccurs="0" maxOccurs="unbounded"/&gt;
+        &lt;/xs:choice&gt;
+    &lt;/xs:group&gt;
+    &lt;xs:complexType name="xhtml.blockquote.type"&gt;
+        &lt;xs:group ref="xhtml.blockquote.content"/&gt;
+        &lt;xs:attributeGroup ref="xhtml.blockquote.attlist"/&gt;
+    &lt;/xs:complexType&gt;
+    &lt;!-- blockcode --&gt;
+    &lt;xs:attributeGroup name="xhtml.blockcode.attlist"&gt;
+        &lt;xs:attributeGroup ref="xhtml.Common.attrib"/&gt;
+    &lt;/xs:attributeGroup&gt;
+    &lt;xs:group name="xhtml.blockcode.content"&gt;
+        &lt;xs:choice&gt;
+            &lt;xs:group ref="xhtml.Flow.mix" minOccurs="0" maxOccurs="unbounded"/&gt;
+        &lt;/xs:choice&gt;
+    &lt;/xs:group&gt;
+    &lt;xs:complexType name="xhtml.blockcode.type"&gt;
+        &lt;xs:group ref="xhtml.blockcode.content"/&gt;
+        &lt;xs:attributeGroup ref="xhtml.blockcode.attlist"/&gt;
+    &lt;/xs:complexType&gt;
+    &lt;!-- div --&gt;
+    &lt;xs:attributeGroup name="xhtml.div.attlist"&gt;
+        &lt;xs:attributeGroup ref="xhtml.Common.attrib"/&gt;
+    &lt;/xs:attributeGroup&gt;
+    &lt;xs:group name="xhtml.div.content"&gt;
+        &lt;xs:choice&gt;
+            &lt;xs:group ref="xhtml.Flow.mix" minOccurs="0" maxOccurs="unbounded"/&gt;
+        &lt;/xs:choice&gt;
+    &lt;/xs:group&gt;
+    &lt;xs:complexType name="xhtml.div.type"&gt;
+        &lt;xs:group ref="xhtml.div.content"/&gt;
+        &lt;xs:attributeGroup ref="xhtml.div.attlist"/&gt;
+    &lt;/xs:complexType&gt;
+    &lt;!-- h --&gt;
+    &lt;xs:attributeGroup name="xhtml.h.attlist"&gt;
+        &lt;xs:attributeGroup ref="xhtml.Common.attrib"/&gt;
+    &lt;/xs:attributeGroup&gt;
+    &lt;xs:group name="xhtml.h.content"&gt;
+        &lt;xs:choice&gt;
+            &lt;xs:group ref="xhtml.Text.mix" minOccurs="0" maxOccurs="unbounded"/&gt;
+        &lt;/xs:choice&gt;
+    &lt;/xs:group&gt;
+    &lt;xs:complexType name="xhtml.h.type"&gt;
+        &lt;xs:group ref="xhtml.h.content"/&gt;
+        &lt;xs:attributeGroup ref="xhtml.h.attlist"/&gt;
+    &lt;/xs:complexType&gt;
+    &lt;!-- Heading Elements  --&gt;
+    &lt;xs:attributeGroup name="xhtml.heading.attlist"&gt;
+        &lt;xs:attributeGroup ref="xhtml.Common.attrib"/&gt;
+    &lt;/xs:attributeGroup&gt;
+    &lt;xs:complexType name="xhtml.heading.type" mixed="true"&gt;
+        &lt;xs:group ref="xhtml.Text.mix" minOccurs="0" maxOccurs="unbounded"/&gt;
+        &lt;xs:attributeGroup ref="xhtml.heading.attlist"/&gt;
+    &lt;/xs:complexType&gt;
+    &lt;!-- p --&gt;
+    &lt;xs:attributeGroup name="xhtml.p.attlist"&gt;
+        &lt;xs:attributeGroup ref="xhtml.Common.attrib"/&gt;
+    &lt;/xs:attributeGroup&gt;
+    &lt;xs:group name="xhtml.p.content"&gt;
+        &lt;xs:choice&gt;
+            &lt;xs:group ref="xhtml.Text.mix" minOccurs="0" maxOccurs="unbounded"/&gt;
+            &lt;xs:group ref="xhtml.List.mix" minOccurs="0" maxOccurs="unbounded"/&gt;
+            &lt;xs:element name="blockcode" type="xhtml.blockcode.type"/&gt;
+            &lt;xs:element name="blockquote" type="xhtml.blockquote.type"/&gt;
+            &lt;xs:element name="pre" type="xhtml.pre.type"/&gt;
+            &lt;xs:element name="table" type="xhtml.table.type"/&gt;
+        &lt;/xs:choice&gt;
+    &lt;/xs:group&gt;
+    &lt;xs:complexType name="xhtml.p.type" mixed="true"&gt;
+        &lt;xs:group ref="xhtml.p.content"/&gt;
+        &lt;xs:attributeGroup ref="xhtml.p.attlist"/&gt;
+    &lt;/xs:complexType&gt;
+    &lt;!-- pre --&gt;
+    &lt;xs:attributeGroup name="xhtml.pre.attlist"&gt;
+        &lt;xs:attributeGroup ref="xhtml.Common.attrib"/&gt;
+    &lt;/xs:attributeGroup&gt;
+    &lt;xs:group name="xhtml.pre.content"&gt;
+        &lt;xs:choice&gt;
+            &lt;xs:group ref="xhtml.Text.mix" minOccurs="0" maxOccurs="unbounded"/&gt;
+            &lt;xs:group ref="xhtml.List.mix" minOccurs="0" maxOccurs="unbounded"/&gt;
+        &lt;/xs:choice&gt;
+    &lt;/xs:group&gt;
+    &lt;xs:complexType name="xhtml.pre.type" mixed="true"&gt;
+        &lt;xs:group ref="xhtml.pre.content"/&gt;
+        &lt;xs:attributeGroup ref="xhtml.pre.attlist"/&gt;
+    &lt;/xs:complexType&gt;
+    &lt;!-- section --&gt;
+    &lt;xs:attributeGroup name="xhtml.section.attlist"&gt;
+        &lt;xs:attributeGroup ref="xhtml.Common.attrib"/&gt;
+    &lt;/xs:attributeGroup&gt;
+    &lt;xs:group name="xhtml.section.content"&gt;
+        &lt;xs:sequence&gt;
+            &lt;xs:group ref="xhtml.Flow.mix" minOccurs="0" maxOccurs="unbounded"/&gt;
+        &lt;/xs:sequence&gt;
+    &lt;/xs:group&gt;
+    &lt;xs:complexType name="xhtml.section.type" mixed="true"&gt;
+        &lt;xs:group ref="xhtml.section.content"/&gt;
+        &lt;xs:attributeGroup ref="xhtml.section.attlist"/&gt;
+    &lt;/xs:complexType&gt;
+    &lt;!-- separator --&gt;
+    &lt;xs:attributeGroup name="xhtml.separator.attlist"&gt;
+        &lt;xs:attributeGroup ref="xhtml.Common.attrib"/&gt;
+    &lt;/xs:attributeGroup&gt;
+    &lt;xs:group name="xhtml.separator.content"&gt;
+        &lt;xs:sequence/&gt;
+    &lt;/xs:group&gt;
+    &lt;xs:complexType name="xhtml.separator.type" mixed="true"&gt;
+        &lt;xs:group ref="xhtml.separator.content"/&gt;
+        &lt;xs:attributeGroup ref="xhtml.separator.attlist"/&gt;
+    &lt;/xs:complexType&gt;
+&lt;/xs:schema&gt;
+</pre>
+<!-- END OF FILE xhtml-structural-2.xsd.mhtml -->
+<h3 >
+<a id="a_smodule_Text_Module" >E.1.4.</a> Text Module
+</h3>
+<!-- INCLUDING SCHEMA xhtml-text-2.xsd -->
+<pre class="dtd">
+&lt;?xml version="1.0" encoding="UTF-8"?&gt;
+&lt;xs:schema
+ xmlns:xs="http://www.w3.org/2001/XMLSchema"
+ elementFormDefault="qualified"
+ xmlns:xh11d="http://www.w3.org/1999/xhtml/datatypes/"
+&gt;
+    &lt;xs:import namespace="http://www.w3.org/1999/xhtml/datatypes/" 
+               schemaLocation="xhtml-datatypes-2.xsd" /&gt;
+    &lt;xs:annotation&gt;
+        &lt;xs:documentation&gt;
+         This is the XML Schema Text module for XHTML
+         &#36;Id: xhtml-text-2.xsd,v 1.1.2.2 2009/03/10 14:57:54 ahby Exp &#36;
+    &lt;/xs:documentation&gt;
+        &lt;xs:documentation source="xhtml-copyright-1.xsd"/&gt;
+    &lt;/xs:annotation&gt;
+    &lt;xs:annotation&gt;
+        &lt;xs:documentation&gt;
+      Text
+      This module declares the elements and their attributes used to
+      support textual markup.
+      * abbr, cite, code, dfn, em, kbd, l, q, samp, span, strong, 
+        sub, sup, var
+      &#36;Id: xhtml-text-2.xsd,v 1.1.2.2 2009/03/10 14:57:54 ahby Exp &#36;
+    &lt;/xs:documentation&gt;
+    &lt;xs:documentation source="http://www.w3.org/TR/xhtml2#s_textmodule"/&gt;
+    &lt;/xs:annotation&gt;
+    &lt;xs:attributeGroup name="xhtml.abbr.attlist"&gt;
+        &lt;xs:attributeGroup ref="xhtml.Common.attrib"/&gt;
+        &lt;xs:attribute name="full" type="xs:IDREF"/&gt;
+    &lt;/xs:attributeGroup&gt;
+    &lt;xs:group name="xhtml.abbr.content"&gt;
+        &lt;xs:sequence&gt;
+            &lt;xs:group ref="xhtml.Text.mix" minOccurs="0" maxOccurs="unbounded"/&gt;
+        &lt;/xs:sequence&gt;
+    &lt;/xs:group&gt;
+    &lt;xs:complexType name="xhtml.abbr.type" mixed="true"&gt;
+        &lt;xs:group ref="xhtml.abbr.content"/&gt;
+        &lt;xs:attributeGroup ref="xhtml.abbr.attlist"/&gt;
+    &lt;/xs:complexType&gt;
+    &lt;xs:attributeGroup name="xhtml.cite.attlist"&gt;
+        &lt;xs:attributeGroup ref="xhtml.Common.attrib"/&gt;
+    &lt;/xs:attributeGroup&gt;
+    &lt;xs:group name="xhtml.cite.content"&gt;
+        &lt;xs:sequence&gt;
+            &lt;xs:group ref="xhtml.Text.mix" minOccurs="0" maxOccurs="unbounded"/&gt;
+        &lt;/xs:sequence&gt;
+    &lt;/xs:group&gt;
+    &lt;xs:complexType name="xhtml.cite.type" mixed="true"&gt;
+        &lt;xs:group ref="xhtml.cite.content"/&gt;
+        &lt;xs:attributeGroup ref="xhtml.cite.attlist"/&gt;
+    &lt;/xs:complexType&gt;
+    &lt;xs:attributeGroup name="xhtml.code.attlist"&gt;
+        &lt;xs:attributeGroup ref="xhtml.Common.attrib"/&gt;
+    &lt;/xs:attributeGroup&gt;
+    &lt;xs:group name="xhtml.code.content"&gt;
+        &lt;xs:sequence&gt;
+            &lt;xs:group ref="xhtml.Text.mix" minOccurs="0" maxOccurs="unbounded"/&gt;
+        &lt;/xs:sequence&gt;
+    &lt;/xs:group&gt;
+    &lt;xs:complexType name="xhtml.code.type" mixed="true"&gt;
+        &lt;xs:group ref="xhtml.code.content"/&gt;
+        &lt;xs:attributeGroup ref="xhtml.code.attlist"/&gt;
+    &lt;/xs:complexType&gt;
+    &lt;xs:attributeGroup name="xhtml.dfn.attlist"&gt;
+        &lt;xs:attributeGroup ref="xhtml.Common.attrib"/&gt;
+    &lt;/xs:attributeGroup&gt;
+    &lt;xs:group name="xhtml.dfn.content"&gt;
+        &lt;xs:sequence&gt;
+            &lt;xs:group ref="xhtml.Text.mix" minOccurs="0" maxOccurs="unbounded"/&gt;
+        &lt;/xs:sequence&gt;
+    &lt;/xs:group&gt;
+    &lt;xs:complexType name="xhtml.dfn.type" mixed="true"&gt;
+        &lt;xs:group ref="xhtml.dfn.content"/&gt;
+        &lt;xs:attributeGroup ref="xhtml.dfn.attlist"/&gt;
+    &lt;/xs:complexType&gt;
+    &lt;xs:attributeGroup name="xhtml.em.attlist"&gt;
+        &lt;xs:attributeGroup ref="xhtml.Common.attrib"/&gt;
+    &lt;/xs:attributeGroup&gt;
+    &lt;xs:group name="xhtml.em.content"&gt;
+        &lt;xs:sequence&gt;
+            &lt;xs:group ref="xhtml.Text.mix" minOccurs="0" maxOccurs="unbounded"/&gt;
+        &lt;/xs:sequence&gt;
+    &lt;/xs:group&gt;
+    &lt;xs:complexType name="xhtml.em.type" mixed="true"&gt;
+        &lt;xs:group ref="xhtml.em.content"/&gt;
+        &lt;xs:attributeGroup ref="xhtml.em.attlist"/&gt;
+    &lt;/xs:complexType&gt;
+    &lt;xs:attributeGroup name="xhtml.kbd.attlist"&gt;
+        &lt;xs:attributeGroup ref="xhtml.Common.attrib"/&gt;
+    &lt;/xs:attributeGroup&gt;
+    &lt;xs:group name="xhtml.kbd.content"&gt;
+        &lt;xs:sequence&gt;
+            &lt;xs:group ref="xhtml.Text.mix" minOccurs="0" maxOccurs="unbounded"/&gt;
+        &lt;/xs:sequence&gt;
+    &lt;/xs:group&gt;
+    &lt;xs:complexType name="xhtml.kbd.type" mixed="true"&gt;
+        &lt;xs:group ref="xhtml.kbd.content"/&gt;
+        &lt;xs:attributeGroup ref="xhtml.kbd.attlist"/&gt;
+    &lt;/xs:complexType&gt;
+    &lt;xs:attributeGroup name="xhtml.l.attlist"&gt;
+        &lt;xs:attributeGroup ref="xhtml.Common.attrib"/&gt;
+    &lt;/xs:attributeGroup&gt;
+    &lt;xs:group name="xhtml.l.content"&gt;
+        &lt;xs:sequence&gt;
+            &lt;xs:group ref="xhtml.Text.mix" minOccurs="0" maxOccurs="unbounded"/&gt;
+        &lt;/xs:sequence&gt;
+    &lt;/xs:group&gt;
+    &lt;xs:complexType name="xhtml.l.type" mixed="true"&gt;
+        &lt;xs:group ref="xhtml.l.content"/&gt;
+        &lt;xs:attributeGroup ref="xhtml.l.attlist"/&gt;
+    &lt;/xs:complexType&gt;
+    &lt;xs:attributeGroup name="xhtml.q.attlist"&gt;
+        &lt;xs:attributeGroup ref="xhtml.Common.attrib"/&gt;
+    &lt;/xs:attributeGroup&gt;
+    &lt;xs:group name="xhtml.q.content"&gt;
+        &lt;xs:sequence&gt;
+            &lt;xs:group ref="xhtml.Text.mix" minOccurs="0" maxOccurs="unbounded"/&gt;
+        &lt;/xs:sequence&gt;
+    &lt;/xs:group&gt;
+    &lt;xs:complexType name="xhtml.q.type" mixed="true"&gt;
+        &lt;xs:group ref="xhtml.q.content"/&gt;
+        &lt;xs:attributeGroup ref="xhtml.q.attlist"/&gt;
+    &lt;/xs:complexType&gt;
+    &lt;!-- samp --&gt;
+    &lt;xs:attributeGroup name="xhtml.samp.attlist"&gt;
+        &lt;xs:attributeGroup ref="xhtml.Common.attrib"/&gt;
+    &lt;/xs:attributeGroup&gt;
+    &lt;xs:group name="xhtml.samp.content"&gt;
+        &lt;xs:sequence&gt;
+            &lt;xs:group ref="xhtml.Text.mix" minOccurs="0" maxOccurs="unbounded"/&gt;
+        &lt;/xs:sequence&gt;
+    &lt;/xs:group&gt;
+    &lt;xs:complexType name="xhtml.samp.type" mixed="true"&gt;
+        &lt;xs:group ref="xhtml.samp.content"/&gt;
+        &lt;xs:attributeGroup ref="xhtml.samp.attlist"/&gt;
+    &lt;/xs:complexType&gt;
+    &lt;!-- span --&gt;
+    &lt;xs:attributeGroup name="xhtml.span.attlist"&gt;
+        &lt;xs:attributeGroup ref="xhtml.Common.attrib"/&gt;
+    &lt;/xs:attributeGroup&gt;
+    &lt;xs:group name="xhtml.span.content"&gt;
+        &lt;xs:sequence&gt;
+            &lt;xs:group ref="xhtml.Text.mix" minOccurs="0" maxOccurs="unbounded"/&gt;
+        &lt;/xs:sequence&gt;
+    &lt;/xs:group&gt;
+    &lt;xs:complexType name="xhtml.span.type" mixed="true"&gt;
+        &lt;xs:group ref="xhtml.span.content"/&gt;
+        &lt;xs:attributeGroup ref="xhtml.span.attlist"/&gt;
+    &lt;/xs:complexType&gt;
+    &lt;xs:attributeGroup name="xhtml.strong.attlist"&gt;
+        &lt;xs:attributeGroup ref="xhtml.Common.attrib"/&gt;
+    &lt;/xs:attributeGroup&gt;
+    &lt;xs:group name="xhtml.strong.content"&gt;
+        &lt;xs:sequence&gt;
+            &lt;xs:group ref="xhtml.Text.mix" minOccurs="0" maxOccurs="unbounded"/&gt;
+        &lt;/xs:sequence&gt;
+    &lt;/xs:group&gt;
+    &lt;xs:complexType name="xhtml.strong.type" mixed="true"&gt;
+        &lt;xs:group ref="xhtml.strong.content"/&gt;
+        &lt;xs:attributeGroup ref="xhtml.strong.attlist"/&gt;
+    &lt;/xs:complexType&gt;
+    &lt;xs:attributeGroup name="xhtml.sub.attlist"&gt;
+        &lt;xs:attributeGroup ref="xhtml.Common.attrib"/&gt;
+    &lt;/xs:attributeGroup&gt;
+    &lt;xs:group name="xhtml.sub.content"&gt;
+        &lt;xs:sequence&gt;
+            &lt;xs:group ref="xhtml.Text.mix" minOccurs="0" maxOccurs="unbounded"/&gt;
+        &lt;/xs:sequence&gt;
+    &lt;/xs:group&gt;
+    &lt;xs:complexType name="xhtml.sub.type" mixed="true"&gt;
+        &lt;xs:group ref="xhtml.sub.content"/&gt;
+        &lt;xs:attributeGroup ref="xhtml.sub.attlist"/&gt;
+    &lt;/xs:complexType&gt;
+    &lt;xs:attributeGroup name="xhtml.sup.attlist"&gt;
+        &lt;xs:attributeGroup ref="xhtml.Common.attrib"/&gt;
+    &lt;/xs:attributeGroup&gt;
+    &lt;xs:group name="xhtml.sup.content"&gt;
+        &lt;xs:sequence&gt;
+            &lt;xs:group ref="xhtml.Text.mix" minOccurs="0" maxOccurs="unbounded"/&gt;
+        &lt;/xs:sequence&gt;
+    &lt;/xs:group&gt;
+    &lt;xs:complexType name="xhtml.sup.type" mixed="true"&gt;
+        &lt;xs:group ref="xhtml.sup.content"/&gt;
+        &lt;xs:attributeGroup ref="xhtml.sup.attlist"/&gt;
+    &lt;/xs:complexType&gt;
+    &lt;xs:attributeGroup name="xhtml.var.attlist"&gt;
+        &lt;xs:attributeGroup ref="xhtml.Common.attrib"/&gt;
+    &lt;/xs:attributeGroup&gt;
+    &lt;xs:group name="xhtml.var.content"&gt;
+        &lt;xs:sequence&gt;
+            &lt;xs:group ref="xhtml.Text.mix" minOccurs="0" maxOccurs="unbounded"/&gt;
+        &lt;/xs:sequence&gt;
+    &lt;/xs:group&gt;
+    &lt;xs:complexType name="xhtml.var.type" mixed="true"&gt;
+        &lt;xs:group ref="xhtml.var.content"/&gt;
+        &lt;xs:attributeGroup ref="xhtml.var.attlist"/&gt;
+    &lt;/xs:complexType&gt;
+&lt;/xs:schema&gt;
+</pre>
+<!-- END OF FILE xhtml-text-2.xsd.mhtml -->
+<h3 >
+<a id="a_smodule_Hypertext_Module" >E.1.5.</a> Hypertext Module
+</h3>
+<!-- INCLUDING SCHEMA xhtml-hypertext-2.xsd -->
+<pre class="dtd">
+&lt;?xml version="1.0" encoding="UTF-8"?&gt;
+&lt;xs:schema
+ xmlns:xs="http://www.w3.org/2001/XMLSchema"
+ elementFormDefault="qualified"
+ xmlns:xh11d="http://www.w3.org/1999/xhtml/datatypes/"
+&gt;
+    &lt;xs:import namespace="http://www.w3.org/1999/xhtml/datatypes/" 
+               schemaLocation="xhtml-datatypes-2.xsd" /&gt;
+    &lt;xs:annotation&gt;
+        &lt;xs:documentation&gt;
+      Hypertext Module
+      This is the XML Schema Hypertext module for XHTML
+        * a
+      This module declares the anchor ('a') element type, which
+      defines the source of a hypertext link. The destination
+      (or link 'target') is identified via its 'id' attribute 
+      rather than the 'name' attribute as was used in HTML.
+      &#36;Id: xhtml-hypertext-2.xsd,v 1.1.2.1 2009/01/18 20:55:12 ahby Exp &#36;
+    &lt;/xs:documentation&gt;
+        &lt;xs:documentation source="xhtml-copyright-1.xsd"/&gt;
+        &lt;xs:documentation source="http://www.w3.org/TR/2001/REC-xhtml-modularization-20010410/abstract_modules.html#s_hypertextmodule"/&gt;
+    &lt;/xs:annotation&gt;
+    &lt;xs:attributeGroup name="xhtml.a.attlist"&gt;
+        &lt;xs:attributeGroup ref="xhtml.Common.attrib"/&gt;
+    &lt;/xs:attributeGroup&gt;
+    &lt;xs:group name="xhtml.a.content"&gt;
+        &lt;xs:sequence&gt;
+            &lt;xs:group ref="xhtml.Text.mix" minOccurs="0" maxOccurs="unbounded"/&gt;
+        &lt;/xs:sequence&gt;
+    &lt;/xs:group&gt;
+    &lt;xs:complexType name="xhtml.a.type" mixed="true"&gt;
+        &lt;xs:group ref="xhtml.a.content"/&gt;
+        &lt;xs:attributeGroup ref="xhtml.a.attlist"/&gt;
+    &lt;/xs:complexType&gt;
+&lt;/xs:schema&gt;
+</pre>
+<!-- END OF FILE xhtml-hypertext-2.xsd.mhtml -->
+<h3 >
+<a id="a_smodule_List_Module" >E.1.6.</a> List Module
+</h3>
+<!-- INCLUDING SCHEMA xhtml-list-2.xsd -->
+<pre class="dtd">
+&lt;?xml version="1.0" encoding="UTF-8"?&gt;
+&lt;xs:schema
+ xmlns:xs="http://www.w3.org/2001/XMLSchema"
+ elementFormDefault="qualified"
+ xmlns:xh11d="http://www.w3.org/1999/xhtml/datatypes/"
+&gt;
+    &lt;xs:import namespace="http://www.w3.org/1999/xhtml/datatypes/" 
+               schemaLocation="xhtml-datatypes-2.xsd" /&gt;
+    &lt;xs:annotation&gt;
+        &lt;xs:documentation&gt;
+      List Module
+      This is the XML Schema Lists module for XHTML
+      List Module Elements
+        * dl, di, dt, dd, ol, ul, li
+      This module declares the list-oriented element types
+      and their attributes.
+      &#36;Id: xhtml-list-2.xsd,v 1.1.2.4 2009/04/07 14:13:23 ahby Exp &#36;      
+    &lt;/xs:documentation&gt;
+        &lt;xs:documentation source="xhtml-copyright-1.xsd"/&gt;
+        &lt;xs:documentation source="http://www.w3.org/TR/xhtml2#s_listmodule"/&gt;
+    &lt;/xs:annotation&gt;
+    &lt;!-- dt --&gt;
+    &lt;xs:attributeGroup name="xhtml.dt.attlist"&gt;
+        &lt;xs:attributeGroup ref="xhtml.Common.attrib"/&gt;
+    &lt;/xs:attributeGroup&gt;
+    &lt;xs:group name="xhtml.dt.content"&gt;
+        &lt;xs:sequence&gt;
+            &lt;xs:group ref="xhtml.Text.mix" minOccurs="0" maxOccurs="unbounded"/&gt;
+        &lt;/xs:sequence&gt;
+    &lt;/xs:group&gt;
+    &lt;xs:complexType name="xhtml.dt.type" mixed="true"&gt;
+        &lt;xs:group ref="xhtml.dt.content"/&gt;
+        &lt;xs:attributeGroup ref="xhtml.dt.attlist"/&gt;
+    &lt;/xs:complexType&gt;
+    &lt;!-- dd --&gt;
+    &lt;xs:attributeGroup name="xhtml.dd.attlist"&gt;
+        &lt;xs:attributeGroup ref="xhtml.Common.attrib"/&gt;
+    &lt;/xs:attributeGroup&gt;
+    &lt;xs:group name="xhtml.dd.content"&gt;
+        &lt;xs:sequence&gt;
+            &lt;xs:group ref="xhtml.Flow.mix" minOccurs="0" maxOccurs="unbounded"/&gt;
+        &lt;/xs:sequence&gt;
+    &lt;/xs:group&gt;
+    &lt;xs:complexType name="xhtml.dd.type" mixed="true"&gt;
+        &lt;xs:group ref="xhtml.dd.content"/&gt;
+        &lt;xs:attributeGroup ref="xhtml.dd.attlist"/&gt;
+    &lt;/xs:complexType&gt;
+    &lt;!-- di --&gt;
+    &lt;xs:attributeGroup name="xhtml.di.attlist"&gt;
+        &lt;xs:attributeGroup ref="xhtml.Common.attrib"/&gt;
+    &lt;/xs:attributeGroup&gt;
+    &lt;xs:group name="xhtml.di.content"&gt;
+        &lt;xs:sequence&gt;
+            &lt;xs:element name="dt" type="xhtml.dt.type" minOccurs="1" maxOccurs="unbounded"/&gt;
+            &lt;xs:element name="dd" type="xhtml.dd.type" minOccurs="0" maxOccurs="unbounded"/&gt;
+        &lt;/xs:sequence&gt;
+    &lt;/xs:group&gt;
+    &lt;xs:complexType name="xhtml.di.type" mixed="true"&gt;
+        &lt;xs:group ref="xhtml.di.content"/&gt;
+        &lt;xs:attributeGroup ref="xhtml.di.attlist"/&gt;
+    &lt;/xs:complexType&gt;
+    &lt;!-- dl --&gt;
+    &lt;xs:attributeGroup name="xhtml.dl.attlist"&gt;
+        &lt;xs:attributeGroup ref="xhtml.Common.attrib"/&gt;
+    &lt;/xs:attributeGroup&gt;
+    &lt;xs:group name="xhtml.dl.content"&gt;
+        &lt;xs:sequence&gt;
+            &lt;xs:element name="title" type="xhtml.title.type" minOccurs="0" maxOccurs="1"/&gt;
+            &lt;xs:element name="caption" type="xhtml.caption.type" minOccurs="0" maxOccurs="1"/&gt;
+            &lt;xs:choice maxOccurs="unbounded"&gt;
+                &lt;xs:choice minOccurs="1" maxOccurs="unbounded"&gt;
+                    &lt;xs:element name="dt" type="xhtml.dt.type"/&gt;
+                    &lt;xs:element name="dd" type="xhtml.dd.type"/&gt;
+                &lt;/xs:choice&gt;
+                &lt;xs:element name="di" type="xhtml.di.type" minOccurs="1" maxOccurs="unbounded" /&gt;
+            &lt;/xs:choice&gt;
+        &lt;/xs:sequence&gt;
+    &lt;/xs:group&gt;
+    &lt;xs:complexType name="xhtml.dl.type"&gt;
+        &lt;xs:group ref="xhtml.dl.content"/&gt;
+        &lt;xs:attributeGroup ref="xhtml.dl.attlist"/&gt;
+    &lt;/xs:complexType&gt;
+    &lt;!-- li --&gt;
+    &lt;xs:attributeGroup name="xhtml.li.attlist"&gt;
+        &lt;xs:attributeGroup ref="xhtml.Common.attrib"/&gt;
+    &lt;/xs:attributeGroup&gt;
+    &lt;xs:group name="xhtml.li.content"&gt;
+        &lt;xs:sequence&gt;
+            &lt;xs:group ref="xhtml.Flow.mix" minOccurs="0" maxOccurs="unbounded"/&gt;
+        &lt;/xs:sequence&gt;
+    &lt;/xs:group&gt;
+    &lt;xs:complexType name="xhtml.li.type" mixed="true"&gt;
+        &lt;xs:group ref="xhtml.li.content"/&gt;
+        &lt;xs:attributeGroup ref="xhtml.li.attlist"/&gt;
+    &lt;/xs:complexType&gt;
+    &lt;!-- ol --&gt;
+    &lt;xs:attributeGroup name="xhtml.ol.attlist"&gt;
+        &lt;xs:attributeGroup ref="xhtml.Common.attrib"/&gt;
+    &lt;/xs:attributeGroup&gt;
+    &lt;xs:group name="xhtml.ol.content"&gt;
+        &lt;xs:sequence&gt;
+            &lt;xs:element name="title" type="xhtml.title.type" minOccurs="0" maxOccurs="1"/&gt;
+            &lt;xs:element name="caption" type="xhtml.caption.type" minOccurs="0" maxOccurs="1"/&gt;
+            &lt;xs:element name="li" type="xhtml.li.type" maxOccurs="unbounded"/&gt;
+        &lt;/xs:sequence&gt;
+    &lt;/xs:group&gt;
+    &lt;xs:complexType name="xhtml.ol.type"&gt;
+        &lt;xs:group ref="xhtml.ol.content"/&gt;
+        &lt;xs:attributeGroup ref="xhtml.ol.attlist"/&gt;
+    &lt;/xs:complexType&gt;
+    &lt;xs:attributeGroup name="xhtml.ul.attlist"&gt;
+        &lt;xs:attributeGroup ref="xhtml.Common.attrib"/&gt;
+    &lt;/xs:attributeGroup&gt;
+    &lt;xs:group name="xhtml.ul.content"&gt;
+        &lt;xs:sequence&gt;
+            &lt;xs:element name="title" type="xhtml.title.type" minOccurs="0" maxOccurs="1"/&gt;
+            &lt;xs:element name="caption" type="xhtml.caption.type" minOccurs="0" maxOccurs="1"/&gt;
+            &lt;xs:element name="li" type="xhtml.li.type" maxOccurs="unbounded"/&gt;
+        &lt;/xs:sequence&gt;
+    &lt;/xs:group&gt;
+    &lt;xs:complexType name="xhtml.ul.type"&gt;
+        &lt;xs:group ref="xhtml.ul.content"/&gt;
+        &lt;xs:attributeGroup ref="xhtml.ul.attlist"/&gt;
+    &lt;/xs:complexType&gt;
+&lt;/xs:schema&gt;
+</pre>
+<!-- END OF FILE xhtml-list-2.xsd.mhtml -->
+<h3 >
+<a id="a_smodule_Core_Attributes_Module" >E.1.7.</a> Core Attributes Module
+</h3>
+<!-- INCLUDING SCHEMA xhtml-core-2.xsd -->
+<pre class="dtd">
+&lt;?xml version="1.0" encoding="UTF-8"?&gt;
+&lt;xs:schema
+ xmlns:xs="http://www.w3.org/2001/XMLSchema"
+ elementFormDefault="qualified"
+ xmlns:xh11d="http://www.w3.org/1999/xhtml/datatypes/"
+&gt;
+    &lt;xs:import namespace="http://www.w3.org/1999/xhtml/datatypes/" 
+               schemaLocation="xhtml-datatypes-2.xsd" /&gt;
+    &lt;xs:annotation&gt;
+        &lt;xs:documentation&gt;
+      This is the XML Schema core attributes module for XHTML
+      &#36;Id: xhtml-core-2.xsd,v 1.1.2.1 2009/01/18 20:55:12 ahby Exp &#36;
+    &lt;/xs:documentation&gt;
+        &lt;xs:documentation source="xhtml-copyright-1.xsd"/&gt;
+        &lt;xs:documentation source="http://www.w3.org/TR/xhtml2/mod-core.html"/&gt;
+    &lt;/xs:annotation&gt;
+  &lt;xs:import namespace="http://www.w3.org/XML/1998/namespace"
+             schemaLocation="http://www.w3.org/2001/xml.xsd"&gt;
+        &lt;xs:annotation&gt;
+            &lt;xs:documentation&gt;
+        This import brings in the XML namespace attributes
+        The module itself does not provide the schemaLocation
+        and expects the driver schema to provide the
+        actual SchemaLocation.
+      &lt;/xs:documentation&gt;
+        &lt;/xs:annotation&gt;
+    &lt;/xs:import&gt;
+    &lt;xs:attributeGroup name="xhtml.id"&gt;
+        &lt;xs:attribute name="id" type="xs:ID"/&gt;
+    &lt;/xs:attributeGroup&gt;
+    &lt;xs:attributeGroup name="xhtml.class"&gt;
+        &lt;xs:attribute name="class" type="xs:NMTOKENS"/&gt;
+    &lt;/xs:attributeGroup&gt;
+    &lt;xs:simpleType name="xhtml.layout.Datatype"&gt;
+        &lt;xs:restriction base="xs:NMTOKEN"&gt;
+            &lt;xs:enumeration value="relevant"/&gt;
+            &lt;xs:enumeration value="irrelevant"/&gt;
+        &lt;/xs:restriction&gt;
+    &lt;/xs:simpleType&gt;
+    &lt;xs:attributeGroup name="xhtml.layout"&gt;
+        &lt;xs:attribute name="layout" type="xhtml.layout.Datatype" default="irrelevant"/&gt;
+    &lt;/xs:attributeGroup&gt;
+    &lt;xs:attributeGroup name="xhtml.title"&gt;
+        &lt;xs:attribute name="title" type="xs:string"/&gt;
+    &lt;/xs:attributeGroup&gt;
+    &lt;xs:attributeGroup name="xhtml.Core.attrib"&gt;
+        &lt;!-- &lt;xs:attribute ref="xml:space" fixed="preserve"/&gt; --&gt;
+        &lt;xs:attributeGroup ref="xhtml.id"/&gt;
+        &lt;xs:attributeGroup ref="xhtml.class"/&gt;
+        &lt;xs:attributeGroup ref="xhtml.layout"/&gt;
+        &lt;xs:attributeGroup ref="xhtml.title"/&gt;
+        &lt;xs:attributeGroup ref="xhtml.Core.extra.attrib"/&gt;
+    &lt;/xs:attributeGroup&gt;
+    &lt;!-- Global attributes --&gt;
+    &lt;xs:attribute name="id" type="xs:ID"/&gt;
+    &lt;xs:attribute name="class" type="xs:NMTOKENS"/&gt;
+    &lt;xs:attribute name="title" type="xs:string"/&gt;
+    &lt;xs:attribute name="layout" type="xhtml.layout.Datatype"/&gt;
+    &lt;xs:attributeGroup name="xhtml.Global.Core.attrib"&gt;
+        &lt;xs:attribute ref="id"/&gt;
+        &lt;xs:attribute ref="class"/&gt;
+        &lt;xs:attribute ref="layout"/&gt;
+        &lt;xs:attribute ref="title"/&gt;
+        &lt;xs:attributeGroup ref="xhtml.Global.Core.extra.attrib" /&gt;
+    &lt;/xs:attributeGroup&gt;
+&lt;/xs:schema&gt;
+</pre>
+<!-- END OF FILE xhtml-core-2.xsd.mhtml -->
+<h3 >
+<a id="a_smodule_Hypertext_Attributes_Module" >E.1.8.</a> Hypertext Attributes Module
+</h3>
+<!-- INCLUDING SCHEMA xhtml-hyperAttributes-2.xsd -->
+<pre class="dtd">
+&lt;?xml version="1.0" encoding="UTF-8"?&gt;
+&lt;xs:schema
+ xmlns:xs="http://www.w3.org/2001/XMLSchema"
+ elementFormDefault="qualified"
+ xmlns:xh11d="http://www.w3.org/1999/xhtml/datatypes/"
+&gt;
+    &lt;xs:import namespace="http://www.w3.org/1999/xhtml/datatypes/" 
+               schemaLocation="xhtml-datatypes-2.xsd" /&gt;
+    &lt;xs:annotation&gt;
+        &lt;xs:documentation&gt;
+      Hypertext Attributes Module
+      This is the XML Schema Hypertext Attributes module for XHTML
+      * cite, href, hreflang, hrefmedia, hreftype, nextfocus, prevfocus, 
+        and xml:base
+        This module declares attributes and the Hypertext attribute
+        collection.
+      &#36;Id: xhtml-hyperAttributes-2.xsd,v 1.1.2.2 2009/03/10 14:57:54 ahby Exp &#36;
+    &lt;/xs:documentation&gt;
+        &lt;xs:documentation source="xhtml-copyright-1.xsd"/&gt;
+        &lt;xs:documentation source="http://www.w3.org/TR/2001/REC-xhtml-modularization-20010410/abstract_modules.html#s_hypertextmodule"/&gt;
+    &lt;/xs:annotation&gt;
+    &lt;xs:attributeGroup name="xhtml.Hypertext.attrib"&gt;
+        &lt;xs:attribute name="cite" type="xh11d:URI"/&gt;
+        &lt;xs:attribute name="href" type="xh11d:URI"/&gt;
+        &lt;xs:attribute name="hreflang" type="xh11d:LanguageCodes"/&gt;
+        &lt;xs:attribute name="hrefmedia" type="xh11d:MediaDesc"/&gt;
+        &lt;xs:attribute name="hreftype" type="xh11d:ContentTypes"/&gt;
+        &lt;xs:attribute name="nextfocus" type="xs:IDREF"/&gt;
+        &lt;xs:attribute name="prevfocus" type="xs:IDREF"/&gt;
+        &lt;xs:attributeGroup ref="xhtml.Hypertext.extra.attrib" /&gt;
+    &lt;/xs:attributeGroup&gt;
+    &lt;!-- global attributes --&gt;
+    &lt;xs:attribute name="cite" type="xh11d:URI"/&gt;
+    &lt;xs:attribute name="href" type="xh11d:URI"/&gt;
+    &lt;xs:attribute name="hreflang" type="xh11d:LanguageCodes"/&gt;
+    &lt;xs:attribute name="hrefmedia" type="xh11d:MediaDesc"/&gt;
+    &lt;xs:attribute name="hreftype" type="xh11d:ContentTypes"/&gt;
+    &lt;xs:attribute name="nextfocus" type="xs:IDREF"/&gt;
+    &lt;xs:attribute name="prevfocus" type="xs:IDREF"/&gt;
+    &lt;xs:attributeGroup name="xhtml.Global.Hypertext.attrib"&gt;
+        &lt;xs:attribute ref="cite" /&gt;
+        &lt;xs:attribute ref="href" /&gt;
+        &lt;xs:attribute ref="hreflang" /&gt;
+        &lt;xs:attribute ref="hrefmedia" /&gt;
+        &lt;xs:attribute ref="hreftype" /&gt;
+        &lt;xs:attribute ref="nextfocus" /&gt;
+        &lt;xs:attribute ref="prevfocus" /&gt;
+        &lt;xs:attributeGroup ref="xhtml.Global.Hypertext.extra.attrib" /&gt;
+    &lt;/xs:attributeGroup&gt;
+&lt;/xs:schema&gt;
+</pre>
+<!-- END OF FILE xhtml-hyperAttributes-2.xsd.mhtml -->
+<h3 >
+<a id="a_smodule_I18N_Attribute_Module" >E.1.9.</a> I18N Attribute Module
+</h3>
+<!-- INCLUDING SCHEMA xhtml-i18n-2.xsd -->
+<pre class="dtd">
+&lt;?xml version="1.0" encoding="UTF-8"?&gt;
+&lt;xs:schema
+ xmlns:xs="http://www.w3.org/2001/XMLSchema"
+ elementFormDefault="qualified"
+ xmlns:xh11d="http://www.w3.org/1999/xhtml/datatypes/"
+&gt;
+    &lt;xs:import namespace="http://www.w3.org/1999/xhtml/datatypes/" 
+               schemaLocation="xhtml-datatypes-2.xsd" /&gt;
+    &lt;xs:annotation&gt;
+        &lt;xs:documentation&gt;
+      This is the XML Schema I18N attributes module for XHTML
+      &#36;Id: xhtml-i18n-2.xsd,v 1.1.2.1 2009/01/18 20:55:12 ahby Exp &#36;
+    &lt;/xs:documentation&gt;
+        &lt;xs:documentation source="xhtml-copyright-1.xsd"/&gt;
+        &lt;xs:documentation source="http://www.w3.org/TR/xhtml2/mod-i18n.html"/&gt;
+    &lt;/xs:annotation&gt;
+  &lt;xs:import namespace="http://www.w3.org/XML/1998/namespace"
+             schemaLocation="http://www.w3.org/2001/xml.xsd"&gt;
+        &lt;xs:annotation&gt;
+            &lt;xs:documentation&gt;
+        This import brings in the XML namespace attributes
+        The module itself does not provide the schemaLocation
+        and expects the driver schema to provide the
+        actual SchemaLocation.
+      &lt;/xs:documentation&gt;
+        &lt;/xs:annotation&gt;
+    &lt;/xs:import&gt;
+    &lt;xs:attributeGroup name="xhtml.I18n.attrib"&gt;
+        &lt;xs:attribute ref="xml:lang" /&gt;
+        &lt;xs:attributeGroup ref="xhtml.I18n.extra.attrib"/&gt;
+    &lt;/xs:attributeGroup&gt;
+&lt;/xs:schema&gt;
+</pre>
+<!-- END OF FILE xhtml-i18n-2.xsd.mhtml -->
+<h2 >
+<a id="sec_E.2." >E.2.</a> Optional Modules
+</h2>
+<h3 >
+<a id="a_smodule_Bi-directional_Text_Module" >E.2.1.</a> Bi-directional Text Module
+</h3>
+<!-- INCLUDING SCHEMA xhtml-bidi-2.xsd -->
+<pre class="dtd">
+&lt;?xml version="1.0" encoding="UTF-8"?&gt;
+&lt;xs:schema
+ xmlns:xs="http://www.w3.org/2001/XMLSchema"
+ elementFormDefault="qualified"
+ xmlns:xh11d="http://www.w3.org/1999/xhtml/datatypes/"
+&gt;
+    &lt;xs:import namespace="http://www.w3.org/1999/xhtml/datatypes/" 
+               schemaLocation="xhtml-datatypes-2.xsd" /&gt;
+    &lt;xs:annotation&gt;
+        &lt;xs:documentation&gt;
+      This is the XML Schema Bidirectional Text attribute module for XHTML
+      &#36;Id: xhtml-bidi-2.xsd,v 1.1.2.1 2009/01/18 20:55:12 ahby Exp &#36;
+    &lt;/xs:documentation&gt;
+        &lt;xs:documentation source="xhtml-copyright-1.xsd"/&gt;
+        &lt;xs:documentation source="http://www.w3.org/TR/xhtml2/mod-bidi.html"/&gt;
+    &lt;/xs:annotation&gt;
+  &lt;xs:import namespace="http://www.w3.org/XML/1998/namespace"
+             schemaLocation="http://www.w3.org/2001/xml.xsd"&gt;
+        &lt;xs:annotation&gt;
+            &lt;xs:documentation&gt;
+        This import brings in the XML namespace attributes
+        The module itself does not provide the schemaLocation
+        and expects the driver schema to provide the
+        actual SchemaLocation.
+      &lt;/xs:documentation&gt;
+        &lt;/xs:annotation&gt;
+  &lt;/xs:import&gt;
+    &lt;xs:simpleType name="xhtml.Direction.datatype"&gt;
+        &lt;xs:restriction base="xs:NMTOKEN"&gt;
+            &lt;xs:enumeration value="ltr"/&gt;
+            &lt;xs:enumeration value="rtl"/&gt;
+            &lt;xs:enumeration value="lro"/&gt;
+            &lt;xs:enumeration value="rlo"/&gt;
+        &lt;/xs:restriction&gt;
+    &lt;/xs:simpleType&gt;
+    &lt;xs:attributeGroup name="xhtml.Bidi.attrib"&gt;
+        &lt;xs:attribute name="dir" default="ltr" type="xhtml.Direction.datatype"/&gt; 
+    &lt;/xs:attributeGroup&gt;
+&lt;/xs:schema&gt;
+</pre>
+<!-- END OF FILE xhtml-bidi-2.xsd.mhtml -->
+<h3 >
+<a id="a_smodule_Caption_Module" >E.2.2.</a> Caption Module
+</h3>
+<!-- INCLUDING SCHEMA xhtml-caption-2.xsd -->
+<pre class="dtd">
+&lt;?xml version="1.0" encoding="UTF-8"?&gt;
+&lt;xs:schema
+ xmlns:xs="http://www.w3.org/2001/XMLSchema"
+ elementFormDefault="qualified"
+ xmlns:xh11d="http://www.w3.org/1999/xhtml/datatypes/"
+&gt;
+    &lt;xs:import namespace="http://www.w3.org/1999/xhtml/datatypes/" 
+               schemaLocation="xhtml-datatypes-2.xsd" /&gt;
+    &lt;xs:annotation&gt;
+        &lt;xs:documentation&gt;
+          This is the XML Schema Caption module for XHTML
+          &#36;Id: xhtml-caption-2.xsd,v 1.1.2.1 2009/01/18 20:55:12 ahby Exp &#36;
+        &lt;/xs:documentation&gt;
+        &lt;xs:documentation source="xhtml-copyright-1.xsd"/&gt;
+    &lt;/xs:annotation&gt;
+    &lt;xs:annotation&gt;
+        &lt;xs:documentation&gt;
+           * caption
+           This module declares the caption element.
+        &lt;/xs:documentation&gt;
+        &lt;xs:documentation source="http://www.w3.org/TR/2001/REC-xhtml-modularization-20010410/abstract_modules.html#s_tablemodule"/&gt;
+    &lt;/xs:annotation&gt;
+    &lt;xs:attributeGroup name="xhtml.caption.attlist"&gt;
+        &lt;xs:attributeGroup ref="xhtml.Common.attrib"/&gt;
+    &lt;/xs:attributeGroup&gt;
+    &lt;xs:group name="xhtml.caption.content"&gt;
+        &lt;xs:sequence&gt;
+            &lt;xs:group ref="xhtml.Flow.mix" minOccurs="0" maxOccurs="unbounded"/&gt;
+        &lt;/xs:sequence&gt;
+    &lt;/xs:group&gt;
+    &lt;xs:complexType name="xhtml.caption.type" mixed="true"&gt;
+        &lt;xs:group ref="xhtml.caption.content"/&gt;
+        &lt;xs:attributeGroup ref="xhtml.caption.attlist"/&gt;
+    &lt;/xs:complexType&gt;
+&lt;/xs:schema&gt;
+</pre>
+<!-- END OF FILE xhtml-caption-2.xsd.mhtml -->
+<h3 >
+<a id="a_smodule_Edit_Attributes_Module" >E.2.3.</a> Edit Attributes Module
+</h3>
+<!-- INCLUDING SCHEMA xhtml-edit-2.xsd -->
+<pre class="dtd">
+&lt;?xml version="1.0" encoding="UTF-8"?&gt;
+&lt;xs:schema
+ xmlns:xs="http://www.w3.org/2001/XMLSchema"
+ elementFormDefault="qualified"
+ xmlns:xh11d="http://www.w3.org/1999/xhtml/datatypes/"
+&gt;
+    &lt;xs:import namespace="http://www.w3.org/1999/xhtml/datatypes/" 
+               schemaLocation="xhtml-datatypes-2.xsd" /&gt;
+    &lt;xs:annotation&gt;
+        &lt;xs:documentation&gt;
+          Editing Elements
+          This is the XML Schema Editing Markup module for XHTML
+           * edit, datetime
+         This module declares attributes used to indicate
+         inserted and deleted content while editing a document.
+          &#36;Id: xhtml-edit-2.xsd,v 1.1.2.2 2009/01/16 17:50:25 ahby Exp &#36;
+        &lt;/xs:documentation&gt;
+        &lt;xs:documentation source="xhtml-copyright-1.xsd"/&gt;
+        &lt;xs:documentation source="http://www.w3.org/TR/2001/REC-xhtml-modularization-20010410/abstract_modules.html#s_editmodule"/&gt;
+    &lt;/xs:annotation&gt;
+    &lt;xs:simpleType name="xhtml.Edit.datatype"&gt;
+        &lt;xs:restriction base="xs:NMTOKEN"&gt;
+            &lt;xs:enumeration value="inserted"/&gt;
+            &lt;xs:enumeration value="deleted"/&gt;
+            &lt;xs:enumeration value="changed"/&gt;
+            &lt;xs:enumeration value="moved"/&gt;
+        &lt;/xs:restriction&gt;
+    &lt;/xs:simpleType&gt;
+    &lt;xs:attributeGroup name="xhtml.Edit.attrib"&gt;
+        &lt;xs:attribute name="edit" default="changed" type="xhtml.Edit.datatype"/&gt;
+        &lt;xs:attribute name="datetime" type="xh11d:Datetime"/&gt;
+        &lt;xs:attributeGroup ref="xhtml.Edit.extra.attrib"/&gt;
+    &lt;/xs:attributeGroup&gt;
+    &lt;xs:attribute name="edit" default="changed" type="xhtml.Edit.datatype"/&gt;
+    &lt;xs:attribute name="datetime" type="xh11d:Datetime"/&gt;
+    &lt;xs:attributeGroup name="xhtml.Global.Edit.attrib"&gt;
+        &lt;xs:attribute ref="edit"/&gt;
+        &lt;xs:attribute ref="datetime"/&gt;
+        &lt;xs:attributeGroup ref="xhtml.Global.Edit.extra.attrib"/&gt;
+    &lt;/xs:attributeGroup&gt;
+&lt;/xs:schema&gt;
+</pre>
+<!-- END OF FILE xhtml-edit-2.xsd.mhtml -->
+<h3 >
+<a id="a_smodule_Embedding_Attributes_Module" >E.2.4.</a> Embedding Attributes Module
+</h3>
+<!-- INCLUDING SCHEMA xhtml-embedding-2.xsd -->
+<pre class="dtd">
+&lt;?xml version="1.0" encoding="UTF-8"?&gt;
+&lt;xs:schema
+ xmlns:xs="http://www.w3.org/2001/XMLSchema"
+ elementFormDefault="qualified"
+ xmlns:xh11d="http://www.w3.org/1999/xhtml/datatypes/"
+&gt;
+    &lt;xs:import namespace="http://www.w3.org/1999/xhtml/datatypes/" 
+               schemaLocation="xhtml-datatypes-2.xsd" /&gt;
+    &lt;xs:annotation&gt;
+        &lt;xs:documentation&gt;
+      Embedding Attributes Module
+      This is the XML Schema Embedding Attributes module for XHTML
+      * encoding, src, srctype
+        This module declares attributes and the Embedding attribute
+        collection.
+      &#36;Id: xhtml-embedding-2.xsd,v 1.1.2.1 2009/01/18 20:55:12 ahby Exp &#36;
+    &lt;/xs:documentation&gt;
+        &lt;xs:documentation source="xhtml-copyright-1.xsd"/&gt;
+        &lt;xs:documentation source="http://www.w3.org/TR/xhtml2/mod-embedding.html"/&gt;
+    &lt;/xs:annotation&gt;
+    &lt;xs:attributeGroup name="xhtml.Embedding.attrib"&gt;
+        &lt;xs:attribute name="encoding" type="xh11d:Encodings"/&gt;
+        &lt;xs:attribute name="src" type="xh11d:URI"/&gt;
+        &lt;xs:attribute name="srctype" type="xh11d:ContentTypes"/&gt;
+        &lt;xs:attributeGroup ref="xhtml.Embedding.extra.attrib" /&gt;
+    &lt;/xs:attributeGroup&gt;
+    &lt;!-- global attributes --&gt;
+    &lt;xs:attribute name="encoding" type="xh11d:Encodings"/&gt;
+    &lt;xs:attribute name="src" type="xh11d:URI"/&gt;
+    &lt;xs:attribute name="srctype" type="xh11d:ContentTypes"/&gt;
+    &lt;xs:attributeGroup name="xhtml.Global.Embedding.attrib"&gt;
+        &lt;xs:attribute ref="encoding"/&gt;
+        &lt;xs:attribute ref="src"/&gt;
+        &lt;xs:attribute ref="srctype"/&gt;
+        &lt;xs:attributeGroup ref="xhtml.Global.Embedding.extra.attrib" /&gt;
+    &lt;/xs:attributeGroup&gt;
+&lt;/xs:schema&gt;
+</pre>
+<!-- END OF FILE xhtml-embedding-2.xsd.mhtml -->
+<h3 >
+<a id="a_smodule_Image_Module" >E.2.5.</a> Image Module
+</h3>
+<!-- INCLUDING SCHEMA xhtml-image-2.xsd -->
+<pre class="dtd">
+&lt;?xml version="1.0" encoding="UTF-8"?&gt;
+&lt;xs:schema
+ xmlns:xs="http://www.w3.org/2001/XMLSchema"
+ elementFormDefault="qualified"
+ xmlns:xh11d="http://www.w3.org/1999/xhtml/datatypes/"
+&gt;
+    &lt;xs:import namespace="http://www.w3.org/1999/xhtml/datatypes/" 
+               schemaLocation="xhtml-datatypes-2.xsd" /&gt;
+    &lt;xs:annotation&gt;
+        &lt;xs:documentation&gt;
+      Images    
+      This is the XML Schema Images module for XHTML
+        * img
+      This module provides markup to support basic image embedding.
+      To avoid problems with text-only UAs as well as to make
+      image content understandable and navigable to users of
+      non-visual UAs, you need to provide a description with
+      the 'alt' attribute, and avoid server-side image maps.
+      &#36;Id: xhtml-image-2.xsd,v 1.1.2.2 2009/01/16 17:50:25 ahby Exp &#36;
+    &lt;/xs:documentation&gt;
+        &lt;xs:documentation source="xhtml-copyright-1.xsd"/&gt;
+        &lt;xs:documentation source="http://www.w3.org/TR/2001/REC-xhtml-modularization-20010410/abstract_modules.html#s_imagemodule"/&gt;
+    &lt;/xs:annotation&gt;
+    &lt;xs:attributeGroup name="xhtml.img.attlist"&gt;
+        &lt;xs:attributeGroup ref="xhtml.Common.attrib"/&gt;
+    &lt;/xs:attributeGroup&gt;
+    &lt;xs:group name="xhtml.img.content"&gt;
+        &lt;xs:sequence&gt;
+            &lt;xs:group ref="xhtml.Text.mix" minOccurs="0" maxOccurs="unbounded"/&gt;
+        &lt;/xs:sequence&gt;
+    &lt;/xs:group&gt;
+    &lt;xs:complexType name="xhtml.img.type"&gt;
+        &lt;xs:group ref="xhtml.img.content"/&gt;
+        &lt;xs:attributeGroup ref="xhtml.img.attlist"/&gt;
+    &lt;/xs:complexType&gt;
+&lt;/xs:schema&gt;
+</pre>
+<!-- END OF FILE xhtml-image-2.xsd.mhtml -->
+<h3 >
+<a id="a_smodule_Image_Map_Attributes_Module" >E.2.6.</a> Image Map Attributes Module
+</h3>
+<!-- INCLUDING SCHEMA xhtml-csismap-2.xsd -->
+<pre class="dtd">
+&lt;?xml version="1.0" encoding="UTF-8"?&gt;
+&lt;xs:schema
+ xmlns:xs="http://www.w3.org/2001/XMLSchema"
+ elementFormDefault="qualified"
+ xmlns:xh11d="http://www.w3.org/1999/xhtml/datatypes/"
+&gt;
+    &lt;xs:import namespace="http://www.w3.org/1999/xhtml/datatypes/" 
+               schemaLocation="xhtml-datatypes-2.xsd" /&gt;
+    &lt;xs:annotation&gt;
+        &lt;xs:documentation&gt;
+      Client-side Image Maps    
+      This is the XML Schema Client-side Image Maps module for XHTML
+        * area, map      
+      This module declares elements and attributes to support client-side
+      image maps. 
+      &#36;Id: xhtml-csismap-2.xsd,v 1.1.2.1 2009/01/18 20:55:12 ahby Exp &#36;
+    &lt;/xs:documentation&gt;
+        &lt;xs:documentation source="xhtml-copyright-1.xsd"/&gt;
+        &lt;xs:documentation source="http://www.w3.org/TR/2001/REC-xhtml-modularization-20010410/abstract_modules.html#s_imapmodule"/&gt;
+    &lt;/xs:annotation&gt;
+    &lt;xs:simpleType name="xhtml.Shape.Datatype"&gt;
+        &lt;xs:restriction base="xs:NMTOKEN"&gt;
+            &lt;xs:enumeration value="rect"/&gt;
+            &lt;xs:enumeration value="circle"/&gt;
+            &lt;xs:enumeration value="poly"/&gt;
+            &lt;xs:enumeration value="default"/&gt;
+        &lt;/xs:restriction&gt;
+    &lt;/xs:simpleType&gt;
+    &lt;xs:simpleType name="xhtml.Coords.Datatype"&gt;
+        &lt;xs:restriction base="xh11d:Text"/&gt;
+    &lt;/xs:simpleType&gt;
+    &lt;xs:attributeGroup name="xhtml.ImageMap.attrib"&gt;
+        &lt;xs:attribute name="usemap" type="xh11d:URI"/&gt;
+        &lt;xs:attribute name="ismap" type="xs:NMTOKEN" fixed="ismap"/&gt;
+        &lt;xs:attribute name="shape" type="xhtml.Shape.Datatype" default="rect"/&gt;
+        &lt;xs:attribute name="coords" type="xhtml.Coords.Datatype"/&gt;
+    &lt;/xs:attributeGroup&gt;
+&lt;/xs:schema&gt;
+</pre>
+<!-- END OF FILE xhtml-csismap-2.xsd.mhtml -->
+<h3 >
+<a id="a_smodule_Media_Attribute_Module" >E.2.7.</a> Media Attribute Module
+</h3>
+<!-- INCLUDING SCHEMA xhtml-media-attrib-2.xsd -->
+<pre class="dtd">
+&lt;?xml version="1.0" encoding="UTF-8"?&gt;
+&lt;xs:schema
+ xmlns:xs="http://www.w3.org/2001/XMLSchema"
+ elementFormDefault="qualified"
+ xmlns:xh11d="http://www.w3.org/1999/xhtml/datatypes/"
+&gt;
+    &lt;xs:import namespace="http://www.w3.org/1999/xhtml/datatypes/" 
+               schemaLocation="xhtml-datatypes-2.xsd" /&gt;
+    &lt;xs:annotation&gt;
+        &lt;xs:documentation&gt;
+      This is the XML Schema core attributes module for XHTML
+      &#36;Id: xhtml-media-attrib-2.xsd,v 1.1.2.1 2009/01/18 20:55:12 ahby Exp &#36;
+    &lt;/xs:documentation&gt;
+        &lt;xs:documentation source="xhtml-copyright-1.xsd"/&gt;
+        &lt;xs:documentation source="http://www.w3.org/TR/xhtml2/mod-core.html"/&gt;
+    &lt;/xs:annotation&gt;
+  &lt;xs:import namespace="http://www.w3.org/XML/1998/namespace"
+             schemaLocation="http://www.w3.org/2001/xml.xsd"&gt;
+        &lt;xs:annotation&gt;
+            &lt;xs:documentation&gt;
+        This import brings in the XML namespace attributes
+        The module itself does not provide the schemaLocation
+        and expects the driver schema to provide the
+        actual SchemaLocation.
+      &lt;/xs:documentation&gt;
+        &lt;/xs:annotation&gt;
+    &lt;/xs:import&gt;
+    &lt;xs:attributeGroup name="xhtml.Media.attrib"&gt;
+        &lt;xs:attribute name="media" type="xh11d:MediaDesc"/&gt;
+    &lt;/xs:attributeGroup&gt;
+    &lt;!-- Global attributes --&gt;
+    &lt;xs:attribute name="media" type="xh11d:MediaDesc"/&gt;
+    &lt;xs:attributeGroup name="xhtml.Global.Media.attrib"&gt;
+        &lt;xs:attribute ref="media"/&gt;
+        &lt;xs:attributeGroup ref="xhtml.Global.Media.extra.attrib" /&gt;
+    &lt;/xs:attributeGroup&gt;
+&lt;/xs:schema&gt;
+</pre>
+<!-- END OF FILE xhtml-media-attrib-2.xsd.mhtml -->
+<h3 >
+<a id="a_smodule_Metainformation_Module" >E.2.8.</a> Metainformation Module
+</h3>
+<!-- INCLUDING SCHEMA xhtml-meta-2.xsd -->
+<pre class="dtd">
+&lt;?xml version="1.0" encoding="UTF-8"?&gt;
+&lt;xs:schema
+ xmlns:xs="http://www.w3.org/2001/XMLSchema"
+ elementFormDefault="qualified"
+ xmlns:xh11d="http://www.w3.org/1999/xhtml/datatypes/"
+&gt;
+    &lt;xs:import namespace="http://www.w3.org/1999/xhtml/datatypes/" 
+               schemaLocation="xhtml-datatypes-2.xsd" /&gt;
+    &lt;xs:annotation&gt;
+        &lt;xs:documentation&gt;
+      This is the XML Schema Metainformation module for XHTML
+      &#36;Id: xhtml-meta-2.xsd,v 1.1.2.3 2009/04/08 14:53:41 ahby Exp &#36;
+    &lt;/xs:documentation&gt;
+        &lt;xs:documentation source="xhtml-copyright-1.xsd"/&gt;
+    &lt;/xs:annotation&gt;
+    &lt;xs:annotation&gt;
+        &lt;xs:documentation&gt;
+      Meta Information
+        * meta
+      This module declares the meta element type and its attributes,
+      used to provide declarative document metainformation.
+    &lt;/xs:documentation&gt;
+        &lt;xs:documentation source="http://www.w3.org/TR/2001/REC-xhtml-modularization-20010410/abstract_modules.html#s_metamodule"/&gt;
+    &lt;/xs:annotation&gt;
+    &lt;xs:import namespace="http://www.w3.org/XML/1998/namespace"
+        schemaLocation="http://www.w3.org/2001/xml.xsd"&gt;
+        &lt;xs:annotation&gt;
+            &lt;xs:documentation&gt;
+                This import brings in the XML namespace attributes
+                The module itself does not provide the schemaLocation
+                and expects the driver schema to provide the
+                actual SchemaLocation.
+            &lt;/xs:documentation&gt;
+        &lt;/xs:annotation&gt;
+    &lt;/xs:import&gt;
+    &lt;xs:attributeGroup name="xhtml.meta.attlist"&gt;
+        &lt;xs:attributeGroup ref="xhtml.Common.attrib"/&gt;
+    &lt;/xs:attributeGroup&gt;
+    &lt;xs:group name="xhtml.meta.content"&gt;
+        &lt;xs:choice&gt;
+            &lt;xs:element name="meta" type="xhtml.meta.type"/&gt;
+        &lt;/xs:choice&gt;
+    &lt;/xs:group&gt;
+    &lt;xs:complexType name="xhtml.meta.type"&gt;
+        &lt;xs:group ref="xhtml.meta.content"/&gt;
+        &lt;xs:attributeGroup ref="xhtml.meta.attlist"/&gt;
+    &lt;/xs:complexType&gt;
+    &lt;xs:attributeGroup name="xhtml.link.attlist"&gt;
+        &lt;xs:attributeGroup ref="xhtml.Common.attrib"/&gt;
+    &lt;/xs:attributeGroup&gt;
+    &lt;xs:group name="xhtml.link.content"&gt;
+        &lt;xs:sequence/&gt;
+    &lt;/xs:group&gt;
+    &lt;xs:complexType name="xhtml.link.type"&gt;
+        &lt;xs:group ref="xhtml.link.content"/&gt;
+        &lt;xs:attributeGroup ref="xhtml.link.attlist"/&gt;
+    &lt;/xs:complexType&gt;
+&lt;/xs:schema&gt;
+</pre>
+<!-- END OF FILE xhtml-meta-2.xsd.mhtml -->
+<h3 >
+<a id="a_smodule_Metainformation_Attributes_Module" >E.2.9.</a> Metainformation Attributes Module
+</h3>
+<!-- INCLUDING SCHEMA xhtml-metaAttributes-2.xsd -->
+<pre class="dtd">
+&lt;?xml version="1.0" encoding="UTF-8"?&gt;
+&lt;xs:schema 
+    xmlns:xs="http://www.w3.org/2001/XMLSchema" 
+    xmlns:xh11d="http://www.w3.org/1999/xhtml/datatypes/"
+    elementFormDefault="qualified" 
+&gt;
+  &lt;xs:import namespace="http://www.w3.org/1999/xhtml/datatypes/" 
+             schemaLocation="xhtml-datatypes-2.xsd" /&gt;
+  &lt;xs:annotation&gt;
+    &lt;xs:documentation&gt;
+      This is the XML Schema Metainformation Attributes module for XHTML
+      &#36;Id: xhtml-metaAttributes-2.xsd,v 1.1.2.1 2009/01/18 20:55:12 ahby Exp &#36;
+    &lt;/xs:documentation&gt;
+    &lt;xs:documentation source="xhtml-rdfa-copyright-1.xsd"/&gt;
+  &lt;/xs:annotation&gt;
+  &lt;xs:annotation&gt;
+    &lt;xs:documentation&gt;
+      XHTML Metainformation Attributes
+    &lt;/xs:documentation&gt;
+  &lt;/xs:annotation&gt;
+  &lt;xs:attribute name="about" type="xh11d:URIorSafeCURIE"/&gt;
+  &lt;xs:attribute name="content" type="xh11d:CDATA"/&gt;
+  &lt;xs:attribute name="datatype" type="xh11d:CURIE"/&gt;
+  &lt;xs:attribute name="typeof" type="xh11d:CURIEs"/&gt;
+  &lt;xs:attribute name="property" type="xh11d:CURIEs"/&gt;
+  &lt;xs:attribute name="rel" type="xh11d:CURIEs"/&gt;
+  &lt;xs:attribute name="resource" type="xh11d:URIorSafeCURIE"/&gt;
+  &lt;xs:attribute name="rev" type="xh11d:CURIEs"/&gt;
+  &lt;xs:attributeGroup name="xhtml.MetaAttributes.attrib"&gt;
+    &lt;xs:attribute name="about"/&gt;
+    &lt;xs:attribute name="content"/&gt;
+    &lt;xs:attribute name="datatype"/&gt;
+    &lt;xs:attribute name="typeof"/&gt;
+    &lt;xs:attribute name="property"/&gt;
+    &lt;xs:attribute name="rel"/&gt;
+    &lt;xs:attribute name="resource"/&gt;
+    &lt;xs:attribute name="rev"/&gt;
+  &lt;/xs:attributeGroup&gt;
+&lt;/xs:schema&gt;
+</pre>
+<!-- END OF FILE xhtml-metaAttributes-2.xsd.mhtml -->
+<h3 >
+<a id="a_smodule_Object_Module" >E.2.10.</a> Object Module
+</h3>
+<!-- INCLUDING SCHEMA xhtml-object-2.xsd -->
+<pre class="dtd">
+&lt;?xml version="1.0" encoding="UTF-8"?&gt;
+&lt;xs:schema
+ xmlns:xs="http://www.w3.org/2001/XMLSchema"
+ elementFormDefault="qualified"
+ xmlns:xh11d="http://www.w3.org/1999/xhtml/datatypes/"
+&gt;
+	&lt;xs:import namespace="http://www.w3.org/1999/xhtml/datatypes/" 
+               schemaLocation="xhtml-datatypes-2.xsd" /&gt;
+	&lt;xs:annotation&gt;
+		&lt;xs:documentation&gt;
+      This is the XML Schema Object module for XHTML
+      &#36;Id: xhtml-object-2.xsd,v 1.1.2.4 2009/01/22 04:47:53 ahby Exp &#36;
+    &lt;/xs:documentation&gt;
+		&lt;xs:documentation source="xhtml-copyright-1.xsd"/&gt;
+	&lt;/xs:annotation&gt;
+	&lt;xs:annotation&gt;
+		&lt;xs:documentation&gt;
+      This module declares the object element type and its attributes,
+      used to embed external objects as part of XHTML pages. In the
+      document, place param elements prior to the object elements 
+      that require their content.
+      Note that use of this module requires instantiation of the 
+      Param Element Module prior to this module.
+      Elements defined here: 
+        * object (param)
+    &lt;/xs:documentation&gt;
+		&lt;xs:documentation source="http://www.w3.org/TR/2001/REC-xhtml-modularization-20010410/abstract_modules.html#s_objectmodule"/&gt;
+	&lt;/xs:annotation&gt;
+	&lt;xs:include schemaLocation="xhtml-param-2.xsd"&gt;
+		&lt;xs:annotation&gt;
+			&lt;xs:documentation&gt;
+        Param module
+        Elements defined here:
+          * param
+      &lt;/xs:documentation&gt;
+		&lt;/xs:annotation&gt;
+    &lt;/xs:include&gt;
+    &lt;xs:include schemaLocation="xhtml-caption-2.xsd"&gt;
+        &lt;xs:annotation&gt;
+            &lt;xs:documentation&gt;
+                Caption module - defines the caption element
+            &lt;/xs:documentation&gt;
+        &lt;/xs:annotation&gt;
+    &lt;/xs:include&gt;
+    &lt;!-- standby --&gt;
+    &lt;xs:attributeGroup name="xhtml.standby.attlist"&gt;
+		&lt;xs:attributeGroup ref="xhtml.Common.attrib"/&gt;
+    &lt;/xs:attributeGroup&gt;
+    &lt;xs:group name="xhtml.standby.content"&gt;
+        &lt;xs:sequence&gt;
+            &lt;xs:group ref="xhtml.Text.mix" minOccurs="0" maxOccurs="unbounded"/&gt;
+        &lt;/xs:sequence&gt;
+    &lt;/xs:group&gt;
+    &lt;xs:complexType name="xhtml.standby.type" mixed="true"&gt;
+        &lt;xs:group ref="xhtml.standby.content"/&gt;
+        &lt;xs:attributeGroup ref="xhtml.standby.attlist"/&gt;
+    &lt;/xs:complexType&gt;
+    &lt;!-- object --&gt;
+	&lt;xs:attributeGroup name="xhtml.object.attlist"&gt;
+		&lt;xs:attributeGroup ref="xhtml.Common.attrib"/&gt;
+		&lt;xs:attribute name="declare"&gt;
+			&lt;xs:simpleType&gt;
+				&lt;xs:restriction base="xs:NMTOKEN"&gt;
+					&lt;xs:enumeration value="declare"/&gt;
+				&lt;/xs:restriction&gt;
+			&lt;/xs:simpleType&gt;
+		&lt;/xs:attribute&gt;
+		&lt;xs:attribute name="archive" type="xh11d:URIs"/&gt;
+		&lt;xs:attribute name="content-length" type="xh11d:Number"/&gt;
+	&lt;/xs:attributeGroup&gt;
+	&lt;xs:group name="xhtml.object.content"&gt;
+		&lt;xs:sequence&gt;
+            &lt;xs:element name="caption" type="xhtml.caption.type"
+                minOccurs="0" maxOccurs="1"/&gt;
+            &lt;xs:element name="standby" type="xhtml.standby.type"
+                minOccurs="0" maxOccurs="1"/&gt;
+			&lt;xs:choice minOccurs="0" maxOccurs="unbounded"&gt;
+				&lt;xs:element name="param" type="xhtml.param.type"/&gt;
+				&lt;xs:group ref="xhtml.Flow.mix"/&gt;
+			&lt;/xs:choice&gt;
+		&lt;/xs:sequence&gt;
+	&lt;/xs:group&gt;
+	&lt;xs:complexType name="xhtml.object.type" mixed="true"&gt;
+		&lt;xs:group ref="xhtml.object.content"/&gt;
+		&lt;xs:attributeGroup ref="xhtml.object.attlist"/&gt;
+	&lt;/xs:complexType&gt;
+&lt;/xs:schema&gt;
+</pre>
+<!-- END OF FILE xhtml-object-2.xsd.mhtml -->
+<h4 >
+<a id="a_smodule_Param_Attribute" >E.2.10.1.</a> Param Attribute
+</h4>
+<!-- INCLUDING SCHEMA xhtml-param-2.xsd -->
+<pre class="dtd">
+&lt;?xml version="1.0" encoding="UTF-8"?&gt;
+&lt;xs:schema
+ xmlns:xs="http://www.w3.org/2001/XMLSchema"
+ elementFormDefault="qualified"
+ xmlns:xh11d="http://www.w3.org/1999/xhtml/datatypes/"
+&gt;
+    &lt;xs:import namespace="http://www.w3.org/1999/xhtml/datatypes/" 
+               schemaLocation="xhtml-datatypes-2.xsd" /&gt;
+    &lt;xs:annotation&gt;
+        &lt;xs:documentation&gt;
+      This is the XML Schema Param Element module for XHTML
+      &#36;Id: xhtml-param-2.xsd,v 1.1.2.1 2009/01/18 20:55:12 ahby Exp &#36;
+      &lt;/xs:documentation&gt;
+        &lt;xs:documentation source="xhtml-copyright-1.xsd"/&gt;
+    &lt;/xs:annotation&gt;
+    &lt;xs:annotation&gt;
+        &lt;xs:documentation&gt;
+      Parameters for Java Applets and Embedded Objects
+        * param
+      This module provides declarations for the param element,
+      used to provide named property values for the applet
+      and object elements.
+    &lt;/xs:documentation&gt;
+        &lt;xs:documentation source="http://www.w3.org/TR/2001/REC-xhtml-modularization-20010410/abstract_modules.html#s_objectmodule"/&gt;
+        &lt;xs:documentation source="http://www.w3.org/TR/2001/REC-xhtml-modularization-20010410/abstract_modules.html#s_appletmodule"/&gt;
+    &lt;/xs:annotation&gt;
+    &lt;xs:attributeGroup name="xhtml.param.attlist"&gt;
+        &lt;xs:attributeGroup ref="xhtml.id"/&gt;
+        &lt;xs:attribute name="name" type="xh11d:CDATA" use="required"/&gt;
+        &lt;xs:attribute name="value" type="xh11d:CDATA"/&gt;
+        &lt;xs:attribute name="valuetype" default="data"&gt;
+            &lt;xs:simpleType&gt;
+                &lt;xs:restriction base="xs:NMTOKEN"&gt;
+                    &lt;xs:enumeration value="data"/&gt;
+                    &lt;xs:enumeration value="ref"/&gt;
+                    &lt;xs:enumeration value="object"/&gt;
+                &lt;/xs:restriction&gt;
+            &lt;/xs:simpleType&gt;
+        &lt;/xs:attribute&gt;
+        &lt;xs:attribute name="type" type="xh11d:ContentType"/&gt;
+    &lt;/xs:attributeGroup&gt;
+    &lt;xs:group name="xhtml.param.content"&gt;
+        &lt;xs:sequence/&gt;
+    &lt;/xs:group&gt;
+    &lt;xs:complexType name="xhtml.param.type"&gt;
+        &lt;xs:group ref="xhtml.param.content"/&gt;
+        &lt;xs:attributeGroup ref="xhtml.param.attlist"/&gt;
+    &lt;/xs:complexType&gt;
+&lt;/xs:schema&gt;
+</pre>
+<!-- END OF FILE xhtml-param-2.xsd.mhtml -->
+<h3 >
+<a id="a_smodule_Style_Sheet_Module" >E.2.11.</a> Style Sheet Module
+</h3>
+<!-- INCLUDING SCHEMA xhtml-style-2.xsd -->
+<pre class="dtd">
+&lt;?xml version="1.0" encoding="UTF-8"?&gt;
+&lt;xs:schema
+ xmlns:xs="http://www.w3.org/2001/XMLSchema"
+ elementFormDefault="qualified"
+ xmlns:xh11d="http://www.w3.org/1999/xhtml/datatypes/"
+&gt;
+    &lt;xs:import namespace="http://www.w3.org/1999/xhtml/datatypes/" 
+               schemaLocation="xhtml-datatypes-2.xsd" /&gt;
+    &lt;xs:annotation&gt;
+        &lt;xs:documentation&gt;
+      This is the XML Schema Stylesheets module for XHTML
+      &#36;Id: xhtml-style-2.xsd,v 1.1.2.2 2009/01/16 17:50:25 ahby Exp &#36;
+    &lt;/xs:documentation&gt;
+        &lt;xs:documentation source="xhtml-copyright-1.xsd"/&gt;
+    &lt;/xs:annotation&gt;
+    &lt;xs:annotation&gt;
+        &lt;xs:documentation&gt;
+      Stylesheets
+        * style
+      This module declares the style element type and its attributes,
+      used to embed stylesheet information in the document head element.
+    &lt;/xs:documentation&gt;
+        &lt;xs:documentation source="http://www.w3.org/TR/2001/REC-xhtml-modularization-20010410/abstract_modules.html#s_stylemodule"/&gt;
+    &lt;/xs:annotation&gt;
+  &lt;xs:import namespace="http://www.w3.org/XML/1998/namespace"
+             schemaLocation="http://www.w3.org/2001/xml.xsd"&gt;
+        &lt;xs:annotation&gt;
+            &lt;xs:documentation&gt;
+          This import brings in the XML namespace attributes 
+          The module itself does not provide the schemaLocation
+          and expects the driver schema to provide the 
+          actual SchemaLocation.
+        &lt;/xs:documentation&gt;
+        &lt;/xs:annotation&gt;
+    &lt;/xs:import&gt;
+    &lt;xs:attributeGroup name="xhtml.style.attlist"&gt;
+        &lt;xs:attributeGroup ref="xhtml.Common.attrib"/&gt;
+        &lt;xs:attribute name="disabled" type="xs:NMTOKEN" fixed="disabled"/&gt;
+    &lt;/xs:attributeGroup&gt;
+    &lt;xs:group name="xhtml.style.content"&gt;
+        &lt;xs:sequence/&gt;
+    &lt;/xs:group&gt;
+    &lt;xs:complexType name="xhtml.style.type" mixed="true"&gt;
+        &lt;xs:group ref="xhtml.style.content"/&gt;
+        &lt;xs:attributeGroup ref="xhtml.style.attlist"/&gt;
+    &lt;/xs:complexType&gt;
+&lt;/xs:schema&gt;
+</pre>
+<!-- END OF FILE xhtml-style-2.xsd.mhtml -->
+<h3 >
+<a id="a_smodule_Style_Attribute_Module" >E.2.12.</a> Style Attribute Module
+</h3>
+<!-- INCLUDING SCHEMA xhtml-style-attrib-2.xsd -->
+<pre class="dtd">
+&lt;?xml version="1.0" encoding="UTF-8"?&gt;
+&lt;xs:schema
+ xmlns:xs="http://www.w3.org/2001/XMLSchema"
+ elementFormDefault="qualified"
+ xmlns:xh11d="http://www.w3.org/1999/xhtml/datatypes/"
+&gt;
+    &lt;xs:import namespace="http://www.w3.org/1999/xhtml/datatypes/" 
+               schemaLocation="xhtml-datatypes-2.xsd" /&gt;
+    &lt;xs:annotation&gt;
+        &lt;xs:documentation&gt;
+      Inline Style module    
+      This is the XML Schema Inline Style module for XHTML
+         * styloe attribute
+      This module declares the 'style' attribute, used to support inline 
+      style markup. 
+      &#36;Id: xhtml-style-attrib-2.xsd,v 1.1.2.1 2009/01/18 20:55:12 ahby Exp &#36;
+    &lt;/xs:documentation&gt;
+        &lt;xs:documentation source="xhtml-copyright-1.xsd"/&gt;
+        &lt;xs:documentation source="http://www.w3.org/TR/2001/REC-xhtml-modularization-20010410/abstract_modules.html#s_styleattributemodule"/&gt;
+    &lt;/xs:annotation&gt;
+    &lt;xs:attributeGroup name="xhtml.Style.attrib"&gt;
+        &lt;xs:attribute name="style" type="xh11d:CDATA"/&gt;
+    &lt;/xs:attributeGroup&gt;
+&lt;/xs:schema&gt;
+</pre>
+<!-- END OF FILE xhtml-style-attrib-2.xsd.mhtml -->
+<h3 >
+<a id="a_smodule_Tables_Module" >E.2.13.</a> Tables Module
+</h3>
+<!-- INCLUDING SCHEMA xhtml-table-2.xsd -->
+<pre class="dtd">
+&lt;?xml version="1.0" encoding="UTF-8"?&gt;
+&lt;xs:schema
+ xmlns:xs="http://www.w3.org/2001/XMLSchema"
+ elementFormDefault="qualified"
+ xmlns:xh11d="http://www.w3.org/1999/xhtml/datatypes/"
+&gt;
+    &lt;xs:import namespace="http://www.w3.org/1999/xhtml/datatypes/" 
+               schemaLocation="xhtml-datatypes-2.xsd" /&gt;
+    &lt;xs:annotation&gt;
+        &lt;xs:documentation&gt;
+          This is the XML Schema Tables module for XHTML
+          &#36;Id: xhtml-table-2.xsd,v 1.1.2.4 2009/04/07 14:13:23 ahby Exp &#36;
+        &lt;/xs:documentation&gt;
+        &lt;xs:documentation source="xhtml-copyright-1.xsd"/&gt;
+    &lt;/xs:annotation&gt;
+    &lt;xs:annotation&gt;
+        &lt;xs:documentation&gt;
+          Tables
+           * table, caption, thead, tfoot, tbody, colgroup, col, tr, th, td
+          This module declares element types and attributes used to provide
+          table markup similar to HTML 4.0, including features that enable
+          better accessibility for non-visual user agents.
+        &lt;/xs:documentation&gt;
+        &lt;xs:documentation source="http://www.w3.org/TR/2001/REC-xhtml-modularization-20010410/abstract_modules.html#s_tablemodule"/&gt;
+    &lt;/xs:annotation&gt;
+    &lt;xs:include schemaLocation="xhtml-caption-2.xsd"/&gt;
+    &lt;xs:attributeGroup name="xhtml.scope.attrib"&gt;
+        &lt;xs:attribute name="scope"&gt;
+            &lt;xs:simpleType&gt;
+                &lt;xs:restriction base="xs:NMTOKEN"&gt;
+                    &lt;xs:enumeration value="row"/&gt;
+                    &lt;xs:enumeration value="col"/&gt;
+                    &lt;xs:enumeration value="rowgroup"/&gt;
+                    &lt;xs:enumeration value="colgroup"/&gt;
+                &lt;/xs:restriction&gt;
+            &lt;/xs:simpleType&gt;
+        &lt;/xs:attribute&gt;
+    &lt;/xs:attributeGroup&gt;
+    &lt;xs:attributeGroup name="xhtml.td.attlist"&gt;
+        &lt;xs:attributeGroup ref="xhtml.Common.attrib"/&gt;
+        &lt;xs:attribute name="abbr" type="xh11d:Text"/&gt;
+        &lt;xs:attribute name="axis" type="xh11d:CDATA"/&gt;
+        &lt;xs:attribute name="colspan" type="xh11d:Number" default="1"/&gt;
+        &lt;xs:attribute name="headers" type="xs:IDREFS"/&gt;
+        &lt;xs:attribute name="rowspan" type="xh11d:Number" default="1"/&gt;
+        &lt;xs:attributeGroup ref="xhtml.scope.attrib"/&gt;
+    &lt;/xs:attributeGroup&gt;
+    &lt;xs:group name="xhtml.td.content"&gt;
+        &lt;xs:sequence&gt;
+            &lt;xs:group ref="xhtml.Flow.mix" minOccurs="0" maxOccurs="unbounded"/&gt;
+        &lt;/xs:sequence&gt;
+    &lt;/xs:group&gt;
+    &lt;xs:complexType name="xhtml.td.type" mixed="true"&gt;
+        &lt;xs:group ref="xhtml.td.content"/&gt;
+        &lt;xs:attributeGroup ref="xhtml.td.attlist"/&gt;
+    &lt;/xs:complexType&gt;
+    &lt;xs:attributeGroup name="xhtml.th.attlist"&gt;
+        &lt;xs:attributeGroup ref="xhtml.Common.attrib"/&gt;
+        &lt;xs:attribute name="abbr" type="xh11d:Text"/&gt;
+        &lt;xs:attribute name="axis" type="xh11d:CDATA"/&gt;
+        &lt;xs:attribute name="colspan" type="xh11d:Number" default="1"/&gt;
+        &lt;xs:attribute name="headers" type="xs:IDREFS"/&gt;
+        &lt;xs:attribute name="rowspan" type="xh11d:Number" default="1"/&gt;
+        &lt;xs:attributeGroup ref="xhtml.scope.attrib"/&gt;
+    &lt;/xs:attributeGroup&gt;
+    &lt;xs:group name="xhtml.th.content"&gt;
+        &lt;xs:sequence&gt;
+            &lt;xs:group ref="xhtml.Flow.mix" minOccurs="0" maxOccurs="unbounded"/&gt;
+        &lt;/xs:sequence&gt;
+    &lt;/xs:group&gt;
+    &lt;xs:complexType name="xhtml.th.type" mixed="true"&gt;
+        &lt;xs:group ref="xhtml.th.content"/&gt;
+        &lt;xs:attributeGroup ref="xhtml.th.attlist"/&gt;
+    &lt;/xs:complexType&gt;
+    &lt;xs:attributeGroup name="xhtml.tr.attlist"&gt;
+        &lt;xs:attributeGroup ref="xhtml.Common.attrib"/&gt;
+ &lt;!--       &lt;xs:attributeGroup ref="xhtml.XFormsRepeat.attrib"/&gt; --&gt;
+    &lt;/xs:attributeGroup&gt;
+    &lt;xs:group name="xhtml.tr.content"&gt;
+        &lt;xs:sequence&gt;
+            &lt;xs:choice maxOccurs="unbounded"&gt;
+                &lt;xs:element name="th" type="xhtml.th.type"/&gt;
+                &lt;xs:element name="td" type="xhtml.td.type"/&gt;
+            &lt;/xs:choice&gt;
+        &lt;/xs:sequence&gt;
+    &lt;/xs:group&gt;
+    &lt;xs:complexType name="xhtml.tr.type"&gt;
+        &lt;xs:group ref="xhtml.tr.content"/&gt;
+        &lt;xs:attributeGroup ref="xhtml.tr.attlist"/&gt;
+    &lt;/xs:complexType&gt;
+    &lt;xs:attributeGroup name="xhtml.col.attlist"&gt;
+        &lt;xs:attributeGroup ref="xhtml.Common.attrib"/&gt;
+        &lt;xs:attribute name="span" type="xh11d:Number" default="1"/&gt;
+    &lt;/xs:attributeGroup&gt;
+    &lt;xs:group name="xhtml.col.content"&gt;
+        &lt;xs:sequence/&gt;
+    &lt;/xs:group&gt;
+    &lt;xs:complexType name="xhtml.col.type"&gt;
+        &lt;xs:group ref="xhtml.col.content"/&gt;
+        &lt;xs:attributeGroup ref="xhtml.col.attlist"/&gt;
+    &lt;/xs:complexType&gt;
+    &lt;xs:attributeGroup name="xhtml.colgroup.attlist"&gt;
+        &lt;xs:attributeGroup ref="xhtml.Common.attrib"/&gt;
+        &lt;xs:attribute name="span" type="xh11d:Number" default="1"/&gt;
+    &lt;/xs:attributeGroup&gt;
+    &lt;xs:group name="xhtml.colgroup.content"&gt;
+        &lt;xs:sequence&gt;
+            &lt;xs:element name="col" type="xhtml.col.type" minOccurs="0" maxOccurs="unbounded"/&gt;
+        &lt;/xs:sequence&gt;
+    &lt;/xs:group&gt;
+    &lt;xs:complexType name="xhtml.colgroup.type"&gt;
+        &lt;xs:group ref="xhtml.colgroup.content"/&gt;
+        &lt;xs:attributeGroup ref="xhtml.colgroup.attlist"/&gt;
+    &lt;/xs:complexType&gt;
+    &lt;xs:attributeGroup name="xhtml.tbody.attlist"&gt;
+        &lt;xs:attributeGroup ref="xhtml.Common.attrib"/&gt;
+    &lt;/xs:attributeGroup&gt;
+    &lt;xs:group name="xhtml.tbody.content"&gt;
+        &lt;xs:sequence&gt;
+            &lt;xs:element name="tr" type="xhtml.tr.type" maxOccurs="unbounded"/&gt;
+        &lt;/xs:sequence&gt;
+    &lt;/xs:group&gt;
+    &lt;xs:complexType name="xhtml.tbody.type"&gt;
+        &lt;xs:group ref="xhtml.tbody.content"/&gt;
+        &lt;xs:attributeGroup ref="xhtml.tbody.attlist"/&gt;
+    &lt;/xs:complexType&gt;
+    &lt;xs:attributeGroup name="xhtml.tfoot.attlist"&gt;
+        &lt;xs:attributeGroup ref="xhtml.Common.attrib"/&gt;
+    &lt;/xs:attributeGroup&gt;
+    &lt;xs:group name="xhtml.tfoot.content"&gt;
+        &lt;xs:sequence&gt;
+            &lt;xs:element name="tr" type="xhtml.tr.type" maxOccurs="unbounded"/&gt;
+        &lt;/xs:sequence&gt;
+    &lt;/xs:group&gt;
+    &lt;xs:complexType name="xhtml.tfoot.type"&gt;
+        &lt;xs:group ref="xhtml.tfoot.content"/&gt;
+        &lt;xs:attributeGroup ref="xhtml.tfoot.attlist"/&gt;
+    &lt;/xs:complexType&gt;
+    &lt;xs:attributeGroup name="xhtml.thead.attlist"&gt;
+        &lt;xs:attributeGroup ref="xhtml.Common.attrib"/&gt;
+    &lt;/xs:attributeGroup&gt;
+    &lt;xs:group name="xhtml.thead.content"&gt;
+        &lt;xs:sequence&gt;
+            &lt;xs:element name="tr" type="xhtml.tr.type" maxOccurs="unbounded"/&gt;
+        &lt;/xs:sequence&gt;
+    &lt;/xs:group&gt;
+    &lt;xs:complexType name="xhtml.thead.type"&gt;
+        &lt;xs:group ref="xhtml.thead.content"/&gt;
+        &lt;xs:attributeGroup ref="xhtml.thead.attlist"/&gt;
+    &lt;/xs:complexType&gt;
+    &lt;xs:attributeGroup name="xhtml.summary.attlist"&gt;
+        &lt;xs:attributeGroup ref="xhtml.Common.attrib"/&gt;
+    &lt;/xs:attributeGroup&gt;
+    &lt;xs:group name="xhtml.summary.content"&gt;
+        &lt;xs:sequence&gt;
+            &lt;xs:group ref="xhtml.Flow.mix" minOccurs="0" maxOccurs="unbounded"/&gt;
+        &lt;/xs:sequence&gt;
+    &lt;/xs:group&gt;
+    &lt;xs:complexType name="xhtml.summary.type" mixed="true"&gt;
+        &lt;xs:group ref="xhtml.summary.content"/&gt;
+        &lt;xs:attributeGroup ref="xhtml.summary.attlist"/&gt;
+    &lt;/xs:complexType&gt;
+    &lt;xs:attributeGroup name="xhtml.table.attlist"&gt;
+        &lt;xs:attributeGroup ref="xhtml.Common.attrib"/&gt;
+    &lt;/xs:attributeGroup&gt;
+    &lt;xs:group name="xhtml.table.content"&gt;
+        &lt;xs:sequence&gt;
+            &lt;xs:element name="title" type="xhtml.title.type" minOccurs="0"/&gt;
+            &lt;xs:element name="caption" type="xhtml.caption.type" minOccurs="0"/&gt;
+            &lt;xs:element name="summary" type="xhtml.summary.type" minOccurs="0"/&gt;
+            &lt;xs:choice&gt;
+                &lt;xs:element name="col" type="xhtml.col.type" minOccurs="0" maxOccurs="unbounded"/&gt;
+                &lt;xs:element name="colgroup" type="xhtml.colgroup.type" minOccurs="0" maxOccurs="unbounded"/&gt;
+            &lt;/xs:choice&gt;
+            &lt;xs:choice&gt;
+                &lt;xs:sequence&gt;
+                    &lt;xs:element name="thead" type="xhtml.thead.type" minOccurs="0"/&gt;
+                    &lt;xs:element name="tfoot" type="xhtml.tfoot.type" minOccurs="0"/&gt;
+                    &lt;xs:element name="tbody" type="xhtml.tbody.type" maxOccurs="unbounded"/&gt;
+                &lt;/xs:sequence&gt;
+                &lt;xs:choice&gt;
+                    &lt;xs:element name="tr" type="xhtml.tr.type" maxOccurs="unbounded"/&gt;
+                &lt;/xs:choice&gt;
+            &lt;/xs:choice&gt;
+        &lt;/xs:sequence&gt;
+    &lt;/xs:group&gt;
+    &lt;xs:complexType name="xhtml.table.type"&gt;
+        &lt;xs:group ref="xhtml.table.content"/&gt;
+        &lt;xs:attributeGroup ref="xhtml.table.attlist"/&gt;
+    &lt;/xs:complexType&gt;
+&lt;/xs:schema&gt;
+</pre>
+<!-- END OF FILE xhtml-table-2.xsd.mhtml -->
+<h2 >
+<a id="sec_E.3." >E.3.</a> Legacy Module
+</h2>
+<h3 >
+<a id="a_smodule_Legacy_Line_Break_Module" >E.3.1.</a> Legacy Line Break Module
+</h3>
+<!-- INCLUDING SCHEMA xhtml-legacy-br-2.xsd -->
+<pre class="dtd">
+&lt;?xml version="1.0" encoding="UTF-8"?&gt;
+&lt;xs:schema
+ xmlns:xs="http://www.w3.org/2001/XMLSchema"
+ elementFormDefault="qualified"
+ xmlns:xh11d="http://www.w3.org/1999/xhtml/datatypes/"
+&gt;
+    &lt;xs:import namespace="http://www.w3.org/1999/xhtml/datatypes/" 
+               schemaLocation="xhtml-datatypes-1.xsd" /&gt;
+    &lt;xs:annotation&gt;
+        &lt;xs:documentation&gt;
+         This is the XML Schema Legacy line break module
+         &#36;Id: xhtml-legacy-br-2.xsd,v 1.1.2.1 2009/04/07 16:32:57 ahby Exp &#36;
+    &lt;/xs:documentation&gt;
+        &lt;xs:documentation source="xhtml-copyright-1.xsd"/&gt;
+    &lt;/xs:annotation&gt;
+    &lt;xs:attributeGroup name="xhtml.br.attlist"&gt;
+        &lt;xs:attributeGroup ref="xhtml.Core.attrib"/&gt;
+    &lt;/xs:attributeGroup&gt;
+    &lt;xs:group name="xhtml.br.content"&gt;
+        &lt;xs:sequence/&gt;
+    &lt;/xs:group&gt;
+    &lt;xs:complexType name="xhtml.br.type"&gt;
+        &lt;xs:group ref="xhtml.br.content"/&gt;
+        &lt;xs:attributeGroup ref="xhtml.br.attlist"/&gt;
+    &lt;/xs:complexType&gt;
+&lt;/xs:schema&gt;
+</pre>
+<!-- END OF FILE xhtml-legacy-br-2.xsd.mhtml -->
+<h3 >
+<a id="a_smodule_Legacy_Editing_Module" >E.3.2.</a> Legacy Editing Module
+</h3>
+<!-- INCLUDING SCHEMA xhtml-legacy-edit-2.xsd -->
+<pre class="dtd">
+Module xhtml-legacy-edit-2.xsd not found!
+</pre>
+<!-- END OF FILE xhtml-legacy-edit-2.xsd.mhtml -->
+<h3 >
+<a id="a_smodule_Legacy_Headings_Module" >E.3.3.</a> Legacy Headings Module
+</h3>
+<!-- INCLUDING SCHEMA xhtml-legacy-heading-2.xsd -->
+<pre class="dtd">
+&lt;?xml version="1.0" encoding="UTF-8"?&gt;
+&lt;xs:schema
+ xmlns:xs="http://www.w3.org/2001/XMLSchema"
+ elementFormDefault="qualified"
+ xmlns:xh11d="http://www.w3.org/1999/xhtml/datatypes/"
+&gt;
+    &lt;xs:import namespace="http://www.w3.org/1999/xhtml/datatypes/" 
+               schemaLocation="xhtml-datatypes-2.xsd" /&gt;
+    &lt;xs:annotation&gt;
+        &lt;xs:documentation&gt;
+          This is the XML Schema Structural module for XHTML
+          &#36;Id: xhtml-legacy-heading-2.xsd,v 1.1.2.1 2009/04/07 16:32:57 ahby Exp &#36;
+       &lt;/xs:documentation&gt;
+        &lt;xs:documentation source="xhtml-copyright-1.xsd"/&gt;
+    &lt;/xs:annotation&gt;
+    &lt;xs:annotation&gt;
+        &lt;xs:documentation&gt;
+           Structural
+           This module declares the legacy heading elements.
+           * h1, h2, h3, h4, h5, h6
+      &lt;/xs:documentation&gt;
+      &lt;xs:documentation source="http://www.w3.org/TR/xhtml2#s_structuralmodule"/&gt;
+    &lt;/xs:annotation&gt;
+  &lt;xs:import namespace="http://www.w3.org/XML/1998/namespace"
+             schemaLocation="http://www.w3.org/2001/xml.xsd"&gt;
+        &lt;xs:annotation&gt;
+            &lt;xs:documentation&gt;
+          This import brings in the XML namespace attributes 
+          The module itself does not provide the schemaLocation
+          and expects the driver schema to provide the 
+          actual SchemaLocation.
+        &lt;/xs:documentation&gt;
+        &lt;/xs:annotation&gt;
+    &lt;/xs:import&gt;
+    &lt;!-- Heading Elements  --&gt;
+    &lt;xs:attributeGroup name="xhtml.h1.attlist"&gt;
+        &lt;xs:attributeGroup ref="xhtml.Common.attrib"/&gt;
+    &lt;/xs:attributeGroup&gt;
+    &lt;xs:group name="xhtml.h1.content"&gt;
+        &lt;xs:sequence&gt;
+            &lt;xs:group ref="xhtml.Text.mix" minOccurs="0" maxOccurs="unbounded"/&gt;
+        &lt;/xs:sequence&gt;
+    &lt;/xs:group&gt;
+    &lt;xs:complexType name="xhtml.h1.type" mixed="true"&gt;
+        &lt;xs:group ref="xhtml.h1.content"/&gt;
+        &lt;xs:attributeGroup ref="xhtml.h1.attlist"/&gt;
+    &lt;/xs:complexType&gt;
+    &lt;xs:attributeGroup name="xhtml.h2.attlist"&gt;
+        &lt;xs:attributeGroup ref="xhtml.Common.attrib"/&gt;
+    &lt;/xs:attributeGroup&gt;
+    &lt;xs:group name="xhtml.h2.content"&gt;
+        &lt;xs:sequence&gt;
+            &lt;xs:group ref="xhtml.Text.mix" minOccurs="0" maxOccurs="unbounded"/&gt;
+        &lt;/xs:sequence&gt;
+    &lt;/xs:group&gt;
+    &lt;xs:complexType name="xhtml.h2.type" mixed="true"&gt;
+        &lt;xs:group ref="xhtml.h2.content"/&gt;
+        &lt;xs:attributeGroup ref="xhtml.h2.attlist"/&gt;
+    &lt;/xs:complexType&gt;
+    &lt;xs:attributeGroup name="xhtml.h3.attlist"&gt;
+        &lt;xs:attributeGroup ref="xhtml.Common.attrib"/&gt;
+    &lt;/xs:attributeGroup&gt;
+    &lt;xs:group name="xhtml.h3.content"&gt;
+        &lt;xs:sequence&gt;
+            &lt;xs:group ref="xhtml.Text.mix" minOccurs="0" maxOccurs="unbounded"/&gt;
+        &lt;/xs:sequence&gt;
+    &lt;/xs:group&gt;
+    &lt;xs:complexType name="xhtml.h3.type" mixed="true"&gt;
+        &lt;xs:group ref="xhtml.h3.content"/&gt;
+        &lt;xs:attributeGroup ref="xhtml.h3.attlist"/&gt;
+    &lt;/xs:complexType&gt;
+    &lt;xs:attributeGroup name="xhtml.h4.attlist"&gt;
+        &lt;xs:attributeGroup ref="xhtml.Common.attrib"/&gt;
+    &lt;/xs:attributeGroup&gt;
+    &lt;xs:group name="xhtml.h4.content"&gt;
+        &lt;xs:sequence&gt;
+            &lt;xs:group ref="xhtml.Text.mix" minOccurs="0" maxOccurs="unbounded"/&gt;
+        &lt;/xs:sequence&gt;
+    &lt;/xs:group&gt;
+    &lt;xs:complexType name="xhtml.h4.type" mixed="true"&gt;
+        &lt;xs:group ref="xhtml.h4.content"/&gt;
+        &lt;xs:attributeGroup ref="xhtml.h4.attlist"/&gt;
+    &lt;/xs:complexType&gt;
+    &lt;xs:attributeGroup name="xhtml.h5.attlist"&gt;
+        &lt;xs:attributeGroup ref="xhtml.Common.attrib"/&gt;
+    &lt;/xs:attributeGroup&gt;
+    &lt;xs:group name="xhtml.h5.content"&gt;
+        &lt;xs:sequence&gt;
+            &lt;xs:group ref="xhtml.Text.mix" minOccurs="0" maxOccurs="unbounded"/&gt;
+        &lt;/xs:sequence&gt;
+    &lt;/xs:group&gt;
+    &lt;xs:complexType name="xhtml.h5.type" mixed="true"&gt;
+        &lt;xs:group ref="xhtml.h5.content"/&gt;
+        &lt;xs:attributeGroup ref="xhtml.h5.attlist"/&gt;
+    &lt;/xs:complexType&gt;
+    &lt;xs:attributeGroup name="xhtml.h6.attlist"&gt;
+        &lt;xs:attributeGroup ref="xhtml.Common.attrib"/&gt;
+    &lt;/xs:attributeGroup&gt;
+    &lt;xs:group name="xhtml.h6.content"&gt;
+        &lt;xs:sequence&gt;
+            &lt;xs:group ref="xhtml.Text.mix" minOccurs="0" maxOccurs="unbounded"/&gt;
+        &lt;/xs:sequence&gt;
+    &lt;/xs:group&gt;
+    &lt;xs:complexType name="xhtml.h6.type" mixed="true"&gt;
+        &lt;xs:group ref="xhtml.h6.content"/&gt;
+        &lt;xs:attributeGroup ref="xhtml.h6.attlist"/&gt;
+    &lt;/xs:complexType&gt;
+&lt;/xs:schema&gt;
+</pre>
+<!-- END OF FILE xhtml-legacy-heading-2.xsd.mhtml -->
+<h2 >
+<a id="sec_E.4." >E.4.</a> Modules from Other Specifications
+</h2>
+<h3 >
+<a id="a_smodule_Access_Module" >E.4.1.</a> Access Module
+</h3>
+<!-- INCLUDING SCHEMA xhtml-access-2.xsd -->
+<pre class="dtd">
+&lt;?xml version="1.0" encoding="UTF-8"?&gt;
+&lt;xs:schema
+ xmlns:xs="http://www.w3.org/2001/XMLSchema"
+ elementFormDefault="qualified"
+ xmlns:xh11d="http://www.w3.org/1999/xhtml/datatypes/"
+&gt;
+    &lt;xs:import namespace="http://www.w3.org/1999/xhtml/datatypes/" 
+               schemaLocation="xhtml-datatypes-2.xsd" /&gt;
+    &lt;xs:annotation&gt;
+        &lt;xs:documentation&gt;
+      This is the XML Schema module for XHTML Access
+      &#36;Id: xhtml-access-2.xsd,v 1.1.2.1 2009/01/18 20:55:12 ahby Exp &#36;
+    &lt;/xs:documentation&gt;
+        &lt;xs:documentation source="xhtml-copyright-1.xsd"/&gt;
+        &lt;xs:documentation source="http://www.w3.org/TR/xhtml-role#A_role"/&gt;
+    &lt;/xs:annotation&gt;
+    &lt;xs:attributeGroup name="xhtmlAccess.Common.attrib"&gt;
+        &lt;xs:attribute name="id" type="xs:ID"/&gt;
+        &lt;xs:attribute name="media" type="xh11d:MediaDesc"/&gt;
+        &lt;xs:anyAttribute/&gt;
+    &lt;/xs:attributeGroup&gt;
+    &lt;xs:attributeGroup name="xhtml.access.attlist"&gt;
+        &lt;xs:attribute name="activate" default="no"&gt;
+            &lt;xs:simpleType&gt;
+                &lt;xs:restriction base="xs:NMTOKEN"&gt;
+                    &lt;xs:enumeration value="yes"/&gt;
+                    &lt;xs:enumeration value="no"/&gt;
+                &lt;/xs:restriction&gt;
+            &lt;/xs:simpleType&gt;
+        &lt;/xs:attribute&gt;
+        &lt;xs:attribute name="key" type="xh11d:Character"/&gt;
+        &lt;xs:attribute name="order" default="document"&gt;
+            &lt;xs:simpleType&gt;
+                &lt;xs:restriction base="xs:NMTOKEN"&gt;
+                    &lt;xs:enumeration value="document"/&gt;
+                    &lt;xs:enumeration value="list"/&gt;
+                &lt;/xs:restriction&gt;
+            &lt;/xs:simpleType&gt;
+        &lt;/xs:attribute&gt;
+        &lt;xs:attribute name="targetid"&gt;
+            &lt;xs:simpleType&gt;
+                &lt;xs:list itemType="xs:IDREF"/&gt;
+            &lt;/xs:simpleType&gt;
+        &lt;/xs:attribute&gt;
+        &lt;xs:attribute name="targetrole" type="xh11d:CURIEs"/&gt;
+    &lt;/xs:attributeGroup&gt;
+    &lt;xs:group name="xhtml.access.content"&gt;
+        &lt;xs:sequence/&gt;
+    &lt;/xs:group&gt;
+    &lt;xs:complexType name="xhtml.access.type"&gt;
+        &lt;xs:group ref="xhtml.access.content"/&gt;
+        &lt;xs:attributeGroup ref="xhtml.access.attlist"/&gt;
+    &lt;/xs:complexType&gt;
+&lt;/xs:schema&gt;
+</pre>
+<!-- END OF FILE xhtml-access-2.xsd.mhtml -->
+<h3 >
+<a id="a_smodule_Role_Attribute_Module" >E.4.2.</a> Role Attribute Module
+</h3>
+<!-- INCLUDING SCHEMA xhtml-role-attrib-2.xsd -->
+<pre class="dtd">
+&lt;?xml version="1.0" encoding="UTF-8"?&gt;
+&lt;xs:schema
+ xmlns:xs="http://www.w3.org/2001/XMLSchema"
+ elementFormDefault="qualified"
+ xmlns:xh11d="http://www.w3.org/1999/xhtml/datatypes/"
+&gt;
+    &lt;xs:import namespace="http://www.w3.org/1999/xhtml/datatypes/" 
+               schemaLocation="xhtml-datatypes-2.xsd" /&gt;
+    &lt;xs:annotation&gt;
+        &lt;xs:documentation&gt;
+      This is the XML Schema attribute module for XHTML Role
+      &#36;Id: xhtml-role-attrib-2.xsd,v 1.1.2.1 2009/01/18 20:55:12 ahby Exp &#36;
+    &lt;/xs:documentation&gt;
+        &lt;xs:documentation source="xhtml-copyright-1.xsd"/&gt;
+        &lt;xs:documentation source="http://www.w3.org/TR/xhtml-role#A_role"/&gt;
+    &lt;/xs:annotation&gt;
+    &lt;xs:attributeGroup name="xhtml.Role.attrib"&gt;
+        &lt;xs:attribute name="role" type="xh11d:CURIEs"/&gt;
+    &lt;/xs:attributeGroup&gt;
+&lt;/xs:schema&gt;
+</pre>
+<!-- END OF FILE xhtml-role-attrib-2.xsd.mhtml -->
+<h3 >
+<a id="a_smodule_Ruby_Module" >E.4.3.</a> Ruby Module
+</h3>
+<!-- INCLUDING SCHEMA xhtml-ruby-2.xsd -->
+<pre class="dtd">
+&lt;?xml version="1.0" encoding="UTF-8"?&gt;
+&lt;xs:schema
+ xmlns:xs="http://www.w3.org/2001/XMLSchema"
+ elementFormDefault="qualified"
+ xmlns:xh11d="http://www.w3.org/1999/xhtml/datatypes/"
+&gt;
+    &lt;xs:import namespace="http://www.w3.org/1999/xhtml/datatypes/" 
+               schemaLocation="xhtml-datatypes-2.xsd" /&gt;
+  &lt;xs:annotation&gt;
+    &lt;xs:documentation&gt;
+      This is the Ruby module for XHTML
+      &#36;Id: xhtml-ruby-2.xsd,v 1.1.2.1 2009/01/16 17:50:25 ahby Exp &#36;
+    &lt;/xs:documentation&gt;
+    &lt;xs:documentation source="xhtml-copyright-1.xsd"/&gt;
+  &lt;/xs:annotation&gt;
+  &lt;xs:annotation&gt;
+    &lt;xs:documentation&gt;
+      "Ruby" are short runs of text alongside the base text, typically
+      used in East Asian documents to indicate pronunciation or to
+      provide a short annotation. The full specification for Ruby is here:
+        http://www.w3.org/TR/2001/REC-ruby-20010531/
+      This module defines "Ruby " or "complex Ruby" as described
+      in the specification:
+        http://www.w3.org/TR/2001/REC-ruby-20010531/#complex
+      Simple or Basic Ruby are defined in a separate module.
+      This module declares the elements and their attributes used to
+      support complex ruby annotation markup. Elements defined here
+            * ruby, rbc, rtc, rb, rt, rp
+      This module expects the document model to define the
+      following content models
+        + xhtml.TextNoRuby.class                 
+    &lt;/xs:documentation&gt;
+    &lt;xs:documentation
+         source="http://www.w3.org/TR/2001/REC-ruby-20010531/"/&gt;    
+  &lt;/xs:annotation&gt;
+  &lt;xs:group name="xhtml.ruby.content.simple"&gt;
+      &lt;xs:sequence&gt;
+          &lt;xs:element name="rb" type="xhtml.rb.type"/&gt;
+          &lt;xs:choice&gt;
+              &lt;xs:element name="rt" type="xhtml.rt.type"/&gt;
+              &lt;xs:sequence&gt;
+                  &lt;xs:element name="rp" type="xhtml.rp.type"/&gt;
+                  &lt;xs:element name="rt" type="xhtml.rt.type"/&gt;
+                  &lt;xs:element name="rp" type="xhtml.rp.type"/&gt;
+              &lt;/xs:sequence&gt;
+          &lt;/xs:choice&gt;
+      &lt;/xs:sequence&gt;
+  &lt;/xs:group&gt;
+  &lt;xs:group name="xhtml.ruby.content.complex"&gt;
+    &lt;xs:sequence&gt;
+      &lt;xs:element name="rbc" type="xhtml.rbc.type"/&gt;
+      &lt;xs:element name="rtc" type="xhtml.rtc.type" maxOccurs="2"/&gt;
+    &lt;/xs:sequence&gt;
+  &lt;/xs:group&gt;
+  &lt;!--
+   add to this group any common attributes for all Ruby elements
+  --&gt;
+  &lt;xs:attributeGroup name="xhtml.ruby.common.attrib"/&gt;
+  &lt;xs:group name="xhtml.ruby.content"&gt;
+    &lt;xs:choice&gt;
+      &lt;xs:group ref="xhtml.ruby.content.simple"/&gt;
+      &lt;xs:group ref="xhtml.ruby.content.complex"/&gt;
+    &lt;/xs:choice&gt;
+  &lt;/xs:group&gt;
+  &lt;xs:complexType name="xhtml.ruby.type"&gt;
+    &lt;xs:group ref="xhtml.ruby.content"/&gt;
+    &lt;xs:attributeGroup ref="xhtml.ruby.common.attrib"/&gt;
+  &lt;/xs:complexType&gt;
+  &lt;!--
+   rbc (ruby base component) element 
+  --&gt;
+  &lt;xs:attributeGroup name="xhtml.rbc.attlist"&gt;
+    &lt;xs:attributeGroup ref="xhtml.ruby.common.attrib"/&gt;
+  &lt;/xs:attributeGroup&gt;
+  &lt;xs:group name="xhtml.rbc.content"&gt;
+    &lt;xs:sequence&gt;
+      &lt;xs:element name="rb" type="xhtml.rb.type" /&gt;
+    &lt;/xs:sequence&gt;
+  &lt;/xs:group&gt;  
+  &lt;xs:complexType name="xhtml.rbc.type"&gt;
+    &lt;xs:group ref="xhtml.rbc.content"/&gt;
+    &lt;xs:attributeGroup ref="xhtml.rbc.attlist"/&gt;
+  &lt;/xs:complexType&gt;
+  &lt;!--
+   rtc (ruby text component) element
+  --&gt;
+  &lt;xs:attributeGroup name="xhtml.rtc.attlist"&gt;
+    &lt;xs:attributeGroup ref="xhtml.ruby.common.attrib"/&gt;
+  &lt;/xs:attributeGroup&gt;
+  &lt;xs:group name="xhtml.rtc.content"&gt;
+    &lt;xs:sequence&gt;
+      &lt;xs:element name="rt" type="xhtml.rt.type" maxOccurs="unbounded"/&gt;
+    &lt;/xs:sequence&gt;  
+  &lt;/xs:group&gt;    
+  &lt;xs:complexType name="xhtml.rtc.type"&gt;
+    &lt;xs:group ref="xhtml.rt.content"/&gt;  
+    &lt;xs:attributeGroup ref="xhtml.rtc.attlist"/&gt;
+  &lt;/xs:complexType&gt;
+  &lt;!--
+   rb (ruby base) element 
+  --&gt;
+  &lt;xs:attributeGroup name="xhtml.rb.attlist"&gt;
+    &lt;xs:attributeGroup ref="xhtml.ruby.common.attrib"/&gt;
+  &lt;/xs:attributeGroup&gt;
+  &lt;xs:group name="xhtml.rb.content"&gt;
+    &lt;xs:sequence&gt;
+       &lt;xs:group ref="xhtml.TextNoRuby.class" minOccurs="0" maxOccurs="unbounded"/&gt;
+    &lt;/xs:sequence&gt;
+  &lt;/xs:group&gt;      
+  &lt;xs:complexType name="xhtml.rb.type" mixed="true"&gt;
+    &lt;xs:group ref="xhtml.rb.content"/&gt;
+    &lt;xs:attributeGroup ref="xhtml.rb.attlist"/&gt;
+  &lt;/xs:complexType&gt;
+  &lt;!--
+   rt (ruby text) element 
+  --&gt;
+  &lt;xs:attributeGroup name="xhtml.rt.attlist"&gt;
+    &lt;xs:attributeGroup ref="xhtml.ruby.common.attrib"/&gt;
+    &lt;xs:attribute name="rbspan" type="xh11d:Number" default="1"/&gt;
+  &lt;/xs:attributeGroup&gt;
+  &lt;xs:group name="xhtml.rt.content"&gt;
+    &lt;xs:sequence&gt;
+       &lt;xs:group ref="xhtml.TextNoRuby.class" minOccurs="0" maxOccurs="unbounded"/&gt;
+    &lt;/xs:sequence&gt;
+  &lt;/xs:group&gt;      
+  &lt;xs:complexType name="xhtml.rt.type" mixed="true"&gt;
+    &lt;xs:group ref="xhtml.rt.content"/&gt;  
+    &lt;xs:attributeGroup ref="xhtml.rt.attlist"/&gt;
+  &lt;/xs:complexType&gt;
+  &lt;!-- rp (ruby parenthesis) element  --&gt;
+  &lt;xs:attributeGroup name="xhtml.rp.attlist"&gt;
+    &lt;xs:attributeGroup ref="xhtml.ruby.common.attrib"/&gt;
+  &lt;/xs:attributeGroup&gt;
+  &lt;xs:group name="xhtml.rp.content"&gt;
+    &lt;xs:sequence/&gt;
+  &lt;/xs:group&gt;      
+  &lt;xs:complexType name="xhtml.rp.type" mixed="true"&gt;
+    &lt;xs:group ref="xhtml.rp.content"/&gt;
+    &lt;xs:attributeGroup ref="xhtml.rp.attlist"/&gt;
+  &lt;/xs:complexType&gt;
+&lt;/xs:schema&gt;
+</pre>
+<!-- END OF FILE xhtml-ruby-2.xsd.mhtml -->
+<h3 >
+<a id="a_smodule_XForms_Modules" >E.4.4.</a> XForms Modules
+</h3>
+<!-- INCLUDING SCHEMA xforms-2.xsd -->
+<pre class="dtd">
+Module xforms-2.xsd not found!
+</pre>
+<!-- END OF FILE xforms-2.xsd.mhtml -->
+<h3 >
+<a id="a_smodule_XML_Events_Module" >E.4.5.</a> XML Events Module
+</h3>
+<!-- INCLUDING SCHEMA xml-events-2.xsd -->
+<pre class="dtd">
+&lt;?xml version="1.0" encoding="UTF-8"?&gt;
+&lt;xs:schema 
+    xmlns:xs="http://www.w3.org/2001/XMLSchema" 
+    xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+    xmlns:xh11d="http://www.w3.org/1999/xhtml/datatypes/"
+    xsi:schemaLocation="http://www.w3.org/2001/XMLSchema 
+                        http://www.w3.org/2001/XMLSchema.xsd" 
+    elementFormDefault="unqualified" 
+    blockDefault="#all" 
+    finalDefault="#all" 
+    attributeFormDefault="unqualified"&gt;
+  &lt;xs:import namespace="http://www.w3.org/1999/xhtml/datatypes/" 
+    schemaLocation="xhtml-datatypes-2.xsd" /&gt;
+  &lt;xs:import namespace="http://www.w3.org/XML/1998/namespace"
+      schemaLocation="http://www.w3.org/2001/xml.xsd"/&gt;
+  &lt;xs:annotation&gt;
+    &lt;xs:documentation&gt;
+      This is the XML Schema for XML Events
+      URI: http://www.w3.org/MarkUp/SCHEMA/xml-events-2.xsd
+      &#36;Id: xml-events-2.xsd,v 1.1.2.5 2009/01/22 04:47:53 ahby Exp &#36;
+      Note that this module requires the definition of 
+      xmlEvents.Common.attrib to be a collection of attributes to 
+      add to each element.  This collection MUST contain an 'id' 
+      attribute.
+    &lt;/xs:documentation&gt;
+    &lt;xs:documentation source="xml-events-copyright-2.xsd"/&gt;
+  &lt;/xs:annotation&gt;
+  &lt;xs:annotation&gt;
+    &lt;xs:documentation&gt;
+      XML Events element listener
+        This module defines the listener element for XML Events.
+        This element can be used to define event listeners. This
+        module relies upon the XmlEvents.attlist attribute group
+        defined in xml-events-attribs-2.xsd.
+    &lt;/xs:documentation&gt;
+  &lt;/xs:annotation&gt;
+  &lt;xs:attributeGroup name="xmlEvents.Common.attrib"&gt;
+    &lt;xs:attribute name="id" type="xs:ID"/&gt;
+    &lt;xs:anyAttribute/&gt;
+  &lt;/xs:attributeGroup&gt;
+  &lt;xs:attributeGroup name="xmlEvents.listener.attlist"&gt;
+    &lt;xs:attributeGroup ref="xmlEvents.attrib" /&gt;
+    &lt;xs:attributeGroup ref="xmlEvents.Common.attrib"/&gt;
+  &lt;/xs:attributeGroup&gt;
+  &lt;xs:complexType name="xmlEvents.listener.type"&gt;
+    &lt;xs:attributeGroup ref="xmlEvents.listener.attlist"/&gt;
+  &lt;/xs:complexType&gt;
+  &lt;xs:element name="listener" type="xmlEvents.listener.type"/&gt;
+&lt;/xs:schema&gt;
+</pre>
+<!-- END OF FILE xml-events-2.xsd.mhtml -->
+<h3 >
+<a id="a_smodule_XML_Handlers_Module" >E.4.6.</a> XML Handlers Module
+</h3>
+<!-- INCLUDING SCHEMA xml-handlers-2.xsd -->
+<pre class="dtd">
+&lt;?xml version="1.0" encoding="UTF-8"?&gt;
+&lt;xs:schema 
+    xmlns:xh11d="http://www.w3.org/1999/xhtml/datatypes/"
+    xmlns:xs="http://www.w3.org/2001/XMLSchema" 
+    xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" 
+    xsi:schemaLocation="http://www.w3.org/2001/XMLSchema 
+                        http://www.w3.org/2001/XMLSchema.xsd" 
+    elementFormDefault="unqualified" 
+    blockDefault="#all" 
+    finalDefault="#all" 
+    attributeFormDefault="unqualified"&gt;
+  &lt;xs:import namespace="http://www.w3.org/1999/xhtml/datatypes/" 
+    schemaLocation="xhtml-datatypes-2.xsd" /&gt;
+  &lt;xs:import namespace="http://www.w3.org/XML/1998/namespace"
+      schemaLocation="http://www.w3.org/2001/xml.xsd"/&gt;
+  &lt;xs:annotation&gt;
+    &lt;xs:documentation&gt;
+      This is the XML Schema for XML Handlers
+      URI: http://www.w3.org/MarkUp/SCHEMA/xml-handlers-1.xsd
+      &#36;Id: xml-handlers-2.xsd,v 1.1.2.1 2009/01/18 20:55:12 ahby Exp &#36;
+      Note that this module requires the definition of 
+      xmlHandlers.Common.attrib to be a collection of attributes to 
+      add to each element.  This collection MUST contain an 'id' 
+      attribute.
+    &lt;/xs:documentation&gt;
+    &lt;xs:documentation source="xml-events-copyright-2.xsd"/&gt;
+  &lt;/xs:annotation&gt;
+  &lt;xs:attributeGroup name="xmlHandlers.Common.attrib"&gt;
+      &lt;xs:attribute name="id" type="xs:ID"/&gt;
+      &lt;xs:anyAttribute/&gt;
+  &lt;/xs:attributeGroup&gt;
+  &lt;xs:attributeGroup name="xmlHandlers.action.attlist"&gt;
+    &lt;xs:attributeGroup ref="xmlHandlers.Common.attrib"/&gt;
+    &lt;xs:attribute name="event" use="required" type="xs:QName"/&gt;
+    &lt;xs:attribute name="eventTarget"&gt;
+        &lt;xs:simpleType&gt;
+            &lt;xs:list itemType="xs:IDREF"/&gt;
+        &lt;/xs:simpleType&gt;
+    &lt;/xs:attribute&gt;
+    &lt;xs:attribute name="declare"&gt;
+        &lt;xs:simpleType&gt;
+            &lt;xs:restriction base="xs:NMTOKEN"&gt;
+                &lt;xs:enumeration value="declare"/&gt;
+            &lt;/xs:restriction&gt;
+        &lt;/xs:simpleType&gt;
+    &lt;/xs:attribute&gt;
+    &lt;xs:attribute name="if" type="xs:normalizedString"/&gt;
+    &lt;xs:attribute name="while" type="xs:normalizedString"/&gt;
+    &lt;xs:anyAttribute /&gt;
+  &lt;/xs:attributeGroup&gt;
+  &lt;xs:group name="xmlHandlers.action.content"&gt;
+      &lt;xs:choice&gt;
+        &lt;xs:element name="action" type="xmlHandlers.action.type"/&gt;
+        &lt;xs:element name="dispatchEvent" type="xmlHandlers.dispatchEvent.type"/&gt;
+        &lt;xs:element name="addEventListener" type="xmlHandlers.addEventListener.type"/&gt;
+        &lt;xs:element name="removeEventListener" type="xmlHandlers.removeEventListener.type"/&gt;
+        &lt;xs:element name="stopPropagation" type="xmlHandlers.stopPropagation.type"/&gt;
+        &lt;xs:element name="preventDefault" type="xmlHandlers.preventDefault.type"/&gt;
+      &lt;/xs:choice&gt;
+  &lt;/xs:group&gt;
+  &lt;xs:complexType name="xmlHandlers.action.type"&gt;
+    &lt;xs:group ref="xmlHandlers.action.content"/&gt;
+    &lt;xs:attributeGroup ref="xmlHandlers.action.attlist"/&gt;
+  &lt;/xs:complexType&gt;
+  &lt;xs:attributeGroup name="xmlHandlers.dispatchEvent.attlist"&gt;
+    &lt;xs:attributeGroup ref="xmlHandlers.Common.attrib"/&gt;
+    &lt;xs:attribute name="eventType" type="xs:QName"/&gt;
+    &lt;xs:attribute name="eventTarget"&gt;
+        &lt;xs:simpleType&gt;
+            &lt;xs:list itemType="xs:IDREF"/&gt;
+        &lt;/xs:simpleType&gt;
+    &lt;/xs:attribute&gt;
+    &lt;xs:attribute name="bubbles"&gt;
+        &lt;xs:simpleType&gt;
+            &lt;xs:restriction base="xs:NMTOKEN"&gt;
+                &lt;xs:enumeration value="bubbles"/&gt;
+            &lt;/xs:restriction&gt;
+        &lt;/xs:simpleType&gt;
+    &lt;/xs:attribute&gt;
+    &lt;xs:attribute name="cancelable"&gt;
+        &lt;xs:simpleType&gt;
+            &lt;xs:restriction base="xs:NMTOKEN"&gt;
+                &lt;xs:enumeration value="cancelable"/&gt;
+            &lt;/xs:restriction&gt;
+        &lt;/xs:simpleType&gt;
+    &lt;/xs:attribute&gt;
+    &lt;xs:anyAttribute /&gt;
+  &lt;/xs:attributeGroup&gt;
+  &lt;xs:complexType name="xmlHandlers.dispatchEvent.type"&gt;
+    &lt;xs:attributeGroup ref="xmlHandlers.dispatchEvent.attlist"/&gt;
+  &lt;/xs:complexType&gt;
+  &lt;xs:element name="dispatchEvent" type="xmlHandlers.dispatchEvent.type"/&gt;
+  &lt;xs:attributeGroup name="xmlHandlers.addEventListener.attlist"&gt;
+    &lt;xs:attributeGroup ref="xmlHandlers.Common.attrib"/&gt;
+    &lt;xs:attribute name="event" use="required" type="xs:QName"/&gt;
+    &lt;xs:attribute name="handler" use="required" type="xs:IDREF"/&gt;
+    &lt;xs:attribute name="phase" default="default"&gt;
+        &lt;xs:simpleType&gt;
+            &lt;xs:restriction base="xs:NMTOKEN"&gt;
+                &lt;xs:enumeration value="bubble"/&gt;
+                &lt;xs:enumeration value="capture"/&gt;
+                &lt;xs:enumeration value="default"/&gt;
+                &lt;xs:enumeration value="target"/&gt;
+            &lt;/xs:restriction&gt;
+        &lt;/xs:simpleType&gt;
+    &lt;/xs:attribute&gt;
+    &lt;xs:anyAttribute /&gt;
+  &lt;/xs:attributeGroup&gt;
+  &lt;xs:complexType name="xmlHandlers.addEventListener.type"&gt;
+    &lt;xs:attributeGroup ref="xmlHandlers.addEventListener.attlist"/&gt;
+  &lt;/xs:complexType&gt;
+  &lt;xs:element name="addEventListener" type="xmlHandlers.addEventListener.type"/&gt;
+  &lt;xs:attributeGroup name="xmlHandlers.removeEventListener.attlist"&gt;
+    &lt;xs:attributeGroup ref="xmlHandlers.Common.attrib"/&gt;
+    &lt;xs:attribute name="event" use="required" type="xs:QName"/&gt;
+    &lt;xs:attribute name="handler" use="required" type="xs:IDREF"/&gt;
+    &lt;xs:attribute name="phase" default="default"&gt;
+        &lt;xs:simpleType&gt;
+            &lt;xs:restriction base="xs:NMTOKEN"&gt;
+                &lt;xs:enumeration value="bubble"/&gt;
+                &lt;xs:enumeration value="capture"/&gt;
+                &lt;xs:enumeration value="default"/&gt;
+                &lt;xs:enumeration value="target"/&gt;
+            &lt;/xs:restriction&gt;
+        &lt;/xs:simpleType&gt;
+    &lt;/xs:attribute&gt;
+    &lt;xs:anyAttribute /&gt;
+  &lt;/xs:attributeGroup&gt;
+  &lt;xs:complexType name="xmlHandlers.removeEventListener.type"&gt;
+    &lt;xs:attributeGroup ref="xmlHandlers.removeEventListener.attlist"/&gt;
+  &lt;/xs:complexType&gt;
+  &lt;xs:element name="removeEventListener" type="xmlHandlers.removeEventListener.type"/&gt;
+  &lt;xs:attributeGroup name="xmlHandlers.stopPropagation.attlist"&gt;
+    &lt;xs:attributeGroup ref="xmlHandlers.Common.attrib"/&gt;
+    &lt;xs:attribute name="event" use="required" type="xs:QName"/&gt;
+    &lt;xs:anyAttribute /&gt;
+  &lt;/xs:attributeGroup&gt;
+  &lt;xs:complexType name="xmlHandlers.stopPropagation.type"&gt;
+    &lt;xs:attributeGroup ref="xmlHandlers.stopPropagation.attlist"/&gt;
+  &lt;/xs:complexType&gt;
+  &lt;xs:element name="stopPropagation" type="xmlHandlers.stopPropagation.type"/&gt;
+  &lt;xs:attributeGroup name="xmlHandlers.preventDefault.attlist"&gt;
+    &lt;xs:attributeGroup ref="xmlHandlers.Common.attrib"/&gt;
+    &lt;xs:attribute name="event" use="required" type="xs:QName"/&gt;
+    &lt;xs:anyAttribute /&gt;
+  &lt;/xs:attributeGroup&gt;
+  &lt;xs:complexType name="xmlHandlers.preventDefault.type"&gt;
+    &lt;xs:attributeGroup ref="xmlHandlers.preventDefault.attlist"/&gt;
+  &lt;/xs:complexType&gt;
+  &lt;xs:element name="preventDefault" type="xmlHandlers.preventDefault.type"/&gt;
+&lt;/xs:schema&gt;
+</pre>
+<!-- END OF FILE xml-handlers-2.xsd.mhtml -->
+<h3 >
+<a id="a_smodule_XML_Scripting_Module" >E.4.7.</a> XML Scripting Module
+</h3>
+<!-- INCLUDING SCHEMA xml-script-2.xsd -->
+<pre class="dtd">
+&lt;?xml version="1.0" encoding="UTF-8"?&gt;
+&lt;xs:schema 
+    xmlns:xh11d="http://www.w3.org/1999/xhtml/datatypes/"
+    xmlns:xs="http://www.w3.org/2001/XMLSchema" 
+    xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" 
+    xsi:schemaLocation="http://www.w3.org/2001/XMLSchema 
+                        http://www.w3.org/2001/XMLSchema.xsd" 
+    elementFormDefault="unqualified" 
+    blockDefault="#all" 
+    finalDefault="#all" 
+    attributeFormDefault="unqualified"&gt;
+  &lt;xs:import namespace="http://www.w3.org/1999/xhtml/datatypes/" 
+             schemaLocation="xhtml-datatypes-2.xsd" /&gt;
+  &lt;xs:import namespace="http://www.w3.org/XML/1998/namespace"
+      schemaLocation="http://www.w3.org/2001/xml.xsd" /&gt;
+  &lt;xs:annotation&gt;
+    &lt;xs:documentation&gt;
+      This is the XML Schema for XML Scripting
+      URI: http://www.w3.org/MarkUp/SCHEMA/xml-script-1.xsd
+      &#36;Id: xml-script-2.xsd,v 1.1.2.3 2009/01/22 04:47:53 ahby Exp &#36;
+      Note that this module requires the definition of 
+      xmlScripting.Common.attrib to be a collection of attributes to 
+      add to each element.  This collection MUST contain an 'id' 
+      attribute.
+    &lt;/xs:documentation&gt;
+    &lt;xs:documentation source="xml-events-copyright-2.xsd"/&gt;
+  &lt;/xs:annotation&gt;
+  &lt;xs:attributeGroup name="xmlScripting.Common.attrib"&gt;
+    &lt;xs:attribute name="id" type="xs:ID"/&gt;
+    &lt;xs:anyAttribute/&gt;
+  &lt;/xs:attributeGroup&gt;
+  &lt;xs:attributeGroup name="xmlScripting.script.attlist"&gt;
+    &lt;xs:attributeGroup ref="xmlScripting.Common.attrib"/&gt;
+    &lt;xs:attribute name="charset" type="xh11d:Charset"/&gt;
+    &lt;xs:attribute name="defer" type="xs:NMTOKEN" fixed="defer"/&gt;
+    &lt;xs:attribute name="implements" type="xh11d:URIorSafeCURIEs"/&gt;
+    &lt;xs:attribute name="src" type="xs:anyURI"/&gt;
+    &lt;xs:attribute name="type" type="xh11d:ContentTypes"/&gt;
+    &lt;xs:anyAttribute /&gt;
+  &lt;/xs:attributeGroup&gt;
+  &lt;xs:group name="xmlScripting.script.content"&gt;
+      &lt;xs:sequence/&gt;
+  &lt;/xs:group&gt;
+  &lt;xs:complexType name="xmlScripting.script.type" mixed="true"&gt;
+      &lt;xs:group ref="xmlScripting.script.content"/&gt;
+      &lt;xs:attributeGroup ref="xmlScripting.script.attlist"/&gt;
+  &lt;/xs:complexType&gt;
+&lt;/xs:schema&gt;
+</pre>
+<!-- END OF FILE xml-script-2.xsd.mhtml -->
+<hr />
+<div class="navbar">
+[<a href="xhtml20_schema.html">previous</a>]
+[<a href="xhtml20_dtd.html">next</a>]
+[<a href="Overview.html#toc">table of contents</a>]
+[<a href="elements.html">elements</a>]
+[<a href="attributes.html">attributes</a>]
+</div>
+</body>
+</html>

@@ -1,0 +1,138 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN"
+	"http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html lang="en" xml:lang="en" xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<title>XHTML&#8482; 2.0 - XHTML Embedding Attributes Module</title> 
+<link rel="start" type="text/html" href="Overview.html" />
+<link rel="contents" type="text/html" href="Overview.html#toc" />
+<link rel="prev" type="text/html" href="mod-edit.html" />
+<link rel="next" type="text/html" href="mod-image.html" />
+<link rel="stylesheet" type="text/css" href="xhtml.css" />
+<link rel="stylesheet" type="text/css" href="http://www.w3.org/StyleSheets/TR/W3C-ED.css" />
+</head>
+<body>
+<div class="navbar">
+[<a accesskey="P" href="mod-edit.html">previous</a>]
+[<a accesskey="N" href="mod-image.html">next</a>]
+[<a accesskey="T" href="Overview.html#toc">table of contents</a>]
+[<a accesskey="E" href="elements.html">elements</a>]
+[<a accesskey="A" href="attributes.html">attributes</a>]
+<hr />
+</div>
+<h1 >
+<a id="s_embeddingmodule" >19.</a> XHTML Embedding Attributes Module
+</h1>
+<div class='subtoc'><p><strong>Contents</strong></p><ul class='toc'><li class='tocline'>
+19.1.
+<a href="#col_Embedding" class="tocxref">Embedding Attribute Collection</a>
+</li></ul>
+</div>
+<p>This section is <em>normative</em>.</p>
+<p>The Embedding Attributes module defines the 
+    <a class="csref" href="mod-embedding.html#col_Embedding">Embedding</a>
+attribute collection.</p>
+<p>This collection causes the contents of a remote resource to be
+embedded in the document in place of the element's content. 
+<span class="must"  >If
+accessing the remote resource fails, for whatever reason (e.g., network
+unavailable, no resource available at the URI given, inability of the
+user agent to process the type of resource) or an associated 
+<a class="aref" href="mod-csImgMap.html#adef_csImgMap_ismap">@ismap</a> attribute fails,
+the content of the element must be processed instead.</span></p>
+<p>Note that this behavior makes documents far more robust, and gives much better opportunities for accessible documents than the <code>longdesc</code> attribute present in earlier versions of XHTML, since it allows the description of the resource to be included in the document itself, rather than in a separate document.</p>
+<div class="example">
+    <p>Example</p>
+<pre>
+&lt;p src="holiday.png" srctype="image/png"&gt;
+	&lt;span src="holiday.gif" srctype="image/gif"&gt;
+		An image of us on holiday.
+	&lt;/span&gt;
+&lt;/p&gt;
+&lt;table src="temperature-graph.png" srctype="image/png"&gt;
+&lt;caption&gt;Average monthly temperature over the last 20 years&lt;/caption&gt;
+&lt;tr&gt;&lt;th&gt;Jan&lt;/th&gt;&lt;th&gt;Feb&lt;/th&gt;&lt;th&gt;Mar&lt;/th&gt;&lt;th&gt;Apr&lt;/th&gt;&lt;th&gt;May&lt;/th&gt;&lt;th&gt;Jun&lt;/th&gt;
+    &lt;th&gt;Jul&lt;/th&gt;&lt;th&gt;Aug&lt;/th&gt;&lt;th&gt;Sep&lt;/th&gt;&lt;th&gt;Oct&lt;/th&gt;&lt;th&gt;Nov&lt;/th&gt;&lt;th&gt;Dec&lt;/th&gt;
+&lt;/tr&gt;
+&lt;tr&gt;&lt;td&gt; 4&lt;/td&gt;&lt;td&gt; 2&lt;/td&gt;&lt;td&gt; 7&lt;/td&gt;&lt;td&gt; 9&lt;/td&gt;&lt;td&gt;13&lt;/td&gt;&lt;td&gt;16&lt;/td&gt;
+    &lt;td&gt;17&lt;/td&gt;&lt;td&gt;17&lt;/td&gt;&lt;td&gt;14&lt;/td&gt;&lt;td&gt;11&lt;/td&gt;&lt;td&gt; 7&lt;/td&gt;&lt;td&gt; 4&lt;/td&gt;
+&lt;/tr&gt;
+&lt;/table&gt;
+</pre>
+</div>
+<h2 >
+<a id="col_Embedding" >19.1.</a> Embedding Attribute Collection
+</h2>
+<!-- INCLUDING ATTRIBUTE modules/attributes/encoding.mhtml -->
+<dl class='attrDef'><dt><a class="adef" id="adef_embedding_encoding"><span class="adef">encoding</span></a>
+ = <span class="datatype"><a href="abstraction.html#dt_Encodings">Encodings</a></span>
+</dt>
+<dd>This attribute specifies the allowable encoding of the external resource referenced by the 
+<a class="aref" href="mod-embedding.html#adef_embedding_src">@src</a> attribute.
+At its most general, it is a comma-separated list of encodings, such as "utf-8", "utf8, utf-16", or "utf-8, utf-16, *".
+<p><span class="must"  >The user agent must use this list as the field value of the <code>accept-charset</code> request header when requesting the resource using HTTP.</span></p>
+<p><span class="must"  >If this attribute is not present, the user agent must use its default value of the accept-charset request header.</span></p>
+<p><span class="should"  >
+User agents should use a similar technique when using other protocols that allow encoding negotation</span></p>
+<p><span class="should"  >
+When using protocols that do not allow encoding negotiation to retrieve resources whose encodings are not self-identifying, the user agent should use the first encoding in the attribute's value as the indication of the resource.</span></p>
+<div class="example">
+    <p>Example</p>
+<pre>
+&lt;style type="text/css" src="style/home" encoding="utf-8" /&gt; 
+</pre>
+</div>
+</dd></dl>
+<!-- END OF ATTRIBUTE FILE modules/attributes/encoding.mhtml -->
+<!-- INCLUDING ATTRIBUTE modules/attributes/src.mhtml -->
+<dl class='attrDef'><dt><a class="adef" id="adef_embedding_src"><span class="adef">src</span></a>
+ = <span class="datatype"><a href="abstraction.html#dt_URI">URI</a></span>
+</dt>
+<dd>This attribute specifies the location of an external source for
+the contents of the element.  
+Actuation occurs as the default action of a [<a class="nref" href="references.html#ref_DOM">DOM</a>]
+load event for the element that the attribute occurs on.
+<!--
+<p>In terms of [<a class="nref" href="references.html#ref_HLINK">HLINK</a>], the 
+<a class="aref" href="mod-embedding.html#adef_embedding_src">@src</a> attribute is
+specified as:</p>
+<pre>&lt;hlink namespace="http://www.w3.org/1999/xhtml"
+	   locator="src"
+       effectValue="embed"
+	   mediaType="type"
+	   onFailureValue="processChildren"
+	   onSuccessValue="ignoreChildren"
+       actuateValue="onLoad"/&gt;</pre>
+   -->
+</dd></dl>
+<!-- END OF ATTRIBUTE FILE modules/attributes/src.mhtml -->
+<!-- INCLUDING ATTRIBUTE modules/attributes/srctype.mhtml -->
+<dl class='attrDef'><dt><a class="adef" id="adef_embedding_srctype"><span class="adef">srctype</span></a>
+ = <span class="datatype"><a href="abstraction.html#dt_ContentTypes">ContentTypes</a></span> </dt>
+<dd><p>This attribute specifies the allowable content types of the resource referenced by the relevant 
+<a class="aref" href="mod-embedding.html#adef_embedding_src">@src</a> URI.</p>
+<div class="example">
+    <p>Example</p>
+<pre>
+&lt;handler src="pop" srctype="application/x-javascript, text/x-newspeak" /&gt;
+&lt;style src="midnight" srctype="text/css, text/x-mystyle" /&gt;
+&lt;p src="w3c-logo" srctype="image/png, image/jpeg;q=0.2"&gt;W3C logo&lt;/p&gt;
+&lt;span src="logo.png"&gt;Our logo&lt;/span&gt;
+&lt;span src="theme.mp3" srctype="audio/x-mpeg"&gt;Our theme jingle&lt;/span&gt;
+</pre>
+</div>
+</dd></dl>
+<!-- END OF ATTRIBUTE FILE modules/attributes/srctype.mhtml -->
+<p>Implementations: <a href="relax_module_defs.html#a_rmodule_Embedding_Attributes">RELAX NG</a>,
+<a href="schema_module_defs.html#a_smodule_Embedding_Attributes_Module">XML Schema</a>
+</p>
+<hr />
+<div class="navbar">
+[<a href="mod-edit.html">previous</a>]
+[<a href="mod-image.html">next</a>]
+[<a href="Overview.html#toc">table of contents</a>]
+[<a href="elements.html">elements</a>]
+[<a href="attributes.html">attributes</a>]
+</div>
+</body>
+</html>

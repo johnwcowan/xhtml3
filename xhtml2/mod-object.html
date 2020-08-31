@@ -1,0 +1,600 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN"
+	"http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html lang="en" xml:lang="en" xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<title>XHTML&#8482; 2.0 - XHTML Object Module</title> 
+<link rel="start" type="text/html" href="Overview.html" />
+<link rel="contents" type="text/html" href="Overview.html#toc" />
+<link rel="prev" type="text/html" href="mod-metaAttributes.html" />
+<link rel="next" type="text/html" href="mod-roleAttribute.html" />
+<link rel="stylesheet" type="text/css" href="xhtml.css" />
+<link rel="stylesheet" type="text/css" href="http://www.w3.org/StyleSheets/TR/W3C-ED.css" />
+</head>
+<body>
+<div class="navbar">
+[<a accesskey="P" href="mod-metaAttributes.html">previous</a>]
+[<a accesskey="N" href="mod-roleAttribute.html">next</a>]
+[<a accesskey="T" href="Overview.html#toc">table of contents</a>]
+[<a accesskey="E" href="elements.html">elements</a>]
+[<a accesskey="A" href="attributes.html">attributes</a>]
+<hr />
+</div>
+<h1 >
+<a id="s_objectmodule" >25.</a> XHTML Object Module
+</h1>
+<div class='subtoc'><p><strong>Contents</strong></p><ul class='toc'><li class='tocline'>
+25.1.
+<a href="#sec_25.1." class="tocxref">The object element</a>
+<ul class="toc"><li class='tocline'>25.1.1.
+<a href="#sec_25.1.1." class="tocxref">Defining terminology</a>
+</li><li class='tocline'>25.1.2.
+<a href="#sec_25.1.2." class="tocxref">Basic Information for Object Handlers</a>
+</li><li class='tocline'>25.1.3.
+<a href="#sec_25.1.3." class="tocxref">Rules for processing objects</a>
+</li></ul></li><li class='tocline'>25.2.
+<a href="#sec_25.2." class="tocxref">The param element</a>
+<ul class="toc"><li class='tocline'>25.2.1.
+<a href="#sec_25.2.1." class="tocxref">Referencing object data</a>
+</li><li class='tocline'>25.2.2.
+<a href="#sec_25.2.2." class="tocxref">Object element declarations and instantiations</a>
+</li></ul></li><li class='tocline'>25.3.
+<a href="#sec_25.3." class="tocxref">The standby element</a>
+</li></ul>
+</div>
+<p>This section is <em>normative</em>.</p>
+<p>The Object Module provides elements for general-purpose object inclusion; this includes images and other media, as well as executable content. Specifically, the Object Module supports:</p>
+<table class="moduledef" border="1" summary="Elements and Attributes for Object
+Module">
+<thead>
+<tr>
+  <th>Elements</th>
+  <th>Attributes</th>
+  <th>Content Model</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+  <td>object</td>
+  <td>
+    <a class="csref" href="mod-attribute-collections.html#col_Common">Common</a>,
+<a class="aref" href="mod-object.html#adef_object_archive">@archive</a> (<span class="datatype"><a href="abstraction.html#dt_URIs">URIs</a></span>),
+<a class="aref" href="mod-object.html#adef_object_content-length">@content-length</a> (<span class="datatype"><a href="abstraction.html#dt_Number">Number</a></span>),
+<a class="aref" href="mod-object.html#adef_object_declare">@declare</a> ("declare")
+  </td>
+  <td class="content">(
+<a class="eref" href="mod-caption.html#edef_caption_caption">caption</a>?,
+<a class="eref" href="mod-document.html#edef_document_title">title</a>?,
+<a class="eref" href="mod-object.html#edef_object_standby">standby</a>?, 
+<a class="eref" href="mod-object.html#edef_object_param">param</a>*, (
+    <a class="csref" href="mod-structural.html#cs_Flow">Flow</a>)*)</td>
+</tr>
+<tr>
+  <td>param</td>
+  <td>
+<a class="aref" href="mod-core.html#adef_core_id">@id</a> (<span class="datatype"><a href="abstraction.html#dt_ID">ID</a></span>),
+<a class="aref" href="mod-object.html#adef_object_appletName">@name</a>* (<span class="datatype"><a href="abstraction.html#dt_CDATA">CDATA</a></span>),
+<a class="aref" href="mod-object.html#adef_object_appletValue">@value</a> (<span class="datatype"><a href="abstraction.html#dt_CDATA">CDATA</a></span>),
+<a class="aref" href="mod-object.html#adef_object_valuetype">@valuetype</a> ("data"* | "ref" | "object"),
+<a class="aref" href="mod-object.html#adef_object_paramtype">@paramtype</a> (<span class="datatype"><a href="abstraction.html#dt_ContentType">ContentType</a></span>)
+  </td>
+  <td class="content">EMPTY</td>
+</tr>
+<tr>
+  <td>standby</td>
+  <td>
+    <a class="csref" href="mod-attribute-collections.html#col_Common">Common</a>
+  </td>
+  <td class="content">(
+    <a class="csref" href="mod-text.html#cs_Text">Text</a>)*</td>
+</tr>
+</tbody>
+</table>
+<p>Implementations: <a href="relax_module_defs.html#a_rmodule_Object">RELAX NG</a>,
+<a href="schema_module_defs.html#a_smodule_Object_Module">XML Schema</a>
+</p>
+<!-- INCLUDING ELEMENT modules/object/object.mhtml -->
+<h2 >
+<a id="sec_25.1." >25.1.</a> The <a class="edef" id="edef_object_object">object</a>
+ element
+</h2>
+<div class="adef-list">
+<p><em>Attributes</em></p>
+<!-- INCLUDING ATTRIBUTE modules/attributes/Common.mhtml -->
+<dl class='attrDef'><dt>The 
+    <a class="csref" href="mod-attribute-collections.html#col_Common">Common</a> collection</dt>
+<dd>A collection of other attribute collections, including:
+    <a class="csref" href="mod-bidi.html#col_Bi-directional">Bi-directional</a>, 
+    <a class="csref" href="mod-core.html#col_Core">Core</a>, 
+    <a class="csref" href="mod-edit.html#col_Edit">Edit</a>, 
+    <a class="csref" href="mod-embedding.html#col_Embedding">Embedding</a>, 
+    <a class="csref" href="mod-xml-events.html#col_Events">Events</a>, 
+    <a class="csref" href="mod-xforms.html#col_Forms">Forms</a>, 
+    <a class="csref" href="mod-hyperAttributes.html#col_Hypertext">Hypertext</a>,
+    <a class="csref" href="mod-i18n.html#col_I18N">I18N</a>, 
+    <a class="csref" href="mod-csImgMap.html#col_Map">Map</a>, 
+    <a class="csref" href="mod-metaAttributes.html#col_Metainformation">Metainformation</a>,
+and 
+    <a class="csref" href="mod-roleAttribute.html#col_Role">Role</a>
+</dd></dl>
+<!-- END OF ATTRIBUTE FILE modules/attributes/Common.mhtml -->
+<!-- INCLUDING ATTRIBUTE modules/attributes/archive.mhtml -->
+<dl class='attrDef'><dt><a class="adef" id="adef_object_archive"><span class="adef">archive</span></a>
+ = <span class="datatype"><a href="abstraction.html#dt_URIs">URIs</a></span> </dt>
+<dd>This attribute may be used to specify a space-separated list of
+URIs for archives containing resources relevant to the object,
+which may include the resources specified by the
+<a class="aref" href="mod-embedding.html#adef_embedding_src">@src</a>
+attribute.
+</dd></dl>
+<!-- END OF ATTRIBUTE FILE modules/attributes/archive.mhtml -->
+<!-- INCLUDING ATTRIBUTE modules/attributes/content-length.mhtml -->
+<dl class='attrDef'><dt><a class="adef" id="adef_object_content-length"><span class="adef">content-length</span></a>
+ = <span class="datatype"><a href="abstraction.html#dt_Number">Number</a></span></dt>
+<dd>This attribute is to be used as a hint by the object handler.
+The author may provide the object handler with the physical size of
+the object data that is to be processed. A valid value is the same
+as defined in section 14.13 of [<a class="nref" href="references.html#ref_RFC2616">RFC2616</a>].
+</dd></dl>
+<!-- END OF ATTRIBUTE FILE modules/attributes/content-length.mhtml -->
+<!-- INCLUDING ATTRIBUTE modules/attributes/declare.mhtml -->
+<dl class='attrDef'><dt><a class="adef" id="adef_object_declare"><span class="adef">declare</span></a>
+ = <samp>"declare"</samp></dt>
+<dd>When present, this boolean attribute makes the current 
+element a declaration only - one 
+that is to be executed only after the document has completed loading 
+and has been called through a user event.
+</dd></dl>
+<!-- END OF ATTRIBUTE FILE modules/attributes/declare.mhtml -->
+</div>
+<h3 >
+<a id="sec_25.1.1." >25.1.1.</a> Defining terminology
+</h3>
+<p>The following terms are used throughout this section.</p>
+<dl>
+  <dt>object src (source)</dt>
+  <dd>The file that is to be processed, such as an audio file, or image file. The actual content to be processed.</dd>
+  <dt>object handler</dt>
+  <dd>The mechanism that will be used to process the object data. The mechanism could be the user agent or an external application.</dd>
+  <dt>object element</dt>
+  <dd>This refers to the actual XHTML coding, including the allowable attributes.</dd>
+  <dt>instantiation</dt>
+  <dd>Refers to the plug-in handler, and the need to create a window, modify the user interface, allocate memory, etc.</dd>
+</dl>
+<h3 >
+<a id="sec_25.1.2." >25.1.2.</a> Basic Information for Object Handlers
+</h3>
+<p>
+<a class="xref"
+   id="s_objectmodule_xref_0">Most user agents have built-in mechanisms</a>
+ for processing common data types such as text, and various image types. In some instances the user agent may pass the processing to an external application. Generally, a user agent will attempt to process the object declaration, otherwise it may invoke an external application, which are normally referred to as "plug-ins".</p>
+<p>In the most general case, an author should specify three types of information:</p>
+<ul>
+  <li>The location of the object data (the src attribute). The author must direct the object handler to the actual physical location of the object data, otherwise the object handler will not be able to process the request.</li>
+  <li>The media type associated with the object data (the type
+  attribute). For instance, if the author prefers that a particular
+  object handler be used to process the data, they may specify a media type that is associated to a specific object handler.</li>
+  <li>Additional values required for the appropriate processing of the object data by the object handler at run-time (via the param element). Some instances may process more appropriately if the object handler is passed initial process instructions. For example, the author can specify whether a video should automatically start or wait until the entire data file has been downloaded.</li>
+</ul>
+<p>The 
+<a class="eref" href="mod-object.html#edef_object_object">object</a> element allows authors to specify all three
+types of information, but authors may not have to specify all three at
+once. For example, some object element instances may not require src
+(e.g., a self-contained applet that performs a small animation).
+Others may not require media type information, i.e., the user agent itself may already know how to process that type of data. Still others may not require run-time initialization.</p>
+<p>
+<a class="xref"
+   id="s_objectmodule_xref_1">The</a>
+<a class="eref" href="mod-object.html#edef_object_object">object</a>
+element may also appear in the content of the 
+<a class="eref" href="mod-document.html#edef_document_head">head</a> element. Since user agents generally do
+not render elements in the 
+<a class="eref" href="mod-document.html#edef_document_head">head</a>,
+authors should ensure that any 
+<a class="eref" href="mod-object.html#edef_object_object">object</a> element in the
+<a class="eref" href="mod-document.html#edef_document_head">head</a> does not specify content that is
+expected to be made available to the user.</p>
+<h3 >
+<a id="sec_25.1.3." >25.1.3.</a> Rules for processing objects
+</h3>
+<p>A user agent must interpret an 
+<a class="eref" href="mod-object.html#edef_object_object">object</a> element according to the following precedence rules:</p>
+<ol>
+  <li>The user agent MUST first try to process the object element. It
+  should not process the embedded contents, but it must examine them
+  for definitions of 
+<a class="eref" href="mod-object.html#edef_object_param">param</a> elements (see object
+  initialization) or elements that take advantage of the
+    <a class="csref" href="mod-csImgMap.html#col_Map">Map</a> attribute collection.</li>
+  <li>If the user agent is not able to process the object for whatever reason (configured not to, lack of resources, wrong architecture, etc.), it MUST try to process its contents.</li>
+</ol>
+<p>When a user agent is able to successfully process an object element it MUST not attempt to process inner elements.</p>
+<p>If a user agent cannot process an object element or a set of nested objects, and the author did not provide alternate text, the user agent SHOULD NOT supply any additional information. It is the responsibility of the author to supply additional or  alternate information. It may be the intent of the author to not provide additional information if the object cannot be processed.</p>
+<p>The user agent SHOULD attempt to process the outer object to its
+fullest extent before cascading to a nested object. For example, if the author provided information that could be used to download an external application to be used to process the object, then the user agent SHOULD attempt to download and install the application. If the user selects to not install the application, the user agent SHOULD continue to process the nested object or objects, if they exist.</p>
+<p>The following example shows a minimally coded 
+<a class="eref" href="mod-object.html#edef_object_object">object</a>
+element. The 
+<a class="aref" href="mod-embedding.html#adef_embedding_src">@src</a> attribute specifies
+the location of the object data:</p>
+<div class="example">
+    <p>Example</p>
+<pre>
+&lt;object src="http://www.example.com/foo.mp3"&gt;
+    &lt;em&gt;alternate text&lt;/em&gt;
+&lt;/object&gt;
+</pre>
+</div>
+<p>The following example shows an 
+<a class="eref" href="mod-object.html#edef_object_object">object</a> element coded to
+process an image. The 
+<a class="aref" href="mod-embedding.html#adef_embedding_src">@src</a> attribute
+specifies the location of the object data, in this case the image to
+be processed, and the 
+<a class="aref" href="mod-embedding.html#adef_embedding_srctype">@srctype</a> attribute
+specifies the media type associated with the object data:</p>
+<div class="example">
+    <p>Example</p>
+<pre>
+&lt;object src="http://www.example.com/foo.jpg" srctype="image/jpeg"&gt;
+   &lt;em&gt;alternate text&lt;/em&gt;
+&lt;/object&gt;
+</pre>
+</div>
+<p>The following example shows how an applet element can be converted to an 
+<a class="eref" href="mod-object.html#edef_object_object">object</a> element. The codebase attribute is replaced with the xml:base attribute. The code attribute is replaced with the 
+<a class="aref" href="mod-embedding.html#adef_embedding_src">@src</a> attribute. The width and the height of the applet are defined using CSS. The 
+<a class="eref" href="mod-object.html#edef_object_param">param</a> elements are not modified since the values within the 
+<a class="eref" href="mod-object.html#edef_object_param">param</a> elements are passed directly to the external application. If a particular version reference is required, that would be appended to the content of the type attribute. For example, type="application/x-java-applet;version=1.4.1"</p>
+<p>If the archive attribute is used, the object handler should process the search order by interpreting the archive attribute value first and then the xml:base attribute value.</p>
+<div class="example">
+    <p>Example</p>
+<pre>
+&lt;applet
+  codebase="http://www.example.com/applets/classes"
+  code="Clock.class"
+  width="150"
+  height="150"&gt;
+    &lt;param name="bgcolor" value="ffffff"/&gt;
+    &lt;param name="border" value="5"/&gt;
+    &lt;param name="ccolor" value="dddddd"/&gt;
+    &lt;param name="cfont" value="TimesRoman|BOLD|18"/&gt;
+    &lt;param name="delay" value="100"/&gt;
+    &lt;param name="hhcolor" value="0000ff"/&gt;
+    &lt;param name="link" value="http://www.example.com/"/&gt;
+    &lt;param name="mhcolor" value="00ff00"/&gt;
+    &lt;param name="ncolor" value="000000"/&gt;
+    &lt;param name="nradius" value="80"/&gt;
+    &lt;param name="shcolor" value="ff0000"/&gt;
+&lt;/applet&gt;
+</pre>
+</div>
+<div class="example">
+    <p>Example</p>
+<pre>
+&lt;style type="text/css"&gt;
+#obj1 {width:150px; height:150px;}
+&lt;/style&gt;
+...
+&lt;object id="obj1"
+  xml:base="http://www.example.com/applets/classes"
+  srctype="application/x-java-applet"
+  src="Clock.class"&gt;
+    &lt;param  name="delay"   value="100"/&gt;
+    &lt;param  name="link"    value="http://www.example.com/"/&gt;
+    &lt;param  name="border"  value="5"/&gt;
+    &lt;param  name="nradius" value="80"/&gt;
+    &lt;param  name="cfont"   value="TimesRoman|BOLD|18"/&gt;
+    &lt;param  name="bgcolor" value="ddddff"/&gt;
+    &lt;param  name="shcolor" value="ff0000"/&gt;
+    &lt;param  name="mhcolor" value="00ff00"/&gt;
+    &lt;param  name="hhcolor" value="0000ff"/&gt;
+    &lt;param  name="ccolor"  value="dddddd"/&gt;
+    &lt;param  name="ncolor"  value="000000"/&gt;
+    &lt;em&gt;alternate text&lt;/em&gt;
+&lt;/object&gt;
+</pre>
+</div>
+<p>Authors should always include alternate text as the content of the
+<a class="eref" href="mod-object.html#edef_object_object">object</a> element declaration when an embedded object is not
+defined.</p>
+<p>The following example demonstrates how alternate text may be used within an 
+<a class="eref" href="mod-object.html#edef_object_object">object</a> element.</p>
+<div class="example">
+    <p>Example</p>
+<pre>
+&lt;object src="http://www.example.com/foo.mp3" srctype="audio/mpeg"&gt;
+   A really cool audio file. If you want to download and install
+   a plug-in to listen to this file, please go to
+   &lt;a href="http://www.example.com"&gt;www.example.com&lt;/a&gt;
+&lt;/object&gt;
+</pre>
+</div>
+<p>In the following example, we embed several 
+<a class="eref" href="mod-object.html#edef_object_object">object</a> element declarations to illustrate how alternate processing works. In the following order: (1) an Earth applet, (2) an animation of the Earth, (3) an image of the Earth, (4) alternate text.</p>
+<div class="example">
+    <p>Example</p>
+<pre>
+&lt;!-- First, try the applet --&gt;
+&lt;object
+    src="http://www.example.com/applets/classes/TheEarth.class"
+    srctype="application/x-java-applet"&gt;
+      &lt;!-- Else, try the video --&gt;
+      &lt;object
+          src="TheEarth.mpeg"
+          srctype="video/mpeg"
+          xml:base="http://www.example.com/videos/"&gt;
+            &lt;!-- Else, try the image --&gt;
+            &lt;object
+                src="TheEarth.png"
+                srctype="image/png"
+                xml:base="http://www.example.com/images/"&gt;
+                &lt;!-- Else process the alternate text --&gt;
+                The &lt;strong&gt;Earth&lt;/strong&gt; as seen from space.
+            &lt;/object&gt;
+      &lt;/object&gt;
+&lt;/object&gt;
+</pre>
+</div>
+<p>The outermost 
+<a class="eref" href="mod-object.html#edef_object_object">object</a> element declaration specifies an
+applet that requires no initial values, the 
+<a class="aref" href="mod-embedding.html#adef_embedding_src">@src</a> attribute points to the applet class
+file, and the 
+<a class="aref" href="mod-embedding.html#adef_embedding_srctype">@srctype</a> attribute defines
+the media type. An 
+<a class="aref" href="mod-hyperAttributes.html#adef_hyperAttributes_xml:base">@xml:base</a>
+attribute could have been used to point to the base location to access
+the class file. In this example, however, the 
+<a class="aref" href="mod-embedding.html#adef_embedding_src">@src</a> attribute value contains an absolute URL
+so the 
+<a class="aref" href="mod-hyperAttributes.html#adef_hyperAttributes_xml:base">@xml:base</a> attribute was
+not required. An 
+<a class="aref" href="mod-object.html#adef_object_archive">@archive</a> attribute could have been used
+if the author needed to include any associated files. The second
+<a class="eref" href="mod-object.html#edef_object_object">object</a> element declaration specifies an MPEG animation,
+and the 
+<a class="aref" href="mod-hyperAttributes.html#adef_hyperAttributes_xml:base">@xml:base</a> attribute
+defines the location of the object data defined in the 
+<a class="aref" href="mod-embedding.html#adef_embedding_src">@src</a> attribute. We also set the 
+<a class="aref" href="mod-embedding.html#adef_embedding_srctype">@srctype</a> attribute so that a user agent can determine if it has the capability to process the object data or to invoke an external application to process the MPEG. The third object element declaration specifies a PNG file and furnishes alternate text in case all other mechanisms fail.</p>
+<div class="note">
+<p><em><strong>Inline vs. external data.</strong> Data to be processed may be supplied in two ways: inline and from an external resource. While the former method will generally lead to faster processing, it is not convenient when processing large quantities of data.</em></p>
+</div>
+<!-- END OF ELEMENT FILE modules/object/object.mhtml -->
+<!-- INCLUDING ELEMENT modules/object/param.mhtml -->
+<h2 >
+<a id="sec_25.2." >25.2.</a> The <a class="edef" id="edef_object_param">param</a>
+ element
+</h2>
+<div class="adef-list">
+<p><em>Attributes</em></p>
+<!-- INCLUDING ATTRIBUTE modules/attributes/appletName.mhtml -->
+<dl class='attrDef'><dt><a class="adef" id="adef_object_appletName"><span class="adef">name</span></a>
+ = <span class="datatype"><a href="abstraction.html#dt_CDATA">CDATA</a></span></dt>
+<dd>This attribute defines the name of a run-time parameter, assumed to be known by the object handler. Whether the property name is case-sensitive depends on the specific object handler implementation.
+</dd></dl>
+<!-- END OF ATTRIBUTE FILE modules/attributes/appletName.mhtml -->
+<!-- INCLUDING ATTRIBUTE modules/attributes/appletValue.mhtml -->
+<dl class='attrDef'><dt><a class="adef" id="adef_object_appletValue"><span class="adef">value</span></a>
+ = <span class="datatype"><a href="abstraction.html#dt_CDATA">CDATA</a></span></dt>
+<dd>This attribute specifies the value of a run-time parameter specified by 
+<a class="aref" href="mod-object.html#adef_object_appletName">@name</a>. Property values have no meaning to XHTML; their meaning is determined by the object in question.
+</dd></dl>
+<!-- END OF ATTRIBUTE FILE modules/attributes/appletValue.mhtml -->
+<!-- INCLUDING ATTRIBUTE modules/attributes/valuetype.mhtml -->
+<dl class='attrDef'><dt><a class="adef" id="adef_object_valuetype"><span class="adef">valuetype</span></a>
+ = <samp>data|ref|object</samp> </dt>
+<dd>This attribute specifies the type of the <samp>value</samp> attribute.
+<p>Possible values: </p>
+<ul>
+<li><samp>data:</samp> This is the default value for the attribute. It means that the value specified by 
+<a class="aref" href="mod-object.html#adef_object_appletValue">@value</a> will be evaluated and passed to the object's implementation as a string.</li>
+<li><samp>ref:</samp> The value specified by 
+<a class="aref" href="mod-object.html#adef_object_appletValue">@value</a> is a URI that designates a resource where run-time values are stored. This allows support tools to identify URIs given as parameters. The URI must be passed to the object <strong>as is</strong>, i.e., unresolved.</li>
+<li><samp>object:</samp> The value specified by 
+<a class="aref" href="mod-object.html#adef_object_appletValue">@value</a> is an identifier that refers to an
+<a class="eref" href="mod-object.html#edef_object_object">object</a> declaration in the same document.
+The identifier must be the value of the 
+<a class="aref" href="mod-core.html#adef_core_id">@id</a> attribute set for the declared 
+<a class="eref" href="mod-object.html#edef_object_object">object</a> element.</li>
+</ul>
+</dd></dl>
+<!-- END OF ATTRIBUTE FILE modules/attributes/valuetype.mhtml -->
+<!-- INCLUDING ATTRIBUTE modules/attributes/paramtype.mhtml -->
+<dl class='attrDef'><dt><a class="adef" id="adef_object_paramtype"><span class="adef">type</span></a>
+ = <span class="datatype"><a href="abstraction.html#dt_ContentType">ContentType</a></span> </dt>
+<dd>This attribute specifies the content type of the resource
+designated by the 
+<a class="aref" href="mod-object.html#adef_object_appletValue">@value</a> attribute only in the case where
+<a class="aref" href="mod-object.html#adef_object_valuetype">@valuetype</a> is set to "ref". This attribute thus specifies for
+the user agent, the type of values that will be found at the
+URI designated by value.
+</dd></dl>
+<!-- END OF ATTRIBUTE FILE modules/attributes/paramtype.mhtml -->
+</div>
+<p>
+<a class="eref" href="mod-object.html#edef_object_param">param</a> elements specify a set of values that may be
+required to process the object data by an object handler at run-time.
+Any number of 
+<a class="eref" href="mod-object.html#edef_object_param">param</a> elements may appear in the content of
+an 
+<a class="eref" href="mod-object.html#edef_object_object">object</a> element, in any order, but must be placed at
+the start of the content of the enclosing 
+<a class="eref" href="mod-object.html#edef_object_object">object</a> element,
+with the exception of optional 
+<a class="eref" href="mod-caption.html#edef_caption_caption">caption</a> and 
+<a class="eref" href="mod-object.html#edef_object_standby">standby</a> elements.</p>
+<p>The syntax of names and values is assumed to be understood by the user agent or the external application that will process the object data. This document does not specify how object handlers should retrieve name/value pairs nor how they should interpret parameter names that appear twice.</p>
+<p>The user agent or the external application can utilize the 
+<a class="eref" href="mod-object.html#edef_object_param">param</a> element name/value pairs to pass unique datapoints to trigger specific functions or actions. For example, the user agent may wish to trigger an external application download if the user does not have an appropriate application installed on their system.</p>
+<p>We return to the clock example to illustrate the use of the 
+<a class="eref" href="mod-object.html#edef_object_param">param</a> element. For example, suppose that the applet is able to handle two run-time parameters that define its initial height and width. We can set the initial dimensions to 40x40 pixels with two 
+<a class="eref" href="mod-object.html#edef_object_param">param</a> elements.</p>
+<div class="example">
+    <p>Example</p>
+<pre>
+&lt;object 
+    src="http://www.example.com/myclock.class"
+    srctype="application/x-java-applet"&gt;
+        &lt;param name="height" value="40" valuetype="data" /&gt;
+        &lt;param name="width" value="40" valuetype="data" /&gt;
+        This user agent cannot process a java applet.
+&lt;/object&gt;
+</pre>
+</div>
+<p>In the following example, run-time data for the object's "Init_values" parameter is specified as an external resource (a GIF file). The value of the 
+<a class="aref" href="mod-object.html#adef_object_valuetype">@valuetype</a> attribute is thus set to "ref" and the 
+<a class="aref" href="mod-object.html#adef_object_appletValue">@value</a> is a URI designating the resource.</p>
+<div class="example">
+    <p>Example</p>
+<pre>
+&lt;object
+    src="http://www.example.com/gifappli"
+    srctype="image/gif"&gt;
+        &lt;standby&gt;Loading Elvis...&lt;/standby&gt;
+        &lt;param name="Init_values"
+            value="./images/elvis.gif"
+            valuetype="ref" /&gt;
+        Elvis lives!
+&lt;/object&gt;
+</pre>
+</div>
+<p>Note that we have also set the 
+<a class="eref" href="mod-object.html#edef_object_standby">standby</a> element so that the object handler may display a message while the object data is downloading.</p>
+<p>When an 
+<a class="eref" href="mod-object.html#edef_object_object">object</a> element is processed, the user agent must search the content for only those 
+<a class="eref" href="mod-object.html#edef_object_param">param</a> elements that are direct children and "feed" them to the object handler.</p>
+<p>Thus, in the following example, if "obj1" is processed, then the name/value content of "param1" applies to "obj1" (and not "obj2"). If "obj1" is not processed and "obj2" is, "param1" is ignored, and the name/value content of "param2" applies to "obj2". If neither 
+<a class="eref" href="mod-object.html#edef_object_object">object</a> element is processed, neither 
+<a class="eref" href="mod-object.html#edef_object_param">param</a> name/value content applies.</p>
+<div class="example">
+    <p>Example</p>
+<pre>
+&lt;object
+    src="obj1"
+    srctype="application/x-something"&gt;
+    &lt;param name="param1" value="value1" /&gt;
+    &lt;object
+        src="obj2"
+        srctype="application/x-something"&gt;
+        &lt;param name="param2" value="value2" /&gt;
+        This user agent cannot process this application.
+    &lt;/object&gt;
+&lt;/object&gt;
+</pre>
+</div>
+<h3 >
+<a id="sec_25.2.1." >25.2.1.</a> Referencing object data
+</h3>
+<p>The location of an object's data is given by a URI. The URI may be either an absolute URI or a relative URI. If the URI is relative, it may be based from the referring document location or from the 
+<a class="aref" href="mod-hyperAttributes.html#adef_hyperAttributes_xml:base">@xml:base</a> attribute location.</p>
+<p>In the following example, we insert a video clip into an XHTML document.</p>
+<div class="example">
+    <p>Example</p>
+<pre>
+&lt;object
+    src="mymovie.mpg"
+    srctype="video/mpeg"&gt;
+    A film showing how to open the printer to replace the cartridge.
+&lt;/object&gt;
+</pre>
+</div>
+<p>By setting the 
+<a class="aref" href="mod-embedding.html#adef_embedding_srctype">@srctype</a> attribute, a user agent can determine whether to retrieve the external application based on its ability to do so. The location of the object data is relative to the referencing document, in this example the object data would need to exist within the same directory.</p>
+<p>The following example specifies a base location via the 
+<a class="aref" href="mod-hyperAttributes.html#adef_hyperAttributes_xml:base">@xml:base</a> attribute. The 
+<a class="aref" href="mod-embedding.html#adef_embedding_src">@src</a> attribute defines the data to process.</p>
+<div class="example">
+    <p>Example</p>
+<pre>
+&lt;object
+    xml:base="http://www.example.com/"
+    src="mymovie.mpg"
+    srctype="video/mpeg"&gt;
+    This user agent cannot process this movie.
+&lt;/object&gt;
+</pre>
+</div>
+<h3 >
+<a id="sec_25.2.2." >25.2.2.</a> Object element declarations and instantiations
+</h3>
+<p>The following example is for illustrative purposes only. When a document is designed to contain more than one instance of the same object data, it is possible to separate the declaration of the object from the references to the object data. Doing so has several advantages: </p>
+<ul>
+<li>The object data may be retrieved from the network by the object handler <em>one time</em> (during the declaration) and reused for each additional reference to that object data.</li>
+<li>It is possible to reference the object data from a location other than the object element in which it was defined, for example, from a link.</li>
+<li>It is possible to specify an object data as run-time data for other object element declarations.</li>
+</ul>
+<p>To declare an object element so that it is not executed when read
+by the object handler, set the boolean 
+<a class="aref" href="mod-object.html#adef_object_declare">@declare</a> attribute
+in the 
+<a class="eref" href="mod-object.html#edef_object_object">object</a> element. At the same time, authors must
+identify the object declaration by setting the 
+<a class="aref" href="mod-core.html#adef_core_id">@id</a> attribute in the 
+<a class="eref" href="mod-object.html#edef_object_object">object</a> element to a unique value. Later processing of the object data will refer to this identifier.</p>
+<p>A declared 
+<a class="eref" href="mod-object.html#edef_object_object">object</a> element must appear in a document before the first time the object data is referenced. For example, the declaring object element must appear before a link referencing the object data.</p>
+<p>When an object element is defined with the 
+<a class="aref" href="mod-object.html#adef_object_declare">@declare</a> attribute, the object handler is instantiated every time an element refers to that object data later in the document. The references will require the object data to be processed (e.g., a link that refers to it is activated, an object element that refers to it is activated, etc.).</p>
+<p>In the following example, we declare an 
+<a class="eref" href="mod-object.html#edef_object_object">object</a> element and cause the object handler to be instantiated by referring to it from a link. Thus, the object data can be activated by clicking on some highlighted text, for example.</p>
+<div class="example">
+    <p>Example</p>
+<pre>
+&lt;object
+    declare="declare"
+    id="earth.declaration" 
+    src="TheEarth.mpg" 
+    srctype="video/mpeg"&gt;
+    The &lt;strong&gt;Earth&lt;/strong&gt; as seen from space.
+&lt;/object&gt;
+&lt;em&gt;...later in the document...&lt;/em&gt;
+&lt;p&gt;A neat &lt;a href="#earth.declaration"&gt;animation of The Earth!&lt;/a&gt;&lt;/p&gt;
+</pre>
+</div>
+<p>In the previous example, when the document is initially loaded the object data should not be processed. If this was to be processed within a visual user agent, the object data would not be displayed. When the user selects the anchor data, the object data would then be initialized and displayed. This would also be the case for an audio file, where the file would be instantiated but would not be processed. Selecting the anchor data would then trigger the audio file to be processed.</p>
+<p>User agents that do not support the 
+<a class="aref" href="mod-object.html#adef_object_declare">@declare</a> attribute must process the contents of the 
+<a class="eref" href="mod-object.html#edef_object_object">object</a> element.</p>
+<!-- END OF ELEMENT FILE modules/object/param.mhtml -->
+<!-- INCLUDING ELEMENT modules/object/standby.mhtml -->
+<h2 >
+<a id="sec_25.3." >25.3.</a> The <a class="edef" id="edef_object_standby">standby</a>
+ element
+</h2>
+<div class="adef-list">
+<p><em>Attributes</em></p>
+<!-- INCLUDING ATTRIBUTE modules/attributes/Common.mhtml -->
+<dl class='attrRef'><dt>The 
+    <a class="csref" href="mod-attribute-collections.html#col_Common">Common</a> collection</dt>
+<dd>A collection of other attribute collections, including:
+    <a class="csref" href="mod-bidi.html#col_Bi-directional">Bi-directional</a>, 
+    <a class="csref" href="mod-core.html#col_Core">Core</a>, 
+    <a class="csref" href="mod-edit.html#col_Edit">Edit</a>, 
+    <a class="csref" href="mod-embedding.html#col_Embedding">Embedding</a>, 
+    <a class="csref" href="mod-xml-events.html#col_Events">Events</a>, 
+    <a class="csref" href="mod-xforms.html#col_Forms">Forms</a>, 
+    <a class="csref" href="mod-hyperAttributes.html#col_Hypertext">Hypertext</a>,
+    <a class="csref" href="mod-i18n.html#col_I18N">I18N</a>, 
+    <a class="csref" href="mod-csImgMap.html#col_Map">Map</a>, 
+    <a class="csref" href="mod-metaAttributes.html#col_Metainformation">Metainformation</a>,
+and 
+    <a class="csref" href="mod-roleAttribute.html#col_Role">Role</a>
+</dd></dl>
+<!-- END OF ATTRIBUTE FILE modules/attributes/Common.mhtml -->
+</div>
+<p>The 
+<a class="eref" href="mod-object.html#edef_object_standby">standby</a> element specifies a message that a
+user agent may render while loading the object's implementation and data.</p>
+<!-- END OF ELEMENT FILE modules/object/standby.mhtml -->
+<hr />
+<div class="navbar">
+[<a href="mod-metaAttributes.html">previous</a>]
+[<a href="mod-roleAttribute.html">next</a>]
+[<a href="Overview.html#toc">table of contents</a>]
+[<a href="elements.html">elements</a>]
+[<a href="attributes.html">attributes</a>]
+</div>
+</body>
+</html>

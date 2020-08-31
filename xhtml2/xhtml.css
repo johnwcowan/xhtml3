@@ -1,0 +1,184 @@
+.ednote {
+	font-style: italic;
+	font-size: 80%;
+}
+
+ul.toc { list-style: none }
+/* Style class for newly added text */
+.new {
+	color: blue;
+}
+pre.example { margin-left: 1em;
+                       margin-top: 0em; margin-bottom: 0em}
+div.example {border: 4px double gray;
+			 font-weight: bold;
+             margin-top: 4px ;
+                  padding: 0em}
+div.example p { margin-top: 0em; 
+                margin-bottom: 0em; }
+div.example pre { background-color: #d5dee3;
+                   border-top-width: 4px;
+                   border-top-style: double;
+                   border-top-color: #d3d3d3;
+                   border-bottom-width: 4px;
+                   border-bottom-style: double;
+                   border-bottom-color: #d3d3d3;
+                   padding: 4px; margin: 0em }
+pre.example { background-color: #d5dee3;
+                   border-top-width: 4px;
+                   border-top-style: double;
+                   border-top-color: #d3d3d3;
+                   border-bottom-width: 4px;
+                   border-bottom-style: double;
+                   border-bottom-color: #d3d3d3;
+                   padding: 4px; margin: 0em }
+div.exampleWrapper { margin: 4px }
+div.exampleHeader { font-weight: bold;
+                    margin: 4px}
+
+/* Preformatted examples */
+pre.exampleOld {
+	white-space: pre;
+	font-family: monospace;
+	color: green;
+	font-weight: bold;
+	margin-right: 0;
+	margin-left: 5%;
+}
+/* Preformatted DTD entry */
+pre.dtd {
+	white-space: pre;
+	font-family: monospace;
+	font-weight: normal;
+	margin-right: 0;
+	margin-left: 0;
+}
+/* Table of contents styles */
+div.toc, div.subtoc {
+	background-color: #99ffff;
+	border: none;
+	margin-right: 5%;
+	padding-top: 1px;
+	padding-bottom: 3px;
+}
+code {
+	font-family: monospace;
+	font-weight: bold;
+	color: #660099;
+}
+a.ref {
+	font-weight: bold;
+}
+a.normref {
+	font-weight: bold;
+}
+p.issueTitle {
+	font-size: 150% ;
+}
+div.issue {
+	background-color: #cfc ;
+	border: none ;
+	margin-right: 5% ;
+}
+span.pr {
+	font-size: 80% ;
+}
+div.navbar {text-align: center}
+.center {  text-align: center}
+.alphalist {  list-style-type: upper-alpha}
+.codelist {  }
+dl.codelist dt {  
+	font-family: monospace; 
+	color: #660099; 
+	font-style: normal; 
+	font-weight: normal;
+}
+.termlist {  }
+dl.termlist dt {  
+	color: #330000; 
+	font-weight: bold;
+}
+span.entity { color: red; }
+span.element { color: green; }
+
+.elements { 
+	font-family: monospace; 
+	font-weight: bold; 
+}
+a.adef { 
+	font-family: monospace; 
+	font-weight: bold; 
+}
+a.aref { 
+	font-family: monospace; 
+	font-weight: bold; 
+}
+a.edef { 
+	font-family: monospace; 
+	font-weight: bold; 
+}
+a.eref { 
+	font-family: monospace; 
+	font-weight: bold; 
+}
+.collection {
+	font-family: monospace;
+	font-weight: bold;
+}
+.datatype {
+	font-family: monospace;
+	font-weight: bold;
+}
+.attributes { 
+	font-family: monospace; 
+	font-weight: bold;
+}
+.content { 
+	font-family: monospace; 
+	font-weight: bold;
+}
+.dfn   {
+	color:              #400040;
+	font-weight:        bold;
+	font-style:         italic;
+}    
+tt       { color : #4000AF }
+dl.desc  { margin-left : 5% ; margin-right : 5% }
+.sect2   { margin-left : 5% ; margin-right : 5% }
+.element { font-weight : bold ;
+		 color : #F00000 }
+.attlist { font-weight : bold ;
+		 color : #F06000 }
+.pentity { color : #000080 }
+span.attlistid { vertical-align: super; font-size: smaller; color: gray; }
+span.elementid { vertical-align: super; font-size: 80%; color: gray; }
+span.fixme { color: red; }
+
+table.moduledef {
+	width: 100%;
+}
+
+dl.attrRef {
+	background-color: #d5dee3;
+	border: none;
+	margin-right: 5%;
+	margin-top: 0em;
+}
+
+dl.attrDef {
+	background-color: #d5dee3;
+	border: none;
+	margin-right: 5%;
+}
+
+li.long {
+    margin-bottom: 0.5em;
+    margin-right: 5%;
+}
+
+/* assertion styles */
+
+.must, .mustnot, .required, .shall, .shallnot, .should, .recommended, .may, .optional {
+	font-style:  italic ;
+	/* background-color: #FF8040 ; */
+}

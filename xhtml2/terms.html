@@ -1,0 +1,172 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN"
+	"http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html lang="en" xml:lang="en" xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<title>XHTML&#8482; 2.0 - Terms and Definitions</title> 
+<link rel="start" type="text/html" href="Overview.html" />
+<link rel="contents" type="text/html" href="Overview.html#toc" />
+<link rel="prev" type="text/html" href="introduction.html" />
+<link rel="next" type="text/html" href="conformance.html" />
+<link rel="stylesheet" type="text/css" href="xhtml.css" />
+<link rel="stylesheet" type="text/css" href="http://www.w3.org/StyleSheets/TR/W3C-ED.css" />
+</head>
+<body>
+<div class="navbar">
+[<a accesskey="P" href="introduction.html">previous</a>]
+[<a accesskey="N" href="conformance.html">next</a>]
+[<a accesskey="T" href="Overview.html#toc">table of contents</a>]
+[<a accesskey="E" href="elements.html">elements</a>]
+[<a accesskey="A" href="attributes.html">attributes</a>]
+<hr />
+</div>
+<h1 >
+<a id="a_terms" >2.</a> Terms and Definitions
+</h1>
+<p>This section is <em>normative</em>.</p>
+<p>While some terms are defined in place, the following definitions are used throughout 
+  this document. Familiarity with the W3C XML 1.0 Recommendation [<a class="nref" href="references.html#ref_XML">XML</a>] is highly 
+  recommended.</p>
+<dl class="termlist">
+<dt>abstract module</dt>
+<dd>a unit of document type specification corresponding to a distinct type of 
+content, corresponding to a markup construct reflecting this distinct type.
+</dd>
+<dt>content model</dt>
+<dd>the declared markup structure allowed within instances of an element type. 
+XML 1.0 differentiates two types: elements containing only element content 
+(no character data) and mixed content (elements that may contain character 
+data optionally interspersed with child elements). The latter are characterized 
+by a content specification beginning with the "#PCDATA" string (denoting character 
+data).</dd>
+<dt><a id="deprecated">deprecated</a></dt>
+<dd>a feature marked as deprecated is in the process of being removed
+from this recommendation.  Portable documents should not use
+features marked as deprecated.</dd>
+<dt>document model</dt>
+<dd>the effective structure and constraints of a given document type. The document 
+model constitutes the abstract representation of the physical or semantic 
+structures of a class of documents.</dd>
+<dt>document type</dt>
+<dd>a class of documents sharing a common abstract structure. The ISO 8879 [<a class="nref" href="references.html#ref_SGML">SGML</a>] 
+definition is as follows: "a class of documents having similar characteristics; 
+for example, journal, article, technical manual, or memo. (4.102)"</dd>
+<dt>document type definition (DTD)</dt>
+<dd>a formal, machine-readable expression of the XML structure and syntax rules 
+to which a document instance of a specific document type must conform; the 
+schema type used in XML 1.0 to validate conformance of a document instance 
+to its declared document type. The same markup model may be expressed by a 
+variety of DTDs.</dd>
+<dt>driver</dt>
+<dd>a generally short file used to declare and instantiate the modules of a 
+DTD. A good rule of thumb is that a DTD driver contains no markup declarations 
+that comprise any part of the document model itself.</dd>
+<dt>element</dt>
+<dd>an instance of an element type.</dd>
+<dt>element type</dt>
+<dd>the definition of an element, that is, a container for a distinct semantic 
+class of document content.</dd>
+<dt>entity</dt>
+<dd>an entity is a logical or physical storage unit containing document content. 
+Entities may be composed of parseable XML markup or character data, or unparsed 
+(i.e., non-XML, possibly non-textual) content. Entity content may be either 
+defined entirely within the document entity ("internal entities") or external 
+to the document entity ("external entities"). In parsed entities, the replacement 
+text may include references to other entities.</dd>
+<dt id="terms_entity-reference">entity reference</dt>
+<dd>a mnemonic string used as a reference to the content of a declared 
+entity (e.g., "&amp;amp;" for "&amp;", "&amp;lt;" for "&lt;", "&amp;copy;" for "&copy;".)</dd>
+<dt id="facilities">facilities</dt>
+<dd>Facilities are <span class="term">elements</span>,
+<span class="term">attributes</span>, and the semantics
+associated with those <span class="term">elements</span> and
+<span class="term">attributes</span>.</dd>
+<dt id="focusable">focusable</dt>
+<dd>Elements are considered "focusable" if they are <em>visible</em>
+(e.g., have the equivalent of
+the [<a class="nref" href="references.html#ref_CSS2">CSS2</a>] property of "display" with a value other than
+<code>none</code>) not disabled (see [<a class="nref" href="references.html#ref_XFORMS">XFORMS</a>]),  and either 
+1) have an 
+<a class="aref" href="mod-hyperAttributes.html#adef_hyperAttributes_href">@href</a> attribute or 2) are considered
+a form control as defined in [<a class="nref" href="references.html#ref_XFORMS">XFORMS</a>].
+</dd>
+<dt>fragment identifier</dt>
+<dd>A portion of a [<a class="nref" href="references.html#ref_URI">URI</a>] as defined in RFC 3986.</dd>
+<dt>generic identifier</dt>
+<dd>the name identifying the element type of an element. Also, element type 
+name.</dd>
+<dt>hybrid document</dt>
+<dd>A hybrid document is a document that uses more than one XML namespace. Hybrid documents may be defined as documents that contain elements or attributes from hybrid document types.</dd>
+<dt>instantiate</dt>
+<dd>to replace an entity reference with an instance of its declared content. 
+</dd>
+<dt>markup declaration</dt>
+<dd>a syntactical construct within a DTD declaring an entity or defining a markup 
+structure. Within XML DTDs, there are four specific types: entity declaration 
+defines the binding between a mnemonic symbol and its replacement content; 
+element declaration constrains which element types may occur as descendants 
+within an element (see also content model); attribute definition list declaration 
+defines the set of attributes for a given element type, and may also establish 
+type constraints and default values; notation declaration defines the binding 
+between a notation name and an external identifier referencing the format 
+of an unparsed entity.</dd>
+<dt>markup model</dt>
+<dd>the markup vocabulary (i.e., the gamut of element and attribute names, notations, 
+etc.) and grammar (i.e., the prescribed use of that vocabulary) as defined 
+by a document type definition (i.e., a schema) The markup model is the concrete 
+representation in markup syntax of the document model, and may be defined 
+with varying levels of strict conformity. The same document model may be expressed 
+by a variety of markup models.</dd>
+<dt>module</dt>
+<dd>an abstract unit within a document model expressed as a DTD fragment, used 
+to consolidate markup declarations to increase the flexibility, modifiability, 
+reuse and understanding of specific logical or semantic structures. </dd>
+<dt>modularization</dt>
+<dd>an implementation of a modularization model; the process of composing or 
+de-composing a DTD by dividing its markup declarations into units or groups 
+to support specific goals. Modules may or may not exist as separate file entities 
+(i.e., the physical and logical structures of a DTD may mirror each other, 
+but there is no such requirement). </dd>
+<dt>modularization model</dt>
+<dd>the abstract design of the document type definition (DTD) in support of 
+the modularization goals, such as reuse, extensibility, expressiveness, ease 
+of documentation, code size, consistency and intuitiveness of use. It is important 
+to note that a modularization model is only orthogonally related to the document 
+model it describes, so that two very different modularization models may describe 
+the same document type.</dd>
+<dt>parameter entity</dt>
+<dd>an entity whose scope of use is within the document prolog (i.e., 
+the external subset/DTD or internal subset). Parameter entities are disallowed 
+within the document instance.</dd>
+<dt>parent document type</dt>
+<dd>A parent document type of a hybrid document is the document type of
+the root element.</dd>
+<dt>tag </dt>
+<dd>descriptive markup delimiting the start and end (including its generic identifier 
+and any attributes) of an element.</dd>
+<dt>unavailable resource</dt>
+<dd>any resource that is referenced as a URI in an attribute, but that
+cannot be accessed for any reason, is considered unavailable. Example
+reasons include, but are not limited to:
+network  
+unavailable, no resource available at the URI given, inability of the 
+user agent to process the type of resource, etc.
+</dd>
+<dt>user agent</dt>
+<dd>any software that retrieves and renders <a href="conformance.html#strict">Strictly
+Conforming Documents</a> for users.  This may include browsers, media
+players, plug-ins, and other programs &mdash; including assistive
+technologies &mdash; that help in retrieving and rendering such
+documents.  See also <a
+href="conformance.html#s_conform_user_agent">Conforming User Agent</a>.</dd>
+</dl>
+<hr />
+<div class="navbar">
+[<a href="introduction.html">previous</a>]
+[<a href="conformance.html">next</a>]
+[<a href="Overview.html#toc">table of contents</a>]
+[<a href="elements.html">elements</a>]
+[<a href="attributes.html">attributes</a>]
+</div>
+</body>
+</html>

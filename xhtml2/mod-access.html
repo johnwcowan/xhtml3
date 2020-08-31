@@ -1,0 +1,402 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN"
+	"http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html lang="en" xml:lang="en" xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<title>XHTML&#8482; 2.0 - XHTML Access Module</title> 
+<link rel="start" type="text/html" href="Overview.html" />
+<link rel="contents" type="text/html" href="Overview.html#toc" />
+<link rel="prev" type="text/html" href="mod-i18n.html" />
+<link rel="next" type="text/html" href="mod-bidi.html" />
+<link rel="stylesheet" type="text/css" href="xhtml.css" />
+<link rel="stylesheet" type="text/css" href="http://www.w3.org/StyleSheets/TR/W3C-ED.css" />
+</head>
+<body>
+<div class="navbar">
+[<a accesskey="P" href="mod-i18n.html">previous</a>]
+[<a accesskey="N" href="mod-bidi.html">next</a>]
+[<a accesskey="T" href="Overview.html#toc">table of contents</a>]
+[<a accesskey="E" href="elements.html">elements</a>]
+[<a accesskey="A" href="attributes.html">attributes</a>]
+<hr />
+</div>
+<h1 >
+<a id="s_accessmodule" >15.</a> XHTML Access Module
+</h1>
+<div class='subtoc'><p><strong>Contents</strong></p><ul class='toc'><li class='tocline'>
+15.1.
+<a href="#sec_15.1." class="tocxref">The access element</a>
+<ul class="toc"><li class='tocline'>15.1.1.
+<a href="#examples" class="tocxref">Examples</a>
+</li></ul>
+</li></ul>
+</div>
+<p>This section is <em>normative</em> for purposes of defining the
+integration of the XHTML Access Module into XHTML 2. The semantics of
+the XHTML Access Module itself are
+normatively defined in [<a class="nref" href="references.html#ref_XHTMLACCESS">XHTMLACCESS</a>].</p>
+<p>This module defines the 
+<a class="eref" href="mod-access.html#edef_access_access">access</a> element.</p>
+<table class="moduledef" border="1" summary="Element and Attributes in the Access Module">
+<thead>
+	<tr><th>Element</th><th>Attributes</th><th>Content Model</th></tr>
+</thead>
+<tbody>
+<tr><td>
+<a class="eref" href="mod-access.html#edef_access_access">access</a></td>
+    <td>
+    <a class="csref" href="mod-attribute-collections.html#col_Common">Common</a>,
+<a class="aref" href="mod-access.html#adef_access_activate">@activate</a>,
+<a class="aref" href="mod-access.html#adef_access_key">@key</a>,
+<a class="aref" href="mod-access.html#adef_access_media">@media</a>,
+<a class="aref" href="mod-access.html#adef_access_order">@order</a>,
+<a class="aref" href="mod-access.html#adef_access_targetid">@targetid</a>, 
+<a class="aref" href="mod-access.html#adef_access_targetrole">@targetrole</a></td>
+    <td class="content">EMPTY</td>
+</tr>
+</tbody>
+</table>
+<p>Implementations: <a href="relax_module_defs.html#a_rmodule_Access">RELAX NG</a>,
+<a href="schema_module_defs.html#a_smodule_Access_Module">XML Schema</a>
+</p>
+<p>The 
+<a class="eref" href="mod-access.html#edef_access_access">access</a> element assigns a mapping between
+"keys" or other events to elements within 
+a document. Actuating the mapping results in the element gaining focus and 
+potentially in additional events being activated.</p>
+<!-- INCLUDING ELEMENT modules/access/access.mhtml -->
+<h2 >
+<a id="sec_15.1." >15.1.</a> The <a class="edef" id="edef_access_access">access</a>
+ element
+</h2>
+<p>The 
+<a class="eref" href="mod-access.html#edef_access_access">access</a> element assigns a mapping between
+"keys" or other events to elements within 
+a document. Actuating the mapping results in the element gaining focus and 
+potentially in additional events being activated.</p>
+<p><span class="must"  >An access element must have either a targetrole or a targetid attribute 
+specified.</span> <span class="mustnot"  >If neither a targetrole nor a targetid attribute are 
+specified, the user agent MUST NOT define a mapping nor dispatch any 
+events. 
+</span></p>
+<p>The 
+<a class="eref" href="mod-access.html#edef_access_access">access</a> element allows an author to specify a relationship between 
+"key(s)" or other events and one or more elements within a document.  When a 
+mapped event 
+is triggered, one of the specified target elements gains 
+focus, and one or more other events (such as an 'activate' event) may 
+also be dispatched to that element.  The target elements are specified 
+by means of the 
+<a class="aref" href="mod-access.html#adef_access_targetid">@targetid</a> or 
+<a class="aref" href="mod-access.html#adef_access_targetrole">@targetrole</a>
+attributes, and 
+these elements may each contain multiple targets, to allow sequential 
+focus by successively triggering the associated key(s) or event(s).</p>
+<p>If the 
+<a class="eref" href="mod-access.html#edef_access_access">access</a> element's 
+<a class="aref" href="mod-access.html#adef_access_activate">@activate</a> attribute has the value 
+'true', then in addition to receiving focus, the target element will be 
+activated, if permitted by the user's settings.  Additionally, using XML 
+Events [<a class="nref" href="references.html#ref_XMLEVENTS">XMLEVENTS</a>], one or more other events may also be dispatched to the 
+element.</p>
+<p>An access element must have either a 
+<a class="aref" href="mod-access.html#adef_access_targetrole">@targetrole</a> or a 
+<a class="aref" href="mod-access.html#adef_access_targetid">@targetid</a> attribute specified.  <span class="mustnot"  >If neither a 
+<a class="aref" href="mod-access.html#adef_access_targetrole">@targetrole</a>
+nor a 
+<a class="aref" href="mod-access.html#adef_access_targetid">@targetid</a> attribute are specified, or if there are no 
+matching elements in the document, the user agent MUST NOT define a 
+mapping for this element, nor change focus nor dispatch any events based 
+on this element.
+</span></p>
+<div class="adef-list">
+<p><em>Attributes</em></p>
+<!-- INCLUDING ATTRIBUTE modules/attributes/Common.mhtml -->
+<dl class='attrDef'><dt>The 
+    <a class="csref" href="mod-attribute-collections.html#col_Common">Common</a> collection</dt>
+<dd>A collection of other attribute collections, including:
+    <a class="csref" href="mod-bidi.html#col_Bi-directional">Bi-directional</a>, 
+    <a class="csref" href="mod-core.html#col_Core">Core</a>, 
+    <a class="csref" href="mod-edit.html#col_Edit">Edit</a>, 
+    <a class="csref" href="mod-embedding.html#col_Embedding">Embedding</a>, 
+    <a class="csref" href="mod-xml-events.html#col_Events">Events</a>, 
+    <a class="csref" href="mod-xforms.html#col_Forms">Forms</a>, 
+    <a class="csref" href="mod-hyperAttributes.html#col_Hypertext">Hypertext</a>,
+    <a class="csref" href="mod-i18n.html#col_I18N">I18N</a>, 
+    <a class="csref" href="mod-csImgMap.html#col_Map">Map</a>, 
+    <a class="csref" href="mod-metaAttributes.html#col_Metainformation">Metainformation</a>,
+and 
+    <a class="csref" href="mod-roleAttribute.html#col_Role">Role</a>
+</dd></dl>
+<!-- END OF ATTRIBUTE FILE modules/attributes/Common.mhtml -->
+<!-- INCLUDING ATTRIBUTE modules/attributes/activate.mhtml -->
+<dl class='attrDef'><dt><a class="adef" id="adef_access_activate"><span class="adef">activate</span></a>
+ = ( "true" | "false"<abbr title="default">*</abbr> )</dt>
+<dd>The 
+<a class="aref" href="mod-access.html#adef_access_activate">@activate</a> attribute indicates whether a target
+element should be activated or not once it obtains focus.  The default
+value for this attribute is "false", indicating that the element will not
+be "activated".
+<span class="must"  >User agents MUST provide mechanisms for overriding the author setting
+with user-specified settings in order to ensure that the act of moving content focus does not cause the user agent to take any further action (as per Checkpoint 9.5 of UAAG 1.0 [<a class="nref" href="references.html#ref_UAAG1">UAAG1</a>]).</span>
+<p><span class="must"  >User agents MUST provide keyboard mechanisms for "activating" any 
+event associated with the focused element 
+(as per Checkpoint 1.2 of UAAG 1.0).</span>
+<span class="should"  >
+User agents
+SHOULD make available the list of events associated with the 
+focused element 
+(as per Checkpoint 9.6 of UAAG 1.0).</span></p>
+</dd></dl>
+<!-- END OF ATTRIBUTE FILE modules/attributes/activate.mhtml -->
+<!-- INCLUDING ATTRIBUTE modules/attributes/key.mhtml -->
+<dl class='attrDef'><dt><a class="adef" id="adef_access_key"><span class="adef">key</span></a>
+ = <span class="datatype"><a href="abstraction.html#dt_Characters">Characters</a></span></dt>
+<dd>This attribute assigns one or more key mappings to an access shortcut. 
+The value of is attribute is one or more single characters from the document character set.
+ <p>The 
+<a class="aref" href="mod-access.html#adef_access_key">@key</a> attribute represents an abstraction.  The use of the
+ name "key" for this attribute is historical and does not mean that there is
+ any association with a specific "key" on a keyboard, 
+ <span xml:lang="la">per se</span>.
+ It is up to the user agent to provide a mechanism for mapping the document
+ character set value(s) of the attribute to the input methods available to the user agent.
+For instance, on some systems a user may have to press an "alt" or "cmd" key 
+in addition to the access key. On other systems there may be voice commands, or
+gestures with a mouse, an eye tracking input device, etc.
+Regardless of the mechanism, the result is that it 
+appears to the <code>access</code> element processor as if the
+defined <em>key</em> was entered.</p>
+<p>A user entering
+any of the keys defined in an access element moves focus from 
+its current position to the next element in navigation order that has 
+one of the referenced role or id values (see 
+<a class="aref" href="mod-access.html#adef_access_activate">@activate</a> 
+ for information on how the element may be activated). Note that it 
+ is possible to deliver alternate events via [<a class="nref" href="references.html#ref_XMLEVENTS">XMLEVENTS</a>].
+ Note also that the concept of <em>navigation order</em> is a 
+ property of the Host Language, and is not defined in this specification.</p>
+<p><span class="must"  >User agents MUST provide mechanisms for overriding the author setting 
+with user-specified settings in order to ensure that the act of moving 
+content focus does not cause the user agent to take any further action, 
+as required by UAAG 1.0, Checkpoint 9.5.</span> [<a class="nref" href="references.html#ref_UAAG1">UAAG1</a>]
+<span class="should"  >
+The character assigned to a 
+key, and its relationship to a role or id attribute SHOULD be treated as 
+an author suggestion.</span>
+<span class="may"  >
+User agents MAY override any key assignment (e.g., 
+if an assignment interferes with the operation of the user interface of 
+the user agent, if the key is not available on a device, if a key is 
+used by the operating environment).</span>
+<span class="must"  >User agents MUST also allow users 
+to override author assigned keys with their own key assignments (see 
+Checkpoint 11.3 of UAAG 1.0).</span>
+<span class="should"  >
+If a user chooses to change the key binding, 
+the resultant user-defined remapping SHOULD persist across sessions.</span>
+</p>
+<p><span class="should"  >
+If no 
+<a class="aref" href="mod-access.html#adef_access_key">@key</a> attribute is specified, 
+the user agent SHOULD assign a key and 
+alert the user to the key mapping. The resultant user agent assigned 
+key mapping SHOULD persist across sessions.</span></p>
+<p>It is common for user agents to 
+provide a visual hint for accessing features via keyboard shortcuts, 
+such as showing the shortcut next to a menu item, or underlining the 
+shortcut character letter in a label.
+The rendering of such visual hints
+about access keys depends on the user agent. We recommend that 
+authors include the access key character in label text or wherever the 
+access key is to apply. 
+<span class="may"  >
+If the user agent can recognize that the 
+currently mapped access key character appears in the label text of the 
+element to which it is mapped, then the user agent may render the 
+character in such a way as to emphasize its role as the access key and 
+distinguish it from other characters (e.g., by underlining it).</span></p>
+<p><span class="should"  >
+A conforming user agent SHOULD also provide a centralized 
+view of the current access key assignments (see Checkpoint 11.1 
+and Checkpoint 11.2 of UAAG 1.0).</span></p>
+<p><span class="mustnot"  >Authors MUST NOT assign the same 
+<a class="aref" href="mod-access.html#adef_access_key">@key</a> value 
+to more than one <em>active</em> <code>access</code> element.
+</span> 
+Note that it is possible to have an <code>access</code> element be <em>inactive</em>
+through the use of the 
+<a class="aref" href="mod-access.html#adef_access_media">@media</a> attribute.</p>
+</dd></dl>
+<!-- END OF ATTRIBUTE FILE modules/attributes/key.mhtml -->
+<!-- INCLUDING ATTRIBUTE modules/attributes/media.mhtml -->
+<dl class='attrDef'><dt><a class="adef" id="adef_access_media"><span class="adef">media</span></a>
+ = <span class="datatype"><a href="abstraction.html#dt_MediaDesc">MediaDesc</a></span>
+</dt>
+<dd>The value of this attribute is a comma-separated list of media 
+descriptors for which this <code>access</code> element is intended.
+When the value of this attribute matches the current processing media,
+the associated <code>access</code> element is 
+considered <em>active</em> and processed normally; otherwise it is 
+<em>inactive</em> and ignored.  
+The default value for this attribute is <code>all</code>.
+<div class="example">
+    <p>Example</p>
+<pre>
+&lt;style src="style.css" type="text/css" media="screen" /&gt;
+&lt;span src="photo.jpg" media="screen"&gt;Me at work&lt;/span&gt;
+&lt;span src="photo-hires.jpg" media="print"&gt;Me at work&lt;/span&gt;
+</pre>
+</div>
+</dd></dl>
+<!-- END OF ATTRIBUTE FILE modules/attributes/media.mhtml -->
+<!-- INCLUDING ATTRIBUTE modules/attributes/order.mhtml -->
+<dl class='attrDef'><dt><a class="adef" id="adef_access_order"><span class="adef">order</span></a>
+ = ( "document"<abbr title="default">*</abbr> | "list" )</dt>
+<dd>The 
+<a class="aref" href="mod-access.html#adef_access_order">@order</a> attribute indicates how this <code>access</code>
+element should determine the <em>navigation order</em> for its
+<em>matching elements</em>.  <span class="must"  >The default value,
+<code>document</code>, indicates that the items MUST be traversed in
+document order.</span>  The alternate value, <code>list</code>,
+indicates that the <em>navigation order</em> of <em>matching elements</em>
+is determined by the author-defined order of items in the list of
+<a class="aref" href="mod-access.html#adef_access_targetid">@targetid</a> or 
+<a class="aref" href="mod-access.html#adef_access_targetrole">@targetrole</a> attribute values.
+<p>For the sake of determining <em>navigation order</em>, elements in the
+    document that match the values in the 
+<a class="aref" href="mod-access.html#adef_access_targetid">@targetid</a> or
+<a class="aref" href="mod-access.html#adef_access_targetrole">@targetrole</a> attributes are called <em>matching elements</em>,
+    and all elements that match the same value are members of an <em>element
+    group</em>.  Note: since the <code>id</code> of an element must be unique
+    within a valid XML document, in such documents, each <em>element
+        group</em> based on 
+<a class="aref" href="mod-access.html#adef_access_targetid">@targetid</a> values consist of 
+    no more than one
+    <em>matching element</em>.</p>
+<p>For each navigation operation, the <em>navigation order</em> for both
+    <em>document-order</em> and <em>list-order</em> is sensitive to the current
+    <em>focus</em> element.  
+    <span class="must"  >For document-order, if no element currently has
+    <em>focus</em>, the first <em>matching element</em> in the document MUST be the <em>focus target</em></span>;
+    <span class="must"  >if an element does have <em>focus</em>, the next <em>matching element</em>
+    in the document MUST be the <em>focus target</em>.</span>
+    For list-order, the <em>focus target</em>
+    <em>navigation order</em> is determined as follows:</p>
+<ul>
+    <li><span class="must"  >If no <em>matching element</em> of this <code>access</code> element
+    currently has <em>focus</em>, the <em>focus target</em> MUST be the first
+   element in document order that matches the first <em>element group</em>.
+   If there is no such element, then the <em>focus target</em> is the
+   first element that matches the second <em>element group</em>, and so on.</span></li>
+   <li>If a <em>matching element</em> of this <code>access</code> element
+   already has <em>focus</em>:
+   <ol>
+       <li><span class="must"  >If there are additional <em>matching elements</em> of the same
+       <em>element group</em> in document order, then <em>focus</em> MUST be sent
+       to the next <em>matching element</em> of the same <em>element group</em>.</span></li>
+       <li><span class="must"  >Otherwise, <em>focus</em> MUST go to the first <em>matching element</em> (in
+       document order) of the next <em>element group</em>.</span></li>
+       <li><span class="must"  >If there are no remaining elements groups, then the search
+       MUST resume from the first <em>element group</em>.</span></li>
+   </ol>
+   </li>
+</ul>
+<p><span class="must"  >The location of the next <em>matching element</em> MUST be determined
+each time the <code>access</code> element is triggered, since it is possible
+that between events the contents of the document will have changed.</span></p> 
+</dd></dl>
+<!-- END OF ATTRIBUTE FILE modules/attributes/order.mhtml -->
+<!-- INCLUDING ATTRIBUTE modules/attributes/targetid.mhtml -->
+<dl class='attrDef'><dt><a class="adef" id="adef_access_targetid"><span class="adef">targetid</span></a>
+ = <span class="datatype"><a href="abstraction.html#dt_IDREF">IDREF</a></span></dt>
+<dd>
+The 
+<a class="aref" href="mod-access.html#adef_access_targetid">@targetid</a> attribute specifies one or more space separated
+<span class="datatype"><a href="abstraction.html#dt_IDREF">IDREF</a></span>s related to target elements for the associated event
+(i.e., the node to which the event should be delivered). 
+</dd></dl>
+<!-- END OF ATTRIBUTE FILE modules/attributes/targetid.mhtml -->
+<!-- INCLUDING ATTRIBUTE modules/attributes/targetrole.mhtml -->
+<dl class='attrDef'><dt><a class="adef" id="adef_access_targetrole"><span class="adef">targetrole</span></a>
+ = <span class="datatype"><a href="abstraction.html#dt_CURIEs">CURIEs</a></span></dt>
+<dd>
+The 
+<a class="aref" href="mod-access.html#adef_access_targetrole">@targetrole</a> attribute specifies space separated list
+of
+<span class="datatype"><a href="abstraction.html#dt_CURIE">CURIE</a></span>s that maps to an element with a 
+<a class="aref" href="mod-roleAttribute.html#adef_roleAttribute_role">@role</a> attribute with the same value.
+</dd></dl>
+<!-- END OF ATTRIBUTE FILE modules/attributes/targetrole.mhtml -->
+</div>
+<h3 >
+<a id="examples" >15.1.1.</a> Examples
+</h3>
+<div class="example">
+    <p>Access element that focuses into a field</p>
+<pre>
+&lt;access key="s" 
+        title="Social Security Number" 
+        targetrole="ss:number" /&gt;
+</pre>
+</div>
+<div class="example">
+    <p>Accessing a table of contents</p>
+<pre>
+&lt;access key="c"
+        title="Table of Contents" 
+        targetrole="toc" /&gt;
+</pre>
+</div>
+<div class="example">
+    <p>Access that moves to the main content</p>
+<pre>
+&lt;access key="m"
+        title="Main content" 
+        targetrole="main" /&gt;
+</pre>
+</div>
+<div class="example">
+    <p>Access that moves among form controls in document order</p>
+<pre>
+&lt;access key="i"
+        title="Form Controls" 
+        order="document"
+        targetrole="button checkbox option radio textbox" /&gt;
+</pre>
+</div>
+<div class="example">
+    <p>Access that moves among form controls in specific order</p>
+<pre>
+&lt;access key="i"
+        title="Form Controls" 
+        order="list"
+        targetrole="button checkbox option radio textbox" /&gt;
+</pre>
+</div>
+<div class="example">
+    <p>Access element that goes to a specific element</p>
+<pre>
+&lt;access key="u" 
+        title="Username" 
+		targetid="username" /&gt;
+</pre>
+</div>
+<div class="example">
+    <p>Access element with no specific key mapping</p>
+<pre>
+&lt;access title="Navigation bar" 
+		targetrole="navigation" /&gt;
+</pre>
+</div>
+<!-- END OF ELEMENT FILE modules/access/access.mhtml -->
+<hr />
+<div class="navbar">
+[<a href="mod-i18n.html">previous</a>]
+[<a href="mod-bidi.html">next</a>]
+[<a href="Overview.html#toc">table of contents</a>]
+[<a href="elements.html">elements</a>]
+[<a href="attributes.html">attributes</a>]
+</div>
+</body>
+</html>

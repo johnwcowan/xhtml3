@@ -1,0 +1,231 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN"
+	"http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html lang="en" xml:lang="en" xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<title>XHTML&#8482; 2.0 - Introduction</title> 
+<link rel="start" type="text/html" href="Overview.html" />
+<link rel="contents" type="text/html" href="Overview.html#toc" />
+<link rel="prev" type="text/html" href="Overview.html" />
+<link rel="next" type="text/html" href="terms.html" />
+<link rel="stylesheet" type="text/css" href="xhtml.css" />
+<link rel="stylesheet" type="text/css" href="http://www.w3.org/StyleSheets/TR/W3C-ED.css" />
+</head>
+<body>
+<div class="navbar">
+[<a accesskey="P" href="Overview.html">previous</a>]
+[<a accesskey="N" href="terms.html">next</a>]
+[<a accesskey="T" href="Overview.html#toc">table of contents</a>]
+[<a accesskey="E" href="elements.html">elements</a>]
+[<a accesskey="A" href="attributes.html">attributes</a>]
+<hr />
+</div>
+<h1 >
+<a id="s_intro" >1.</a> Introduction
+</h1>
+<div class='subtoc'><p><strong>Contents</strong></p><ul class='toc'><li class='tocline'>
+1.1.
+<a href="#s_intro_whatisxhtml2" class="tocxref">What is XHTML 2?</a>
+<ul class="toc"><li class='tocline'>1.1.1.
+<a href="#aims" class="tocxref">Design Aims</a>
+</li><li class='tocline'>1.1.2.
+<a href="#backCompat" class="tocxref">Backwards compatibility</a>
+</li><li class='tocline'>1.1.3.
+<a href="#presentation" class="tocxref">XHTML 2 and Presentation</a>
+</li><li class='tocline'>1.1.4.
+<a href="#s_intro_linking" class="tocxref">XHTML 2 and Linking</a>
+</li></ul></li><li class='tocline'>1.2.
+<a href="#s_intro_differences" class="tocxref">Major Differences with XHTML 1</a>
+</li><li class='tocline'>1.3.
+<a href="#s_intro_whatismod" class="tocxref">What are the XHTML 2 Modules?</a>
+</li></ul>
+</div>
+<p>
+This section is <em>informative</em>.
+</p>
+<h2 >
+<a id="s_intro_whatisxhtml2" >1.1.</a> What is XHTML 2?
+</h2>
+<p>XHTML 2 is a general purpose markup language designed to represent documents for a wide range of purposes across the World Wide Web. To this end
+it does not attempt to be all things to all people, supplying every possible
+markup idiom, but to supply a generally useful set of elements, with the
+possibility of extension using the 
+<a class="aref" href="mod-core.html#adef_core_class">@class</a> and 
+<a class="aref" href="mod-roleAttribute.html#adef_roleAttribute_role">@role</a> attributes on the
+<a class="eref" href="mod-text.html#edef_text_span">span</a> and 
+<a class="eref" href="mod-structural.html#edef_structural_div">div</a>
+elements in combination with style sheets, and attributes from the metadata attributes collection.</p>
+<h3 >
+<a id="aims" >1.1.1.</a> Design Aims
+</h3>
+<p>In designing XHTML 2, a number of design aims were kept in mind to help
+direct the design. These included:</p>
+<ul>
+  <li class="long">As generic XML as possible: if a facility exists in XML, try to use
+    that rather than duplicating it.</li>
+  <li class="long">Less presentation, more structure: use style sheets for defining presentation.</li>
+  <li class="long">More usability: within the constraints of XML, try to make the language easy to write, and make the
+    resulting documents easy to use.</li>
+  <li class="long">More accessibility: some call it 'designing for our future selves' &ndash; the
+    design should be as inclusive as possible.</li>
+  <li class="long">Better internationalization: since it is a World Wide Web.</li>
+  <li class="long">More device independence: new devices coming online, such as
+    telephones, PDAs, tablets, televisions and so on mean that it is
+    imperative to have a design that allows you to author once and render in
+    different ways on different devices, rather than authoring new versions
+    of the document for each type of device.</li>
+  <li class="long">Less scripting: achieving functionality through scripting is difficult
+    for the author and restricts the type of user agent you can use to view
+    the document. We have tried to identify current typical usage, and
+    include those usages in markup.</li>
+  <li class="long">Integration with the Semantic Web: make XHTML2 amenable for processing with semantic web tools.</li>
+</ul>
+<h3 >
+<a id="backCompat" >1.1.2.</a> Backwards compatibility
+</h3>
+<p>Because earlier versions of HTML were special-purpose languages, it was
+necessary to ensure a level of backwards compatibility with new versions so
+that new documents would still be usable in older browsers. However, thanks
+to XML and style sheets, such strict element-wise backwards compatibility is
+no longer necessary, since an XML-based browser, of which at the time of
+writing means more than 95% of browsers in use, can process new markup
+languages without having to be updated. Much of XHTML 2 works already in
+existing browsers; much, but not all: just as when forms and tables were
+added to HTML, and people had to wait for new version of browsers before
+being able to use the new facilities, some parts of XHTML 2, principally XForms
+and XML Events, still require user agents that understand that
+functionality.</p>
+<h3 >
+<a id="presentation" >1.1.3.</a> XHTML 2 and Presentation
+</h3>
+<p>The very first version of HTML was designed to represent the structure of a
+document, not its presentation. Even though presentation-oriented elements
+were later added to the language by browser manufacturers, HTML is at heart a
+document structuring language. XHTML 2 takes HTML back to these roots, by
+removing all presentation elements, and subordinating all presentation to
+style sheets. This gives greater flexibility, greater accessibility, more device independence, and more powerful presentation
+possibilities, since style sheets can do more than the presentational elements of HTML
+ever did.</p>
+<h3 >
+<a id="s_intro_linking" >1.1.4.</a> XHTML 2 and Linking
+</h3>
+<p>The original versions of HTML relied upon built-in knowledge on
+the part of User Agents and other document processors.  While much of
+this knowledge had to do with presentation (see above), the bulk of
+the remainder had to do with the relationships between documents &mdash; so
+called "linking".</p>
+<p>A variety of W3C and other efforts, most notably
+[<a class="nref" href="references.html#ref_XLINK">XLINK</a>], attempted to create a grammar for defining the
+characteristings of linking. Unfortunately, these grammars all fall
+short of the requirements of XHTML.  The community is continuing in
+its efforts to create a comprehensive grammar that describes link
+characteristics.</p>
+<p>The HTML Working Group
+has determined that such a grammar, while generally useful, is not
+required for the definition of XHTML 2.  Instead, this document
+is explicit in the characteristics of the elements and attributes that
+are used to connect to other resources.  The Working Group has taken
+this course because 1) the problem with XHTML 2 is well bounded, 2)
+the general solution is slow in coming, and 3) it will be easier for
+implementors to support and users to rely upon.</p>
+<h2 >
+<a id="s_intro_differences" >1.2.</a> Major Differences with XHTML 1
+</h2>
+<p>
+XHTML 2 is designed to be recognizable to the HTML and XHTML 1 author, while correcting errors and insufficiencies identified in earlier versions of the HTML family, and taking the opportunity to make improvements.</p>
+<p>The most visible changes are the following:</p>
+<ul>
+<li class="long">More structuring possibilities:
+<ul>
+<li class="long">Sections and headings: in previous versions of HTML a document's structure had to be inferred from the various levels of headings in the document; this was particularly a problem when authors misused the heading elements for visual effects. XHTML 2 lets you explicitly markup the document structure with the 
+<a class="eref" href="mod-structural.html#edef_structural_section">section</a> element, and its related header element 
+<a class="eref" href="mod-structural.html#edef_structural_h">h</a>.</li>
+<li class="long">Separators: in previous versions of HTML, the <code>hr</code> element was used to separate sections of a text from each other. In retrospect, the name <code>hr</code> (for <em>horizontal rule</em>) was misleading, because an <code>hr</code> was neither necessarily horizontal (in vertical text it was vertical), nor necessarily a rule (books often use other typographical methods such as a line of three asterisks to represent separators, and style sheets can be used to give you this freedom). In order to emphasize its structuring nature, to make it more widely usable, and to make it clearer that it has no essential directionality, <code>hr</code> has been renamed 
+<a class="eref" href="mod-structural.html#edef_structural_separator">separator</a>.</li>
+<li class="long">Line breaks: in previous versions of HTML, the <code>br</code> element was used to add micro-structure to text, essentially breaking a piece of text into several 'lines'. This micro-structure is now made explicit in XHTML 2 with the 
+<a class="eref" href="mod-text.html#edef_text_l">l</a> element, which encloses the text to be broken. Amongst other advantages, this gives more presentational opportunities, such as the ability to automatically number lines, or to color alternate lines differently.</li>
+<li class="long">Paragraph structure: in earlier versions of HTML, a 
+<a class="eref" href="mod-structural.html#edef_structural_p">p</a> element could only contain simple text. It has been improved to bring it closer to what people perceive as a paragraph, now being allowed to include such things as lists and tables.</li>
+</ul>
+</li>
+<li class="long">Images: the HTML <code>img</code> element has many shortcomings:
+it only allows you to specify a single resource for an image, rather
+than offering the fallback opportunities of the 
+<a class="eref" href="mod-object.html#edef_object_object">object</a> element; the only fallback option it
+gives is the <code>alt</code> text, which can only be plain text, and
+not marked up in any way; the <code>longdesc</code> attribute which
+allows you to provide a long description of the image is difficult to
+author and seldom supported.
+<p>XHTML 2 takes a completely different approach, by taking the premise that all images have a long description and treating the image and the text as equivalents. In XHTML 2 <em>any</em> element may have a 
+<a class="aref" href="mod-embedding.html#adef_embedding_src">@src</a> attribute, which specifies a resource (such as an image) to load instead of the element. If the resource is unavailable (because of network failure, because it is of a type that the browser can't handle, or because images have been turned off) then the element is used instead. Essentially the <code>longdesc</code> has been moved into the document, though this behavior also mimicks the fallback behavior of the 
+<a class="eref" href="mod-object.html#edef_object_object">object</a> element.
+(To achieve the tooltip effect that some browsers gave with the <code>alt</code> attribute, as in HTML 4 you use the 
+<a class="aref" href="mod-core.html#adef_core_title">@title</a> attribute).</p>
+</li>
+<li class="long">Type: in HTML 4, the 
+<a class="aref" href="mod-embedding.html#adef_embedding_srctype">@srctype</a> attribute when referring to an external resource was purely a hint to the user agent. In XHTML 2 it is no longer a hint, but specifies the type(s) of resource the user agent must accept.</li>
+<li class="long">Tables: the content model of tables has been cleaned up and simplified, while still allowing the same functionality.</li>
+<li class="long">Bi-directional text: rather than use an explicit element to describe bi-directional override, new values have been added to the 
+<a class="aref" href="mod-bidi.html#adef_bidi_dir">@dir</a> attribute that allow bi-directional override on any element.</li>
+<li class="long">Edit: rather than use explicit <code>ins</code> and <code>del</code> elements to mark changes in a document, an attribute 
+<a class="aref" href="mod-edit.html#adef_edit_edit">@edit</a> may be used on any element for the same purpose.</li>
+<li class="long">Linking: In HTML 3.2, only 
+<a class="eref" href="mod-hypertext.html#edef_hypertext_a">a</a> elements could be the source and target of hyperlinks. In HTML 4 and XHTML 1, any element could be the target of a hyperlink, but still only 
+<a class="eref" href="mod-hypertext.html#edef_hypertext_a">a</a> elements could be the source. In XHTML 2 any element can now also be the source of a hyperlink, since 
+<a class="aref" href="mod-hyperAttributes.html#adef_hyperAttributes_href">@href</a> and its associated attributes may now appear on any element. So for instance, instead of <code>&lt;li&gt;&lt;a href="home.html"&gt;Home&lt;/a&gt;&lt;/li&gt;</code>, you can now write <code>&lt;li href="home.html"&gt;Home&lt;/li&gt;</code>. Even though this means that the 
+<a class="eref" href="mod-hypertext.html#edef_hypertext_a">a</a> element is now strictly-speaking unnecessary, it has been retained. </li>
+<li class="long">Metadata: the 
+<a class="eref" href="mod-meta.html#edef_meta_meta">meta</a> and 
+<a class="eref" href="mod-meta.html#edef_meta_link">link</a> elements have been generalized, and their relationship to RDF [<a class="nref" href="references.html#ref_RDF">RDF</a>] described. Furthermore, the attributes on these two elements can be more generally applied across the language.</li>
+<li class="long">Role: in order to aid adding semantics to documents, the 
+<a class="aref" href="mod-roleAttribute.html#adef_roleAttribute_role">@role</a> attribute has been added, along with an initial set of useful values, in order to classify the use of a particular element. For instance a paragraph may play the role of a note, and so may be marked up <code>&lt;p role="note"&gt;</code>.</li>
+<li class="long"><p>Events: event handling in HTML was restricted in several ways: since the event names were hard-wired in the language (such as <code>onclick</code>), the only way to add new events was to change the language; many of the events (such as <code>click</code>) were device-specific, rather than referring to the intent of the event (such as activating a link); you could only handle an event in one scripting language &mdash; it was not possible to supply event handlers in the same document for several different scripting languages.</p>
+<p>XHTML 2 uses XML Events [<a class="nref" href="references.html#ref_XMLEVENTS">XMLEVENTS</a>] to specify event handling, giving greater freedom in the ability to handle events. Along with this, the <code>script</code> element has been renamed <code>handler</code> to indicate its different semantics.</p>
+</li>
+<li class="long">Forms: HTML Forms were introduced in 1993, before the advent of the e-commerce revolution. Now with more than a decade of experience with their use, they have been thoroughly overhauled and updated to meet the needs of modern forms, in the shape of XForms [<a class="nref" href="references.html#ref_XFORMS">XFORMS</a>], which are an integral part of XHTML 2.</li>
+<li class="long">Ownership where due: since HTML 4 was a standalone application, it defined many things which no longer need to be defined now that it is an XML application. For instance the definitions of whitespace are given by XML for input, and CSS for output; similarly, the definition of values of the 
+<a class="aref" href="mod-styleSheet.html#adef_styleSheet_media">@media</a> attribute are relegated to the relevant style sheet language.</li>
+<li class="long">Frames and Framesets: In HTML 4 multi-panel "pages" could be described using the <code>frameset</code> and
+<code>frame</code> elements.
+The Frames model is no longer defined in XHTML.  Instead, it is defined through the separate [<a class="nref" href="references.html#ref_XFRAMES">XFRAMES</a>]
+specification.
+</li>
+</ul>
+<h2 >
+<a id="s_intro_whatismod" >1.3.</a> What are the XHTML 2 Modules?
+</h2>
+<p>XHTML 2 is a member of the XHTML Family of markup languages.  It is
+an XHTML Host Language as defined in XHTML Modularization.  As such,
+it is made up of a set of XHTML Modules that together describe the
+elements and attributes of the language, and their content model.
+XHTML 2 updates many of the modules defined in XHTML
+Modularization 1.1 [<a class="nref" href="references.html#ref_XHTMLMOD">XHTMLMOD</a>], and includes the updated versions of all those modules and their semantics. 
+XHTML 2 also uses modules from XHTML Access [<a class="nref" href="references.html#ref_XHTMLACCESS">XHTMLACCESS</a>], XHTML
+Role [<a class="nref" href="references.html#ref_XHTMLROLE">XHTMLROLE</a>],
+RDFa Syntax [<a class="nref" href="references.html#ref_RDFASYNTAX">RDFASYNTAX</a>], Ruby [<a class="nref" href="references.html#ref_RUBY">RUBY</a>], XML Events [<a class="nref" href="references.html#ref_XMLEVENTS">XMLEVENTS</a>], and XForms
+[<a class="nref" href="references.html#ref_XFORMS">XFORMS</a>].
+</p>
+<p>
+The modules defined in this
+specification are largely extensions of the modules defined in XHTML
+Modularization 1.1. This specification also defines the semantics of
+the modules it includes. So, that means that unlike earlier versions
+of XHTML that relied upon the semantics defined in HTML 4 [<a class="nref" href="references.html#ref_HTML4">HTML4</a>],
+all of the semantics for XHTML 2 are defined either in this specification or
+in the specifications that it normatively references.</p>
+<p>
+Even though the XHTML 2 modules are defined in this specification,
+they are available for use in other XHTML family markup languages.
+Over time, it is possible that the modules defined in this
+specification will migrate into an update of the XHTML Modularization
+specification.</p>
+<hr />
+<div class="navbar">
+[<a href="Overview.html">previous</a>]
+[<a href="terms.html">next</a>]
+[<a href="Overview.html#toc">table of contents</a>]
+[<a href="elements.html">elements</a>]
+[<a href="attributes.html">attributes</a>]
+</div>
+</body>
+</html>

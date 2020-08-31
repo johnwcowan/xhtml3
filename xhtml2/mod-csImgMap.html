@@ -1,0 +1,173 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN"
+	"http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html lang="en" xml:lang="en" xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<title>XHTML&#8482; 2.0 - XHTML Image Map Attributes Module</title> 
+<link rel="start" type="text/html" href="Overview.html" />
+<link rel="contents" type="text/html" href="Overview.html#toc" />
+<link rel="prev" type="text/html" href="mod-image.html" />
+<link rel="next" type="text/html" href="mod-mediaAttribute.html" />
+<link rel="stylesheet" type="text/css" href="xhtml.css" />
+<link rel="stylesheet" type="text/css" href="http://www.w3.org/StyleSheets/TR/W3C-ED.css" />
+</head>
+<body>
+<div class="navbar">
+[<a accesskey="P" href="mod-image.html">previous</a>]
+[<a accesskey="N" href="mod-mediaAttribute.html">next</a>]
+[<a accesskey="T" href="Overview.html#toc">table of contents</a>]
+[<a accesskey="E" href="elements.html">elements</a>]
+[<a accesskey="A" href="attributes.html">attributes</a>]
+<hr />
+</div>
+<h1 >
+<a id="s_csImgMapmodule" >21.</a> XHTML Image Map Attributes Module
+</h1>
+<div class='subtoc'><p><strong>Contents</strong></p><ul class='toc'><li class='tocline'>
+21.1.
+<a href="#col_Map" class="tocxref">Image Map Attribute Collection</a>
+</li></ul>
+</div>
+<p>This section is <em>normative</em>.</p>
+<p>
+This module defines a collection of attributes that specify that an embedded image may be used as an image map, so that clicking on different parts of the image causes different hyperlinks to be activated.
+</p>
+<p>Note that in the following example, if the image is unavailable for any reason, the fallback properties of the 
+<a class="aref" href="mod-embedding.html#adef_embedding_src">@src</a> attribute mean that the <code>nl</code> element will be displayed instead of the image, thus making the page still useful:</p>
+<div class="example">
+    <p>Example</p>
+<pre>
+&lt;html xmlns="http://www.w3.org/2002/06/xhtml2"&gt;
+   &lt;head&gt;
+      &lt;title&gt;The cool site!&lt;/title&gt;
+   &lt;/head&gt; 
+   &lt;body&gt;
+     &lt;ul id="map1" role="navigation" 
+	     src="navbar1.png" srctype="image/png" usemap="#map1"&gt; 
+	   &lt;caption&gt;Navigate the site:&lt;/caption&gt;
+	   &lt;li href="guide.html" shape="rect" 
+		   coords="0,0,118,28"&gt;
+		   Access Guide
+	   &lt;/li&gt; 
+	   &lt;li href="shortcut.html" shape="rect" 
+		   coords="118,0,184,28"&gt;
+		   Go
+	   &lt;/li&gt; 
+	   &lt;li href="search.html" shape="circle" 
+		   coords="184,200,60"&gt;
+		   Search
+	   &lt;/li&gt;
+	   &lt;li href="top10.html" shape="poly" 
+		   coords="276,0,276,28,100,200,50,50,276,0"&gt;
+		   Top Ten
+	   &lt;/li&gt;
+	 &lt;/ul&gt;
+   &lt;/body&gt;
+&lt;/html&gt; 
+</pre>
+</div>
+<p>Note that W3C is working on profiles of XHTML that include versions of SVG [<a class="nref" href="references.html#ref_SVG">SVG</a>], which include more structured ways of creating imagemap-like behavior.</p>
+<h2 >
+<a id="col_Map" >21.1.</a> Image Map Attribute Collection
+</h2>
+<!-- INCLUDING ATTRIBUTE modules/attributes/usemap.mhtml -->
+<dl class='attrDef'><dt><a class="adef" id="adef_csImgMap_usemap"><span class="adef">usemap</span></a>
+ = <span class="datatype"><a href="abstraction.html#dt_URI">URI</a></span> </dt>
+<dd><p>This attribute associates an image map with an 
+<a class="eref" href="mod-list.html#edef_list_ul">ul</a> element. 
+The value of <samp>usemap</samp> should match the value of the 
+<a class="aref" href="mod-core.html#adef_core_id">@id</a> attribute of an 
+<a class="eref" href="mod-list.html#edef_list_ul">ul</a> element that contains one or more 
+<a class="eref" href="mod-list.html#edef_list_li">li</a> elements with 
+<a class="aref" href="mod-csImgMap.html#adef_csImgMap_shape">@shape</a> and 
+<a class="aref" href="mod-csImgMap.html#adef_csImgMap_coords">@coords</a> attributes.</p>
+<p>If accessing the URI fails or the referenced element is not an
+<a class="eref" href="mod-list.html#edef_list_ul">ul</a> element, then the associated 
+<a class="aref" href="mod-embedding.html#adef_embedding_src">@src</a> attribute is considered to have failed as well, so that the nested content will be processed instead.</p>
+<!--
+<p>In terms of [<a class="nref" href="references.html#ref_HLINK">HLINK</a>], the 
+<a class="aref" href="mod-csImgMap.html#adef_csImgMap_usemap">@usemap</a> attribute is
+specified as:</p>
+<pre>&lt;hlink namespace="http://www.w3.org/1999/xhtml"
+       locator="usemap"
+       effectValue="embed"
+       actuateValue="onLoad"/&gt;</pre>
+   -->
+</dd></dl>
+<!-- END OF ATTRIBUTE FILE modules/attributes/usemap.mhtml -->
+<!-- INCLUDING ATTRIBUTE modules/attributes/ismap.mhtml -->
+<dl class='attrDef'><dt><a class="adef" id="adef_csImgMap_ismap"><span class="adef">ismap</span></a>
+ = "ismap" </dt>
+<dd><p>This attribute indicates that the associated embedded resource is to be treated as a
+"server-side image map". When selected, the coordinates within the element
+that the user selected are sent to the server where the document resides.
+Coordinates are expressed as pixel values relative to the
+embedded resource, and start at (0,0) at the top left corner.</p>
+<p>When an ismap attribute is specified, click events are not delivered to the embedded resource, regardless of its type.</p>
+<div class="example">
+<p>In the following example, the active region defines a server-side image map.
+A click anywhere on the image will cause the click's coordinates to be
+sent to the server.</p>
+<pre>
+&lt;p href="http://www.example.com/cgi-bin/map"
+      src="map.png" ismap="ismap"&gt;
+   Our location.
+&lt;/p&gt;
+</pre>
+</div>
+<p>
+<a class="xdef"
+   id="s_csImgMapmodule_xref_0">The location clicked</a>
+is passed to the server as follows. The user agent
+derives a new URI from the URI specified by the 
+<a class="aref" href="mod-hyperAttributes.html#adef_hyperAttributes_href">@href</a> 
+attribute of the element,
+by appending `?' followed by the x and y coordinates, separated by a comma. The
+link is then actuated using the new URI. For instance, in the given example,
+if
+the user clicks at the location x=10, y=27 then the derived URI is
+"http://www.example.com/cgi-bin/map?10,27".</p>
+<p><span class="must"  >User agents that do not offer the user a means to select specific
+coordinates (e.g., non-graphical user agents that rely on keyboard input,
+speech-based user agents, etc.) must send the coordinates "0,0" to the
+server when the link is activated.</span></p>
+</dd></dl>
+<!-- END OF ATTRIBUTE FILE modules/attributes/ismap.mhtml -->
+<!-- INCLUDING ATTRIBUTE modules/attributes/shape.mhtml -->
+<dl class='attrDef'><dt><a class="adef" id="adef_csImgMap_shape"><span class="adef">shape</span></a>
+ = <samp>"default|rect|circle|poly"</samp> </dt>
+<dd>This attribute specifies the shape of a region. Possible values: 
+<ul>
+<li><samp>default:</samp> Specifies the entire region.</li>
+<li><samp>rect:</samp> Define a rectangular region.</li>
+<li><samp>circle:</samp> Define a circular region.</li>
+<li><samp>poly:</samp> Define a polygonal region.</li>
+</ul>
+</dd></dl>
+<!-- END OF ATTRIBUTE FILE modules/attributes/shape.mhtml -->
+<!-- INCLUDING ATTRIBUTE modules/attributes/coords.mhtml -->
+<dl class='attrDef'><dt><a class="adef" id="adef_csImgMap_coords"><span class="adef">coords</span></a>
+ = <span class="datatype"><a href="abstraction.html#dt_Coordinates">Coordinates</a></span> </dt>
+<dd>This attribute specifies the position and shape of the area. The number and order of values depends on the value of the 
+<a class="aref" href="mod-csImgMap.html#adef_csImgMap_shape">@shape</a> attribute. Possible combinations: 
+<ul>
+  <li><samp>rect:</samp> left-x, top-y, right-x, bottom-y.</li>
+  <li><samp>circle:</samp> center-x, center-y, radius. When the radius value is a percentage, the actual radius value is calculated using the associated image's width and height. The radius is then the smaller value of the two.</li>
+  <li><samp>poly:</samp> x1, y1, x2, y2, ..., xN, yN. If the first and last x and y coordinate pairs are not the same, user agents must infer an additional coordinate pair to close the polygon.</li>
+</ul>
+<p>Coordinates are relative to the top, left corner of the object. All values are of type <span class="datatype"><a href="abstraction.html#dt_Length">Length</a></span>. All values are separated by commas. The coordinates of the top, left corner of an area are <code>0, 0</code>.</p>
+</dd></dl>
+<!-- END OF ATTRIBUTE FILE modules/attributes/coords.mhtml -->
+<p>Implementation: <a href="relax_module_defs.html#a_rmodule_Image_Map_Attributes">RELAX NG</a>,
+<a href="schema_module_defs.html#a_smodule_Image_Map_Attributes_Module">XML Schema</a>
+</p>
+<hr />
+<div class="navbar">
+[<a href="mod-image.html">previous</a>]
+[<a href="mod-mediaAttribute.html">next</a>]
+[<a href="Overview.html#toc">table of contents</a>]
+[<a href="elements.html">elements</a>]
+[<a href="attributes.html">attributes</a>]
+</div>
+</body>
+</html>

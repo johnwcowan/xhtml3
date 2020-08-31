@@ -1,0 +1,339 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN"
+	"http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html lang="en" xml:lang="en" xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<title>XHTML&#8482; 2.0 - XHTML Document Module</title> 
+<link rel="start" type="text/html" href="Overview.html" />
+<link rel="contents" type="text/html" href="Overview.html#toc" />
+<link rel="prev" type="text/html" href="mod-attribute-collections.html" />
+<link rel="next" type="text/html" href="mod-structural.html" />
+<link rel="stylesheet" type="text/css" href="xhtml.css" />
+<link rel="stylesheet" type="text/css" href="http://www.w3.org/StyleSheets/TR/W3C-ED.css" />
+</head>
+<body>
+<div class="navbar">
+[<a accesskey="P" href="mod-attribute-collections.html">previous</a>]
+[<a accesskey="N" href="mod-structural.html">next</a>]
+[<a accesskey="T" href="Overview.html#toc">table of contents</a>]
+[<a accesskey="E" href="elements.html">elements</a>]
+[<a accesskey="A" href="attributes.html">attributes</a>]
+<hr />
+</div>
+<h1 >
+<a id="s_documentmodule" >7.</a> XHTML Document Module
+</h1>
+<div class='subtoc'><p><strong>Contents</strong></p><ul class='toc'><li class='tocline'>
+7.1.
+<a href="#sec_7.1." class="tocxref">The html element</a>
+</li><li class='tocline'>7.2.
+<a href="#sec_7.2." class="tocxref">The head element</a>
+</li><li class='tocline'>7.3.
+<a href="#sec_7.3." class="tocxref">The title element</a>
+</li><li class='tocline'>7.4.
+<a href="#sec_7.4." class="tocxref">The body element</a>
+</li></ul>
+</div>
+<p>This section is <em>normative</em>.</p>
+<p>The Document Module defines the major structural elements for XHTML. These
+elements effectively act as the basis for the content model of many XHTML family document types.
+The elements and attributes included in this module are:</p>
+<table border="1" summary="Elements and Attributes for Document 
+Module">
+<thead>
+	<tr><th>Elements</th><th>Attributes</th><th>Content Model</th></tr>
+</thead>
+<tbody>
+	<tr>
+		<td>
+<a class="eref" href="mod-document.html#edef_document_html">html</a></td>
+		<td>
+    <a class="csref" href="mod-attribute-collections.html#col_Common">Common</a>, 
+<a class="aref" href="mod-document.html#adef_document_version">@version</a> (<span class="datatype"><a href="abstraction.html#dt_CDATA">CDATA</a></span>), xmlns (<span class="datatype"><a href="abstraction.html#dt_URI">URI</a></span> = "http://www.w3.org/1999/xhtml"),
+<a class="aref" href="mod-document.html#adef_document_xsi:schemaLocation">@xsi:schemaLocation</a> (<span class="datatype"><a href="abstraction.html#dt_URIs">URIs</a></span> =
+		"http://www.w3.org/1999/xhtml http://www.w3.org/MarkUp/SCHEMA/xhtml2.xsd")</td>
+		<td class="content">
+<a class="eref" href="mod-document.html#edef_document_head">head</a>, 
+<a class="eref" href="mod-document.html#edef_document_body">body</a></td>
+	</tr>
+	<tr>
+		<td>
+<a class="eref" href="mod-document.html#edef_document_head">head</a></td>
+        <td>
+    <a class="csref" href="mod-attribute-collections.html#col_Common">Common</a>,
+<a class="aref" href="mod-document.html#adef_document_profile">@profile</a> (URIs)</td>
+		<td class="content">
+<a class="eref" href="mod-document.html#edef_document_title">title</a>
+             , (
+<a class="eref" href="mod-access.html#edef_access_access">access</a> |
+<a class="eref" href="mod-handler.html#edef_handler_action">action</a> |
+<a class="eref" href="mod-meta.html#edef_meta_link">link</a> |
+<a class="eref" href="mod-xml-events.html#edef_xml-events_listener">listener</a> |
+<a class="eref" href="mod-xforms.html#edef_xforms_model">model</a> |
+<a class="eref" href="mod-meta.html#edef_meta_meta">meta</a> |
+<a class="eref" href="mod-styleSheet.html#edef_styleSheet_style">style</a>
+						) *
+		</td>
+	</tr>
+	<tr>
+		<td>
+<a class="eref" href="mod-document.html#edef_document_title">title</a></td>
+		<td>
+    <a class="csref" href="mod-attribute-collections.html#col_Common">Common</a></td>
+		<td class="content">PCDATA*</td>
+	</tr>
+	<tr>
+		<td>
+<a class="eref" href="mod-document.html#edef_document_body">body</a></td>
+		<td>
+    <a class="csref" href="mod-attribute-collections.html#col_Common">Common</a></td>
+		<td class="content">(
+    <a class="csref" href="mod-structural.html#cs_Heading">Heading</a> | 
+    <a class="csref" href="mod-structural.html#cs_Structural">Structural</a> | 
+    <a class="csref" href="mod-list.html#cs_List">List</a>)*</td>
+	</tr>
+</tbody>
+</table>
+<p>This module is the basic structural definition for XHTML content.
+The <code>html</code> element acts as the root element for all XHTML
+Family Document Types.</p>
+<p>Note that the value of the xmlns declaration is defined
+to be "http://www.w3.org/1999/xhtml". Also note that because the xmlns declaration
+is treated specially by XML namespace-aware parsers 
+[<a class="nref" href="references.html#ref_XMLNS">XMLNS</a>], 
+it is legal to have it present as an attribute of each element.
+<span class="must"  >However, any time the xmlns declaration is used in the context of an XHTML
+module, whether with a prefix or not, the value of the declaration
+must be <code>http://www.w3.org/1999/xhtml</code>.</span>
+</p>
+<p>Implementations: <a href="relax_module_defs.html#a_rmodule_Document">RELAX NG</a>,
+<a href="schema_module_defs.html#a_smodule_Document_Module">XML Schema</a>
+</p>
+<!-- INCLUDING ELEMENT modules/document/html.mhtml -->
+<h2 >
+<a id="sec_7.1." >7.1.</a> The <a class="edef" id="edef_document_html">html</a>
+ element
+</h2>
+<p>The 
+<a class="eref" href="mod-document.html#edef_document_html">html</a> element is the root element for all XHTML
+Family Document Types. The 
+<a class="aref" href="mod-i18n.html#adef_i18n_xml:lang">@xml:lang</a> attribute is required on this element.</p>
+<div class="adef-list"><p>
+<em>Attributes</em></p>
+<!-- INCLUDING ATTRIBUTE modules/attributes/Common.mhtml -->
+<dl class='attrDef'><dt>The 
+    <a class="csref" href="mod-attribute-collections.html#col_Common">Common</a> collection</dt>
+<dd>A collection of other attribute collections, including:
+    <a class="csref" href="mod-bidi.html#col_Bi-directional">Bi-directional</a>, 
+    <a class="csref" href="mod-core.html#col_Core">Core</a>, 
+    <a class="csref" href="mod-edit.html#col_Edit">Edit</a>, 
+    <a class="csref" href="mod-embedding.html#col_Embedding">Embedding</a>, 
+    <a class="csref" href="mod-xml-events.html#col_Events">Events</a>, 
+    <a class="csref" href="mod-xforms.html#col_Forms">Forms</a>, 
+    <a class="csref" href="mod-hyperAttributes.html#col_Hypertext">Hypertext</a>,
+    <a class="csref" href="mod-i18n.html#col_I18N">I18N</a>, 
+    <a class="csref" href="mod-csImgMap.html#col_Map">Map</a>, 
+    <a class="csref" href="mod-metaAttributes.html#col_Metainformation">Metainformation</a>,
+and 
+    <a class="csref" href="mod-roleAttribute.html#col_Role">Role</a>
+</dd></dl>
+<!-- END OF ATTRIBUTE FILE modules/attributes/Common.mhtml -->
+<!-- INCLUDING ATTRIBUTE modules/attributes/version.mhtml -->
+<dl class='attrDef'><dt><a class="adef" id="adef_document_version"><span class="adef">version</span></a>
+ = <span class="datatype"><a href="abstraction.html#dt_CDATA">CDATA</a></span> </dt>
+<dd>The value of this attribute specifies which XHTML Family document type
+governs the current document. The format of this attribute value is
+unspecified.  However, all values beginning with the character
+sequence <samp>xhtml</samp> are reserved for use by XHTML Family
+Document Types.
+</dd></dl>
+<!-- END OF ATTRIBUTE FILE modules/attributes/version.mhtml -->
+<!-- INCLUDING ATTRIBUTE modules/attributes/xsi_schemaLocation.mhtml -->
+<dl class='attrDef'><dt><a class="adef" id="adef_document_xsi:schemaLocation"><span class="adef">xsi:schemaLocation</span></a>
+ = <span class="datatype"><a href="abstraction.html#dt_URIs">URIs</a></span></dt>
+<dd>This attribute allows the specification of a location where an XML
+Schema [<a class="nref" href="references.html#ref_XMLSCHEMA">XMLSCHEMA</a>] for the document can be found. The
+syntax of this
+attribute is defined in <a class="xsiref" href="http://www.w3.org/TR/xmlschema-1/#xsi_schemaLocation">xsi_schemaLocation</a>. The
+behavior of this attribute in XHTML documents is defined in
+<a href="conformance.html#strict">Strictly Conforming
+Documents</a>.
+</dd></dl>
+<!-- END OF ATTRIBUTE FILE modules/attributes/xsi_schemaLocation.mhtml -->
+</div>
+<!-- END OF ELEMENT FILE modules/document/html.mhtml -->
+<!-- INCLUDING ELEMENT modules/document/head.mhtml -->
+<h2 >
+<a id="sec_7.2." >7.2.</a> The <a class="edef" id="edef_document_head">head</a>
+ element
+</h2>
+<p>The 
+<a class="eref" href="mod-document.html#edef_document_head">head</a> element contains information
+about the current document, such as its title, 
+that is not considered
+document content. The default presentation of the head is not to display it;
+however that can be overridden with a style sheet for special purpose use.
+User agents may however make information in the 
+<a class="eref" href="mod-document.html#edef_document_head">head</a>
+available to users through other mechanisms.</p>
+<div class="adef-list">
+<p><em>Attributes</em></p>
+<!-- INCLUDING ATTRIBUTE modules/attributes/Common.mhtml -->
+<dl class='attrRef'><dt>The 
+    <a class="csref" href="mod-attribute-collections.html#col_Common">Common</a> collection</dt>
+<dd>A collection of other attribute collections, including:
+    <a class="csref" href="mod-bidi.html#col_Bi-directional">Bi-directional</a>, 
+    <a class="csref" href="mod-core.html#col_Core">Core</a>, 
+    <a class="csref" href="mod-edit.html#col_Edit">Edit</a>, 
+    <a class="csref" href="mod-embedding.html#col_Embedding">Embedding</a>, 
+    <a class="csref" href="mod-xml-events.html#col_Events">Events</a>, 
+    <a class="csref" href="mod-xforms.html#col_Forms">Forms</a>, 
+    <a class="csref" href="mod-hyperAttributes.html#col_Hypertext">Hypertext</a>,
+    <a class="csref" href="mod-i18n.html#col_I18N">I18N</a>, 
+    <a class="csref" href="mod-csImgMap.html#col_Map">Map</a>, 
+    <a class="csref" href="mod-metaAttributes.html#col_Metainformation">Metainformation</a>,
+and 
+    <a class="csref" href="mod-roleAttribute.html#col_Role">Role</a>
+</dd></dl>
+<!-- END OF ATTRIBUTE FILE modules/attributes/Common.mhtml -->
+<!-- INCLUDING ATTRIBUTE modules/attributes/profile.mhtml -->
+<dl class='attrDef'><dt><a class="adef" id="adef_document_profile"><span class="adef">profile</span></a>
+ = <span class="datatype"><a href="abstraction.html#dt_URIs">URIs</a></span>
+</dt>
+<dd>This attribute specifies the location of one or more metadata
+profiles, separated by white space. For future extensions, user agents
+should consider the value to be a list even though this specification
+only considers the first URI to be significant.
+Profiles are discussed in the section on <a href="mod-meta.html#s_metamodule">meta
+data</a>.
+</dd></dl>
+<!-- END OF ATTRIBUTE FILE modules/attributes/profile.mhtml -->
+</div>
+<div class="example">
+    <p>Example</p>
+<pre>
+&lt;head&gt;
+	&lt;title&gt;My Life&lt;/title&gt;
+&lt;/head&gt;
+</pre>
+</div>
+<!-- END OF ELEMENT FILE modules/document/head.mhtml -->
+<!-- INCLUDING ELEMENT modules/document/title.mhtml -->
+<h2 >
+<a id="sec_7.3." >7.3.</a> The <a class="edef" id="edef_document_title">title</a>
+ element
+</h2>
+<p><span class="must"  >Every XHTML document must have a
+<a class="eref" href="mod-document.html#edef_document_title">title</a>
+element in the 
+<a class="eref" href="mod-document.html#edef_document_head">head</a>
+section.</span></p>
+<div class="aref-list">
+<p><em>Attributes</em></p>
+<!-- INCLUDING ATTRIBUTE modules/attributes/Common.mhtml -->
+<dl class='attrRef'><dt>The 
+    <a class="csref" href="mod-attribute-collections.html#col_Common">Common</a> collection</dt>
+<dd>A collection of other attribute collections, including:
+    <a class="csref" href="mod-bidi.html#col_Bi-directional">Bi-directional</a>, 
+    <a class="csref" href="mod-core.html#col_Core">Core</a>, 
+    <a class="csref" href="mod-edit.html#col_Edit">Edit</a>, 
+    <a class="csref" href="mod-embedding.html#col_Embedding">Embedding</a>, 
+    <a class="csref" href="mod-xml-events.html#col_Events">Events</a>, 
+    <a class="csref" href="mod-xforms.html#col_Forms">Forms</a>, 
+    <a class="csref" href="mod-hyperAttributes.html#col_Hypertext">Hypertext</a>,
+    <a class="csref" href="mod-i18n.html#col_I18N">I18N</a>, 
+    <a class="csref" href="mod-csImgMap.html#col_Map">Map</a>, 
+    <a class="csref" href="mod-metaAttributes.html#col_Metainformation">Metainformation</a>,
+and 
+    <a class="csref" href="mod-roleAttribute.html#col_Role">Role</a>
+</dd></dl>
+<!-- END OF ATTRIBUTE FILE modules/attributes/Common.mhtml -->
+</div>
+<p>The 
+<a class="eref" href="mod-document.html#edef_document_title">title</a> element is used to provide identification
+for a document or a section of a document.
+Since documents are often consulted out
+of context, authors should provide context-rich titles. Thus, instead
+of a title such as "Introduction", which doesn't provide much
+contextual background, authors should supply a title such as
+"Introduction to Medieval Bee-Keeping" instead.</p>
+<p><span class="must"  >For reasons of accessibility, user agents must always make the
+content of the 
+<a class="eref" href="mod-document.html#edef_document_title">title</a> element 
+available
+to users.</span> The mechanism for doing so depends on
+the user agent (e.g., as a caption, spoken).</p>
+<p>When 
+<a class="eref" href="mod-document.html#edef_document_title">title</a> is used in within the 
+<a class="eref" href="mod-document.html#edef_document_head">head</a>
+element of
+a document, that title applies to the entire document.  When used 
+elsewhere, it applies to its enclosing element.</p>
+<div class="example">
+    <p>Example</p>
+<pre>
+&lt;title&gt;A study of population dynamics&lt;/title&gt;
+</pre>
+</div>
+<div class="example">
+    <p>Example</p>
+<pre>
+&lt;section&gt;
+    &lt;title&gt;Intoroduction to Medieval Bee-Keeping&lt;/title&gt;
+    &lt;p&gt;Some information about....&lt;/p&gt;
+&lt;/section&gt;
+</pre>
+</div>
+<p>The title of a document is metadata about the document, and so a title like <code>&lt;title&gt;About W3C&lt;/title&gt;</code> is equivalent to 
+<code>
+&lt;meta about="" property="title"&gt;About W3C&lt;/meta&gt;</code>.
+</p>
+<!-- END OF ELEMENT FILE modules/document/title.mhtml -->
+<!-- INCLUDING ELEMENT modules/document/body.mhtml -->
+<h2 >
+<a id="sec_7.4." >7.4.</a> The <a class="edef" id="edef_document_body">body</a>
+ element
+</h2>
+<p>The body of a document contains the document's content. The content
+may be processed by a user agent in a variety of ways. For example
+by visual browsers it can be presented as text, images, colors, graphics, etc., an audio user agent may speak the same content, and a search engine may create an index prioritized according to properties of the text.</p>
+<div class="adef-list">
+<p><em>Attributes</em></p>
+<!-- INCLUDING ATTRIBUTE modules/attributes/Common.mhtml -->
+<dl class='attrRef'><dt>The 
+    <a class="csref" href="mod-attribute-collections.html#col_Common">Common</a> collection</dt>
+<dd>A collection of other attribute collections, including:
+    <a class="csref" href="mod-bidi.html#col_Bi-directional">Bi-directional</a>, 
+    <a class="csref" href="mod-core.html#col_Core">Core</a>, 
+    <a class="csref" href="mod-edit.html#col_Edit">Edit</a>, 
+    <a class="csref" href="mod-embedding.html#col_Embedding">Embedding</a>, 
+    <a class="csref" href="mod-xml-events.html#col_Events">Events</a>, 
+    <a class="csref" href="mod-xforms.html#col_Forms">Forms</a>, 
+    <a class="csref" href="mod-hyperAttributes.html#col_Hypertext">Hypertext</a>,
+    <a class="csref" href="mod-i18n.html#col_I18N">I18N</a>, 
+    <a class="csref" href="mod-csImgMap.html#col_Map">Map</a>, 
+    <a class="csref" href="mod-metaAttributes.html#col_Metainformation">Metainformation</a>,
+and 
+    <a class="csref" href="mod-roleAttribute.html#col_Role">Role</a>
+</dd></dl>
+<!-- END OF ATTRIBUTE FILE modules/attributes/Common.mhtml -->
+</div>
+<div class="example">
+    <p>Example</p>
+<pre>
+&lt;body id="theBody"&gt;
+    &lt;p&gt;A paragraph&lt;/p&gt;
+&lt;/body&gt;
+</pre>
+</div>
+<!-- END OF ELEMENT FILE modules/document/body.mhtml -->
+<hr />
+<div class="navbar">
+[<a href="mod-attribute-collections.html">previous</a>]
+[<a href="mod-structural.html">next</a>]
+[<a href="Overview.html#toc">table of contents</a>]
+[<a href="elements.html">elements</a>]
+[<a href="attributes.html">attributes</a>]
+</div>
+</body>
+</html>

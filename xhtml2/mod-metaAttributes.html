@@ -1,0 +1,106 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN"
+	"http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html lang="en" xml:lang="en" xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<title>XHTML&#8482; 2.0 - XHTML Metainformation Attributes Module</title> 
+<link rel="start" type="text/html" href="Overview.html" />
+<link rel="contents" type="text/html" href="Overview.html#toc" />
+<link rel="prev" type="text/html" href="mod-meta.html" />
+<link rel="next" type="text/html" href="mod-object.html" />
+<link rel="stylesheet" type="text/css" href="xhtml.css" />
+<link rel="stylesheet" type="text/css" href="http://www.w3.org/StyleSheets/TR/W3C-ED.css" />
+</head>
+<body>
+<div class="navbar">
+[<a accesskey="P" href="mod-meta.html">previous</a>]
+[<a accesskey="N" href="mod-object.html">next</a>]
+[<a accesskey="T" href="Overview.html#toc">table of contents</a>]
+[<a accesskey="E" href="elements.html">elements</a>]
+[<a accesskey="A" href="attributes.html">attributes</a>]
+<hr />
+</div>
+<h1 >
+<a id="s_metaAttributesmodule" >24.</a> XHTML Metainformation Attributes Module
+</h1>
+<div class='subtoc'><p><strong>Contents</strong></p><ul class='toc'><li class='tocline'>
+24.1.
+<a href="#col_Metainformation" class="tocxref">Metadata Attribute Collection</a>
+</li></ul>
+</div>
+<p>This section is <em>normative</em> for purposes of defining the
+integration of the XHTML Metainformation Attributes Module into XHTML 2. The semantics of
+the XHTML Metainformation Attributes Module itself are
+normatively defined in [<a class="nref" href="references.html#ref_RDFASYNTAX">RDFASYNTAX</a>].
+The rules for extracting RDF from XHTML family markup languages are
+defined in [<a class="nref" href="references.html#ref_RDFASYNTAX">RDFASYNTAX</a>].  For information on important differences
+between XHTML 2 and other XHTML family markup languages and how those
+may relate to RDFa, see 
+<a href="xhtml2-changes.html#a_changes">Appendix A</a>.</p>
+<h2 >
+<a id="col_Metainformation" >24.1.</a> Metadata Attribute Collection
+</h2>
+<table class="moduledef" border="1" summary="Metainformation Attribute Collection">
+<thead>
+<tr>
+	<th>Attributes</th>
+	<th>Notes</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+    <td><a class="adef" id="adef_metaAttributes_about"><span class="adef">about</span></a>
+    (<span class="datatype"><a href="abstraction.html#dt_URIorSafeCURIE">URIorSafeCURIE</a></span>)</td>
+	<td>&nbsp;</td>
+</tr>
+<tr>
+    <td><a class="adef" id="adef_metaAttributes_content"><span class="adef">content</span></a>
+ (<span class="datatype"><a href="abstraction.html#dt_CDATA">CDATA</a></span>)</td>
+	<td>&nbsp;</td>
+</tr>
+<tr>
+    <td><a class="adef" id="adef_metaAttributes_datatype"><span class="adef">datatype</span></a>
+ (<span class="datatype"><a href="abstraction.html#dt_CURIE">CURIE</a></span>)</td>
+    <td>If not specified, then the default value is <code>string</code> as defined in [<a class="nref" href="references.html#ref_XMLSCHEMA">XMLSCHEMA</a>].</td>
+</tr>
+<tr>
+    <td><a class="adef" id="adef_metaAttributes_typeof"><span class="adef">typeof</span></a>
+ (<span class="datatype"><a href="abstraction.html#dt_CURIEs">CURIEs</a></span>)</td>
+	<td>&nbsp;</td>
+</tr>
+<tr>
+    <td><a class="adef" id="adef_metaAttributes_property"><span class="adef">property</span></a>
+ (<span class="datatype"><a href="abstraction.html#dt_CURIEs">CURIEs</a></span>)</td>
+    <td>&nbsp;</td>
+</tr>
+<tr>
+    <td><a class="adef" id="adef_metaAttributes_rel"><span class="adef">rel</span></a>
+ (reserved word | <span class="datatype"><a href="abstraction.html#dt_CURIE">CURIE</a></span>)+</td>
+    <td>See the reserved values list in [<a class="nref" href="references.html#ref_XHTMLVOCAB">XHTMLVOCAB</a>]</td>
+</tr>
+<tr>
+    <td><a class="adef" id="adef_metaAttributes_resource"><span class="adef">resource</span></a>
+ (<span class="datatype"><a href="abstraction.html#dt_URIorSafeCURIE">URIorSafeCURIE</a></span>)</td>
+	<td>&nbsp;</td>
+</tr>
+<tr>
+    <td><a class="adef" id="adef_metaAttributes_rev"><span class="adef">rev</span></a>
+ (reserved word | <span class="datatype"><a href="abstraction.html#dt_CURIE">CURIE</a></span>)+</td>
+    <td>See the reserved values list in [<a class="nref" href="references.html#ref_XHTMLVOCAB">XHTMLVOCAB</a>]</td>
+</tr>
+</tbody>
+</table>
+<p>Implementations:
+<a href="relax_module_defs.html#a_rmodule_Metainformation_Attributes">RelaxNG</a>,
+<a href="schema_module_defs.html#a_smodule_Metainformation_Attributes_Module">XML Schema</a>
+</p>
+<hr />
+<div class="navbar">
+[<a href="mod-meta.html">previous</a>]
+[<a href="mod-object.html">next</a>]
+[<a href="Overview.html#toc">table of contents</a>]
+[<a href="elements.html">elements</a>]
+[<a href="attributes.html">attributes</a>]
+</div>
+</body>
+</html>
