@@ -1,0 +1,130 @@
+   #[1]start [2]contents [3]prev [4]next
+
+   [[5]previous] [[6]next] [[7]table of contents] [[8]elements]
+   [[9]attributes]
+     __________________________________________________________________
+
+                         6. XHTML Attribute Collections
+
+   This section is normative.
+
+   Many of the modules in this document define the required attributes for
+   their elements. The elements in those modules also reference zero or
+   more attribute collections. Attribute collections are defined in their
+   own modules, but the meta collection "Common" is defined in this
+   section. The table below summarizes the attribute collections
+   available.
+
+   Note that while these Collections are referenced throughout this
+   document, these expressions should in no way be considered normative or
+   mandatory. They are an editorial convenience. When used in this
+   document, it is the expansion of the term that is normative, not the
+   term itself.
+
+   For the avoidance of doubt, if an attribute collection is referenced by
+   an element's definition, and an attribute in that collection is also
+   explicitly referenced by that element's definition, this does NOT cause
+   a conflict. It is up to the schema implementation to update the content
+   models accordingly.
+
+   Collection Module Description
+   [10]Core [11]Core Attributes Module Basic attributes used to identify
+   and classify elements and their content.
+   [12]I18N [13]Internationalization Attribute Module Attribute to
+   identify the language of an element and its contents.
+   [14]Bi-directional [15]Bi-directional Text Collection Attributes used
+   to manage bi-directional text.
+   [16]Edit [17]Edit Attributes Module Attributes used to annotate when
+   and how an element's content was edited.
+   [18]Embedding [19]Embedding Attributes Module Attributes used to embed
+   content from other resources within the current element.
+   [20]Events [21]XML Events Module Attributes that allow associating of
+   events and event processing with an element and its contents.
+   [22]Forms [23]XForms Module Attributes that designate provide a
+   mechanism of repeating table rows within a form.
+   [24]Hypertext [25]Hyptertext Attributes Module Attributes that
+   designate characteristics of links within and among documents.
+   [26]I18N [27]I18N Attribute Module Attributes for defining the language
+   of the contents of an element.
+   [28]Map [29]Image Map Attributes Module Attributes for defining and
+   referencing client-side image maps.
+   [30]Media [31]Media Attribute Module Attribute for performing element
+   selection based upon media type as defined in [32]MediaDesc
+   [33]Metainformation [34]Metainformation Attributes Attributes that
+   allow associating of elements with metainformation about those elements
+   [35]Role [36]Role Attribute Module Attribute for the specification of
+   the "role" of an element.
+   [37]Style [38]Style Attribute Module Attribute for associating style
+   information with an element and its contents.
+   Common Attribute Collections Module A meta-collection of all the other
+   collections, including the [39]Core, [40]Bi-directional, [41]Events,
+   [42]Edit, [43]Embedding, [44]Forms, [45]Hypertext, [46]I18N, [47]Map,
+   [48]Media, [49]Metainformation, [50]Role, and [51]Style attribute
+   collections.
+
+   Implementations: [52]RELAX NG, [53]XML Schema
+     __________________________________________________________________
+
+   [[54]previous] [[55]next] [[56]table of contents] [[57]elements]
+   [[58]attributes]
+
+References
+
+   1. file:///Users/johncowan/xhtml3/xhtml2/Overview.html
+   2. file:///Users/johncowan/xhtml3/xhtml2/Overview.html#toc
+   3. file:///Users/johncowan/xhtml3/xhtml2/abstraction.html
+   4. file:///Users/johncowan/xhtml3/xhtml2/mod-document.html
+   5. file:///Users/johncowan/xhtml3/xhtml2/abstraction.html
+   6. file:///Users/johncowan/xhtml3/xhtml2/mod-document.html
+   7. file:///Users/johncowan/xhtml3/xhtml2/Overview.html#toc
+   8. file:///Users/johncowan/xhtml3/xhtml2/elements.html
+   9. file:///Users/johncowan/xhtml3/xhtml2/attributes.html
+  10. file:///Users/johncowan/xhtml3/xhtml2/mod-core.html#col_Core
+  11. file:///Users/johncowan/xhtml3/xhtml2/mod-core.html#s_coremodule
+  12. file:///Users/johncowan/xhtml3/xhtml2/mod-i18n.html#col_I18N
+  13. file:///Users/johncowan/xhtml3/xhtml2/mod-i18n.html#s_i18nmodule
+  14. file:///Users/johncowan/xhtml3/xhtml2/mod-bidi.html#col_Bi-directional
+  15. file:///Users/johncowan/xhtml3/xhtml2/mod-bidi.html#s_bidimodule
+  16. file:///Users/johncowan/xhtml3/xhtml2/mod-edit.html#col_Edit
+  17. file:///Users/johncowan/xhtml3/xhtml2/mod-edit.html#s_editmodule
+  18. file:///Users/johncowan/xhtml3/xhtml2/mod-embedding.html#col_Embedding
+  19. file:///Users/johncowan/xhtml3/xhtml2/mod-embedding.html#s_embeddingmodule
+  20. file:///Users/johncowan/xhtml3/xhtml2/mod-xml-events.html#col_Events
+  21. file:///Users/johncowan/xhtml3/xhtml2/mod-xml-events.html#s_xml-eventsmodule
+  22. file:///Users/johncowan/xhtml3/xhtml2/mod-xforms.html#col_Forms
+  23. file:///Users/johncowan/xhtml3/xhtml2/mod-xforms.html#s_xformsmodule
+  24. file:///Users/johncowan/xhtml3/xhtml2/mod-hyperAttributes.html#col_Hypertext
+  25. file:///Users/johncowan/xhtml3/xhtml2/mod-hyperAttributes.html#s_hyperAttributesmodule
+  26. file:///Users/johncowan/xhtml3/xhtml2/mod-i18n.html#col_I18N
+  27. file:///Users/johncowan/xhtml3/xhtml2/mod-i18n.html#s_i18nmodule
+  28. file:///Users/johncowan/xhtml3/xhtml2/mod-csImgMap.html#col_Map
+  29. file:///Users/johncowan/xhtml3/xhtml2/mod-csImgMap.html#s_csImgMapmodule
+  30. file:///Users/johncowan/xhtml3/xhtml2/mod-mediaAttribute.html#col_Media
+  31. file:///Users/johncowan/xhtml3/xhtml2/mod-mediaAttribute.html#s_mediaAttributemodule
+  32. file:///Users/johncowan/xhtml3/xhtml2/abstraction.html#dt_MediaDesc
+  33. file:///Users/johncowan/xhtml3/xhtml2/mod-metaAttributes.html#col_Metainformation
+  34. file:///Users/johncowan/xhtml3/xhtml2/mod-metaAttributes.html#s_metaAttributesmodule
+  35. file:///Users/johncowan/xhtml3/xhtml2/mod-roleAttribute.html#col_Role
+  36. file:///Users/johncowan/xhtml3/xhtml2/mod-roleAttribute.html#s_roleAttributemodule
+  37. file:///Users/johncowan/xhtml3/xhtml2/mod-styleAttribute.html#col_Style
+  38. file:///Users/johncowan/xhtml3/xhtml2/mod-styleAttribute.html#s_styleAttributemodule
+  39. file:///Users/johncowan/xhtml3/xhtml2/mod-core.html#col_Core
+  40. file:///Users/johncowan/xhtml3/xhtml2/mod-bidi.html#col_Bi-directional
+  41. file:///Users/johncowan/xhtml3/xhtml2/mod-xml-events.html#col_Events
+  42. file:///Users/johncowan/xhtml3/xhtml2/mod-edit.html#col_Edit
+  43. file:///Users/johncowan/xhtml3/xhtml2/mod-embedding.html#col_Embedding
+  44. file:///Users/johncowan/xhtml3/xhtml2/mod-xforms.html#col_Forms
+  45. file:///Users/johncowan/xhtml3/xhtml2/mod-hyperAttributes.html#col_Hypertext
+  46. file:///Users/johncowan/xhtml3/xhtml2/mod-i18n.html#col_I18N
+  47. file:///Users/johncowan/xhtml3/xhtml2/mod-csImgMap.html#col_Map
+  48. file:///Users/johncowan/xhtml3/xhtml2/mod-mediaAttribute.html#col_Media
+  49. file:///Users/johncowan/xhtml3/xhtml2/mod-metaAttributes.html#col_Metainformation
+  50. file:///Users/johncowan/xhtml3/xhtml2/mod-roleAttribute.html#col_Role
+  51. file:///Users/johncowan/xhtml3/xhtml2/mod-styleAttribute.html#col_Style
+  52. file:///Users/johncowan/xhtml3/xhtml2/relax_module_defs.html#a_rmodule_Attribute_Collections
+  53. file:///Users/johncowan/xhtml3/xhtml2/xhtml20_schema.html#a_xhtml2s_attribs
+  54. file:///Users/johncowan/xhtml3/xhtml2/abstraction.html
+  55. file:///Users/johncowan/xhtml3/xhtml2/mod-document.html
+  56. file:///Users/johncowan/xhtml3/xhtml2/Overview.html#toc
+  57. file:///Users/johncowan/xhtml3/xhtml2/elements.html
+  58. file:///Users/johncowan/xhtml3/xhtml2/attributes.html

@@ -1,0 +1,97 @@
+   #[1]start [2]contents [3]prev [4]next
+
+   [[5]previous] [[6]next] [[7]table of contents] [[8]elements]
+   [[9]attributes]
+     __________________________________________________________________
+
+                        14. XHTML I18N Attribute Module
+
+   Contents
+     * 14.1. [10]I18N Attribute Collection
+
+   This section is normative.
+
+   This module defines the [11]I18N attribute collection.
+
+14.1. I18N Attribute Collection
+
+   xml:lang = [12]LanguageCode
+          This attribute indicates the language of an element's attribute
+          values and text content, and of all elements it contains, unless
+          overridden. It is defined normatively in [[13]XML] [14]section
+          2.12. The default value of this attribute is unspecified.
+
+          An element inherits language code information according to the
+          following order of precedence (highest to lowest):
+
+         1. The [15]@xml:lang attribute set for the element itself.
+         2. The closest parent element that has the [16]@xml:lang
+            attribute set (i.e., the [17]@xml:lang attribute is
+            inherited).
+
+          In this example, the default text-processing language of the
+          document is French ("fr"). Within the first paragraph a single
+          word is declared to be in English ("en"), after which the
+          primary language returns to French. The following paragraph is
+          declared to be in English and includes an embedded French word.
+
+          Example
+
+<html xmlns="http://www.w3.org/2002/06/xhtml2" xml:lang="fr" ...>
+<head>
+   <title>Un document multilingue</title>
+</head>
+<body>
+<p>En janvier, toutes les boutiques de Londres
+affichent des panneaux <span xml:lang="en">SALE</span>,
+mais en fait ces magasins sont bien propres!</p>
+<p xml:lang="en">Everwhere I went in France
+the bakeries had signs up saying <em xml:lang="fr">PAIN</em>,
+but despite that the bakers seemed quite happy.
+</p>
+</body>
+</html>
+
+   its:translate = ( "yes" | "no"* )
+          This attribute is incorporated from the [[18]ITS] specification
+          and can be used to indicate whether the contents of an element
+          should be translated. Note that this element is in the its
+          namespace. ITS rules are incorporated into XHTML family
+          documents via the [19]link element with a [20]@rel attribute
+          value of itsRules.
+
+   Implementations: [21]RELAX NG, [22]XML Schema
+     __________________________________________________________________
+
+   [[23]previous] [[24]next] [[25]table of contents] [[26]elements]
+   [[27]attributes]
+
+References
+
+   1. file:///Users/johncowan/xhtml3/xhtml2/Overview.html
+   2. file:///Users/johncowan/xhtml3/xhtml2/Overview.html#toc
+   3. file:///Users/johncowan/xhtml3/xhtml2/mod-hyperAttributes.html
+   4. file:///Users/johncowan/xhtml3/xhtml2/mod-access.html
+   5. file:///Users/johncowan/xhtml3/xhtml2/mod-hyperAttributes.html
+   6. file:///Users/johncowan/xhtml3/xhtml2/mod-access.html
+   7. file:///Users/johncowan/xhtml3/xhtml2/Overview.html#toc
+   8. file:///Users/johncowan/xhtml3/xhtml2/elements.html
+   9. file:///Users/johncowan/xhtml3/xhtml2/attributes.html
+  10. file:///Users/johncowan/xhtml3/xhtml2/mod-i18n.html#col_I18N
+  11. file:///Users/johncowan/xhtml3/xhtml2/mod-i18n.html#col_I18N
+  12. file:///Users/johncowan/xhtml3/xhtml2/abstraction.html#dt_LanguageCode
+  13. file:///Users/johncowan/xhtml3/xhtml2/references.html#ref_XML
+  14. http://www.w3.org/TR/REC-xml#sec-lang-tag
+  15. file:///Users/johncowan/xhtml3/xhtml2/mod-i18n.html#adef_i18n_xml:lang
+  16. file:///Users/johncowan/xhtml3/xhtml2/mod-i18n.html#adef_i18n_xml:lang
+  17. file:///Users/johncowan/xhtml3/xhtml2/mod-i18n.html#adef_i18n_xml:lang
+  18. file:///Users/johncowan/xhtml3/xhtml2/references.html#ref_ITS
+  19. file:///Users/johncowan/xhtml3/xhtml2/mod-meta.html#edef_meta_link
+  20. file:///Users/johncowan/xhtml3/xhtml2/mod-metaAttributes.html#adef_metaAttributes_rel
+  21. file:///Users/johncowan/xhtml3/xhtml2/relax_module_defs.html#a_rmodule_I18N_Attributes
+  22. file:///Users/johncowan/xhtml3/xhtml2/schema_module_defs.html#a_smodule_I18N_Attribute_Module
+  23. file:///Users/johncowan/xhtml3/xhtml2/mod-hyperAttributes.html
+  24. file:///Users/johncowan/xhtml3/xhtml2/mod-access.html
+  25. file:///Users/johncowan/xhtml3/xhtml2/Overview.html#toc
+  26. file:///Users/johncowan/xhtml3/xhtml2/elements.html
+  27. file:///Users/johncowan/xhtml3/xhtml2/attributes.html

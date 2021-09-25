@@ -1,0 +1,284 @@
+   #[1]start [2]contents [3]prev [4]next
+
+   [[5]previous] [[6]next] [[7]table of contents] [[8]elements]
+   [[9]attributes]
+     __________________________________________________________________
+
+                            7. XHTML Document Module
+
+   Contents
+     * 7.1. [10]The html element
+     * 7.2. [11]The head element
+     * 7.3. [12]The title element
+     * 7.4. [13]The body element
+
+   This section is normative.
+
+   The Document Module defines the major structural elements for XHTML.
+   These elements effectively act as the basis for the content model of
+   many XHTML family document types. The elements and attributes included
+   in this module are:
+
+   Elements Attributes Content Model
+   [14]html [15]Common, [16]@version ([17]CDATA), xmlns ([18]URI =
+   "http://www.w3.org/1999/xhtml"), [19]@xsi:schemaLocation ([20]URIs =
+   "http://www.w3.org/1999/xhtml
+   http://www.w3.org/MarkUp/SCHEMA/xhtml2.xsd") [21]head, [22]body
+   [23]head [24]Common, [25]@profile (URIs) [26]title , ( [27]access |
+   [28]action | [29]link | [30]listener | [31]model | [32]meta | [33]style
+   ) *
+   [34]title [35]Common PCDATA*
+   [36]body [37]Common ( [38]Heading | [39]Structural | [40]List)*
+
+   This module is the basic structural definition for XHTML content. The
+   html element acts as the root element for all XHTML Family Document
+   Types.
+
+   Note that the value of the xmlns declaration is defined to be
+   "http://www.w3.org/1999/xhtml". Also note that because the xmlns
+   declaration is treated specially by XML namespace-aware parsers
+   [[41]XMLNS], it is legal to have it present as an attribute of each
+   element. However, any time the xmlns declaration is used in the context
+   of an XHTML module, whether with a prefix or not, the value of the
+   declaration must be http://www.w3.org/1999/xhtml.
+
+   Implementations: [42]RELAX NG, [43]XML Schema
+
+7.1. The html element
+
+   The [44]html element is the root element for all XHTML Family Document
+   Types. The [45]@xml:lang attribute is required on this element.
+
+   Attributes
+
+   The [46]Common collection
+          A collection of other attribute collections, including:
+          [47]Bi-directional, [48]Core, [49]Edit, [50]Embedding,
+          [51]Events, [52]Forms, [53]Hypertext, [54]I18N, [55]Map,
+          [56]Metainformation, and [57]Role
+
+   version = [58]CDATA
+          The value of this attribute specifies which XHTML Family
+          document type governs the current document. The format of this
+          attribute value is unspecified. However, all values beginning
+          with the character sequence xhtml are reserved for use by XHTML
+          Family Document Types.
+
+   xsi:schemaLocation = [59]URIs
+          This attribute allows the specification of a location where an
+          XML Schema [[60]XMLSCHEMA] for the document can be found. The
+          syntax of this attribute is defined in [61]xsi_schemaLocation.
+          The behavior of this attribute in XHTML documents is defined in
+          [62]Strictly Conforming Documents.
+
+7.2. The head element
+
+   The [63]head element contains information about the current document,
+   such as its title, that is not considered document content. The default
+   presentation of the head is not to display it; however that can be
+   overridden with a style sheet for special purpose use. User agents may
+   however make information in the [64]head available to users through
+   other mechanisms.
+
+   Attributes
+
+   The [65]Common collection
+          A collection of other attribute collections, including:
+          [66]Bi-directional, [67]Core, [68]Edit, [69]Embedding,
+          [70]Events, [71]Forms, [72]Hypertext, [73]I18N, [74]Map,
+          [75]Metainformation, and [76]Role
+
+   profile = [77]URIs
+          This attribute specifies the location of one or more metadata
+          profiles, separated by white space. For future extensions, user
+          agents should consider the value to be a list even though this
+          specification only considers the first URI to be significant.
+          Profiles are discussed in the section on [78]meta data.
+
+   Example
+<head>
+        <title>My Life</title>
+</head>
+
+7.3. The title element
+
+   Every XHTML document must have a [79]title element in the [80]head
+   section.
+
+   Attributes
+
+   The [81]Common collection
+          A collection of other attribute collections, including:
+          [82]Bi-directional, [83]Core, [84]Edit, [85]Embedding,
+          [86]Events, [87]Forms, [88]Hypertext, [89]I18N, [90]Map,
+          [91]Metainformation, and [92]Role
+
+   The [93]title element is used to provide identification for a document
+   or a section of a document. Since documents are often consulted out of
+   context, authors should provide context-rich titles. Thus, instead of a
+   title such as "Introduction", which doesn't provide much contextual
+   background, authors should supply a title such as "Introduction to
+   Medieval Bee-Keeping" instead.
+
+   For reasons of accessibility, user agents must always make the content
+   of the [94]title element available to users. The mechanism for doing so
+   depends on the user agent (e.g., as a caption, spoken).
+
+   When [95]title is used in within the [96]head element of a document,
+   that title applies to the entire document. When used elsewhere, it
+   applies to its enclosing element.
+
+   Example
+<title>A study of population dynamics</title>
+
+   Example
+<section>
+    <title>Intoroduction to Medieval Bee-Keeping</title>
+    <p>Some information about....</p>
+</section>
+
+   The title of a document is metadata about the document, and so a title
+   like <title>About W3C</title> is equivalent to <meta about=""
+   property="title">About W3C</meta>.
+
+7.4. The body element
+
+   The body of a document contains the document's content. The content may
+   be processed by a user agent in a variety of ways. For example by
+   visual browsers it can be presented as text, images, colors, graphics,
+   etc., an audio user agent may speak the same content, and a search
+   engine may create an index prioritized according to properties of the
+   text.
+
+   Attributes
+
+   The [97]Common collection
+          A collection of other attribute collections, including:
+          [98]Bi-directional, [99]Core, [100]Edit, [101]Embedding,
+          [102]Events, [103]Forms, [104]Hypertext, [105]I18N, [106]Map,
+          [107]Metainformation, and [108]Role
+
+   Example
+<body id="theBody">
+    <p>A paragraph</p>
+</body>
+     __________________________________________________________________
+
+   [[109]previous] [[110]next] [[111]table of contents] [[112]elements]
+   [[113]attributes]
+
+References
+
+   1. file:///Users/johncowan/xhtml3/xhtml2/Overview.html
+   2. file:///Users/johncowan/xhtml3/xhtml2/Overview.html#toc
+   3. file:///Users/johncowan/xhtml3/xhtml2/mod-attribute-collections.html
+   4. file:///Users/johncowan/xhtml3/xhtml2/mod-structural.html
+   5. file:///Users/johncowan/xhtml3/xhtml2/mod-attribute-collections.html
+   6. file:///Users/johncowan/xhtml3/xhtml2/mod-structural.html
+   7. file:///Users/johncowan/xhtml3/xhtml2/Overview.html#toc
+   8. file:///Users/johncowan/xhtml3/xhtml2/elements.html
+   9. file:///Users/johncowan/xhtml3/xhtml2/attributes.html
+  10. file:///Users/johncowan/xhtml3/xhtml2/mod-document.html#sec_7.1.
+  11. file:///Users/johncowan/xhtml3/xhtml2/mod-document.html#sec_7.2.
+  12. file:///Users/johncowan/xhtml3/xhtml2/mod-document.html#sec_7.3.
+  13. file:///Users/johncowan/xhtml3/xhtml2/mod-document.html#sec_7.4.
+  14. file:///Users/johncowan/xhtml3/xhtml2/mod-document.html#edef_document_html
+  15. file:///Users/johncowan/xhtml3/xhtml2/mod-attribute-collections.html#col_Common
+  16. file:///Users/johncowan/xhtml3/xhtml2/mod-document.html#adef_document_version
+  17. file:///Users/johncowan/xhtml3/xhtml2/abstraction.html#dt_CDATA
+  18. file:///Users/johncowan/xhtml3/xhtml2/abstraction.html#dt_URI
+  19. file:///Users/johncowan/xhtml3/xhtml2/mod-document.html#adef_document_xsi:schemaLocation
+  20. file:///Users/johncowan/xhtml3/xhtml2/abstraction.html#dt_URIs
+  21. file:///Users/johncowan/xhtml3/xhtml2/mod-document.html#edef_document_head
+  22. file:///Users/johncowan/xhtml3/xhtml2/mod-document.html#edef_document_body
+  23. file:///Users/johncowan/xhtml3/xhtml2/mod-document.html#edef_document_head
+  24. file:///Users/johncowan/xhtml3/xhtml2/mod-attribute-collections.html#col_Common
+  25. file:///Users/johncowan/xhtml3/xhtml2/mod-document.html#adef_document_profile
+  26. file:///Users/johncowan/xhtml3/xhtml2/mod-document.html#edef_document_title
+  27. file:///Users/johncowan/xhtml3/xhtml2/mod-access.html#edef_access_access
+  28. file:///Users/johncowan/xhtml3/xhtml2/mod-handler.html#edef_handler_action
+  29. file:///Users/johncowan/xhtml3/xhtml2/mod-meta.html#edef_meta_link
+  30. file:///Users/johncowan/xhtml3/xhtml2/mod-xml-events.html#edef_xml-events_listener
+  31. file:///Users/johncowan/xhtml3/xhtml2/mod-xforms.html#edef_xforms_model
+  32. file:///Users/johncowan/xhtml3/xhtml2/mod-meta.html#edef_meta_meta
+  33. file:///Users/johncowan/xhtml3/xhtml2/mod-styleSheet.html#edef_styleSheet_style
+  34. file:///Users/johncowan/xhtml3/xhtml2/mod-document.html#edef_document_title
+  35. file:///Users/johncowan/xhtml3/xhtml2/mod-attribute-collections.html#col_Common
+  36. file:///Users/johncowan/xhtml3/xhtml2/mod-document.html#edef_document_body
+  37. file:///Users/johncowan/xhtml3/xhtml2/mod-attribute-collections.html#col_Common
+  38. file:///Users/johncowan/xhtml3/xhtml2/mod-structural.html#cs_Heading
+  39. file:///Users/johncowan/xhtml3/xhtml2/mod-structural.html#cs_Structural
+  40. file:///Users/johncowan/xhtml3/xhtml2/mod-list.html#cs_List
+  41. file:///Users/johncowan/xhtml3/xhtml2/references.html#ref_XMLNS
+  42. file:///Users/johncowan/xhtml3/xhtml2/relax_module_defs.html#a_rmodule_Document
+  43. file:///Users/johncowan/xhtml3/xhtml2/schema_module_defs.html#a_smodule_Document_Module
+  44. file:///Users/johncowan/xhtml3/xhtml2/mod-document.html#edef_document_html
+  45. file:///Users/johncowan/xhtml3/xhtml2/mod-i18n.html#adef_i18n_xml:lang
+  46. file:///Users/johncowan/xhtml3/xhtml2/mod-attribute-collections.html#col_Common
+  47. file:///Users/johncowan/xhtml3/xhtml2/mod-bidi.html#col_Bi-directional
+  48. file:///Users/johncowan/xhtml3/xhtml2/mod-core.html#col_Core
+  49. file:///Users/johncowan/xhtml3/xhtml2/mod-edit.html#col_Edit
+  50. file:///Users/johncowan/xhtml3/xhtml2/mod-embedding.html#col_Embedding
+  51. file:///Users/johncowan/xhtml3/xhtml2/mod-xml-events.html#col_Events
+  52. file:///Users/johncowan/xhtml3/xhtml2/mod-xforms.html#col_Forms
+  53. file:///Users/johncowan/xhtml3/xhtml2/mod-hyperAttributes.html#col_Hypertext
+  54. file:///Users/johncowan/xhtml3/xhtml2/mod-i18n.html#col_I18N
+  55. file:///Users/johncowan/xhtml3/xhtml2/mod-csImgMap.html#col_Map
+  56. file:///Users/johncowan/xhtml3/xhtml2/mod-metaAttributes.html#col_Metainformation
+  57. file:///Users/johncowan/xhtml3/xhtml2/mod-roleAttribute.html#col_Role
+  58. file:///Users/johncowan/xhtml3/xhtml2/abstraction.html#dt_CDATA
+  59. file:///Users/johncowan/xhtml3/xhtml2/abstraction.html#dt_URIs
+  60. file:///Users/johncowan/xhtml3/xhtml2/references.html#ref_XMLSCHEMA
+  61. http://www.w3.org/TR/xmlschema-1/#xsi_schemaLocation
+  62. file:///Users/johncowan/xhtml3/xhtml2/conformance.html#strict
+  63. file:///Users/johncowan/xhtml3/xhtml2/mod-document.html#edef_document_head
+  64. file:///Users/johncowan/xhtml3/xhtml2/mod-document.html#edef_document_head
+  65. file:///Users/johncowan/xhtml3/xhtml2/mod-attribute-collections.html#col_Common
+  66. file:///Users/johncowan/xhtml3/xhtml2/mod-bidi.html#col_Bi-directional
+  67. file:///Users/johncowan/xhtml3/xhtml2/mod-core.html#col_Core
+  68. file:///Users/johncowan/xhtml3/xhtml2/mod-edit.html#col_Edit
+  69. file:///Users/johncowan/xhtml3/xhtml2/mod-embedding.html#col_Embedding
+  70. file:///Users/johncowan/xhtml3/xhtml2/mod-xml-events.html#col_Events
+  71. file:///Users/johncowan/xhtml3/xhtml2/mod-xforms.html#col_Forms
+  72. file:///Users/johncowan/xhtml3/xhtml2/mod-hyperAttributes.html#col_Hypertext
+  73. file:///Users/johncowan/xhtml3/xhtml2/mod-i18n.html#col_I18N
+  74. file:///Users/johncowan/xhtml3/xhtml2/mod-csImgMap.html#col_Map
+  75. file:///Users/johncowan/xhtml3/xhtml2/mod-metaAttributes.html#col_Metainformation
+  76. file:///Users/johncowan/xhtml3/xhtml2/mod-roleAttribute.html#col_Role
+  77. file:///Users/johncowan/xhtml3/xhtml2/abstraction.html#dt_URIs
+  78. file:///Users/johncowan/xhtml3/xhtml2/mod-meta.html#s_metamodule
+  79. file:///Users/johncowan/xhtml3/xhtml2/mod-document.html#edef_document_title
+  80. file:///Users/johncowan/xhtml3/xhtml2/mod-document.html#edef_document_head
+  81. file:///Users/johncowan/xhtml3/xhtml2/mod-attribute-collections.html#col_Common
+  82. file:///Users/johncowan/xhtml3/xhtml2/mod-bidi.html#col_Bi-directional
+  83. file:///Users/johncowan/xhtml3/xhtml2/mod-core.html#col_Core
+  84. file:///Users/johncowan/xhtml3/xhtml2/mod-edit.html#col_Edit
+  85. file:///Users/johncowan/xhtml3/xhtml2/mod-embedding.html#col_Embedding
+  86. file:///Users/johncowan/xhtml3/xhtml2/mod-xml-events.html#col_Events
+  87. file:///Users/johncowan/xhtml3/xhtml2/mod-xforms.html#col_Forms
+  88. file:///Users/johncowan/xhtml3/xhtml2/mod-hyperAttributes.html#col_Hypertext
+  89. file:///Users/johncowan/xhtml3/xhtml2/mod-i18n.html#col_I18N
+  90. file:///Users/johncowan/xhtml3/xhtml2/mod-csImgMap.html#col_Map
+  91. file:///Users/johncowan/xhtml3/xhtml2/mod-metaAttributes.html#col_Metainformation
+  92. file:///Users/johncowan/xhtml3/xhtml2/mod-roleAttribute.html#col_Role
+  93. file:///Users/johncowan/xhtml3/xhtml2/mod-document.html#edef_document_title
+  94. file:///Users/johncowan/xhtml3/xhtml2/mod-document.html#edef_document_title
+  95. file:///Users/johncowan/xhtml3/xhtml2/mod-document.html#edef_document_title
+  96. file:///Users/johncowan/xhtml3/xhtml2/mod-document.html#edef_document_head
+  97. file:///Users/johncowan/xhtml3/xhtml2/mod-attribute-collections.html#col_Common
+  98. file:///Users/johncowan/xhtml3/xhtml2/mod-bidi.html#col_Bi-directional
+  99. file:///Users/johncowan/xhtml3/xhtml2/mod-core.html#col_Core
+ 100. file:///Users/johncowan/xhtml3/xhtml2/mod-edit.html#col_Edit
+ 101. file:///Users/johncowan/xhtml3/xhtml2/mod-embedding.html#col_Embedding
+ 102. file:///Users/johncowan/xhtml3/xhtml2/mod-xml-events.html#col_Events
+ 103. file:///Users/johncowan/xhtml3/xhtml2/mod-xforms.html#col_Forms
+ 104. file:///Users/johncowan/xhtml3/xhtml2/mod-hyperAttributes.html#col_Hypertext
+ 105. file:///Users/johncowan/xhtml3/xhtml2/mod-i18n.html#col_I18N
+ 106. file:///Users/johncowan/xhtml3/xhtml2/mod-csImgMap.html#col_Map
+ 107. file:///Users/johncowan/xhtml3/xhtml2/mod-metaAttributes.html#col_Metainformation
+ 108. file:///Users/johncowan/xhtml3/xhtml2/mod-roleAttribute.html#col_Role
+ 109. file:///Users/johncowan/xhtml3/xhtml2/mod-attribute-collections.html
+ 110. file:///Users/johncowan/xhtml3/xhtml2/mod-structural.html
+ 111. file:///Users/johncowan/xhtml3/xhtml2/Overview.html#toc
+ 112. file:///Users/johncowan/xhtml3/xhtml2/elements.html
+ 113. file:///Users/johncowan/xhtml3/xhtml2/attributes.html

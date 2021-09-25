@@ -1,0 +1,576 @@
+   #[1]start [2]contents [3]prev [4]next
+
+   [[5]previous] [[6]next] [[7]table of contents] [[8]elements]
+   [[9]attributes]
+     __________________________________________________________________
+
+                           8. XHTML Structural Module
+
+   Contents
+     * 8.1. [10]The address element
+     * 8.2. [11]The blockcode element
+     * 8.3. [12]The blockquote element
+     * 8.4. [13]The div element
+     * 8.5. [14]The h element
+     * 8.6. [15]The p element
+     * 8.7. [16]The pre element
+     * 8.8. [17]The section element
+     * 8.9. [18]The separator element
+
+   This section is normative.
+
+   This module defines all of the basic text container elements,
+   attributes, and their content models that are structural in nature.
+
+   Element Attributes Content Model
+   [19]address [20]Common ( [21]Text)*
+   [22]blockcode [23]Common ( [24]Text | [25]Heading | [26]Structural |
+   [27]List)*
+   [28]blockquote [29]Common ( [30]Text | [31]Heading | [32]Structural |
+   [33]List)*
+   [34]div [35]Common ( [36]Flow)*
+   [37]h [38]Common ( [39]Text)*
+   [40]p [41]Common ( [42]Text | [43]List | [44]blockcode | [45]blockquote
+   | [46]pre | [47]table )*
+   [48]pre [49]Common ( [50]Text)*
+   [51]section [52]Common ( [53]Flow)*
+   [54]separator [55]Common EMPTY
+
+   The content model for this module defines some content sets:
+
+   Heading
+          [56]h | [57]h1 | [58]h2 | [59]h3 | [60]h4 | [61]h5 | [62]h6
+
+   Structural
+          [63]action | [64]address | [65]blockcode | [66]blockquote |
+          [67]div | [68]List | [69]listener | [70]p | [71]pre | [72]script
+          | [73]section | [74]separator | [75]style | [76]table
+
+   Flow
+          [77]Heading | [78]Structural | [79]Text
+
+   Implementations: [80]RELAX NG, [81]XML Schema
+
+8.1. The address element
+
+   The [82]address element may be used by authors to supply contact
+   information for a document or a major part of a document such as a
+   form.
+
+   Attributes
+
+   The [83]Common collection
+          A collection of other attribute collections, including:
+          [84]Bi-directional, [85]Core, [86]Edit, [87]Embedding,
+          [88]Events, [89]Forms, [90]Hypertext, [91]I18N, [92]Map,
+          [93]Metainformation, and [94]Role
+
+   Example
+<address href="mailto:webmaster@example.net">Webmaster</address>
+
+8.2. The blockcode element
+
+   This element indicates that its contents are a block of "code" (see the
+   [95]code element). This element is similar to the [96]pre element, in
+   that whitespace in the enclosed text has semantic relevance. As a
+   result, the default value of the [97]@layout attribute is relevant.
+
+   Attributes
+
+   The [98]Common collection
+          A collection of other attribute collections, including:
+          [99]Bi-directional, [100]Core, [101]Edit, [102]Embedding,
+          [103]Events, [104]Forms, [105]Hypertext, [106]I18N, [107]Map,
+          [108]Metainformation, and [109]Role
+
+   Example of a code fragment:
+<blockcode class="Perl">
+sub squareFn {
+    my $var = shift;
+        return $var * $var ;
+}
+</blockcode>
+
+   Here is how this might be rendered:
+
+sub squareFn {
+    my $var = shift;
+        return $var * $var ;
+}
+
+8.3. The blockquote element
+
+   This element designates a block of quoted text.
+
+   Attributes
+
+   The [110]Common collection
+          A collection of other attribute collections, including:
+          [111]Bi-directional, [112]Core, [113]Edit, [114]Embedding,
+          [115]Events, [116]Forms, [117]Hypertext, [118]I18N, [119]Map,
+          [120]Metainformation, and [121]Role
+
+   An excerpt from 'The Two Towers', by J.R.R. Tolkien, as a blockquote
+<blockquote cite="http://www.example.com/tolkien/twotowers.html">
+<p>They went in single file, running like hounds on a strong scent,
+and an eager light was in their eyes. Nearly due west the broad
+swath of the marching Orcs tramped its ugly slot; the sweet grass
+of Rohan had been bruised and blackened as they passed.</p>
+</blockquote>
+
+8.4. The div element
+
+   The [122]div element, in conjunction with the [123]@id, [124]@class and
+   [125]@role attributes, offers a generic mechanism for adding extra
+   structure to documents. This element defines no presentational idioms
+   on the content. Thus, authors may use this element in conjunction with
+   [126]style sheets, the [127]@xml:lang attribute, etc., to tailor XHTML
+   to their own needs and tastes.
+
+   Attributes
+
+   The [128]Common collection
+          A collection of other attribute collections, including:
+          [129]Bi-directional, [130]Core, [131]Edit, [132]Embedding,
+          [133]Events, [134]Forms, [135]Hypertext, [136]I18N, [137]Map,
+          [138]Metainformation, and [139]Role
+
+   For example, suppose you wish to make a presentation in XHTML, where
+   each slide is enclosed in a separate element. You could use a [140]div
+   element, with a [141]@class of slide:
+
+   div with a class of slide
+<body>
+        <h>The meaning of life</h>
+        <p>By Huntington B. Snark</p>
+        <div class="slide">
+                <h>What do I mean by "life"</h>
+                <p>....</p>
+        </div>
+        <div class="slide">
+                <h>What do I mean by "mean"?</h>
+                ...
+        </div>
+        ...
+</body>
+
+8.5. The h element
+
+   The h element briefly describes the topic of the section it introduces.
+   Heading information may be used by user agents, for example, to
+   construct a table of contents for a document automatically.
+
+   Attributes
+
+   The [142]Common collection
+          A collection of other attribute collections, including:
+          [143]Bi-directional, [144]Core, [145]Edit, [146]Embedding,
+          [147]Events, [148]Forms, [149]Hypertext, [150]I18N, [151]Map,
+          [152]Metainformation, and [153]Role
+
+   Structured headings use the single h element, in combination with the
+   [154]section element to indicate the structure of the document, and the
+   nesting of the sections indicates the importance of the heading. The
+   heading for the section is the one that is a child of the section
+   element.
+
+   Example
+<body>
+<h>This is a top level heading</h>
+<p>....</p>
+<section>
+    <p>....</p>
+    <h>This is a second-level heading</h>
+    <p>....</p>
+    <h>This is another second-level heading</h>
+    <p>....</p>
+</section>
+<section>
+    <p>....</p>
+    <h>This is another second-level heading</h>
+    <p>....</p>
+    <section>
+        <h>This is a third-level heading</h>
+        <p>....</p>
+    </section>
+</section>
+</body>
+
+   Sample style sheet for section levels
+h {font-family: sans-serif; font-weight: bold; font-size: 200%}
+section h {font-size: 150%} /* A second-level heading */
+section section h {font-size: 120%} /* A third-level heading */
+
+   Numbered sections and references
+   XHTML does not itself cause section numbers to be generated from
+   headings. Style sheet languages such as CSS however allow authors to
+   control the generation of section numbers.
+
+8.6. The p element
+
+   The [155]p element represents a paragraph.
+
+   In comparison with earlier versions of HTML, where a paragraph could
+   only contain inline text, XHTML2's paragraphs represent a richer
+   content model.
+
+   Attributes
+
+   The [156]Common collection
+          A collection of other attribute collections, including:
+          [157]Bi-directional, [158]Core, [159]Edit, [160]Embedding,
+          [161]Events, [162]Forms, [163]Hypertext, [164]I18N, [165]Map,
+          [166]Metainformation, and [167]Role
+
+   Note: We need another example in here contrasting usages.
+
+   Example
+<p>Payment options include:
+<ul>
+<li>cash</li>
+<li>credit card</li>
+<li>luncheon vouchers.</li>
+</ul>
+</p>
+
+8.7. The pre element
+
+   The [168]pre element indicates that whitespace in the enclosed text has
+   semantic relevance. As such, the default value of the [169]@layout
+   attribute is relevant.
+
+   Note that all elements in the XHTML family preserve their whitespace in
+   the document, which is only removed on rendering, via a style sheet,
+   according to the rules of CSS [[170]CSS3-TEXT]. This means that in
+   principle any elements may preserve or collapse whitespace on
+   rendering, under control of a style sheet.
+
+   Attributes
+
+   The [171]Common collection
+          A collection of other attribute collections, including:
+          [172]Bi-directional, [173]Core, [174]Edit, [175]Embedding,
+          [176]Events, [177]Forms, [178]Hypertext, [179]I18N, [180]Map,
+          [181]Metainformation, and [182]Role
+
+   A bad poem where whitespace matters
+<pre>
+                If
+              I   had
+           any      talent
+              I   would
+               be a
+               poet
+</pre>
+
+   Here is how this might be rendered:
+
+                If
+              I   had
+           any      talent
+              I   would
+               be a
+               poet
+
+   Note that while historically one use of the [183]pre element has been
+   as a container for source code, the new [184]blockcode element more
+   appropriate for that.
+
+8.8. The section element
+
+   The [185]section element, in conjunction with the [186]h element,
+   offers a mechanism for structuring documents into sections. This
+   element defines content to be block-level but imposes no other
+   presentational idioms on the content, which may otherwise be controlled
+   from a style sheet.
+
+   Attributes
+
+   The [187]Common collection
+          A collection of other attribute collections, including:
+          [188]Bi-directional, [189]Core, [190]Edit, [191]Embedding,
+          [192]Events, [193]Forms, [194]Hypertext, [195]I18N, [196]Map,
+          [197]Metainformation, and [198]Role
+
+   By representing the structure of documents explicitly using the
+   [199]section and [200]h elements gives the author greater control over
+   presentation possibilities than the traditional implicit structuring
+   using numbered levels of headings. For instance, it is then possible to
+   indicate the nesting of sections by causing a border to be displayed to
+   the left of sections.
+
+   Example
+<body>
+<h>Events</h>
+<section>
+        <h>Introduction</h>
+        <p>....</p>
+        <h>Specifying events</h>
+        <p>...</p>
+        <section>
+                <h>Attaching events to the handler</h>
+                <p>...</p>
+        </section>
+        <section>
+                <h>Attaching events to the listener</h>
+                <p>...</p>
+        </section>
+        <section>
+                <h>Specifying the binding elsewhere</h>
+                <p>...</p>
+        </section>
+</section>
+</body>
+
+8.9. The separator element
+
+   The [201]separator element separates parts of the document from each
+   other.
+
+   Attributes
+
+   The [202]Common collection
+          A collection of other attribute collections, including:
+          [203]Bi-directional, [204]Core, [205]Edit, [206]Embedding,
+          [207]Events, [208]Forms, [209]Hypertext, [210]I18N, [211]Map,
+          [212]Metainformation, and [213]Role
+
+   Example
+<p>This is some lead in text</p>
+<separator />
+<p>This is some additional, but separate text.</p>
+
+   Example
+<nl>
+<label>Navigation</label>
+<li href="/">Home</li>
+<li><separator/></li>
+<li href="prev">Previous</li>
+<li href="..">Up</li>
+<li href="next">Next</li>
+</nl>
+     __________________________________________________________________
+
+   [[214]previous] [[215]next] [[216]table of contents] [[217]elements]
+   [[218]attributes]
+
+References
+
+   1. file:///Users/johncowan/xhtml3/xhtml2/Overview.html
+   2. file:///Users/johncowan/xhtml3/xhtml2/Overview.html#toc
+   3. file:///Users/johncowan/xhtml3/xhtml2/mod-document.html
+   4. file:///Users/johncowan/xhtml3/xhtml2/mod-text.html
+   5. file:///Users/johncowan/xhtml3/xhtml2/mod-document.html
+   6. file:///Users/johncowan/xhtml3/xhtml2/mod-text.html
+   7. file:///Users/johncowan/xhtml3/xhtml2/Overview.html#toc
+   8. file:///Users/johncowan/xhtml3/xhtml2/elements.html
+   9. file:///Users/johncowan/xhtml3/xhtml2/attributes.html
+  10. file:///Users/johncowan/xhtml3/xhtml2/mod-structural.html#sec_8.1.
+  11. file:///Users/johncowan/xhtml3/xhtml2/mod-structural.html#sec_8.2.
+  12. file:///Users/johncowan/xhtml3/xhtml2/mod-structural.html#sec_8.3.
+  13. file:///Users/johncowan/xhtml3/xhtml2/mod-structural.html#sec_8.4.
+  14. file:///Users/johncowan/xhtml3/xhtml2/mod-structural.html#sec_8.5.
+  15. file:///Users/johncowan/xhtml3/xhtml2/mod-structural.html#sec_8.6.
+  16. file:///Users/johncowan/xhtml3/xhtml2/mod-structural.html#sec_8.7.
+  17. file:///Users/johncowan/xhtml3/xhtml2/mod-structural.html#sec_8.8.
+  18. file:///Users/johncowan/xhtml3/xhtml2/mod-structural.html#sec_8.9.
+  19. file:///Users/johncowan/xhtml3/xhtml2/mod-structural.html#edef_structural_address
+  20. file:///Users/johncowan/xhtml3/xhtml2/mod-attribute-collections.html#col_Common
+  21. file:///Users/johncowan/xhtml3/xhtml2/mod-text.html#cs_Text
+  22. file:///Users/johncowan/xhtml3/xhtml2/mod-structural.html#edef_structural_blockcode
+  23. file:///Users/johncowan/xhtml3/xhtml2/mod-attribute-collections.html#col_Common
+  24. file:///Users/johncowan/xhtml3/xhtml2/mod-text.html#cs_Text
+  25. file:///Users/johncowan/xhtml3/xhtml2/mod-structural.html#cs_Heading
+  26. file:///Users/johncowan/xhtml3/xhtml2/mod-structural.html#cs_Structural
+  27. file:///Users/johncowan/xhtml3/xhtml2/mod-list.html#cs_List
+  28. file:///Users/johncowan/xhtml3/xhtml2/mod-structural.html#edef_structural_blockquote
+  29. file:///Users/johncowan/xhtml3/xhtml2/mod-attribute-collections.html#col_Common
+  30. file:///Users/johncowan/xhtml3/xhtml2/mod-text.html#cs_Text
+  31. file:///Users/johncowan/xhtml3/xhtml2/mod-structural.html#cs_Heading
+  32. file:///Users/johncowan/xhtml3/xhtml2/mod-structural.html#cs_Structural
+  33. file:///Users/johncowan/xhtml3/xhtml2/mod-list.html#cs_List
+  34. file:///Users/johncowan/xhtml3/xhtml2/mod-structural.html#edef_structural_div
+  35. file:///Users/johncowan/xhtml3/xhtml2/mod-attribute-collections.html#col_Common
+  36. file:///Users/johncowan/xhtml3/xhtml2/mod-structural.html#cs_Flow
+  37. file:///Users/johncowan/xhtml3/xhtml2/mod-structural.html#edef_structural_h
+  38. file:///Users/johncowan/xhtml3/xhtml2/mod-attribute-collections.html#col_Common
+  39. file:///Users/johncowan/xhtml3/xhtml2/mod-text.html#cs_Text
+  40. file:///Users/johncowan/xhtml3/xhtml2/mod-structural.html#edef_structural_p
+  41. file:///Users/johncowan/xhtml3/xhtml2/mod-attribute-collections.html#col_Common
+  42. file:///Users/johncowan/xhtml3/xhtml2/mod-text.html#cs_Text
+  43. file:///Users/johncowan/xhtml3/xhtml2/mod-list.html#cs_List
+  44. file:///Users/johncowan/xhtml3/xhtml2/mod-structural.html#edef_structural_blockcode
+  45. file:///Users/johncowan/xhtml3/xhtml2/mod-structural.html#edef_structural_blockquote
+  46. file:///Users/johncowan/xhtml3/xhtml2/mod-structural.html#edef_structural_pre
+  47. file:///Users/johncowan/xhtml3/xhtml2/mod-tables.html#edef_tables_table
+  48. file:///Users/johncowan/xhtml3/xhtml2/mod-structural.html#edef_structural_pre
+  49. file:///Users/johncowan/xhtml3/xhtml2/mod-attribute-collections.html#col_Common
+  50. file:///Users/johncowan/xhtml3/xhtml2/mod-text.html#cs_Text
+  51. file:///Users/johncowan/xhtml3/xhtml2/mod-structural.html#edef_structural_section
+  52. file:///Users/johncowan/xhtml3/xhtml2/mod-attribute-collections.html#col_Common
+  53. file:///Users/johncowan/xhtml3/xhtml2/mod-structural.html#cs_Flow
+  54. file:///Users/johncowan/xhtml3/xhtml2/mod-structural.html#edef_structural_separator
+  55. file:///Users/johncowan/xhtml3/xhtml2/mod-attribute-collections.html#col_Common
+  56. file:///Users/johncowan/xhtml3/xhtml2/mod-structural.html#edef_structural_h
+  57. file:///Users/johncowan/xhtml3/xhtml2/mod-legacy-headings.html#edef_legacy-headings_heading
+  58. file:///Users/johncowan/xhtml3/xhtml2/mod-legacy-headings.html#edef_legacy-headings_heading
+  59. file:///Users/johncowan/xhtml3/xhtml2/mod-legacy-headings.html#edef_legacy-headings_heading
+  60. file:///Users/johncowan/xhtml3/xhtml2/mod-legacy-headings.html#edef_legacy-headings_heading
+  61. file:///Users/johncowan/xhtml3/xhtml2/mod-legacy-headings.html#edef_legacy-headings_heading
+  62. file:///Users/johncowan/xhtml3/xhtml2/mod-legacy-headings.html#edef_legacy-headings_heading
+  63. file:///Users/johncowan/xhtml3/xhtml2/mod-handler.html#edef_handler_action
+  64. file:///Users/johncowan/xhtml3/xhtml2/mod-structural.html#edef_structural_address
+  65. file:///Users/johncowan/xhtml3/xhtml2/mod-structural.html#edef_structural_blockcode
+  66. file:///Users/johncowan/xhtml3/xhtml2/mod-structural.html#edef_structural_blockquote
+  67. file:///Users/johncowan/xhtml3/xhtml2/mod-structural.html#edef_structural_div
+  68. file:///Users/johncowan/xhtml3/xhtml2/mod-list.html#cs_List
+  69. file:///Users/johncowan/xhtml3/xhtml2/mod-xml-events.html#edef_xml-events_listener
+  70. file:///Users/johncowan/xhtml3/xhtml2/mod-structural.html#edef_structural_p
+  71. file:///Users/johncowan/xhtml3/xhtml2/mod-structural.html#edef_structural_pre
+  72. file:///Users/johncowan/xhtml3/xhtml2/mod-scripting.html#edef_scripting_script
+  73. file:///Users/johncowan/xhtml3/xhtml2/mod-structural.html#edef_structural_section
+  74. file:///Users/johncowan/xhtml3/xhtml2/mod-structural.html#edef_structural_separator
+  75. file:///Users/johncowan/xhtml3/xhtml2/mod-styleSheet.html#edef_styleSheet_style
+  76. file:///Users/johncowan/xhtml3/xhtml2/mod-tables.html#edef_tables_table
+  77. file:///Users/johncowan/xhtml3/xhtml2/mod-structural.html#cs_Heading
+  78. file:///Users/johncowan/xhtml3/xhtml2/mod-structural.html#cs_Structural
+  79. file:///Users/johncowan/xhtml3/xhtml2/mod-text.html#cs_Text
+  80. file:///Users/johncowan/xhtml3/xhtml2/relax_module_defs.html#a_rmodule_Structural
+  81. file:///Users/johncowan/xhtml3/xhtml2/schema_module_defs.html#a_smodule_Structural_Module
+  82. file:///Users/johncowan/xhtml3/xhtml2/mod-structural.html#edef_structural_address
+  83. file:///Users/johncowan/xhtml3/xhtml2/mod-attribute-collections.html#col_Common
+  84. file:///Users/johncowan/xhtml3/xhtml2/mod-bidi.html#col_Bi-directional
+  85. file:///Users/johncowan/xhtml3/xhtml2/mod-core.html#col_Core
+  86. file:///Users/johncowan/xhtml3/xhtml2/mod-edit.html#col_Edit
+  87. file:///Users/johncowan/xhtml3/xhtml2/mod-embedding.html#col_Embedding
+  88. file:///Users/johncowan/xhtml3/xhtml2/mod-xml-events.html#col_Events
+  89. file:///Users/johncowan/xhtml3/xhtml2/mod-xforms.html#col_Forms
+  90. file:///Users/johncowan/xhtml3/xhtml2/mod-hyperAttributes.html#col_Hypertext
+  91. file:///Users/johncowan/xhtml3/xhtml2/mod-i18n.html#col_I18N
+  92. file:///Users/johncowan/xhtml3/xhtml2/mod-csImgMap.html#col_Map
+  93. file:///Users/johncowan/xhtml3/xhtml2/mod-metaAttributes.html#col_Metainformation
+  94. file:///Users/johncowan/xhtml3/xhtml2/mod-roleAttribute.html#col_Role
+  95. file:///Users/johncowan/xhtml3/xhtml2/mod-text.html#edef_text_code
+  96. file:///Users/johncowan/xhtml3/xhtml2/mod-structural.html#edef_structural_pre
+  97. file:///Users/johncowan/xhtml3/xhtml2/mod-core.html#adef_core_layout
+  98. file:///Users/johncowan/xhtml3/xhtml2/mod-attribute-collections.html#col_Common
+  99. file:///Users/johncowan/xhtml3/xhtml2/mod-bidi.html#col_Bi-directional
+ 100. file:///Users/johncowan/xhtml3/xhtml2/mod-core.html#col_Core
+ 101. file:///Users/johncowan/xhtml3/xhtml2/mod-edit.html#col_Edit
+ 102. file:///Users/johncowan/xhtml3/xhtml2/mod-embedding.html#col_Embedding
+ 103. file:///Users/johncowan/xhtml3/xhtml2/mod-xml-events.html#col_Events
+ 104. file:///Users/johncowan/xhtml3/xhtml2/mod-xforms.html#col_Forms
+ 105. file:///Users/johncowan/xhtml3/xhtml2/mod-hyperAttributes.html#col_Hypertext
+ 106. file:///Users/johncowan/xhtml3/xhtml2/mod-i18n.html#col_I18N
+ 107. file:///Users/johncowan/xhtml3/xhtml2/mod-csImgMap.html#col_Map
+ 108. file:///Users/johncowan/xhtml3/xhtml2/mod-metaAttributes.html#col_Metainformation
+ 109. file:///Users/johncowan/xhtml3/xhtml2/mod-roleAttribute.html#col_Role
+ 110. file:///Users/johncowan/xhtml3/xhtml2/mod-attribute-collections.html#col_Common
+ 111. file:///Users/johncowan/xhtml3/xhtml2/mod-bidi.html#col_Bi-directional
+ 112. file:///Users/johncowan/xhtml3/xhtml2/mod-core.html#col_Core
+ 113. file:///Users/johncowan/xhtml3/xhtml2/mod-edit.html#col_Edit
+ 114. file:///Users/johncowan/xhtml3/xhtml2/mod-embedding.html#col_Embedding
+ 115. file:///Users/johncowan/xhtml3/xhtml2/mod-xml-events.html#col_Events
+ 116. file:///Users/johncowan/xhtml3/xhtml2/mod-xforms.html#col_Forms
+ 117. file:///Users/johncowan/xhtml3/xhtml2/mod-hyperAttributes.html#col_Hypertext
+ 118. file:///Users/johncowan/xhtml3/xhtml2/mod-i18n.html#col_I18N
+ 119. file:///Users/johncowan/xhtml3/xhtml2/mod-csImgMap.html#col_Map
+ 120. file:///Users/johncowan/xhtml3/xhtml2/mod-metaAttributes.html#col_Metainformation
+ 121. file:///Users/johncowan/xhtml3/xhtml2/mod-roleAttribute.html#col_Role
+ 122. file:///Users/johncowan/xhtml3/xhtml2/mod-structural.html#edef_structural_div
+ 123. file:///Users/johncowan/xhtml3/xhtml2/mod-core.html#adef_core_id
+ 124. file:///Users/johncowan/xhtml3/xhtml2/mod-core.html#adef_core_class
+ 125. file:///Users/johncowan/xhtml3/xhtml2/mod-roleAttribute.html#adef_roleAttribute_role
+ 126. file:///Users/johncowan/xhtml3/xhtml2/mod-styleSheet.html#edef_styleSheet_style
+ 127. file:///Users/johncowan/xhtml3/xhtml2/mod-i18n.html#adef_i18n_xml:lang
+ 128. file:///Users/johncowan/xhtml3/xhtml2/mod-attribute-collections.html#col_Common
+ 129. file:///Users/johncowan/xhtml3/xhtml2/mod-bidi.html#col_Bi-directional
+ 130. file:///Users/johncowan/xhtml3/xhtml2/mod-core.html#col_Core
+ 131. file:///Users/johncowan/xhtml3/xhtml2/mod-edit.html#col_Edit
+ 132. file:///Users/johncowan/xhtml3/xhtml2/mod-embedding.html#col_Embedding
+ 133. file:///Users/johncowan/xhtml3/xhtml2/mod-xml-events.html#col_Events
+ 134. file:///Users/johncowan/xhtml3/xhtml2/mod-xforms.html#col_Forms
+ 135. file:///Users/johncowan/xhtml3/xhtml2/mod-hyperAttributes.html#col_Hypertext
+ 136. file:///Users/johncowan/xhtml3/xhtml2/mod-i18n.html#col_I18N
+ 137. file:///Users/johncowan/xhtml3/xhtml2/mod-csImgMap.html#col_Map
+ 138. file:///Users/johncowan/xhtml3/xhtml2/mod-metaAttributes.html#col_Metainformation
+ 139. file:///Users/johncowan/xhtml3/xhtml2/mod-roleAttribute.html#col_Role
+ 140. file:///Users/johncowan/xhtml3/xhtml2/mod-structural.html#edef_structural_div
+ 141. file:///Users/johncowan/xhtml3/xhtml2/mod-core.html#adef_core_class
+ 142. file:///Users/johncowan/xhtml3/xhtml2/mod-attribute-collections.html#col_Common
+ 143. file:///Users/johncowan/xhtml3/xhtml2/mod-bidi.html#col_Bi-directional
+ 144. file:///Users/johncowan/xhtml3/xhtml2/mod-core.html#col_Core
+ 145. file:///Users/johncowan/xhtml3/xhtml2/mod-edit.html#col_Edit
+ 146. file:///Users/johncowan/xhtml3/xhtml2/mod-embedding.html#col_Embedding
+ 147. file:///Users/johncowan/xhtml3/xhtml2/mod-xml-events.html#col_Events
+ 148. file:///Users/johncowan/xhtml3/xhtml2/mod-xforms.html#col_Forms
+ 149. file:///Users/johncowan/xhtml3/xhtml2/mod-hyperAttributes.html#col_Hypertext
+ 150. file:///Users/johncowan/xhtml3/xhtml2/mod-i18n.html#col_I18N
+ 151. file:///Users/johncowan/xhtml3/xhtml2/mod-csImgMap.html#col_Map
+ 152. file:///Users/johncowan/xhtml3/xhtml2/mod-metaAttributes.html#col_Metainformation
+ 153. file:///Users/johncowan/xhtml3/xhtml2/mod-roleAttribute.html#col_Role
+ 154. file:///Users/johncowan/xhtml3/xhtml2/mod-structural.html#edef_structural_section
+ 155. file:///Users/johncowan/xhtml3/xhtml2/mod-structural.html#edef_structural_p
+ 156. file:///Users/johncowan/xhtml3/xhtml2/mod-attribute-collections.html#col_Common
+ 157. file:///Users/johncowan/xhtml3/xhtml2/mod-bidi.html#col_Bi-directional
+ 158. file:///Users/johncowan/xhtml3/xhtml2/mod-core.html#col_Core
+ 159. file:///Users/johncowan/xhtml3/xhtml2/mod-edit.html#col_Edit
+ 160. file:///Users/johncowan/xhtml3/xhtml2/mod-embedding.html#col_Embedding
+ 161. file:///Users/johncowan/xhtml3/xhtml2/mod-xml-events.html#col_Events
+ 162. file:///Users/johncowan/xhtml3/xhtml2/mod-xforms.html#col_Forms
+ 163. file:///Users/johncowan/xhtml3/xhtml2/mod-hyperAttributes.html#col_Hypertext
+ 164. file:///Users/johncowan/xhtml3/xhtml2/mod-i18n.html#col_I18N
+ 165. file:///Users/johncowan/xhtml3/xhtml2/mod-csImgMap.html#col_Map
+ 166. file:///Users/johncowan/xhtml3/xhtml2/mod-metaAttributes.html#col_Metainformation
+ 167. file:///Users/johncowan/xhtml3/xhtml2/mod-roleAttribute.html#col_Role
+ 168. file:///Users/johncowan/xhtml3/xhtml2/mod-structural.html#edef_structural_pre
+ 169. file:///Users/johncowan/xhtml3/xhtml2/mod-core.html#adef_core_layout
+ 170. file:///Users/johncowan/xhtml3/xhtml2/references.html#ref_CSS3-TEXT
+ 171. file:///Users/johncowan/xhtml3/xhtml2/mod-attribute-collections.html#col_Common
+ 172. file:///Users/johncowan/xhtml3/xhtml2/mod-bidi.html#col_Bi-directional
+ 173. file:///Users/johncowan/xhtml3/xhtml2/mod-core.html#col_Core
+ 174. file:///Users/johncowan/xhtml3/xhtml2/mod-edit.html#col_Edit
+ 175. file:///Users/johncowan/xhtml3/xhtml2/mod-embedding.html#col_Embedding
+ 176. file:///Users/johncowan/xhtml3/xhtml2/mod-xml-events.html#col_Events
+ 177. file:///Users/johncowan/xhtml3/xhtml2/mod-xforms.html#col_Forms
+ 178. file:///Users/johncowan/xhtml3/xhtml2/mod-hyperAttributes.html#col_Hypertext
+ 179. file:///Users/johncowan/xhtml3/xhtml2/mod-i18n.html#col_I18N
+ 180. file:///Users/johncowan/xhtml3/xhtml2/mod-csImgMap.html#col_Map
+ 181. file:///Users/johncowan/xhtml3/xhtml2/mod-metaAttributes.html#col_Metainformation
+ 182. file:///Users/johncowan/xhtml3/xhtml2/mod-roleAttribute.html#col_Role
+ 183. file:///Users/johncowan/xhtml3/xhtml2/mod-structural.html#edef_structural_pre
+ 184. file:///Users/johncowan/xhtml3/xhtml2/mod-structural.html#edef_structural_blockcode
+ 185. file:///Users/johncowan/xhtml3/xhtml2/mod-structural.html#edef_structural_section
+ 186. file:///Users/johncowan/xhtml3/xhtml2/mod-structural.html#edef_structural_h
+ 187. file:///Users/johncowan/xhtml3/xhtml2/mod-attribute-collections.html#col_Common
+ 188. file:///Users/johncowan/xhtml3/xhtml2/mod-bidi.html#col_Bi-directional
+ 189. file:///Users/johncowan/xhtml3/xhtml2/mod-core.html#col_Core
+ 190. file:///Users/johncowan/xhtml3/xhtml2/mod-edit.html#col_Edit
+ 191. file:///Users/johncowan/xhtml3/xhtml2/mod-embedding.html#col_Embedding
+ 192. file:///Users/johncowan/xhtml3/xhtml2/mod-xml-events.html#col_Events
+ 193. file:///Users/johncowan/xhtml3/xhtml2/mod-xforms.html#col_Forms
+ 194. file:///Users/johncowan/xhtml3/xhtml2/mod-hyperAttributes.html#col_Hypertext
+ 195. file:///Users/johncowan/xhtml3/xhtml2/mod-i18n.html#col_I18N
+ 196. file:///Users/johncowan/xhtml3/xhtml2/mod-csImgMap.html#col_Map
+ 197. file:///Users/johncowan/xhtml3/xhtml2/mod-metaAttributes.html#col_Metainformation
+ 198. file:///Users/johncowan/xhtml3/xhtml2/mod-roleAttribute.html#col_Role
+ 199. file:///Users/johncowan/xhtml3/xhtml2/mod-structural.html#edef_structural_section
+ 200. file:///Users/johncowan/xhtml3/xhtml2/mod-structural.html#edef_structural_h
+ 201. file:///Users/johncowan/xhtml3/xhtml2/mod-structural.html#edef_structural_separator
+ 202. file:///Users/johncowan/xhtml3/xhtml2/mod-attribute-collections.html#col_Common
+ 203. file:///Users/johncowan/xhtml3/xhtml2/mod-bidi.html#col_Bi-directional
+ 204. file:///Users/johncowan/xhtml3/xhtml2/mod-core.html#col_Core
+ 205. file:///Users/johncowan/xhtml3/xhtml2/mod-edit.html#col_Edit
+ 206. file:///Users/johncowan/xhtml3/xhtml2/mod-embedding.html#col_Embedding
+ 207. file:///Users/johncowan/xhtml3/xhtml2/mod-xml-events.html#col_Events
+ 208. file:///Users/johncowan/xhtml3/xhtml2/mod-xforms.html#col_Forms
+ 209. file:///Users/johncowan/xhtml3/xhtml2/mod-hyperAttributes.html#col_Hypertext
+ 210. file:///Users/johncowan/xhtml3/xhtml2/mod-i18n.html#col_I18N
+ 211. file:///Users/johncowan/xhtml3/xhtml2/mod-csImgMap.html#col_Map
+ 212. file:///Users/johncowan/xhtml3/xhtml2/mod-metaAttributes.html#col_Metainformation
+ 213. file:///Users/johncowan/xhtml3/xhtml2/mod-roleAttribute.html#col_Role
+ 214. file:///Users/johncowan/xhtml3/xhtml2/mod-document.html
+ 215. file:///Users/johncowan/xhtml3/xhtml2/mod-text.html
+ 216. file:///Users/johncowan/xhtml3/xhtml2/Overview.html#toc
+ 217. file:///Users/johncowan/xhtml3/xhtml2/elements.html
+ 218. file:///Users/johncowan/xhtml3/xhtml2/attributes.html

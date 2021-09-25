@@ -1,0 +1,74 @@
+   #[1]start [2]contents [3]prev [4]next
+
+   [[5]previous] [[6]next] [[7]table of contents] [[8]elements]
+   [[9]attributes]
+     __________________________________________________________________
+
+                  24. XHTML Metainformation Attributes Module
+
+   Contents
+     * 24.1. [10]Metadata Attribute Collection
+
+   This section is normative for purposes of defining the integration of
+   the XHTML Metainformation Attributes Module into XHTML 2. The semantics
+   of the XHTML Metainformation Attributes Module itself are normatively
+   defined in [[11]RDFASYNTAX]. The rules for extracting RDF from XHTML
+   family markup languages are defined in [[12]RDFASYNTAX]. For
+   information on important differences between XHTML 2 and other XHTML
+   family markup languages and how those may relate to RDFa, see
+   [13]Appendix A.
+
+24.1. Metadata Attribute Collection
+
+   Attributes Notes
+   about ([14]URIorSafeCURIE)
+   content ([15]CDATA)
+   datatype ([16]CURIE) If not specified, then the default value is string
+   as defined in [[17]XMLSCHEMA].
+   typeof ([18]CURIEs)
+   property ([19]CURIEs)
+   rel (reserved word | [20]CURIE)+ See the reserved values list in
+   [[21]XHTMLVOCAB]
+   resource ([22]URIorSafeCURIE)
+   rev (reserved word | [23]CURIE)+ See the reserved values list in
+   [[24]XHTMLVOCAB]
+
+   Implementations: [25]RelaxNG, [26]XML Schema
+     __________________________________________________________________
+
+   [[27]previous] [[28]next] [[29]table of contents] [[30]elements]
+   [[31]attributes]
+
+References
+
+   1. file:///Users/johncowan/xhtml3/xhtml2/Overview.html
+   2. file:///Users/johncowan/xhtml3/xhtml2/Overview.html#toc
+   3. file:///Users/johncowan/xhtml3/xhtml2/mod-meta.html
+   4. file:///Users/johncowan/xhtml3/xhtml2/mod-object.html
+   5. file:///Users/johncowan/xhtml3/xhtml2/mod-meta.html
+   6. file:///Users/johncowan/xhtml3/xhtml2/mod-object.html
+   7. file:///Users/johncowan/xhtml3/xhtml2/Overview.html#toc
+   8. file:///Users/johncowan/xhtml3/xhtml2/elements.html
+   9. file:///Users/johncowan/xhtml3/xhtml2/attributes.html
+  10. file:///Users/johncowan/xhtml3/xhtml2/mod-metaAttributes.html#col_Metainformation
+  11. file:///Users/johncowan/xhtml3/xhtml2/references.html#ref_RDFASYNTAX
+  12. file:///Users/johncowan/xhtml3/xhtml2/references.html#ref_RDFASYNTAX
+  13. file:///Users/johncowan/xhtml3/xhtml2/xhtml2-changes.html#a_changes
+  14. file:///Users/johncowan/xhtml3/xhtml2/abstraction.html#dt_URIorSafeCURIE
+  15. file:///Users/johncowan/xhtml3/xhtml2/abstraction.html#dt_CDATA
+  16. file:///Users/johncowan/xhtml3/xhtml2/abstraction.html#dt_CURIE
+  17. file:///Users/johncowan/xhtml3/xhtml2/references.html#ref_XMLSCHEMA
+  18. file:///Users/johncowan/xhtml3/xhtml2/abstraction.html#dt_CURIEs
+  19. file:///Users/johncowan/xhtml3/xhtml2/abstraction.html#dt_CURIEs
+  20. file:///Users/johncowan/xhtml3/xhtml2/abstraction.html#dt_CURIE
+  21. file:///Users/johncowan/xhtml3/xhtml2/references.html#ref_XHTMLVOCAB
+  22. file:///Users/johncowan/xhtml3/xhtml2/abstraction.html#dt_URIorSafeCURIE
+  23. file:///Users/johncowan/xhtml3/xhtml2/abstraction.html#dt_CURIE
+  24. file:///Users/johncowan/xhtml3/xhtml2/references.html#ref_XHTMLVOCAB
+  25. file:///Users/johncowan/xhtml3/xhtml2/relax_module_defs.html#a_rmodule_Metainformation_Attributes
+  26. file:///Users/johncowan/xhtml3/xhtml2/schema_module_defs.html#a_smodule_Metainformation_Attributes_Module
+  27. file:///Users/johncowan/xhtml3/xhtml2/mod-meta.html
+  28. file:///Users/johncowan/xhtml3/xhtml2/mod-object.html
+  29. file:///Users/johncowan/xhtml3/xhtml2/Overview.html#toc
+  30. file:///Users/johncowan/xhtml3/xhtml2/elements.html
+  31. file:///Users/johncowan/xhtml3/xhtml2/attributes.html

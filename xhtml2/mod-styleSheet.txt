@@ -1,0 +1,192 @@
+   #[1]start [2]contents [3]prev [4]next
+
+   [[5]previous] [[6]next] [[7]table of contents] [[8]elements]
+   [[9]attributes]
+     __________________________________________________________________
+
+                          28. XHTML Style Sheet Module
+
+   Contents
+     * 28.1. [10]The style element
+          + 28.1.1. [11]External style sheets
+          + 28.1.2. [12]Preferred and alternate style sheets
+          + 28.1.3. [13]Specifying external style sheets
+
+   This section is normative.
+
+   The Style Sheet Module defines an element to be used when declaring
+   internal style sheets. The element and attributes defined by this
+   module are:
+
+   Elements Attributes Content Model
+   [14]style [15]Common, [16]@disabled ("disabled"), [17]@media
+   ([18]MediaDesc) PCDATA
+
+   Implementations: [19]RELAX NG, [20]XML Schema
+
+28.1. The style element
+
+   Attributes
+
+   The [21]Common collection
+          A collection of other attribute collections, including:
+          [22]Bi-directional, [23]Core, [24]Edit, [25]Embedding,
+          [26]Events, [27]Forms, [28]Hypertext, [29]I18N, [30]Map,
+          [31]Metainformation, and [32]Role
+
+   disabled = "disabled"
+          When present, this boolean attribute makes the current element
+          inactive (e.g., a "disabled" style element would have its styles
+          removed from the active style collection).
+
+   media = [33]MediaDesc
+          The value of this attribute is a comma-separated list of media
+          descriptors for which this access element is intended. When the
+          value of this attribute matches the current processing media,
+          the associated access element is considered active and processed
+          normally; otherwise it is inactive and ignored. The default
+          value for this attribute is all.
+
+          Example
+
+<style src="style.css" type="text/css" media="screen" />
+<span src="photo.jpg" media="screen">Me at work</span>
+<span src="photo-hires.jpg" media="print">Me at work</span>
+
+   The [34]style element allows an author to put style sheet rules in the
+   head of the document. XHTML permits any number of [35]style elements in
+   the [36]head section of a document.
+
+   The syntax of style data depends on the style sheet language.
+
+   Rules for style rule precedences and inheritance depend on the style
+   sheet language.
+
+   Example
+<style type="text/css">
+  h1 {border-width: thin; border-style: solid; text-align: center}
+</style>
+
+  28.1.1. External style sheets
+
+   Authors may separate style sheets from XHTML documents. This offers
+   several benefits:
+     * Authors and web site managers may share style sheets across a
+       number of documents (and sites).
+     * Authors may change the style sheet without requiring modifications
+       to the document.
+     * User agents may load style sheets selectively (based on media
+       descriptors).
+
+  28.1.2. Preferred and alternate style sheets
+
+   XHTML allows authors to associate any number of external style sheets
+   with a document. The style sheet language defines how multiple external
+   style sheets interact (for example, the CSS "cascade" rules).
+
+   Authors may specify a number of mutually exclusive style sheets called
+   alternate style sheets. Users may select their favorite among these
+   depending on their preferences. For instance, an author may specify one
+   style sheet designed for small screens and another for users with weak
+   vision (e.g., large fonts). User agents should allow users to select
+   from alternate style sheets.
+
+   The author may specify that one of the alternates is a preferred style
+   sheet. User agents should apply the author's preferred style sheet
+   unless the user has selected a different alternate.
+
+   Authors may group several alternate style sheets (including the
+   author's preferred style sheets) under a single style name. When a user
+   selects a named style, the user agent must apply all style sheets with
+   that name. User agents must not apply alternate style sheets with a
+   different style name. The section on specifying external style sheets
+   explains how to name a group of style sheets.
+
+   Authors may also specify persistent style sheets that user agents must
+   apply in addition to any alternate style sheet.
+
+   User agents must respect [37]media descriptors when applying any style
+   sheet.
+
+   User agents should also allow users to disable the author's style
+   sheets entirely, in which case the user agent must not apply any
+   persistent or alternate style sheets.
+
+  28.1.3. Specifying external style sheets
+
+   Authors specify external style sheets using the xml-stylesheet
+   processing instruction [[38]XMLSTYLE], or, for CSS, by using the
+   @import facility within a [39]style element.
+
+   User agents should provide a means for users to view and pick from the
+   list of alternate styles, if specified.
+
+   In this example, we first specify a persistent style sheet located in
+   the file mystyle.css:
+
+   Example
+<?xml-stylesheet href="mystyle.css" type="text/css"?>
+
+   Setting the title pseudo-attribute makes this the author's preferred
+   style sheet:
+
+   Example
+ <?xml-stylesheet href="mystyle.css" title="compact" type="text/css"?>
+
+   Adding the alternate pseudo-attribute makes it an alternate style
+   sheet:
+
+   Example
+<?xml-stylesheet href="mystyle.css" title="Medium" alternate="yes" type="text/cs
+s"?>
+     __________________________________________________________________
+
+   [[40]previous] [[41]next] [[42]table of contents] [[43]elements]
+   [[44]attributes]
+
+References
+
+   1. file:///Users/johncowan/xhtml3/xhtml2/Overview.html
+   2. file:///Users/johncowan/xhtml3/xhtml2/Overview.html#toc
+   3. file:///Users/johncowan/xhtml3/xhtml2/mod-ruby.html
+   4. file:///Users/johncowan/xhtml3/xhtml2/mod-styleAttribute.html
+   5. file:///Users/johncowan/xhtml3/xhtml2/mod-ruby.html
+   6. file:///Users/johncowan/xhtml3/xhtml2/mod-styleAttribute.html
+   7. file:///Users/johncowan/xhtml3/xhtml2/Overview.html#toc
+   8. file:///Users/johncowan/xhtml3/xhtml2/elements.html
+   9. file:///Users/johncowan/xhtml3/xhtml2/attributes.html
+  10. file:///Users/johncowan/xhtml3/xhtml2/mod-styleSheet.html#sec_28.1.
+  11. file:///Users/johncowan/xhtml3/xhtml2/mod-styleSheet.html#styleSheet_external
+  12. file:///Users/johncowan/xhtml3/xhtml2/mod-styleSheet.html#sec_28.1.2.
+  13. file:///Users/johncowan/xhtml3/xhtml2/mod-styleSheet.html#sec_28.1.3.
+  14. file:///Users/johncowan/xhtml3/xhtml2/mod-styleSheet.html#edef_styleSheet_style
+  15. file:///Users/johncowan/xhtml3/xhtml2/mod-attribute-collections.html#col_Common
+  16. file:///Users/johncowan/xhtml3/xhtml2/mod-styleSheet.html#adef_styleSheet_disabled
+  17. file:///Users/johncowan/xhtml3/xhtml2/mod-styleSheet.html#adef_styleSheet_media
+  18. file:///Users/johncowan/xhtml3/xhtml2/abstraction.html#dt_MediaDesc
+  19. file:///Users/johncowan/xhtml3/xhtml2/relax_module_defs.html#a_rmodule_Style_Sheet
+  20. file:///Users/johncowan/xhtml3/xhtml2/schema_module_defs.html#a_smodule_Style_Sheet_Module
+  21. file:///Users/johncowan/xhtml3/xhtml2/mod-attribute-collections.html#col_Common
+  22. file:///Users/johncowan/xhtml3/xhtml2/mod-bidi.html#col_Bi-directional
+  23. file:///Users/johncowan/xhtml3/xhtml2/mod-core.html#col_Core
+  24. file:///Users/johncowan/xhtml3/xhtml2/mod-edit.html#col_Edit
+  25. file:///Users/johncowan/xhtml3/xhtml2/mod-embedding.html#col_Embedding
+  26. file:///Users/johncowan/xhtml3/xhtml2/mod-xml-events.html#col_Events
+  27. file:///Users/johncowan/xhtml3/xhtml2/mod-xforms.html#col_Forms
+  28. file:///Users/johncowan/xhtml3/xhtml2/mod-hyperAttributes.html#col_Hypertext
+  29. file:///Users/johncowan/xhtml3/xhtml2/mod-i18n.html#col_I18N
+  30. file:///Users/johncowan/xhtml3/xhtml2/mod-csImgMap.html#col_Map
+  31. file:///Users/johncowan/xhtml3/xhtml2/mod-metaAttributes.html#col_Metainformation
+  32. file:///Users/johncowan/xhtml3/xhtml2/mod-roleAttribute.html#col_Role
+  33. file:///Users/johncowan/xhtml3/xhtml2/abstraction.html#dt_MediaDesc
+  34. file:///Users/johncowan/xhtml3/xhtml2/mod-styleSheet.html#edef_styleSheet_style
+  35. file:///Users/johncowan/xhtml3/xhtml2/mod-styleSheet.html#edef_styleSheet_style
+  36. file:///Users/johncowan/xhtml3/xhtml2/mod-document.html#edef_document_head
+  37. file:///Users/johncowan/xhtml3/xhtml2/abstraction.html#dt_MediaDesc
+  38. file:///Users/johncowan/xhtml3/xhtml2/references.html#ref_XMLSTYLE
+  39. file:///Users/johncowan/xhtml3/xhtml2/mod-styleSheet.html#edef_styleSheet_style
+  40. file:///Users/johncowan/xhtml3/xhtml2/mod-ruby.html
+  41. file:///Users/johncowan/xhtml3/xhtml2/mod-styleAttribute.html
+  42. file:///Users/johncowan/xhtml3/xhtml2/Overview.html#toc
+  43. file:///Users/johncowan/xhtml3/xhtml2/elements.html
+  44. file:///Users/johncowan/xhtml3/xhtml2/attributes.html

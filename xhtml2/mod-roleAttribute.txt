@@ -1,0 +1,57 @@
+   #[1]start [2]contents [3]prev [4]next
+
+   [[5]previous] [[6]next] [[7]table of contents] [[8]elements]
+   [[9]attributes]
+     __________________________________________________________________
+
+                        26. XHTML Role Attribute Module
+
+   Contents
+     * 26.1. [10]Role Attribute Collection
+
+   This section is normative for purposes of defining the integration of
+   the XHTML Role Module into XHTML 2. The semantics of the XHTML Role
+   Module itself are normatively defined in [[11]XHTMLROLE].
+
+   This module defines the role attribute and the associated Role
+   Attribute Collection. The Role Attribute Collection is included in the
+   [12]Common attribute collection.
+
+26.1. Role Attribute Collection
+
+       Attribute     Notes
+   role ([13]CURIEs)
+
+   The XHTML Role Attribute allows the author to annotate XHTML Documents
+   with machine-extractable semantic information about the purpose of an
+   element. Use cases include accessibility, device adaptation,
+   server-side processing, and complex data description.
+
+   Implementations: [14]RelaxNG [15]XML Schema
+     __________________________________________________________________
+
+   [[16]previous] [[17]next] [[18]table of contents] [[19]elements]
+   [[20]attributes]
+
+References
+
+   1. file:///Users/johncowan/xhtml3/xhtml2/Overview.html
+   2. file:///Users/johncowan/xhtml3/xhtml2/Overview.html#toc
+   3. file:///Users/johncowan/xhtml3/xhtml2/mod-object.html
+   4. file:///Users/johncowan/xhtml3/xhtml2/mod-ruby.html
+   5. file:///Users/johncowan/xhtml3/xhtml2/mod-object.html
+   6. file:///Users/johncowan/xhtml3/xhtml2/mod-ruby.html
+   7. file:///Users/johncowan/xhtml3/xhtml2/Overview.html#toc
+   8. file:///Users/johncowan/xhtml3/xhtml2/elements.html
+   9. file:///Users/johncowan/xhtml3/xhtml2/attributes.html
+  10. file:///Users/johncowan/xhtml3/xhtml2/mod-roleAttribute.html#col_Role
+  11. file:///Users/johncowan/xhtml3/xhtml2/references.html#ref_XHTMLROLE
+  12. file:///Users/johncowan/xhtml3/xhtml2/mod-attribute-collections.html#col_Common
+  13. file:///Users/johncowan/xhtml3/xhtml2/abstraction.html#dt_CURIE
+  14. file:///Users/johncowan/xhtml3/xhtml2/relax_module_defs.html#a_rmodule_Role_Attribute
+  15. file:///Users/johncowan/xhtml3/xhtml2/schema_module_defs.html#a_smodule_Role_Attribute_Module
+  16. file:///Users/johncowan/xhtml3/xhtml2/mod-object.html
+  17. file:///Users/johncowan/xhtml3/xhtml2/mod-ruby.html
+  18. file:///Users/johncowan/xhtml3/xhtml2/Overview.html#toc
+  19. file:///Users/johncowan/xhtml3/xhtml2/elements.html
+  20. file:///Users/johncowan/xhtml3/xhtml2/attributes.html

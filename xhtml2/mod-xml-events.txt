@@ -1,0 +1,67 @@
+   #[1]start [2]contents [3]prev [4]next
+
+   [[5]previous] [[6]next] [[7]table of contents] [[8]elements]
+   [[9]attributes]
+     __________________________________________________________________
+
+                             32. XML Events Module
+
+   Contents
+     * 32.1. [10]Events
+
+   This section is normative for purposes of defining the integration of
+   XML Events into XHTML 2. The semantics of XML Events itself is
+   normatively defined in [[11]XMLEVENTS].
+
+   This module includes the listener element as defined in
+   [[12]XMLEVENTS]. As permitted by XML Events 2, this element is
+   incorporated into the XHTML namespace.
+
+32.1. Events
+
+   This module defines the Events Attribute Collection via the global
+   attributes from [[13]XMLEVENTS]. The normative definition of those
+   attributes and their semantics is included in that specification. Their
+   names and datatypes are listed below:
+
+                        Attributes                      Notes
+   event * ([14]QNames)
+   observer ([15]IDREFS)
+   eventTarget ([16]IDREFS)
+   handler ([17]URI)
+   phase ("bubble" | "capture" | "default"* | "target")
+   propagate ("stop" | "continue"*)
+   defaultAction (cancel|perform*)
+
+   [18]RelaxNG, [19]XML Schema
+     __________________________________________________________________
+
+   [[20]previous] [[21]next] [[22]table of contents] [[23]elements]
+   [[24]attributes]
+
+References
+
+   1. file:///Users/johncowan/xhtml3/xhtml2/Overview.html
+   2. file:///Users/johncowan/xhtml3/xhtml2/Overview.html#toc
+   3. file:///Users/johncowan/xhtml3/xhtml2/mod-xforms.html
+   4. file:///Users/johncowan/xhtml3/xhtml2/mod-handler.html
+   5. file:///Users/johncowan/xhtml3/xhtml2/mod-xforms.html
+   6. file:///Users/johncowan/xhtml3/xhtml2/mod-handler.html
+   7. file:///Users/johncowan/xhtml3/xhtml2/Overview.html#toc
+   8. file:///Users/johncowan/xhtml3/xhtml2/elements.html
+   9. file:///Users/johncowan/xhtml3/xhtml2/attributes.html
+  10. file:///Users/johncowan/xhtml3/xhtml2/mod-xml-events.html#col_Events
+  11. file:///Users/johncowan/xhtml3/xhtml2/references.html#ref_XMLEVENTS
+  12. file:///Users/johncowan/xhtml3/xhtml2/references.html#ref_XMLEVENTS
+  13. file:///Users/johncowan/xhtml3/xhtml2/references.html#ref_XMLEVENTS
+  14. file:///Users/johncowan/xhtml3/xhtml2/abstraction.html#dt_QNames
+  15. file:///Users/johncowan/xhtml3/xhtml2/abstraction.html#dt_IDREFS
+  16. file:///Users/johncowan/xhtml3/xhtml2/abstraction.html#dt_IDREFS
+  17. file:///Users/johncowan/xhtml3/xhtml2/abstraction.html#dt_URI
+  18. file:///Users/johncowan/xhtml3/xhtml2/relax_module_defs.html#a_rmodule_XML_Events
+  19. file:///Users/johncowan/xhtml3/xhtml2/schema_module_defs.html#a_smodule_XML_Events_Module
+  20. file:///Users/johncowan/xhtml3/xhtml2/mod-xforms.html
+  21. file:///Users/johncowan/xhtml3/xhtml2/mod-handler.html
+  22. file:///Users/johncowan/xhtml3/xhtml2/Overview.html#toc
+  23. file:///Users/johncowan/xhtml3/xhtml2/elements.html
+  24. file:///Users/johncowan/xhtml3/xhtml2/attributes.html

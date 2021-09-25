@@ -1,0 +1,90 @@
+   #[1]start [2]contents [3]prev [4]next
+
+   [[5]previous] [[6]next] [[7]table of contents] [[8]elements]
+   [[9]attributes]
+     __________________________________________________________________
+
+                            33. XML Handlers Module
+
+   This section is normative for purposes of defining the integration of
+   XML Handlers into XHTML 2. The semantics of XML Handlers itself is
+   normatively defined in [[10]XMLEVENTS].
+
+   The XML Handlers Module defines elements that are used to contain
+   information pertaining to event handler implementations, usually
+   defined in a scripting language. This section defines the content model
+   of the XML Handlers module in XHTML 2. As permitted by [[11]XMLEVENTS],
+   these elements are incorporated into the XHTML namespace.
+
+   Elements and attributes included in this module are:
+
+   Element Attributes Content Model
+   action [12]Common,
+   event* ([13]QNames),
+   eventTarget ([14]IDREFS),
+   declare ("declare"),
+   if (ConditionalExpression),
+   while (ConditionalExpression) ( action | dispatchEvent |
+   addEventListener | removeEventListener | [15]script | stopPropagation |
+   preventDefault )+
+   dispatchEvent [16]Common,
+   eventType* ([17]QName),
+   targetid ([18]IDREFS),
+   bubbles ("bubbles"),
+   cancelable ("cancelable") EMPTY
+   addEventListener [19]Common,
+   event* ([20]QName),
+   handler* ([21]IDREF),
+   phase ("bubble" | "capture" | "default"* | "target") EMPTY
+   removeEventListener [22]Common,
+   event* ([23]QName),
+   handler* ([24]IDREF),
+   phase ("bubble" | "capture" | "default"* | "target") EMPTY
+   stopPropagation [25]Common,
+   event* ([26]QName) EMPTY
+   preventDefault [27]Common,
+   event* ([28]QName) EMPTY
+
+   Implementations: [29]RelaxNG, [30]XML Schema
+     __________________________________________________________________
+
+   [[31]previous] [[32]next] [[33]table of contents] [[34]elements]
+   [[35]attributes]
+
+References
+
+   1. file:///Users/johncowan/xhtml3/xhtml2/Overview.html
+   2. file:///Users/johncowan/xhtml3/xhtml2/Overview.html#toc
+   3. file:///Users/johncowan/xhtml3/xhtml2/mod-xml-events.html
+   4. file:///Users/johncowan/xhtml3/xhtml2/mod-scripting.html
+   5. file:///Users/johncowan/xhtml3/xhtml2/mod-xml-events.html
+   6. file:///Users/johncowan/xhtml3/xhtml2/mod-scripting.html
+   7. file:///Users/johncowan/xhtml3/xhtml2/Overview.html#toc
+   8. file:///Users/johncowan/xhtml3/xhtml2/elements.html
+   9. file:///Users/johncowan/xhtml3/xhtml2/attributes.html
+  10. file:///Users/johncowan/xhtml3/xhtml2/references.html#ref_XMLEVENTS
+  11. file:///Users/johncowan/xhtml3/xhtml2/references.html#ref_XMLEVENTS
+  12. file:///Users/johncowan/xhtml3/xhtml2/mod-attribute-collections.html#col_Common
+  13. file:///Users/johncowan/xhtml3/xhtml2/abstraction.html#dt_QNames
+  14. file:///Users/johncowan/xhtml3/xhtml2/abstraction.html#dt_IDREFS
+  15. file:///Users/johncowan/xhtml3/xhtml2/mod-scripting.html#edef_scripting_script
+  16. file:///Users/johncowan/xhtml3/xhtml2/mod-attribute-collections.html#col_Common
+  17. file:///Users/johncowan/xhtml3/xhtml2/abstraction.html#dt_QName
+  18. file:///Users/johncowan/xhtml3/xhtml2/abstraction.html#dt_IDREFS
+  19. file:///Users/johncowan/xhtml3/xhtml2/mod-attribute-collections.html#col_Common
+  20. file:///Users/johncowan/xhtml3/xhtml2/abstraction.html#dt_QName
+  21. file:///Users/johncowan/xhtml3/xhtml2/abstraction.html#dt_IDREF
+  22. file:///Users/johncowan/xhtml3/xhtml2/mod-attribute-collections.html#col_Common
+  23. file:///Users/johncowan/xhtml3/xhtml2/abstraction.html#dt_QName
+  24. file:///Users/johncowan/xhtml3/xhtml2/abstraction.html#dt_IDREF
+  25. file:///Users/johncowan/xhtml3/xhtml2/mod-attribute-collections.html#col_Common
+  26. file:///Users/johncowan/xhtml3/xhtml2/abstraction.html#dt_QName
+  27. file:///Users/johncowan/xhtml3/xhtml2/mod-attribute-collections.html#col_Common
+  28. file:///Users/johncowan/xhtml3/xhtml2/abstraction.html#dt_QName
+  29. file:///Users/johncowan/xhtml3/xhtml2/relax_module_defs.html#a_rmodule_XML_Handlers
+  30. file:///Users/johncowan/xhtml3/xhtml2/schema_module_defs.html#a_smodule_XML_Handlers_Module
+  31. file:///Users/johncowan/xhtml3/xhtml2/mod-xml-events.html
+  32. file:///Users/johncowan/xhtml3/xhtml2/mod-scripting.html
+  33. file:///Users/johncowan/xhtml3/xhtml2/Overview.html#toc
+  34. file:///Users/johncowan/xhtml3/xhtml2/elements.html
+  35. file:///Users/johncowan/xhtml3/xhtml2/attributes.html

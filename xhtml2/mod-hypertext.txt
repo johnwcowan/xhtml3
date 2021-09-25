@@ -1,0 +1,89 @@
+   #[1]start [2]contents [3]prev [4]next
+
+   [[5]previous] [[6]next] [[7]table of contents] [[8]elements]
+   [[9]attributes]
+     __________________________________________________________________
+
+                           10. XHTML Hypertext Module
+
+   Contents
+     * 10.1. [10]The a element
+
+   This section is normative.
+
+   The Hypertext Module provides an element that traditionally has been
+   used in HTML to define hypertext links to other resources. Although all
+   elements may now play the role of a hyperlink (using the [11]@href
+   attribute) or hyperlink anchor (using the [12]@id attribute), this
+   element remains for explicit markup of links, though is otherwise
+   identical in semantics to the [13]span element.
+
+   This module supports the following element:
+
+   Element Attributes Content Model
+   [14]a   [15]Common ( [16]Text)*
+
+   Implementations: [17]RELAX NG, [18]XML Schema
+
+10.1. The a element
+
+   An [19]a element defines an anchor. Since hypertext attributes such as
+   [20]@href may be applied to any element, this element is not strictly
+   necessary, being equivalent to a [21]span, but has been retained to
+   allow the expression of explicit links.
+
+   Attributes
+
+   The [22]Common collection
+          A collection of other attribute collections, including:
+          [23]Bi-directional, [24]Core, [25]Edit, [26]Embedding,
+          [27]Events, [28]Forms, [29]Hypertext, [30]I18N, [31]Map,
+          [32]Metainformation, and [33]Role
+
+   Example
+<a href="http://www.w3.org/">The W3C Home Page</a>
+     __________________________________________________________________
+
+   [[34]previous] [[35]next] [[36]table of contents] [[37]elements]
+   [[38]attributes]
+
+References
+
+   1. file:///Users/johncowan/xhtml3/xhtml2/Overview.html
+   2. file:///Users/johncowan/xhtml3/xhtml2/Overview.html#toc
+   3. file:///Users/johncowan/xhtml3/xhtml2/mod-text.html
+   4. file:///Users/johncowan/xhtml3/xhtml2/mod-list.html
+   5. file:///Users/johncowan/xhtml3/xhtml2/mod-text.html
+   6. file:///Users/johncowan/xhtml3/xhtml2/mod-list.html
+   7. file:///Users/johncowan/xhtml3/xhtml2/Overview.html#toc
+   8. file:///Users/johncowan/xhtml3/xhtml2/elements.html
+   9. file:///Users/johncowan/xhtml3/xhtml2/attributes.html
+  10. file:///Users/johncowan/xhtml3/xhtml2/mod-hypertext.html#sec_10.1.
+  11. file:///Users/johncowan/xhtml3/xhtml2/mod-hyperAttributes.html#adef_hyperAttributes_href
+  12. file:///Users/johncowan/xhtml3/xhtml2/mod-core.html#adef_core_id
+  13. file:///Users/johncowan/xhtml3/xhtml2/mod-text.html#edef_text_span
+  14. file:///Users/johncowan/xhtml3/xhtml2/mod-hypertext.html#edef_hypertext_a
+  15. file:///Users/johncowan/xhtml3/xhtml2/mod-attribute-collections.html#col_Common
+  16. file:///Users/johncowan/xhtml3/xhtml2/mod-text.html#cs_Text
+  17. file:///Users/johncowan/xhtml3/xhtml2/relax_module_defs.html#a_rmodule_Hypertext
+  18. file:///Users/johncowan/xhtml3/xhtml2/schema_module_defs.html#a_smodule_Hypertext_Module
+  19. file:///Users/johncowan/xhtml3/xhtml2/mod-hypertext.html#edef_hypertext_a
+  20. file:///Users/johncowan/xhtml3/xhtml2/mod-hyperAttributes.html#adef_hyperAttributes_href
+  21. file:///Users/johncowan/xhtml3/xhtml2/mod-text.html#edef_text_span
+  22. file:///Users/johncowan/xhtml3/xhtml2/mod-attribute-collections.html#col_Common
+  23. file:///Users/johncowan/xhtml3/xhtml2/mod-bidi.html#col_Bi-directional
+  24. file:///Users/johncowan/xhtml3/xhtml2/mod-core.html#col_Core
+  25. file:///Users/johncowan/xhtml3/xhtml2/mod-edit.html#col_Edit
+  26. file:///Users/johncowan/xhtml3/xhtml2/mod-embedding.html#col_Embedding
+  27. file:///Users/johncowan/xhtml3/xhtml2/mod-xml-events.html#col_Events
+  28. file:///Users/johncowan/xhtml3/xhtml2/mod-xforms.html#col_Forms
+  29. file:///Users/johncowan/xhtml3/xhtml2/mod-hyperAttributes.html#col_Hypertext
+  30. file:///Users/johncowan/xhtml3/xhtml2/mod-i18n.html#col_I18N
+  31. file:///Users/johncowan/xhtml3/xhtml2/mod-csImgMap.html#col_Map
+  32. file:///Users/johncowan/xhtml3/xhtml2/mod-metaAttributes.html#col_Metainformation
+  33. file:///Users/johncowan/xhtml3/xhtml2/mod-roleAttribute.html#col_Role
+  34. file:///Users/johncowan/xhtml3/xhtml2/mod-text.html
+  35. file:///Users/johncowan/xhtml3/xhtml2/mod-list.html
+  36. file:///Users/johncowan/xhtml3/xhtml2/Overview.html#toc
+  37. file:///Users/johncowan/xhtml3/xhtml2/elements.html
+  38. file:///Users/johncowan/xhtml3/xhtml2/attributes.html

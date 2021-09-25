@@ -1,0 +1,76 @@
+   #[1]start [2]contents [3]prev [4]next
+
+   [[5]previous] [[6]next] [[7]table of contents] [[8]elements]
+   [[9]attributes]
+     __________________________________________________________________
+
+                        29. XHTML Style Attribute Module
+
+   Contents
+     * 29.1. [10]Style Attribute Collection
+
+   This section is normative.
+
+   The Style Attribute Module defines the style attribute.
+
+   Note: use of the [11]@style attribute is strongly discouraged in favor
+   of the [12]style element and external style sheets. In addition,
+   content developers are advised to avoid use of the [13]@style attribute
+   on content intended for use on small devices, since those devices may
+   not support the use of in-line styles.
+
+29.1. Style Attribute Collection
+
+   style = [14]CDATA
+          This attribute specifies style information for the current
+          element.
+
+          The syntax of the value of the [15]@style attribute is
+          determined by the default style sheet language.
+
+          This CSS example sets color and font size information for the
+          text in a specific paragraph.
+
+          Example
+
+<p style="font-size: 12pt; color: fuchsia">
+   Aren't style sheets wonderful?</p>
+
+          In CSS, property declarations have the form "name : value" and
+          are separated by a semi-colon.
+
+          To specify style information for more than one element, authors
+          should use the [16]style element. For optimal flexibility,
+          authors should define styles in external style sheets.
+
+   Implementations: [17]RELAX NG, [18]XML Schema
+     __________________________________________________________________
+
+   [[19]previous] [[20]next] [[21]table of contents] [[22]elements]
+   [[23]attributes]
+
+References
+
+   1. file:///Users/johncowan/xhtml3/xhtml2/Overview.html
+   2. file:///Users/johncowan/xhtml3/xhtml2/Overview.html#toc
+   3. file:///Users/johncowan/xhtml3/xhtml2/mod-styleSheet.html
+   4. file:///Users/johncowan/xhtml3/xhtml2/mod-tables.html
+   5. file:///Users/johncowan/xhtml3/xhtml2/mod-styleSheet.html
+   6. file:///Users/johncowan/xhtml3/xhtml2/mod-tables.html
+   7. file:///Users/johncowan/xhtml3/xhtml2/Overview.html#toc
+   8. file:///Users/johncowan/xhtml3/xhtml2/elements.html
+   9. file:///Users/johncowan/xhtml3/xhtml2/attributes.html
+  10. file:///Users/johncowan/xhtml3/xhtml2/mod-styleAttribute.html#col_Style
+  11. file:///Users/johncowan/xhtml3/xhtml2/mod-styleAttribute.html#adef_styleAttribute_style
+  12. file:///Users/johncowan/xhtml3/xhtml2/mod-styleSheet.html#edef_styleSheet_style
+  13. file:///Users/johncowan/xhtml3/xhtml2/mod-styleAttribute.html#adef_styleAttribute_style
+  14. file:///Users/johncowan/xhtml3/xhtml2/abstraction.html#dt_CDATA
+  15. file:///Users/johncowan/xhtml3/xhtml2/mod-styleAttribute.html#adef_styleAttribute_style
+  16. file:///Users/johncowan/xhtml3/xhtml2/mod-styleSheet.html#edef_styleSheet_style
+  17. file:///Users/johncowan/xhtml3/xhtml2/relax_module_defs.html#a_rmodule_Style_Attribute
+  18. file:///Users/johncowan/xhtml3/xhtml2/schema_module_defs.html#a_smodule_Style_Attribute_Module
+  19. file:///Users/johncowan/xhtml3/xhtml2/mod-styleSheet.html
+  20. file:///Users/johncowan/xhtml3/xhtml2/mod-tables.html
+  21. file:///Users/johncowan/xhtml3/xhtml2/Overview.html#toc
+  22. file:///Users/johncowan/xhtml3/xhtml2/elements.html
+  23. file:///Users/johncowan/xhtml3/xhtml2/attributes.html

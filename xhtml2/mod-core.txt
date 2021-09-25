@@ -1,0 +1,168 @@
+   #[1]start [2]contents [3]prev [4]next
+
+   [[5]previous] [[6]next] [[7]table of contents] [[8]elements]
+   [[9]attributes]
+     __________________________________________________________________
+
+                        12. XHTML Core Attributes Module
+
+   Contents
+     * 12.1. [10]Core Attribute Collection
+
+   This section is normative.
+
+   This module defines the [11]Core attribute collection.
+
+               Attribute              Notes
+   [12]@class ([13]NMTOKENS)
+   [14]@id ([15]ID)
+   [16]@xml:id ([17]ID)
+   [18]@layout (irrelevant*|relevant)
+   [19]@title ([20]Text)
+
+12.1. Core Attribute Collection
+
+   class = [21]NMTOKENS
+          This attribute assigns one or more class names to an element;
+          the element may be said to belong to these classes. A class name
+          may be shared by several element instances.
+
+          The [22]@class attribute can be used for different purposes in
+          XHTML, for instance as a [23]style sheet selector (when an
+          author wishes to assign style information to a set of elements),
+          and for general purpose processing by user agents.
+
+          For instance in the following example, the [24]p element is used
+          in conjunction with the [25]@class attribute to identify a
+          particular type of paragraph.
+
+          Example
+
+<p class="note">
+These programs are only available if you have purchased
+the advanced professional suite.
+</p>
+
+          Style sheet rules can then be used to render the paragraph
+          appropriately, for instance by putting a border around it,
+          giving it a different background color, or where necessary by
+          not displaying it at all.
+
+          It is good style to use names that represent the purpose of the
+          element rather than the visual presentation to be used. For
+          instance don't use class="red", but rather class="urgent", or
+          similar.
+
+   id = [26]ID
+          The [27]@id attribute assigns an identifier to an element. The
+          value of this attribute must be unique within a document. This
+          attribute MUST NOT be specified on an element in conjunction
+          with the [28]@xml:id attribute.
+
+          The [29]@id attribute has several roles in XHTML:
+
+          + As a [30]style sheet selector.
+          + As a target [31]anchor for hypertext links.
+          + As the name of a declared [32]object element.
+          + For general purpose processing by user agents (e.g. for
+            identifying fields when extracting data from XHTML pages into
+            a database, translating XHTML documents into other formats,
+            etc.).
+
+          As an example, the following headings are distinguished by their
+          [33]@id values:
+
+          Example
+
+<h id="introduction">Introduction</h>
+<p>...</p>
+<h id="events">The Events Module</h>
+<p>...</p>
+
+   xml:id = [34]ID
+          The [35]@xml:id attribute assigns an identifier to an element.
+          The value of this attribute must be unique within a document.
+          This attribute MUST NOT be specified on an element in
+          conjunction with the [36]@id attribute.
+
+   layout = irrelevant*|relevant
+          This attribute allows authors to indicate whether the whitespace
+          within an element is relevant to the meaning of the content or
+          not; for instance, visual user agents could display the
+          whitespace. The default is that it is irrelevant. Some elements,
+          notably [37]pre override this default. See [38]whitespace
+          handling in the section on [39]XHTML Family User Agent
+          Conformance for more information.
+
+          Example
+
+<p class="poem" layout="relevant">
+(with wee ears and see?
+tail frisks)
+              (gonE)
+</p>
+
+   title = [40]Text
+          This attribute defines meta-information about the element on
+          which it is set.
+
+          Example
+
+<a href="Jakob.html" title="Author biography">Jakob Nielsen</a>'s
+Alertbox for January 11, 1998
+
+   Implementation: [41]RELAX NG, [42]XML Schema
+     __________________________________________________________________
+
+   [[43]previous] [[44]next] [[45]table of contents] [[46]elements]
+   [[47]attributes]
+
+References
+
+   1. file:///Users/johncowan/xhtml3/xhtml2/Overview.html
+   2. file:///Users/johncowan/xhtml3/xhtml2/Overview.html#toc
+   3. file:///Users/johncowan/xhtml3/xhtml2/mod-list.html
+   4. file:///Users/johncowan/xhtml3/xhtml2/mod-hyperAttributes.html
+   5. file:///Users/johncowan/xhtml3/xhtml2/mod-list.html
+   6. file:///Users/johncowan/xhtml3/xhtml2/mod-hyperAttributes.html
+   7. file:///Users/johncowan/xhtml3/xhtml2/Overview.html#toc
+   8. file:///Users/johncowan/xhtml3/xhtml2/elements.html
+   9. file:///Users/johncowan/xhtml3/xhtml2/attributes.html
+  10. file:///Users/johncowan/xhtml3/xhtml2/mod-core.html#sec_12.1.
+  11. file:///Users/johncowan/xhtml3/xhtml2/mod-core.html#col_Core
+  12. file:///Users/johncowan/xhtml3/xhtml2/mod-core.html#adef_core_class
+  13. file:///Users/johncowan/xhtml3/xhtml2/abstraction.html#dt_NMTOKENS
+  14. file:///Users/johncowan/xhtml3/xhtml2/mod-core.html#adef_core_id
+  15. file:///Users/johncowan/xhtml3/xhtml2/abstraction.html#dt_ID
+  16. file:///Users/johncowan/xhtml3/xhtml2/mod-core.html#adef_core_xml:id
+  17. file:///Users/johncowan/xhtml3/xhtml2/abstraction.html#dt_ID
+  18. file:///Users/johncowan/xhtml3/xhtml2/mod-core.html#adef_core_layout
+  19. file:///Users/johncowan/xhtml3/xhtml2/mod-core.html#adef_core_title
+  20. file:///Users/johncowan/xhtml3/xhtml2/abstraction.html#dt_Text
+  21. file:///Users/johncowan/xhtml3/xhtml2/abstraction.html#dt_NMTOKENS
+  22. file:///Users/johncowan/xhtml3/xhtml2/mod-core.html#adef_core_class
+  23. file:///Users/johncowan/xhtml3/xhtml2/mod-styleSheet.html#s_styleSheetmodule
+  24. file:///Users/johncowan/xhtml3/xhtml2/mod-structural.html#edef_structural_p
+  25. file:///Users/johncowan/xhtml3/xhtml2/mod-core.html#adef_core_class
+  26. file:///Users/johncowan/xhtml3/xhtml2/abstraction.html#dt_ID
+  27. file:///Users/johncowan/xhtml3/xhtml2/mod-core.html#adef_core_id
+  28. file:///Users/johncowan/xhtml3/xhtml2/mod-core.html#adef_core_xml:id
+  29. file:///Users/johncowan/xhtml3/xhtml2/mod-core.html#adef_core_id
+  30. file:///Users/johncowan/xhtml3/xhtml2/mod-styleSheet.html#s_styleSheetmodule
+  31. file:///Users/johncowan/xhtml3/xhtml2/mod-hypertext.html#edef_hypertext_a
+  32. file:///Users/johncowan/xhtml3/xhtml2/mod-object.html#edef_object_object
+  33. file:///Users/johncowan/xhtml3/xhtml2/mod-core.html#adef_core_id
+  34. file:///Users/johncowan/xhtml3/xhtml2/abstraction.html#dt_ID
+  35. file:///Users/johncowan/xhtml3/xhtml2/mod-core.html#adef_core_xml:id
+  36. file:///Users/johncowan/xhtml3/xhtml2/mod-core.html#adef_core_id
+  37. file:///Users/johncowan/xhtml3/xhtml2/mod-structural.html#edef_structural_pre
+  38. file:///Users/johncowan/xhtml3/xhtml2/conformance.html#conf_whitespace
+  39. file:///Users/johncowan/xhtml3/xhtml2/conformance.html#s_conform_user_agent
+  40. file:///Users/johncowan/xhtml3/xhtml2/abstraction.html#dt_Text
+  41. file:///Users/johncowan/xhtml3/xhtml2/relax_module_defs.html#a_rmodule_Core_Attributes
+  42. file:///Users/johncowan/xhtml3/xhtml2/schema_module_defs.html#a_smodule_Core_Attributes_Module
+  43. file:///Users/johncowan/xhtml3/xhtml2/mod-list.html
+  44. file:///Users/johncowan/xhtml3/xhtml2/mod-hyperAttributes.html
+  45. file:///Users/johncowan/xhtml3/xhtml2/Overview.html#toc
+  46. file:///Users/johncowan/xhtml3/xhtml2/elements.html
+  47. file:///Users/johncowan/xhtml3/xhtml2/attributes.html

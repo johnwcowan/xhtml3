@@ -1,0 +1,91 @@
+   #[1]start [2]contents [3]prev [4]next
+
+   [[5]previous] [[6]next] [[7]table of contents] [[8]elements]
+   [[9]attributes]
+     __________________________________________________________________
+
+                            17. XHTML Caption Module
+
+   Contents
+     * 17.1. [10]The caption element
+
+   This section is normative.
+
+   The Caption Module defines an element to be used when annotating a
+   description for certain elements. The element and attributes defined by
+   this module are:
+
+    Elements   Attributes Content Model
+   [11]caption [12]Common ( [13]Text)*
+
+   Implementations: [14]RELAX NG, [15]XML Schema
+
+17.1. The caption element
+
+   Attributes
+
+   The [16]Common collection
+          A collection of other attribute collections, including:
+          [17]Bi-directional, [18]Core, [19]Edit, [20]Embedding,
+          [21]Events, [22]Forms, [23]Hypertext, [24]I18N, [25]Map,
+          [26]Metainformation, and [27]Role
+
+   When present, the [28]caption element"s text should describe the nature
+   of the table, list or object. The [29]caption element is only permitted
+   immediately after the [30]table start tag, the [31]ol start tag or the
+   [32]object start tag. A [33]table, [34]ol or [35]object element may
+   only contain one [36]caption element.
+
+   For tables, visual user agents allow sighted people to quickly grasp
+   the structure of the table from the headings as well as the caption. A
+   consequence of this is that captions will often be inadequate as a
+   summary of the purpose and structure of the table from the perspective
+   of people relying on non-visual user agents.
+     __________________________________________________________________
+
+   [[37]previous] [[38]next] [[39]table of contents] [[40]elements]
+   [[41]attributes]
+
+References
+
+   1. file:///Users/johncowan/xhtml3/xhtml2/Overview.html
+   2. file:///Users/johncowan/xhtml3/xhtml2/Overview.html#toc
+   3. file:///Users/johncowan/xhtml3/xhtml2/mod-bidi.html
+   4. file:///Users/johncowan/xhtml3/xhtml2/mod-edit.html
+   5. file:///Users/johncowan/xhtml3/xhtml2/mod-bidi.html
+   6. file:///Users/johncowan/xhtml3/xhtml2/mod-edit.html
+   7. file:///Users/johncowan/xhtml3/xhtml2/Overview.html#toc
+   8. file:///Users/johncowan/xhtml3/xhtml2/elements.html
+   9. file:///Users/johncowan/xhtml3/xhtml2/attributes.html
+  10. file:///Users/johncowan/xhtml3/xhtml2/mod-caption.html#sec_17.1.
+  11. file:///Users/johncowan/xhtml3/xhtml2/mod-caption.html#edef_caption_caption
+  12. file:///Users/johncowan/xhtml3/xhtml2/mod-attribute-collections.html#col_Common
+  13. file:///Users/johncowan/xhtml3/xhtml2/mod-text.html#cs_Text
+  14. file:///Users/johncowan/xhtml3/xhtml2/relax_module_defs.html#a_rmodule_Caption
+  15. file:///Users/johncowan/xhtml3/xhtml2/schema_module_defs.html#a_smodule_Caption_Module
+  16. file:///Users/johncowan/xhtml3/xhtml2/mod-attribute-collections.html#col_Common
+  17. file:///Users/johncowan/xhtml3/xhtml2/mod-bidi.html#col_Bi-directional
+  18. file:///Users/johncowan/xhtml3/xhtml2/mod-core.html#col_Core
+  19. file:///Users/johncowan/xhtml3/xhtml2/mod-edit.html#col_Edit
+  20. file:///Users/johncowan/xhtml3/xhtml2/mod-embedding.html#col_Embedding
+  21. file:///Users/johncowan/xhtml3/xhtml2/mod-xml-events.html#col_Events
+  22. file:///Users/johncowan/xhtml3/xhtml2/mod-xforms.html#col_Forms
+  23. file:///Users/johncowan/xhtml3/xhtml2/mod-hyperAttributes.html#col_Hypertext
+  24. file:///Users/johncowan/xhtml3/xhtml2/mod-i18n.html#col_I18N
+  25. file:///Users/johncowan/xhtml3/xhtml2/mod-csImgMap.html#col_Map
+  26. file:///Users/johncowan/xhtml3/xhtml2/mod-metaAttributes.html#col_Metainformation
+  27. file:///Users/johncowan/xhtml3/xhtml2/mod-roleAttribute.html#col_Role
+  28. file:///Users/johncowan/xhtml3/xhtml2/mod-caption.html#edef_caption_caption
+  29. file:///Users/johncowan/xhtml3/xhtml2/mod-caption.html#edef_caption_caption
+  30. file:///Users/johncowan/xhtml3/xhtml2/mod-tables.html#edef_tables_table
+  31. file:///Users/johncowan/xhtml3/xhtml2/mod-list.html#edef_list_ol
+  32. file:///Users/johncowan/xhtml3/xhtml2/mod-object.html#edef_object_object
+  33. file:///Users/johncowan/xhtml3/xhtml2/mod-tables.html#edef_tables_table
+  34. file:///Users/johncowan/xhtml3/xhtml2/mod-list.html#edef_list_ol
+  35. file:///Users/johncowan/xhtml3/xhtml2/mod-object.html#edef_object_object
+  36. file:///Users/johncowan/xhtml3/xhtml2/mod-caption.html#edef_caption_caption
+  37. file:///Users/johncowan/xhtml3/xhtml2/mod-bidi.html
+  38. file:///Users/johncowan/xhtml3/xhtml2/mod-edit.html
+  39. file:///Users/johncowan/xhtml3/xhtml2/Overview.html#toc
+  40. file:///Users/johncowan/xhtml3/xhtml2/elements.html
+  41. file:///Users/johncowan/xhtml3/xhtml2/attributes.html

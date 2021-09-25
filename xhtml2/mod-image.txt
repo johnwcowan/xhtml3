@@ -1,0 +1,87 @@
+   #[1]start [2]contents [3]prev [4]next
+
+   [[5]previous] [[6]next] [[7]table of contents] [[8]elements]
+   [[9]attributes]
+     __________________________________________________________________
+
+                             20. XHTML Image Module
+
+   Contents
+     * 20.1. [10]The img element
+
+   This section is normative.
+
+   The Image Module provides basic image embedding, and may be used in
+   some implementations independently of client side image maps. The Image
+   Module supports the following element and attributes:
+
+   Elements Attributes       Content Model
+   img      [11]Common ( [12]caption | [13]Text)*
+
+   Implementations: [14]RELAX NG, [15]XML Schema
+
+20.1. The img element
+
+   Attributes
+
+   The [16]Common collection
+          A collection of other attribute collections, including:
+          [17]Bi-directional, [18]Core, [19]Edit, [20]Embedding,
+          [21]Events, [22]Forms, [23]Hypertext, [24]I18N, [25]Map,
+          [26]Metainformation, and [27]Role
+
+   The [28]img element is a holder for embedding attributes such as
+   [29]@src. Since these attributes may be applied to any element, the
+   [30]img element is not strictly necessary, but is included to ease the
+   transition to XHTML2. Like the [31]object element, this element's
+   content is only presented if the referenced resource is unavailable.
+
+   In the following example, the W3C logo would be presented if it were
+   available. If it were unavailable, then the enclosed text would be
+   presented.
+
+   Example
+<img alt="W3C Logo" src="W3C.png">W3C</img>
+     __________________________________________________________________
+
+   [[32]previous] [[33]next] [[34]table of contents] [[35]elements]
+   [[36]attributes]
+
+References
+
+   1. file:///Users/johncowan/xhtml3/xhtml2/Overview.html
+   2. file:///Users/johncowan/xhtml3/xhtml2/Overview.html#toc
+   3. file:///Users/johncowan/xhtml3/xhtml2/mod-embedding.html
+   4. file:///Users/johncowan/xhtml3/xhtml2/mod-csImgMap.html
+   5. file:///Users/johncowan/xhtml3/xhtml2/mod-embedding.html
+   6. file:///Users/johncowan/xhtml3/xhtml2/mod-csImgMap.html
+   7. file:///Users/johncowan/xhtml3/xhtml2/Overview.html#toc
+   8. file:///Users/johncowan/xhtml3/xhtml2/elements.html
+   9. file:///Users/johncowan/xhtml3/xhtml2/attributes.html
+  10. file:///Users/johncowan/xhtml3/xhtml2/mod-image.html#sec_20.1.
+  11. file:///Users/johncowan/xhtml3/xhtml2/mod-attribute-collections.html#col_Common
+  12. file:///Users/johncowan/xhtml3/xhtml2/mod-caption.html#edef_caption_caption
+  13. file:///Users/johncowan/xhtml3/xhtml2/mod-text.html#cs_Text
+  14. file:///Users/johncowan/xhtml3/xhtml2/relax_module_defs.html#a_rmodule_Image
+  15. file:///Users/johncowan/xhtml3/xhtml2/schema_module_defs.html#a_smodule_Image_Module
+  16. file:///Users/johncowan/xhtml3/xhtml2/mod-attribute-collections.html#col_Common
+  17. file:///Users/johncowan/xhtml3/xhtml2/mod-bidi.html#col_Bi-directional
+  18. file:///Users/johncowan/xhtml3/xhtml2/mod-core.html#col_Core
+  19. file:///Users/johncowan/xhtml3/xhtml2/mod-edit.html#col_Edit
+  20. file:///Users/johncowan/xhtml3/xhtml2/mod-embedding.html#col_Embedding
+  21. file:///Users/johncowan/xhtml3/xhtml2/mod-xml-events.html#col_Events
+  22. file:///Users/johncowan/xhtml3/xhtml2/mod-xforms.html#col_Forms
+  23. file:///Users/johncowan/xhtml3/xhtml2/mod-hyperAttributes.html#col_Hypertext
+  24. file:///Users/johncowan/xhtml3/xhtml2/mod-i18n.html#col_I18N
+  25. file:///Users/johncowan/xhtml3/xhtml2/mod-csImgMap.html#col_Map
+  26. file:///Users/johncowan/xhtml3/xhtml2/mod-metaAttributes.html#col_Metainformation
+  27. file:///Users/johncowan/xhtml3/xhtml2/mod-roleAttribute.html#col_Role
+  28. file:///Users/johncowan/xhtml3/xhtml2/mod-image.html#edef_image_img
+  29. file:///Users/johncowan/xhtml3/xhtml2/mod-embedding.html#adef_embedding_src
+  30. file:///Users/johncowan/xhtml3/xhtml2/mod-image.html#edef_image_img
+  31. file:///Users/johncowan/xhtml3/xhtml2/mod-object.html#edef_object_object
+  32. file:///Users/johncowan/xhtml3/xhtml2/mod-embedding.html
+  33. file:///Users/johncowan/xhtml3/xhtml2/mod-csImgMap.html
+  34. file:///Users/johncowan/xhtml3/xhtml2/Overview.html#toc
+  35. file:///Users/johncowan/xhtml3/xhtml2/elements.html
+  36. file:///Users/johncowan/xhtml3/xhtml2/attributes.html

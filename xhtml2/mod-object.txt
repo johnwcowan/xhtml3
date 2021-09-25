@@ -1,0 +1,665 @@
+   #[1]start [2]contents [3]prev [4]next
+
+   [[5]previous] [[6]next] [[7]table of contents] [[8]elements]
+   [[9]attributes]
+     __________________________________________________________________
+
+                            25. XHTML Object Module
+
+   Contents
+     * 25.1. [10]The object element
+          + 25.1.1. [11]Defining terminology
+          + 25.1.2. [12]Basic Information for Object Handlers
+          + 25.1.3. [13]Rules for processing objects
+     * 25.2. [14]The param element
+          + 25.2.1. [15]Referencing object data
+          + 25.2.2. [16]Object element declarations and instantiations
+     * 25.3. [17]The standby element
+
+   This section is normative.
+
+   The Object Module provides elements for general-purpose object
+   inclusion; this includes images and other media, as well as executable
+   content. Specifically, the Object Module supports:
+
+   Elements Attributes Content Model
+   object [18]Common, [19]@archive ([20]URIs), [21]@content-length
+   ([22]Number), [23]@declare ("declare") ( [24]caption?, [25]title?,
+   [26]standby?, [27]param*, ( [28]Flow)*)
+   param [29]@id ([30]ID), [31]@name* ([32]CDATA), [33]@value ([34]CDATA),
+   [35]@valuetype ("data"* | "ref" | "object"), [36]@paramtype
+   ([37]ContentType) EMPTY
+   standby [38]Common ( [39]Text)*
+
+   Implementations: [40]RELAX NG, [41]XML Schema
+
+25.1. The object element
+
+   Attributes
+
+   The [42]Common collection
+          A collection of other attribute collections, including:
+          [43]Bi-directional, [44]Core, [45]Edit, [46]Embedding,
+          [47]Events, [48]Forms, [49]Hypertext, [50]I18N, [51]Map,
+          [52]Metainformation, and [53]Role
+
+   archive = [54]URIs
+          This attribute may be used to specify a space-separated list of
+          URIs for archives containing resources relevant to the object,
+          which may include the resources specified by the [55]@src
+          attribute.
+
+   content-length = [56]Number
+          This attribute is to be used as a hint by the object handler.
+          The author may provide the object handler with the physical size
+          of the object data that is to be processed. A valid value is the
+          same as defined in section 14.13 of [[57]RFC2616].
+
+   declare = "declare"
+          When present, this boolean attribute makes the current element a
+          declaration only - one that is to be executed only after the
+          document has completed loading and has been called through a
+          user event.
+
+  25.1.1. Defining terminology
+
+   The following terms are used throughout this section.
+
+   object src (source)
+          The file that is to be processed, such as an audio file, or
+          image file. The actual content to be processed.
+
+   object handler
+          The mechanism that will be used to process the object data. The
+          mechanism could be the user agent or an external application.
+
+   object element
+          This refers to the actual XHTML coding, including the allowable
+          attributes.
+
+   instantiation
+          Refers to the plug-in handler, and the need to create a window,
+          modify the user interface, allocate memory, etc.
+
+  25.1.2. Basic Information for Object Handlers
+
+   Most user agents have built-in mechanisms for processing common data
+   types such as text, and various image types. In some instances the user
+   agent may pass the processing to an external application. Generally, a
+   user agent will attempt to process the object declaration, otherwise it
+   may invoke an external application, which are normally referred to as
+   "plug-ins".
+
+   In the most general case, an author should specify three types of
+   information:
+     * The location of the object data (the src attribute). The author
+       must direct the object handler to the actual physical location of
+       the object data, otherwise the object handler will not be able to
+       process the request.
+     * The media type associated with the object data (the type
+       attribute). For instance, if the author prefers that a particular
+       object handler be used to process the data, they may specify a
+       media type that is associated to a specific object handler.
+     * Additional values required for the appropriate processing of the
+       object data by the object handler at run-time (via the param
+       element). Some instances may process more appropriately if the
+       object handler is passed initial process instructions. For example,
+       the author can specify whether a video should automatically start
+       or wait until the entire data file has been downloaded.
+
+   The [58]object element allows authors to specify all three types of
+   information, but authors may not have to specify all three at once. For
+   example, some object element instances may not require src (e.g., a
+   self-contained applet that performs a small animation). Others may not
+   require media type information, i.e., the user agent itself may already
+   know how to process that type of data. Still others may not require
+   run-time initialization.
+
+   The [59]object element may also appear in the content of the [60]head
+   element. Since user agents generally do not render elements in the
+   [61]head, authors should ensure that any [62]object element in the
+   [63]head does not specify content that is expected to be made available
+   to the user.
+
+  25.1.3. Rules for processing objects
+
+   A user agent must interpret an [64]object element according to the
+   following precedence rules:
+    1. The user agent MUST first try to process the object element. It
+       should not process the embedded contents, but it must examine them
+       for definitions of [65]param elements (see object initialization)
+       or elements that take advantage of the [66]Map attribute
+       collection.
+    2. If the user agent is not able to process the object for whatever
+       reason (configured not to, lack of resources, wrong architecture,
+       etc.), it MUST try to process its contents.
+
+   When a user agent is able to successfully process an object element it
+   MUST not attempt to process inner elements.
+
+   If a user agent cannot process an object element or a set of nested
+   objects, and the author did not provide alternate text, the user agent
+   SHOULD NOT supply any additional information. It is the responsibility
+   of the author to supply additional or alternate information. It may be
+   the intent of the author to not provide additional information if the
+   object cannot be processed.
+
+   The user agent SHOULD attempt to process the outer object to its
+   fullest extent before cascading to a nested object. For example, if the
+   author provided information that could be used to download an external
+   application to be used to process the object, then the user agent
+   SHOULD attempt to download and install the application. If the user
+   selects to not install the application, the user agent SHOULD continue
+   to process the nested object or objects, if they exist.
+
+   The following example shows a minimally coded [67]object element. The
+   [68]@src attribute specifies the location of the object data:
+
+   Example
+<object src="http://www.example.com/foo.mp3">
+    <em>alternate text</em>
+</object>
+
+   The following example shows an [69]object element coded to process an
+   image. The [70]@src attribute specifies the location of the object
+   data, in this case the image to be processed, and the [71]@srctype
+   attribute specifies the media type associated with the object data:
+
+   Example
+<object src="http://www.example.com/foo.jpg" srctype="image/jpeg">
+   <em>alternate text</em>
+</object>
+
+   The following example shows how an applet element can be converted to
+   an [72]object element. The codebase attribute is replaced with the
+   xml:base attribute. The code attribute is replaced with the [73]@src
+   attribute. The width and the height of the applet are defined using
+   CSS. The [74]param elements are not modified since the values within
+   the [75]param elements are passed directly to the external application.
+   If a particular version reference is required, that would be appended
+   to the content of the type attribute. For example,
+   type="application/x-java-applet;version=1.4.1"
+
+   If the archive attribute is used, the object handler should process the
+   search order by interpreting the archive attribute value first and then
+   the xml:base attribute value.
+
+   Example
+<applet
+  codebase="http://www.example.com/applets/classes"
+  code="Clock.class"
+  width="150"
+  height="150">
+    <param name="bgcolor" value="ffffff"/>
+    <param name="border" value="5"/>
+    <param name="ccolor" value="dddddd"/>
+    <param name="cfont" value="TimesRoman|BOLD|18"/>
+    <param name="delay" value="100"/>
+    <param name="hhcolor" value="0000ff"/>
+    <param name="link" value="http://www.example.com/"/>
+    <param name="mhcolor" value="00ff00"/>
+    <param name="ncolor" value="000000"/>
+    <param name="nradius" value="80"/>
+    <param name="shcolor" value="ff0000"/>
+</applet>
+
+   Example
+<style type="text/css">
+#obj1 {width:150px; height:150px;}
+</style>
+...
+<object id="obj1"
+  xml:base="http://www.example.com/applets/classes"
+  srctype="application/x-java-applet"
+  src="Clock.class">
+    <param  name="delay"   value="100"/>
+    <param  name="link"    value="http://www.example.com/"/>
+    <param  name="border"  value="5"/>
+    <param  name="nradius" value="80"/>
+    <param  name="cfont"   value="TimesRoman|BOLD|18"/>
+    <param  name="bgcolor" value="ddddff"/>
+    <param  name="shcolor" value="ff0000"/>
+    <param  name="mhcolor" value="00ff00"/>
+    <param  name="hhcolor" value="0000ff"/>
+    <param  name="ccolor"  value="dddddd"/>
+    <param  name="ncolor"  value="000000"/>
+    <em>alternate text</em>
+</object>
+
+   Authors should always include alternate text as the content of the
+   [76]object element declaration when an embedded object is not defined.
+
+   The following example demonstrates how alternate text may be used
+   within an [77]object element.
+
+   Example
+<object src="http://www.example.com/foo.mp3" srctype="audio/mpeg">
+   A really cool audio file. If you want to download and install
+   a plug-in to listen to this file, please go to
+   <a href="http://www.example.com">www.example.com</a>
+</object>
+
+   In the following example, we embed several [78]object element
+   declarations to illustrate how alternate processing works. In the
+   following order: (1) an Earth applet, (2) an animation of the Earth,
+   (3) an image of the Earth, (4) alternate text.
+
+   Example
+<!-- First, try the applet -->
+<object
+    src="http://www.example.com/applets/classes/TheEarth.class"
+    srctype="application/x-java-applet">
+      <!-- Else, try the video -->
+      <object
+          src="TheEarth.mpeg"
+          srctype="video/mpeg"
+          xml:base="http://www.example.com/videos/">
+            <!-- Else, try the image -->
+            <object
+                src="TheEarth.png"
+                srctype="image/png"
+                xml:base="http://www.example.com/images/">
+                <!-- Else process the alternate text -->
+                The <strong>Earth</strong> as seen from space.
+            </object>
+      </object>
+</object>
+
+   The outermost [79]object element declaration specifies an applet that
+   requires no initial values, the [80]@src attribute points to the applet
+   class file, and the [81]@srctype attribute defines the media type. An
+   [82]@xml:base attribute could have been used to point to the base
+   location to access the class file. In this example, however, the
+   [83]@src attribute value contains an absolute URL so the [84]@xml:base
+   attribute was not required. An [85]@archive attribute could have been
+   used if the author needed to include any associated files. The second
+   [86]object element declaration specifies an MPEG animation, and the
+   [87]@xml:base attribute defines the location of the object data defined
+   in the [88]@src attribute. We also set the [89]@srctype attribute so
+   that a user agent can determine if it has the capability to process the
+   object data or to invoke an external application to process the MPEG.
+   The third object element declaration specifies a PNG file and furnishes
+   alternate text in case all other mechanisms fail.
+
+   Inline vs. external data. Data to be processed may be supplied in two
+   ways: inline and from an external resource. While the former method
+   will generally lead to faster processing, it is not convenient when
+   processing large quantities of data.
+
+25.2. The param element
+
+   Attributes
+
+   name = [90]CDATA
+          This attribute defines the name of a run-time parameter, assumed
+          to be known by the object handler. Whether the property name is
+          case-sensitive depends on the specific object handler
+          implementation.
+
+   value = [91]CDATA
+          This attribute specifies the value of a run-time parameter
+          specified by [92]@name. Property values have no meaning to
+          XHTML; their meaning is determined by the object in question.
+
+   valuetype = data|ref|object
+          This attribute specifies the type of the value attribute.
+
+          Possible values:
+
+          + data: This is the default value for the attribute. It means
+            that the value specified by [93]@value will be evaluated and
+            passed to the object's implementation as a string.
+          + ref: The value specified by [94]@value is a URI that
+            designates a resource where run-time values are stored. This
+            allows support tools to identify URIs given as parameters. The
+            URI must be passed to the object as is, i.e., unresolved.
+          + object: The value specified by [95]@value is an identifier
+            that refers to an [96]object declaration in the same document.
+            The identifier must be the value of the [97]@id attribute set
+            for the declared [98]object element.
+
+   type = [99]ContentType
+          This attribute specifies the content type of the resource
+          designated by the [100]@value attribute only in the case where
+          [101]@valuetype is set to "ref". This attribute thus specifies
+          for the user agent, the type of values that will be found at the
+          URI designated by value.
+
+   [102]param elements specify a set of values that may be required to
+   process the object data by an object handler at run-time. Any number of
+   [103]param elements may appear in the content of an [104]object
+   element, in any order, but must be placed at the start of the content
+   of the enclosing [105]object element, with the exception of optional
+   [106]caption and [107]standby elements.
+
+   The syntax of names and values is assumed to be understood by the user
+   agent or the external application that will process the object data.
+   This document does not specify how object handlers should retrieve
+   name/value pairs nor how they should interpret parameter names that
+   appear twice.
+
+   The user agent or the external application can utilize the [108]param
+   element name/value pairs to pass unique datapoints to trigger specific
+   functions or actions. For example, the user agent may wish to trigger
+   an external application download if the user does not have an
+   appropriate application installed on their system.
+
+   We return to the clock example to illustrate the use of the [109]param
+   element. For example, suppose that the applet is able to handle two
+   run-time parameters that define its initial height and width. We can
+   set the initial dimensions to 40x40 pixels with two [110]param
+   elements.
+
+   Example
+<object
+    src="http://www.example.com/myclock.class"
+    srctype="application/x-java-applet">
+        <param name="height" value="40" valuetype="data" />
+        <param name="width" value="40" valuetype="data" />
+        This user agent cannot process a java applet.
+</object>
+
+   In the following example, run-time data for the object's "Init_values"
+   parameter is specified as an external resource (a GIF file). The value
+   of the [111]@valuetype attribute is thus set to "ref" and the
+   [112]@value is a URI designating the resource.
+
+   Example
+<object
+    src="http://www.example.com/gifappli"
+    srctype="image/gif">
+        <standby>Loading Elvis...</standby>
+        <param name="Init_values"
+            value="./images/elvis.gif"
+            valuetype="ref" />
+        Elvis lives!
+</object>
+
+   Note that we have also set the [113]standby element so that the object
+   handler may display a message while the object data is downloading.
+
+   When an [114]object element is processed, the user agent must search
+   the content for only those [115]param elements that are direct children
+   and "feed" them to the object handler.
+
+   Thus, in the following example, if "obj1" is processed, then the
+   name/value content of "param1" applies to "obj1" (and not "obj2"). If
+   "obj1" is not processed and "obj2" is, "param1" is ignored, and the
+   name/value content of "param2" applies to "obj2". If neither
+   [116]object element is processed, neither [117]param name/value content
+   applies.
+
+   Example
+<object
+    src="obj1"
+    srctype="application/x-something">
+    <param name="param1" value="value1" />
+    <object
+        src="obj2"
+        srctype="application/x-something">
+        <param name="param2" value="value2" />
+        This user agent cannot process this application.
+    </object>
+</object>
+
+  25.2.1. Referencing object data
+
+   The location of an object's data is given by a URI. The URI may be
+   either an absolute URI or a relative URI. If the URI is relative, it
+   may be based from the referring document location or from the
+   [118]@xml:base attribute location.
+
+   In the following example, we insert a video clip into an XHTML
+   document.
+
+   Example
+<object
+    src="mymovie.mpg"
+    srctype="video/mpeg">
+    A film showing how to open the printer to replace the cartridge.
+</object>
+
+   By setting the [119]@srctype attribute, a user agent can determine
+   whether to retrieve the external application based on its ability to do
+   so. The location of the object data is relative to the referencing
+   document, in this example the object data would need to exist within
+   the same directory.
+
+   The following example specifies a base location via the [120]@xml:base
+   attribute. The [121]@src attribute defines the data to process.
+
+   Example
+<object
+    xml:base="http://www.example.com/"
+    src="mymovie.mpg"
+    srctype="video/mpeg">
+    This user agent cannot process this movie.
+</object>
+
+  25.2.2. Object element declarations and instantiations
+
+   The following example is for illustrative purposes only. When a
+   document is designed to contain more than one instance of the same
+   object data, it is possible to separate the declaration of the object
+   from the references to the object data. Doing so has several
+   advantages:
+     * The object data may be retrieved from the network by the object
+       handler one time (during the declaration) and reused for each
+       additional reference to that object data.
+     * It is possible to reference the object data from a location other
+       than the object element in which it was defined, for example, from
+       a link.
+     * It is possible to specify an object data as run-time data for other
+       object element declarations.
+
+   To declare an object element so that it is not executed when read by
+   the object handler, set the boolean [122]@declare attribute in the
+   [123]object element. At the same time, authors must identify the object
+   declaration by setting the [124]@id attribute in the [125]object
+   element to a unique value. Later processing of the object data will
+   refer to this identifier.
+
+   A declared [126]object element must appear in a document before the
+   first time the object data is referenced. For example, the declaring
+   object element must appear before a link referencing the object data.
+
+   When an object element is defined with the [127]@declare attribute, the
+   object handler is instantiated every time an element refers to that
+   object data later in the document. The references will require the
+   object data to be processed (e.g., a link that refers to it is
+   activated, an object element that refers to it is activated, etc.).
+
+   In the following example, we declare an [128]object element and cause
+   the object handler to be instantiated by referring to it from a link.
+   Thus, the object data can be activated by clicking on some highlighted
+   text, for example.
+
+   Example
+<object
+    declare="declare"
+    id="earth.declaration"
+    src="TheEarth.mpg"
+    srctype="video/mpeg">
+    The <strong>Earth</strong> as seen from space.
+</object>
+<em>...later in the document...</em>
+<p>A neat <a href="#earth.declaration">animation of The Earth!</a></p>
+
+   In the previous example, when the document is initially loaded the
+   object data should not be processed. If this was to be processed within
+   a visual user agent, the object data would not be displayed. When the
+   user selects the anchor data, the object data would then be initialized
+   and displayed. This would also be the case for an audio file, where the
+   file would be instantiated but would not be processed. Selecting the
+   anchor data would then trigger the audio file to be processed.
+
+   User agents that do not support the [129]@declare attribute must
+   process the contents of the [130]object element.
+
+25.3. The standby element
+
+   Attributes
+
+   The [131]Common collection
+          A collection of other attribute collections, including:
+          [132]Bi-directional, [133]Core, [134]Edit, [135]Embedding,
+          [136]Events, [137]Forms, [138]Hypertext, [139]I18N, [140]Map,
+          [141]Metainformation, and [142]Role
+
+   The [143]standby element specifies a message that a user agent may
+   render while loading the object's implementation and data.
+     __________________________________________________________________
+
+   [[144]previous] [[145]next] [[146]table of contents] [[147]elements]
+   [[148]attributes]
+
+References
+
+   1. file:///Users/johncowan/xhtml3/xhtml2/Overview.html
+   2. file:///Users/johncowan/xhtml3/xhtml2/Overview.html#toc
+   3. file:///Users/johncowan/xhtml3/xhtml2/mod-metaAttributes.html
+   4. file:///Users/johncowan/xhtml3/xhtml2/mod-roleAttribute.html
+   5. file:///Users/johncowan/xhtml3/xhtml2/mod-metaAttributes.html
+   6. file:///Users/johncowan/xhtml3/xhtml2/mod-roleAttribute.html
+   7. file:///Users/johncowan/xhtml3/xhtml2/Overview.html#toc
+   8. file:///Users/johncowan/xhtml3/xhtml2/elements.html
+   9. file:///Users/johncowan/xhtml3/xhtml2/attributes.html
+  10. file:///Users/johncowan/xhtml3/xhtml2/mod-object.html#sec_25.1.
+  11. file:///Users/johncowan/xhtml3/xhtml2/mod-object.html#sec_25.1.1.
+  12. file:///Users/johncowan/xhtml3/xhtml2/mod-object.html#sec_25.1.2.
+  13. file:///Users/johncowan/xhtml3/xhtml2/mod-object.html#sec_25.1.3.
+  14. file:///Users/johncowan/xhtml3/xhtml2/mod-object.html#sec_25.2.
+  15. file:///Users/johncowan/xhtml3/xhtml2/mod-object.html#sec_25.2.1.
+  16. file:///Users/johncowan/xhtml3/xhtml2/mod-object.html#sec_25.2.2.
+  17. file:///Users/johncowan/xhtml3/xhtml2/mod-object.html#sec_25.3.
+  18. file:///Users/johncowan/xhtml3/xhtml2/mod-attribute-collections.html#col_Common
+  19. file:///Users/johncowan/xhtml3/xhtml2/mod-object.html#adef_object_archive
+  20. file:///Users/johncowan/xhtml3/xhtml2/abstraction.html#dt_URIs
+  21. file:///Users/johncowan/xhtml3/xhtml2/mod-object.html#adef_object_content-length
+  22. file:///Users/johncowan/xhtml3/xhtml2/abstraction.html#dt_Number
+  23. file:///Users/johncowan/xhtml3/xhtml2/mod-object.html#adef_object_declare
+  24. file:///Users/johncowan/xhtml3/xhtml2/mod-caption.html#edef_caption_caption
+  25. file:///Users/johncowan/xhtml3/xhtml2/mod-document.html#edef_document_title
+  26. file:///Users/johncowan/xhtml3/xhtml2/mod-object.html#edef_object_standby
+  27. file:///Users/johncowan/xhtml3/xhtml2/mod-object.html#edef_object_param
+  28. file:///Users/johncowan/xhtml3/xhtml2/mod-structural.html#cs_Flow
+  29. file:///Users/johncowan/xhtml3/xhtml2/mod-core.html#adef_core_id
+  30. file:///Users/johncowan/xhtml3/xhtml2/abstraction.html#dt_ID
+  31. file:///Users/johncowan/xhtml3/xhtml2/mod-object.html#adef_object_appletName
+  32. file:///Users/johncowan/xhtml3/xhtml2/abstraction.html#dt_CDATA
+  33. file:///Users/johncowan/xhtml3/xhtml2/mod-object.html#adef_object_appletValue
+  34. file:///Users/johncowan/xhtml3/xhtml2/abstraction.html#dt_CDATA
+  35. file:///Users/johncowan/xhtml3/xhtml2/mod-object.html#adef_object_valuetype
+  36. file:///Users/johncowan/xhtml3/xhtml2/mod-object.html#adef_object_paramtype
+  37. file:///Users/johncowan/xhtml3/xhtml2/abstraction.html#dt_ContentType
+  38. file:///Users/johncowan/xhtml3/xhtml2/mod-attribute-collections.html#col_Common
+  39. file:///Users/johncowan/xhtml3/xhtml2/mod-text.html#cs_Text
+  40. file:///Users/johncowan/xhtml3/xhtml2/relax_module_defs.html#a_rmodule_Object
+  41. file:///Users/johncowan/xhtml3/xhtml2/schema_module_defs.html#a_smodule_Object_Module
+  42. file:///Users/johncowan/xhtml3/xhtml2/mod-attribute-collections.html#col_Common
+  43. file:///Users/johncowan/xhtml3/xhtml2/mod-bidi.html#col_Bi-directional
+  44. file:///Users/johncowan/xhtml3/xhtml2/mod-core.html#col_Core
+  45. file:///Users/johncowan/xhtml3/xhtml2/mod-edit.html#col_Edit
+  46. file:///Users/johncowan/xhtml3/xhtml2/mod-embedding.html#col_Embedding
+  47. file:///Users/johncowan/xhtml3/xhtml2/mod-xml-events.html#col_Events
+  48. file:///Users/johncowan/xhtml3/xhtml2/mod-xforms.html#col_Forms
+  49. file:///Users/johncowan/xhtml3/xhtml2/mod-hyperAttributes.html#col_Hypertext
+  50. file:///Users/johncowan/xhtml3/xhtml2/mod-i18n.html#col_I18N
+  51. file:///Users/johncowan/xhtml3/xhtml2/mod-csImgMap.html#col_Map
+  52. file:///Users/johncowan/xhtml3/xhtml2/mod-metaAttributes.html#col_Metainformation
+  53. file:///Users/johncowan/xhtml3/xhtml2/mod-roleAttribute.html#col_Role
+  54. file:///Users/johncowan/xhtml3/xhtml2/abstraction.html#dt_URIs
+  55. file:///Users/johncowan/xhtml3/xhtml2/mod-embedding.html#adef_embedding_src
+  56. file:///Users/johncowan/xhtml3/xhtml2/abstraction.html#dt_Number
+  57. file:///Users/johncowan/xhtml3/xhtml2/references.html#ref_RFC2616
+  58. file:///Users/johncowan/xhtml3/xhtml2/mod-object.html#edef_object_object
+  59. file:///Users/johncowan/xhtml3/xhtml2/mod-object.html#edef_object_object
+  60. file:///Users/johncowan/xhtml3/xhtml2/mod-document.html#edef_document_head
+  61. file:///Users/johncowan/xhtml3/xhtml2/mod-document.html#edef_document_head
+  62. file:///Users/johncowan/xhtml3/xhtml2/mod-object.html#edef_object_object
+  63. file:///Users/johncowan/xhtml3/xhtml2/mod-document.html#edef_document_head
+  64. file:///Users/johncowan/xhtml3/xhtml2/mod-object.html#edef_object_object
+  65. file:///Users/johncowan/xhtml3/xhtml2/mod-object.html#edef_object_param
+  66. file:///Users/johncowan/xhtml3/xhtml2/mod-csImgMap.html#col_Map
+  67. file:///Users/johncowan/xhtml3/xhtml2/mod-object.html#edef_object_object
+  68. file:///Users/johncowan/xhtml3/xhtml2/mod-embedding.html#adef_embedding_src
+  69. file:///Users/johncowan/xhtml3/xhtml2/mod-object.html#edef_object_object
+  70. file:///Users/johncowan/xhtml3/xhtml2/mod-embedding.html#adef_embedding_src
+  71. file:///Users/johncowan/xhtml3/xhtml2/mod-embedding.html#adef_embedding_srctype
+  72. file:///Users/johncowan/xhtml3/xhtml2/mod-object.html#edef_object_object
+  73. file:///Users/johncowan/xhtml3/xhtml2/mod-embedding.html#adef_embedding_src
+  74. file:///Users/johncowan/xhtml3/xhtml2/mod-object.html#edef_object_param
+  75. file:///Users/johncowan/xhtml3/xhtml2/mod-object.html#edef_object_param
+  76. file:///Users/johncowan/xhtml3/xhtml2/mod-object.html#edef_object_object
+  77. file:///Users/johncowan/xhtml3/xhtml2/mod-object.html#edef_object_object
+  78. file:///Users/johncowan/xhtml3/xhtml2/mod-object.html#edef_object_object
+  79. file:///Users/johncowan/xhtml3/xhtml2/mod-object.html#edef_object_object
+  80. file:///Users/johncowan/xhtml3/xhtml2/mod-embedding.html#adef_embedding_src
+  81. file:///Users/johncowan/xhtml3/xhtml2/mod-embedding.html#adef_embedding_srctype
+  82. file:///Users/johncowan/xhtml3/xhtml2/mod-hyperAttributes.html#adef_hyperAttributes_xml:base
+  83. file:///Users/johncowan/xhtml3/xhtml2/mod-embedding.html#adef_embedding_src
+  84. file:///Users/johncowan/xhtml3/xhtml2/mod-hyperAttributes.html#adef_hyperAttributes_xml:base
+  85. file:///Users/johncowan/xhtml3/xhtml2/mod-object.html#adef_object_archive
+  86. file:///Users/johncowan/xhtml3/xhtml2/mod-object.html#edef_object_object
+  87. file:///Users/johncowan/xhtml3/xhtml2/mod-hyperAttributes.html#adef_hyperAttributes_xml:base
+  88. file:///Users/johncowan/xhtml3/xhtml2/mod-embedding.html#adef_embedding_src
+  89. file:///Users/johncowan/xhtml3/xhtml2/mod-embedding.html#adef_embedding_srctype
+  90. file:///Users/johncowan/xhtml3/xhtml2/abstraction.html#dt_CDATA
+  91. file:///Users/johncowan/xhtml3/xhtml2/abstraction.html#dt_CDATA
+  92. file:///Users/johncowan/xhtml3/xhtml2/mod-object.html#adef_object_appletName
+  93. file:///Users/johncowan/xhtml3/xhtml2/mod-object.html#adef_object_appletValue
+  94. file:///Users/johncowan/xhtml3/xhtml2/mod-object.html#adef_object_appletValue
+  95. file:///Users/johncowan/xhtml3/xhtml2/mod-object.html#adef_object_appletValue
+  96. file:///Users/johncowan/xhtml3/xhtml2/mod-object.html#edef_object_object
+  97. file:///Users/johncowan/xhtml3/xhtml2/mod-core.html#adef_core_id
+  98. file:///Users/johncowan/xhtml3/xhtml2/mod-object.html#edef_object_object
+  99. file:///Users/johncowan/xhtml3/xhtml2/abstraction.html#dt_ContentType
+ 100. file:///Users/johncowan/xhtml3/xhtml2/mod-object.html#adef_object_appletValue
+ 101. file:///Users/johncowan/xhtml3/xhtml2/mod-object.html#adef_object_valuetype
+ 102. file:///Users/johncowan/xhtml3/xhtml2/mod-object.html#edef_object_param
+ 103. file:///Users/johncowan/xhtml3/xhtml2/mod-object.html#edef_object_param
+ 104. file:///Users/johncowan/xhtml3/xhtml2/mod-object.html#edef_object_object
+ 105. file:///Users/johncowan/xhtml3/xhtml2/mod-object.html#edef_object_object
+ 106. file:///Users/johncowan/xhtml3/xhtml2/mod-caption.html#edef_caption_caption
+ 107. file:///Users/johncowan/xhtml3/xhtml2/mod-object.html#edef_object_standby
+ 108. file:///Users/johncowan/xhtml3/xhtml2/mod-object.html#edef_object_param
+ 109. file:///Users/johncowan/xhtml3/xhtml2/mod-object.html#edef_object_param
+ 110. file:///Users/johncowan/xhtml3/xhtml2/mod-object.html#edef_object_param
+ 111. file:///Users/johncowan/xhtml3/xhtml2/mod-object.html#adef_object_valuetype
+ 112. file:///Users/johncowan/xhtml3/xhtml2/mod-object.html#adef_object_appletValue
+ 113. file:///Users/johncowan/xhtml3/xhtml2/mod-object.html#edef_object_standby
+ 114. file:///Users/johncowan/xhtml3/xhtml2/mod-object.html#edef_object_object
+ 115. file:///Users/johncowan/xhtml3/xhtml2/mod-object.html#edef_object_param
+ 116. file:///Users/johncowan/xhtml3/xhtml2/mod-object.html#edef_object_object
+ 117. file:///Users/johncowan/xhtml3/xhtml2/mod-object.html#edef_object_param
+ 118. file:///Users/johncowan/xhtml3/xhtml2/mod-hyperAttributes.html#adef_hyperAttributes_xml:base
+ 119. file:///Users/johncowan/xhtml3/xhtml2/mod-embedding.html#adef_embedding_srctype
+ 120. file:///Users/johncowan/xhtml3/xhtml2/mod-hyperAttributes.html#adef_hyperAttributes_xml:base
+ 121. file:///Users/johncowan/xhtml3/xhtml2/mod-embedding.html#adef_embedding_src
+ 122. file:///Users/johncowan/xhtml3/xhtml2/mod-object.html#adef_object_declare
+ 123. file:///Users/johncowan/xhtml3/xhtml2/mod-object.html#edef_object_object
+ 124. file:///Users/johncowan/xhtml3/xhtml2/mod-core.html#adef_core_id
+ 125. file:///Users/johncowan/xhtml3/xhtml2/mod-object.html#edef_object_object
+ 126. file:///Users/johncowan/xhtml3/xhtml2/mod-object.html#edef_object_object
+ 127. file:///Users/johncowan/xhtml3/xhtml2/mod-object.html#adef_object_declare
+ 128. file:///Users/johncowan/xhtml3/xhtml2/mod-object.html#edef_object_object
+ 129. file:///Users/johncowan/xhtml3/xhtml2/mod-object.html#adef_object_declare
+ 130. file:///Users/johncowan/xhtml3/xhtml2/mod-object.html#edef_object_object
+ 131. file:///Users/johncowan/xhtml3/xhtml2/mod-attribute-collections.html#col_Common
+ 132. file:///Users/johncowan/xhtml3/xhtml2/mod-bidi.html#col_Bi-directional
+ 133. file:///Users/johncowan/xhtml3/xhtml2/mod-core.html#col_Core
+ 134. file:///Users/johncowan/xhtml3/xhtml2/mod-edit.html#col_Edit
+ 135. file:///Users/johncowan/xhtml3/xhtml2/mod-embedding.html#col_Embedding
+ 136. file:///Users/johncowan/xhtml3/xhtml2/mod-xml-events.html#col_Events
+ 137. file:///Users/johncowan/xhtml3/xhtml2/mod-xforms.html#col_Forms
+ 138. file:///Users/johncowan/xhtml3/xhtml2/mod-hyperAttributes.html#col_Hypertext
+ 139. file:///Users/johncowan/xhtml3/xhtml2/mod-i18n.html#col_I18N
+ 140. file:///Users/johncowan/xhtml3/xhtml2/mod-csImgMap.html#col_Map
+ 141. file:///Users/johncowan/xhtml3/xhtml2/mod-metaAttributes.html#col_Metainformation
+ 142. file:///Users/johncowan/xhtml3/xhtml2/mod-roleAttribute.html#col_Role
+ 143. file:///Users/johncowan/xhtml3/xhtml2/mod-object.html#edef_object_standby
+ 144. file:///Users/johncowan/xhtml3/xhtml2/mod-metaAttributes.html
+ 145. file:///Users/johncowan/xhtml3/xhtml2/mod-roleAttribute.html
+ 146. file:///Users/johncowan/xhtml3/xhtml2/Overview.html#toc
+ 147. file:///Users/johncowan/xhtml3/xhtml2/elements.html
+ 148. file:///Users/johncowan/xhtml3/xhtml2/attributes.html

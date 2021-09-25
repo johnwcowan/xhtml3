@@ -1,0 +1,123 @@
+   #[1]start [2]contents [3]prev [4]next
+
+   [[5]previous] [[6]next] [[7]table of contents] [[8]elements]
+   [[9]attributes]
+     __________________________________________________________________
+
+                     19. XHTML Embedding Attributes Module
+
+   Contents
+     * 19.1. [10]Embedding Attribute Collection
+
+   This section is normative.
+
+   The Embedding Attributes module defines the [11]Embedding attribute
+   collection.
+
+   This collection causes the contents of a remote resource to be embedded
+   in the document in place of the element's content. If accessing the
+   remote resource fails, for whatever reason (e.g., network unavailable,
+   no resource available at the URI given, inability of the user agent to
+   process the type of resource) or an associated [12]@ismap attribute
+   fails, the content of the element must be processed instead.
+
+   Note that this behavior makes documents far more robust, and gives much
+   better opportunities for accessible documents than the longdesc
+   attribute present in earlier versions of XHTML, since it allows the
+   description of the resource to be included in the document itself,
+   rather than in a separate document.
+
+   Example
+<p src="holiday.png" srctype="image/png">
+        <span src="holiday.gif" srctype="image/gif">
+                An image of us on holiday.
+        </span>
+</p>
+<table src="temperature-graph.png" srctype="image/png">
+<caption>Average monthly temperature over the last 20 years</caption>
+<tr><th>Jan</th><th>Feb</th><th>Mar</th><th>Apr</th><th>May</th><th>Jun</th>
+    <th>Jul</th><th>Aug</th><th>Sep</th><th>Oct</th><th>Nov</th><th>Dec</th>
+</tr>
+<tr><td> 4</td><td> 2</td><td> 7</td><td> 9</td><td>13</td><td>16</td>
+    <td>17</td><td>17</td><td>14</td><td>11</td><td> 7</td><td> 4</td>
+</tr>
+</table>
+
+19.1. Embedding Attribute Collection
+
+   encoding = [13]Encodings
+          This attribute specifies the allowable encoding of the external
+          resource referenced by the [14]@src attribute. At its most
+          general, it is a comma-separated list of encodings, such as
+          "utf-8", "utf8, utf-16", or "utf-8, utf-16, *".
+
+          The user agent must use this list as the field value of the
+          accept-charset request header when requesting the resource using
+          HTTP.
+
+          If this attribute is not present, the user agent must use its
+          default value of the accept-charset request header.
+
+          User agents should use a similar technique when using other
+          protocols that allow encoding negotation
+
+          When using protocols that do not allow encoding negotiation to
+          retrieve resources whose encodings are not self-identifying, the
+          user agent should use the first encoding in the attribute's
+          value as the indication of the resource.
+
+          Example
+
+<style type="text/css" src="style/home" encoding="utf-8" />
+
+   src = [15]URI
+          This attribute specifies the location of an external source for
+          the contents of the element. Actuation occurs as the default
+          action of a [[16]DOM] load event for the element that the
+          attribute occurs on.
+
+   srctype = [17]ContentTypes
+          This attribute specifies the allowable content types of the
+          resource referenced by the relevant [18]@src URI.
+
+          Example
+
+<handler src="pop" srctype="application/x-javascript, text/x-newspeak" />
+<style src="midnight" srctype="text/css, text/x-mystyle" />
+<p src="w3c-logo" srctype="image/png, image/jpeg;q=0.2">W3C logo</p>
+<span src="logo.png">Our logo</span>
+<span src="theme.mp3" srctype="audio/x-mpeg">Our theme jingle</span>
+
+   Implementations: [19]RELAX NG, [20]XML Schema
+     __________________________________________________________________
+
+   [[21]previous] [[22]next] [[23]table of contents] [[24]elements]
+   [[25]attributes]
+
+References
+
+   1. file:///Users/johncowan/xhtml3/xhtml2/Overview.html
+   2. file:///Users/johncowan/xhtml3/xhtml2/Overview.html#toc
+   3. file:///Users/johncowan/xhtml3/xhtml2/mod-edit.html
+   4. file:///Users/johncowan/xhtml3/xhtml2/mod-image.html
+   5. file:///Users/johncowan/xhtml3/xhtml2/mod-edit.html
+   6. file:///Users/johncowan/xhtml3/xhtml2/mod-image.html
+   7. file:///Users/johncowan/xhtml3/xhtml2/Overview.html#toc
+   8. file:///Users/johncowan/xhtml3/xhtml2/elements.html
+   9. file:///Users/johncowan/xhtml3/xhtml2/attributes.html
+  10. file:///Users/johncowan/xhtml3/xhtml2/mod-embedding.html#col_Embedding
+  11. file:///Users/johncowan/xhtml3/xhtml2/mod-embedding.html#col_Embedding
+  12. file:///Users/johncowan/xhtml3/xhtml2/mod-csImgMap.html#adef_csImgMap_ismap
+  13. file:///Users/johncowan/xhtml3/xhtml2/abstraction.html#dt_Encodings
+  14. file:///Users/johncowan/xhtml3/xhtml2/mod-embedding.html#adef_embedding_src
+  15. file:///Users/johncowan/xhtml3/xhtml2/abstraction.html#dt_URI
+  16. file:///Users/johncowan/xhtml3/xhtml2/references.html#ref_DOM
+  17. file:///Users/johncowan/xhtml3/xhtml2/abstraction.html#dt_ContentTypes
+  18. file:///Users/johncowan/xhtml3/xhtml2/mod-embedding.html#adef_embedding_src
+  19. file:///Users/johncowan/xhtml3/xhtml2/relax_module_defs.html#a_rmodule_Embedding_Attributes
+  20. file:///Users/johncowan/xhtml3/xhtml2/schema_module_defs.html#a_smodule_Embedding_Attributes_Module
+  21. file:///Users/johncowan/xhtml3/xhtml2/mod-edit.html
+  22. file:///Users/johncowan/xhtml3/xhtml2/mod-image.html
+  23. file:///Users/johncowan/xhtml3/xhtml2/Overview.html#toc
+  24. file:///Users/johncowan/xhtml3/xhtml2/elements.html
+  25. file:///Users/johncowan/xhtml3/xhtml2/attributes.html

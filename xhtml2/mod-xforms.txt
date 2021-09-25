@@ -1,0 +1,179 @@
+   #[1]start [2]contents [3]prev [4]next
+
+   [[5]previous] [[6]next] [[7]table of contents] [[8]elements]
+   [[9]attributes]
+     __________________________________________________________________
+
+                               31. XForms Module
+
+   Contents
+     * 31.1. [10]Core XForms
+     * 31.2. [11]XForms Actions
+     * 31.3. [12]Form Controls
+     * 31.4. [13]Group
+     * 31.5. [14]Switch
+     * 31.6. [15]Repeat
+     * 31.7. [16]XForms Repeat Attribute Collection
+     * 31.8. [17]Other Attribute Collections
+
+   This section is normative for purposes of defining the integration of
+   XForms into XHTML 2.0. The semantics of XForms itself is normatively
+   defined in [[18]XFORMS].
+
+   The XForms Module provides a rich collection of forms features within
+   the XHTML namespace.
+
+   The content model for XForms defines several content sets:
+
+   XForms Core
+          model
+
+   XForms Form Controls
+          input | secret | textarea | output | upload | range | trigger |
+          submit | select | select1
+
+   XForms Actions
+          action | dispatch | rebuild | recalculate | revalidate | refresh
+          | setfocus | load | setvalue | send | reset | message | insert |
+          delete | setindex
+
+   XForms Group
+          group
+
+   XForms Switch
+          switch
+
+   XForms Repeat
+          repeat
+
+31.1. Core XForms
+
+   The XForms Core content set is added to the content model of the
+   [19]head element in the [20]Document module, to the [21]Structural
+   content set of the Structural Module., and to the [22]Text content set
+   of the Text module.
+
+31.2. XForms Actions
+
+   The XForms Actions content set is added to the content model of the
+   [23]head element in the [24]Document module, to the [25]Structural
+   content set, and to the [26]Text content set.
+
+31.3. Form Controls
+
+   The XForms Form Controls content set is added to the [27]Structural
+   content set, and to the [28]Text content set.
+
+   The [29]Text content set is added to the XForms UI Inline content set,
+   allowing various XHTML elements inside form control labels.
+
+31.4. Group
+
+   The XForms Group content set is added to the [30]Structural content
+   set, and to the [31]Text content set.
+
+   [32]group elements can freely nest.
+
+   The [33]Structural content set is added to the XForms Group content
+   set.
+
+31.5. Switch
+
+   The XForms Switch content set is added to the [34]Structural content
+   set, and to the [35]Text content set.
+
+   Alternating [36]switch and case elements can freely nest.
+
+   The [37]Structural content set is added to the content model of case,
+   after an optional label element.
+
+31.6. Repeat
+
+   The XForms Repeat content set is added to the [38]Structural content
+   set, and to the [39]Text content set.
+
+   [40]repeat elements can freely nest.
+
+   The [41]Structural content set is added to the content model of case,
+   after an optional label element.
+
+31.7. XForms Repeat Attribute Collection
+
+   This module also includes the XForms Repeat Attribute Collection via
+   attributes from [[42]XFORMS]. The normative definition of those
+   attributes and their semantics is included in that specification.
+
+              Attributes             Notes
+   repeat-model ([43]IDREF)
+   repeat-bind ([44]IDREF)
+   repeat-nodeset ([45]LocationPath)
+   repeat-startindex ([46]Number)
+   repeat-numbef ([47]Number)
+
+31.8. Other Attribute Collections
+
+   XHTML 2 adds the [48]Common attribute collection to the XForms Common
+   Attribute Group.
+
+   The XForms Attribute Groups for single-node binding and Nodeset binding
+   are allowed only on the XForms elements they are defined for.
+     __________________________________________________________________
+
+   [[49]previous] [[50]next] [[51]table of contents] [[52]elements]
+   [[53]attributes]
+
+References
+
+   1. file:///Users/johncowan/xhtml3/xhtml2/Overview.html
+   2. file:///Users/johncowan/xhtml3/xhtml2/Overview.html#toc
+   3. file:///Users/johncowan/xhtml3/xhtml2/mod-tables.html
+   4. file:///Users/johncowan/xhtml3/xhtml2/mod-xml-events.html
+   5. file:///Users/johncowan/xhtml3/xhtml2/mod-tables.html
+   6. file:///Users/johncowan/xhtml3/xhtml2/mod-xml-events.html
+   7. file:///Users/johncowan/xhtml3/xhtml2/Overview.html#toc
+   8. file:///Users/johncowan/xhtml3/xhtml2/elements.html
+   9. file:///Users/johncowan/xhtml3/xhtml2/attributes.html
+  10. file:///Users/johncowan/xhtml3/xhtml2/mod-xforms.html#XForms_Core
+  11. file:///Users/johncowan/xhtml3/xhtml2/mod-xforms.html#XForms_Actions
+  12. file:///Users/johncowan/xhtml3/xhtml2/mod-xforms.html#XForms_Form_Controls
+  13. file:///Users/johncowan/xhtml3/xhtml2/mod-xforms.html#XForms_Group
+  14. file:///Users/johncowan/xhtml3/xhtml2/mod-xforms.html#XForms_Switch
+  15. file:///Users/johncowan/xhtml3/xhtml2/mod-xforms.html#XForms_Repeat
+  16. file:///Users/johncowan/xhtml3/xhtml2/mod-xforms.html#col_Forms
+  17. file:///Users/johncowan/xhtml3/xhtml2/mod-xforms.html#XForms_Other_Attrs
+  18. file:///Users/johncowan/xhtml3/xhtml2/references.html#ref_XFORMS
+  19. file:///Users/johncowan/xhtml3/xhtml2/mod-document.html#edef_document_head
+  20. file:///Users/johncowan/xhtml3/xhtml2/mod-document.html#s_documentmodule
+  21. file:///Users/johncowan/xhtml3/xhtml2/mod-structural.html#cs_Structural
+  22. file:///Users/johncowan/xhtml3/xhtml2/mod-text.html#cs_Text
+  23. file:///Users/johncowan/xhtml3/xhtml2/mod-document.html#edef_document_head
+  24. file:///Users/johncowan/xhtml3/xhtml2/mod-document.html#s_documentmodule
+  25. file:///Users/johncowan/xhtml3/xhtml2/mod-structural.html#cs_Structural
+  26. file:///Users/johncowan/xhtml3/xhtml2/mod-text.html#cs_Text
+  27. file:///Users/johncowan/xhtml3/xhtml2/mod-structural.html#cs_Structural
+  28. file:///Users/johncowan/xhtml3/xhtml2/mod-text.html#cs_Text
+  29. file:///Users/johncowan/xhtml3/xhtml2/mod-text.html#cs_Text
+  30. file:///Users/johncowan/xhtml3/xhtml2/mod-structural.html#cs_Structural
+  31. file:///Users/johncowan/xhtml3/xhtml2/mod-text.html#cs_Text
+  32. file:///Users/johncowan/xhtml3/xhtml2/mod-xforms.html#edef_xforms_group
+  33. file:///Users/johncowan/xhtml3/xhtml2/mod-structural.html#cs_Structural
+  34. file:///Users/johncowan/xhtml3/xhtml2/mod-structural.html#cs_Structural
+  35. file:///Users/johncowan/xhtml3/xhtml2/mod-text.html#cs_Text
+  36. file:///Users/johncowan/xhtml3/xhtml2/mod-xforms.html#edef_xforms_switch
+  37. file:///Users/johncowan/xhtml3/xhtml2/mod-structural.html#cs_Structural
+  38. file:///Users/johncowan/xhtml3/xhtml2/mod-structural.html#cs_Structural
+  39. file:///Users/johncowan/xhtml3/xhtml2/mod-text.html#cs_Text
+  40. file:///Users/johncowan/xhtml3/xhtml2/mod-xforms.html#edef_xforms_repeat
+  41. file:///Users/johncowan/xhtml3/xhtml2/mod-structural.html#cs_Structural
+  42. file:///Users/johncowan/xhtml3/xhtml2/references.html#ref_XFORMS
+  43. file:///Users/johncowan/xhtml3/xhtml2/abstraction.html#dt_IDREF
+  44. file:///Users/johncowan/xhtml3/xhtml2/abstraction.html#dt_IDREF
+  45. file:///Users/johncowan/xhtml3/xhtml2/abstraction.html#dt_LocationPath
+  46. file:///Users/johncowan/xhtml3/xhtml2/abstraction.html#dt_Number
+  47. file:///Users/johncowan/xhtml3/xhtml2/abstraction.html#dt_Number
+  48. file:///Users/johncowan/xhtml3/xhtml2/mod-attribute-collections.html#col_Common
+  49. file:///Users/johncowan/xhtml3/xhtml2/mod-tables.html
+  50. file:///Users/johncowan/xhtml3/xhtml2/mod-xml-events.html
+  51. file:///Users/johncowan/xhtml3/xhtml2/Overview.html#toc
+  52. file:///Users/johncowan/xhtml3/xhtml2/elements.html
+  53. file:///Users/johncowan/xhtml3/xhtml2/attributes.html

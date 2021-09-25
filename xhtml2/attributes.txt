@@ -1,0 +1,67 @@
+@abbr	Tables Module	Abbreviated form
+@about 	Metainformation Module	Define which resource that has a specified property
+@activate 	Access Module	Define action when access target obtains focus
+@archive 	Object Module	Define list of object archives
+@axis 	Tables Module	Define a category for a cell
+@charset 	Scripting Module	Indicate the expected encoding of the remote resource
+@cite 	Hypertext Module	Set the URI for a citation
+@class 	Core Module	Set the class of an element
+@colspan 	Tables Module	Set the number of columns a table cell should span
+@content-length 	Object Module	Indicate the size of a link's target
+@content 	Metainformation Module	Set the content for metadata
+@coords 	Image Map Module	Define coordinates for am element
+@datatype 	Metainformation Module	Indicate the datatype of external metadata
+@datetime 	Edit Module	Define date and time
+@declare 	Object Module	Indicate that an object should only be loaded
+@defer 	Scripting Module	Indicate processing of contents should be defered
+@dir 	Bi-directional Text Module	Define the direction of text
+@disabled 	Style Sheet Module	Indicate that an item is disabled
+@edit 	Edit Module	Indicate how an item was edited
+@encoding 	Embedding Module	Define the encoding of an external source
+@full 	Text Module	Refer to the full version of an abbreviation
+@headers 	Tables Module	Define the header cells that relate to this cell
+@href 	Hypertext Module	Define a URI target when the element is activated
+@hreflang 	Hypertext Module	Indicate the base language of the target
+@hrefmedia 	Hypertext Module	Indicate the target media of an href attribute
+@hreftype 	Hypertext Module	Indicate the content type of an href attribute
+@id 	Core Module	Define the ID for the element
+@implements 	Scripting Module	Indication of what a script implements
+@ismap 	Image Map Module	Indicate whether this is an imagemap
+@its:translate 	I18N Module	Should an element be translated
+@key 	Access Module	Define a shortcut key
+@layout 	Core Module	Indicate whether whitespace is relevant
+@media 	Access Module	Define the applicable media
+@media 	Media Module	Define the applicable media
+@media 	Style Sheet Module	Define the applicable media
+@name 	Object Module	Set the name of an applet parameter
+@nextfocus 	Hypertext Module	Define the order in which this control is accessed
+@order 	Access Module	Define navigation order method
+@prevfocus 	Hypertext Module	Define the order in which this control is accessed
+@profile 	Document Module	Define the location of the metadata profiles
+@property 	Metainformation Module	Indicate the property being defined
+@rel 	Metainformation Module	Define the relationship to the target
+@resource 	Metainformation Module	Define the resource a property is related to
+@rev 	Metainformation Module	Define the relationship from the target to subject
+@role 	Role Module	Define the role of this element
+@rowspan 	Tables Module	Define the number of rows a cell spans
+@scope 	Tables Module	Define the scope of a header
+@shape 	Image Map Module	Define the shape of a map
+@span 	Tables Module	Define the number of columns a colgroup spans
+@src 	Embedding Module	Define the URI for an external source for the element
+@srctype 	Embedding Module	Indicate the content type of a src attribute
+@style 	Style Module	Set the style to use on the element
+@target 	Hypertext Module	Set the target window for a link
+@targetid 	Access Module	Define the target element for an event
+@targetrole 	Access Module	Define the target role(s) for an access key
+@title 	Core Module	Set the title for an element
+@type 	Object Module	Define the type of a referenced value element
+@typeof 	Metainformation Module	Define the RDF type of metadata
+@usemap 	Image Map Module	Set the name of an image map to use
+@value 	List Module	Set the value for a list item
+@value 	Object Module	Set the value for an applet parameter
+@valuetype 	Object Module	Set the type of an applet value
+@version 	Document Module	Set the XHTML document version
+@xml:base 	Hypertext Module	Set the base URI for the element
+@xml:id 	Core Module	Define the ID for the element
+@xml:lang 	I18N Module	Set the language of the element
+@xsi:schemaLocation 	Document Module	Set the location for an Schema

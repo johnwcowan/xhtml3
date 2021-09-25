@@ -1,0 +1,60 @@
+a 	Hypertext Module	Define an anchor or a link
+abbr 	Text Module	An abbreviation
+access 	Access Module	Define an accessibility mapping to an element
+address 	Structural Module	Define an address
+blockcode 	Structural Module	Define a block of computer code
+blockquote 	Structural Module	Define a large quotation
+body 	Document Module	Content of the document
+br 	Text Module	A line break
+caption 	Caption Module	Set the caption for a table
+cite 	Text Module	A citation
+code 	Text Module	A code fragment
+col 	Tables Module	Define attributes for a column
+colgroup 	Tables Module	Define attributes for a group of columns
+dd 	List Module	Definition Data
+del 	Legacy Edit Module	Indicate something was deleted
+dfn 	Text Module	A definition
+di 	List Module	Definition Item
+div 	Structural Module	Define the characteristics of a block
+dl 	List Module	Definition List
+dt 	List Module	Definition Term
+em 	Text Module	Emphasis
+head 	Document Module	Document metadata
+heading 	Structural Module	Set a heading
+html 	Document Module	Document root
+img 	Image Module	Incorporate an image
+ins 	Legacy Edit Module	Indicate something was inserted
+kbd 	Text Module	User input
+l 	Text Module	A line of text
+legacyheadings 	Legacy Headings Module	Set a heading
+li 	List Module	List item
+link 	Metainformation Module	A link to another resource
+meta 	Metainformation Module	Meta information
+object 	Object Module	External object
+ol 	List Module	Ordered list
+p 	Structural Module	Define a paragraph
+param 	Object Module	Parameter for external object
+pre 	Structural Module	Define a preformatted block
+q 	Text Module	A quotation
+ruby 	Ruby Module	Ruby Annotation
+samp 	Text Module	Sample output
+script 	Scripting Module	No title
+section 	Structural Module	Define a section of a document
+separator 	Structural Module	Insert a break in a document
+span 	Text Module	Define characteristics of text
+standby 	Object Module	Message to render while loading object
+strong 	Text Module	Strong emphasis
+style 	Style Sheet Module	Definition of style rules
+sub 	Text Module	A subscript
+summary 	Tables Module	Set the summary for a table
+sup 	Text Module	A superscript
+table 	Tables Module	Define a table
+tbody 	Tables Module	Define the body for a table
+td 	Tables Module	Define a table cell
+tfoot 	Tables Module	Define the footer for a table
+th 	Tables Module	Define a table header
+thead 	Tables Module	Define the heading for a table
+title 	Document Module	Title for document
+tr 	Tables Module	Define a table row
+ul 	List Module	Unordered list
+var 	Text Module	A variable

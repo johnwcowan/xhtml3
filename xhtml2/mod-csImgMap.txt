@@ -1,0 +1,169 @@
+   #[1]start [2]contents [3]prev [4]next
+
+   [[5]previous] [[6]next] [[7]table of contents] [[8]elements]
+   [[9]attributes]
+     __________________________________________________________________
+
+                     21. XHTML Image Map Attributes Module
+
+   Contents
+     * 21.1. [10]Image Map Attribute Collection
+
+   This section is normative.
+
+   This module defines a collection of attributes that specify that an
+   embedded image may be used as an image map, so that clicking on
+   different parts of the image causes different hyperlinks to be
+   activated.
+
+   Note that in the following example, if the image is unavailable for any
+   reason, the fallback properties of the [11]@src attribute mean that the
+   nl element will be displayed instead of the image, thus making the page
+   still useful:
+
+   Example
+<html xmlns="http://www.w3.org/2002/06/xhtml2">
+   <head>
+      <title>The cool site!</title>
+   </head>
+   <body>
+     <ul id="map1" role="navigation"
+             src="navbar1.png" srctype="image/png" usemap="#map1">
+           <caption>Navigate the site:</caption>
+           <li href="guide.html" shape="rect"
+                   coords="0,0,118,28">
+                   Access Guide
+           </li>
+           <li href="shortcut.html" shape="rect"
+                   coords="118,0,184,28">
+                   Go
+           </li>
+           <li href="search.html" shape="circle"
+                   coords="184,200,60">
+                   Search
+           </li>
+           <li href="top10.html" shape="poly"
+                   coords="276,0,276,28,100,200,50,50,276,0">
+                   Top Ten
+           </li>
+         </ul>
+   </body>
+</html>
+
+   Note that W3C is working on profiles of XHTML that include versions of
+   SVG [[12]SVG], which include more structured ways of creating
+   imagemap-like behavior.
+
+21.1. Image Map Attribute Collection
+
+   usemap = [13]URI
+          This attribute associates an image map with an [14]ul element.
+          The value of usemap should match the value of the [15]@id
+          attribute of an [16]ul element that contains one or more [17]li
+          elements with [18]@shape and [19]@coords attributes.
+
+          If accessing the URI fails or the referenced element is not an
+          [20]ul element, then the associated [21]@src attribute is
+          considered to have failed as well, so that the nested content
+          will be processed instead.
+
+   ismap = "ismap"
+          This attribute indicates that the associated embedded resource
+          is to be treated as a "server-side image map". When selected,
+          the coordinates within the element that the user selected are
+          sent to the server where the document resides. Coordinates are
+          expressed as pixel values relative to the embedded resource, and
+          start at (0,0) at the top left corner.
+
+          When an ismap attribute is specified, click events are not
+          delivered to the embedded resource, regardless of its type.
+
+          In the following example, the active region defines a
+          server-side image map. A click anywhere on the image will cause
+          the click's coordinates to be sent to the server.
+
+<p href="http://www.example.com/cgi-bin/map"
+      src="map.png" ismap="ismap">
+   Our location.
+</p>
+
+          The location clicked is passed to the server as follows. The
+          user agent derives a new URI from the URI specified by the
+          [22]@href attribute of the element, by appending `?' followed by
+          the x and y coordinates, separated by a comma. The link is then
+          actuated using the new URI. For instance, in the given example,
+          if the user clicks at the location x=10, y=27 then the derived
+          URI is "http://www.example.com/cgi-bin/map?10,27".
+
+          User agents that do not offer the user a means to select
+          specific coordinates (e.g., non-graphical user agents that rely
+          on keyboard input, speech-based user agents, etc.) must send the
+          coordinates "0,0" to the server when the link is activated.
+
+   shape = "default|rect|circle|poly"
+          This attribute specifies the shape of a region. Possible values:
+
+          + default: Specifies the entire region.
+          + rect: Define a rectangular region.
+          + circle: Define a circular region.
+          + poly: Define a polygonal region.
+
+   coords = [23]Coordinates
+          This attribute specifies the position and shape of the area. The
+          number and order of values depends on the value of the
+          [24]@shape attribute. Possible combinations:
+
+          + rect: left-x, top-y, right-x, bottom-y.
+          + circle: center-x, center-y, radius. When the radius value is a
+            percentage, the actual radius value is calculated using the
+            associated image's width and height. The radius is then the
+            smaller value of the two.
+          + poly: x1, y1, x2, y2, ..., xN, yN. If the first and last x and
+            y coordinate pairs are not the same, user agents must infer an
+            additional coordinate pair to close the polygon.
+
+          Coordinates are relative to the top, left corner of the object.
+          All values are of type [25]Length. All values are separated by
+          commas. The coordinates of the top, left corner of an area are
+          0, 0.
+
+   Implementation: [26]RELAX NG, [27]XML Schema
+     __________________________________________________________________
+
+   [[28]previous] [[29]next] [[30]table of contents] [[31]elements]
+   [[32]attributes]
+
+References
+
+   1. file:///Users/johncowan/xhtml3/xhtml2/Overview.html
+   2. file:///Users/johncowan/xhtml3/xhtml2/Overview.html#toc
+   3. file:///Users/johncowan/xhtml3/xhtml2/mod-image.html
+   4. file:///Users/johncowan/xhtml3/xhtml2/mod-mediaAttribute.html
+   5. file:///Users/johncowan/xhtml3/xhtml2/mod-image.html
+   6. file:///Users/johncowan/xhtml3/xhtml2/mod-mediaAttribute.html
+   7. file:///Users/johncowan/xhtml3/xhtml2/Overview.html#toc
+   8. file:///Users/johncowan/xhtml3/xhtml2/elements.html
+   9. file:///Users/johncowan/xhtml3/xhtml2/attributes.html
+  10. file:///Users/johncowan/xhtml3/xhtml2/mod-csImgMap.html#col_Map
+  11. file:///Users/johncowan/xhtml3/xhtml2/mod-embedding.html#adef_embedding_src
+  12. file:///Users/johncowan/xhtml3/xhtml2/references.html#ref_SVG
+  13. file:///Users/johncowan/xhtml3/xhtml2/abstraction.html#dt_URI
+  14. file:///Users/johncowan/xhtml3/xhtml2/mod-list.html#edef_list_ul
+  15. file:///Users/johncowan/xhtml3/xhtml2/mod-core.html#adef_core_id
+  16. file:///Users/johncowan/xhtml3/xhtml2/mod-list.html#edef_list_ul
+  17. file:///Users/johncowan/xhtml3/xhtml2/mod-list.html#edef_list_li
+  18. file:///Users/johncowan/xhtml3/xhtml2/mod-csImgMap.html#adef_csImgMap_shape
+  19. file:///Users/johncowan/xhtml3/xhtml2/mod-csImgMap.html#adef_csImgMap_coords
+  20. file:///Users/johncowan/xhtml3/xhtml2/mod-list.html#edef_list_ul
+  21. file:///Users/johncowan/xhtml3/xhtml2/mod-embedding.html#adef_embedding_src
+  22. file:///Users/johncowan/xhtml3/xhtml2/mod-hyperAttributes.html#adef_hyperAttributes_href
+  23. file:///Users/johncowan/xhtml3/xhtml2/abstraction.html#dt_Coordinates
+  24. file:///Users/johncowan/xhtml3/xhtml2/mod-csImgMap.html#adef_csImgMap_shape
+  25. file:///Users/johncowan/xhtml3/xhtml2/abstraction.html#dt_Length
+  26. file:///Users/johncowan/xhtml3/xhtml2/relax_module_defs.html#a_rmodule_Image_Map_Attributes
+  27. file:///Users/johncowan/xhtml3/xhtml2/schema_module_defs.html#a_smodule_Image_Map_Attributes_Module
+  28. file:///Users/johncowan/xhtml3/xhtml2/mod-image.html
+  29. file:///Users/johncowan/xhtml3/xhtml2/mod-mediaAttribute.html
+  30. file:///Users/johncowan/xhtml3/xhtml2/Overview.html#toc
+  31. file:///Users/johncowan/xhtml3/xhtml2/elements.html
+  32. file:///Users/johncowan/xhtml3/xhtml2/attributes.html

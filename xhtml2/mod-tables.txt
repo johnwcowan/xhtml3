@@ -1,0 +1,1376 @@
+   #[1]start [2]contents [3]prev [4]next
+
+   [[5]previous] [[6]next] [[7]table of contents] [[8]elements]
+   [[9]attributes]
+     __________________________________________________________________
+
+                            30. XHTML Tables Module
+
+   Contents
+     * 30.1. [10]The col and colgroup elements
+          + 30.1.1. [11]Calculating the number of columns in a table
+     * 30.2. [12]The summary element
+     * 30.3. [13]The table element
+          + 30.3.1. [14]Visual Rendering
+          + 30.3.2. [15]Table directionality
+          + 30.3.3. [16]Table rendering by non-visual user agents
+     * 30.4. [17]The tbody element
+     * 30.5. [18]The td and th elements
+          + 30.5.1. [19]Cells that span several rows or columns
+     * 30.6. [20]The thead and tfoot elements
+     * 30.7. [21]The tr element
+
+   This section is normative.
+
+   The Tables Module provides elements for marking up tabular information
+   in a document.
+
+   The module supports the following elements, attributes, and content
+   model:
+
+   Elements Attributes Content Model
+   table [22]Common [23]caption?, [24]title?, [25]summary?, ( [26]col* |
+   [27]colgroup* ), (( [28]thead?, [29]tfoot?, [30]tbody+ ) | ( [31]tr+ ))
+   summary [32]Common ( [33]Flow)*
+   col [34]Common, [35]@span ([36]Number) EMPTY
+   colgroup [37]Common, [38]@span ([39]Number) [40]col*
+   thead [41]Common [42]tr+
+   tfoot [43]Common [44]tr+
+   tbody [45]Common [46]tr+
+   tr [47]Common, [48]Forms ( [49]td | [50]th)+
+   td [51]Common, [52]@abbr ([53]Text), [54]@axis ([55]CDATA),
+   [56]@colspan ([57]Number), [58]@headers ([59]IDREFS), [60]@rowspan
+   ([61]Number), [62]@scope ("row", "col", "rowgroup", "colgroup") (
+   [63]Flow)*
+   th [64]Common, [65]@abbr ([66]Text), [67]@axis ([68]CDATA),
+   [69]@colspan ([70]Number), [71]@headers ([72]IDREFS), [73]@rowspan
+   ([74]Number), [75]@scope ("row", "col", "rowgroup", "colgroup") (
+   [76]Flow)*
+
+   Implementations: [77]RELAX NG, [78]XML Schema
+
+30.1. The col and colgroup elements
+
+   Attributes
+
+   The [79]Common collection
+          A collection of other attribute collections, including:
+          [80]Bi-directional, [81]Core, [82]Edit, [83]Embedding,
+          [84]Events, [85]Forms, [86]Hypertext, [87]I18N, [88]Map,
+          [89]Metainformation, and [90]Role
+
+   span = [91]Number
+          This attribute must be an integer > 0; the default value is 1.
+          This specifies the number of columns in a [92]colgroup, or
+          specifies the number of columns "spanned" by the [93]col
+          element.
+
+          Values mean the following:
+
+          + In the absence of a [94]@span attribute, each [95]colgroup
+            defines a column group containing one column.
+          + If the [96]@span attribute is used with the [97]colgroup
+            element and the value is set to N > 0, that defines a column
+            group containing N columns.
+          + If the [98]@span attribute is used with the [99]col element
+            and the value is set to N > 1, the current [100]col element
+            shares its attributes with the next N-1 columns.
+
+          User agents must ignore this attribute if the [101]colgroup
+          element contains one or more [102]col elements. Instead, the
+          value must be computed by summing the span attributes of the
+          enclosed [103]col elements.
+
+   The [104]colgroup element allows authors to create structural divisions
+   within a table. Authors may highlight this structure through style
+   sheets. For example, the author may wish to divide the columns into
+   logical groups such as the student's permanent address, phone number
+   and emergency contact information. And group the student's local
+   address, phone and email address into another logical group.
+
+   A [105]table may either contain a single implicit column group (no
+   [106]colgroup element delimits the columns) or any number of explicit
+   column groups (each delimited by an instance of the [107]colgroup
+   element).
+
+   The [108]col element allows authors to share attributes among several
+   columns without implying any structural grouping. The "span" of the
+   [109]col element is the number of columns that will share the element's
+   attributes. For example, the author may wish to apply a specific style
+   to the student's permanent data and apply a different style to the
+   student's local data.
+
+   The [110]colgroup element creates an explicit column group. The number
+   of columns in the column group may be specified in two, mutually
+   exclusive ways:
+    1. The colgroup [111]@span attribute (default value 1) specifies the
+       number of columns in the group.
+    2. Each embedded [112]col element in the [113]colgroup represents one
+       or more columns in the group.
+
+   The advantage of using the [114]colgroup element is that authors may
+   logically group multiple columns. By grouping columns, the author can
+   apply rules across the entire group. The author can also apply column
+   width balancing across the group of columns. For example, if the author
+   has a table with five columns and the author divides the table into two
+   column groups, one with three columns and the other with two columns.
+   The author could define the first column group to consume 300 pixels
+   and the second column group to consume 100 pixels. Each column within
+   the first column group would be 100 pixels wide and the remaining two
+   columns would be 50 pixels wide. If the author added embedded [115]col
+   elements, she could force one or more columns to be a specific width
+   and the remaining columns within the group would be evenly divided
+   within the remaining allotted width.
+
+   For example, the following table defines a column group and embedded
+   columns with differing widths.
+
+   Example
+<style type="text/css">
+#colgrp1 { width: 300px }
+#col1 { width: 100px }
+#col2 { width: 50px }
+</style>
+...
+<table>
+  <colgroup id="colgrp1">
+    <col id="col1" span="3"/>
+    <col id="col2" span="2"/>
+  </colgroup>
+<em>...the rest of the table...</em>
+</table>
+
+   In this example, the defined width for the [116]colgroup constrains all
+   of the columns to fit within that value regardless of the of the
+   defined values within the [117]col elements. In this example, the width
+   of the columns within the column group must be constrained to fit the
+   defined width of the column group.
+
+   When it is necessary to single out a column (e.g., for style
+   information, to specify width information, etc.) within a group,
+   authors must identify that column with a [118]col element.
+
+   The [119]col element allows authors to group together attribute
+   specifications for table columns. The [120]col does not group columns
+   together structurally -- that is the role of the [121]colgroup element.
+   [122]col elements are empty and serve only as a support for attributes.
+   They may appear inside or outside an explicit column group (i.e.,
+   [123]colgroup element).
+
+  30.1.1. Calculating the number of columns in a table
+
+   There are two ways to determine the number of columns in a table (in
+   order of precedence):
+    1. If the [124]table element contains any [125]colgroup or [126]col
+       elements, user agents should calculate the number of columns by
+       summing the following:
+          + For each [127]col element, take the value of its [128]@span
+            attribute (default value 1).
+          + For each [129]colgroup element containing at least one
+            [130]col element, ignore the [131]@span attribute for the
+            [132]colgroup element. For each [133]col element, perform the
+            calculation of step 1.
+          + For each empty [134]colgroup element, take the value of its
+            [135]@span attribute (default value 1).
+    2. Otherwise, if the [136]table element contains no [137]colgroup or
+       [138]col elements, user agents should base the number of columns on
+       what is required by the rows. The number of columns is equal to the
+       number of columns required by the row with the most columns,
+       including cells that span multiple columns. For any row that has
+       fewer than this number of columns, the end of that row should be
+       padded with empty cells. The "end" of a row depends on the
+       directionality of a table.
+
+   It is an error if a table contains [139]colgroup or [140]col elements
+   and the two calculations do not result in the same number of columns.
+
+   Once the user agent has calculated the number of columns in the table,
+   it may group them into a [141]colgroup.
+
+30.2. The summary element
+
+   Attributes
+
+   The [142]Common collection
+          A collection of other attribute collections, including:
+          [143]Bi-directional, [144]Core, [145]Edit, [146]Embedding,
+          [147]Events, [148]Forms, [149]Hypertext, [150]I18N, [151]Map,
+          [152]Metainformation, and [153]Role
+
+   This element provides a summary of the table's purpose and structure
+   for user agents rendering to non-visual media such as speech and
+   Braille.
+
+   User agents MUST provide access to the content of the [154]summary
+   element. As an example, access could be provided through a menu option,
+   a mouse-over function, or through a dialog.
+
+   The following example demonstrates the difference between a table
+   caption and a table summary.
+
+   Example
+<table>
+  <caption>Student Class Roster</caption>
+  <summary>The table defines the class roster.
+    The columns contain the following data:
+    students name, permanent address, permanent phone,
+    local address, local phone,
+    declared major, assigned academic advisor,
+    student standing</summary>
+  <em>...the rest of the table...</em>
+</table>
+
+30.3. The table element
+
+   Attributes
+
+   The [155]Common collection
+          A collection of other attribute collections, including:
+          [156]Bi-directional, [157]Core, [158]Edit, [159]Embedding,
+          [160]Events, [161]Forms, [162]Hypertext, [163]I18N, [164]Map,
+          [165]Metainformation, and [166]Role
+
+   The [167]table element contains all other elements that specify the
+   caption, column groups, columns, rows, and content for a table.
+
+  30.3.1. Visual Rendering
+
+   All style associated with table rendering MUST use proper CSS2
+   properties.
+
+   Although CSS2 is not required, the equivalent effect MUST BE followed
+   and integrated into the rendering model.
+
+   The following informative list describes what operations visual user
+   agents may carry out when rendering a table:
+     * Provide access to the content of the [168]summary element. As an
+       example, access could be provided through a menu option, a
+       mouse-over function, or through a dialog. Authors should provide a
+       summary of a table's content and structure so that people using
+       non-visual user agents may better understand it.
+     * Render the caption, if one is defined. The caption may be rendered,
+       for example, either on the top or the bottom of the table.
+     * Render the table header, if one is specified. Render the table
+       footer, if one is specified. User agents must know where to render
+       the header and footer. For instance, if the output medium is paged,
+       user agents may put the header at the top of each page and the
+       footer at the bottom. Similarly, if the user agent provides a
+       mechanism to scroll the rows, the header may appear at the top of
+       the scrolled area and the footer at the bottom.
+     * Calculate the [169]number of columns in the table. Note that the
+       number of rows in a table is equal to the number of [170]tr
+       elements contained by the [171]table element.
+     * Group the columns according to any [172]column groups
+       specifications.
+     * Render the cells, row by row and grouped in appropriate columns,
+       between the header and footer. Visual user agents should format the
+       table according to XHTML attributes and style sheet specification.
+
+  30.3.2. Table directionality
+
+   The directionality of a table is either the inherited directionality
+   (the default is left-to-right) or that specified by the [173]@dir
+   attribute for the [174]table element.
+
+   For a left-to-right table, column zero is on the left side and row zero
+   is at the top. For a right-to-left table, column zero is on the right
+   side and row zero is at the top.
+
+   When a user agent allots extra cells to a row, extra row cells are
+   added to the right of the table for left-to-right tables and to the
+   left side for right-to-left tables.
+
+   Note that [175]table is the only element on which [176]@dir reverses
+   the visual order of the columns; a single table row ( [177]tr) or a
+   group of columns ( [178]colgroup) cannot be independently reversed.
+
+   When set for or inherited by the [179]table element, the [180]@dir
+   attribute also affects the direction of text within table cells (since
+   the [181]@dir attribute is inherited by block-level elements).
+
+   To specify a right-to-left table, set the [182]@dir attribute as
+   follows:
+
+   Example
+<table dir="rtl">
+<em>...the rest of the table...</em>
+</table>
+
+   The direction of text in individual cells can be changed by setting the
+   [183]@dir attribute in an element that defines the cell.
+
+  30.3.3. Table rendering by non-visual user agents
+
+   This section provides more detailed discussion on cell header data and
+   how non-visual agents may utilize that information.
+
+    30.3.3.1. Associating header information with data cells
+
+   Non-visual user agents such as speech synthesizers and Braille-based
+   devices may use the following [184]td and [185]th element attributes to
+   render table cells more intuitively:
+     * For a given data cell, the [186]@headers attribute lists which
+       cells provide pertinent header information. For this purpose, each
+       header cell must be named using the [187]@id attribute. Note that
+       it's not always possible to make a clean division of cells into
+       headers or data. You should use the [188]td element for such cells
+       together with the [189]@id or [190]@scope attributes as
+       appropriate.
+     * For a given header cell, the [191]@scope attribute tells the user
+       agent the data cells for which this header provides information.
+       Authors may choose to use this attribute instead of [192]@headers
+       according to which is more convenient; the two attributes fulfill
+       the same function. The [193]@headers attribute is generally needed
+       when headers are placed in irregular positions with respect to the
+       data they apply to.
+     * The [194]@abbr attribute specifies an abbreviated header for header
+       cells so that user agents may render header information more
+       rapidly.
+
+   In the following example, we assign header information to cells by
+   setting the [195]@headers attribute. Each cell in the same column
+   refers to the same header cell (via the [196]@id attribute).
+
+   Example
+<table>
+<caption>Cups of coffee consumed by each senator</caption>
+<summary>This table charts the number of cups
+          of coffee consumed by each senator, the type
+          of coffee (decaf or regular), and whether
+          taken with sugar.</summary>
+<tbody>
+   <tr>
+      <th id="t1">Name</th>
+      <th id="t2">Cups</th>
+      <th id="t3" abbr="Type">Type of Coffee</th>
+      <th id="t4">Sugar?</th>
+   </tr>
+   <tr>
+      <td headers="t1">T. Sexton</td>
+      <td headers="t2">10</td>
+      <td headers="t3">Espresso</td>
+      <td headers="t4">No</td>
+   </tr>
+   <tr>
+      <td headers="t1">J. Dinnen</td>
+      <td headers="t2">5</td>
+      <td headers="t3">Decaf</td>
+      <td headers="t4">Yes</td>
+   </tr>
+</tbody>
+</table>
+
+   A speech synthesizer might render this table as follows:
+
+   Example
+Caption: Cups of coffee consumed by each senator
+Summary: This table charts the number of cups
+         of coffee consumed by each senator, the type
+         of coffee (decaf or regular), and whether
+         taken with sugar.
+Name: T. Sexton,   Cups: 10,   Type: Espresso,   Sugar: No
+Name: J. Dinnen,   Cups: 5,    Type: Decaf,      Sugar: Yes
+
+   Note how the header "Type of Coffee" is abbreviated to "Type" using the
+   [197]@abbr attribute.
+
+   Here is the same example substituting the [198]@scope attribute for the
+   [199]@headers attribute. Note the value "col" for the [200]@scope
+   attribute, meaning "all cells in the current column":
+
+   Example
+<table>
+<caption>Cups of coffee consumed by each senator</caption>
+<summary>
+  This table charts the number of cups
+  of coffee consumed by each senator, the type
+  of coffee (decaf or regular), and whether
+  taken with sugar.
+</summary>
+<tbody>
+   <tr>
+      <th scope="col">Name</th>
+      <th scope="col">Cups</th>
+      <th scope="col" abbr="Type">Type of Coffee</th>
+      <th scope="col">Sugar?</th>
+   </tr>
+   <tr>
+      <td>T. Sexton</td>
+      <td>10</td>
+      <td>Espresso</td>
+      <td>No</td>
+   </tr>
+   <tr>
+      <td>J. Dinnen</td>
+      <td>5</td>
+      <td>Decaf</td>
+      <td>Yes</td>
+   </tr>
+</tbody>
+</table>
+
+   Here's a somewhat more complex example illustrating other values for
+   the [201]@scope attribute:
+
+   Example
+<table>
+<summary>
+  History courses offered in the community of
+  Bath arranged by course name, tutor, summary,
+  code, and fee
+</summary>
+<thead>
+  <tr>
+    <th colspan="5" scope="colgroup">Community Courses -- Bath Autumn 1997</th>
+  </tr>
+</thead>
+<tbody>
+  <tr>
+    <th scope="col" abbr="Name">Course Name</th>
+    <th scope="col" abbr="Tutor">Course Tutor</th>
+    <th scope="col">Summary</th>
+    <th scope="col">Code</th>
+    <th scope="col">Fee</th>
+  </tr>
+  <tr>
+    <td scope="row">After the Civil War</td>
+    <td>Dr. John Wroughton</td>
+    <td>
+       The course will examine the turbulent years in England
+       after 1646. <em>6 weekly meetings starting Monday 13th
+       October.</em>
+    </td>
+    <td>H27</td>
+    <td>&amp;pound;32</td>
+  </tr>
+  <tr>
+    <td scope="row">An Introduction to Anglo-Saxon England</td>
+    <td>Mark Cottle</td>
+    <td>
+       One day course introducing the early medieval
+       period reconstruction the Anglo-Saxons and
+       their society. <em>Saturday 18th October.</em>
+    </td>
+    <td>H28</td>
+    <td>&amp;pound;18</td>
+  </tr>
+  <tr>
+    <td scope="row">The Glory that was Greece</td>
+    <td>Valerie Lorenz</td>
+    <td>
+     Birthplace of democracy, philosophy, heartland of theater, home of
+     argument. The Romans may have done it but the Greeks did it
+     first. <em>Saturday day school 25th October 1997</em>
+    </td>
+    <td>H30</td>
+    <td>&amp;pound;18</td>
+  </tr>
+</tbody>
+</table>
+
+   A graphical user agent might render this as:
+
+   A table with merged cells
+
+   Note the use of the [202]@scope attribute with the "row" value.
+   Although the first cell in each row contains data, not header
+   information, the [203]@scope attribute makes the data cell behave like
+   a row header cell. This allows speech synthesizers to provide the
+   relevant course name upon request or to state it immediately before
+   each cell's content.
+
+    30.3.3.2. Categorizing cells
+
+   Users browsing a table with a speech-based user agent may wish to hear
+   an explanation of a cell's contents in addition to the contents
+   themselves. One way the user might provide an explanation is by
+   speaking associated header information before speaking the data cell's
+   contents (see the section on [204]associating header information with
+   data cells).
+
+   Users may also want information about more than one cell, in which case
+   header information provided at the cell level (by [205]@headers,
+   [206]@scope, and [207]@abbr) may not provide adequate context. Consider
+   the following table, which classifies expenses for meals, hotels, and
+   transport in two locations (San Jose and Seattle) over several days:
+
+   Image of a table listing travel expenses at two locations: San Jose and
+   Seattle, by date, and category (meals, hotels, and transport), shown
+   with subtitles
+
+   Users might want to extract information from the table in the form of
+   queries:
+     * "What did I spend for all my meals?"
+     * "What did I spend for meals on 25 August?"
+     * "What did I spend for all expenses in San Jose?"
+
+   Each query involves a computation by the user agent that may involve
+   zero or more cells. In order to determine, for example, the costs of
+   meals on 25 August, the user agent must know which table cells refer to
+   "Meals" (all of them) and which refer to "Dates" (specifically, 25
+   August), and find the intersection of the two sets.
+
+   To accommodate this type of query, the table model allows authors to
+   place cell headers and data into categories. For example, for the
+   travel expense table, an author could group the header cells "San Jose"
+   and "Seattle" into the category "Location", the headers "Meals",
+   "Hotels", and "Transport" in the category "Expenses", and the four days
+   into the category "Date". The previous three questions would then have
+   the following meanings:
+     * "What did I spend for all my meals?" means "What are all the data
+       cells in the "Expenses=Meals" category?
+     * "What did I spend for meals on 25 August?" means "What are all the
+       data cells in the "Expenses=Meals" and "Date=Aug-25-1997"
+       categories?
+     * "What did I spend for all expenses in San Jose?" means "What are
+       all the data cells in the "Expenses=Meals, Hotels, Transport" and
+       "Location=San Jose" categories?
+
+   Authors categorize a header or data cell by setting the [208]@axis
+   attribute for the cell. For instance, in the travel expense table, the
+   cell containing the information "San Jose" could be placed in the
+   "Location" category as follows:
+
+   Example
+  <th id="a6" axis="location">San Jose</th>
+
+   Any cell containing information related to "San Jose" should refer to
+   this header cell via either the [209]@headers or the [210]@scope
+   attribute. Thus, meal expenses for 25-Aug-1997 should be marked up to
+   refer to [211]@id attribute (whose value here is "a6") of the "San
+   Jose" header cell:
+
+   Example
+  <td headers="a6">37.74</td>
+
+   Each [212]@headers attribute provides a list of [213]@id references.
+   Authors may thus categorize a given cell in any number of ways (or,
+   along any number of "headers", hence the name).
+
+   Below we mark up the travel expense table with category information:
+
+   Example
+<table>
+<caption>Travel Expense Report</caption>
+<summary>
+  This table summarizes travel expenses
+  incurred during August trips to
+  San Jose and Seattle
+</summary>
+<tbody>
+   <tr>
+      <th></th>
+      <th id="a2" axis="expenses">Meals</th>
+      <th id="a3" axis="expenses">Hotels</th>
+      <th id="a4" axis="expenses">Transport</th>
+      <td>subtotals</td>
+   </tr>
+   <tr>
+      <th id="a6" axis="location">San Jose</th>
+      <th></th>
+      <th></th>
+      <th></th>
+      <td></td>
+   </tr>
+   <tr>
+      <td id="a7" axis="date">25-Aug-97</td>
+      <td headers="a6 a7 a2">37.74</td>
+      <td headers="a6 a7 a3">112.00</td>
+      <td headers="a6 a7 a4">45.00</td>
+      <td></td>
+   </tr>
+   <tr>
+      <td id="a8" axis="date">26-Aug-97</td>
+      <td headers="a6 a8 a2">27.28</td>
+      <td headers="a6 a8 a3">112.00</td>
+      <td headers="a6 a8 a4">45.00</td>
+      <td></td>
+   </tr>
+   <tr>
+      <td>subtotals</td>
+      <td>65.02</td>
+      <td>224.00</td>
+      <td>90.00</td>
+      <td>379.02</td>
+   </tr>
+   <tr>
+      <th id="a10" axis="location">Seattle</th>
+      <th></th>
+      <th></th>
+      <th></th>
+      <td></td>
+   </tr>
+   <tr>
+      <td id="a11" axis="date">27-Aug-97</td>
+      <td headers="a10 a11 a2">96.25</td>
+      <td headers="a10 a11 a3">109.00</td>
+      <td headers="a10 a11 a4">36.00</td>
+      <td></td>
+   </tr>
+   <tr>
+      <td id="a12" axis="date">28-Aug-97</td>
+      <td headers="a10 a12 a2">35.00</td>
+      <td headers="a10 a12 a3">109.00</td>
+      <td headers="a10 a12 a4">36.00</td>
+      <td></td>
+   </tr>
+   <tr>
+      <td>subtotals</td>
+      <td>131.25</td>
+      <td>218.00</td>
+      <td>72.00</td>
+      <td>421.25</td>
+   </tr>
+   <tr>
+      <th>Totals</th>
+      <td>196.27</td>
+      <td>442.00</td>
+      <td>162.00</td>
+      <td>800.27</td>
+   </tr>
+</tbody>
+</table>
+
+   Note that marking up the table this way also allows user agents to
+   avoid confusing the user with unwanted information. For instance, if a
+   speech synthesizer were to speak all of the figures in the "Meals"
+   column of this table in response to the query "What were all my meal
+   expenses?", a user would not be able to distinguish a day's expenses
+   from subtotals or totals. By carefully categorizing cell data, authors
+   allow user agents to make important semantic distinctions when
+   rendering.
+
+   Of course, there is no limit to how authors may categorize information
+   in a table. In the travel expense table, for example, we could add the
+   additional categories "subtotals" and "totals".
+
+   This specification does not require user agents to handle information
+   provided by the [214]@axis attribute, nor does it make any
+   recommendations about how user agents may present [215]@axis
+   information to users or how users may query the user agent about this
+   information.
+
+   However, user agents, particularly speech synthesizers, may want to
+   factor out information common to several cells that are the result of a
+   query. For instance, if the user asks "What did I spend for meals in
+   San Jose?", the user agent would first determine the cells in question
+   (25-Aug-1997: 37.74, 26-Aug-1997:27.28), then render this information.
+   A user agent speaking this information might read it:
+
+   Example
+   Location: San Jose. Date: 25-Aug-1997. Expenses, Meals: 37.74
+   Location: San Jose. Date: 26-Aug-1997. Expenses, Meals: 27.28
+
+   or, more compactly:
+
+   Example
+   San Jose, 25-Aug-1997, Meals: 37.74
+   San Jose, 26-Aug-1997, Meals: 27.28
+
+   An even more economical rendering would factor the common information
+   and reorder it:
+
+   Example
+   San Jose, Meals, 25-Aug-1997: 37.74
+                    26-Aug-1997: 27.28
+
+   User agents that support this type of rendering should allow authors a
+   means to customize rendering (e.g., through style sheets).
+
+    30.3.3.3. Algorithm to find heading information
+
+   In the absence of header information from either the [216]@scope or
+   [217]@headers attribute, user agents may construct header information
+   according to the following algorithm. The goal of the algorithm is to
+   find an ordered list of headers. (In the following description of the
+   algorithm the [218]table directionality is assumed to be
+   left-to-right.)
+     * First, search left from the cell's position to find row header
+       cells. Then search upwards to find column header cells. The search
+       in a given direction stops when the edge of the table is reached or
+       when a data cell is found after a header cell.
+     * Row headers are inserted into the list in the order they appear in
+       the table. For left-to-right tables, headers are inserted from left
+       to right.
+     * Column headers are inserted after row headers, in the order they
+       appear in the table, from top to bottom.
+     * If a header cell has the [219]@headers attribute set, then the
+       headers referenced by this attribute are inserted into the list and
+       the search stops for the current direction.
+     * [220]td cells that set the [221]@axis attribute are also treated as
+       header cells.
+
+30.4. The tbody element
+
+   Attributes
+
+   The [222]Common collection
+          A collection of other attribute collections, including:
+          [223]Bi-directional, [224]Core, [225]Edit, [226]Embedding,
+          [227]Events, [228]Forms, [229]Hypertext, [230]I18N, [231]Map,
+          [232]Metainformation, and [233]Role
+
+   The [234]tbody element contains rows of table data. In tables that also
+   contain [235]thead or [236]tfoot elements, all of these sections must
+   contain the same number of columns.
+
+30.5. The td and th elements
+
+   Attributes
+
+   The [237]Common collection
+          A collection of other attribute collections, including:
+          [238]Bi-directional, [239]Core, [240]Edit, [241]Embedding,
+          [242]Events, [243]Forms, [244]Hypertext, [245]I18N, [246]Map,
+          [247]Metainformation, and [248]Role
+
+   abbr = [249]Text
+          This attribute should be used to provide an abbreviated form of
+          the cell's content, and may be rendered by user agents when
+          appropriate in place of the cell's content. Abbreviated names
+          should be short since user agents may render them repeatedly.
+          For instance, speech synthesizers may render the abbreviated
+          headers relating to a particular cell before rendering that
+          cell's content.
+
+   axis = [250]CDATA
+          This attribute may be used to place a cell into conceptual
+          categories that can be considered to form axes in an
+          n-dimensional space. User agents may give users access to these
+          categories (e.g., the user may query the user agent for all
+          cells that belong to certain categories, the user agent may
+          present a table in the form of a table of contents, etc.).
+          Please consult the section on [251]categorizing cells for more
+          information. The value of this attribute is a comma-separated
+          list of category names.
+
+   colspan = [252]Number
+          This attribute specifies the number of columns spanned by the
+          current cell. The default value of this attribute is one ("1").
+          The value zero ("0") means that the cell spans all columns from
+          the current column to the last column of the column group (
+          [253]colgroup) in which the cell is defined.
+
+   headers = [254]IDREFS
+          This attribute specifies the list of header cells that provide
+          header information for the current data cell. The value of this
+          attribute is a space-separated list of cell names; those cells
+          must be named by setting their [255]@id attribute. Authors
+          generally use the [256]@headers attribute to help non-visual
+          user agents render header information about data cells (e.g.,
+          header information is spoken prior to the cell data), but the
+          attribute may also be used in conjunction with style sheets. See
+          also the [257]@scope attribute.
+
+   rowspan = [258]Number
+          This attribute specifies the number of rows spanned by the
+          current cell. The default value of this attribute is one ("1").
+          The value zero ("0") means that the cell spans all rows from the
+          current row to the last row of the current table section
+          (rowgroup) in which the cell is defined. [259]thead, [260]tbody,
+          and [261]tfoot elements are rowgroups.
+
+   scope = row|col|rowgroup|colgroup
+          This attribute specifies the set of data cells for which the
+          current header cell provides header information. This attribute
+          may be used in place of the [262]@headers attribute,
+          particularly for simple tables. When specified, this attribute
+          must have one of the following values:
+
+          + row: The current cell provides header information for the rest
+            of the row that contains it (see also the section on
+            [263]table directionality).
+          + col: The current cell provides header information for the rest
+            of the column that contains it.
+          + rowgroup: The header cell provides header information for the
+            rest of the row group that contains it.
+          + colgroup: The header cell provides header information for the
+            rest of the [264]column group that contains it.
+
+   Table cells may contain two types of information: header information
+   and data. This distinction enables user agents to render header and
+   data cells distinctly, even in the absence of style sheets. For
+   example, visual user agents may present header cell text with a bold
+   font. Speech synthesizers may render header information with a distinct
+   voice inflection.
+
+   The [265]th element defines a cell that contains header information.
+   User agents have two pieces of header information available: the
+   contents of the [266]th element and the value of the [267]@abbr
+   attribute. User agents must render either the contents of the cell or
+   the value of the [268]@abbr attribute. For visual media, the latter may
+   be appropriate when there is insufficient space to render the full
+   contents of the cell. For non-visual media [269]@abbr may be used as an
+   abbreviation for table headers when these are rendered along with the
+   contents of the cells to which they apply.
+
+   The [270]@headers and [271]@scope attributes also allow authors to help
+   non-visual user agents process header information. Please consult the
+   section on [272]labeling cells for non-visual user agents for
+   information and examples.
+
+   The [273]td element defines a cell that contains data.
+
+   Cells may be empty (i.e., contain no data).
+
+  30.5.1. Cells that span several rows or columns
+
+   Cells may span several rows or columns. The number of rows or columns
+   spanned by a cell is set by the [274]@rowspan and [275]@colspan
+   attributes for the [276]th and [277]td elements.
+
+   In this table definition, we specify that the cell in row four, column
+   two should span a total of three columns, including the current column.
+<table>
+<caption>Cups of coffee consumed by each senator</caption>
+<tbody>
+   <tr>
+      <th>Name</th>
+      <th>Cups</th>
+      <th>Type of Coffee</th>
+      <th>Sugar?</th>
+   </tr>
+   <tr>
+      <td>T. Sexton</td>
+      <td>10</td>
+      <td>Espresso</td>
+      <td>No</td>
+   </tr>
+   <tr>
+      <td>J. Dinnen</td>
+      <td>5</td>
+      <td>Decaf</td>
+      <td>Yes</td>
+   </tr>
+   <tr>
+      <td>A. Soria</td>
+      <td colspan="3"><em>Not available</em></td>
+   </tr>
+</tbody>
+</table>
+
+   This table might be rendered on a tty device by a visual user agent as
+   follows:
+Cups of coffee consumed by each senator
+ --------------------------------------
+ |   Name  |Cups|Type of Coffee|Sugar?|
+ --------------------------------------
+ |T. Sexton|10  |Espresso      |No    |
+ --------------------------------------
+ |J. Dinnen|5   |Decaf         |Yes   |
+ --------------------------------------
+ |A. Soria |Not available             |
+ --------------------------------------
+
+   The next example illustrates (with the help of table borders) how cell
+   definitions that span more than one row or column affect the definition
+   of later cells. Consider the following table definition:
+<table>
+<tbody>
+   <tr>
+      <td>1</td>
+      <td rowspan="2">2</td>
+      <td>3</td>
+   </tr>
+   <tr>
+      <td>4</td>
+      <td>6</td>
+   </tr>
+   <tr>
+      <td>7</td>
+      <td>8</td>
+      <td>9</td>
+      <td></td>
+   </tr>
+</tbody>
+</table>
+
+   As cell "2" spans the first and second rows, the definition of the
+   second row will take it into account. Thus, the second [278]td in row
+   two actually defines the row's third cell. Visually, the table might be
+   rendered to a tty device as:
+-------------
+| 1 | 2 | 3 |
+----|   |----
+| 4 |   | 6 |
+----|---|----
+| 7 | 8 | 9 |
+-------------
+
+   while a graphical user agent might render this as:
+
+   Image of a table with rowspan=2
+
+   Note that if the [279]td defining cell "6" had been omitted, an extra
+   empty cell would have been added by the user agent to complete the row.
+
+   Similarly, in the following table definition:
+<table>
+<tbody>
+   <tr>
+      <td>1</td>
+      <td>2</td>
+      <td>3</td>
+   </tr>
+   <tr>
+      <td colspan="2">4</td>
+      <td>6</td>
+   </tr>
+   <tr>
+      <td>7</td>
+      <td>8</td>
+      <td>9</td>
+   </tr>
+</tbody>
+</table>
+
+   cell "4" spans two columns, so the second [280]td in the row actually
+   defines the third cell ("6"):
+-------------
+| 1 | 2 | 3 |
+--------|----
+| 4     | 6 |
+--------|----
+| 7 | 8 | 9 |
+-------------
+
+   A graphical user agent might render this as:
+
+   Image of a table with colspan=2
+
+   Defining overlapping cells is an error. User agents may vary in how
+   they handle this error (e.g., rendering may vary).
+
+   The following illegal example illustrates how one might create
+   overlapping cells. In this table, cell "5" spans two rows and cell "7"
+   spans two columns, so there is overlap in the cell between "7" and "9":
+<table>
+<tbody>
+   <tr>
+      <td>1</td>
+      <td>2</td>
+      <td>3</td>
+   </tr>
+   <tr>
+      <td>4</td>
+      <td rowspan="2">5</td>
+      <td>6</td>
+   </tr>
+   <tr>
+      <td colspan="2">7</td>
+      <td>9</td>
+   </tr>
+</tbody>
+</table>
+
+30.6. The thead and tfoot elements
+
+   Attributes
+
+   The [281]Common collection
+          A collection of other attribute collections, including:
+          [282]Bi-directional, [283]Core, [284]Edit, [285]Embedding,
+          [286]Events, [287]Forms, [288]Hypertext, [289]I18N, [290]Map,
+          [291]Metainformation, and [292]Role
+
+   Table rows may be grouped into a table head, table foot, and one or
+   more table body sections, using the [293]thead, [294]tfoot and
+   [295]tbody elements, respectively. This division enables user agents to
+   support scrolling of table bodies independently of the table head and
+   foot. When long tables are printed, the table head and foot information
+   may be repeated on each page that contains table data.
+
+   The table head and table foot should contain information about the
+   table's columns. The table body must contain rows of table data.
+
+   When present, each [296]thead, [297]tfoot, and [298]tbody creates a row
+   group. Each row group must contain at least one row, defined by the
+   [299]tr element.
+
+   If the [300]thead, [301]tfoot, and [302]tbody elements are used, and a
+   rowspan attribute is used within a group, the rowspan must remain
+   within the group boundaries of which it is defined.
+
+   This example illustrates the order and structure of the table head,
+   foot, and bodies.
+
+   Example
+<table>
+<thead>
+     <tr> <em>...header information...</em></tr>
+</thead>
+<tfoot>
+     <tr> <em>...footer information...</em></tr>
+</tfoot>
+<tbody>
+     <tr> <em>...first row of block one data...</em></tr>
+     <tr> <em>...second row of block one data...</em></tr>
+</tbody>
+<tbody>
+     <tr> <em>...first row of block two data...</em></tr>
+     <tr> <em>...second row of block two data...</em></tr>
+     <tr> <em>...third row of block two data...</em></tr>
+</tbody>
+</table>
+
+   [303]tfoot must appear before [304]tbody within a [305]table definition
+   so that user agents can render the foot before receiving all of the
+   (potentially numerous) rows of data.
+
+30.7. The tr element
+
+   Attributes
+
+   The [306]Common collection
+          A collection of other attribute collections, including:
+          [307]Bi-directional, [308]Core, [309]Edit, [310]Embedding,
+          [311]Events, [312]Forms, [313]Hypertext, [314]I18N, [315]Map,
+          [316]Metainformation, and [317]Role
+
+   The [318]tr elements acts as a container for a row of table cells.
+
+   This sample table contains three rows, each begun by the [319]tr
+   element:
+<table>
+<caption>Cups of coffee consumed by each senator</caption>
+<summary>This table charts the number of cups
+  of coffee consumed by each senator, the type
+  of coffee (decaf or regular), and whether
+  taken with sugar.</summary>
+<tbody>
+   <tr> ...A header row...</tr>
+   <tr> ...First row of data...</tr>
+   <tr> ...Second row of data...</tr>
+</tbody>
+</table>
+     __________________________________________________________________
+
+   [[320]previous] [[321]next] [[322]table of contents] [[323]elements]
+   [[324]attributes]
+
+References
+
+   1. file:///Users/johncowan/xhtml3/xhtml2/Overview.html
+   2. file:///Users/johncowan/xhtml3/xhtml2/Overview.html#toc
+   3. file:///Users/johncowan/xhtml3/xhtml2/mod-styleAttribute.html
+   4. file:///Users/johncowan/xhtml3/xhtml2/mod-xforms.html
+   5. file:///Users/johncowan/xhtml3/xhtml2/mod-styleAttribute.html
+   6. file:///Users/johncowan/xhtml3/xhtml2/mod-xforms.html
+   7. file:///Users/johncowan/xhtml3/xhtml2/Overview.html#toc
+   8. file:///Users/johncowan/xhtml3/xhtml2/elements.html
+   9. file:///Users/johncowan/xhtml3/xhtml2/attributes.html
+  10. file:///Users/johncowan/xhtml3/xhtml2/mod-tables.html#sec_30.1.
+  11. file:///Users/johncowan/xhtml3/xhtml2/mod-tables.html#column-calc
+  12. file:///Users/johncowan/xhtml3/xhtml2/mod-tables.html#sec_30.2.
+  13. file:///Users/johncowan/xhtml3/xhtml2/mod-tables.html#sec_30.3.
+  14. file:///Users/johncowan/xhtml3/xhtml2/mod-tables.html#sec_30.3.1.
+  15. file:///Users/johncowan/xhtml3/xhtml2/mod-tables.html#table-directionality
+  16. file:///Users/johncowan/xhtml3/xhtml2/mod-tables.html#non-visual-rendering
+  17. file:///Users/johncowan/xhtml3/xhtml2/mod-tables.html#sec_30.4.
+  18. file:///Users/johncowan/xhtml3/xhtml2/mod-tables.html#sec_30.5.
+  19. file:///Users/johncowan/xhtml3/xhtml2/mod-tables.html#sec_30.5.1.
+  20. file:///Users/johncowan/xhtml3/xhtml2/mod-tables.html#sec_30.6.
+  21. file:///Users/johncowan/xhtml3/xhtml2/mod-tables.html#sec_30.7.
+  22. file:///Users/johncowan/xhtml3/xhtml2/mod-attribute-collections.html#col_Common
+  23. file:///Users/johncowan/xhtml3/xhtml2/mod-caption.html#edef_caption_caption
+  24. file:///Users/johncowan/xhtml3/xhtml2/mod-document.html#edef_document_title
+  25. file:///Users/johncowan/xhtml3/xhtml2/mod-tables.html#edef_tables_summary
+  26. file:///Users/johncowan/xhtml3/xhtml2/mod-tables.html#edef_tables_col
+  27. file:///Users/johncowan/xhtml3/xhtml2/mod-tables.html#edef_tables_colgroup
+  28. file:///Users/johncowan/xhtml3/xhtml2/mod-tables.html#edef_tables_thead
+  29. file:///Users/johncowan/xhtml3/xhtml2/mod-tables.html#edef_tables_tfoot
+  30. file:///Users/johncowan/xhtml3/xhtml2/mod-tables.html#edef_tables_tbody
+  31. file:///Users/johncowan/xhtml3/xhtml2/mod-tables.html#edef_tables_tr
+  32. file:///Users/johncowan/xhtml3/xhtml2/mod-attribute-collections.html#col_Common
+  33. file:///Users/johncowan/xhtml3/xhtml2/mod-structural.html#cs_Flow
+  34. file:///Users/johncowan/xhtml3/xhtml2/mod-attribute-collections.html#col_Common
+  35. file:///Users/johncowan/xhtml3/xhtml2/mod-tables.html#adef_tables_span
+  36. file:///Users/johncowan/xhtml3/xhtml2/abstraction.html#dt_Number
+  37. file:///Users/johncowan/xhtml3/xhtml2/mod-attribute-collections.html#col_Common
+  38. file:///Users/johncowan/xhtml3/xhtml2/mod-tables.html#adef_tables_span
+  39. file:///Users/johncowan/xhtml3/xhtml2/abstraction.html#dt_Number
+  40. file:///Users/johncowan/xhtml3/xhtml2/mod-tables.html#edef_tables_col
+  41. file:///Users/johncowan/xhtml3/xhtml2/mod-attribute-collections.html#col_Common
+  42. file:///Users/johncowan/xhtml3/xhtml2/mod-tables.html#edef_tables_tr
+  43. file:///Users/johncowan/xhtml3/xhtml2/mod-attribute-collections.html#col_Common
+  44. file:///Users/johncowan/xhtml3/xhtml2/mod-tables.html#edef_tables_tr
+  45. file:///Users/johncowan/xhtml3/xhtml2/mod-attribute-collections.html#col_Common
+  46. file:///Users/johncowan/xhtml3/xhtml2/mod-tables.html#edef_tables_tr
+  47. file:///Users/johncowan/xhtml3/xhtml2/mod-attribute-collections.html#col_Common
+  48. file:///Users/johncowan/xhtml3/xhtml2/mod-xforms.html#col_Forms
+  49. file:///Users/johncowan/xhtml3/xhtml2/mod-tables.html#edef_tables_td
+  50. file:///Users/johncowan/xhtml3/xhtml2/mod-tables.html#edef_tables_th
+  51. file:///Users/johncowan/xhtml3/xhtml2/mod-attribute-collections.html#col_Common
+  52. file:///Users/johncowan/xhtml3/xhtml2/mod-tables.html#adef_tables_abbr
+  53. file:///Users/johncowan/xhtml3/xhtml2/abstraction.html#dt_Text
+  54. file:///Users/johncowan/xhtml3/xhtml2/mod-tables.html#adef_tables_axis
+  55. file:///Users/johncowan/xhtml3/xhtml2/abstraction.html#dt_CDATA
+  56. file:///Users/johncowan/xhtml3/xhtml2/mod-tables.html#adef_tables_colspan
+  57. file:///Users/johncowan/xhtml3/xhtml2/abstraction.html#dt_Number
+  58. file:///Users/johncowan/xhtml3/xhtml2/mod-tables.html#adef_tables_headers
+  59. file:///Users/johncowan/xhtml3/xhtml2/abstraction.html#dt_IDREFS
+  60. file:///Users/johncowan/xhtml3/xhtml2/mod-tables.html#adef_tables_rowspan
+  61. file:///Users/johncowan/xhtml3/xhtml2/abstraction.html#dt_Number
+  62. file:///Users/johncowan/xhtml3/xhtml2/mod-tables.html#adef_tables_scope
+  63. file:///Users/johncowan/xhtml3/xhtml2/mod-structural.html#cs_Flow
+  64. file:///Users/johncowan/xhtml3/xhtml2/mod-attribute-collections.html#col_Common
+  65. file:///Users/johncowan/xhtml3/xhtml2/mod-tables.html#adef_tables_abbr
+  66. file:///Users/johncowan/xhtml3/xhtml2/abstraction.html#dt_Text
+  67. file:///Users/johncowan/xhtml3/xhtml2/mod-tables.html#adef_tables_axis
+  68. file:///Users/johncowan/xhtml3/xhtml2/abstraction.html#dt_CDATA
+  69. file:///Users/johncowan/xhtml3/xhtml2/mod-tables.html#adef_tables_colspan
+  70. file:///Users/johncowan/xhtml3/xhtml2/abstraction.html#dt_Number
+  71. file:///Users/johncowan/xhtml3/xhtml2/mod-tables.html#adef_tables_headers
+  72. file:///Users/johncowan/xhtml3/xhtml2/abstraction.html#dt_IDREFS
+  73. file:///Users/johncowan/xhtml3/xhtml2/mod-tables.html#adef_tables_rowspan
+  74. file:///Users/johncowan/xhtml3/xhtml2/abstraction.html#dt_Number
+  75. file:///Users/johncowan/xhtml3/xhtml2/mod-tables.html#adef_tables_scope
+  76. file:///Users/johncowan/xhtml3/xhtml2/mod-structural.html#cs_Flow
+  77. file:///Users/johncowan/xhtml3/xhtml2/relax_module_defs.html#a_rmodule_Tables
+  78. file:///Users/johncowan/xhtml3/xhtml2/schema_module_defs.html#a_smodule_Tables_Module
+  79. file:///Users/johncowan/xhtml3/xhtml2/mod-attribute-collections.html#col_Common
+  80. file:///Users/johncowan/xhtml3/xhtml2/mod-bidi.html#col_Bi-directional
+  81. file:///Users/johncowan/xhtml3/xhtml2/mod-core.html#col_Core
+  82. file:///Users/johncowan/xhtml3/xhtml2/mod-edit.html#col_Edit
+  83. file:///Users/johncowan/xhtml3/xhtml2/mod-embedding.html#col_Embedding
+  84. file:///Users/johncowan/xhtml3/xhtml2/mod-xml-events.html#col_Events
+  85. file:///Users/johncowan/xhtml3/xhtml2/mod-xforms.html#col_Forms
+  86. file:///Users/johncowan/xhtml3/xhtml2/mod-hyperAttributes.html#col_Hypertext
+  87. file:///Users/johncowan/xhtml3/xhtml2/mod-i18n.html#col_I18N
+  88. file:///Users/johncowan/xhtml3/xhtml2/mod-csImgMap.html#col_Map
+  89. file:///Users/johncowan/xhtml3/xhtml2/mod-metaAttributes.html#col_Metainformation
+  90. file:///Users/johncowan/xhtml3/xhtml2/mod-roleAttribute.html#col_Role
+  91. file:///Users/johncowan/xhtml3/xhtml2/abstraction.html#dt_Number
+  92. file:///Users/johncowan/xhtml3/xhtml2/mod-tables.html#edef_tables_colgroup
+  93. file:///Users/johncowan/xhtml3/xhtml2/mod-tables.html#edef_tables_col
+  94. file:///Users/johncowan/xhtml3/xhtml2/mod-tables.html#adef_tables_span
+  95. file:///Users/johncowan/xhtml3/xhtml2/mod-tables.html#edef_tables_colgroup
+  96. file:///Users/johncowan/xhtml3/xhtml2/mod-tables.html#adef_tables_span
+  97. file:///Users/johncowan/xhtml3/xhtml2/mod-tables.html#edef_tables_colgroup
+  98. file:///Users/johncowan/xhtml3/xhtml2/mod-tables.html#adef_tables_span
+  99. file:///Users/johncowan/xhtml3/xhtml2/mod-tables.html#edef_tables_col
+ 100. file:///Users/johncowan/xhtml3/xhtml2/mod-tables.html#edef_tables_col
+ 101. file:///Users/johncowan/xhtml3/xhtml2/mod-tables.html#edef_tables_colgroup
+ 102. file:///Users/johncowan/xhtml3/xhtml2/mod-tables.html#edef_tables_col
+ 103. file:///Users/johncowan/xhtml3/xhtml2/mod-tables.html#edef_tables_col
+ 104. file:///Users/johncowan/xhtml3/xhtml2/mod-tables.html#edef_tables_colgroup
+ 105. file:///Users/johncowan/xhtml3/xhtml2/mod-tables.html#edef_tables_table
+ 106. file:///Users/johncowan/xhtml3/xhtml2/mod-tables.html#edef_tables_colgroup
+ 107. file:///Users/johncowan/xhtml3/xhtml2/mod-tables.html#edef_tables_colgroup
+ 108. file:///Users/johncowan/xhtml3/xhtml2/mod-tables.html#edef_tables_col
+ 109. file:///Users/johncowan/xhtml3/xhtml2/mod-tables.html#edef_tables_col
+ 110. file:///Users/johncowan/xhtml3/xhtml2/mod-tables.html#edef_tables_colgroup
+ 111. file:///Users/johncowan/xhtml3/xhtml2/mod-tables.html#adef_tables_span
+ 112. file:///Users/johncowan/xhtml3/xhtml2/mod-tables.html#edef_tables_col
+ 113. file:///Users/johncowan/xhtml3/xhtml2/mod-tables.html#edef_tables_colgroup
+ 114. file:///Users/johncowan/xhtml3/xhtml2/mod-tables.html#edef_tables_colgroup
+ 115. file:///Users/johncowan/xhtml3/xhtml2/mod-tables.html#edef_tables_col
+ 116. file:///Users/johncowan/xhtml3/xhtml2/mod-tables.html#edef_tables_colgroup
+ 117. file:///Users/johncowan/xhtml3/xhtml2/mod-tables.html#edef_tables_col
+ 118. file:///Users/johncowan/xhtml3/xhtml2/mod-tables.html#edef_tables_col
+ 119. file:///Users/johncowan/xhtml3/xhtml2/mod-tables.html#edef_tables_col
+ 120. file:///Users/johncowan/xhtml3/xhtml2/mod-tables.html#edef_tables_col
+ 121. file:///Users/johncowan/xhtml3/xhtml2/mod-tables.html#edef_tables_colgroup
+ 122. file:///Users/johncowan/xhtml3/xhtml2/mod-tables.html#edef_tables_col
+ 123. file:///Users/johncowan/xhtml3/xhtml2/mod-tables.html#edef_tables_colgroup
+ 124. file:///Users/johncowan/xhtml3/xhtml2/mod-tables.html#edef_tables_table
+ 125. file:///Users/johncowan/xhtml3/xhtml2/mod-tables.html#edef_tables_colgroup
+ 126. file:///Users/johncowan/xhtml3/xhtml2/mod-tables.html#edef_tables_col
+ 127. file:///Users/johncowan/xhtml3/xhtml2/mod-tables.html#edef_tables_col
+ 128. file:///Users/johncowan/xhtml3/xhtml2/mod-tables.html#adef_tables_span
+ 129. file:///Users/johncowan/xhtml3/xhtml2/mod-tables.html#edef_tables_colgroup
+ 130. file:///Users/johncowan/xhtml3/xhtml2/mod-tables.html#edef_tables_col
+ 131. file:///Users/johncowan/xhtml3/xhtml2/mod-tables.html#adef_tables_span
+ 132. file:///Users/johncowan/xhtml3/xhtml2/mod-tables.html#edef_tables_colgroup
+ 133. file:///Users/johncowan/xhtml3/xhtml2/mod-tables.html#edef_tables_col
+ 134. file:///Users/johncowan/xhtml3/xhtml2/mod-tables.html#edef_tables_colgroup
+ 135. file:///Users/johncowan/xhtml3/xhtml2/mod-tables.html#adef_tables_span
+ 136. file:///Users/johncowan/xhtml3/xhtml2/mod-tables.html#edef_tables_table
+ 137. file:///Users/johncowan/xhtml3/xhtml2/mod-tables.html#edef_tables_colgroup
+ 138. file:///Users/johncowan/xhtml3/xhtml2/mod-tables.html#edef_tables_col
+ 139. file:///Users/johncowan/xhtml3/xhtml2/mod-tables.html#edef_tables_colgroup
+ 140. file:///Users/johncowan/xhtml3/xhtml2/mod-tables.html#edef_tables_col
+ 141. file:///Users/johncowan/xhtml3/xhtml2/mod-tables.html#edef_tables_colgroup
+ 142. file:///Users/johncowan/xhtml3/xhtml2/mod-attribute-collections.html#col_Common
+ 143. file:///Users/johncowan/xhtml3/xhtml2/mod-bidi.html#col_Bi-directional
+ 144. file:///Users/johncowan/xhtml3/xhtml2/mod-core.html#col_Core
+ 145. file:///Users/johncowan/xhtml3/xhtml2/mod-edit.html#col_Edit
+ 146. file:///Users/johncowan/xhtml3/xhtml2/mod-embedding.html#col_Embedding
+ 147. file:///Users/johncowan/xhtml3/xhtml2/mod-xml-events.html#col_Events
+ 148. file:///Users/johncowan/xhtml3/xhtml2/mod-xforms.html#col_Forms
+ 149. file:///Users/johncowan/xhtml3/xhtml2/mod-hyperAttributes.html#col_Hypertext
+ 150. file:///Users/johncowan/xhtml3/xhtml2/mod-i18n.html#col_I18N
+ 151. file:///Users/johncowan/xhtml3/xhtml2/mod-csImgMap.html#col_Map
+ 152. file:///Users/johncowan/xhtml3/xhtml2/mod-metaAttributes.html#col_Metainformation
+ 153. file:///Users/johncowan/xhtml3/xhtml2/mod-roleAttribute.html#col_Role
+ 154. file:///Users/johncowan/xhtml3/xhtml2/mod-tables.html#edef_tables_summary
+ 155. file:///Users/johncowan/xhtml3/xhtml2/mod-attribute-collections.html#col_Common
+ 156. file:///Users/johncowan/xhtml3/xhtml2/mod-bidi.html#col_Bi-directional
+ 157. file:///Users/johncowan/xhtml3/xhtml2/mod-core.html#col_Core
+ 158. file:///Users/johncowan/xhtml3/xhtml2/mod-edit.html#col_Edit
+ 159. file:///Users/johncowan/xhtml3/xhtml2/mod-embedding.html#col_Embedding
+ 160. file:///Users/johncowan/xhtml3/xhtml2/mod-xml-events.html#col_Events
+ 161. file:///Users/johncowan/xhtml3/xhtml2/mod-xforms.html#col_Forms
+ 162. file:///Users/johncowan/xhtml3/xhtml2/mod-hyperAttributes.html#col_Hypertext
+ 163. file:///Users/johncowan/xhtml3/xhtml2/mod-i18n.html#col_I18N
+ 164. file:///Users/johncowan/xhtml3/xhtml2/mod-csImgMap.html#col_Map
+ 165. file:///Users/johncowan/xhtml3/xhtml2/mod-metaAttributes.html#col_Metainformation
+ 166. file:///Users/johncowan/xhtml3/xhtml2/mod-roleAttribute.html#col_Role
+ 167. file:///Users/johncowan/xhtml3/xhtml2/mod-tables.html#edef_tables_table
+ 168. file:///Users/johncowan/xhtml3/xhtml2/mod-tables.html#edef_tables_summary
+ 169. file:///Users/johncowan/xhtml3/xhtml2/mod-tables.html#column-calc
+ 170. file:///Users/johncowan/xhtml3/xhtml2/mod-tables.html#edef_tables_tr
+ 171. file:///Users/johncowan/xhtml3/xhtml2/mod-tables.html#edef_tables_table
+ 172. file:///Users/johncowan/xhtml3/xhtml2/mod-tables.html#edef_tables_colgroup
+ 173. file:///Users/johncowan/xhtml3/xhtml2/mod-bidi.html#adef_bidi_dir
+ 174. file:///Users/johncowan/xhtml3/xhtml2/mod-tables.html#edef_tables_table
+ 175. file:///Users/johncowan/xhtml3/xhtml2/mod-tables.html#edef_tables_table
+ 176. file:///Users/johncowan/xhtml3/xhtml2/mod-bidi.html#adef_bidi_dir
+ 177. file:///Users/johncowan/xhtml3/xhtml2/mod-tables.html#edef_tables_tr
+ 178. file:///Users/johncowan/xhtml3/xhtml2/mod-tables.html#edef_tables_colgroup
+ 179. file:///Users/johncowan/xhtml3/xhtml2/mod-tables.html#edef_tables_table
+ 180. file:///Users/johncowan/xhtml3/xhtml2/mod-bidi.html#adef_bidi_dir
+ 181. file:///Users/johncowan/xhtml3/xhtml2/mod-bidi.html#adef_bidi_dir
+ 182. file:///Users/johncowan/xhtml3/xhtml2/mod-bidi.html#adef_bidi_dir
+ 183. file:///Users/johncowan/xhtml3/xhtml2/mod-bidi.html#adef_bidi_dir
+ 184. file:///Users/johncowan/xhtml3/xhtml2/mod-tables.html#edef_tables_td
+ 185. file:///Users/johncowan/xhtml3/xhtml2/mod-tables.html#edef_tables_th
+ 186. file:///Users/johncowan/xhtml3/xhtml2/mod-tables.html#adef_tables_headers
+ 187. file:///Users/johncowan/xhtml3/xhtml2/mod-core.html#adef_core_id
+ 188. file:///Users/johncowan/xhtml3/xhtml2/mod-tables.html#edef_tables_td
+ 189. file:///Users/johncowan/xhtml3/xhtml2/mod-core.html#adef_core_id
+ 190. file:///Users/johncowan/xhtml3/xhtml2/mod-tables.html#adef_tables_scope
+ 191. file:///Users/johncowan/xhtml3/xhtml2/mod-tables.html#adef_tables_scope
+ 192. file:///Users/johncowan/xhtml3/xhtml2/mod-tables.html#adef_tables_headers
+ 193. file:///Users/johncowan/xhtml3/xhtml2/mod-tables.html#adef_tables_headers
+ 194. file:///Users/johncowan/xhtml3/xhtml2/mod-tables.html#adef_tables_abbr
+ 195. file:///Users/johncowan/xhtml3/xhtml2/mod-tables.html#adef_tables_headers
+ 196. file:///Users/johncowan/xhtml3/xhtml2/mod-core.html#adef_core_id
+ 197. file:///Users/johncowan/xhtml3/xhtml2/mod-tables.html#adef_tables_abbr
+ 198. file:///Users/johncowan/xhtml3/xhtml2/mod-tables.html#adef_tables_scope
+ 199. file:///Users/johncowan/xhtml3/xhtml2/mod-tables.html#adef_tables_headers
+ 200. file:///Users/johncowan/xhtml3/xhtml2/mod-tables.html#adef_tables_scope
+ 201. file:///Users/johncowan/xhtml3/xhtml2/mod-tables.html#adef_tables_scope
+ 202. file:///Users/johncowan/xhtml3/xhtml2/mod-tables.html#adef_tables_scope
+ 203. file:///Users/johncowan/xhtml3/xhtml2/mod-tables.html#adef_tables_scope
+ 204. file:///Users/johncowan/xhtml3/xhtml2/mod-tables.html#header-data
+ 205. file:///Users/johncowan/xhtml3/xhtml2/mod-tables.html#adef_tables_headers
+ 206. file:///Users/johncowan/xhtml3/xhtml2/mod-tables.html#adef_tables_scope
+ 207. file:///Users/johncowan/xhtml3/xhtml2/mod-tables.html#adef_tables_abbr
+ 208. file:///Users/johncowan/xhtml3/xhtml2/mod-tables.html#adef_tables_axis
+ 209. file:///Users/johncowan/xhtml3/xhtml2/mod-tables.html#adef_tables_headers
+ 210. file:///Users/johncowan/xhtml3/xhtml2/mod-tables.html#adef_tables_scope
+ 211. file:///Users/johncowan/xhtml3/xhtml2/mod-core.html#adef_core_id
+ 212. file:///Users/johncowan/xhtml3/xhtml2/mod-tables.html#adef_tables_headers
+ 213. file:///Users/johncowan/xhtml3/xhtml2/mod-core.html#adef_core_id
+ 214. file:///Users/johncowan/xhtml3/xhtml2/mod-tables.html#adef_tables_axis
+ 215. file:///Users/johncowan/xhtml3/xhtml2/mod-tables.html#adef_tables_axis
+ 216. file:///Users/johncowan/xhtml3/xhtml2/mod-tables.html#adef_tables_scope
+ 217. file:///Users/johncowan/xhtml3/xhtml2/mod-tables.html#adef_tables_headers
+ 218. file:///Users/johncowan/xhtml3/xhtml2/mod-tables.html#table-directionality
+ 219. file:///Users/johncowan/xhtml3/xhtml2/mod-tables.html#adef_tables_headers
+ 220. file:///Users/johncowan/xhtml3/xhtml2/mod-tables.html#edef_tables_td
+ 221. file:///Users/johncowan/xhtml3/xhtml2/mod-tables.html#adef_tables_axis
+ 222. file:///Users/johncowan/xhtml3/xhtml2/mod-attribute-collections.html#col_Common
+ 223. file:///Users/johncowan/xhtml3/xhtml2/mod-bidi.html#col_Bi-directional
+ 224. file:///Users/johncowan/xhtml3/xhtml2/mod-core.html#col_Core
+ 225. file:///Users/johncowan/xhtml3/xhtml2/mod-edit.html#col_Edit
+ 226. file:///Users/johncowan/xhtml3/xhtml2/mod-embedding.html#col_Embedding
+ 227. file:///Users/johncowan/xhtml3/xhtml2/mod-xml-events.html#col_Events
+ 228. file:///Users/johncowan/xhtml3/xhtml2/mod-xforms.html#col_Forms
+ 229. file:///Users/johncowan/xhtml3/xhtml2/mod-hyperAttributes.html#col_Hypertext
+ 230. file:///Users/johncowan/xhtml3/xhtml2/mod-i18n.html#col_I18N
+ 231. file:///Users/johncowan/xhtml3/xhtml2/mod-csImgMap.html#col_Map
+ 232. file:///Users/johncowan/xhtml3/xhtml2/mod-metaAttributes.html#col_Metainformation
+ 233. file:///Users/johncowan/xhtml3/xhtml2/mod-roleAttribute.html#col_Role
+ 234. file:///Users/johncowan/xhtml3/xhtml2/mod-tables.html#edef_tables_tbody
+ 235. file:///Users/johncowan/xhtml3/xhtml2/mod-tables.html#edef_tables_thead
+ 236. file:///Users/johncowan/xhtml3/xhtml2/mod-tables.html#edef_tables_tfoot
+ 237. file:///Users/johncowan/xhtml3/xhtml2/mod-attribute-collections.html#col_Common
+ 238. file:///Users/johncowan/xhtml3/xhtml2/mod-bidi.html#col_Bi-directional
+ 239. file:///Users/johncowan/xhtml3/xhtml2/mod-core.html#col_Core
+ 240. file:///Users/johncowan/xhtml3/xhtml2/mod-edit.html#col_Edit
+ 241. file:///Users/johncowan/xhtml3/xhtml2/mod-embedding.html#col_Embedding
+ 242. file:///Users/johncowan/xhtml3/xhtml2/mod-xml-events.html#col_Events
+ 243. file:///Users/johncowan/xhtml3/xhtml2/mod-xforms.html#col_Forms
+ 244. file:///Users/johncowan/xhtml3/xhtml2/mod-hyperAttributes.html#col_Hypertext
+ 245. file:///Users/johncowan/xhtml3/xhtml2/mod-i18n.html#col_I18N
+ 246. file:///Users/johncowan/xhtml3/xhtml2/mod-csImgMap.html#col_Map
+ 247. file:///Users/johncowan/xhtml3/xhtml2/mod-metaAttributes.html#col_Metainformation
+ 248. file:///Users/johncowan/xhtml3/xhtml2/mod-roleAttribute.html#col_Role
+ 249. file:///Users/johncowan/xhtml3/xhtml2/abstraction.html#dt_Text
+ 250. file:///Users/johncowan/xhtml3/xhtml2/abstraction.html#dt_CDATA
+ 251. file:///Users/johncowan/xhtml3/xhtml2/mod-tables.html#categorize-cells
+ 252. file:///Users/johncowan/xhtml3/xhtml2/abstraction.html#dt_Number
+ 253. file:///Users/johncowan/xhtml3/xhtml2/mod-tables.html#edef_tables_colgroup
+ 254. file:///Users/johncowan/xhtml3/xhtml2/abstraction.html#dt_IDREFS
+ 255. file:///Users/johncowan/xhtml3/xhtml2/mod-core.html#adef_core_id
+ 256. file:///Users/johncowan/xhtml3/xhtml2/mod-tables.html#adef_tables_headers
+ 257. file:///Users/johncowan/xhtml3/xhtml2/mod-tables.html#adef_tables_scope
+ 258. file:///Users/johncowan/xhtml3/xhtml2/abstraction.html#dt_Number
+ 259. file:///Users/johncowan/xhtml3/xhtml2/mod-tables.html#edef_tables_thead
+ 260. file:///Users/johncowan/xhtml3/xhtml2/mod-tables.html#edef_tables_tbody
+ 261. file:///Users/johncowan/xhtml3/xhtml2/mod-tables.html#edef_tables_tfoot
+ 262. file:///Users/johncowan/xhtml3/xhtml2/mod-tables.html#adef_tables_headers
+ 263. file:///Users/johncowan/xhtml3/xhtml2/mod-tables.html#table-directionality
+ 264. file:///Users/johncowan/xhtml3/xhtml2/mod-tables.html#edef_tables_colgroup
+ 265. file:///Users/johncowan/xhtml3/xhtml2/mod-tables.html#edef_tables_th
+ 266. file:///Users/johncowan/xhtml3/xhtml2/mod-tables.html#edef_tables_th
+ 267. file:///Users/johncowan/xhtml3/xhtml2/mod-tables.html#adef_tables_abbr
+ 268. file:///Users/johncowan/xhtml3/xhtml2/mod-tables.html#adef_tables_abbr
+ 269. file:///Users/johncowan/xhtml3/xhtml2/mod-tables.html#adef_tables_abbr
+ 270. file:///Users/johncowan/xhtml3/xhtml2/mod-tables.html#adef_tables_headers
+ 271. file:///Users/johncowan/xhtml3/xhtml2/mod-tables.html#adef_tables_scope
+ 272. file:///Users/johncowan/xhtml3/xhtml2/mod-tables.html#non-visual-rendering
+ 273. file:///Users/johncowan/xhtml3/xhtml2/mod-tables.html#edef_tables_td
+ 274. file:///Users/johncowan/xhtml3/xhtml2/mod-tables.html#adef_tables_rowspan
+ 275. file:///Users/johncowan/xhtml3/xhtml2/mod-tables.html#adef_tables_colspan
+ 276. file:///Users/johncowan/xhtml3/xhtml2/mod-tables.html#edef_tables_th
+ 277. file:///Users/johncowan/xhtml3/xhtml2/mod-tables.html#edef_tables_td
+ 278. file:///Users/johncowan/xhtml3/xhtml2/mod-tables.html#edef_tables_td
+ 279. file:///Users/johncowan/xhtml3/xhtml2/mod-tables.html#edef_tables_td
+ 280. file:///Users/johncowan/xhtml3/xhtml2/mod-tables.html#edef_tables_td
+ 281. file:///Users/johncowan/xhtml3/xhtml2/mod-attribute-collections.html#col_Common
+ 282. file:///Users/johncowan/xhtml3/xhtml2/mod-bidi.html#col_Bi-directional
+ 283. file:///Users/johncowan/xhtml3/xhtml2/mod-core.html#col_Core
+ 284. file:///Users/johncowan/xhtml3/xhtml2/mod-edit.html#col_Edit
+ 285. file:///Users/johncowan/xhtml3/xhtml2/mod-embedding.html#col_Embedding
+ 286. file:///Users/johncowan/xhtml3/xhtml2/mod-xml-events.html#col_Events
+ 287. file:///Users/johncowan/xhtml3/xhtml2/mod-xforms.html#col_Forms
+ 288. file:///Users/johncowan/xhtml3/xhtml2/mod-hyperAttributes.html#col_Hypertext
+ 289. file:///Users/johncowan/xhtml3/xhtml2/mod-i18n.html#col_I18N
+ 290. file:///Users/johncowan/xhtml3/xhtml2/mod-csImgMap.html#col_Map
+ 291. file:///Users/johncowan/xhtml3/xhtml2/mod-metaAttributes.html#col_Metainformation
+ 292. file:///Users/johncowan/xhtml3/xhtml2/mod-roleAttribute.html#col_Role
+ 293. file:///Users/johncowan/xhtml3/xhtml2/mod-tables.html#edef_tables_thead
+ 294. file:///Users/johncowan/xhtml3/xhtml2/mod-tables.html#edef_tables_tfoot
+ 295. file:///Users/johncowan/xhtml3/xhtml2/mod-tables.html#edef_tables_tbody
+ 296. file:///Users/johncowan/xhtml3/xhtml2/mod-tables.html#edef_tables_thead
+ 297. file:///Users/johncowan/xhtml3/xhtml2/mod-tables.html#edef_tables_tfoot
+ 298. file:///Users/johncowan/xhtml3/xhtml2/mod-tables.html#edef_tables_tbody
+ 299. file:///Users/johncowan/xhtml3/xhtml2/mod-tables.html#edef_tables_tr
+ 300. file:///Users/johncowan/xhtml3/xhtml2/mod-tables.html#edef_tables_thead
+ 301. file:///Users/johncowan/xhtml3/xhtml2/mod-tables.html#edef_tables_tfoot
+ 302. file:///Users/johncowan/xhtml3/xhtml2/mod-tables.html#edef_tables_tbody
+ 303. file:///Users/johncowan/xhtml3/xhtml2/mod-tables.html#edef_tables_tfoot
+ 304. file:///Users/johncowan/xhtml3/xhtml2/mod-tables.html#edef_tables_tbody
+ 305. file:///Users/johncowan/xhtml3/xhtml2/mod-tables.html#edef_tables_table
+ 306. file:///Users/johncowan/xhtml3/xhtml2/mod-attribute-collections.html#col_Common
+ 307. file:///Users/johncowan/xhtml3/xhtml2/mod-bidi.html#col_Bi-directional
+ 308. file:///Users/johncowan/xhtml3/xhtml2/mod-core.html#col_Core
+ 309. file:///Users/johncowan/xhtml3/xhtml2/mod-edit.html#col_Edit
+ 310. file:///Users/johncowan/xhtml3/xhtml2/mod-embedding.html#col_Embedding
+ 311. file:///Users/johncowan/xhtml3/xhtml2/mod-xml-events.html#col_Events
+ 312. file:///Users/johncowan/xhtml3/xhtml2/mod-xforms.html#col_Forms
+ 313. file:///Users/johncowan/xhtml3/xhtml2/mod-hyperAttributes.html#col_Hypertext
+ 314. file:///Users/johncowan/xhtml3/xhtml2/mod-i18n.html#col_I18N
+ 315. file:///Users/johncowan/xhtml3/xhtml2/mod-csImgMap.html#col_Map
+ 316. file:///Users/johncowan/xhtml3/xhtml2/mod-metaAttributes.html#col_Metainformation
+ 317. file:///Users/johncowan/xhtml3/xhtml2/mod-roleAttribute.html#col_Role
+ 318. file:///Users/johncowan/xhtml3/xhtml2/mod-tables.html#edef_tables_tr
+ 319. file:///Users/johncowan/xhtml3/xhtml2/mod-tables.html#edef_tables_tr
+ 320. file:///Users/johncowan/xhtml3/xhtml2/mod-styleAttribute.html
+ 321. file:///Users/johncowan/xhtml3/xhtml2/mod-xforms.html
+ 322. file:///Users/johncowan/xhtml3/xhtml2/Overview.html#toc
+ 323. file:///Users/johncowan/xhtml3/xhtml2/elements.html
+ 324. file:///Users/johncowan/xhtml3/xhtml2/attributes.html

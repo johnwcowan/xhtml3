@@ -1,0 +1,51 @@
+   #[1]start [2]contents [3]prev [4]next
+
+   [[5]previous] [[6]next] [[7]table of contents] [[8]elements]
+   [[9]attributes]
+     __________________________________________________________________
+
+                            34. XML Scripting Module
+
+   This section is normative for purposes of defining the integration of
+   the XML Script Module into XHTML 2. The semantics of XML Scripting
+   Module itself are normatively defined in [[10]XMLEVENTS]. As permitted
+   by [[11]XMLEVENTS], this element is incorporated into the XHTML
+   namespace.
+
+   This module defines the script element as follows:
+
+   Element Attributes Content Model
+   script [12]Common,
+   charset ([13]Charset),
+   defer ("defer"),
+   implements ([14]URIorSafeCURIEs) PCDATA
+
+   Implementations: [15]RelaxNG, [16]XML Schema
+     __________________________________________________________________
+
+   [[17]previous] [[18]next] [[19]table of contents] [[20]elements]
+   [[21]attributes]
+
+References
+
+   1. file:///Users/johncowan/xhtml3/xhtml2/Overview.html
+   2. file:///Users/johncowan/xhtml3/xhtml2/Overview.html#toc
+   3. file:///Users/johncowan/xhtml3/xhtml2/mod-handler.html
+   4. file:///Users/johncowan/xhtml3/xhtml2/mod-legacy-edit.html
+   5. file:///Users/johncowan/xhtml3/xhtml2/mod-handler.html
+   6. file:///Users/johncowan/xhtml3/xhtml2/mod-legacy-edit.html
+   7. file:///Users/johncowan/xhtml3/xhtml2/Overview.html#toc
+   8. file:///Users/johncowan/xhtml3/xhtml2/elements.html
+   9. file:///Users/johncowan/xhtml3/xhtml2/attributes.html
+  10. file:///Users/johncowan/xhtml3/xhtml2/references.html#ref_XMLEVENTS
+  11. file:///Users/johncowan/xhtml3/xhtml2/references.html#ref_XMLEVENTS
+  12. file:///Users/johncowan/xhtml3/xhtml2/mod-attribute-collections.html#col_Common
+  13. file:///Users/johncowan/xhtml3/xhtml2/abstraction.html#dt_Charset
+  14. file:///Users/johncowan/xhtml3/xhtml2/abstraction.html#dt_URIorSafeCURIEs
+  15. file:///Users/johncowan/xhtml3/xhtml2/relax_module_defs.html#a_rmodule_XML_Script
+  16. file:///Users/johncowan/xhtml3/xhtml2/schema_module_defs.html#a_smodule_XML_Scripting_Module
+  17. file:///Users/johncowan/xhtml3/xhtml2/mod-handler.html
+  18. file:///Users/johncowan/xhtml3/xhtml2/mod-legacy-edit.html
+  19. file:///Users/johncowan/xhtml3/xhtml2/Overview.html#toc
+  20. file:///Users/johncowan/xhtml3/xhtml2/elements.html
+  21. file:///Users/johncowan/xhtml3/xhtml2/attributes.html

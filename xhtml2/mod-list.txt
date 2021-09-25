@@ -1,0 +1,291 @@
+   #[1]start [2]contents [3]prev [4]next
+
+   [[5]previous] [[6]next] [[7]table of contents] [[8]elements]
+   [[9]attributes]
+     __________________________________________________________________
+
+                             11. XHTML List Module
+
+   Contents
+     * 11.1. [10]Definition lists: the dl, di, dt, and dd elements
+     * 11.2. [11]The ol and ul elements
+     * 11.3. [12]The li element
+
+   This section is normative.
+
+   As its name suggests, the List Module provides list-oriented elements.
+   Specifically, the List Module supports the following elements and
+   attributes:
+
+   Elements Attributes Content Model
+   [13]dl [14]Common [15]title?, [16]caption?, (( [17]dt | [18]dd)+ |
+   [19]di+)
+   [20]di [21]Common ( [22]dt+, [23]dd*)
+   [24]dt [25]Common ( [26]Text)*
+   [27]dd [28]Common ( [29]Flow)*
+   [30]caption , [31]title?, [32]Common ( [33]Text)*
+   [34]ul [35]Common [36]title?, [37]caption?, [38]li+
+   [39]li [40]Common, [41]@value ( [42]Flow)*
+
+   This module also defines the content set List with the content model
+   (dl | ol | ul)+ and adds this set to the [43]Structural content set of
+   the [44]Structural Module.
+
+   Implementations: [45]RELAX NG, [46]XML Schema
+
+   XHTML offers authors several mechanisms for specifying lists of
+   information. Lists may contain:
+     * Unordered information.
+     * Ordered information.
+     * Definitions.
+
+   The previous list, for example, is an unordered list, created with the
+   [47]ul element:
+
+   Example
+<ul>
+<li>Unordered information. </li>
+<li>Ordered information. </li>
+<li>Definitions. </li>
+</ul>
+
+   An ordered list, created using the [48]ol element, contains information
+   where order is important, as in a recipe:
+    1. Mix dry ingredients thoroughly.
+    2. Pour in wet ingredients.
+    3. Mix for 10 minutes.
+    4. Bake for one hour at 300 degrees.
+
+   Definition lists, created using the [49]dl element, generally consist
+   of a series of term/definition pairs (although definition lists may
+   have other applications). Thus, when advertising a product, one might
+   use a definition list:
+
+   Lower cost
+          The new version of this product costs significantly less than
+          the previous one!
+
+   Easier to use
+          We've changed the product so that it's much easier to use!
+
+   Safe for kids
+          You can leave your kids alone in a room with this product and
+          they won't get hurt (not a guarantee).
+
+   defined in XHTML as:
+
+   Example
+<dl>
+<dt>Lower cost</dt>
+<dd>The new version of this product costs significantly less than the
+previous one!</dd>
+<dt>Easier to use</dt>
+<dd>We've changed the product so that it's much easier to
+use!</dd>
+<dt>Safe for kids</dt>
+<dd>You can leave your kids alone in a room with this product and
+they won't get hurt (not a guarantee).</dd>
+</dl>
+
+11.1. Definition lists: the dl , di , dt , and dd elements
+
+   Attributes
+
+   The [50]Common collection
+          A collection of other attribute collections, including:
+          [51]Bi-directional, [52]Core, [53]Edit, [54]Embedding,
+          [55]Events, [56]Forms, [57]Hypertext, [58]I18N, [59]Map,
+          [60]Metainformation, and [61]Role
+
+   Definition lists vary only slightly from other types of lists in that
+   list items consist of two parts: a term and a description. The term is
+   given by the [62]dt element. The description is given with a [63]dd
+   element. The term and its definition can be grouped within a [64]di
+   element to help clarify the relationship between a term and its
+   definition(s).
+
+   Example
+<dl>
+  <di>
+    <dt>Dweeb</dt>
+    <dd>young excitable person who may mature
+      into a <em>Nerd</em> or <em>Geek</em></dd>
+  </di>
+  <di>
+    <dt>Hacker</dt>
+    <dd>a clever programmer</dd>
+  </di>
+  <di>
+    <dt>Nerd</dt>
+    <dd>technically bright but socially inept person</dd>
+  </di>
+</dl>
+
+   Here is an example with multiple terms and descriptions:
+
+   Example
+<dl>
+   <dt>Center</dt>
+   <dt>Centre</dt>
+   <dd> A point equidistant from all points
+              on the surface of a sphere.</dd>
+   <dd> In some field sports, the player who
+              holds the middle position on the field, court,
+              or forward line.</dd>
+</dl>
+
+11.2. The ol and ul elements
+
+   Attributes
+
+   The [65]Common collection
+          A collection of other attribute collections, including:
+          [66]Bi-directional, [67]Core, [68]Edit, [69]Embedding,
+          [70]Events, [71]Forms, [72]Hypertext, [73]I18N, [74]Map,
+          [75]Metainformation, and [76]Role
+
+   Both types of lists are made up of sequences of list items defined by
+   the [77]li element. The difference is that [78]ol lists represent lists
+   of items that are essentially ordered (such as the steps of a recipe),
+   while [79]ul lists represent lists of items that are essentially
+   unordered (such as shopping lists).
+
+   Basic list structure
+<ol>
+   <li>Spring</li>
+   <li>Summer</li>
+   <li>Autumn</li>
+   <li>Winter</li>
+</ol>
+
+11.3. The li element
+
+   Attributes
+
+   The [80]Common collection
+          A collection of other attribute collections, including:
+          [81]Bi-directional, [82]Core, [83]Edit, [84]Embedding,
+          [85]Events, [86]Forms, [87]Hypertext, [88]I18N, [89]Map,
+          [90]Metainformation, and [91]Role
+
+   value = [92]NUMBER
+          This attribute specifies the value to be used when determining
+          the value of the enumerator on a list item within an [93]ol.
+
+   The [94]li element defines a list item within an ordered, unordered, or
+   navigation list.
+
+   Within a list, each li element has an associated number, which is used
+   for numbering list items in ordered lists:
+     * If the li element has a value attribute, the associated number is
+       the value of that attribute;
+     * otherwise, if the li element is the first in the list, then the
+       number has the value 1;
+     * otherwise the number is one higher than the number of the preceding
+       li in the same list.
+     __________________________________________________________________
+
+   [[95]previous] [[96]next] [[97]table of contents] [[98]elements]
+   [[99]attributes]
+
+References
+
+   1. file:///Users/johncowan/xhtml3/xhtml2/Overview.html
+   2. file:///Users/johncowan/xhtml3/xhtml2/Overview.html#toc
+   3. file:///Users/johncowan/xhtml3/xhtml2/mod-hypertext.html
+   4. file:///Users/johncowan/xhtml3/xhtml2/mod-core.html
+   5. file:///Users/johncowan/xhtml3/xhtml2/mod-hypertext.html
+   6. file:///Users/johncowan/xhtml3/xhtml2/mod-core.html
+   7. file:///Users/johncowan/xhtml3/xhtml2/Overview.html#toc
+   8. file:///Users/johncowan/xhtml3/xhtml2/elements.html
+   9. file:///Users/johncowan/xhtml3/xhtml2/attributes.html
+  10. file:///Users/johncowan/xhtml3/xhtml2/mod-list.html#sec_11.1.
+  11. file:///Users/johncowan/xhtml3/xhtml2/mod-list.html#sec_11.2.
+  12. file:///Users/johncowan/xhtml3/xhtml2/mod-list.html#sec_11.3.
+  13. file:///Users/johncowan/xhtml3/xhtml2/mod-list.html#edef_list_dl
+  14. file:///Users/johncowan/xhtml3/xhtml2/mod-attribute-collections.html#col_Common
+  15. file:///Users/johncowan/xhtml3/xhtml2/mod-document.html#edef_document_title
+  16. file:///Users/johncowan/xhtml3/xhtml2/mod-caption.html#edef_caption_caption
+  17. file:///Users/johncowan/xhtml3/xhtml2/mod-list.html#edef_list_dt
+  18. file:///Users/johncowan/xhtml3/xhtml2/mod-list.html#edef_list_dd
+  19. file:///Users/johncowan/xhtml3/xhtml2/mod-list.html#edef_list_di
+  20. file:///Users/johncowan/xhtml3/xhtml2/mod-list.html#edef_list_di
+  21. file:///Users/johncowan/xhtml3/xhtml2/mod-attribute-collections.html#col_Common
+  22. file:///Users/johncowan/xhtml3/xhtml2/mod-list.html#edef_list_dt
+  23. file:///Users/johncowan/xhtml3/xhtml2/mod-list.html#edef_list_dd
+  24. file:///Users/johncowan/xhtml3/xhtml2/mod-list.html#edef_list_dt
+  25. file:///Users/johncowan/xhtml3/xhtml2/mod-attribute-collections.html#col_Common
+  26. file:///Users/johncowan/xhtml3/xhtml2/mod-text.html#cs_Text
+  27. file:///Users/johncowan/xhtml3/xhtml2/mod-list.html#edef_list_dd
+  28. file:///Users/johncowan/xhtml3/xhtml2/mod-attribute-collections.html#col_Common
+  29. file:///Users/johncowan/xhtml3/xhtml2/mod-structural.html#cs_Flow
+  30. file:///Users/johncowan/xhtml3/xhtml2/mod-caption.html#edef_caption_caption
+  31. file:///Users/johncowan/xhtml3/xhtml2/mod-document.html#edef_document_title
+  32. file:///Users/johncowan/xhtml3/xhtml2/mod-attribute-collections.html#col_Common
+  33. file:///Users/johncowan/xhtml3/xhtml2/mod-text.html#cs_Text
+  34. file:///Users/johncowan/xhtml3/xhtml2/mod-list.html#edef_list_ul
+  35. file:///Users/johncowan/xhtml3/xhtml2/mod-attribute-collections.html#col_Common
+  36. file:///Users/johncowan/xhtml3/xhtml2/mod-document.html#edef_document_title
+  37. file:///Users/johncowan/xhtml3/xhtml2/mod-caption.html#edef_caption_caption
+  38. file:///Users/johncowan/xhtml3/xhtml2/mod-list.html#edef_list_li
+  39. file:///Users/johncowan/xhtml3/xhtml2/mod-list.html#edef_list_li
+  40. file:///Users/johncowan/xhtml3/xhtml2/mod-attribute-collections.html#col_Common
+  41. file:///Users/johncowan/xhtml3/xhtml2/mod-list.html#adef_list_value
+  42. file:///Users/johncowan/xhtml3/xhtml2/mod-structural.html#cs_Flow
+  43. file:///Users/johncowan/xhtml3/xhtml2/mod-structural.html#cs_Structural
+  44. file:///Users/johncowan/xhtml3/xhtml2/mod-structural.html#s_structuralmodule
+  45. file:///Users/johncowan/xhtml3/xhtml2/relax_module_defs.html#a_rmodule_List
+  46. file:///Users/johncowan/xhtml3/xhtml2/schema_module_defs.html#a_smodule_List_Module
+  47. file:///Users/johncowan/xhtml3/xhtml2/mod-list.html#edef_list_ul
+  48. file:///Users/johncowan/xhtml3/xhtml2/mod-list.html#edef_list_ol
+  49. file:///Users/johncowan/xhtml3/xhtml2/mod-list.html#edef_list_dl
+  50. file:///Users/johncowan/xhtml3/xhtml2/mod-attribute-collections.html#col_Common
+  51. file:///Users/johncowan/xhtml3/xhtml2/mod-bidi.html#col_Bi-directional
+  52. file:///Users/johncowan/xhtml3/xhtml2/mod-core.html#col_Core
+  53. file:///Users/johncowan/xhtml3/xhtml2/mod-edit.html#col_Edit
+  54. file:///Users/johncowan/xhtml3/xhtml2/mod-embedding.html#col_Embedding
+  55. file:///Users/johncowan/xhtml3/xhtml2/mod-xml-events.html#col_Events
+  56. file:///Users/johncowan/xhtml3/xhtml2/mod-xforms.html#col_Forms
+  57. file:///Users/johncowan/xhtml3/xhtml2/mod-hyperAttributes.html#col_Hypertext
+  58. file:///Users/johncowan/xhtml3/xhtml2/mod-i18n.html#col_I18N
+  59. file:///Users/johncowan/xhtml3/xhtml2/mod-csImgMap.html#col_Map
+  60. file:///Users/johncowan/xhtml3/xhtml2/mod-metaAttributes.html#col_Metainformation
+  61. file:///Users/johncowan/xhtml3/xhtml2/mod-roleAttribute.html#col_Role
+  62. file:///Users/johncowan/xhtml3/xhtml2/mod-list.html#edef_list_dt
+  63. file:///Users/johncowan/xhtml3/xhtml2/mod-list.html#edef_list_dd
+  64. file:///Users/johncowan/xhtml3/xhtml2/mod-list.html#edef_list_di
+  65. file:///Users/johncowan/xhtml3/xhtml2/mod-attribute-collections.html#col_Common
+  66. file:///Users/johncowan/xhtml3/xhtml2/mod-bidi.html#col_Bi-directional
+  67. file:///Users/johncowan/xhtml3/xhtml2/mod-core.html#col_Core
+  68. file:///Users/johncowan/xhtml3/xhtml2/mod-edit.html#col_Edit
+  69. file:///Users/johncowan/xhtml3/xhtml2/mod-embedding.html#col_Embedding
+  70. file:///Users/johncowan/xhtml3/xhtml2/mod-xml-events.html#col_Events
+  71. file:///Users/johncowan/xhtml3/xhtml2/mod-xforms.html#col_Forms
+  72. file:///Users/johncowan/xhtml3/xhtml2/mod-hyperAttributes.html#col_Hypertext
+  73. file:///Users/johncowan/xhtml3/xhtml2/mod-i18n.html#col_I18N
+  74. file:///Users/johncowan/xhtml3/xhtml2/mod-csImgMap.html#col_Map
+  75. file:///Users/johncowan/xhtml3/xhtml2/mod-metaAttributes.html#col_Metainformation
+  76. file:///Users/johncowan/xhtml3/xhtml2/mod-roleAttribute.html#col_Role
+  77. file:///Users/johncowan/xhtml3/xhtml2/mod-list.html#edef_list_li
+  78. file:///Users/johncowan/xhtml3/xhtml2/mod-list.html#edef_list_ol
+  79. file:///Users/johncowan/xhtml3/xhtml2/mod-list.html#edef_list_ul
+  80. file:///Users/johncowan/xhtml3/xhtml2/mod-attribute-collections.html#col_Common
+  81. file:///Users/johncowan/xhtml3/xhtml2/mod-bidi.html#col_Bi-directional
+  82. file:///Users/johncowan/xhtml3/xhtml2/mod-core.html#col_Core
+  83. file:///Users/johncowan/xhtml3/xhtml2/mod-edit.html#col_Edit
+  84. file:///Users/johncowan/xhtml3/xhtml2/mod-embedding.html#col_Embedding
+  85. file:///Users/johncowan/xhtml3/xhtml2/mod-xml-events.html#col_Events
+  86. file:///Users/johncowan/xhtml3/xhtml2/mod-xforms.html#col_Forms
+  87. file:///Users/johncowan/xhtml3/xhtml2/mod-hyperAttributes.html#col_Hypertext
+  88. file:///Users/johncowan/xhtml3/xhtml2/mod-i18n.html#col_I18N
+  89. file:///Users/johncowan/xhtml3/xhtml2/mod-csImgMap.html#col_Map
+  90. file:///Users/johncowan/xhtml3/xhtml2/mod-metaAttributes.html#col_Metainformation
+  91. file:///Users/johncowan/xhtml3/xhtml2/mod-roleAttribute.html#col_Role
+  92. file:///Users/johncowan/xhtml3/xhtml2/abstraction.html#dt_NUMBER
+  93. file:///Users/johncowan/xhtml3/xhtml2/mod-list.html#edef_list_ol
+  94. file:///Users/johncowan/xhtml3/xhtml2/mod-list.html#edef_list_li
+  95. file:///Users/johncowan/xhtml3/xhtml2/mod-hypertext.html
+  96. file:///Users/johncowan/xhtml3/xhtml2/mod-core.html
+  97. file:///Users/johncowan/xhtml3/xhtml2/Overview.html#toc
+  98. file:///Users/johncowan/xhtml3/xhtml2/elements.html
+  99. file:///Users/johncowan/xhtml3/xhtml2/attributes.html

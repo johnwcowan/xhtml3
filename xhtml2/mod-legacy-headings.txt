@@ -1,0 +1,122 @@
+   #[1]start [2]contents [3]prev [4]next
+
+   [[5]previous] [[6]next] [[7]table of contents] [[8]elements]
+   [[9]attributes]
+     __________________________________________________________________
+
+                        36. XHTML Legacy Headings Module
+
+   Contents
+     * 36.1. [10]The heading elements
+
+   This section is normative.
+
+   This module defines the traditional HTML heading elements h1 - h6.
+
+   Element Attributes Content Model
+   [11]h1  [12]Common ( [13]Text)*
+   [14]h2  [15]Common ( [16]Text)*
+   [17]h3  [18]Common ( [19]Text)*
+   [20]h4  [21]Common ( [22]Text)*
+   [23]h5  [24]Common ( [25]Text)*
+   [26]h6  [27]Common ( [28]Text)*
+
+   Implementations: [29]RELAX NG, [30]XML Schema
+
+36.1. The heading elements
+
+   A heading element briefly describes the topic of the section it
+   introduces. Heading information may be used by user agents, for
+   example, to construct a table of contents for a document automatically.
+
+   Attributes
+
+   The [31]Common collection
+          A collection of other attribute collections, including:
+          [32]Bi-directional, [33]Core, [34]Edit, [35]Embedding,
+          [36]Events, [37]Forms, [38]Hypertext, [39]I18N, [40]Map,
+          [41]Metainformation, and [42]Role
+
+   There are six levels of numbered headings in XHTML with [43]h1 as the
+   most important and [44]h6 as the least.
+
+   Example
+<body>
+<h1>This is a top level heading</h1>
+    <p>....</p>
+    <h2>This is a second-level heading</h2>
+    <p>....</p>
+    <h2>This is another second-level heading</h2>
+    <p>....</p>
+<h1>This is another top level heading</h1>
+    <p>....</p>
+    <h2>This is another second-level heading</h2>
+    <p>....</p>
+        <h3>This is a third-level heading</h3>
+        <p>....</p>
+</body>
+
+   Numbered sections and references
+   XHTML does not itself cause section numbers to be generated from
+   headings. Style sheet languages such as CSS however allow authors to
+   control the generation of section numbers.
+
+   Skipping heading levels is considered to be bad practice. The series h1
+   h2 h1 is acceptable, while h1 h3 h1 is not, since the heading level h2
+   has been skipped.
+     __________________________________________________________________
+
+   [[45]previous] [[46]next] [[47]table of contents] [[48]elements]
+   [[49]attributes]
+
+References
+
+   1. file:///Users/johncowan/xhtml3/xhtml2/Overview.html
+   2. file:///Users/johncowan/xhtml3/xhtml2/Overview.html#toc
+   3. file:///Users/johncowan/xhtml3/xhtml2/mod-legacy-edit.html
+   4. file:///Users/johncowan/xhtml3/xhtml2/xhtml2-changes.html
+   5. file:///Users/johncowan/xhtml3/xhtml2/mod-legacy-edit.html
+   6. file:///Users/johncowan/xhtml3/xhtml2/xhtml2-changes.html
+   7. file:///Users/johncowan/xhtml3/xhtml2/Overview.html#toc
+   8. file:///Users/johncowan/xhtml3/xhtml2/elements.html
+   9. file:///Users/johncowan/xhtml3/xhtml2/attributes.html
+  10. file:///Users/johncowan/xhtml3/xhtml2/mod-legacy-headings.html#sec_36.1.
+  11. file:///Users/johncowan/xhtml3/xhtml2/mod-legacy-headings.html#edef_legacy-headings_heading
+  12. file:///Users/johncowan/xhtml3/xhtml2/mod-attribute-collections.html#col_Common
+  13. file:///Users/johncowan/xhtml3/xhtml2/mod-text.html#cs_Text
+  14. file:///Users/johncowan/xhtml3/xhtml2/mod-legacy-headings.html#edef_legacy-headings_heading
+  15. file:///Users/johncowan/xhtml3/xhtml2/mod-attribute-collections.html#col_Common
+  16. file:///Users/johncowan/xhtml3/xhtml2/mod-text.html#cs_Text
+  17. file:///Users/johncowan/xhtml3/xhtml2/mod-legacy-headings.html#edef_legacy-headings_heading
+  18. file:///Users/johncowan/xhtml3/xhtml2/mod-attribute-collections.html#col_Common
+  19. file:///Users/johncowan/xhtml3/xhtml2/mod-text.html#cs_Text
+  20. file:///Users/johncowan/xhtml3/xhtml2/mod-legacy-headings.html#edef_legacy-headings_heading
+  21. file:///Users/johncowan/xhtml3/xhtml2/mod-attribute-collections.html#col_Common
+  22. file:///Users/johncowan/xhtml3/xhtml2/mod-text.html#cs_Text
+  23. file:///Users/johncowan/xhtml3/xhtml2/mod-legacy-headings.html#edef_legacy-headings_heading
+  24. file:///Users/johncowan/xhtml3/xhtml2/mod-attribute-collections.html#col_Common
+  25. file:///Users/johncowan/xhtml3/xhtml2/mod-text.html#cs_Text
+  26. file:///Users/johncowan/xhtml3/xhtml2/mod-legacy-headings.html#edef_legacy-headings_heading
+  27. file:///Users/johncowan/xhtml3/xhtml2/mod-attribute-collections.html#col_Common
+  28. file:///Users/johncowan/xhtml3/xhtml2/mod-text.html#cs_Text
+  29. file:///Users/johncowan/xhtml3/xhtml2/relax_module_defs.html#a_rmodule_Legacy_Headings
+  30. file:///Users/johncowan/xhtml3/xhtml2/schema_module_defs.html#a_smodule_Legacy_Headings_Module
+  31. file:///Users/johncowan/xhtml3/xhtml2/mod-attribute-collections.html#col_Common
+  32. file:///Users/johncowan/xhtml3/xhtml2/mod-bidi.html#col_Bi-directional
+  33. file:///Users/johncowan/xhtml3/xhtml2/mod-core.html#col_Core
+  34. file:///Users/johncowan/xhtml3/xhtml2/mod-edit.html#col_Edit
+  35. file:///Users/johncowan/xhtml3/xhtml2/mod-embedding.html#col_Embedding
+  36. file:///Users/johncowan/xhtml3/xhtml2/mod-xml-events.html#col_Events
+  37. file:///Users/johncowan/xhtml3/xhtml2/mod-xforms.html#col_Forms
+  38. file:///Users/johncowan/xhtml3/xhtml2/mod-hyperAttributes.html#col_Hypertext
+  39. file:///Users/johncowan/xhtml3/xhtml2/mod-i18n.html#col_I18N
+  40. file:///Users/johncowan/xhtml3/xhtml2/mod-csImgMap.html#col_Map
+  41. file:///Users/johncowan/xhtml3/xhtml2/mod-metaAttributes.html#col_Metainformation
+  42. file:///Users/johncowan/xhtml3/xhtml2/mod-roleAttribute.html#col_Role
+  43. file:///Users/johncowan/xhtml3/xhtml2/mod-legacy-headings.html#edef_legacy-headings_heading
+  44. file:///Users/johncowan/xhtml3/xhtml2/mod-legacy-headings.html#edef_legacy-headings_heading
+  45. file:///Users/johncowan/xhtml3/xhtml2/mod-legacy-edit.html
+  46. file:///Users/johncowan/xhtml3/xhtml2/xhtml2-changes.html
+  47. file:///Users/johncowan/xhtml3/xhtml2/Overview.html#toc
+  48. file:///Users/johncowan/xhtml3/xhtml2/elements.html
+  49. file:///Users/johncowan/xhtml3/xhtml2/attributes.html

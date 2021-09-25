@@ -1,0 +1,154 @@
+   #[1]start [2]contents [3]prev [4]next
+
+   [[5]previous] [[6]next] [[7]table of contents] [[8]elements]
+   [[9]attributes]
+     __________________________________________________________________
+
+                          35. XHTML Legacy Edit Module
+
+   Contents
+     * 35.1. [10]The del element
+     * 35.2. [11]The ins element
+
+   This section is normative.
+
+   This module defines the traditional HTML elements for marking up
+   inserted and deleted content.
+
+   Element Attributes Content Model
+   del     [12]Common ( [13]Text)*
+   ins     [14]Common ( [15]Text)*
+
+   Implementations: [16]RELAX NG, [17]XML Schema
+
+35.1. The del element
+
+   The [18]del element is used to indicate that a section of a document
+   has been deleted with respect to a different version of the document
+   (e.g., in draft legislation where lawmakers need to view the changes).
+
+   Attributes
+
+   The [19]Common collection
+          A collection of other attribute collections, including:
+          [20]Bi-directional, [21]Core, [22]Edit, [23]Embedding,
+          [24]Events, [25]Forms, [26]Hypertext, [27]I18N, [28]Map,
+          [29]Metainformation, and [30]Role
+
+   This example could be from a bill to change the legislation for how
+   many deputies a County Sheriff can employ from 3 to 5.
+
+   Example
+<p>
+  A Sheriff can employ <del>3</del><ins>5</ins> deputies.
+</p>
+
+   User agents should render deleted text in ways that make the change
+   obvious. For instance, inserted text may appear in a special font,
+   deleted text may not be shown at all or be shown as struck-through or
+   with special markings, etc.
+
+   Both of the following examples correspond to November 5, 2001, 8:15:30
+   am, US Eastern Standard Time.
+
+   Example
+2001-11-05T13:15:30Z
+2001-11-05T08:15:30-05:00
+
+   Used with [31]ins, this gives:
+
+   Example
+<ins datetime="2001-11-05T08:15:30-05:00"
+        cite="http://www.example.org/mydoc/comments.html">
+Furthermore, the latest figures from the marketing department
+suggest that such practice is on the rise.
+</ins>
+
+   The document "http://www.example.org/mydoc/comments.html" would contain
+   comments about why information was inserted into the document.
+
+   Authors may also make comments about deleted text by means of the
+   [32]@title attribute for the [33]del element. User agents may present
+   this information to the user (e.g., as a popup note). For example:
+
+   Example
+<del datetime="2001-11-05T08:15:30-05:00"
+        title="Changed as a result of Steve G's comments in meeting.">
+Furthermore, the latest figures from the marketing department
+suggest that such practice is on the rise.
+</del>
+
+35.2. The ins element
+
+   The [34]ins element is used to indicate that a section of a document
+   has been inserted with respect to a different version of the document
+   (e.g., in draft legislation where lawmakers need to view the changes).
+
+   Attributes
+
+   The [35]Common collection
+          A collection of other attribute collections, including:
+          [36]Bi-directional, [37]Core, [38]Edit, [39]Embedding,
+          [40]Events, [41]Forms, [42]Hypertext, [43]I18N, [44]Map,
+          [45]Metainformation, and [46]Role
+
+   User agents should render inserted text in ways that make the change
+   obvious. For instance, inserted text may appear in a special font.
+     __________________________________________________________________
+
+   [[47]previous] [[48]next] [[49]table of contents] [[50]elements]
+   [[51]attributes]
+
+References
+
+   1. file:///Users/johncowan/xhtml3/xhtml2/Overview.html
+   2. file:///Users/johncowan/xhtml3/xhtml2/Overview.html#toc
+   3. file:///Users/johncowan/xhtml3/xhtml2/mod-scripting.html
+   4. file:///Users/johncowan/xhtml3/xhtml2/mod-legacy-headings.html
+   5. file:///Users/johncowan/xhtml3/xhtml2/mod-scripting.html
+   6. file:///Users/johncowan/xhtml3/xhtml2/mod-legacy-headings.html
+   7. file:///Users/johncowan/xhtml3/xhtml2/Overview.html#toc
+   8. file:///Users/johncowan/xhtml3/xhtml2/elements.html
+   9. file:///Users/johncowan/xhtml3/xhtml2/attributes.html
+  10. file:///Users/johncowan/xhtml3/xhtml2/mod-legacy-edit.html#sec_35.1.
+  11. file:///Users/johncowan/xhtml3/xhtml2/mod-legacy-edit.html#sec_35.2.
+  12. file:///Users/johncowan/xhtml3/xhtml2/mod-attribute-collections.html#col_Common
+  13. file:///Users/johncowan/xhtml3/xhtml2/mod-text.html#cs_Text
+  14. file:///Users/johncowan/xhtml3/xhtml2/mod-attribute-collections.html#col_Common
+  15. file:///Users/johncowan/xhtml3/xhtml2/mod-text.html#cs_Text
+  16. file:///Users/johncowan/xhtml3/xhtml2/relax_module_defs.html#a_rmodule_Legacy_Edit
+  17. file:///Users/johncowan/xhtml3/xhtml2/schema_module_defs.html#a_smodule_Legacy_Editing_Module
+  18. file:///Users/johncowan/xhtml3/xhtml2/mod-legacy-edit.html#edef_legacy-edit_del
+  19. file:///Users/johncowan/xhtml3/xhtml2/mod-attribute-collections.html#col_Common
+  20. file:///Users/johncowan/xhtml3/xhtml2/mod-bidi.html#col_Bi-directional
+  21. file:///Users/johncowan/xhtml3/xhtml2/mod-core.html#col_Core
+  22. file:///Users/johncowan/xhtml3/xhtml2/mod-edit.html#col_Edit
+  23. file:///Users/johncowan/xhtml3/xhtml2/mod-embedding.html#col_Embedding
+  24. file:///Users/johncowan/xhtml3/xhtml2/mod-xml-events.html#col_Events
+  25. file:///Users/johncowan/xhtml3/xhtml2/mod-xforms.html#col_Forms
+  26. file:///Users/johncowan/xhtml3/xhtml2/mod-hyperAttributes.html#col_Hypertext
+  27. file:///Users/johncowan/xhtml3/xhtml2/mod-i18n.html#col_I18N
+  28. file:///Users/johncowan/xhtml3/xhtml2/mod-csImgMap.html#col_Map
+  29. file:///Users/johncowan/xhtml3/xhtml2/mod-metaAttributes.html#col_Metainformation
+  30. file:///Users/johncowan/xhtml3/xhtml2/mod-roleAttribute.html#col_Role
+  31. file:///Users/johncowan/xhtml3/xhtml2/mod-legacy-edit.html#edef_legacy-edit_ins
+  32. file:///Users/johncowan/xhtml3/xhtml2/mod-core.html#adef_core_title
+  33. file:///Users/johncowan/xhtml3/xhtml2/mod-legacy-edit.html#edef_legacy-edit_del
+  34. file:///Users/johncowan/xhtml3/xhtml2/mod-legacy-edit.html#edef_legacy-edit_ins
+  35. file:///Users/johncowan/xhtml3/xhtml2/mod-attribute-collections.html#col_Common
+  36. file:///Users/johncowan/xhtml3/xhtml2/mod-bidi.html#col_Bi-directional
+  37. file:///Users/johncowan/xhtml3/xhtml2/mod-core.html#col_Core
+  38. file:///Users/johncowan/xhtml3/xhtml2/mod-edit.html#col_Edit
+  39. file:///Users/johncowan/xhtml3/xhtml2/mod-embedding.html#col_Embedding
+  40. file:///Users/johncowan/xhtml3/xhtml2/mod-xml-events.html#col_Events
+  41. file:///Users/johncowan/xhtml3/xhtml2/mod-xforms.html#col_Forms
+  42. file:///Users/johncowan/xhtml3/xhtml2/mod-hyperAttributes.html#col_Hypertext
+  43. file:///Users/johncowan/xhtml3/xhtml2/mod-i18n.html#col_I18N
+  44. file:///Users/johncowan/xhtml3/xhtml2/mod-csImgMap.html#col_Map
+  45. file:///Users/johncowan/xhtml3/xhtml2/mod-metaAttributes.html#col_Metainformation
+  46. file:///Users/johncowan/xhtml3/xhtml2/mod-roleAttribute.html#col_Role
+  47. file:///Users/johncowan/xhtml3/xhtml2/mod-scripting.html
+  48. file:///Users/johncowan/xhtml3/xhtml2/mod-legacy-headings.html
+  49. file:///Users/johncowan/xhtml3/xhtml2/Overview.html#toc
+  50. file:///Users/johncowan/xhtml3/xhtml2/elements.html
+  51. file:///Users/johncowan/xhtml3/xhtml2/attributes.html

@@ -1,0 +1,319 @@
+   #[1]start [2]contents [3]prev [4]next
+
+   [[5]previous] [[6]next] [[7]table of contents] [[8]elements]
+   [[9]attributes]
+     __________________________________________________________________
+
+                     13. XHTML Hypertext Attributes Module
+
+   Contents
+     * 13.1. [10]Hypertext Attribute Collection
+
+   This section is normative.
+
+   The Hypertext Attributes Module defines the [11]Hypertext attribute
+   collection. This collection allows an element to be the start point of
+   a hypertext link to a remote resource.
+
+13.1. Hypertext Attribute Collection
+
+   cite = [12]URI
+          The value of this attribute is a [13]URI that designates a
+          source document or message. This attribute is intended to give
+          further information about the element's contents (e.g., the
+          source from which a quotation was borrowed, or the reason text
+          was inserted or deleted). User Agents MUST provide a means for
+          the user to actuate the link.
+
+          Example
+
+cite="comments.html"
+
+   href = [14]URI
+          This attribute specifies a URI that is actuated when the element
+          is activated.
+
+          Actuation occurs as the default action of a [[15]DOM]
+          DOMActivate event for the element on which the attribute occurs
+          (for instance as the result of the user clicking on the
+          associated element). If elements contained within an element
+          using an [16]@href also use an [17]@href attribute, the User
+          Agent must provide a mechanism for actuating any of these
+          "nested" URIs.
+
+          Example
+
+<abbr href="http://www.w3.org/" title="World Wide Web">WWW</abbr>
+<li href="contents.xhtml">contents</li>
+<a href="http://www.cwi.nl/~steven/amsterdam.html">Amsterdam</a>
+<quote href="hamlet.xhtml#p2435">To be or not to be</quote>
+<var href="#index_ninc">ninc</var>
+
+   hreflang = [18]LanguageCodes
+          This attribute specifies the primary language of the resource
+          designated by [19]@href. At its most general, it is a
+          comma-separated list of language ranges with optional accept
+          parameters, as defined in section 14.4 of [[20]RFC2616] as the
+          field value of the Accept-Language request header.
+
+          In its simplest case, this is just a language code, such as
+          "nl", but it may also contain variant specifications such as
+          "en-gb".
+
+          The user agent must use this list as the field value of the
+          accept-language request header when requesting the resource
+          using HTTP.
+
+          If this attribute is not present, the user agent must use its
+          default value of the accept-language request header.
+
+          Example
+
+<p href="http://www.w3.org/2003/06/semantictour-pressrelease"
+   hreflang="fr">
+   The press release in French
+</p>
+
+   hrefmedia = [21]MediaDesc
+          This attribute indicates the type(s) of media to which to make
+          available the content referenced by the associated [22]@href
+          URI.
+
+          Example
+
+<p href="http://www.example.com/forPrinters.html"
+   hrefmedia="print">
+   A printable version of this page.
+</p>
+
+   hreftype = [23]ContentTypes
+          This attribute specifies the allowable content types of the
+          relevant [24]@href URI. See [25]ContentTypes for details of how
+          it is used.
+
+          Example
+
+<p href="http://www.w3.org"
+   hreftype="text/html,application/xhtml+xml">
+   The W3C Home Page
+</p>
+
+   nextfocus = [26]IDREF
+          This attribute specifies an IDREF of an element in the current
+          document that will receive focus when the user requests that the
+          user agent navigate to the next element that can receive focus.
+
+          The sequence of [27]focusable elements is called the document's
+          navigation order. The navigation order defines the order in
+          which elements will receive focus when navigated by the user.
+          The navigation order may include elements nested within other
+          elements.
+
+          When a document is first loaded, a user agent must do the
+          following:
+
+         1. If a document is loaded using a URI that includes a reference
+            to a fragment identifier (such as book.html#chapter5)
+              1. If the fragment reference identifies an element in the
+                 document, the user agent must ensure that navigation
+                 starts at the beginning of that element.
+              2. If the referenced element is focusable, that element
+                 receives focus.
+              3. If the fragment reference does not resolve in the
+                 document, the user agent must ensure navigation starts at
+                 the beginning of the document.
+         2. If there is no reference to a fragment identifier when the
+            document is loaded:
+              1. If the root element of the document has a [28]@nextfocus
+                 attribute, and the element referred to by the attribute
+                 is focusable, the element must receive focus. The user
+                 agent must ensure the beginning of the element is visible
+                 on the display.
+              2. If the root element has no [29]@nextfocus attribute, no
+                 element receives initial focus. The user agent must
+                 ensure navigation starts at the beginning of the
+                 document.
+         3. If the user has moved away from the initial navigation point
+            of a document (e.g., through using page up and page down or by
+            changing focus), refreshing the document should result in the
+            user's navigation location being preserved.
+
+          In the event no element in the document has focus, when the user
+          requests the next focusable element, that element must be the
+          next focusable element forward from the current navigation point
+          in document order. If there are no focusable elements before the
+          end of the document, focus shifts to the first focusable element
+          in document order. If a document has no focusable elements, then
+          no element receives focus.
+
+          Once a focusable element in the document has focus, upon
+          requesting that focus change to the next focusable element, the
+          user agent MUST follow these rules when determining where focus
+          is next set:
+
+         1. The next focus of an element without a [30]@nextfocus
+            attribute is the next [31]focusable element in document order.
+            If there are no remaining [32]focusable elements in document
+            order, the next focus must be on the first [33]focusable
+            element in document order.
+         2. The next focus of an element with a [34]@nextfocus attribute
+            is the element referenced by that attribute if it is
+            [35]focusable, otherwise the next focus of that element.
+
+          Regardless of the way in which an element receives focus, if the
+          element is not currently visible on the user agent's display,
+          the display must be updated so that the element is visible.
+
+          The following example would allow the links to be navigated in
+          column order (without the use of nextfocus they would be
+          navigated in document, i.e. row, order):
+
+          Example
+
+<table>
+<tr><td id="a" href="nw" nextfocus="b">NW</td>
+    <td id="c" href="ne" nextfocus="d">NE</td></tr>
+<tr><td id="b" href="sw" nextfocus="c">SW</td>
+    <td id="d" href="se">SE</td></tr>
+</table>
+
+          Navigation keys. The actual key sequence that causes navigation
+          or element activation depends on the configuration of the user
+          agent (e.g., the "tab" key might be used for navigation and the
+          "enter" key or "space" key used to activate a selected element).
+
+   prevfocus = [36]IDREF
+          This attribute specifies an IDREF of an element in the current
+          document that will receive focus when the user requests that
+          user agent navigate to the previous element that can receive
+          focus.
+
+          In the event no element in the document has focus, when the user
+          requests the previous [37]focusable element, that element must
+          be the next focusable element backward from the current
+          navigation point in document order. If there is no such
+          focusable element back to the start of the document, focus
+          shifts to the last focusable element in document order. If a
+          document has no focusable elements, the behavior is unspecified.
+
+          Once a focusable element in the document has focus, upon
+          requesting that focus change to the previous focusable element,
+          the user agent must do the following:
+
+         1. If the focused element has a [38]@prevfocus attribute that
+            references a focusable element, focus is moved to that
+            element.
+         2. Otherwise, focus shifts to the previous focusable element in
+            document order.
+         3. If there are no previous focusable elements in document order,
+            focus shifts to the last focusable element in document order.
+
+          Regardless of the way in which an element receives focus, for
+          visual user agents, if the element is not currently visible on
+          the user agent's display, the display must be updated so that
+          the element is visible.
+
+   target = [39]HrefTarget
+          This attribute identifies an environment that will act as the
+          destination for a resource identified by a hyperlink when it is
+          activated.
+
+          This specification does not define how this attribute gets used,
+          since that is defined by the environment that the hyperlink is
+          actuated in. See for instance XFrames [[40]XFRAMES]. However,
+          values of this attribute that begin with the character '_' are
+          reserved.
+
+          Example
+
+<a href="home.html" target="main">Home</a>
+
+   xml:base = [41]URI
+          This attribute specifies the base URI from which to resolve
+          relative URIs. It is normatively defined in [[42]XMLBASE]. Any
+          relative URI used on an element that uses this attribute, or on
+          an element contained within an element that uses this attribute,
+          must be resolved relative to the base URI defined by this
+          attribute.
+
+          An element inherits URI base information according to the
+          following order of precedence (highest to lowest):
+
+         1. The [43]@xml:base attribute set for the element itself.
+         2. The closest parent element that has the [44]@xml:base
+            attribute set (i.e., the [45]@xml:base attribute is
+            inherited).
+         3. The HTTP "Content-Location" header (which may be configured in
+            a server).
+         4. The location of the document itself.
+
+          Example
+
+See:
+<ul xml:base="http://www.w3.org">
+<li href="/" src="Icons/w3c_home">The W3C home page</li>
+<li href="/TR">The W3C Technical Reports page</li>
+<li href="/Markup">The HTML home page</li>
+<li href="/Markup/Forms">The XForms home page</li>
+</ul>
+
+   Implementations: [46]RELAX NG, [47]XML Schema
+     __________________________________________________________________
+
+   [[48]previous] [[49]next] [[50]table of contents] [[51]elements]
+   [[52]attributes]
+
+References
+
+   1. file:///Users/johncowan/xhtml3/xhtml2/Overview.html
+   2. file:///Users/johncowan/xhtml3/xhtml2/Overview.html#toc
+   3. file:///Users/johncowan/xhtml3/xhtml2/mod-core.html
+   4. file:///Users/johncowan/xhtml3/xhtml2/mod-i18n.html
+   5. file:///Users/johncowan/xhtml3/xhtml2/mod-core.html
+   6. file:///Users/johncowan/xhtml3/xhtml2/mod-i18n.html
+   7. file:///Users/johncowan/xhtml3/xhtml2/Overview.html#toc
+   8. file:///Users/johncowan/xhtml3/xhtml2/elements.html
+   9. file:///Users/johncowan/xhtml3/xhtml2/attributes.html
+  10. file:///Users/johncowan/xhtml3/xhtml2/mod-hyperAttributes.html#col_Hypertext
+  11. file:///Users/johncowan/xhtml3/xhtml2/mod-hyperAttributes.html#col_Hypertext
+  12. file:///Users/johncowan/xhtml3/xhtml2/abstraction.html#dt_URI
+  13. file:///Users/johncowan/xhtml3/xhtml2/abstraction.html#dt_URI
+  14. file:///Users/johncowan/xhtml3/xhtml2/abstraction.html#dt_URI
+  15. file:///Users/johncowan/xhtml3/xhtml2/references.html#ref_DOM
+  16. file:///Users/johncowan/xhtml3/xhtml2/mod-hyperAttributes.html#adef_hyperAttributes_href
+  17. file:///Users/johncowan/xhtml3/xhtml2/mod-hyperAttributes.html#adef_hyperAttributes_href
+  18. file:///Users/johncowan/xhtml3/xhtml2/abstraction.html#dt_LanguageCodes
+  19. file:///Users/johncowan/xhtml3/xhtml2/mod-hyperAttributes.html#adef_hyperAttributes_href
+  20. file:///Users/johncowan/xhtml3/xhtml2/references.html#ref_RFC2616
+  21. file:///Users/johncowan/xhtml3/xhtml2/abstraction.html#dt_MediaDesc
+  22. file:///Users/johncowan/xhtml3/xhtml2/mod-hyperAttributes.html#adef_hyperAttributes_href
+  23. file:///Users/johncowan/xhtml3/xhtml2/abstraction.html#dt_ContentTypes
+  24. file:///Users/johncowan/xhtml3/xhtml2/mod-hyperAttributes.html#adef_hyperAttributes_href
+  25. file:///Users/johncowan/xhtml3/xhtml2/abstraction.html#dt_ContentTypes
+  26. file:///Users/johncowan/xhtml3/xhtml2/abstraction.html#dt_IDREF
+  27. file:///Users/johncowan/xhtml3/xhtml2/terms.html#focusable
+  28. file:///Users/johncowan/xhtml3/xhtml2/mod-hyperAttributes.html#adef_hyperAttributes_nextfocus
+  29. file:///Users/johncowan/xhtml3/xhtml2/mod-hyperAttributes.html#adef_hyperAttributes_nextfocus
+  30. file:///Users/johncowan/xhtml3/xhtml2/mod-hyperAttributes.html#adef_hyperAttributes_nextfocus
+  31. file:///Users/johncowan/xhtml3/xhtml2/terms.html#focusable
+  32. file:///Users/johncowan/xhtml3/xhtml2/terms.html#focusable
+  33. file:///Users/johncowan/xhtml3/xhtml2/terms.html#focusable
+  34. file:///Users/johncowan/xhtml3/xhtml2/mod-hyperAttributes.html#adef_hyperAttributes_nextfocus
+  35. file:///Users/johncowan/xhtml3/xhtml2/terms.html#focusable
+  36. file:///Users/johncowan/xhtml3/xhtml2/abstraction.html#dt_IDREF
+  37. file:///Users/johncowan/xhtml3/xhtml2/terms.html#focusable
+  38. file:///Users/johncowan/xhtml3/xhtml2/mod-hyperAttributes.html#adef_hyperAttributes_prevfocus
+  39. file:///Users/johncowan/xhtml3/xhtml2/abstraction.html#dt_HrefTarget
+  40. file:///Users/johncowan/xhtml3/xhtml2/references.html#ref_XFRAMES
+  41. file:///Users/johncowan/xhtml3/xhtml2/abstraction.html#dt_URI
+  42. file:///Users/johncowan/xhtml3/xhtml2/references.html#ref_XMLBASE
+  43. file:///Users/johncowan/xhtml3/xhtml2/mod-hyperAttributes.html#adef_hyperAttributes_xml:base
+  44. file:///Users/johncowan/xhtml3/xhtml2/mod-hyperAttributes.html#adef_hyperAttributes_xml:base
+  45. file:///Users/johncowan/xhtml3/xhtml2/mod-hyperAttributes.html#adef_hyperAttributes_xml:base
+  46. file:///Users/johncowan/xhtml3/xhtml2/relax_module_defs.html#a_rmodule_Hypertext_Attributes
+  47. file:///Users/johncowan/xhtml3/xhtml2/schema_module_defs.html#a_smodule_Hypertext_Attributes_Module
+  48. file:///Users/johncowan/xhtml3/xhtml2/mod-core.html
+  49. file:///Users/johncowan/xhtml3/xhtml2/mod-i18n.html
+  50. file:///Users/johncowan/xhtml3/xhtml2/Overview.html#toc
+  51. file:///Users/johncowan/xhtml3/xhtml2/elements.html
+  52. file:///Users/johncowan/xhtml3/xhtml2/attributes.html

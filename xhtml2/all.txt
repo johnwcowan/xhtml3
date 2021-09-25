@@ -1,0 +1,122 @@
+access 	Access	Define an accessibility mapping to an element
+@activate 	Access	Define action when access target obtains focus
+@key 	Access	Define a shortcut key
+@media 	Access	Define the applicable media
+@order 	Access	Define navigation order method
+@targetid 	Access	Define the target element for an event
+@targetrole 	Access	Define the target role(s) for an access key
+@dir 	Bidi	Define the direction of text
+caption 	Caption	Set the caption for a table
+@class 	Core	Set the class of an element
+@id 	Core	Define the ID for the element
+@layout 	Core	Indicate whether whitespace is relevant
+@title 	Core	Set the title for an element
+@xml:id 	Core	Define the ID for the element
+body 	Document	Content of the document
+head 	Document	Document metadata
+html 	Document	Document root
+title 	Document	Title for document
+@profile 	Document	Define the location of the metadata profiles
+@version 	Document	Set the XHTML document version
+@datetime 	Edit	Define date and time
+@edit 	Edit	Indicate how an item was edited
+@encoding 	Embedding	Define the encoding of an external source
+@src 	Embedding	Define the URI for an external source for the element
+@srctype 	Embedding	Indicate the content type of a src attribute
+a 	Hypertext	Define an anchor or a link
+@cite 	Hypertext	Set the URI for a citation
+@href 	Hypertext	Define a URI target when the element is activated
+@hreflang 	Hypertext	Indicate the base language of the target
+@hrefmedia 	Hypertext	Indicate the target media of an href attribute
+@hreftype 	Hypertext	Indicate the content type of an href attribute
+@nextfocus 	Hypertext	Define the order in which this control is accessed
+@prevfocus 	Hypertext	Define the order in which this control is accessed
+@target 	Hypertext	Set the target window for a link
+@xml:base 	Hypertext	Set the base URI for the element
+@its:translate 	I18N	Should an element be translated
+@xml:lang 	I18N	Set the language of the element
+img 	Image	Incorporate an image
+del 	Legacy Edit	Indicate something was deleted
+ins 	Legacy Edit	Indicate something was inserted
+legacyheadings 	Legacy Headings	Set a heading
+dd 	List	Definition Data
+di 	List	Definition Item
+dl 	List	Definition List
+dt 	List	Definition Term
+li 	List	List item
+ol 	List	Ordered list
+ul 	List	Unordered list
+@value 	List	Set the value for a list item
+@media 	Media	Define the applicable media
+link 	Metainformation	A link to another resource
+meta 	Metainformation	Meta information
+@about 	Metainformation	Define which resource that has a specified property
+@content 	Metainformation	Set the content for metadata
+@datatype 	Metainformation	Indicate the datatype of external metadata
+@property 	Metainformation	Indicate the property being defined
+@rel 	Metainformation	Define the relationship to the target
+@resource 	Metainformation	Define the resource a property is related to
+@rev 	Metainformation	Define the relationship from the target to subject
+@typeof 	Metainformation	Define the RDF type of metadata
+object 	Object	External object
+param 	Object	Parameter for external object
+standby 	Object	Message to render while loading object
+@archive 	Object	Define list of object archives
+@content-length 	Object	Indicate the size of a link's target
+@declare 	Object	Indicate that an object should only be loaded
+@name 	Object	Set the name of an applet parameter
+@type 	Object	Define the type of a referenced value element
+@value 	Object	Set the value for an applet parameter
+@valuetype 	Object	Set the type of an applet value
+@role 	Role	Define the role of this element
+ruby 	Ruby	Ruby Annotation
+script 	Scripting	No title
+@charset 	Scripting	Indicate the expected encoding of the remote resource
+@defer 	Scripting	Indicate processing of contents should be defered
+@implements 	Scripting	Indication of what a script implements
+address 	Structural	Define an address
+blockcode 	Structural	Define a block of computer code
+blockquote 	Structural	Define a large quotation
+div 	Structural	Define the characteristics of a block
+heading 	Structural	Set a heading
+p 	Structural	Define a paragraph
+pre 	Structural	Define a preformatted block
+section 	Structural	Define a section of a document
+separator 	Structural	Insert a break in a document
+@style 	Style	Set the style to use on the element
+style 	Style Sheet	Definition of style rules
+@disabled 	Style Sheet	Indicate that an item is disabled
+@media 	Style Sheet	Define the applicable media
+col 	Tables	Define attributes for a column
+colgroup 	Tables	Define attributes for a group of columns
+summary 	Tables	Set the summary for a table
+table 	Tables	Define a table
+tbody 	Tables	Define the body for a table
+td 	Tables	Define a table cell
+tfoot 	Tables	Define the footer for a table
+th 	Tables	Define a table header
+thead 	Tables	Define the heading for a table
+tr 	Tables	Define a table row
+@abbr	Tables	Abbreviated form
+@axis 	Tables	Define a category for a cell
+@colspan 	Tables	Set the number of columns a table cell should span
+@headers 	Tables	Define the header cells that relate to this cell
+@rowspan 	Tables	Define the number of rows a cell spans
+@scope 	Tables	Define the scope of a header
+@span 	Tables	Define the number of columns a colgroup spans
+abbr 	Text	An abbreviation
+br 	Text	A line break
+cite 	Text	A citation
+code 	Text	A code fragment
+dfn 	Text	A definition
+em 	Text	Emphasis
+kbd 	Text	User input
+l 	Text	A line of text
+q 	Text	A quotation
+samp 	Text	Sample output
+span 	Text	Define characteristics of text
+strong 	Text	Strong emphasis
+sub 	Text	A subscript
+sup 	Text	A superscript
+var 	Text	A variable
+@full 	Text	Refer to the full version of an abbreviation

@@ -1,0 +1,158 @@
+   #[1]start [2]contents [3]prev [4]next
+
+   [[5]previous] [[6]next] [[7]table of contents] [[8]elements]
+   [[9]attributes]
+     __________________________________________________________________
+
+                 16. XHTML Bi-directional Text Attribute Module
+
+   Contents
+     * 16.1. [10]Bi-directional Text Collection
+          + 16.1.1. [11]Inheritance of text direction information
+          + 16.1.2. [12]The effect of style sheets on bidirectionality
+
+   This section is normative.
+
+   The Bi-directional Text module defines the [13]Bi-directional attribute
+   collection.
+
+16.1. Bi-directional Text Collection
+
+   dir = "ltr|rtl|lro|rlo"
+          This attribute allows the author to specify the direction of the
+          element's text content. This direction affects the display of
+          characters as defined in Unicode Standard Annex #9: The
+          Bidirectional Algorithm [[14]UAX9], and defines directional
+          properties of text as defined by CSS2 [[15]CSS2]. The default
+          value of this attribute is ltr. Possible values are:
+
+          + ltr: Left-to-right text. The effect of this attribute is
+            defined by the CSS2 rule:
+*[dir="ltr"] { unicode-bidi: embed; direction: ltr}
+
+          + rtl: Right-to-left text. The effect of this attribute is
+            defined by the CSS2 rule:
+*[dir="rtl"] { unicode-bidi: embed; direction: rtl}
+
+          + lro: Left-to-right override. The effect of this attribute is
+            defined by the CSS2 rule:
+*[dir="lro"] { unicode-bidi: bidi-override; direction: ltr}
+
+          + rlo: Right-to-left override. The effect of this attribute is
+            defined by the CSS2 rule:
+*[dir="rlo"] { unicode-bidi: bidi-override; direction: rtl}
+
+          Example
+
+<p>
+The Hebrew word for "Hebrew" is
+<span xml:lang="he">&#x5e2;&#x5d1;&#x5e8;&#x5d9;&#x5ea;</span>,
+but since Hebrew letters have intrinsic right-to-left directionality,
+I had to type the word starting from the letter "&#x5e2;",
+i.e. <span xml:lang="he" dir="lro">&#x5e2;&#x5d1;&#x5e8;&#x5d9;&#x5ea;</span>.
+</p>
+
+          This might display as an image of the example .
+
+  16.1.1. Inheritance of text direction information
+
+   The Unicode bidirectional algorithm requires a base text direction for
+   text blocks. To specify the base direction of a block-level element,
+   set the element's [16]@dir attribute. The default value of the [17]@dir
+   attribute is ltr (left-to-right text).
+
+   When the [18]@dir attribute is set for a block-level element, it
+   remains in effect for the duration of the element and any nested
+   block-level elements. Setting the [19]@dir attribute on a nested
+   element overrides the inherited value.
+
+   To set the base text direction for an entire document, set the [20]@dir
+   attribute on the [21]html element.
+
+   Example
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 2.0//EN"
+   "<dtdloc>">
+<html xmlns="<xmlns>" dir="rtl">
+<head>
+<title><em>...a right-to-left title...</em></title>
+</head>
+<body>
+<em>...right-to-left text...</em>
+<p dir="ltr"><em>...left-to-right text...</em></p>
+<p><em>...right-to-left text again...</em></p>
+</body>
+</html>
+
+   Inline-level elements, on the other hand, do not inherit the [22]@dir
+   attribute. This means that an inline element without a [23]@dir
+   attribute does not open an additional level of embedding with respect
+   to the bidirectional algorithm.
+
+   An element is considered to be block-level if its presentation, when
+   expressed in [[24]CSS2], is display: block and inline-level if its
+   presentation, when expressed in [[25]CSS2], is display: inline.
+
+  16.1.2. The effect of style sheets on bidirectionality
+
+   In general, using style sheets (such as [[26]CSS2] to change an
+   element's visual rendering from the equivalent of display: block to
+   display: inline or vice-versa is straightforward. However, because the
+   bidirectional algorithm relies on the inline/block-level distinction,
+   special care must be taken during the transformation.
+
+   When an inline-level element that does not have a [27]@dir attribute is
+   transformed to a block-level element by a style sheet, it inherits the
+   [28]@dir attribute from its closest parent block-level element to
+   define the base direction of the block.
+
+   When a block-level element that does not have a [29]@dir attribute is
+   transformed to an inline-level element by a style sheet, the resulting
+   presentation should be equivalent, in terms of bidirectional
+   formatting, to the formatting obtained by explicitly adding a [30]@dir
+   attribute (assigned the inherited value) to the transformed element.
+
+   Implementations: [31]RELAX NG, [32]XML Schema
+     __________________________________________________________________
+
+   [[33]previous] [[34]next] [[35]table of contents] [[36]elements]
+   [[37]attributes]
+
+References
+
+   1. file:///Users/johncowan/xhtml3/xhtml2/Overview.html
+   2. file:///Users/johncowan/xhtml3/xhtml2/Overview.html#toc
+   3. file:///Users/johncowan/xhtml3/xhtml2/mod-access.html
+   4. file:///Users/johncowan/xhtml3/xhtml2/mod-caption.html
+   5. file:///Users/johncowan/xhtml3/xhtml2/mod-access.html
+   6. file:///Users/johncowan/xhtml3/xhtml2/mod-caption.html
+   7. file:///Users/johncowan/xhtml3/xhtml2/Overview.html#toc
+   8. file:///Users/johncowan/xhtml3/xhtml2/elements.html
+   9. file:///Users/johncowan/xhtml3/xhtml2/attributes.html
+  10. file:///Users/johncowan/xhtml3/xhtml2/mod-bidi.html#col_Bi-directional
+  11. file:///Users/johncowan/xhtml3/xhtml2/mod-bidi.html#sec_16.1.1.
+  12. file:///Users/johncowan/xhtml3/xhtml2/mod-bidi.html#sec_16.1.2.
+  13. file:///Users/johncowan/xhtml3/xhtml2/mod-bidi.html#col_Bi-directional
+  14. file:///Users/johncowan/xhtml3/xhtml2/references.html#ref_UAX9
+  15. file:///Users/johncowan/xhtml3/xhtml2/references.html#ref_CSS2
+  16. file:///Users/johncowan/xhtml3/xhtml2/mod-bidi.html#adef_bidi_dir
+  17. file:///Users/johncowan/xhtml3/xhtml2/mod-bidi.html#adef_bidi_dir
+  18. file:///Users/johncowan/xhtml3/xhtml2/mod-bidi.html#adef_bidi_dir
+  19. file:///Users/johncowan/xhtml3/xhtml2/mod-bidi.html#adef_bidi_dir
+  20. file:///Users/johncowan/xhtml3/xhtml2/mod-bidi.html#adef_bidi_dir
+  21. file:///Users/johncowan/xhtml3/xhtml2/mod-document.html#edef_document_html
+  22. file:///Users/johncowan/xhtml3/xhtml2/mod-bidi.html#adef_bidi_dir
+  23. file:///Users/johncowan/xhtml3/xhtml2/mod-bidi.html#adef_bidi_dir
+  24. file:///Users/johncowan/xhtml3/xhtml2/references.html#ref_CSS2
+  25. file:///Users/johncowan/xhtml3/xhtml2/references.html#ref_CSS2
+  26. file:///Users/johncowan/xhtml3/xhtml2/references.html#ref_CSS2
+  27. file:///Users/johncowan/xhtml3/xhtml2/mod-bidi.html#adef_bidi_dir
+  28. file:///Users/johncowan/xhtml3/xhtml2/mod-bidi.html#adef_bidi_dir
+  29. file:///Users/johncowan/xhtml3/xhtml2/mod-bidi.html#adef_bidi_dir
+  30. file:///Users/johncowan/xhtml3/xhtml2/mod-bidi.html#adef_bidi_dir
+  31. file:///Users/johncowan/xhtml3/xhtml2/relax_module_defs.html#a_rmodule_Bi-directional_Text_Attribute
+  32. file:///Users/johncowan/xhtml3/xhtml2/schema_module_defs.html#a_smodule_Bi-directional_Text_Module
+  33. file:///Users/johncowan/xhtml3/xhtml2/mod-access.html
+  34. file:///Users/johncowan/xhtml3/xhtml2/mod-caption.html
+  35. file:///Users/johncowan/xhtml3/xhtml2/Overview.html#toc
+  36. file:///Users/johncowan/xhtml3/xhtml2/elements.html
+  37. file:///Users/johncowan/xhtml3/xhtml2/attributes.html

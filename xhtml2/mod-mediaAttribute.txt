@@ -1,0 +1,57 @@
+   #[1]start [2]contents [3]prev [4]next
+
+   [[5]previous] [[6]next] [[7]table of contents] [[8]elements]
+   [[9]attributes]
+     __________________________________________________________________
+
+                        22. XHTML Media Attribute Module
+
+   Contents
+     * 22.1. [10]Media Attribute Collection
+
+   This section is normative.
+
+   The Media Attribute Module defines the media attribute.
+
+22.1. Media Attribute Collection
+
+   media = [11]MediaDesc
+          The value of this attribute is a comma-separated list of media
+          descriptors for which this access element is intended. When the
+          value of this attribute matches the current processing media,
+          the associated access element is considered active and processed
+          normally; otherwise it is inactive and ignored. The default
+          value for this attribute is all.
+
+          Example
+
+<style src="style.css" type="text/css" media="screen" />
+<span src="photo.jpg" media="screen">Me at work</span>
+<span src="photo-hires.jpg" media="print">Me at work</span>
+
+   Implementations: [12]RELAX NG, [13]XML Schema
+     __________________________________________________________________
+
+   [[14]previous] [[15]next] [[16]table of contents] [[17]elements]
+   [[18]attributes]
+
+References
+
+   1. file:///Users/johncowan/xhtml3/xhtml2/Overview.html
+   2. file:///Users/johncowan/xhtml3/xhtml2/Overview.html#toc
+   3. file:///Users/johncowan/xhtml3/xhtml2/mod-csImgMap.html
+   4. file:///Users/johncowan/xhtml3/xhtml2/mod-meta.html
+   5. file:///Users/johncowan/xhtml3/xhtml2/mod-csImgMap.html
+   6. file:///Users/johncowan/xhtml3/xhtml2/mod-meta.html
+   7. file:///Users/johncowan/xhtml3/xhtml2/Overview.html#toc
+   8. file:///Users/johncowan/xhtml3/xhtml2/elements.html
+   9. file:///Users/johncowan/xhtml3/xhtml2/attributes.html
+  10. file:///Users/johncowan/xhtml3/xhtml2/mod-mediaAttribute.html#col_Media
+  11. file:///Users/johncowan/xhtml3/xhtml2/abstraction.html#dt_MediaDesc
+  12. file:///Users/johncowan/xhtml3/xhtml2/relax_module_defs.html#a_rmodule_Media_Attribute
+  13. file:///Users/johncowan/xhtml3/xhtml2/schema_module_defs.html#a_smodule_Media_Attribute_Module
+  14. file:///Users/johncowan/xhtml3/xhtml2/mod-csImgMap.html
+  15. file:///Users/johncowan/xhtml3/xhtml2/mod-meta.html
+  16. file:///Users/johncowan/xhtml3/xhtml2/Overview.html#toc
+  17. file:///Users/johncowan/xhtml3/xhtml2/elements.html
+  18. file:///Users/johncowan/xhtml3/xhtml2/attributes.html

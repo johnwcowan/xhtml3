@@ -1,0 +1,302 @@
+   #[1]start [2]contents [3]prev [4]next
+
+   [[5]previous] [[6]next] [[7]table of contents] [[8]elements]
+   [[9]attributes]
+     __________________________________________________________________
+
+                        23. XHTML Metainformation Module
+
+   Contents
+     * 23.1. [10]The link element
+          + 23.1.1. [11]Forward and reverse links
+          + 23.1.2. [12]Links and search engines
+     * 23.2. [13]The meta element
+          + 23.2.1. [14]meta and search engines
+
+   This section is normative.
+
+   The Metainformation Module defines elements that allow the definition
+   of relationships. These may relate to:
+     * the document itself,
+     * items external to the document, or
+     * other items of metadata within the document.
+
+   Note that this module is dependent upon the [15]Metainformation
+   Attributes module. The interpretation of those attributes in
+   conjunction with any elements, including the ones defined in this
+   module, are spelled out in [[16]RDFASYNTAX].
+
+   Elements and attributes in this module are:
+
+   Elements Attributes Content Model
+   link     [17]Common EMPTY
+   meta     [18]Common [19]meta?
+
+   Implementations: [20]RELAX NG, [21]XML Schema
+
+23.1. The link element
+
+   Attributes
+
+   The [22]Common collection
+          A collection of other attribute collections, including:
+          [23]Bi-directional, [24]Core, [25]Edit, [26]Embedding,
+          [27]Events, [28]Forms, [29]Hypertext, [30]I18N, [31]Map,
+          [32]Metainformation, and [33]Role
+
+   This element defines a link. [34]Link conveys relationship information
+   that may be rendered by user agents in a variety of ways (e.g., a
+   tool-bar with a drop-down menu of links). User agents should enable
+   activation of links and the retrieval of link targets. Since [35]link
+   elements may have no content, information from the [36]@rel and
+   [37]@title attributes should be used when labelling links.
+
+   This example illustrates how several [38]link definitions may appear in
+   the [39]head section of a document. The current document is
+   "Chapter2.html". The [40]@rel attribute specifies the relationship of
+   the linked document with the current document. The values "Index",
+   "Next", and "Prev" are explained in the section on the attribute
+   [41]@rel.
+<head>
+  <title>Chapter 2</title>
+  <link rel="index" href="../index.html"/>
+  <link rel="next"  href="Chapter3.html"/>
+  <link rel="prev"  href="Chapter1.html"/>
+</head>
+
+  23.1.1. Forward and reverse links
+
+   While the [42]@rel attribute specifies a relationship from this
+   document to another resource, the [43]@rev attribute specifies the
+   reverse relationship.
+
+   Consider two documents A and B.
+Document A:       <link href="docB" rel="index"/>
+
+   Has exactly the same meaning as:
+Document B:       <link href="docA" rev="index"/>
+
+   namely that document B is the index for document A.
+
+   Both the [44]@rel and [45]@rev attributes may be specified
+   simultaneously.
+
+  23.1.2. Links and search engines
+
+   Authors may use the [46]link element to provide a variety of
+   information to search engines, including:
+     * Links to alternate versions of a document, written in another human
+       language.
+     * Links to alternate versions of a document, designed for different
+       media, for instance a version especially suited for printing.
+     * Links to the starting page of a collection of documents.
+
+   The examples below illustrate how language information, media types,
+   and link types may be combined to improve document handling by search
+   engines.
+
+   The following example shows how to use the [47]@hreflang attribute to
+   indicate to a search engine where to find other language versions of a
+   document. Note that for the sake of the example the [48]@xml:lang
+   attribute has been used to indicate that the value of the [49]@title
+   attribute for the [50]link element designating the French manual is in
+   French.
+<html ... xml:lang="en">
+<head>
+<title>The manual in English</title>
+<link title="The manual in Dutch"
+      rel="alternate"
+      hreflang="nl"
+      href="http://example.com/manual/dutch.html"/>
+<link title="La documentation en Français"
+      rel="alternate"
+      hreflang="fr" xml:lang="fr"
+      href="http://example.com/manual/french.html"/>
+</head>
+
+   In the following example, we tell search engines where to find the
+   printed version of a manual.
+<head>
+<title>Reference manual</title>
+<link media="print"
+      title="The manual in PostScript"
+      hreftype="application/postscript"
+      rel="alternate"
+      href="http://example.com/manual/postscript.ps"/>
+</head>
+
+   In the following example, we tell search engines where to find the
+   front page of a collection of documents.
+<head>
+<title>Reference manual -- Chapter 5</title>
+<link rel="start" title="The first chapter of the manual"
+      hreftype="application/xhtml+xml"
+      href="http://example.com/manual/start.html"/>
+</head>
+
+23.2. The meta element
+
+   Attributes
+
+   The [51]Common collection
+          A collection of other attribute collections, including:
+          [52]Bi-directional, [53]Core, [54]Edit, [55]Embedding,
+          [56]Events, [57]Forms, [58]Hypertext, [59]I18N, [60]Map,
+          [61]Metainformation, and [62]Role
+
+   The [63]meta element can be used to identify properties of a document
+   (e.g., author, expiration date, a list of key words, etc.) and assign
+   values to those properties. This specification defines a small
+   normative set of properties, but users may extend this set as described
+   for the [64]@property attribute.
+
+   Each [65]meta element specifies a property/value pair. The
+   [66]@property attribute identifies the property and the content of the
+   element or the value of the [67]@content attribute specifies the
+   property's value.
+
+   For example, the following declaration sets a value for the Author
+   property:
+
+   Example
+<meta property="dc:creator">Steven Pemberton</meta>
+
+   Note. The [68]meta element is a generic mechanism for specifying
+   metadata. However, some XHTML elements and attributes already handle
+   certain pieces of metadata and may be used by authors instead of
+   [69]meta to specify those pieces: the [70]title element, the
+   [71]address element, the [72]@edit and related attributes, the
+   [73]@title attribute, and the [74]@cite attribute.
+
+   Note. When a property specified by a [75]meta element takes a value
+   that is a [76]URI, some authors prefer to specify the metadata via the
+   [77]link element. Thus, the following metadata declaration:
+
+   Example
+<meta property="dc:identifier">
+      http://www.rfc-editor.org/rfc/rfc3236.txt
+</meta>
+
+   might also be written:
+
+   Example
+<link rel="dc:identifier"
+      href="http://www.rfc-editor.org/rfc/rfc3236.txt" />
+
+  23.2.1. meta and search engines
+
+   A common use for [78]meta is to specify keywords that a search engine
+   may use to improve the quality of search results. When several [79]meta
+   elements provide language-dependent information about a document,
+   search engines may filter on the [80]@xml:lang attribute to display
+   search results using the language preferences of the user. For example,
+
+   Example
+<!-- For speakers of US English -->
+<meta property="keywords"
+      xml:lang="en-us">vacation, Greece, sunshine</meta>
+<!-- For speakers of British English -->
+<meta property="keywords"
+      xml:lang="en">holiday, Greece, sunshine</meta>
+<!-- For speakers of French -->
+<meta property="keywords"
+      xml:lang="fr">vacances, Grèce, soleil</meta>
+
+   The effectiveness of search engines can also be increased by using the
+   [81]link element to specify links to translations of the document in
+   other languages, links to versions of the document in other media
+   (e.g., PDF), and, when the document is part of a collection, links to
+   an appropriate starting point for browsing the collection.
+     __________________________________________________________________
+
+   [[82]previous] [[83]next] [[84]table of contents] [[85]elements]
+   [[86]attributes]
+
+References
+
+   1. file:///Users/johncowan/xhtml3/xhtml2/Overview.html
+   2. file:///Users/johncowan/xhtml3/xhtml2/Overview.html#toc
+   3. file:///Users/johncowan/xhtml3/xhtml2/mod-mediaAttribute.html
+   4. file:///Users/johncowan/xhtml3/xhtml2/mod-metaAttributes.html
+   5. file:///Users/johncowan/xhtml3/xhtml2/mod-mediaAttribute.html
+   6. file:///Users/johncowan/xhtml3/xhtml2/mod-metaAttributes.html
+   7. file:///Users/johncowan/xhtml3/xhtml2/Overview.html#toc
+   8. file:///Users/johncowan/xhtml3/xhtml2/elements.html
+   9. file:///Users/johncowan/xhtml3/xhtml2/attributes.html
+  10. file:///Users/johncowan/xhtml3/xhtml2/mod-meta.html#sec_23.1.
+  11. file:///Users/johncowan/xhtml3/xhtml2/mod-meta.html#sec_23.1.1.
+  12. file:///Users/johncowan/xhtml3/xhtml2/mod-meta.html#sec_23.1.2.
+  13. file:///Users/johncowan/xhtml3/xhtml2/mod-meta.html#sec_23.2.
+  14. file:///Users/johncowan/xhtml3/xhtml2/mod-meta.html#sec_23.2.1.
+  15. file:///Users/johncowan/xhtml3/xhtml2/mod-metaAttributes.html#s_metaAttributesmodule
+  16. file:///Users/johncowan/xhtml3/xhtml2/references.html#ref_RDFASYNTAX
+  17. file:///Users/johncowan/xhtml3/xhtml2/mod-attribute-collections.html#col_Common
+  18. file:///Users/johncowan/xhtml3/xhtml2/mod-attribute-collections.html#col_Common
+  19. file:///Users/johncowan/xhtml3/xhtml2/mod-meta.html#edef_meta_meta
+  20. file:///Users/johncowan/xhtml3/xhtml2/relax_module_defs.html#a_rmodule_Metainformation
+  21. file:///Users/johncowan/xhtml3/xhtml2/schema_module_defs.html#a_smodule_Metainformation_Module
+  22. file:///Users/johncowan/xhtml3/xhtml2/mod-attribute-collections.html#col_Common
+  23. file:///Users/johncowan/xhtml3/xhtml2/mod-bidi.html#col_Bi-directional
+  24. file:///Users/johncowan/xhtml3/xhtml2/mod-core.html#col_Core
+  25. file:///Users/johncowan/xhtml3/xhtml2/mod-edit.html#col_Edit
+  26. file:///Users/johncowan/xhtml3/xhtml2/mod-embedding.html#col_Embedding
+  27. file:///Users/johncowan/xhtml3/xhtml2/mod-xml-events.html#col_Events
+  28. file:///Users/johncowan/xhtml3/xhtml2/mod-xforms.html#col_Forms
+  29. file:///Users/johncowan/xhtml3/xhtml2/mod-hyperAttributes.html#col_Hypertext
+  30. file:///Users/johncowan/xhtml3/xhtml2/mod-i18n.html#col_I18N
+  31. file:///Users/johncowan/xhtml3/xhtml2/mod-csImgMap.html#col_Map
+  32. file:///Users/johncowan/xhtml3/xhtml2/mod-metaAttributes.html#col_Metainformation
+  33. file:///Users/johncowan/xhtml3/xhtml2/mod-roleAttribute.html#col_Role
+  34. file:///Users/johncowan/xhtml3/xhtml2/mod-meta.html#edef_meta_link
+  35. file:///Users/johncowan/xhtml3/xhtml2/mod-meta.html#edef_meta_link
+  36. file:///Users/johncowan/xhtml3/xhtml2/mod-metaAttributes.html#adef_metaAttributes_rel
+  37. file:///Users/johncowan/xhtml3/xhtml2/mod-core.html#adef_core_title
+  38. file:///Users/johncowan/xhtml3/xhtml2/mod-meta.html#edef_meta_link
+  39. file:///Users/johncowan/xhtml3/xhtml2/mod-document.html#edef_document_head
+  40. file:///Users/johncowan/xhtml3/xhtml2/mod-metaAttributes.html#adef_metaAttributes_rel
+  41. file:///Users/johncowan/xhtml3/xhtml2/mod-metaAttributes.html#adef_metaAttributes_rel
+  42. file:///Users/johncowan/xhtml3/xhtml2/mod-metaAttributes.html#adef_metaAttributes_rel
+  43. file:///Users/johncowan/xhtml3/xhtml2/mod-metaAttributes.html#adef_metaAttributes_rev
+  44. file:///Users/johncowan/xhtml3/xhtml2/mod-metaAttributes.html#adef_metaAttributes_rel
+  45. file:///Users/johncowan/xhtml3/xhtml2/mod-metaAttributes.html#adef_metaAttributes_rev
+  46. file:///Users/johncowan/xhtml3/xhtml2/mod-meta.html#edef_meta_link
+  47. file:///Users/johncowan/xhtml3/xhtml2/mod-hyperAttributes.html#adef_hyperAttributes_hreflang
+  48. file:///Users/johncowan/xhtml3/xhtml2/mod-i18n.html#adef_i18n_xml:lang
+  49. file:///Users/johncowan/xhtml3/xhtml2/mod-core.html#adef_core_title
+  50. file:///Users/johncowan/xhtml3/xhtml2/mod-meta.html#edef_meta_link
+  51. file:///Users/johncowan/xhtml3/xhtml2/mod-attribute-collections.html#col_Common
+  52. file:///Users/johncowan/xhtml3/xhtml2/mod-bidi.html#col_Bi-directional
+  53. file:///Users/johncowan/xhtml3/xhtml2/mod-core.html#col_Core
+  54. file:///Users/johncowan/xhtml3/xhtml2/mod-edit.html#col_Edit
+  55. file:///Users/johncowan/xhtml3/xhtml2/mod-embedding.html#col_Embedding
+  56. file:///Users/johncowan/xhtml3/xhtml2/mod-xml-events.html#col_Events
+  57. file:///Users/johncowan/xhtml3/xhtml2/mod-xforms.html#col_Forms
+  58. file:///Users/johncowan/xhtml3/xhtml2/mod-hyperAttributes.html#col_Hypertext
+  59. file:///Users/johncowan/xhtml3/xhtml2/mod-i18n.html#col_I18N
+  60. file:///Users/johncowan/xhtml3/xhtml2/mod-csImgMap.html#col_Map
+  61. file:///Users/johncowan/xhtml3/xhtml2/mod-metaAttributes.html#col_Metainformation
+  62. file:///Users/johncowan/xhtml3/xhtml2/mod-roleAttribute.html#col_Role
+  63. file:///Users/johncowan/xhtml3/xhtml2/mod-meta.html#edef_meta_meta
+  64. file:///Users/johncowan/xhtml3/xhtml2/mod-metaAttributes.html#adef_metaAttributes_property
+  65. file:///Users/johncowan/xhtml3/xhtml2/mod-meta.html#edef_meta_meta
+  66. file:///Users/johncowan/xhtml3/xhtml2/mod-metaAttributes.html#adef_metaAttributes_property
+  67. file:///Users/johncowan/xhtml3/xhtml2/mod-metaAttributes.html#adef_metaAttributes_content
+  68. file:///Users/johncowan/xhtml3/xhtml2/mod-meta.html#edef_meta_meta
+  69. file:///Users/johncowan/xhtml3/xhtml2/mod-meta.html#edef_meta_meta
+  70. file:///Users/johncowan/xhtml3/xhtml2/mod-document.html#edef_document_title
+  71. file:///Users/johncowan/xhtml3/xhtml2/mod-structural.html#edef_structural_address
+  72. file:///Users/johncowan/xhtml3/xhtml2/mod-edit.html#adef_edit_edit
+  73. file:///Users/johncowan/xhtml3/xhtml2/mod-core.html#adef_core_title
+  74. file:///Users/johncowan/xhtml3/xhtml2/mod-hyperAttributes.html#adef_hyperAttributes_cite
+  75. file:///Users/johncowan/xhtml3/xhtml2/mod-meta.html#edef_meta_meta
+  76. file:///Users/johncowan/xhtml3/xhtml2/abstraction.html#dt_URI
+  77. file:///Users/johncowan/xhtml3/xhtml2/mod-meta.html#edef_meta_link
+  78. file:///Users/johncowan/xhtml3/xhtml2/mod-meta.html#edef_meta_meta
+  79. file:///Users/johncowan/xhtml3/xhtml2/mod-meta.html#edef_meta_meta
+  80. file:///Users/johncowan/xhtml3/xhtml2/mod-i18n.html#adef_i18n_xml:lang
+  81. file:///Users/johncowan/xhtml3/xhtml2/mod-meta.html#edef_meta_link
+  82. file:///Users/johncowan/xhtml3/xhtml2/mod-mediaAttribute.html
+  83. file:///Users/johncowan/xhtml3/xhtml2/mod-metaAttributes.html
+  84. file:///Users/johncowan/xhtml3/xhtml2/Overview.html#toc
+  85. file:///Users/johncowan/xhtml3/xhtml2/elements.html
+  86. file:///Users/johncowan/xhtml3/xhtml2/attributes.html

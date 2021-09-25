@@ -1,0 +1,48 @@
+   #[1]start [2]contents [3]prev [4]next
+
+   [[5]previous] [[6]next] [[7]table of contents] [[8]elements]
+   [[9]attributes]
+     __________________________________________________________________
+
+                                27. Ruby Module
+
+   This section is normative for purposes of defining the integration of
+   the Ruby Module into XHTML 2. The semantics of the Ruby Module itself
+   are normatively defined in [[10]RUBY].
+
+   This module adds the ruby element to the [11]Text content set of the
+   [12]Text Module. XHTML 2.0 supports the maximal content model for the
+   ruby element, defined as follows:
+((rb, (rt | (rp, rt, rp))) | (rbc, rtc, rtc?))
+
+   As defined in [[13]RUBY], the ruby element is not allowed to nest.
+
+   Implementations: [14]RELAX NG, [15]XML Schema, [16]DTD
+     __________________________________________________________________
+
+   [[17]previous] [[18]next] [[19]table of contents] [[20]elements]
+   [[21]attributes]
+
+References
+
+   1. file:///Users/johncowan/xhtml3/xhtml2/Overview.html
+   2. file:///Users/johncowan/xhtml3/xhtml2/Overview.html#toc
+   3. file:///Users/johncowan/xhtml3/xhtml2/mod-roleAttribute.html
+   4. file:///Users/johncowan/xhtml3/xhtml2/mod-styleSheet.html
+   5. file:///Users/johncowan/xhtml3/xhtml2/mod-roleAttribute.html
+   6. file:///Users/johncowan/xhtml3/xhtml2/mod-styleSheet.html
+   7. file:///Users/johncowan/xhtml3/xhtml2/Overview.html#toc
+   8. file:///Users/johncowan/xhtml3/xhtml2/elements.html
+   9. file:///Users/johncowan/xhtml3/xhtml2/attributes.html
+  10. file:///Users/johncowan/xhtml3/xhtml2/references.html#ref_RUBY
+  11. file:///Users/johncowan/xhtml3/xhtml2/mod-text.html#cs_Text
+  12. file:///Users/johncowan/xhtml3/xhtml2/mod-text.html#s_textmodule
+  13. file:///Users/johncowan/xhtml3/xhtml2/references.html#ref_RUBY
+  14. file:///Users/johncowan/xhtml3/xhtml2/relax_module_defs.html#a_rmodule_Ruby_Driver_for_Full_Ruby_Markup
+  15. file:///Users/johncowan/xhtml3/xhtml2/schema_module_defs.html#a_smodule_Ruby_Module
+  16. http://www.w3.org/TR/2001/REC-ruby-20010531/#module
+  17. file:///Users/johncowan/xhtml3/xhtml2/mod-roleAttribute.html
+  18. file:///Users/johncowan/xhtml3/xhtml2/mod-styleSheet.html
+  19. file:///Users/johncowan/xhtml3/xhtml2/Overview.html#toc
+  20. file:///Users/johncowan/xhtml3/xhtml2/elements.html
+  21. file:///Users/johncowan/xhtml3/xhtml2/attributes.html
